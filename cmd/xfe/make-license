@@ -1,0 +1,46 @@
+#! /bin/sh
+#
+# Generate license file
+#
+
+DEST=$1
+DIR=$2
+SUFFIX=$3
+SS=$4
+
+AIX_SUCKS=' '
+VN=`sed -n${AIX_SUCKS} 's/^#define VERSION_NUMBER *\(.*\)$/\1/p' versionn.h`
+
+#
+# Choose license source file name
+#
+case ${VN} in
+	*b*)
+		L=LICENSE-${SS}-beta
+		;;
+	*a*)
+		L=LICENSE-alpha
+		;;
+	*)
+		L=LICENSE-${SS}${SUFFIX}
+		;;
+esac
+
+rm -f ${DEST}
+echo Generating ${DEST} from ${DIR}/${L}...
+
+case "${DEST}" in
+	*".c")
+		echo 'const char fe_LicenseData[] =' > ${DEST}
+		# Rotate data
+		tr '[\001-\272]' '[\106-\377]' < ${DIR}/${L} | \
+			od -b | \
+			sed 's/^[0-7][0-7]* *\(.*\)/\\\1/;s/ /\\/g;s/\(.*\)/ "\1"/;s/^ *"\\"$//' >> ${DEST}
+		echo ';' >> ${DEST}
+		;;
+	*)
+		cp ${DIR}/${L} ${DEST}
+		;;
+esac
+
+exit 0

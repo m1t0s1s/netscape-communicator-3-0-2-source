@@ -1,0 +1,152 @@
+/*
+	Netscape Commuication Corp
+	Copyright 1996-1998
+
+	Author: Frank Tang ftang@netscape.com
+	Purpose: Unicode table for window build
+*/
+
+
+#ifdef XP_WIN32
+#include <winver.h>
+#else
+#include <ver.h>
+#endif
+
+VS_VERSION_INFO     VERSIONINFO
+  FILEVERSION       2,0,0,30 // major, minor, release (alpha 1), build #
+  PRODUCTVERSION    2,0,0,30
+  FILEFLAGSMASK     VS_FFI_FILEFLAGSMASK
+  FILEFLAGS         0 // final version
+  FILEOS            VOS_DOS_WINDOWS16
+  FILETYPE          VFT_APP
+  FILESUBTYPE       0   // not used
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904E4" // Lang=US English, CharSet=Windows Multilingual
+        BEGIN
+            VALUE "CompanyName",     "Netscape Communications Corporation\0"
+            VALUE "FileDescription", "Netscape Navigator Unicode Table File\0"
+            VALUE "FileVersion",     "3.0b6\0"
+            VALUE "InternalName",    "NETSCAPE\0"
+            VALUE "LegalCopyright",  "Copyright Netscape Communications. 1996, 1997\0"
+            VALUE "LegalTrademarks", "Netscape, Mozilla\0"
+#ifdef XP_WIN32
+            VALUE "OriginalFilename","UNI3200.DLL\0"
+#else
+            VALUE "OriginalFilename","UNI1600.DLL\0"
+#endif
+            VALUE "ProductName",     "NETSCAPE\0"
+            VALUE "ProductVersion",  "3.0b6\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+            // English language (0x409) and the Windows ANSI codepage (1252)
+    END
+END
+
+cp1252.uf RCDATA
+BEGIN
+#include "ufrmtbl\\cp1252.uf"
+END
+cp1252.ut RCDATA
+BEGIN
+#include "utotbl\\cp1252.ut"
+END
+
+#ifdef ALL_UNICODE_TABLE
+
+8859-7.uf RCDATA
+BEGIN
+#include "ufrmtbl\\8859-7.uf"
+END
+8859-7.ut RCDATA
+BEGIN
+#include "utotbl\\8859-7.ut"
+END
+8859-9.uf RCDATA
+BEGIN
+#include "ufrmtbl\\8859-9.uf"
+END
+8859-9.ut RCDATA
+BEGIN
+#include "utotbl\\8859-9.ut"
+END
+macsymbo.uf RCDATA
+BEGIN
+#include "ufrmtbl\\macsymbo.uf"
+END
+macsymbo.ut RCDATA
+BEGIN
+#include "utotbl\\macsymbo.ut"
+END
+macdingb.uf RCDATA
+BEGIN
+#include "ufrmtbl\\macdingb.uf"
+END
+macdingb.ut RCDATA
+BEGIN
+#include "utotbl\\macdingb.ut"
+END
+cp1251.uf RCDATA
+BEGIN
+#include "ufrmtbl\\cp1251.uf"
+END
+cp1251.ut RCDATA
+BEGIN
+#include "utotbl\\cp1251.ut"
+END
+cp1250.uf RCDATA
+BEGIN
+#include "ufrmtbl\\cp1250.uf"
+END
+cp1250.ut RCDATA
+BEGIN
+#include "utotbl\\cp1250.ut"
+END
+koi8r.uf RCDATA
+BEGIN
+#include "ufrmtbl\\koi8r.uf"
+END
+koi8r.ut RCDATA
+BEGIN
+#include "utotbl\\koi8r.ut"
+END
+sjis.uf RCDATA
+BEGIN
+#include "ufrmtbl\\sjis.uf"
+END
+sjis.ut RCDATA
+BEGIN
+#include "utotbl\\sjis.ut"
+END
+ksc5601.uf RCDATA
+BEGIN
+#include "ufrmtbl\\ksc5601.uf"
+END
+ksc5601.ut RCDATA
+BEGIN
+#include "utotbl\\ksc5601.ut"
+END
+big5.uf RCDATA
+BEGIN
+#include "ufrmtbl\\big5.uf"
+END
+big5.ut RCDATA
+BEGIN
+#include "utotbl\\big5.ut"
+END
+gb2312.uf RCDATA
+BEGIN
+#include "ufrmtbl\\gb2312.uf"
+END
+gb2312.ut RCDATA
+BEGIN
+#include "utotbl\\gb2312.ut"
+END
+
+
+#endif // ALL_UNICODE_TABLE

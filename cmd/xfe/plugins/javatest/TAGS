@@ -1,0 +1,44 @@
+
+npshell.c,883
+#define WAS_DEBUG32,1119
+#define IMPLEMENT_JavaTestPlugin35,1145
+#define DEBUG49,1510
+#define TEXT_PLUGIN52,1532
+typedef struct _PluginInstance_PluginInstance68,1991
+} PluginInstance;PluginInstance79,2206
+NPP_GetMIMEDescription(93,2537
+#define PLUGIN_NAME	102,2670
+#define PLUGIN_DESCRIPTION	103,2710
+NPP_GetValue(106,2789
+NPP_Initialize(126,3250
+NPP_GetJavaClass(132,3308
+NPP_Shutdown(156,3930
+NPP_New(172,4252
+NPP_Destroy(252,6325
+NPP_SetWindow(279,6833
+NPP_NewStream(372,9392
+NPP_WriteReady(405,10407
+NPP_Write(417,10635
+NPP_DestroyStream(441,11202
+NPP_StreamAsFile(454,11434
+NPP_Print(463,11604
+JRI_PUBLIC_API(521,13601
+JRI_PUBLIC_API(530,13857
+JRI_PUBLIC_API(537,14036
+JRI_PUBLIC_API(545,14202
+JRI_PUBLIC_API(553,14368
+JRI_PUBLIC_API(572,14942
+JRI_PUBLIC_API(583,15175
+JRI_PUBLIC_API(594,15423
+JRI_PUBLIC_API(602,15593
+JRI_PUBLIC_API(610,15811
+
+stubs.c,325
+#define IMPLEMENT_JavaTestPlugin3,97
+#define NO_JDK5,165
+#define UNUSED_init_java_lang_Class6,180
+#define UNUSED_init_java_lang_String8,252
+#define UNUSED_init_java_awt_EmbeddedFrame11,349
+#define UNUSED_init_java_awt_Component13,435
+#define UNUSED_init_java_awt_Color15,513
+#define UNUSED_init_java_awt_Window17,583

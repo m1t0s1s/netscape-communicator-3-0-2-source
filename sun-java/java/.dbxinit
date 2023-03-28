@@ -1,0 +1,6 @@
+set $hide_anonymous_blocks=0
+set $promptonfork=1
+set $page=0
+directory ../runtime
+directory ../../nspr/src
+directory ../md

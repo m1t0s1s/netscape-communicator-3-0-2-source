@@ -1,0 +1,24 @@
+#Opening the display reads unintialized memory, but oh well, it seems to work 
+#anyway...
+suppress umr XOpenDisplay; XtOpenDisplay; _XtAppInit; XtOpenApplication; XtAppInitialize
+
+# These are seem to be Xt or Motif things that we don't have much control over.
+suppress umr _XmPushBCacheCompare; SetValuesPosthook; SetValuesLeafWrapper; CallConstraintSetValues; XtSetValues; FixVisual
+suppress umr _XmPushBCacheCompare; _XmCachePart; InitializePosthook; InitializeLeafWrapper; CallConstraintInitialize; xtCreate
+suppress umr _XmPushBCacheCompare; SetValuesPosthook; SetValuesLeafWrapper; CallConstraintSetValues; XtSetValues; XtVaSetValues
+suppress umr CalcEdgeValues; PlaceChildren; GeometryManager; GeometryHandlerWrapper; GeometryHandlerWrapper7; _XtMakeGeometryRequest
+suppress umr PlaceChildren; GeometryManager; GeometryHandlerWrapper; GeometryHandlerWrapper7; _XtMakeGeometryRequest; XtSetValues
+suppress umr position_cascade; Resize; ResizeWrapper
+suppress umr PlaceChildren; GeometryManager; GeometryHandlerWrapper; GeometryHandlerWrapper7; _XtMakeGeometryRequest
+suppress umr PlaceChildren; GeometryManager; GeometryHandlerWrapper; GeometryHandlerWrapper7; _XtMakeGeometryRequest; XtSetValues
+suppress umr SetValues; _SG_XtSetValuesCleanup; CallSetValues; XtSetValues; XtVaSetValues
+suppress fmr _SG_XtSetValues; SetValuesRootWrapper; CallSetValues
+suppress fmr GetNodeList; GetNodeList
+suppress umr _XtProcessKeyboardEvent; _XtFindRemapWidget; _XtDefaultDispatcher; XtDispatchEvent; RemoveAllPMgr; XtCallCallbackList
+suppress umr SetValues; _SG_XtSetValuesCleanup; CallSetValues; XtSetValues; _XmChangeVSB; CheckForNewSize
+suppress umr XLookupString; _XimCompFilter; XFilterEvent; _XtDefaultDispatcher; XtDispatchEvent
+suppress abr _SG_XtSetValues; SetValuesRootWrapper; CallSetValues
+suppress abr RemoveGrab; Destroy; Phase2Destroy; Recursive; XtPhase2Destroy\
+
+# This one is bizarre.  But I can't figure out what could possibly cause it.
+suppress umr remove; PassesTest; ProcessMailcapEntry; NET_ProcessMailcapFile; NET_RegisterConverters; fe_RegisterConverters

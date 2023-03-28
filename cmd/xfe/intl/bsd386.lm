@@ -1,0 +1,14 @@
+
+
+! This table maps the host's locale names to MIME charsets
+!
+*localeCharset*C:		iso-8859-1
+
+
+! OS-dependent font charset mappings
+!
+*documentFonts.charset*cns11643-0:				x-cns11643-1
+*documentFonts.charset*cns11643-1:				x-cns11643-2
+*documentFonts.charset*cns11643-2:				x-ignore
+
+

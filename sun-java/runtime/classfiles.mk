@@ -1,0 +1,29 @@
+GENERATED_STUBS_CLASSFILES=	      \
+	java.io.File		      \
+	java.io.FileDescriptor	      \
+	java.io.FileInputStream	      \
+	java.io.FileOutputStream      \
+	java.io.RandomAccessFile      \
+	java.lang.Class		      \
+	java.lang.ClassLoader	      \
+	java.lang.Compiler	      \
+	java.lang.Double	      \
+	java.lang.Throwable	      \
+	java.lang.Float		      \
+	java.lang.Integer	      \
+	java.lang.Long		      \
+	java.lang.Math		      \
+	java.lang.Object	      \
+	java.lang.Runtime	      \
+	java.lang.SecurityManager     \
+	java.lang.String	      \
+	java.lang.System	      \
+	java.lang.Thread	      \
+	java.net.DatagramSocket	      \
+	java.net.InetAddress	      \
+	java.net.PlainSocketImpl      \
+	java.net.SocketInputStream    \
+	java.net.SocketOutputStream   \
+	java.util.Date		      \
+	sun.awt.image.GifImageDecoder \
+	sun.awt.image.JPEGImageDecoder

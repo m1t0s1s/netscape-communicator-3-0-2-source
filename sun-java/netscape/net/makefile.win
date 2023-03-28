@@ -1,0 +1,117 @@
+#//------------------------------------------------------------------------
+#//
+#// Makefile to build the machine independent java runtime library
+#//
+#//------------------------------------------------------------------------
+
+
+#//------------------------------------------------------------------------
+#//
+#// Specify the depth of the current directory relative to the
+#// root of NS
+#//
+#//------------------------------------------------------------------------
+DEPTH= ..\..\..
+
+!ifndef MAKE_OBJ_TYPE
+MAKE_OBJ_TYPE=EXE
+!endif
+
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Make Variables here: (ie. PDFFILE, MAPFILE, ...)
+#//
+#//------------------------------------------------------------------------
+LIBNAME=libnsn$(OS_RELEASE)
+PDBFILE=$(LIBNAME).pdb
+
+#//------------------------------------------------------------------------
+#// 
+#// Define the files necessary to build the target (ie. OBJS)
+#//
+#//------------------------------------------------------------------------
+
+OBJS=                                       \
+    .\$(OBJDIR)\netStubs.obj                \
+    .\$(OBJDIR)\conn.obj                    \
+    .\$(OBJDIR)\inStr.obj                   \
+    .\$(OBJDIR)\outStr.obj                  \
+    .\$(OBJDIR)\javactxt.obj                \
+    .\$(OBJDIR)\stubs.obj                   \
+    $(NULL)
+
+!if "$(OS_RELEASE)" == "16"
+OBJS = $(OBJS) .\$(OBJDIR)\nn_nodl.obj
+!endif
+
+GENERATED_HEADERS_CLASSFILES=               \
+    netscape.net.URLStreamHandlerFactory    \
+    netscape.net.URLStreamHandler           \
+    netscape.net.URLConnection              \
+    netscape.net.URLInputStream             \
+    netscape.net.URLOutputStream            \
+    netscape.applet.AppletThreadGroup       \
+    $(NULL)
+
+GENERATED_STUBS_CLASSFILES=                 \
+    netscape.net.URLStreamHandlerFactory    \
+    netscape.net.URLConnection              \
+    netscape.net.URLInputStream             \
+    netscape.net.URLOutputStream            \
+    $(NULL)
+
+JRI_HEADER_CLASSES=                         \
+	netscape.applet.EmbeddedAppletFrame \
+	netscape.applet.MozillaAppletContext \
+	$(NULL)
+
+
+
+JRI_STUB_CLASSES=                           \
+	netscape.applet.EmbeddedAppletFrame \
+	$(NULL)
+
+
+
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Targets here (ie. PROGRAM, LIBRARY, DLL, ...)
+#// (these must be defined before the common makefiles are included)
+#//
+#//------------------------------------------------------------------------
+JAVA_HEADER_FILES=$(GENERATED_HEADERS_CLASSFILES)
+JAVA_STUB_FILES=$(GENERATED_STUBS_CLASSFILES)
+
+JRI_HEADER_FILES=$(JRI_HEADER_CLASSES)
+
+JRI_STUB_FILES=$(JRI_STUB_CLASSES)
+
+
+LIBRARY= .\$(OBJDIR)\$(LIBNAME).lib
+
+#//------------------------------------------------------------------------
+#//
+#// Define any local options for the make tools 
+#//     (ie. LCFLAGS, LLFLAGS, LLIBS, LINCS)
+#//
+#//------------------------------------------------------------------------
+LINCS= $(LINCS) -I_gen
+
+#//------------------------------------------------------------------------
+#//
+#// Include the common makefile rules
+#//
+#//------------------------------------------------------------------------
+include <$(DEPTH)/sun-java/config/rules.mak>
+
+export:: $(JRI_HEADER_FILES) $(JAVA_HEADER_FILES) $(JRI_STUB_FILES) \
+	 $(JAVA_STUB_FILES) $(LIBRARY)
+    $(MAKE_INSTALL) $(LIBRARY) $(DIST)\lib
+
+install:: export
+
+clobber::
+    $(RM_R) _gen _stubs 
+
+
+

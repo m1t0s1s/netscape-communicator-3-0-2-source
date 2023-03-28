@@ -1,0 +1,130 @@
+#//------------------------------------------------------------------------
+#//
+#// Makefile to build SUN-JAVA/MD Library
+#//
+#//------------------------------------------------------------------------
+
+
+#//------------------------------------------------------------------------
+#//
+#// Specify the depth of the current directory relative to the
+#// root of NS
+#//
+#//------------------------------------------------------------------------
+DEPTH= ..\..
+
+!ifndef MAKE_OBJ_TYPE
+MAKE_OBJ_TYPE=DLL
+!endif
+
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Make Variables here: (ie. PDFFILE, MAPFILE, ...)
+#//
+#//------------------------------------------------------------------------
+LIBNAME = win$(OS_RELEASE)md
+PDBFILE = $(LIBNAME).pdb
+
+
+#//------------------------------------------------------------------------
+#// 
+#// Define the files necessary to build the target (ie. OBJS)
+#//
+#//------------------------------------------------------------------------
+!if "$(OS_RELEASE)" == "16"
+LONG_NAME_OBJS =                        \
+    .\$(OBJDIR)\agentt~1.obj            \
+    .\$(OBJDIR)\compil~1.obj            \
+    .\$(OBJDIR)\proces~1.obj		\
+    .\$(OBJDIR)\proper~1.obj		\
+    .\$(OBJDIR)\socket~1.obj            \
+    .\$(OBJDIR)\system~1.obj            \
+    .\$(OBJDIR)\thread~1.obj            \
+    $(NULL)
+!else
+LONG_NAME_OBJS =                        \
+    .\$(OBJDIR)\agentthread.obj         \
+    .\$(OBJDIR)\compiler_md.obj         \
+    .\$(OBJDIR)\process_md.obj          \
+    .\$(OBJDIR)\properties_md.obj       \
+    .\$(OBJDIR)\socket_md.obj           \
+    .\$(OBJDIR)\system_md.obj           \
+    .\$(OBJDIR)\thread_md.obj           \
+    $(NULL)
+!endif
+
+OBJS=                                   \
+    .\$(OBJDIR)\car_md.obj              \
+    .\$(OBJDIR)\gc_md.obj               \
+    .\$(OBJDIR)\io_md.obj               \
+    .\$(OBJDIR)\link_md.obj             \
+    .\$(OBJDIR)\math_md.obj             \
+    .\$(OBJDIR)\misc_md.obj             \
+    .\$(OBJDIR)\mon_md.obj              \
+    .\$(OBJDIR)\path_md.obj             \
+    .\$(OBJDIR)\ionet_md.obj            \
+    .\$(OBJDIR)\stubs_md.obj            \
+    .\$(OBJDIR)\trace_md.obj            \
+    $(LONG_NAME_OBJS)                   \
+    $(NULL)
+
+!if "$(OS_RELEASE)" == "16"
+LONG_NAME_JAVAH_OBJS =                  \
+    .\$(OBJDIR)\system~1.obj            \
+    $(NULL)
+!else
+LONG_NAME_JAVAH_OBJS =                  \
+    .\$(OBJDIR)\system_md.obj           \
+    $(NULL)
+!endif
+
+JAVAH_OBJS=                             \
+    .\$(OBJDIR)\car_md.obj              \
+    .\$(OBJDIR)\path_md.obj             \
+    .\$(OBJDIR)\stubs_md.obj            \
+    $(LONG_NAME_JAVAH_OBJS)             \
+    $(NULL)
+
+GENERATED_HEADERS_CLASSFILES=           \
+    java.lang.ProcessReaper             \
+    java.lang.UNIXProcess               \
+    $(NULL)
+
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Targets here (ie. PROGRAM, LIBRARY, DLL, ...)
+#// (these must be defined before the common makefiles are included)
+#//
+#//------------------------------------------------------------------------
+JAVA_HEADER_FILES=$(GENERATED_HEADERS_CLASSFILES)
+LIBRARY=.\$(OBJDIR)\$(LIBNAME).lib
+
+#//------------------------------------------------------------------------
+#//
+#// Include the common makefile rules
+#//
+#//------------------------------------------------------------------------
+include <$(DEPTH)/sun-java/config/rules.mak>
+
+export:: $(JAVA_HEADER_FILES) $(LIBRARY)
+    $(MAKE_INSTALL) $(LIBRARY) $(DIST)\lib
+
+install:: export
+
+
+#//------------------------------------------------------------------------
+#//
+#// Local rules to build selected object files for other makes
+#//
+#// Be sure that the object directory exists by calling 
+#// MAKE_OBJECT_DIRECTORY first !
+#//
+#//------------------------------------------------------------------------
+javah_objs: $(OBJDIR) $(JAVAH_OBJS)
+
+
+!if exist($(DEPFILE))
+!message +++ MAKE: Found local dependancies file!!
+!message 
+include <$(DEPFILE)>
+!endif

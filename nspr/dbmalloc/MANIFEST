@@ -1,0 +1,51 @@
+   File Name		Archive #	Description
+-----------------------------------------------------------
+ README                     1	READ THIS FIRST
+ CHANGES                    1	List of changes
+ MANIFEST                   1	This shipping list
+ CHECKSUMS                  1	Checksums (BSD and SYSV) for each file
+ PROBLEMS                   2	List of typical porting/use problems
+ Makefile                   1	
+ Buildpatch                 2	Shell to build patch file
+ Configure                  2	Automatic configuration script
+ Config.flags               1	Auto config compiler flags
+ Runtests                   2	Automatic test script
+ abort.c                    1	malloc_abort support
+ calloc.c                   3	calloc and related functions
+ cctest.c                   3	Module used by Configure
+ datamc.c                   3	Efficient, portable memcpy routine 
+ datams.c                   3	Efficient, portable memset routine
+ debug.h                    3	debugging output header
+ dgmalloc.c                 3	DataGeneral low level allocation functions
+ dump.c                     3	malloc chain dumper
+ fill.c                     3	Memory fill/check routines
+ free.c                     4	free and related functions
+ leak.c                     4	memory leak detection stuff
+ m_init.c                   4	malloclib initializations
+ m_perror.c                 4	malloc error printer
+ malign.c                   4	memory alignment routines
+ malloc.3                   5	malloc man page ([nt]roff source)
+ malloc.c                   6	malloc and related functions
+ malloc.h.org               4	include file for programs using the library
+ malloc.man                 7	nroff'd version of the manual page
+ mallocin.h                 5	internal header file
+ mallopt.c                  6	mallopt and related stuff
+ mchain.c                   6	chain checking modules
+ mcheck.c                   8	error checking modules
+ memory.c                   8	mem* and b* functions
+ minipatch                  6	shell to build intermediate patches
+ patchlevel                 1	current patch level
+ prototypes.h               8	functional prototypes 
+ realloc.c                  8	realloc and related functions.
+ size.c                     7	malloc_size module
+ stack.c                    8	Stack maintenance functions
+ string.c                   9	str* functions
+ testerr.c                  7	error test program
+ testerr.base               9	Baseline output for testerr program
+ testmalloc.c               9	malloc exerciser
+ testmem.c                 10	mem*/str*/b* exerciser
+ teststack.c                2	malloc stack exerciser
+ tostring.c                 9	numeric to string converter
+ tostring.h                 3	header for numeric converter
+ xheap.c                    9	Xt heap stuff (for X11R5 compatibility)
+ xmalloc.c                  9	Xt allocation functions

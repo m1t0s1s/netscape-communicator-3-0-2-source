@@ -1,0 +1,896 @@
+
+addr.c,496
+#define FREEIF(FREEIF10,245
+msg_parse_rfc822_addresses 38,1263
+MSG_ParseRFC822Addresses 415,10168
+msg_quote_phrase_or_addr 430,10585
+MSG_ExtractRFC822AddressMailboxes 532,13745
+MSG_ExtractRFC822AddressNames 584,14776
+MSG_ExtractRFC822AddressName 651,15921
+msg_format_rfc822_addresses 678,16491
+MSG_ReformatRFC822Addresses 758,17898
+MSG_RemoveDuplicateAddresses 782,18717
+MSG_MakeFullAddress 942,22307
+main 978,22941
+main 987,23071
+test1 998,23241
+test 1046,24530
+main 1082,25689
+
+compose.c,2564
+#define MK_ATTACHMENT_LOAD_FAILED 49,1347
+#define GENERATE_MESSAGE_ID116,4231
+#define EMIT_NAME_IN_CONTENT_TYPE130,4778
+#define SAVE_BCC_IN_FCC_FILE137,4972
+#define GENERATE_CONTENT_BASE160,5904
+#define MANGLE_HTML_ATTACHMENTS_WITH_BASE_TAG161,5934
+static char* NET_GetLocalFileFromURL(169,6120
+static char* NET_GetURLFromLocalFile(180,6372
+MIME_ConformToStandard 194,6670
+struct mime_delivery_statemime_delivery_state200,6762
+struct mime_attachmentmime_attachment305,10407
+mime_make_separator(421,14510
+mime_snarf_attachment 445,15120
+#define TEXT_TYPE	554,17983
+#define text_TYPE	555,18012
+mime_attachment_url_exit 659,20938
+mime_text_attachment_url_exit 753,23237
+mime_attachment_stream_write_ready 763,23514
+mime_attachment_stream_write 769,23608
+mime_attachment_stream_complete 942,28984
+mime_attachment_stream_abort 948,29117
+mime_make_attachment_stream 960,29405
+MSG_MimeNotifyCryptoAttachmentKludge(990,30309
+MSG_RegisterConverters 1018,30825
+mime_7bit_data_p 1105,34789
+mime_sanity_check_fields 1118,35035
+mime_fix_header_1 1157,36320
+mime_fix_header 1231,37630
+mime_fix_addr_header 1237,37737
+mime_fix_news_header 1243,37848
+mime_type_conversion_possible 1250,37966
+mime_type_requires_b64_p 1293,39234
+mime_pick_encoding 1382,42430
+mime_type_needs_charset 1525,47058
+#define MIME_BUFFER_SIZE 1539,47369
+mime_encode_block 1542,47413
+#define PUSH_STRING(PUSH_STRING1606,48812
+#define PUSH_NEWLINE(PUSH_NEWLINE1608,48912
+mime_gather_attachments 1618,49292
+#define SNARF(SNARF1672,50730
+# define FROB(FROB1797,54736
+mime_write_message_body 2279,68029
+mime_encoder_output_fn 2299,68452
+msg_generate_message_id 2307,68673
+mime_generate_headers 2343,69493
+MIME_GenerateMailtoFormPostHeaders 2643,77036
+mime_generate_attachment_headers 2856,81348
+mime_fail 3056,86302
+msg_pick_real_name 3095,87541
+msg_start_message_delivery_hack_attachments 3203,91059
+msg_start_message_delivery(3368,97138
+MSG_StartMessageDelivery 3576,103974
+msg_StartMessageDeliveryWithAttachments 3625,105397
+msg_DownloadAttachments 3674,106833
+MIME_BuildRFC822File 3740,108255
+mime_free_message_state 3787,109626
+mime_deliver_message 3879,112716
+mime_delivery_thermo 3968,114886
+mime_deliver_file_as_mail 3990,115589
+mime_deliver_file_as_news 4060,117236
+mime_deliver_as_mail_exit 4101,118238
+mime_deliver_as_news_exit 4143,119320
+mime_do_fcc_1 4189,120559
+msg_do_fcc_handle_line(4527,129888
+msg_DoFCC 4551,130603
+mime_do_fcc 4576,131247
+mime_queue_for_later 4598,131708
+NET_RegisterDLLContentConverters(4652,133090
+
+composew.c,2053
+typedef struct MSG_CompositionFrameMSG_CompositionFrame32,785
+} MSG_ComposeFrame;MSG_ComposeFrame97,2846
+struct msg_default_headersmsg_default_headers102,3006
+MSG_SetAutoQuoteReply(123,3616
+msg_figure_bcc(130,3710
+msg_check_for_losing_fcc(159,4529
+msg_compose_message(185,5114
+MSG_CompositionWindowNewsgroups(494,14495
+MSG_ComposeMessage 509,14799
+MSG_MailDocument 537,15548
+MSG_Mail 566,16391
+MSG_GetAssociatedURL(574,16549
+msg_SetCompositionFormattingStyle 584,16796
+msg_SetCompositionEncrypted 597,17239
+msg_SetCompositionSigned 611,17682
+msg_ToggleCompositionEncrypted 625,18107
+msg_ToggleCompositionSigned 635,18446
+msg_CompositionSendingEncrypted 645,18780
+msg_CompositionSendingSigned 655,19094
+#define ALL_HEADERS 666,19396
+msg_ConfigureCompositionHeaders 679,19757
+msg_ToggleCompositionHeader(812,24242
+msg_ShowingAllCompositionHeaders(827,24666
+msg_ShowingCompositionHeader(834,24832
+msg_get_url_done(844,25160
+msg_QuoteMessage(927,27503
+MSG_SetAttachmentList(997,29332
+MSG_GetAttachmentList(1047,30998
+msg_free_attachment_list(1061,31362
+msg_delete_attached_files 1081,32017
+msg_attachments_match 1112,32812
+msg_download_attachments 1146,33754
+msg_download_attachments_done 1258,36560
+msg_mid_truncate_string 1340,38420
+MSG_GetAttachmentString(1372,39061
+MSG_UpdateHeaderContents(1568,43833
+MSG_SetHeaderContents 1587,44308
+msg_set_composition_window_title 1637,45910
+MSG_MessageBodyEdited(1658,46504
+msg_sanity_check_message 1671,46873
+msg_destroy_composition_context 1809,51004
+msg_delivery_done_cb 1837,51949
+MSG_MailCompositionAllConnectionsComplete 1877,52871
+MSG_CleanupMessageCompositionContext(1904,53561
+msg_check_expansion(1919,53997
+msg_DeliveryInProgress 1934,54322
+msg_DeliverMessage 1949,54787
+MSG_SetDefaultHeaderContents 2066,58584
+msg_GetDefaultFcc(2097,59542
+MSG_SetDefaultBccSelf(2104,59666
+MSG_IsDuplicatePost(2112,59878
+MSG_ClearMessageID(2118,60023
+MSG_GetMessageID(2126,60154
+msg_SetCompositionSecurityError(2136,60291
+MimeGetCompositionSecurityInfo(2159,61097
+
+flag.c,266
+msg_mark_expunged_1(19,384
+msg_MarkExpunged(53,1186
+msg_ChangeFlag(104,2693
+msg_find_file_index_1(307,8903
+msg_find_file_index(322,9213
+msg_find_article_number_1(334,9548
+msg_find_article_number(349,9870
+msg_ChangeFlagAny(363,10210
+msg_ToggleFlag(468,13453
+
+folders.c,3881
+MSG_SetAutoShowFirstUnread(165,5263
+void MSG_SetExpandMessageThreads(170,5348
+msg_magic_folder_name 183,5554
+msg_FindFolderOfType(209,6307
+msg_QueueFolderName(243,7308
+msg_count_all_folders(250,7430
+msg_count_visible_folders(260,7628
+msg_line_for_folder_1(273,7900
+msg_line_for_folder(291,8313
+msg_addup_wasted_bytes(304,8569
+msg_scan_folder_2(316,8811
+msg_scan_folder_1(337,9501
+msg_scan_folder(355,9924
+msg_update_folder_list_1(395,11249
+msg_update_folder_list(411,11677
+msg_flush_update_folder(436,12418
+msg_RedisplayFoldersFromLine(458,13091
+msg_get_folder_line(471,13332
+msg_redisplay_folders_1(494,13940
+msg_RedisplayFolders(505,14238
+msg_RedisplayOneFolder(527,14830
+msg_UpdateToolbar(549,15593
+msg_UpdateStatusLine(560,15816
+msg_DisableUpdates(615,17122
+msg_EnableUpdates(623,17248
+msg_find_folder_line_1(642,17744
+msg_find_folder_line(659,18188
+msg_find_folder_line_unfolded_1(669,18401
+msg_find_folder_line_unfolded(684,18744
+msg_get_folder_line_1(692,18931
+MSG_GetFolderLine(729,19821
+msg_remove_folder_line_1(743,20173
+msg_RemoveFolderLine 763,20563
+msg_get_folder_max_depth_1(787,21209
+MSG_GetFolderMaxDepth(800,21525
+msg_RebuildFolderMenus(822,22051
+MSG_GetFolderName(828,22128
+MSG_GetFolderNameUnfolded(843,22443
+msg_open_folder_cb 859,22776
+msg_OpenFolder 878,23376
+msg_NewFolder(889,23661
+msg_find_folder_parent(934,24868
+msg_delete_folder_2(949,25316
+msg_delete_folder_1(1061,29343
+msg_DeleteFolder(1080,29848
+msg_find_next_unselected_message_1(1116,30716
+msg_FindNextUnselectedMessage(1144,31515
+MSG_CopySelectedMessagesInto 1157,31799
+msg_save_messages_as_cb 1183,32492
+msg_SaveMessagesAs 1213,33199
+msg_find_article_number(1231,33766
+msg_open_by_article_number(1246,34072
+msg_MakeMailFolder 1273,35016
+msg_toggle_message_mark_1(1372,37537
+MSG_ToggleMessageMark 1384,37810
+msg_unmark_all_messages_1(1390,37947
+msg_UnmarkAllMessages 1401,38211
+msg_delete_messages_1(1411,38418
+msg_DeleteMessages 1418,38575
+MSG_ToggleSubscribed(1451,39490
+msg_open_first_unseen(1468,39984
+msg_ScrolltoFirstUnseen(1482,40365
+msg_close_opened_folder(1498,40874
+msg_select_folder(1509,41094
+msg_unselect_folder(1522,41395
+MSG_SelectFolder(1540,41808
+msg_validate_select_folder(1568,42544
+msg_select_folder_range_1(1583,42958
+MSG_SelectFolderRangeTo(1601,43426
+MSG_UnselectFolder(1636,44357
+MSG_ToggleSelectFolder(1654,44890
+msg_unselect_all_folders_1(1680,45514
+msg_UnselectAllFolders(1693,45899
+msg_SelectAndOpenFolder(1703,46185
+msg_SaveMailSummaryChangesNow(1782,48343
+msg_save_timer(1799,48870
+msg_SelectedMailSummaryFileChanged(1808,49049
+msg_summary_file_changed_any_1(1826,49646
+msg_MailSummaryFileChanged(1874,51166
+msg_free_folder_children 1931,52817
+msg_toggle_folder_expansion_1(1963,53617
+msg_toggle_folder_expansion 1979,54044
+msg_ToggleFolderExpansion 2118,58766
+MSG_ToggleFolderExpansion 2126,58985
+msg_SetThreading 2153,59883
+msg_SetSortKey 2160,60020
+msg_SetSortForward(2168,60151
+msg_ReSort(2175,60297
+msg_find_file_index(2190,60780
+msg_find_parent(2206,61088
+msg_OpenFirstIncorporated(2224,61767
+msg_ShowMessages 2312,65083
+msg_GetSelectedMessageURLs 2355,66419
+msg_count_selected_1 2378,66924
+msg_gather_selected_urls_1 2386,67090
+MSG_Command 2410,67530
+# define MSG_ASSERT_MAIL(MSG_ASSERT_MAIL2424,67922
+# define MSG_ASSERT_NEWS(MSG_ASSERT_NEWS2427,68033
+# define MSG_ASSERT_COMPOSITION(MSG_ASSERT_COMPOSITION2430,68144
+# define MSG_ASSERT_MAIL_OR_NEWS(MSG_ASSERT_MAIL_OR_NEWS2433,68290
+msg_find_last_message(2858,79714
+msg_any_messages_queued_p 2871,80001
+msg_get_cache_info_1(2914,81067
+msg_get_cache_info_2(2965,82496
+msg_get_cache_info_2 3014,83919
+msg_get_cache_info(3065,85061
+msg_newshost_selected_p(3094,85874
+MSG_CommandStatus 3106,86164
+MSG_GetToggleStatus(3771,107970
+MSG_SetToggleStatus(3782,108205
+MSG_SelectedFolderName 3799,108608
+
+mailbox.c,535
+struct msg_mailbox_statemsg_mailbox_state59,1738
+msg_cmp 93,2420
+msg_add_flags_to_hash_table(100,2561
+msg_apply_flags_from_hashtable(111,2857
+msg_RescueOldFlags(137,3800
+msg_GetFolderData 158,4496
+msg_find_parent_folder(280,7229
+msg_find_folder_1 295,7625
+msg_FindMailFolder 313,8008
+MSG_BeginOpenFolderSock 380,10000
+MSG_FinishOpenFolderSock 599,16472
+MSG_CloseFolderSock 807,22175
+MSG_OpenMessageSock 871,23990
+MSG_ReadMessageSock 957,26323
+MSG_CloseMessageSock 1040,28379
+MSG_GeneratePartialMessageBlurb 1064,29144
+
+mailsum.c,1720
+} MBOX_PARSE_STATE;MBOX_PARSE_STATE31,576
+struct msg_FolderParseStatemsg_FolderParseState34,598
+#define msg_grow_headers(msg_grow_headers97,2133
+#define msg_grow_envelope(msg_grow_envelope103,2348
+mbox_parse_headers 113,2653
+mbox_parse_envelope 238,5726
+mbox_intern 277,6809
+mbox_intern_rfc822 370,9137
+mbox_intern_references 392,9696
+mbox_finalize_headers 459,11101
+#define UNHEX(UNHEX588,15250
+msg_ParseFolderLine 653,17454
+msg_do_partial_timer(741,20025
+MSG_ProcessXOVER 749,20208
+#define GET_TOKEN(GET_TOKEN776,20803
+MSG_ProcessNonXOVER 936,25948
+# define PUSH_HDR(PUSH_HDR975,26978
+mbox_cmp 1053,28960
+mbox_dummy_creator 1061,29116
+mbox_dummy_destroyer 1075,29375
+mbox_free_state 1085,29599
+msg_BeginParsingFolder 1120,30535
+msg_DoneParsingFolder 1199,32848
+mbox_free_thread_references 1352,36991
+msg_FreeFolderData 1378,37463
+MSG_ResetXOVER 1411,38199
+MSG_InitXOVER 1427,38561
+msg_count_unread_and_total(1498,40494
+MSG_FinishXOVER 1513,40822
+MBOX_ParseFile 1614,43837
+msg_recalculate_totals(1665,44820
+msg_WriteFolderSummaryFile 1705,45709
+# define msg_grow_buf(msg_grow_buf1726,46135
+# define DEBUG_SUMMARIES1943,52703
+msg_ReadFolderSummaryFile 1955,52926
+# define msg_grow_buf(msg_grow_buf1986,53564
+# define msg_grow_line_buf(msg_grow_line_buf1992,53740
+# define GET_N_BYTES(GET_N_BYTES1998,53941
+# define GET_SHORT(GET_SHORT2021,54704
+# define GET_LONG(GET_LONG2027,54887
+#define GET_LONG(GET_LONG2442,66425
+msg_IsSummaryValid(2447,66554
+msg_SetSummaryValid(2508,68223
+msg_GetSummaryTotals(2634,72105
+msg_RethreadInOrder(2692,73469
+msg_Rethread 2729,74134
+msg_print_thread_entry 2742,74433
+msg_print_thread 2791,75673
+msg_compare_trees 2804,75961
+
+messages.c,2928
+msg_find_message_1(27,597
+msg_FindMessage(45,987
+msg_redisplay_1(58,1244
+msg_redisplay(89,1856
+msg_RedisplayMessagesFrom(123,2730
+msg_RedisplayMessages(133,2901
+msg_RedisplayOneMessage(149,3106
+msg_FlushUpdateMessages(200,4673
+msg_find_message_line(221,5232
+msg_FindMessageLine(239,5655
+msg_get_thread_line_2(254,5964
+msg_get_thread_line_1(291,6846
+MSG_DisplayingRecipients(309,7198
+MSG_GetThreadLine(325,7601
+msg_CountVisibleMessages(375,8932
+msg_ElideAllToplevelThreads(388,9174
+msg_Rot13Message 407,9654
+msg_AttachmentsInline 420,9985
+msg_mark_messages_read_1(434,10388
+MSG_MarkMessagesRead 443,10552
+msg_mark_all_messages_read_1(451,10700
+msg_MarkAllMessagesRead 468,11306
+msg_is_descendent_1(494,11978
+msg_is_descendent(504,12218
+msg_set_thread_flag_1(512,12406
+msg_set_thread_flag(522,12643
+msg_MarkThreadsRead(538,13064
+msg_find_next_1(548,13300
+msg_find_next(568,13857
+msg_find_prev_1(576,14082
+msg_find_prev(593,14577
+msg_FindNextMessage 603,14809
+msg_GotoMessage 674,16465
+msg_SetHeaders 687,16710
+MSG_SetPaneConfiguration 725,17614
+MSG_SetCitationStyle 737,17880
+MSG_SetPlaintextFont 770,18816
+msg_make_article_url 791,19409
+msg_GetMessageURL 881,21327
+msg_OpenMessage 897,21676
+msg_ReOpenMessage(944,22722
+MSG_ToggleThreadExpansion 956,22943
+MSG_SelectMessage(974,23328
+MSG_UnselectMessage(997,23970
+MSG_ToggleSelectMessage(1013,24447
+msg_select_range_to_1(1029,24900
+MSG_SelectRangeTo(1049,25374
+msg_unselect_all_messages_1(1095,26885
+msg_UnselectAllMessages(1108,27209
+msg_select_all_messages_1(1125,27750
+msg_SelectAllMessages(1136,28004
+msg_select_thread_1(1146,28228
+msg_SelectThread(1160,28704
+msg_select_marked_messages_1(1174,28973
+msg_SelectMarkedMessages(1185,29241
+msg_mark_selected_messages_1(1194,29430
+msg_MarkSelectedMessages(1208,29745
+MSG_GetNumSelectedMessages(1216,29916
+MSG_ToggleMark(1225,30023
+msg_MarkMessage 1236,30343
+msg_mark_selected_read_1(1253,30746
+msg_MarkSelectedRead 1266,31003
+MSG_ToggleRead(1277,31257
+msg_ensure_unelided_1(1289,31587
+msg_ensure_unelided(1315,32245
+msg_EnsureSelected(1334,32714
+msg_MarkMailArticleRead 1350,33043
+MSG_MarkMessageIDRead 1373,33574
+msg_ClearMessageArea 1396,33996
+msg_ClearThreadList 1437,35164
+make_mailto(1472,35989
+# define KLUDGE 1493,36806
+# define KLUDGE 1495,36864
+# define PUSH_STRING(PUSH_STRING1557,38994
+# define PUSH_PARM(PUSH_PARM1558,39057
+msg_compute_newshost_arg 1604,39919
+msg_get_1522_header(1641,41189
+MSG_ActivateReplyOptions 1660,41589
+msg_find_first_message_to_forward_1(1929,49123
+msg_find_first_message_to_forward(1938,49343
+make_forward_message_url(1948,49558
+msg_find_selected_newsgroups(2035,51933
+msg_ComposeMessage 2075,53250
+msg_recount_selected_messages_1(2164,55558
+msg_ReCountSelectedMessages(2175,55826
+msg_find_check(2186,56124
+msg_find_pass1(2203,56742
+msg_find_pass2(2228,57306
+msg_Find(2245,57729
+MSG_DoFind(2270,58374
+
+mimehtml.c,0
+
+msgbiff.c,275
+typedef struct MSG_BiffFrame MSG_BiffFrame17,420
+} MSG_BiffFrame;MSG_BiffFrame20,549
+MSG_SetBiffInterval(24,573
+MSG_SetBiffStatFile(43,1000
+MSG_BiffInit(68,1674
+MSG_BiffCleanupContext(82,2119
+msg_biff_timer(99,2547
+msg_biff_done(110,2738
+MSG_BiffCheckNow(123,3109
+
+msginit.c,500
+static int msg_folder_compare(23,543
+#define MAGIC_FLAGS	28,695
+msg_SortFolders(55,1459
+#define MAX_FOLDER_DEPTH	95,2483
+msg_walk_folder_tree 98,2534
+DumpFolders(200,5165
+msg_check_for_inbox 216,5495
+MSG_InitializeMailContext(241,6062
+MSG_MailDirectoryChanged 280,7065
+MSG_InitializeNewsContext(319,8041
+MSG_NewsDirectoryChanged 357,9166
+msg_FreeOneFolder(409,10828
+FreeFolders(421,11136
+msg_cleanup_context(433,11366
+MSG_CleanupMailContext(450,11949
+MSG_CleanupNewsContext(475,12485
+
+msgundo.c,378
+#define MAX_UNDO	14,287
+msg_undo_Initialize(17,312
+msg_undo_Cleanup(29,569
+typedef struct FlagInfo FlagInfo38,728
+} FlagInfo;FlagInfo44,866
+msg_undo_doflagchange(51,983
+msg_undo_freeflaginfo(59,1196
+msg_undo_LogFlagChange(65,1281
+msg_undo_StartBatch(87,1863
+msg_undo_EndBatch(97,2069
+msg_Undo(106,2269
+msg_Redo(112,2354
+msg_CanUndo(119,2444
+msg_CanRedo(125,2537
+
+msgutils.c,1060
+MSG_GetContextPrefs(16,348
+msg_GetURL(35,933
+msg_InterruptContext(46,1161
+msg_GrowBuffer 66,1675
+msg_convert_and_send_buffer(104,2739
+msg_LineBuffer 159,3992
+msg_ReBuffer 260,7080
+struct msg_rebuffering_stream_datamsg_rebuffering_stream_data303,8086
+msg_rebuffering_stream_write_next_chunk 314,8247
+msg_rebuffering_stream_write_chunk 327,8633
+msg_rebuffering_stream_abort 343,9093
+msg_rebuffering_stream_complete 358,9445
+msg_rebuffering_stream_write_ready 375,9870
+msg_MakeRebufferingStream 387,10186
+msg_iterate_selected_1(428,11179
+msg_IterateOverSelectedMessages(455,11964
+msg_iterate_all_1(473,12435
+msg_IterateOverAllMessages(498,13150
+MSG_RequiresMailWindow 519,13821
+MSG_RequiresNewsWindow 545,14455
+MSG_RequiresComposeWindow 560,14808
+MSG_RequiresBrowserWindow 572,14971
+MSG_NewWindowRequired 604,15872
+MSG_NewWindowProhibited 629,16651
+MSG_ConvertToQuotation 644,17001
+msg_StripRE(731,18638
+MSG_FormatDate(792,19974
+msg_GetDummyEnvelope(823,20928
+msg_IsEnvelopeLine(841,21399
+# define TMP_ISALPHA(TMP_ISALPHA885,22786
+
+newsgrp.c,2330
+#define MARK_SAVE_NEWS_MESSAGES_AS_READ33,956
+struct msg_collect_groups_datamsg_collect_groups_data39,1053
+msg_collect_groups_1 47,1157
+msg_collect_groups 85,2305
+msg_NewsHostFolder 110,2807
+msg_NewsFolderHost 126,3282
+MSG_GetNewsRCList 141,3755
+MSG_ArticleCountsKnown 174,4761
+MSG_NewsGroupAndNumberOfID 185,4910
+msg_ShowNewsGroups 232,6250
+msg_CheckNewNewsGroups 272,7414
+msg_remove_news_host_files 336,9360
+msg_RemoveNewsHost 377,10690
+msg_MakeNewsURL 445,12851
+msg_check_newsrc_file_date 492,13922
+msg_save_newsrc_file(554,15697
+msg_SaveNewsRCFile 635,17858
+msg_newsrc_timer(653,18323
+msg_NoteNewsrcChanged(669,18729
+msg_make_newsgroup_folder 689,19291
+msg_push_newsgroup_line 750,20679
+msg_show_all_newsgroups_mapper 781,21434
+msg_show_subscribed_newsgroups_mapper 807,22077
+msg_compute_news_folder_name 823,22527
+msg_make_news_folder_for_host 876,23914
+msg_ShowNewsHosts 910,24824
+msg_make_host_and_folder_for_file 995,26795
+msg_update_article_counts 1110,29075
+msg_ShowNewsgroupsOfFolder 1131,29632
+msg_newsgroup_list_read 1300,35444
+msg_find_newsgroup_folder_1 1326,36308
+msg_FindNewsgroupFolder 1346,36718
+msg_find_news_folder 1373,37436
+msg_host_sort_fn 1392,37868
+msg_sort_news_hosts 1401,38125
+msg_ensure_newsgroup_listed 1441,39232
+msg_EnsureNewsgroupSelected 1628,44519
+msg_UpdateNewsFolderMessageCount 1669,45596
+MSG_DisplaySubscribedGroup 1718,47055
+MSG_DisplayNewNewsGroup 1782,49142
+msg_new_groups_listed 1820,50550
+MSG_NewsHostChanged 1871,51979
+msg_open_news_host_cb 1888,52483
+msg_OpenNewsHost 1900,52819
+msg_AddNewsGroup(1910,53076
+msg_cancel_done 1931,53635
+msg_CancelMessage 1939,53857
+msg_MarkNewsArticleRead 1993,55313
+msg_subscribe_group_1(2178,59954
+msg_ToggleSubscribedGroup(2219,61226
+msg_subscribe_selected_groups_1(2227,61355
+msg_SubscribeSelectedGroups 2245,61838
+struct msg_news_save_statemsg_news_save_state2258,62186
+msg_save_next_news_pop 2280,62643
+msg_append_to_folder_stream_write_ready 2303,63306
+msg_append_to_folder_stream_write 2313,63547
+msg_append_to_folder_stream_complete 2398,66118
+msg_append_to_folder_stream_abort 2404,66255
+msg_MakeAppendToFolderStream 2411,66408
+msg_save_next_news_exit 2437,67228
+msg_SaveSelectedNewsMessages 2490,68488
+MSG_AddToKnownArticles(2531,69497
+MSG_GetRangeOfArtsToDownload(2572,70740
+
+newsrc.c,2003
+struct msg_NewsRCSet msg_NewsRCSet63,2096
+struct msg_NewsRCFile msg_NewsRCFile80,2810
+msg_GetNewsRCSet 91,2989
+msg_MakeNewsrcSet(104,3363
+msg_FreeNewsrcSet 121,3657
+msg_make_newsrc_set 136,4037
+msg_free_newsrc_set 153,4398
+msg_grow_newsrc_set 167,4724
+msg_parse_newsrc_set 188,5207
+msg_FreeNewsRCFile 278,7195
+msg_CopySet(293,7526
+msg_AddNewsRCSet 314,8214
+msg_GetSubscribed(357,9311
+msg_SetSubscribed(363,9395
+msg_FirstUnreadArt 376,9626
+msg_format_newsrc_set 408,10565
+msg_OptimizeNewsRCSet 521,12854
+msg_NewsRCIsRead 641,15402
+msg_MarkArtAsRead 722,16864
+msg_MarkArtAsUnread 825,18921
+msg_emit_range(979,22629
+msg_MarkRangeAsRead 997,22953
+#define EMIT(EMIT1029,23555
+msg_MarkRangeAsUnread 1076,24372
+msg_NewsRCUnreadInRange 1101,24904
+msg_FindNewsRCSetNonmemberRange 1160,26258
+int msg_FirstUnreadRange(1182,26615
+int msg_LastUnreadRange(1240,28010
+typedef struct msg_preserveset_info msg_preserveset_info1302,29451
+} msg_preserveset_info;msg_preserveset_info1307,29565
+msg_preserveset_undoit(1311,29602
+msg_preserveset_freeit(1338,30494
+msg_PreserveSetInUndoHistory(1347,30652
+struct msg_newsrc_parse_datamsg_newsrc_parse_data1380,31483
+msg_process_newsrc_line 1387,31587
+newsrc_cmp 1475,33795
+msg_ReadNewsRCFile 1483,33952
+msg_WriteNewsRCFile 1556,35647
+msg_MakeDefaultNewsRCFileData 1591,36445
+msg_MapNewsRCGroupNames 1633,37924
+#define countof(countof1662,38674
+test_decoder 1665,38733
+test_adder 1679,39048
+#define START(START1686,39130
+#define FROB(FROB1690,39244
+#define END(END1705,39820
+test_ranges(1785,41692
+#define START(START1793,41786
+#define FROB(FROB1797,41900
+#define END(END1817,42507
+test_member 1848,42966
+#define TEST(TEST1858,43218
+test_newsrc 1909,44143
+main 1947,44968
+void msg_undo_StartBatch(1977,45593
+void msg_undo_EndBatch(1978,45641
+int msg_GrowBuffer 1979,45687
+int msg_LineBuffer 1981,45802
+struct MSG_Folder *msg_FindNewsgroupFolder(1987,46075
+int msg_UpdateNewsFolderMessageCount 1989,46173
+
+spool.c,2962
+msg_ConfirmMailFile 61,2032
+msg_EnsureQueueFolderListed 85,2695
+msg_open_first_unseen(114,3485
+msg_EnsureInboxExists 123,3837
+msg_folder_mysteriously_changed(202,5891
+typedef struct msg_write_state msg_write_state234,6720
+msg_writemsg_handle_line(251,7085
+typedef struct msg_compress_folder_state msg_compress_folder_state450,13661
+} msg_compress_folder_state;msg_compress_folder_state479,14809
+msg_compress_string_table(484,14854
+msg_compress_prepare_new_folder(568,17216
+msg_find_folder_after_1(622,19078
+msg_find_folder_after(638,19512
+MSG_BeginCompressFolder(646,19665
+msg_reopen_folder(700,21158
+MSG_FinishCompressFolder(708,21338
+MSG_CloseCompressFolderSock(972,30344
+msg_CompressFolder(1029,32083
+msg_CompressAllFolders(1050,32653
+typedef struct msg_move_state msg_move_state1067,33021
+} msg_move_state;msg_move_state1079,33284
+msg_move_or_copy_1(1083,33319
+msg_move_or_copy_2(1145,35195
+msg_move_or_copy(1153,35357
+msg_MoveOrCopySelectedMailMessages 1290,39452
+MSG_MoveSelectedMessagesInto 1297,39621
+msg_FreeSortInfo(1323,40145
+msg_reload_sort_info(1338,40446
+} msg_incorporate_state;msg_incorporate_state1452,43342
+msg_close_dest_folder(1456,43380
+msg_open_dest_folder(1485,44042
+msg_incorporate_handle_line(1629,48736
+msg_incorporate_handle_pop_line(1731,52299
+msg_begin_incorporate 1753,52916
+msg_end_incorporate 1792,53877
+MSG_BeginMailDelivery(1822,54668
+MSG_AbortMailDelivery 1833,54893
+MSG_EndMailDelivery 1839,55004
+MSG_IncorporateComplete 1846,55113
+MSG_IncorporateAbort 1857,55370
+MSG_IncorporateWrite 1868,55591
+MSG_IncorporateBegin(1890,56389
+MSG_SetPopHost 1925,57191
+msg_get_new_mail_again(1953,57852
+msg_GetNewMail 1970,58389
+msg_inc_with_uidl(2039,60429
+MSG_PrepareToIncUIDL(2046,60534
+msg_incorporate_from_file_again(2061,60875
+MSG_IncorporateFromFile(2085,61720
+msg_EmptyTrash 2180,64288
+typedef struct msg_empty_trash_state msg_empty_trash_state2193,64607
+} msg_empty_trash_state;msg_empty_trash_state2210,64990
+MSG_BeginEmptyTrash(2213,65020
+#define UNHEX(UNHEX2237,65813
+msg_finish_empty_trash_1(2245,66011
+MSG_FinishEmptyTrash(2304,67794
+int MSG_CloseEmptyTrashSock(2431,71319
+msg_DeliverQueuedMessages 2453,71844
+typedef struct msg_deliver_queued_state msg_deliver_queued_state2463,72102
+} msg_deliver_queued_state;msg_deliver_queued_state2517,73902
+MSG_BeginDeliverQueued(2521,73936
+msg_deliver_queued_message 2551,75083
+msg_deliver_queued_message_done 2597,76195
+msg_deliver_queued_message_as_news 2725,80241
+msg_deliver_queued_message_as_mail 2804,82109
+msg_deliver_queued_message_as_news_exit 2865,83532
+msg_deliver_queued_message_as_mail_exit 2887,84082
+msg_deliver_queued_message_do_fcc 2909,84630
+msg_deliver_queued_error(2933,85273
+msg_deliver_queued_hack_headers 2981,86465
+#define msg_grow_headers(msg_grow_headers3171,90872
+msg_deliver_queued_line(3178,91100
+MSG_FinishDeliverQueued(3297,94588
+MSG_CloseDeliverQueuedSock(3528,100650
+
+threads.c,1731
+#define USE_XP_ALLOCSTRUCT103,4384
+struct msg_containermsg_container105,4412
+struct msg_thread_state_extrastrings msg_thread_state_extrastrings114,4570
+struct msg_thread_statemsg_thread_state119,4672
+#define msg_new_container(msg_new_container155,5775
+#define msg_free_container(msg_free_container158,5881
+#  define msg_insert_container(msg_insert_container164,6000
+msg_insert_container 170,6145
+msg_find_child 188,6635
+msg_ThreadMessage 223,7453
+msg_print_tree 432,13619
+msg_gather_root_mapper 463,14466
+msg_compute_root_set 484,15046
+msg_clean_thread 496,15353
+msg_clean_threads 606,18978
+msg_thread_by_subject 620,19378
+msg_make_dummy 853,27040
+msg_relink_threads_1 883,27950
+msg_relink_threads 979,30732
+#define COMPARE_INT(COMPARE_INT1024,32194
+msg_compare_date_forward 1029,32349
+msg_compare_date_backward 1039,32642
+msg_compare_mail_msg_number_forward 1049,32934
+msg_compare_mail_msg_number_backward 1059,33270
+msg_compare_news_msg_number_forward 1069,33607
+msg_compare_news_msg_number_backward 1079,33951
+#define INTL_SORT 1090,34409
+#define COMPARE_STRING_FIELDS(COMPARE_STRING_FIELDS1093,34489
+#define COMPARE_STRING_FIELDS(COMPARE_STRING_FIELDS1103,34894
+msg_compare_subject_forward 1115,35307
+msg_compare_subject_backward 1123,35568
+msg_compare_sender_forward 1131,35830
+msg_compare_sender_backward 1139,36089
+msg_compare_recipient_forward 1147,36349
+msg_compare_recipient_backward 1155,36614
+msg_sort_threads_2 1168,37037
+msg_sort_threads_1 1245,39080
+msg_sort_threads 1295,40667
+msg_strcmp 1348,42097
+msg_intcmp 1356,42295
+msg_inthash 1363,42454
+msg_BeginThreading 1376,42845
+msg_DoneThreading 1426,44142
+msg_rethread_1 1474,45205
+msg_RethreadMessages 1534,46695
+
+ad_strm.c,892
+#define WORKING_BUFF_SIZE	30,680
+typedef struct	_AppledoubleEncodeObject_AppledoubleEncodeObject32,712
+} AppleDoubleEncodeObject;AppleDoubleEncodeObject42,1005
+net_AppleDouble_Encode_Write 50,1159
+PRIVATE unsigned int net_AppleDouble_Encode_Ready 85,1898
+PRIVATE void net_AppleDouble_Encode_Complete 91,2038
+PRIVATE void net_AppleDouble_Encode_Abort 108,2495
+fe_MakeAppleDoubleEncodeStream 137,3254
+typedef	struct AppleDoubleDecodeObjectAppleDoubleDecodeObject212,5420
+} AppleDoubleDecodeObject;AppleDoubleDecodeObject224,5887
+net_AppleDouble_Decode_Write 227,5927
+net_AppleDouble_Decode_Ready 272,6896
+net_AppleDouble_Decode_Complete 279,7046
+net_AppleDouble_Decode_Abort 304,7572
+simple_copy(334,8258
+fe_MakeAppleDoubleDecodeStream_1 342,8462
+fe_MakeAppleDoubleDecodeStream 413,9778
+fe_MakeAppleSingleDecodeStream_1 505,12096
+fe_MakeAppleSingleDecodeStream 579,13440
+
+appledbl.c,314
+OSErr my_FSSpecFromPathname(22,369
+char* my_PathnameFromFSSpec(28,539
+XP_Bool	isMacFile(33,633
+int ap_encode_init(50,874
+int ap_encode_next(82,1595
+int ap_encode_end(211,4441
+int ap_decode_init(237,4952
+int ap_decode_next(272,5797
+PRIVATE int ap_decode_state_machine(290,6163
+int ap_decode_end(475,11064
+
+ap_decod.c,777
+#define APPLICATION_APPLEFILE 22,456
+int fetch_a_line(55,1231
+void parse_param(113,2352
+int ap_seek_part_start(136,2740
+int ParseFileHeader(161,3252
+int ap_seek_to_boundary(222,4714
+int ap_parse_header(255,5438
+copy_filename(335,7374
+int ap_decode_file_infor(344,7514
+#define DONT_CARE_TYPE	594,12606
+int ap_decode_process_header(782,16822
+int ap_decode_process_data(902,19260
+PRIVATE int from_decoder(1009,21977
+PRIVATE int decoder_seek(1047,22610
+#define XX 1077,23140
+#define CHAR64(CHAR641099,24120
+#define EndOfBuff(EndOfBuff1100,24170
+PRIVATE int fetch_next_char_64(1102,24227
+PRIVATE int from_64(1129,24738
+#define HEXCHAR(HEXCHAR1279,28242
+#define NEXT_CHAR(NEXT_CHAR1280,28295
+PRIVATE int from_qp(1284,28427
+PRIVATE int from_none(1403,30482
+
+ap_encod.c,359
+#define BUFF_LEFT(BUFF_LEFT34,658
+int write_stream(39,740
+int fill_apple_mime_header(70,1551
+int ap_encode_file_infor(110,2517
+int ap_encode_header(260,6374
+static void replace(340,7956
+struct magic magic347,8145
+PRIVATE char *magic_look(372,8888
+int ap_encode_data(406,9428
+to64(554,12705
+finish64(655,14589
+PRIVATE int output64chunk(684,15136
+
+bh_strm.c,646
+#define WORKING_BUFF_SIZE	27,487
+} BinHexEncodeObject BinHexEncodeObject39,766
+PRIVATE int net_BinHex_Encode_Write 47,909
+PRIVATE unsigned int net_BinHex_Encode_Ready 84,1640
+PRIVATE void net_BinHex_Encode_Complete 90,1775
+PRIVATE void net_BinHex_Encode_Abort 132,2879
+fe_MakeBinHexEncodeStream 158,3658
+typedef	struct BinHexDecodeObjectBinHexDecodeObject230,5761
+} BinHexDecodeObject;BinHexDecodeObject237,5876
+net_BinHex_Decode_Write 241,5913
+PRIVATE unsigned int net_BinHex_Decode_Ready 286,6741
+PRIVATE void net_BinHex_Decode_Complete 292,6877
+PRIVATE void net_BinHex_Decode_Abort 313,7332
+fe_MakeBinHexDecodeStream 330,7670
+
+m_binhex.c,787
+PRIVATE int binhex_fill_data(41,987
+PRIVATE int binhex_encode_data_char(73,1890
+#define BYTEMASK 105,2667
+#define BYTEBIT 106,2690
+#define WORDMASK 107,2713
+#define WORDBIT 108,2738
+#define CRCCONSTANT 109,2763
+#define WOW 111,2791
+PRIVATE void binhex_comp_q_crc_out(119,2942
+PRIVATE int binhex_encode_buff(135,3158
+PRIVATE int binhex_encode_end_a_part(159,3639
+PRIVATE int binhex_encode_finishing(179,4107
+int binhex_encode_init(200,4554
+int binhex_encode_next(216,4917
+int binhex_reencode_head(310,7433
+int binhex_encode_end 443,10604
+#define BHEXVAL(BHEXVAL474,11805
+int binhex_decode_init 479,11900
+simple_copy(493,12186
+PRIVATE void binhex_process(498,12291
+static int get_next_char(805,20067
+int binhex_decode_next 818,20364
+int binhex_decode_end 977,24161
+
+composec.c,877
+#define FREEIF(FREEIF27,841
+} mime_delivery_crypto_state;mime_delivery_crypto_state35,1252
+typedef struct mime_crypto_closure mime_crypto_closure38,1284
+} mime_crypto_closure;mime_crypto_closure66,2005
+free_crypto_closure 70,2042
+msg_remember_security_error(96,2811
+make_multipart_signed_header_string(114,3409
+mime_begin_crypto_encapsulation 168,4920
+mime_init_multipart_signed(248,6861
+mime_init_encryption(314,8569
+mime_finish_crypto_encapsulation 409,11078
+mime_finish_multipart_signed 448,12015
+mime_finish_encryption 616,16000
+msg_get_cert(673,17467
+mime_crypto_hack_certs(684,17707
+mime_crypto_write_base64 813,20974
+mime_encoder_output_fn 827,21440
+mime_nested_encoder_output_fn 843,21954
+mime_crypto_write_block 854,22241
+MSG_GetMailEncryptionPreference(939,24304
+MSG_GetMailSigningPreference(950,24601
+MSG_GetNewsSigningPreference(961,24899

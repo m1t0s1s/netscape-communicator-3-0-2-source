@@ -1,0 +1,17 @@
+MODULE = jar
+
+LIBRARY_NAME = jar
+
+DEPTH = ../..
+
+CSRCS =		    \
+	zigver.c \
+	zigsign.c \
+	zig.c \
+	zig-ds.c \
+	$(NULL)
+
+REQUIRES = nspr security htmldlgs zlib
+
+EXPORTS	 = zig.h zig-ds.h
+

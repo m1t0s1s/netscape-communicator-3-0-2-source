@@ -1,0 +1,8 @@
+
+#include "resource.rh"
+
+IDB_INSECURE		BITMAP		DISCARDABLE		"sinsecur.bmp"
+
+IDI_JAVACUP         ICON        DISCARDABLE     "awt.ico"
+
+

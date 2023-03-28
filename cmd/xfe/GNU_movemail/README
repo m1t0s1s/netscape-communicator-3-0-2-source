@@ -1,0 +1,18 @@
+
+This directory contains the GNU movemail program, a utility for locking files
+in the way in which the local mail delivery agent (hopefully) respects.
+
+This program is not a part of Netscape Navigator; movemail is free software,
+but Netscape Navigator is not.  movemail is provided here merely as a
+convenience for those using systems on which Netscape Navigator cannot
+otherwise be easily configured to retrieve mail from the spool directory
+without using an external program.
+
+movemail is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+The license for movemail may be found in the file COPYING.
+
+Discussion of the use of movemail with Netscape Navigator may be found at:
+     http://home.netscape.com/eng/mozilla/2.0/relnotes/demo/movemail.html

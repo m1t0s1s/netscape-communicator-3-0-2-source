@@ -1,0 +1,490 @@
+
+mimei.c,664
+mime_new 46,2303
+mime_free 93,3295
+mime_find_class 112,3642
+mime_create 312,10837
+mime_classinit(431,14450
+mime_classinit_1(460,15076
+mime_subclass_p(473,15334
+mime_typep(484,15554
+mime_part_address(499,15810
+mime_crypto_object_p(556,17010
+mime_crypto_stamped_p(593,18023
+mime_get_crypto_state 608,18390
+mime_set_crypto_stamp(633,18974
+mime_set_url_part(654,19605
+mime_address_to_part(722,20931
+mime_find_suggested_name_of_part(764,21973
+mime_find_security_info_of_part(879,26009
+mime_parse_url_options(910,26964
+MimeOptions_write(1072,32245
+MimeObject_write(1111,33171
+MimeObject_write_separator(1127,33574
+MimeObject_output_init(1135,33731
+
+mimecont.c,316
+#define MIME_SUPERCLASS 9,267
+MimeContainerClassInitialize(26,930
+MimeContainer_initialize 46,1533
+MimeContainer_finalize 55,1809
+MimeContainer_parse_eof 84,2501
+MimeContainer_parse_end 114,3275
+MimeContainer_add_child 144,4049
+MimeContainer_displayable_inline_p 172,4766
+MimeContainer_debug_print 180,4916
+
+mimecryp.c,583
+#define MIME_SUPERCLASS 9,267
+MimeEncryptedClassInitialize(29,1224
+MimeEncrypted_initialize 52,1950
+MimeEncrypted_parse_begin 64,2264
+MimeEncrypted_parse_buffer 111,3622
+MimeEncrypted_parse_line 135,4276
+MimeEncrypted_parse_decoded_buffer 143,4436
+MimeEncrypted_parse_eof 153,4691
+MimeEncrypted_parse_end 224,6670
+MimeEncrypted_cleanup 244,7204
+MimeEncrypted_finalize 280,8091
+MimeHandleDecryptedOutput 288,8242
+MimeHandleDecryptedOutputLine 317,9196
+MimeEncrypted_close_headers 369,10766
+MimeEncrypted_add_child 384,11052
+MimeEncrypted_emit_buffered_child(399,11457
+
+mimeenc.c,828
+typedef enum mime_encoding mime_encoding10,271
+} mime_encoding;mime_encoding12,351
+typedef enum mime_uue_state mime_uue_state14,369
+} mime_uue_state;mime_uue_state16,430
+struct MimeDecoderData MimeDecoderData18,449
+mime_decode_qp_buffer 36,858
+mime_decode_base64_token 163,4128
+mime_decode_base64_buffer 204,5229
+mime_decode_uue_buffer 288,7349
+# define DEC(DEC412,10095
+MimeDecoderDestroy 513,12465
+mime_decoder_init 535,12962
+MimeB64DecoderInit 549,13320
+MimeQPDecoderInit 556,13493
+MimeUUDecoderInit 563,13676
+MimeDecoderWrite 570,13838
+struct MimeEncoderData MimeEncoderData593,14306
+mime_encode_base64_buffer 609,14641
+mime_encode_qp_buffer 714,17081
+MimeEncoderDestroy 850,20668
+mime_encoder_init 904,21956
+MimeB64EncoderInit 918,22314
+MimeQPEncoderInit 925,22487
+MimeEncoderWrite 932,22656
+
+mimeeobj.c,372
+#define MIME_SUPERCLASS 10,294
+MimeExternalObjectClassInitialize(26,993
+MimeExternalObject_initialize 44,1667
+MimeExternalObject_finalize 50,1802
+MimeExternalObject_parse_begin 57,1926
+MimeExternalObject_parse_buffer 166,4573
+MimeExternalObject_parse_decoded_buffer 189,5074
+MimeExternalObject_parse_line 215,5843
+MimeExternalObject_displayable_inline_p 224,6046
+
+mimeebod.c,373
+#define MIME_SUPERCLASS 10,291
+MimeExternalBodyClassInitialize(31,1008
+MimeExternalBody_initialize 53,1599
+MimeExternalBody_finalize 59,1732
+MimeExternalBody_parse_line 73,2003
+MimeExternalBody_make_url(130,3448
+MimeExternalBody_parse_eof 229,5725
+# define FROB(FROB313,8325
+MimeExternalBody_debug_print 432,10907
+MimeExternalBody_displayable_inline_p 466,11712
+
+mimehdrs.c,2137
+struct MimeHeaders MimeHeaders54,1662
+MimeHeaders_new 82,2556
+MimeHeaders_free 94,2759
+MimeHeaders_copy 117,3172
+MimeHeaders_compact 165,4256
+MimeHeaders_parse_line 183,4666
+MimeHeaders_build_heads_list(219,5583
+MimeHeaders_get 329,8399
+MimeHeaders_get_parameter 482,12157
+#define MIME_HEADER_TABLE 577,14421
+#define HEADER_START_JUNK 578,14494
+#define HEADER_MIDDLE_JUNK 579,14567
+#define HEADER_END_JUNK 580,14608
+#define MimeHeaders_write(MimeHeaders_write583,14650
+MimeHeaders_default_news_link_generator 588,14762
+MimeHeaders_default_mailto_link_generator 609,15286
+MimeHeaders_default_addbook_link_generator 619,15512
+#define MimeHeaders_grow_obuffer(MimeHeaders_grow_obuffer660,16424
+MimeHeaders_convert_rfc1522(668,16654
+MimeHeaders_localize_header_name(704,17487
+MimeHeaders_write_random_header_1 752,19468
+MimeHeaders_write_random_header 870,22515
+MimeHeaders_write_subject_header_1 883,22877
+MimeHeaders_write_subject_header 891,23108
+MimeHeaders_write_grouped_header_1 903,23424
+MimeHeaders_write_grouped_header 1170,30185
+#define MimeHeaders_write_address_header(MimeHeaders_write_address_header1183,30578
+#define MimeHeaders_write_news_header(MimeHeaders_write_news_header1185,30690
+#define MimeHeaders_write_address_header_1(MimeHeaders_write_address_header_11188,30801
+#define MimeHeaders_write_news_header_1(MimeHeaders_write_news_header_11190,30935
+MimeHeaders_write_id_header_1 1195,31080
+MimeHeaders_write_id_header 1384,35574
+MimeHeaders_write_interesting_headers 1442,37365
+MimeHeaders_write_all_headers 1584,41416
+MimeHeaders_write_microscopic_headers 1693,44594
+#define FROB(FROB1720,45271
+MimeHeaders_write_citation_headers 1838,48436
+MimeHeaders_write_raw_headers 1919,50162
+MimeHeaders_write_headers_html 1937,50626
+MimeHeaders_write_attachment_box(1999,52274
+# define PUT_STRING(PUT_STRING2037,53455
+MimeHeaders_open_crypto_stamp(2193,56962
+MimeHeaders_finish_open_crypto_stamp(2201,57154
+MimeHeaders_close_crypto_stamp(2207,57265
+MimeHeaders_make_crypto_stamp(2214,57360
+MimeHeaders_get_name(2348,61007
+MimeHeaders_do_unix_display_hook_hack(2388,61958
+
+mimeiimg.c,297
+#define MIME_SUPERCLASS 9,269
+MimeInlineImageClassInitialize(21,789
+MimeInlineImage_initialize 39,1363
+MimeInlineImage_finalize 45,1495
+MimeInlineImage_parse_begin 51,1615
+MimeInlineImage_parse_eof 108,2923
+MimeInlineImage_parse_decoded_buffer 130,3453
+MimeInlineImage_parse_line 188,5142
+
+mimeleaf.c,280
+#define MIME_SUPERCLASS 9,262
+MimeLeafClassInitialize(22,812
+MimeLeaf_initialize 47,1676
+MimeLeaf_finalize 57,1934
+MimeLeaf_parse_begin 75,2365
+MimeLeaf_parse_buffer 112,3400
+MimeLeaf_parse_line 134,3926
+MimeLeaf_parse_eof 143,4082
+MimeLeaf_displayable_inline_p 166,4690
+
+mimemalt.c,561
+#define MIME_SUPERCLASS 9,277
+MimeMultipartAlternativeClassInitialize(27,1144
+MimeMultipartAlternative_initialize 43,1816
+MimeMultipartAlternative_cleanup(56,2153
+MimeMultipartAlternative_finalize 73,2495
+MimeMultipartAlternative_parse_eof 81,2660
+MimeMultipartAlternative_create_child(102,3194
+MimeMultipartAlternative_parse_child_line 138,4353
+MimeMultipartAlternative_close_child(153,4768
+MimeMultipartAlternative_display_part_p(174,5286
+MimeMultipartAlternative_discard_cached_part(200,6187
+MimeMultipartAlternative_display_cached_part(216,6519
+
+mimemapl.c,176
+#define MIME_SUPERCLASS 10,299
+MimeMultipartAppleDoubleClassInitialize(21,674
+MimeMultipartAppleDouble_parse_begin 33,1077
+MimeMultipartAppleDouble_output_child_p(141,3815
+
+mimemdig.c,74
+#define MIME_SUPERCLASS 9,273
+MimeMultipartDigestClassInitialize(14,437
+
+mimemmix.c,73
+#define MIME_SUPERCLASS 9,272
+MimeMultipartMixedClassInitialize(14,433
+
+mimemoz.c,2160
+# define LOCK_LAST_CACHED_MESSAGE28,752
+struct mime_stream_data mime_stream_data36,896
+struct MimeDisplayData MimeDisplayData50,1381
+mime_reformat_date(66,1817
+mime_file_type 90,2379
+mime_type_desc(100,2600
+mime_type_icon(111,2837
+mime_convert_charset 132,3554
+mime_convert_rfc1522 163,4345
+mime_output_fn(202,5282
+mime_reset_html_state_fn 211,5563
+mime_display_stream_write 230,6151
+mime_display_stream_write_ready 242,6475
+mime_display_stream_complete 252,6747
+mime_display_stream_abort 330,9241
+mime_insert_html_write_ready(380,10387
+mime_insert_html_put_block(386,10477
+mime_insert_html_complete(402,10743
+mime_insert_html_abort(410,10938
+mime_make_output_stream(418,11085
+mime_output_init_fn 578,17106
+MIME_MessageConverter 761,23461
+struct mime_image_stream_data mime_image_stream_data1029,31479
+mime_image_begin(1043,31796
+mime_image_end(1102,33293
+mime_image_make_image_html(1124,33757
+mime_image_write_buffer(1156,34596
+mime_extract_relative_part_address(1179,35328
+mime_guess_url_content_name_1 1269,37310
+MimeGuessURLContentName(1282,37629
+mime_get_security_info_1(1307,38203
+MimeGetSecurityInfo(1346,39578
+mime_find_text_html_part_1(1377,40399
+mime_find_text_html_part(1396,40868
+MimeShowingTextHtml(1409,41129
+MimeGetHtmlPartURL(1416,41240
+mime_get_main_object(1427,41528
+MimeGetAttachmentCount(1440,41793
+MimeGetAttachmentList(1463,42435
+MimeFreeAttachmentList(1518,44009
+MimeDestroyContextData(1535,44276
+MimeGuessURLContentName(1582,45474
+MimeDestroyContextData(1588,45557
+MIME_GetMessageCryptoState(1600,45845
+struct mime_richtext_data mime_richtext_data1630,46578
+mime_richtext_stream_fn 1642,46899
+mime_richtext_write_line 1651,47180
+mime_richtext_write 1660,47478
+mime_richtext_write_ready 1669,47789
+mime_richtext_complete 1680,48057
+mime_richtext_abort 1694,48351
+MIME_RichtextConverter_1 1709,48674
+MIME_RichtextConverter 1756,49883
+MIME_EnrichedTextConverter 1763,50083
+struct mime_vcard_data mime_vcard_data1774,50349
+mime_vcard_write 1785,50786
+mime_vcard_write_ready 1798,51097
+mime_vcard_complete 1811,51416
+mime_vcard_abort 1837,51958
+MIME_VCardConverter 1866,52574
+
+mimempar.c,76
+#define MIME_SUPERCLASS 9,275
+MimeMultipartParallelClassInitialize(14,445
+
+mimempkc.c,531
+#define MIME_SUPERCLASS 10,328
+MimeMultipartSignedPKCS7ClassInitialize(29,1137
+MimeMultipartSignedPKCS7_initialize 52,2009
+typedef struct MimeMultPKCS7data MimeMultPKCS7data58,2139
+} MimeMultPKCS7data;MimeMultPKCS7data74,2536
+MimeMultPKCS7_get_content_info(78,2571
+MimeMultPKCS7_init 104,3347
+MimeMultPKCS7_data_hash 219,6328
+MimeMultPKCS7_data_eof 240,6934
+MimeMultPKCS7_sig_init 275,8041
+MimeMultPKCS7_sig_hash 313,9141
+MimeMultPKCS7_sig_eof 331,9595
+MimeMultPKCS7_free 365,10370
+MimeMultPKCS7_generate 398,11020
+
+mimemrel.c,455
+#define MIME_SUPERCLASS 98,3868
+MimeMultipartRelated_initialize(105,4037
+XP_Bool mime_multipart_related_nukehash(126,4941
+MimeMultipartRelated_finalize 135,5135
+MimeMultipartRelated_output_child_p(159,5784
+MimeMultipartRelated_parse_child_line 231,7858
+real_write(342,11134
+push_tag(366,11687
+flush_tag(385,12266
+mime_multipart_related_output_fn(449,13689
+MimeMultipartRelated_parse_eof 492,14733
+MimeMultipartRelatedClassInitialize(640,18805
+
+mimemsg.c,403
+#define MIME_SUPERCLASS 9,263
+MimeMessageClassInitialize(31,1076
+MimeMessage_initialize 52,1702
+MimeMessage_finalize 58,1830
+MimeMessage_parse_begin 68,2054
+MimeMessage_parse_line 80,2349
+MimeMessage_close_headers 193,5817
+MimeMessage_parse_eof 346,10183
+MimeMessage_add_child 401,11619
+MimeMessage_write_headers_html 429,12499
+MimeMessage_debug_print 493,14235
+# define DUMP(DUMP514,14686
+
+mimemsig.c,447
+#define MIME_SUPERCLASS 9,272
+MimeMultipartSignedClassInitialize(26,973
+MimeMultipartSigned_initialize 45,1728
+MimeMultipartSigned_cleanup 58,2123
+MimeMultipartSigned_parse_eof 98,3082
+MimeMultipartSigned_finalize 133,4101
+MimeMultipartSigned_parse_line 141,4262
+MimeMultipartSigned_create_child 415,12708
+MimeMultipartSigned_close_child 428,13101
+MimeMultipartSigned_parse_child_line 452,13680
+MimeMultipartSigned_emit_child 549,16388
+
+mimemult.c,434
+#define MIME_SUPERCLASS 9,267
+MimeMultipartClassInitialize(33,1191
+MimeMultipart_initialize 59,2029
+MimeMultipart_finalize 78,2593
+MimeMultipart_parse_line 93,2900
+MimeMultipart_check_boundary(207,6021
+MimeMultipart_create_child(245,6933
+MimeMultipart_output_child_p(327,9299
+MimeMultipart_close_child(335,9397
+MimeMultipart_parse_child_line 384,10731
+MimeMultipart_parse_eof 444,12599
+MimeMultipart_debug_print 489,13796
+
+mimeobj.c,332
+MimeObjectClassInitialize(33,1133
+MimeObject_initialize 53,1740
+MimeObject_finalize 115,3680
+MimeObject_parse_begin 144,4232
+MimeObject_parse_buffer 192,5672
+MimeObject_parse_line 208,6075
+MimeObject_parse_eof 216,6230
+MimeObject_parse_end 244,6891
+MimeObject_displayable_inline_p 266,7281
+MimeObject_debug_print 276,7489
+
+mimepbuf.c,355
+#define TARGET_MEMORY_BUFFER_SIZE 39,1485
+#define TARGET_MEMORY_BUFFER_QUANTUM 40,1564
+#define DISK_BUFFER_SIZE	41,1644
+struct MimePartBufferDataMimePartBufferData44,1717
+MimePartBufferCreate 56,2097
+MimePartBufferClose 66,2268
+MimePartBufferReset 80,2460
+MimePartBufferDestroy 103,2868
+MimePartBufferWrite 113,3014
+MimePartBufferRead 212,5532
+
+mimepkcs.c,368
+#define MIME_SUPERCLASS 11,324
+MimeEncryptedPKCS7ClassInitialize(27,901
+typedef struct MimePKCS7data MimePKCS7data46,1460
+MimePKCS7_get_content_info(60,1833
+MimePKCS7_content_callback 83,2459
+MimeEncryptedPKCS7_encrypted_p 105,2881
+MimePKCS7_init(121,3283
+MimePKCS7_write 178,4817
+MimePKCS7_eof 195,5244
+MimePKCS7_free 226,6136
+MimePKCS7_generate 252,6630
+
+mimesun.c,275
+#define MIME_SUPERCLASS 9,266
+MimeSunAttachmentClassInitialize(23,841
+MimeSunAttachment_parse_begin 39,1405
+MimeSunAttachment_parse_eof 49,1678
+MimeSunAttachment_check_boundary(68,2077
+MimeSunAttachment_create_child(85,2537
+MimeSunAttachment_parse_child_line 317,9992
+
+mimetenr.c,78
+#define MIME_SUPERCLASS 14,502
+MimeInlineTextEnrichedClassInitialize(19,684
+
+mimetext.c,418
+#define MIME_SUPERCLASS 9,268
+MimeInlineTextClassInitialize(23,909
+MimeInlineText_initialize 38,1504
+MimeInlineText_finalize 89,2837
+MimeInlineText_parse_eof 107,3226
+MimeInlineText_parse_end 138,4317
+MimeInlineText_rot13_line 178,6120
+MimeInlineText_parse_decoded_buffer 195,6410
+#define MimeInlineText_grow_cbuffer(MimeInlineText_grow_cbuffer223,7409
+MimeInlineText_rotate_convert_and_parse_line(231,7642
+
+mimethtm.c,190
+#define MIME_SUPERCLASS 9,272
+MimeInlineTextHTMLClassInitialize(18,633
+MimeInlineTextHTML_parse_begin 30,989
+MimeInlineTextHTML_parse_line 88,2587
+MimeInlineTextHTML_parse_eof 105,3065
+
+mimetpla.c,193
+#define MIME_SUPERCLASS 9,273
+MimeInlineTextPlainClassInitialize(18,637
+MimeInlineTextPlain_parse_begin 29,997
+MimeInlineTextPlain_parse_eof 65,1949
+MimeInlineTextPlain_parse_line 97,2738
+
+mimetric.c,238
+#define MIME_SUPERCLASS 9,276
+MimeInlineTextRichtextClassInitialize(18,658
+MimeRichtextConvert 32,1153
+MimeInlineTextRichtext_parse_line 295,9016
+MimeInlineTextRichtext_parse_begin 309,9385
+MimeInlineTextRichtext_parse_eof 323,9888
+
+mimeunty.c,536
+#define MIME_SUPERCLASS 9,269
+MimeUntypedTextClassInitialize(39,1428
+MimeUntypedText_initialize 52,1820
+MimeUntypedText_finalize 58,1952
+MimeUntypedText_parse_begin 77,2425
+MimeUntypedText_parse_line 83,2552
+MimeUntypedText_close_subpart 175,5112
+MimeUntypedText_open_subpart 207,5894
+MimeUntypedText_uu_begin_line_p(347,9582
+MimeUntypedText_uu_end_line_p(409,10867
+#define BINHEX_MAGIC 441,11834
+#define BINHEX_MAGIC_LEN 442,11903
+MimeUntypedText_binhex_begin_line_p(445,11947
+MimeUntypedText_binhex_end_line_p(464,12325
+
+mimefilt.c,576
+# define SECKeyDBHandle 44,1508
+# define SECCertDBHandle 45,1550
+# define SEC_HashPassword 46,1592
+# define SEC_SetDefaultKeyDB 47,1638
+# define SEC_OpenKeyDB 48,1690
+# define SEC_SetDefaultCertDB 49,1730
+# define SEC_OpenCertDB 50,1782
+test_file_type 61,1989
+test_type_icon(109,3497
+test_output_fn(126,4067
+test_output_init_fn 136,4243
+test_reset_html_state_fn 159,4834
+test_image_begin(173,5344
+test_image_end(180,5496
+test_image_make_image_html(187,5626
+static int test_image_write_buffer(211,6324
+test_passwd_prompt 217,6434
+test(224,6549
+main 332,9014
+
+mimestub.c,954
+#define CONST 29,867
+XP_GetString(38,1079
+int16 INTL_CharSetNameToID(45,1184
+char *XP_GetStringForHTML 46,1240
+PR_gethostbyname(55,1377
+NET_EscapeHTML(64,1492
+# define MSG_FONT 110,2202
+# define MSG_PlainFont 111,2234
+# define MSG_BoldFont 112,2264
+# define MSG_ItalicFont 113,2294
+# define MSG_BoldItalicFont 114,2324
+# define MSG_CITATION_SIZE 115,2354
+# define MSG_NormalSize 116,2386
+# define MSG_Bigger 117,2416
+# define MSG_Smaller 118,2446
+# define MSG_Prefs 124,2625
+# define MSG_GetCitationStyle(MSG_GetCitationStyle125,2649
+# define MSG_GetPrefs(MSG_GetPrefs126,2701
+NET_ScanForURLs(131,2775
+NET_URL_Type 404,9499
+#define IS_OK(IS_OK541,13072
+#define HEX_ESCAPE 544,13136
+NET_Escape 548,13175
+msg_GrowBuffer 592,14231
+#define EXTERNAL_TYPE_URL 627,15095
+net_CheckForExternalURLType(633,15245
+net_ReduceURL 660,15870
+NET_MakeAbsoluteURL(737,17495
+msg_convert_and_send_buffer(1053,26063
+msg_LineBuffer 1104,27246

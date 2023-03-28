@@ -1,0 +1,53 @@
+LIBRARY jrt32301.dll
+
+EXPORTS
+        ; JRI Native Methods Interface
+        JRI_GetCurrentEnv
+        JRI_NewRuntime
+
+        ; old stuff?
+        ArrayAlloc
+        EE
+        FindClass
+        NameAndTypeToHash
+        SignalError
+        allocCString
+        do_execute_java_method
+        exceptionDescribe
+        execute_java_constructor
+        execute_java_constructor_vararg
+        execute_java_dynamic_method
+        is_instance_of
+        javaString2CString
+        javaStringLength
+        makeCString
+        makeJavaString
+        monitorEnter
+        monitorExit
+        monitorNotify
+        monitorNotifyAll
+        monitorWait
+        privateGetenv
+        privatePutenv
+        start_java
+        threadSelf
+
+	; used by mocha/src/mo_java.c - should use jri
+	CompiledFramePrev
+	CreateNewJavaStack
+	ExecuteJava
+	FindClassFromClass
+	VerifyClassAccess
+	VerifyFieldAccess
+	classJavaLangObject
+	do_execute_java_method_vararg
+	is_subclass_of
+	newobject
+	sizearray
+	java_lang_System_setSystemIO
+	zip_open
+	zip_get
+	zip_stat
+	zip_close
+	CLASSPATH
+	setCLASSPATH

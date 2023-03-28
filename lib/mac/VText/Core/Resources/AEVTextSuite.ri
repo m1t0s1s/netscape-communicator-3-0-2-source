@@ -1,0 +1,372 @@
+//	===========================================================================
+//	AEVTextSuite.r
+//
+//	Copyright 1996 ViviStar Consulting.
+//	===========================================================================
+
+"kAEVTextSuite",
+"",
+'TeXT', 0, 0,
+
+//	Events
+{
+	"modify",
+		"Modify property of object(s).  The 'by' OR 'to' parameter is required",
+		kAEVTextSuite, kAEModify,
+		
+		typeObjectSpecifier,
+			"to the object(s) that have been modified",
+			replyRequired, singleItem, notEnumerated, notTightBindingFunction,
+			ReservedVerb_,
+		typeObjectSpecifier,
+			"the object(s) to modify",
+			directParamRequired, singleItem, notEnumerated, changesState,
+			Reserved12_,
+		{
+		"property_value",
+			keyAEModifyProperty, kEnumVTextStyleModifiers,
+			"the property to modify the value of",
+			required, singleItem, notEnumerated,
+			ReservedPrep_,
+
+		"by",
+			keyAEModifyByValue, typeWildCard,
+			"the delta to modify the property by",
+			optional, singleItem, notEnumerated,
+			ReservedPrep_,
+
+		"to",
+			keyAEModifyToValue, typeWildCard,
+			"the value to set the property to",
+			optional, singleItem, notEnumerated,
+			ReservedPrep_
+		}
+},
+
+//	Classes
+{
+	//	Text model
+	"text", 'ctxt',
+		"independent text view objects",
+		{
+		"updateLevel",
+			pUpdateLevel, typeLongInteger,
+			"updating level.  Only increment or decrement and then in a "
+			"try block -- if the level remains greater than zero, imaged text will not be updated.",
+			reserved, singleItem, notEnumerated, readWrite,
+			ReservedApost_,
+		
+		"beginning",
+			pBeginning, typeObjectSpecifier,
+			"Beginning of element",
+			reserved, singleItem, notEnumerated, readOnly,
+			ReservedApost_,
+			
+		"end",
+			pEnding, typeObjectSpecifier,
+			"Ending of element",
+			reserved, singleItem, notEnumerated, readOnly,
+			ReservedApost_,
+
+		"infront",
+			pBefore, typeObjectSpecifier,
+			"Immediately before element",
+			reserved, singleItem, notEnumerated, readOnly,
+			ReservedApost_,
+
+		"justbehind",
+			pAfter, typeObjectSpecifier,
+			"Immediately after element",
+			reserved, singleItem, notEnumerated, readOnly,
+			ReservedApost_
+		},
+		{
+			cStyleSet, {formAbsolutePosition, formName},
+			cRulerSet, {formAbsolutePosition, formName}
+		},
+
+	//	cStyleSet
+	"styleset", cStyleSet,
+		"style “set” that may be used repeatedly in text objects.",
+		{
+			"name",
+				pName, typeChar,
+				"style name",
+				reserved, singleItem, notEnumerated, readWrite,
+				ReservedApost_,
+				
+			"direction",
+				pVTextDirection, kEnumVTextWritingDirection,
+				"reading direction of style",
+				reserved, singleItem, notEnumerated, readWrite,
+				ReservedApost_,
+
+			"color",
+				pColor, typeRGBColor,
+				"the color",
+				reserved, singleItem, notEnumerated, readWrite,
+				ReservedApost_,
+				
+			"font",
+				pFont, typeChar,
+				"font name",
+				reserved, singleItem, notEnumerated, readWrite,
+				ReservedApost_,
+				
+			"size",
+				pPointSize, typeLongInteger,
+				"the size in points",
+				reserved, singleItem, notEnumerated, readWrite,
+				ReservedApost_,
+				
+			"writing code",
+				pScriptTag, typeIntlWritingCode,
+				"the script system and language",
+				reserved, singleItem, notEnumerated, readOnly,
+				ReservedApost_,
+				
+			"style",
+				pTextStyles, typeTextStyles,
+				"the text styles or face attributes",
+				reserved, singleItem, notEnumerated, readWrite,
+				ReservedApost_
+			
+/*?
+,
+			"parent",
+				pParent, typeObjectSpecifier,
+				"the parent styleset of this styleset",
+				reserved, singleItem, notEnumerated, readWrite,
+				ReservedApost_
+*/
+		},
+		{},
+	
+	"stylesets", cStyleSet,
+		"every styleset",
+		{
+			"class attributes",
+				'c@#!', typeType,
+				"the best descriptor type",
+				reserved, singleItem, notEnumerated, readOnly,
+				Reserved8_, noApostrophe, notFeminine, notMasculine, plural
+		},
+		{},
+
+	"rulerset", cRulerSet,
+		"ruler “set” that may be applied to a paragraph in a text object.",
+		{
+			"name",
+				pName, 'TEXT',
+				"ruler name",
+				reserved, singleItem, notEnumerated, readWrite,
+				ReservedApost_,
+				
+			"direction",
+				pVTextDirection, kEnumVTextWritingDirection,
+				"reading direction of ruler",
+				reserved, singleItem, notEnumerated, readWrite,
+				ReservedApost_,
+
+			"justification",
+				pVTextJustification, kEnumVTextJustification,
+				"justfication of ruler",
+				reserved, singleItem, notEnumerated, readWrite,
+				ReservedApost_,
+
+			"begin_ruler",
+				pBegin, typeFixed,
+				"point offset from parent start (sign follows ruler direction)",
+				reserved, singleItem, notEnumerated, readWrite,
+				ReservedApost_,
+
+			"end_ruler",
+				pEnd, typeFixed,
+				"point offset relative to parent end (sign follows ruler direction)",
+				reserved, singleItem, notEnumerated, readWrite,
+				ReservedApost_,
+
+			"first_indent",
+				pFirstIndent, typeFixed,
+				"point offset relative to begin (may be negative) (sign follows ruler direction)",
+				reserved, singleItem, notEnumerated, readWrite,
+				ReservedApost_
+/*?
+,
+
+			"parent",
+				pParent, typeObjectSpecifier,
+				"parent rulerset of this rulerset",
+				reserved, singleItem, notEnumerated, readWrite,
+				ReservedApost_
+*/
+		},
+		{
+			cRulerTab, {formAbsolutePosition}
+		},
+	
+	"rulersets", cRulerSet,
+		"every rulerset",
+		{
+			"class attributes",
+				'c@#!', typeType,
+				"the best descriptor type",
+				reserved, singleItem, notEnumerated, readOnly,
+				Reserved8_, noApostrophe, notFeminine, notMasculine, plural
+		},
+		{},
+		
+	"tab", cRulerTab,
+		"tab of a rulerset.",
+		{
+			"orientation",
+				pVTextTabOrientation, kEnumVTextTabOrientation,
+				"tab orientation (defaults to leading)",
+				reserved, singleItem, notEnumerated, readWrite,
+				ReservedApost_,
+
+			"location",
+				pLocation, typeFixed,
+				"location of tab relative to ruler begin",
+				reserved, singleItem, notEnumerated, readWrite,
+				ReservedApost_,
+
+			"repeating_every",
+				pRepeating, typeFixed,
+				"tab repeats every (value) pixels from first occurance (defaults to 0 meaning non-repeating)",
+				reserved, singleItem, notEnumerated, readWrite,
+				ReservedApost_,
+
+			"delimiter",
+				pDelimiter, typeChar,
+				"delimiter for aligned tab",
+				reserved, singleItem, notEnumerated, readWrite,
+				ReservedApost_
+		},
+		{},
+	
+	"tabs", cRulerTab,
+		"every tab",
+		{
+			"class attributes",
+				'c@#!', typeType,
+				"the best descriptor type",
+				reserved, singleItem, notEnumerated, readOnly,
+				Reserved8_, noApostrophe, notFeminine, notMasculine, plural
+		},
+		{},
+
+	//	cChar
+	"character", cChar,
+		"one or more characters",
+		{
+			"styleref",
+				pStyleSet, typeObjectSpecifier,
+				"styleset associated with first character",
+				reserved, singleItem, notEnumerated, readWrite,
+				ReservedApost_
+		},
+		{},
+	
+	"characters", cChar,
+		"every character",
+		{
+			"class attributes",
+				'c@#!', typeType,
+				"the best descriptor type",
+				reserved, singleItem, notEnumerated, readOnly,
+				Reserved8_, noApostrophe, notFeminine, notMasculine, plural
+		},
+		{},
+
+	//	cWord
+	"word", cWord,
+		"one or more words",
+		{},
+		{},
+	
+	"words", cWord,
+		"every word",
+		{
+			"class attributes",
+				'c@#!', typeType,
+				"the best descriptor type",
+				reserved, singleItem, notEnumerated, readOnly,
+				Reserved8_, noApostrophe, notFeminine, notMasculine, plural
+		},
+		{},
+
+	//	cLine
+	"line", cLine,
+		"one or more lines",
+		{},
+		{},
+	
+	"lines", cLine,
+		"every line",
+		{
+			"class attributes",
+				'c@#!', typeType,
+				"the best descriptor type",
+				reserved, singleItem, notEnumerated, readOnly,
+				Reserved8_, noApostrophe, notFeminine, notMasculine, plural
+		},
+		{},
+
+	//	cParagraph
+	"paragraph", cParagraph,
+		"one or more paragraphs",
+		{
+			"rulerref",
+				pRulerSet, typeObjectSpecifier,
+				"rulerset associated with first paragraph",
+				reserved, singleItem, notEnumerated, readWrite,
+				ReservedApost_
+		},
+		{},
+	
+	"paragraphs", cParagraph,
+		"every paragraph",
+		{
+			"class attributes",
+				'c@#!', typeType,
+				"the best descriptor type",
+				reserved, singleItem, notEnumerated, readOnly,
+				Reserved8_, noApostrophe, notFeminine, notMasculine, plural
+		},
+		{}
+
+},
+
+//	ComparisonOps
+{},
+
+//	Enumerations
+{
+	kEnumVTextJustification, {
+		"ruler_leading",		kVTextRulerLeading,		"leading edge justified",
+		"ruler_trailing",		kVTextRulerTrailing,	"trailing edge justified",
+		"ruler_centered",		kVTextRulerCentered,	"center justified",
+		"ruler_filled",			kVTextRulerFilled,		"leading and trailing edge justified",
+//?		"ruler_programmer",		kVTextRulerProgrammer,	"leading edge justification for programmers"
+	},
+	
+	kEnumVTextWritingDirection, {
+		"left_to_right",	kVTextLeftToRight,		"text reads left to right",
+		"right_to_left",	kVTextRightToLeft,		"text reads right to left"
+	},
+
+	kEnumVTextTabOrientation, {
+		"tab_leading",			kVTextTabLeading,		"leading edge justified",
+		"tab_trailing",			kVTextTabTrailing,		"trailing edge justified",
+		"tab_centered",			kVTextTabCentered,		"center justified",
+		"tab_aligned",			kVTextTabAligned,		"aligned to delimiter"
+	},
+	
+	kEnumVTextStyleModifiers, {
+		"m_color",				pColor, 		"text color",
+		"m_size",				pPointSize,		"text size",
+		"m_style",				pTextStyles, 	"text style"
+	},
+}
+

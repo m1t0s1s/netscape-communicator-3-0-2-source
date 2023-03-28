@@ -1,0 +1,423 @@
+
+;;
+;;  define java reflections of mocha reflections of navigator objects
+;;
+
+;; (load-file "lm.el")
+
+
+;; todo:
+;;  need things like Document.getTag etc. which look up named values
+;;    and cast them, some are done but not all.
+;;  more graceful exception handling?
+
+(defun lm-getter (name)
+  (concat "get" (upcase (substring name 0 1)) (substring name 1)))
+
+(defun lm-getelement (name)
+  (concat "get" (upcase (substring name 0 1))
+          (substring name 1 (- (length name) 1)) ;; skip the "s"
+          ))
+
+(defun lm-setter (name)
+  (concat "set" (upcase (substring name 0 1)) (substring name 1)))
+
+
+;; fix up casts:
+;;  boolean ->    ((Boolean) jso.get()).booleanValue
+;;  int ->    ((Float) jso.get()).intValue
+;;  JSObject ->    (JSObject) jso.get()
+;;  Object ->    jso.get()
+;;  Other ->    new Other((JSObject) jso.get())
+
+(defun lm-cast-from-object (type expr)
+  (cond
+   ((eq type 'boolean)
+    (concat "((Boolean) " expr ").booleanValue()"))
+   ((eq type 'int)
+    (concat "((Float) " expr ").intValue()"))
+   ((eq type 'JSObject)
+    (concat "((JSObject) " expr ")"))
+   ((eq type 'Object)
+    expr)
+   ((eq type 'String)
+    (concat "(String)" expr))
+   ((eq type 'java.applet.Applet)
+    (concat "((java.applet.Applet) " expr ")"))
+   ((eq type 'netscape.plugin.Plugin)
+    (concat "((netscape.plugin.Plugin) " expr ")"))
+   (t
+    (concat "new " (symbol-name type) "((JSObject) " expr ")"))))
+
+(defun lm-return-from-object (type expr)
+  (cond
+   ((eq type 'void)
+    (concat "        " expr ";
+        return;
+"))
+   (t
+    (concat "
+        return " (lm-cast-from-object type expr) ";
+"))))
+
+(defun lm-cast-to-object (type expr)
+  (cond
+   ((eq type 'boolean)
+    (concat "new Boolean(" expr ")"))
+   ((eq type 'int)
+    (concat "new Float(" expr ")"))
+   ((eq type 'float)
+    (concat "new Float(" expr ")"))
+   ((eq type 'JSObject)
+    expr)
+   ((eq type 'Object)
+    expr)
+   ((eq type 'String)
+    expr)
+   (t
+    (concat expr ".getJSObject()"))))
+
+(defun lm-do-field (field)
+  (let ((type (car field))
+        (name (symbol-name (cadr field)))
+        (setterp (cddr field)))
+    (if (listp type)
+        (let ((base (cadr type)))
+          (cond
+           ((eq (car type) 'other)
+            (insert "
+    public " (symbol-name base) " " name "(String name) {
+        return (" (symbol-name base) ") jso.getMember(name);
+    }
+"))
+         ((eq (car type) 'array)
+          (insert "
+    public " (symbol-name base) " " (lm-getelement name) "(int i) {
+        return " (lm-cast-from-object base
+                    (concat "((JSObject) jso.getMember(\"" name "\")).getSlot(i)")) ";
+    }
+")
+          (insert "
+    public " (symbol-name base) "[] " (lm-getter name) "() {
+        JSObject jsarray = (JSObject) jso.getMember(\"" name "\");
+        int length = ((Number) jsarray.getMember(\"length\")).intValue();
+        " (symbol-name base) " array[] = new " (symbol-name base) "[length];
+        for (int i = 0; i < length; i++) {
+            array[i] = " (lm-cast-from-object base "jsarray.getSlot(i)") ";
+        }
+        return array;
+    }
+"))))
+      (progn
+        (insert "
+    public " (symbol-name type) " " (lm-getter name) "() {
+        return " (lm-cast-from-object type
+                    (concat "jso.getMember(\"" name "\")")) ";
+    }
+")
+        (if setterp
+            (insert "
+    public void " (lm-setter name) "(" (symbol-name type) " value) {
+        jso.setMember(\"" name "\", " (lm-cast-to-object type "value") ");
+    }
+")
+          ))
+      )))
+
+(defun lm-do-method (method)
+  (let ((rtype (car method))
+        (name (symbol-name (cadr method)))
+        (args (cddr method))
+        (argn -1))
+    (insert "
+    public " (symbol-name rtype) " " name "("
+    (mapconcat (lambda (arg) (concat (symbol-name (car arg)) " "
+                                     (symbol-name (cadr arg))))
+               args ", ")
+    ") {" (if args (concat "
+	Object args[] = new Object[" (int-to-string (length args)) "];") "") "
+"
+        (mapconcat (lambda (arg)
+                     (setq argn (+ 1 argn))
+                     (concat "        args[" (int-to-string argn) "] = "
+                             (lm-cast-to-object (car arg)
+                                                (symbol-name (cadr arg)))
+                             ";
+")
+)
+                   args "")
+        (lm-return-from-object rtype
+                               (concat "jso.call(\"" name "\", "
+                                       (if args "args" "null") ")"))
+        "    }
+"
+)))
+
+;(lm-do-method '(void close))
+
+(defun lmdef (name super fields methods &optional extra)
+  (find-file-other-window (concat name ".java"))
+  ;; trash the contents
+  (erase-buffer)
+
+  ;; header comment
+  (insert
+   "//////////////////////////////////////////////////////////////////
+//
+//  Java reflection of the JavaScript " name " object
+//
+//   automatically generated by lm.el
+//
+//////////////////////////////////////////////////////////////////
+
+")
+  (insert "package netscape.javascript;
+
+")
+  (insert "public class " name (if super (concat " extends " super) "") " {
+")
+  (if super (insert "
+    public " name "(JSObject jso) {
+        super(jso);
+    }
+") (insert "
+    protected JSObject jso;
+
+    public " name "(JSObject jso) {
+        this.jso = jso;
+    }
+
+    public JSObject getJSObject() {
+        return jso;
+    }
+"))
+
+  (mapcar 'lm-do-field fields)
+  (mapcar 'lm-do-method methods)
+  (if extra (insert extra))
+  (insert "}
+")
+  )
+
+;;;;    ;;;;    ;;;;    ;;;;    ;;;;    ;;;;    ;;;;    ;;;;    ;;;;
+;;
+;;  reflection data begins here.  this must be kept up to date
+;;  with the javascript structures by hand for now
+;;
+
+
+(lmdef "Document" () '(
+(String title)
+(String URL)
+(String location)
+(String referrer)
+(String lastModified)
+(String loadedDate)
+(String cookie		set)
+(String bgColor	set)
+(String fgColor	set)
+(String linkColor	set)
+(String vlinkColor	set)
+(String alinkColor	set)
+((array Form) forms)
+((array JSObject) links)
+((array JSObject) anchors)
+((array java.applet.Applet) applets)
+((array netscape.plugin.Plugin) embeds)
+((array Image) images)
+((others Object) getTag)
+) ())
+
+
+(lmdef "Form" () '(
+(int length)
+(String name)
+((array Input) elements)
+(String method		set)
+(String action		set)
+(String encoding	set)
+(String target		set)
+((others JSObject) getElement)
+) '(
+(void submit)
+))
+
+(lmdef "Navigator" () '(
+(String userAgent)
+(String appCodeName)
+(String appVersion)
+(String appName)
+((array Plugin) plugins)
+((array MimeType) mimeTypes)
+) () )
+
+(lmdef "MimeType" () '(
+(String type)
+(String description)
+(String suffixes)
+) ())
+
+(lmdef "Plugin" () '(
+(String name)
+(String filename)
+(String description)
+(String length)
+((array MimeType) mimetypes)
+) ())
+
+(lmdef "URL" () '(
+(String href	set)
+(String protocol	set)
+(String host	set)
+(String hostname	set)
+(String port	set)
+(String pathname	set)
+(String hash	set)
+(String search	set)
+(String target	set)
+) ())
+
+(lmdef "Location" () '(
+(String href	set)
+(String protocol	set)
+(String host	set)
+(String hostname	set)
+(String port	set)
+(String pathname	set)
+(String hash	set)
+(String search	set)
+(String target)
+) ())
+
+(lmdef "Window" () '(
+(int length)
+(String opener)
+(String frames)
+(String parent)
+(String top)
+(Window self)
+(Window window)
+(String name)
+(String status		set)
+(String defaultStatus	set)
+;; these properties are added in random places
+(Document document)
+(History history)
+(Navigator navigator)
+(Location location)
+
+;;(indices from 0 to length)
+) '(
+(void alert (String message))
+;; (void clearTimeout)
+(void close)
+(boolean confirm (String message))
+(Window open (String url) (String windowName) (String options))
+(Object prompt (String message) (Object defalt))
+(Object eval (String script))
+(Object setTimeout (String expr) (float interval))
+(String escape (String str))  ;; optional (int mask)
+(String unescape (String str))
+(void blur)
+(void focus)
+(void scroll (int x) (int y))
+)
+"
+    public Window getWindow(java.applet.Applet applet) {
+        return new Window(JSObject.getWindow(applet));
+    }
+"
+)
+
+(lmdef "History" () '(
+(int length)
+;;(current)
+;;(previous)
+;;(next)
+;;((otherindex String) getElement)
+) '(
+(void go (int index))
+(void go (String name))
+(void back)
+(void forward)
+;;(String toString)
+))
+
+(lmdef "Image" () '(
+(String name)
+(String src		set)
+(String lowsrc	set)
+(int height)
+(int width)
+(int border)
+(int vspace)
+(int hspace)
+(boolean complete)
+) ())
+
+(lmdef "Input" () '(
+(String name		set)
+(String value		set)
+) '(
+(String toString)
+(void focus)
+(void blur)
+(void select)
+(void click)
+))
+
+(lmdef "Option" "Input" '(
+(int index)
+(String text	set)
+(String value	set)
+(boolean defaultSelected	set)
+(boolean selected		set)
+) ())
+
+(lmdef "Text" "Input" '(
+(String defaultValue		set)
+((other Object) getProperty)
+) ())
+
+(lmdef "TextArea" "Input" '(
+(String defaultValue		set)
+((other Object) getProperty)
+) ())
+
+(lmdef "SelectOne" "Input" '(
+(int length)
+((array Object) options)
+(int selectedIndex	set)
+((other Option) getOption)
+) ())
+
+(lmdef "SelectMult" "Input" '(
+(int length)
+((array Object) options)
+(int selectedIndex)
+((other Option) getOption)
+) ())
+
+
+(lmdef "Radio" "Input" '(
+(boolean status		set)
+(boolean defaultStatus	set)
+(boolean checked	set)
+(boolean defaultChecked	set)
+) ())
+
+(lmdef "CheckBox" "Input" '(
+(boolean status		set)
+(boolean defaultStatus	set)
+(boolean checked	set)
+(boolean defaultChecked	set)
+) ())
+
+;;("Readonly")
+;;("File")
+;;( no settable props)
+
+;;(default:)
+;;( name value)
+;;( name value)
+

@@ -1,0 +1,168 @@
+<html>
+<head>
+<script>
+function dump_props(obj, obj_name) {
+   var result = "";
+   for (i in obj)
+      result = result + obj_name + "." + i + " = " + obj[i] + "<BR>";
+   result += "<HR>";
+   return result;
+}
+
+function update(form) {
+// No op
+}
+
+</script>
+<title>Objects and Properties in Client LiveScript</title> </head>
+
+<body>
+<h1>LiveScript Objects and Properties</h1>
+<P>
+<script>
+document.writeln(dump_props(location, "location"));
+document.writeln(dump_props(document, "document"));
+document.writeln(dump_props(history, "history"));
+//document.writeln(dump_props(window, "window"));
+</script>
+
+<!------------------ Begin Form -------------------------------------!>
+<form name="myform" action="ascript" method="get" target="output">
+
+<h3>Form properties</h3>
+<script>
+document.writeln("name = " + document.forms[0].name + " <BR>");
+document.writeln("method = " + document.forms[0].method + " <BR>");
+document.writeln("action = " + document.forms[0].action + " <BR>");
+document.writeln("target = " + document.forms[0].target);
+</script>
+
+<h3>Text Field </h3>
+Text1: <input type=text name="text1" value="blahblah" size=20 >
+<P>
+<B>Properties:</B><P>
+<script>
+document.writeln("name = " + document.forms[0].text1.name + " <BR>");
+document.writeln("value = " + document.forms[0].text1.value + " <BR>");
+document.writeln("defaultValue = " + document.forms[0].text1.defaultValue);
+</script>
+
+<h3>Text Area </h3>
+
+<TEXTAREA NAME="textarea1" ROWS=4 COLS=50 wrap=soft onChange="update(this.form);">
+This is a whole bunch of random text....
+</TEXTAREA>
+<P>
+<B>Properties:</B><P>
+<script>
+document.writeln("name = " + document.forms[0].textarea1.name + " <BR>");
+document.writeln("value = " + document.forms[0].textarea1.value + " <BR>");
+document.writeln("defaultValue = " + document.forms[0].textarea1.defaultValue);
+</script>
+
+<h3>Radio Button</h3>
+<p>
+Radio1:
+<INPUT TYPE="radio" NAME="radio1" VALUE="one" onClick="update(this.form)" CHECKED> Choice #1
+<INPUT TYPE="radio" NAME="radio1" VALUE="two" onClick="update(this.form)"> Choice #2
+<INPUT TYPE="radio" NAME="radio1" VALUE="three" onClick="update(this.form)"> Choice #3
+<P>
+<B>Properties:</B>
+<script>
+document.write("<b>First Button</b>")
+document.writeln("name = " + document.forms[0].radio1[0].name + " <BR>");
+document.writeln("value = " + document.forms[0].radio1[0].value + " <BR>");
+document.writeln("status = " + document.forms[0].radio1[0].status + " <BR>");
+document.writeln("defaultStatus = " + document.forms[0].radio1[0].defaultStatus);
+
+document.write("<P><b>Second Button</b>")
+document.writeln("name = " + document.forms[0].radio1[1].name + " <BR>");
+document.writeln("value = " + document.forms[0].radio1[1].value + " <BR>");
+document.writeln("status = " + document.forms[0].radio1[1].status + " <BR>");
+document.writeln("defaultStatus = " + document.forms[0].radio1[1].defaultStatus);
+
+document.write("<P><b>Third Button</b>")
+document.writeln("name = " + document.forms[0].radio1[2].name + " <BR>");
+document.writeln("value = " + document.forms[0].radio1[2].value + " <BR>");
+document.writeln("status = " + document.forms[0].radio1[2].status + " <BR>");
+document.writeln("defaultStatus = " + document.forms[0].radio1[2].defaultStatus);
+</script>
+
+<h3>Check Box</h3>
+<INPUT TYPE="checkbox" NAME="CheckOption1" CHECKED onClick="update(this.form)"> Option #1
+<INPUT TYPE="checkbox" NAME="CheckOption2" onClick="update(this.form)"> Option #2
+
+<P>
+<B>Properties:</B>
+<script>
+document.writeln("name = " + document.forms[0].CheckOption1.name + " <BR>");
+document.writeln("value = " + document.forms[0].CheckOption1.value + " <BR>");
+document.writeln("status = " + document.forms[0].CheckOption1.status + " <BR>");
+document.writeln("defaultStatus = " + document.forms[0].CheckOption1.defaultStatus);
+document.write("<P>")
+document.writeln("name = " + document.forms[0].CheckOption2.name + " <BR>");
+document.writeln("value = " + document.forms[0].CheckOption2.value + " <BR>");
+document.writeln("status = " + document.forms[0].CheckOption2.status + " <BR>");
+document.writeln("defaultStatus = " + document.forms[0].CheckOption2.defaultStatus);
+</script>
+
+<h3>Selection</h3>
+<P>
+<SELECT name="sel" onChange='update(this.form)'>
+<OPTION> red
+<OPTION> green
+<OPTION SELECTED> blue
+</SELECT>
+
+<P>
+<B>Properties:</B>
+<script>
+document.writeln("name = " + document.forms[0].sel.options[0].index + " <BR>");
+document.writeln("name = " + document.forms[0].sel.options[0].text + " <BR>");
+document.writeln("value = " + document.forms[0].sel.options[0].value + " <BR>");
+document.writeln("status = " + document.forms[0].sel.options[0].defaultSelected + " <BR>");
+document.writeln("status = " + document.forms[0].sel.options[0].selected + " <BR>");
+document.write("<P>")
+document.writeln("name = " + document.forms[0].sel.options[1].index + " <BR>");
+document.writeln("name = " + document.forms[0].sel.options[1].text + " <BR>");
+document.writeln("value = " + document.forms[0].sel.options[1].value + " <BR>");
+document.writeln("status = " + document.forms[0].sel.options[1].defaultSelected + " <BR>");
+document.writeln("status = " + document.forms[0].sel.options[1].selected + " <BR>");
+document.write("<P>")
+document.writeln("name = " + document.forms[0].sel.options[2].index + " <BR>");
+document.writeln("name = " + document.forms[0].sel.options[2].text + " <BR>");
+document.writeln("value = " + document.forms[0].sel.options[2].value + " <BR>");
+document.writeln("status = " + document.forms[0].sel.options[2].defaultSelected + " <BR>");
+document.writeln("status = " + document.forms[0].sel.options[2].selected + " <BR>");
+</script>
+
+<h3>Buttons</h3>
+<P>
+<input type="button" name="Button1" value="Button1" onClick="update(this.form)">
+
+<P>
+<B>Properties:</B>
+<script>
+document.writeln("name = " + document.forms[0].Button1.name + " <BR>");
+document.writeln("Onclick = " + document.forms[0].Button1.OnClick + " <BR>");
+</script>
+
+<input type="submit" value="Submit Query">
+<input type="reset" value="Clear Form">
+<P>
+<B>Properties:</B>
+<script>
+/*
+document.writeln("name = " + document.forms[0].Button1.name + " <BR>");
+document.writeln("Onclick = " + document.forms[0].Button1.OnClick + " <BR>");
+document.writeln("name = " + document.forms[0].Button1.name + " <BR>");
+document.writeln("Onclick = " + document.forms[0].Button1.OnClick + " <BR>");
+*/
+</script>
+</form>
+All properties of this form:<br>
+<script>
+document.writeln(dump_props(document.forms[0], "form"));
+</script>
+</body>
+</html>

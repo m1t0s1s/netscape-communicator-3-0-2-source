@@ -1,0 +1,20 @@
+
+npshell.c,436
+typedef struct _PluginInstance_PluginInstance56,1809
+} PluginInstance;PluginInstance70,2184
+NPP_GetMIMEDescription(84,2515
+NPP_GetValue(98,2891
+NPP_Initialize(118,3315
+NPP_GetJavaClass(125,3374
+NPP_Shutdown(131,3420
+NPP_New(137,3454
+NPP_Destroy(194,4776
+NPP_SetWindow(221,5284
+NPP_NewStream(303,7498
+NPP_WriteReady(347,8786
+NPP_Write(363,9081
+NPP_DestroyStream(403,10119
+NPP_StreamAsFile(416,10351
+NPP_Print(429,10647
+
+stubs.c,0

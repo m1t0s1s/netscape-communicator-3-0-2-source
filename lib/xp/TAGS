@@ -1,0 +1,252 @@
+
+allxpstr.c,0
+
+xp_alloc.c,154
+#define ALLOCSIZE	4,42
+XP_InitAllocStructInfo(7,71
+XP_AllocStruct(19,321
+XP_AllocStructZero(56,1355
+XP_FreeStruct(66,1520
+XP_FreeAllStructs(77,1729
+
+xp_cntxt.c,650
+XP_List *XP_GetGlobalContextList(22,407
+void cx_AddChildContext(31,572
+void cx_RemoveChildContext(46,945
+Bool XP_IsContextInList(57,1224
+void XP_AddContextToList(72,1530
+void XP_UpdateParentContext(88,1903
+void XP_RemoveContextFromList(96,2083
+xp_FindNamedContextInChildren(136,3150
+MWContext * XP_FindNamedContextInList(179,4403
+MWContext * XP_FindContextOfType 261,6266
+XP_FindSomeContext(291,7172
+Bool XP_FindNamedAnchor(330,8366
+void XP_RefreshAnchors(360,9033
+void XP_InterruptContext(373,9344
+Bool XP_IsContextBusy(394,9946
+Bool XP_IsContextStoppable(413,10297
+int XP_GetSecurityStatus(447,11047
+int XP_ContextCount(569,14156
+
+xp_core.c,0
+
+xp_error.c,25
+void XP_SetError(13,225
+
+xp_file.c,1464
+	#define __FP__	14,259
+int mkstemp(19,326
+OSErr XP_FileSpec(54,1245
+char* xp_FileName(310,8625
+XP_TempDirName(357,9346
+char * xp_FilePlatformName(369,9560
+extern char * XP_FileReadLine(392,10049
+char * xp_TempName(492,12677
+XP_Dir XP_OpenDir(560,14306
+void XP_CloseDir(601,15200
+int XP_FileNumberOfFilesInDirectory(607,15266
+XP_DirEntryStruct * XP_ReadDir(626,15783
+int XP_MakeDirectory(670,16756
+int XP_FileRename(687,17157
+int XP_FileRemove(720,17826
+int XP_FileTruncate(741,18262
+int XP_Stat(784,19011
+XP_File XP_FileOpen(795,19253
+int XP_FileClose(917,22299
+#define Debug 957,23333
+#define DO_TRACE(DO_TRACE958,23349
+#define DO_TRACE(DO_TRACE963,23431
+int XP_FileRemove(966,23459
+int XP_FileRename(985,23802
+int XP_MakeDirectory(1005,24202
+int XP_FileTruncate(1078,26039
+int XP_FileWrite 1092,26305
+xp_unix_config_directory(1116,26927
+xp_unix_sprintf_stat(1148,27462
+xp_FileName 1185,28455
+char * xp_FilePlatformName(1478,35652
+char * XP_PlatformFileToURL 1486,35817
+char *XP_PlatformPartialPathToXPPartialPath(1498,36060
+#define CACHE_SUBDIRS1505,36235
+XP_TempDirName(1508,36264
+xp_TempName 1516,36380
+#define NS_BUFFER_SIZE	1518,36478
+#define NEWSRC_PREFIX 1628,39468
+#define SNEWSRC_PREFIX 1629,39500
+XP_GetNewsRCFiles(1635,39593
+#define MAX_NEWSRCS 1647,39806
+XP_Bool XP_FileIsFullPath(1759,42639
+WH_FileName 1772,42895
+WH_FilePlatformName(1795,43470
+WH_TempName(1815,43934
+#define NS_BUFFER_SIZE	1817,43987
+
+xp_hash.c,506
+XP_StringHash 12,168
+XP_StringHash2 34,529
+struct xp_HashTablexp_HashTable66,1560
+struct xp_HashBucketxp_HashBucket74,1700
+toprime 92,2280
+XP_HashTableNew 112,2858
+XP_Clrhash 135,3387
+XP_HashTableDestroy 159,3898
+XP_Puthash 177,4313
+XP_Remhash 222,5365
+XP_Gethash 258,6269
+xp_maphash 276,6769
+XP_Maphash 317,8055
+XP_MapRemhash 332,8692
+XP_HashListNew 342,8898
+XP_HashListDestroy 379,9703
+XP_HashListAddObject 397,10039
+XP_HashListFindObject 464,11511
+XP_HashListRemoveObject 505,12407
+
+xp_intl.c,75
+#define RESOURCE_STR2,21
+XP_GetString(17,441
+XP_GetBuiltinString(26,583
+
+xp_list.c,469
+XP_ListDestroy 31,761
+XP_ListNew 47,978
+XP_ListAddObject 64,1272
+XP_ListAddObjectToEnd 99,1946
+XP_ListGetEndObject 136,2629
+XP_ListGetObjectNum 148,2837
+XP_ListMoveTopToBottom 174,3295
+XP_ListGetNumFromObject 202,3784
+XP_ListFindObject 221,4103
+XP_ListCount 243,4499
+XP_ListInsertObject 260,4830
+XP_ListInsertObjectAfter 318,6206
+XP_ListRemoveObject 370,7465
+XP_ListRemoveEndObject 409,8245
+XP_ListRemoveTopObject 447,8922
+XP_ListPeekTopObject 481,9514
+
+xp_md5.c,73
+PUBLIC void XP_Md5Binary(13,292
+PUBLIC char *XP_Md5PCPrintable(46,1211
+
+xp_reg.c,250
+_valid_subexp(19,256
+XP_RegExpValid(89,2140
+#define MATCH 101,2335
+#define NOMATCH 102,2351
+#define ABORTED 103,2369
+_handle_union(108,2474
+_shexp_match(138,3218
+XP_RegExpMatch(229,6061
+XP_RegExpSearch(260,6686
+XP_RegExpCaseSearch(274,6972
+
+xp_rgb.c,33
+intn XP_ColorNameToRGB(162,5138
+
+xp_sec.c,406
+char *XP_PrettySecurityStatus(22,449
+static char *Hexify(77,1731
+char *XP_PrettyCertInfo(109,2357
+char *XP_SecurityVersion(177,4132
+#define GOT_RSA	197,4644
+#define GOT_MD2	198,4692
+#define GOT_MD5	199,4716
+#define GOT_RC2_CBC	200,4740
+#define GOT_RC4	201,4771
+#define GOT_DES_CBC	202,4795
+#define GOT_DES_EDE3_CBC	203,4826
+#define GOT_IDEA_CBC	204,4866
+char *XP_SecurityCapabilities(207,4941
+
+xp_str.c,258
+NOT_NULL 14,228
+strcasestr 26,393
+strncasestr 60,1007
+strcasecomp 97,1813
+strncasecomp 119,2182
+NET_BACopy 140,2583
+NET_BACat 169,3210
+NET_SACopy 201,3960
+NET_SACat 226,4453
+XP_StripLine 255,5203
+char *XP_AppendStr(280,5730
+char *XP_Cat(300,6086
+
+xp_thrmo.c,755
+#define KILOBYTE	31,908
+#define MEGABYTE	32,934
+#define MINUTE	33,974
+#define HOUR	34,997
+#define BYTE_FORMAT	36,1031
+#define KILOBYTE_FORMAT	37,1089
+#define MEGABYTE_FORMAT 38,1151
+#define BYTE_RATE_FORMAT	40,1214
+#define K_RATE_FORMAT	41,1280
+#define M_RATE_FORMAT	42,1341
+#define STALLED_FORMAT	43,1402
+#define HOURS_FORMAT	45,1466
+#define MINUTES_FORMAT	46,1528
+#define SECONDS_FORMAT	47,1591
+#define PERCENTAGE_FORMAT	49,1655
+#define UH	51,1724
+#define IS_PLURAL(IS_PLURAL53,1767
+#define	ENOUGH_TIME_TO_GUESS	55,1862
+#define RATE_REMAINING_FORM	57,1920
+#define RATE_FORM	58,1992
+#define PERCENT_FORM	59,2050
+#define PERCENT_RATE_FORM	60,2113
+#define RAW_COUNT_FORM	61,2182
+#define STALL_TIME	63,2247
+XP_ProgressText(95,3513
+
+xp_time.c,200
+void do_timer(34,1497
+xp_internal_zone_offset 41,1595
+XP_LocalZoneOffset(72,2168
+xp_compute_UTC_from_GMT(109,3079
+} TIME_TOKEN;TIME_TOKEN302,10120
+XP_ParseTimeString 334,11072
+main 1054,30558
+
+xp_trace.c,152
+void XP_Trace 23,387
+extern void InitializeASLM(59,1254
+extern void CleanupASLM(72,1451
+extern void XP_Trace(79,1549
+extern void XP_Trace(100,1975
+
+xp_wrap.c,754
+#define NOT_NULL(NOT_NULL12,280
+#define XP_WORD_WRAP_NEW_CODE 16,310
+#define OUTPUT(OUTPUT21,388
+#define OUTPUT_MACHINE_NEW_LINE(OUTPUT_MACHINE_NEW_LINE43,705
+#define OUTPUT_MACHINE_NEW_LINE(OUTPUT_MACHINE_NEW_LINE51,812
+#define OUTPUT_MACHINE_NEW_LINE(OUTPUT_MACHINE_NEW_LINE53,863
+#define OUTPUT_NEW_LINE(OUTPUT_NEW_LINE59,947
+#define NEW_LINE(NEW_LINE70,1119
+XP_WordWrap(86,1293
+#define NEWLINES_ARE_SIGNIFICANT352,9564
+#define HACK_PREFIX353,9597
+# define LINEBREAK 368,10019
+# define LINEBREAK 370,10067
+# define LINEBREAK 372,10116
+XP_WordWrap 376,10155
+# define FIND_PREFIX(FIND_PREFIX409,11048
+INTL_CharLen(654,16294
+INTL_ColumnWidth(660,16362
+main 666,16435
+# define TEST(TEST671,16486
+# define TEST(TEST680,16712
+
+xpassert.c,17
+XP_Abort 12,132
+
+xplocale.c,152
+#define FALSE 11,127
+#define TRUE 14,165
+int XP_StrColl(27,501
+size_t XP_StrfTime(37,665
+size_t XP_Strxfrm 63,1029
+const char* INTL_ctime(82,1226

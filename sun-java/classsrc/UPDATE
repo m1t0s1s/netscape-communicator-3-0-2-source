@@ -1,0 +1,78 @@
+#! /bin/sh
+
+# usage:
+# UPDATE ~kipp/from-sun/java-prebeta5-solaris2-sparc
+
+from=$1
+to=`pwd`
+
+# The packages that we are interested in updating
+packages="
+	java/applet
+	java/awt java/awt/image java/awt/peer java/awt/test
+	java/io
+	java/lang
+	java/misc
+	java/net
+	java/tools/asm java/tools/debug java/tools/java java/tools/javac
+		java/tools/javadoc java/tools/tree java/tools/ttydebug
+	java/util
+	sun/applet
+	sun/misc
+	sun/audio
+	sun/awt/image
+	sun/awt/motif
+	sun/awt/win32
+	sun/awt/tiny
+	sun/net
+	sun/net/ftp
+	sun/net/nntp
+	sun/net/smtp
+	sun/net/www
+	sun/net/www/auth
+	sun/net/www/content/image
+	sun/net/www/content/text
+	sun/net/www/http
+	sun/net/www/protocol/doc
+	sun/net/www/protocol/file
+	sun/net/www/protocol/http
+	sun/tools/asm sun/tools/debug sun/tools/java sun/tools/javac
+		sun/tools/javadoc sun/tools/tree sun/tools/ttydebug
+"
+
+# Places to look for the sun code
+places="
+share/java
+share/sun
+solaris/sun
+win32/sun
+"
+
+for i in $packages; do
+	echo Updating package $i
+	found=0
+	for d in $places; do
+		if test -d $from/src/$d/$i; then
+			cd $from/src/$d/$i
+			files=*.java
+			if test ! -d $to/$i; then
+				mkdir -p $to/$i
+			fi
+			for f in $files; do
+				if cmp -s $f $to/$i/$f; then
+					:
+				else
+					echo Updated $to/$i/$f
+					if test -f $to/$i/$f; then
+						chmod +w $to/$i/$f
+					fi
+					cp $f $to/$i/$f
+				fi
+			done
+			found=1
+		fi
+	done
+	if test $found"x" = "x"; then
+		echo Package $i not found.
+	fi
+done

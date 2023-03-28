@@ -1,0 +1,47 @@
+<TITLE>How to bootstrap java</TITLE>
+
+Here are some brief instructions on how to bootstrap java:
+
+<UL>
+
+<LI> First, get the .class files from another system that already has
+java working. You need every normally built .class file under the
+classsrc subdirectory. Use your favoriate tree copying utility. You
+can also use the existing moz*.zip or java_* file that matches what you 
+want to build - just unzip it before proceeding. <P>
+
+<LI> Next build a copy of javah:
+<PRE>
+cd sun-java/javah
+gmake
+</PRE> <P>
+
+<LI> Once you have javah you can construct the generated header files:
+<PRE>
+cd sun-java/include
+gmake
+</PRE>
+
+<LI> Now you can build a runtime:
+<PRE>
+cd sun-java/runtime ; gmake
+cd sun-java/md ; gmake
+cd sun-java/java; gmake
+</PRE>
+
+
+<LI> Install the runtime in /usr/local/bin:
+<PRE>
+cd sun-java/java
+cp $(OBJDIR)/java /usr/local/bin
+rehash (if you are using csh/tcsh)
+</PRE>
+
+<LI> And start a clean build to get a full build:
+<PRE>
+cd sun-java
+gmake clobber
+gmake
+</PRE>
+
+</UL>

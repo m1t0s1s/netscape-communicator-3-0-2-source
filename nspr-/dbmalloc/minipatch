@@ -1,0 +1,200 @@
+#
+# minipatch - shell script for automatically building miniature patch file
+#
+#
+FREEZE=RCS/.rcsfreeze.log
+MINIDATA=.minipatch
+
+if [ $# != 0 ]; then
+	echo "usage: minipatch"
+	exit 1
+fi
+
+FILES="`make srclist`"
+
+#
+# see if any files are still locked.  If so, we cannot proceed (they must be
+# unlocked before a patch file can be built
+#
+if rlog -l $FILES 2>rlog.err | grep "locked by:" >/dev/null; then
+	echo "all files must be checked in before a patch file can be built"
+	exit 1
+fi
+
+if [ -s rlog.err ]; then
+	echo "all files must be checked in before a patch file can be built"
+	exit 1
+fi
+
+#
+# get the mini-patch version and the true patchlevel
+#
+if [ -s ${MINIDATA} ]; then
+	read patchlevel oldlevel < ${MINIDATA}
+fi
+read title realpatch < patchlevel
+
+#
+# if there is no mini-patch number, or the real patch number has changed
+#
+
+if [ -z "$oldlevel" -o "x$patchlevel" != "x$realpatch" ]; then
+
+	#
+	# need to clean out old mini-patch freezes
+	#
+	OLDREVS=`grep minipatch $FREEZE |
+		 	while read version patchname junk
+			do
+				oldrev=\`expr "$patchname" : "\(.*\)("\`
+				echo " -n$oldrev"
+			done
+		`
+
+	if [ ! -z "$OLDREVS" ]; then
+
+		#
+		# remove the minipatch freeze names
+		#
+		rcs $OLDREVS $FILES
+
+		#
+		# change the minipatch lines in the freeze log so that we
+		# don't think they are still there.
+		#
+		sed -e "s/minipatch/oldmpatch/g" $FREEZE > /tmp/ttt
+		cp /tmp/ttt $FREEZE
+
+		#
+		# remove the old minipatch files
+		#
+		rm -f mini.*.*
+	fi
+
+	newlevel=1
+	version="patchlevel_$realpatch"
+else
+	version="minipatch_$oldlevel"
+	newlevel=`expr $oldlevel + 1 `
+fi
+
+
+#
+# create a new, empty patch file and empty directory for old versions of files
+#
+PATCH=mini.$realpatch.$newlevel
+
+cat <<-endcat > $PATCH
+
+	WARNING: this is a mini-patch that contains a subset of the patches
+	that will be included in the next full patch release for the library.
+	if you apply these changes, you will most likely have to manually
+	apply the next real patch release.
+
+endcat
+
+if [ -d old ]; then
+	rm -rf old
+fi
+mkdir old
+
+#
+# process each source file
+#
+echo "Generating diffs"
+for i in $FILES
+do
+	#
+	# get the old version of the file
+	#
+	co -q -p -r$version $i > old/$i 2>/tmp/ttt
+
+	#
+	# if the file hasn't changed, skip it
+	#
+	if cmp -s $i old/$i ; then
+		continue;
+	fi
+
+	#
+	# name the file
+	#
+	echo "\nIndex: $i" >> $PATCH
+
+	#
+	# if there is an old version, add the prerequisite
+	#
+	if [ -s old/$i ]; then
+		
+		#
+		# get old rcs id
+		#
+		PREREQ="`rlog -r$version $i |
+			 grep '^revision' | cut -f2 -d' ' 2>/dev/null`"
+
+		#
+		# if the id is in the file, add the prereq line
+		#
+		if fgrep "$PREREQ" old/$i > /dev/null 2>&1; then
+
+			echo "Prereq: $PREREQ" >> $PATCH
+
+		elif [ "$i" = "patchlevel" ]; then
+
+			echo "Prereq: $oldlevel" >> $PATCH
+
+		fi
+	fi
+
+	# 
+	# diff the file to generate the patch stuff
+	#
+	diff -c old/$i $i >> $PATCH
+
+
+done
+
+#
+# and now to check to verify that the patchfile correctly updates the
+# old code to the current version.  First apply the patch to the old
+# code and then see if there are any differences between the files.
+#
+echo "Verifying patch..."
+(
+	cd old
+	patch < ../$PATCH > /dev/null 2>&1
+)
+
+FILES="`
+for i in $*
+do
+	if cmp -s $i old/$i; then
+		continue;
+	fi
+
+	echo file $i did not patch correctly > /dev/tty
+	echo $i
+done `"
+
+if [ ! -z "$FILES" ]; then
+
+	echo "patch file did not build correctly($FILES)."
+	exit 1
+
+fi
+
+rm -rf old
+
+echo "Verification complete"
+
+#
+# and now freeze all the files at this patchlevel, and checkout the current
+# versions of the files
+#
+
+echo "freezing source at MINI patch level $newlevel"
+echo "." | rcsfreeze minipatch_$newlevel  > /dev/null 2>&1 
+
+echo "$realpatch $newlevel" > $MINIDATA
+
+exit 0

@@ -1,0 +1,74 @@
+.\" (c) Copyright 1994, 1995, Microline Software, Inc.  ALL RIGHTS RESERVED
+.\"  
+.\" THIS SOFTWARE IS FURNISHED UNDER A LICENSE AND MAY BE COPIED AND USED 
+.\" ONLY IN ACCORDANCE WITH THE TERMS OF THAT LICENSE AND WITH THE INCLUSION
+.\" OF THE ABOVE COPYRIGHT NOTICE.  THIS SOFTWARE AND DOCUMENTATION, AND ITS 
+.\" COPYRIGHTS ARE OWNED BY MICROLINE SOFTWARE AND ARE PROTECTED BY UNITED
+.\" STATES COPYRIGHT LAWS AND INTERNATIONAL TREATY PROVISIONS.
+.\"  
+.\" THE INFORMATION IN THIS SOFTWARE IS SUBJECT TO CHANGE WITHOUT NOTICE
+.\" AND SHOULD NOT BE CONSTRUED AS A COMMITMENT BY MICROLINE SOFTWARE.
+.\" 
+.\" THIS SOFTWARE AND REFERENCE MATERIALS ARE PROVIDED "AS IS" WITHOUT
+.\" WARRANTY AS TO THEIR PERFORMANCE, MERCHANTABILITY, FITNESS FOR ANY 
+.\" PARTICULAR PURPOSE, OR AGAINST INFRINGEMENT.  MICROLINE SOFTWARE
+.\" ASSUMES NO RESPONSIBILITY FOR THE USE OR INABILITY TO USE THIS 
+.\" SOFTWARE.
+.\" 
+.\" MICROLINE SOFTWARE SHALL NOT BE LIABLE FOR INDIRECT, SPECIAL OR
+.\" CONSEQUENTIAL DAMAGES RESULTING FROM THE USE OF THIS PRODUCT. SOME 
+.\" STATES DO NOT ALLOW THE EXCLUSION OR LIMITATION OF INCIDENTAL OR
+.\" CONSEQUENTIAL DAMAGES, SO THE ABOVE LIMITATIONS MIGHT NOT APPLY TO
+.\" YOU.
+.\" 
+.\" MICROLINE SOFTWARE SHALL HAVE NO LIABILITY OR RESPONSIBILITY FOR SOFTWARE
+.\" ALTERED, MODIFIED, OR CONVERTED BY YOU OR A THIRD PARTY, DAMAGES
+.\" RESULTING FROM ACCIDENT, ABUSE OR MISAPPLICATION, OR FOR PROBLEMS DUE
+.\" TO THE MALFUNCTION OF YOUR EQUIPMENT OR SOFTWARE NOT SUPPLIED BY
+.\" MICROLINE SOFTWARE.
+.\"   
+.\" U.S. GOVERNMENT RESTRICTED RIGHTS
+.\" This Software and documentation are provided with RESTRICTED RIGHTS.
+.\" Use, duplication or disclosure by the Government is subject to
+.\" restrictions as set forth in subparagraph (c)(1) of the Rights in
+.\" Technical Data and Computer Software Clause at DFARS 252.227-7013 or
+.\" subparagraphs (c)(1)(ii) and (2) of Commercial Computer Software -
+.\" Restricted Rights at 48 CFR 52.227-19, as applicable, supplier is
+.\" Microline Software, 41 Sutter St Suite 1374, San Francisco, CA 94104.
+.\"
+.TH XmLGridGetSelectedRows 3X "R1" "XML1" "XML"
+.SH NAME
+XmLGridGetSelectedRows \- retrieve positions of currently selected rows
+.SH SYNTAX
+int XmLGridGetSelectedRows(\fIwidget\fP, \fIpositions\fP, \fIcount\fP)
+.br
+Widget \fIwidget\fP;
+.br
+int *\fIpositions\fP;
+.br
+int \fIcount\fP;
+.LP
+.SH ARGUMENTS
+.IP \fIwidget\fP 1i
+Grid widget ID
+.IP \fIpositions\fP 1i
+positions of content rows
+.IP \fIcount\fP 1i
+number of positions
+.SH DESCRIPTION
+Returns the \fIpositions\fP of the currently selected content rows.
+The \fIcount\fP value passed to this function must equal the number
+of currently selected rows. The number of currently selected
+rows can be found by calling XmLGridGetSelectedRowCount().
+The row positions arrays must be allocated before
+calling this function and must have enough space to hold
+the positions which will be returned.  This function does not
+allocate memory; it is the application's responsibility to
+allocate and deallocate the space used to hold the row
+positions.
+.SH RETURN VALUE
+0 is returned upon successful completion. A value of
+-1 is returned and an error message is generated if count
+does not equal the number of currently selected rows.
+.SH "SEE ALSO"
+XmLGridGetSelectedRowCount(3X)

@@ -1,0 +1,7 @@
+*.pc
+IRIX5.2_DBG.OBJ
+about.h
+authors.h
+authors2.h
+mozilla.h
+splash.h

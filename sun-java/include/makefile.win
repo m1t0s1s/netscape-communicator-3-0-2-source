@@ -1,0 +1,81 @@
+#//------------------------------------------------------------------------
+#//
+#// Makefile to deliver the java header files into the distribution area
+#//
+#//------------------------------------------------------------------------
+
+
+#//------------------------------------------------------------------------
+#//
+#// Specify the depth of the current directory relative to the
+#// root of NS
+#//
+#//------------------------------------------------------------------------
+DEPTH= ..\..
+
+
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Targets here (ie. PROGRAM, LIBRARY, DLL, ...)
+#// (these must be defined before the common makefiles are included)
+#//
+#//------------------------------------------------------------------------
+!if "$(OS_RELEASE)" == "16"
+include <CLASSF~1.MK>
+!else
+include <classfiles.mk>
+!endif
+JAVA_HEADER_FILES=$(GENERATED_HEADERS_CLASSFILES)
+
+INSTALL_DIR=$(DIST)\include\sun-java\include
+INSTALL_FILE_LIST= *.h opcodes.h
+
+GENFILES = opcodes.h opcodes.init opcodes.length opcodes.in_out
+
+
+#//------------------------------------------------------------------------
+#//
+#// Include the common makefile rules
+#//
+#//------------------------------------------------------------------------
+include <$(DEPTH)/sun-java/config/rules.mak>
+
+export:: $(GENFILES) INSTALL_FILES $(JAVA_HEADER_FILES) install_generated_files
+
+clobber::
+    $(RM_R) _gen $(GENFILES)
+
+#//
+#// Install generated header files by hand...  
+#//
+install_generated_files: _gen\*.h
+    !$(MAKE_INSTALL) $** $(INSTALL_DIR)\_gen
+
+
+opcodes.h:: opcodes.list makefile.win
+    echo "Creating opcodes.h ... "
+    $(RM) opcodes.h
+    $(AWK) -f op1.awk < opcodes.list > opcodes.h
+    echo done.
+    $(MAKE_INSTALL) opcodes.h $(INSTALL_DIR)
+
+opcodes.init: opcodes.list makefile.win
+    echo "Creating opcodes.init ... "
+    $(RM) opcodes.init
+    $(AWK) -f op2.awk < opcodes.list > opcodes.init
+    echo done.
+
+opcodes.length: opcodes.list makefile.win
+    echo "Creating opcodes.length ... "
+    $(RM) opcodes.length
+    $(AWK) -f op3.awk < opcodes.list > opcodes.length
+    echo done.
+
+opcodes.in_out: opcodes.list makefile.win
+    echo "Creating opcodes.in_out ... "
+    $(RM) opcodes.in_out
+    $(AWK) -f op4.awk < opcodes.list > opcodes.in_out
+    echo done.
+
+
+

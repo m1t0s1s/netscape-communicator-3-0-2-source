@@ -1,0 +1,7 @@
+STRINGTABLE DISCARDABLE
+BEGIN
+IDS_MOZILLA_0	"!<HEAD>\r\n<TITLE>The Book of Mozilla, 12:10</TITLE>\r\n<BODY bgcolor=""#800000"" text=""#FFFFFF"">\r\n<CENTER>\r\n<FONT size=4><I>\r\n<BR><BR><BR><BR><BR><BR><BR><BR>\r\nAnd the beast shall come forth surround"
+IDS_MOZILLA_1	"!ed by a roiling\r\n<FONT size=""+2"">cloud</FONT> of <FONT size=""+2"">vengeance.</FONT>\r\nThe house of the unbelievers shall be <FONT size=""+2"">razed</FONT>\r\nand they shall be <FONT size=""+2"">"
+IDS_MOZILLA_2	"!scorched</FONT> to the earth.\r\nTheir tags shall <FONT size=""+2"">blink</FONT> until\r\nthe end of <FONT size=""+2"">days.</FONT>\r\n\r\n<UL><UL><UL>\r\n<FONT size=6>\r\n<BR>from <B>The Book of Mozilla,<B> 1"
+IDS_MOZILLA_3	"2:10\r\n"
+END

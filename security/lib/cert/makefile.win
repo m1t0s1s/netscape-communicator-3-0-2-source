@@ -1,0 +1,86 @@
+IGNORE_MANIFEST=1
+#//------------------------------------------------------------------------
+#//
+#// Makefile to build the cert library
+#//
+#//------------------------------------------------------------------------
+
+
+#//------------------------------------------------------------------------
+#//
+#// Specify the depth of the current directory relative to the
+#// root of NS
+#//
+#//------------------------------------------------------------------------
+DEPTH= ..\..\..
+
+!ifndef MAKE_OBJ_TYPE
+MAKE_OBJ_TYPE=EXE
+!endif
+
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Make Variables here: (ie. PDFFILE, MAPFILE, ...)
+#//
+#//------------------------------------------------------------------------
+LIBNAME=cert$(MOZ_BITS)
+PDBFILE=$(LIBNAME).pdb
+
+LINCS = -I$(PUBLIC)/nspr \
+        -I$(PUBLIC)/libdbm \
+        -I$(DEPTH)\include \
+        -I$(PUBLIC)/security 
+
+#//------------------------------------------------------------------------
+#// 
+#// Define the files necessary to build the target (ie. OBJS)
+#//
+#//------------------------------------------------------------------------
+OBJS=                         \
+    .\$(OBJDIR)\alg1485.obj  \
+    .\$(OBJDIR)\certdb.obj   \
+    .\$(OBJDIR)\certhtml.obj  \
+    .\$(OBJDIR)\certinit.obj   \
+    .\$(OBJDIR)\certread.obj  \
+    .\$(OBJDIR)\certreq.obj   \
+    .\$(OBJDIR)\certv3.obj   \
+    .\$(OBJDIR)\pcertdb.obj    \
+    .\$(OBJDIR)\crl.obj    \
+    .\$(OBJDIR)\crlv2.obj    \
+    .\$(OBJDIR)\gename.obj    \
+    .\$(OBJDIR)\secname.obj   \
+    .\$(OBJDIR)\xauthkid.obj   \
+    .\$(OBJDIR)\xbsconst.obj   \
+    .\$(OBJDIR)\xcrldist.obj   \
+    .\$(OBJDIR)\certxutl.obj   \
+    .\$(OBJDIR)\polcyxtn.obj   \
+    $(NULL)
+
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Targets here (ie. PROGRAM, LIBRARY, DLL, ...)
+#// (these must be defined before the common makefiles are included)
+#//
+#//------------------------------------------------------------------------
+LIBRARY=.\$(OBJDIR)\$(LIBNAME).lib
+
+#//------------------------------------------------------------------------
+#//
+#// install headers
+#//
+#//------------------------------------------------------------------------
+INSTALL_DIR=$(PUBLIC)\security
+INSTALL_FILE_LIST=cert.h certt.h
+
+#//------------------------------------------------------------------------
+#//
+#// Include the common makefile rules
+#//
+#//------------------------------------------------------------------------
+include <$(DEPTH)/config/rules.mak>
+
+install:: $(LIBRARY)
+    $(MAKE_INSTALL) $(LIBRARY) $(DIST)\lib
+
+export:: INSTALL_FILES
+

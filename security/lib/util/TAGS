@@ -1,0 +1,385 @@
+
+alg1113.c,626
+#define PAD 13,441
+struct ATOBContextStr ATOBContextStr22,679
+static SECStatus MakeRevTable(28,812
+ATOBContext *ATOB_NewContext(45,1072
+void ATOB_DestroyContext(53,1207
+SECStatus ATOB_Begin(59,1302
+static int CopyChars(74,1548
+static int ConvertBlock(100,2122
+SECStatus ATOB_Update(133,3062
+SECStatus ATOB_End(176,4064
+struct BTOAContextStr BTOAContextStr197,4556
+BTOAContext *BTOA_NewContext(203,4651
+void BTOA_DestroyContext(211,4786
+SECStatus BTOA_Begin(217,4881
+SECStatus BTOA_Update(224,4986
+SECStatus BTOA_End(301,7123
+int BTOA_GetLength(337,7970
+BTOA_DataToAscii(360,8545
+ATOB_AsciiToData(411,9702
+
+alghmac.c,196
+#define HMAC_PAD_SIZE 6,84
+struct HMACContextStr HMACContextStr8,110
+HMAC_Destroy(16,265
+HMAC_Create(27,453
+HMAC_Begin(73,1423
+HMAC_Update(81,1585
+HMAC_Finish(87,1724
+HMAC_Clone(105,2299
+
+algrand.c,346
+struct RNGContextStr RNGContextStr26,653
+createContext(35,945
+stir(62,1502
+RNG_RandomUpdate(117,2990
+RNG_GenerateGlobalRandomBytes(130,3235
+RNG_RNGInit(136,3369
+RNG_ResetRandom(156,3786
+RNG_CreateContext(174,4035
+RNG_DestroyContext(200,4518
+RNG_Init(212,4710
+RNG_Update(220,4881
+RNG_GenerateRandomBytes(226,4991
+RNG_Reseed(252,5653
+
+derdec.c,115
+der_indefinite_length(7,98
+der_capture(73,1536
+der_decode(183,3934
+DER_Decode(494,11273
+DER_Lengths(517,11820
+
+derenc.c,92
+header_length(64,1112
+contents_length(146,3424
+der_encode(273,6355
+DER_Encode(444,10609
+
+dersubr.c,148
+DER_LengthLength(5,45
+DER_StoreHeader(27,322
+DER_SetInteger(74,1238
+DER_SetUInteger(125,2232
+DER_GetInteger(174,3230
+DER_GetUInteger(202,3828
+
+dertime.c,468
+#define HIDIGIT(HIDIGIT8,118
+#define LODIGIT(LODIGIT9,156
+#define C_SINGLE_QUOTE 11,195
+#define DIGITHI(DIGITHI13,226
+#define DIGITLO(DIGITLO14,268
+#define ISDIGIT(ISDIGIT15,303
+#define CAPTURE(CAPTURE16,359
+#define SECMIN 22,524
+#define SECHOUR 23,554
+#define SECDAY 24,583
+#define SECYEAR 25,612
+DER_TimeToUTCTime(44,1013
+DER_AsciiToTime(104,2689
+DER_UTCTimeToTime(196,5333
+DER_TimeToGeneralizedTime(210,5818
+DER_GeneralizedTimeToTime(270,7547
+
+secalgid.c,168
+SECOID_GetAlgorithmTag(30,774
+SECOID_SetAlgorithmID(39,957
+SECOID_CopyAlgorithmID(78,1946
+void SECOID_DestroyAlgorithmID(88,2231
+SECOID_CompareAlgorithmID(97,2474
+
+secasn1d.c,2025
+} sec_asn1d_parse_place;sec_asn1d_parse_place40,841
+} sec_asn1d_parse_status;sec_asn1d_parse_status47,941
+struct subitem subitem49,968
+typedef struct sec_asn1d_state_struct sec_asn1d_state_struct55,1092
+} sec_asn1d_state;sec_asn1d_state107,2855
+#define IS_HIGH_TAG_NUMBER(IS_HIGH_TAG_NUMBER109,2875
+#define LAST_TAG_NUMBER_BYTE(LAST_TAG_NUMBER_BYTE110,2939
+#define TAG_NUMBER_BITS	111,2991
+#define TAG_NUMBER_MASK	112,3018
+#define LENGTH_IS_SHORT_FORM(LENGTH_IS_SHORT_FORM114,3049
+#define LONG_FORM_LENGTH(LONG_FORM_LENGTH115,3101
+#define HIGH_BITS(HIGH_BITS117,3143
+struct sec_DecoderContext_struct sec_DecoderContext_struct126,3464
+sec_asn1d_alloc 159,4531
+sec_asn1d_zalloc 183,4900
+sec_asn1d_push_state 195,5119
+sec_asn1d_scrub_state 236,6045
+sec_asn1d_notify_before 251,6378
+sec_asn1d_notify_after 263,6646
+sec_asn1d_init_state_based_on_template 275,6927
+sec_asn1d_parse_identifier 477,13357
+sec_asn1d_parse_more_identifier 536,15132
+sec_asn1d_confirm_identifier 581,16098
+sec_asn1d_parse_length 606,16698
+sec_asn1d_parse_more_length 642,17388
+sec_asn1d_prepare_for_contents 683,18180
+sec_asn1d_free_child 1022,28418
+sec_asn1d_reuse_encoding 1042,28912
+sec_asn1d_parse_leaf 1126,30817
+sec_asn1d_parse_bit_string 1153,31346
+sec_asn1d_parse_more_bit_string 1182,31914
+sec_asn1d_add_to_subitems 1202,32409
+sec_asn1d_next_substring 1254,33777
+sec_asn1d_next_in_group 1320,35232
+sec_asn1d_next_in_sequence 1384,36669
+sec_asn1d_concat_substrings 1507,40007
+sec_asn1d_concat_group 1590,42240
+sec_asn1d_absorb_child 1646,43491
+sec_asn1d_prepare_for_end_of_contents 1725,46120
+sec_asn1d_parse_end_of_contents 1739,46408
+sec_asn1d_pop_state 1778,47140
+SEC_ASN1DecoderUpdate 1809,47878
+SEC_ASN1DecoderFinish 2021,53994
+SEC_ASN1DecoderStart 2043,54351
+SEC_ASN1DecoderSetFilterProc 2084,55281
+SEC_ASN1DecoderClearFilterProc 2098,55582
+SEC_ASN1DecoderSetNotifyProc 2110,55828
+SEC_ASN1DecoderClearNotifyProc 2119,55992
+SEC_ASN1Decode 2127,56161
+SEC_ASN1DecodeItem 2149,56592
+
+secasn1e.c,1556
+} sec_asn1e_parse_place;sec_asn1e_parse_place23,475
+} sec_asn1e_parse_status;sec_asn1e_parse_status30,575
+typedef struct sec_asn1e_state_struct sec_asn1e_state_struct32,602
+} sec_asn1e_state;sec_asn1e_state56,1389
+struct sec_EncoderContext_struct sec_EncoderContext_struct64,1677
+sec_asn1e_push_state 83,2231
+sec_asn1e_scrub_state 117,2973
+sec_asn1e_notify_before 129,3194
+sec_asn1e_notify_after 141,3460
+sec_asn1e_init_state_based_on_template 153,3739
+sec_asn1e_write_part 314,8829
+sec_asn1e_write_identifier_bytes 331,9280
+sec_asn1e_write_length_bytes 340,9482
+sec_asn1e_write_contents_bytes 372,10083
+sec_asn1e_write_end_of_contents_bytes 380,10260
+sec_asn1e_contents_length 389,10449
+sec_asn1e_write_header 557,14918
+sec_asn1e_write_contents 693,18658
+sec_asn1e_next_in_group 810,22241
+sec_asn1e_next_in_sequence 857,23187
+sec_asn1e_after_contents 901,24072
+SEC_ASN1EncoderUpdate 928,25019
+SEC_ASN1EncoderFinish 996,26508
+SEC_ASN1EncoderStart 1007,26703
+SEC_ASN1EncoderSetNotifyProc 1049,27618
+SEC_ASN1EncoderClearNotifyProc 1058,27782
+SEC_ASN1EncoderSetStreaming 1066,27946
+SEC_ASN1EncoderClearStreaming 1075,28117
+SEC_ASN1EncoderSetTakeFromBuf 1084,28291
+SEC_ASN1EncoderClearTakeFromBuf 1094,28509
+SEC_ASN1Encode 1111,28870
+sec_asn1e_encode_item_count 1133,29427
+sec_asn1e_encode_item_store 1147,29750
+sec_asn1e_allocate_item 1168,30311
+SEC_ASN1EncodeItem 1204,31011
+sec_asn1e_integer(1236,31834
+SEC_ASN1EncodeInteger(1283,32809
+SEC_ASN1EncodeEnumerated(1289,32970
+SEC_ASN1EncodeUnsignedInteger(1296,33142
+
+secasn1u.c,61
+SEC_ASN1LengthLength 22,546
+SEC_ASN1GetSubtemplate 55,1310
+
+secitem.c,199
+SECITEM_CompareItem(15,284
+SECITEM_DupItem(36,662
+SECITEM_CopyItem(62,1094
+SECITEM_FreeItem(84,1544
+SECITEM_ZfreeItem(97,1714
+ATOB_ConvertAsciiToItem 110,1919
+BTOA_ConvertItemToAscii 120,2124
+
+secoid.c,1656
+#define dbopen 8,131
+#define MISSI	14,238
+#define MISSI_OLD_KEA_DSS	15,299
+#define MISSI_OLD_DSS	16,337
+#define MISSI_KEA_DSS	17,372
+#define MISSI_DSS	18,407
+#define NETSCAPE_OID	27,666
+#define NETSCAPE_CERT_EXT 29,766
+#define NETSCAPE_DATA_TYPE 32,838
+#define NETSCAPE_DIRECTORY 35,955
+#define NETSCAPE_POLICY 38,1033
+#define OLD_NETSCAPE	41,1121
+#define NS_CERT_EXT	42,1171
+#define NS_FILE_TYPE	43,1210
+#define NS_IMAGE_TYPE	44,1250
+#define RSADSI	47,1317
+#define PKCS	48,1367
+#define DIGEST	49,1393
+#define CIPHER	50,1421
+#define PKCS1	51,1449
+#define PKCS5	52,1474
+#define PKCS7	53,1499
+#define PKCS9	54,1524
+#define PKCS12	55,1549
+#define ALGORITHM	58,1604
+#define X500	59,1646
+#define X520_ATTRIBUTE_TYPE	60,1666
+#define X500_ALG	61,1705
+#define X500_ALG_ENCRYPTION	62,1734
+#define	ID_CE_OID 67,1846
+#define RFC1274_ATTR_TYPE 69,1876
+#define PKCS12_MODE_IDS	72,1983
+#define PKCS12_ESPVK_IDS	73,2021
+#define PKCS12_BAG_IDS	74,2059
+#define PKCS12_CERT_BAG_IDS	75,2096
+#define PKCS12_OIDS	76,2137
+#define PKCS12_PBE_IDS	77,2171
+#define PKCS12_ENVELOPING_IDS	78,2213
+#define PKCS12_SIGNATURE_IDS	79,2261
+#define ANSI_X9_ALGORITHM 83,2401
+#define VERISIGN 85,2463
+#define PKIX 86,2521
+#define PKIX_CERT_EXTENSIONS 87,2569
+#define PKIX_POLICY_QUALIFIERS 88,2606
+#define PKIX_KEY_USAGE 89,2645
+secoid_DynamicRehash(777,35192
+secoid_FindDynamic(824,36237
+secoid_FindDynamicByTag(839,36576
+SECOID_AddEntry(863,37061
+InitOIDHash(912,38377
+SECOID_FindOID(952,39091
+SECOID_FindOIDTag(985,39713
+SECOID_FindOIDByTag(997,39904
+PRBool SECOID_KnownCertExtenOID 1008,40135
+SECOID_FindOIDTagDescription(1021,40438
+
+sectime.c,258
+DER_UTCTimeToAscii(24,521
+DER_UTCDayToAscii(31,717
+CERT_CreateValidity(37,842
+CERT_CopyValidity(65,1384
+CERT_DestroyValidity(79,1719
+CERT_UTCTime2FormattedAscii 88,1849
+char *CERT_GenTime2FormattedAscii 113,2435
+DecodeUTCTime2FormattedAscii 143,3158
+
+unix_rand.c,1215
+static size_t CopyLowBits(118,5170
+#define getdtablesize(getdtablesize144,5700
+GetHighResClock(147,5761
+GiveSystemInfo(157,5949
+#define getdtablesize(getdtablesize184,6490
+GiveSystemInfo(187,6549
+GetHighResClock(207,6924
+GetHighResClock(222,7189
+GiveSystemInfo(228,7264
+#define getdtablesize(getdtablesize243,7500
+GetHighResClock(246,7561
+GiveSystemInfo(256,7759
+GiveSystemInfo(276,8149
+GetHighResClock(302,8744
+GetHighResClock(314,8949
+GiveSystemInfo(320,9024
+GetHighResClock(332,9197
+GiveSystemInfo(338,9272
+#define getdtablesize(getdtablesize356,9580
+GetHighResClock(359,9641
+GiveSystemInfo(365,9716
+GiveSystemInfo(398,10300
+static size_t GetHighResClock(431,11046
+#define SGI_CYCLECNTR_SIZE 442,11328
+#define getdtablesize(getdtablesize510,13043
+GetHighResClock(513,13104
+GiveSystemInfo(519,13179
+#define getdtablesize(getdtablesize547,13735
+GetHighResClock(550,13796
+GiveSystemInfo(560,13984
+#define getdtablesize(getdtablesize583,14414
+GetHighResClock(586,14475
+GiveSystemInfo(592,14550
+size_t RNG_GetNoise(612,14933
+#define SAFE_POPEN_MAXARGS	634,15454
+safe_popen(645,15762
+safe_pclose(721,17331
+void RNG_SystemInfoForRNG(746,17846
+void RNG_FileForRNG(825,19783
+
+secport.c,451
+PORT_Alloc(22,420
+PORT_Realloc(35,634
+PORT_ZAlloc(47,809
+PORT_Free(60,1026
+PORT_ZFree(68,1093
+PORT_AllocBlock(77,1200
+PORT_ReallocBlock(90,1426
+PORT_FreeBlock(102,1624
+PORT_Time(110,1711
+PORT_SetError(116,1760
+PORT_GetError(123,1831
+PORT_NewArena(130,1898
+PORT_ArenaAlloc(143,2142
+PORT_ArenaZAlloc(156,2336
+PORT_FreeArena(172,2604
+PORT_ArenaGrow(179,2717
+PORT_ArenaMark(189,2935
+PORT_ArenaRelease(195,3013
+PORT_ArenaStrdup(201,3110
+
+secinit.c,262
+null_hash_new_context(21,322
+null_hash_clone_context(27,386
+null_hash_begin(34,481
+null_hash_update(39,523
+null_hash_end(44,615
+null_hash_destroy_context(51,745
+md2_NewContext(58,838
+md5_NewContext(63,934
+sha1_NewContext(68,1030
+void SEC_Init(150,4098
+
+secpkcs5.c,1554
+#define DES_IV_LENGTH	15,270
+#define DES_KEY_LENGTH	16,295
+#define RC2_IV_LENGTH	17,321
+#define MD2_LENGTH	18,346
+#define MD5_LENGTH	19,369
+#define SHA1_LENGTH	20,392
+#define SEED_LENGTH 21,416
+#define SALT_LENGTH	22,441
+#define PBE_SALT_LENGTH	23,464
+sec_pkcs5_generate_random_bytes(54,1512
+sec_pkcs5_hash_algorithm(80,2039
+sec_pkcs5_iv_length(106,2817
+sec_pkcs5_key_length(132,3570
+sec_pkcs5_use_extended_pbe_parameter(159,4367
+sec_pkcs5_create_pbe_parameter(195,5855
+sec_pkcs5_compute_md5_hash(267,7458
+sec_pkcs5_compute_md2_hash(325,8933
+sec_pkcs5_compute_sha1_hash(394,10515
+typedef SECItem *(* sec_pkcs5_hash_func)sec_pkcs5_hash_func454,12022
+sec_pkcs5_compute_hash(463,12388
+sec_pkcs5_bits_needed(504,13409
+sec_pkcs5_hash_bits_generated(535,14107
+sec_pkcs5_bit_generator(563,14908
+sec_pkcs5_generate_bits(657,17379
+sec_pkcs5_compute_iv(685,18002
+sec_pkcs5_compute_key(735,19089
+sec_pkcs5_convert_algid(788,20331
+sec_pkcs5_destroy_pbe_param(836,21547
+typedef SECItem *(* pkcs5_crypto_func)pkcs5_crypto_func846,21761
+sec_pkcs5_encryption_algorithm(851,21936
+sec_pkcs5_des(879,22855
+sec_pkcs5_rc2(962,24725
+sec_pkcs5_rc4(1044,26540
+SEC_PKCS5CipherData(1087,27535
+SEC_PKCS5CreateAlgorithmID(1183,30050
+SEC_PKCS5GetPBEParameter(1258,31912
+SEC_PKCS5DestroyPBEParameter(1269,32080
+SEC_PKCS5GetIV(1278,32311
+SEC_PKCS5GetKey(1306,32829
+SEC_PKCS5GetSalt(1330,33262
+SEC_PKCS5IsAlgorithmPBEAlg(1352,33658
+SEC_PKCS5GetKeyLength(1365,33901
+SEC_PKCS5GetCryptoAlgorithm(1405,34934
+SEC_PKCS5GetPBEAlgorithm(1445,36038

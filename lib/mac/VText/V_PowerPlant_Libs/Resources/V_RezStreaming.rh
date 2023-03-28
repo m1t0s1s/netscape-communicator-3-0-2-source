@@ -1,0 +1,37 @@
+//	===========================================================================
+//	V_RezStreaming.rh
+//
+//	Copyright 1996 ViviStar Consulting.
+//	===========================================================================
+
+#ifdef	__V_RezStreaming_rh__
+#else
+	#define	__V_RezStreaming_rh__
+
+	#define	OSType	longint
+	#define	ResID	integer
+	#define	ResType	OSType
+
+	#define	StreamRefData														\
+	switch {																	\
+		case	StreamRef:														\
+			key literal longint = 'oref';	/*	streamable already in stream*/	\
+			longint;						/*	object key					*/	\
+																				\
+		case	NullRef:														\
+			key literal longint = 'null';	/*	NULL object					*/	\
+	}																			\
+
+	#define	ObjectRefData														\
+	switch {																	\
+		case	ObjectRef:														\
+			key literal longint = 'oref';	/*	object already in stream	*/	\
+			longint;						/*	object key					*/	\
+																				\
+		case	NullRef:														\
+			key literal longint = 'null';	/*	NULL object					*/	\
+	}																			\
+
+	#define	EmptyRezKey	key hex string = ""
+
+#endif

@@ -1,0 +1,12 @@
+:
+if test $# -ne 2
+then
+	echo usage: $0 file1 file2
+	exit 0
+fi
+tmp1=/tmp/cmpres$$.1
+tmp2=/tmp/cmpres$$.2
+grep -v '^!' $1 | ./xrescont -s | grep : > $tmp1
+grep -v '^!' $2 | ./xrescont -s | grep : > $tmp2
+diff -c $tmp1 $tmp2
+rm $tmp1 $tmp2

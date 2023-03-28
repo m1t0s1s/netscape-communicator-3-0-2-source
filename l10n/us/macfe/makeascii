@@ -1,0 +1,26 @@
+Locale = "us"
+
+ObjectFolder = "{resourcedir}{Locale}:"
+
+AsciiFiles =	aete.r ¶
+				artwork.r ¶
+				bookmark.r ¶
+				err.r ¶
+				forms.r ¶
+				hist.r ¶
+				macdlg.r ¶
+				mail.r ¶
+				mainview.r ¶
+				PowerPlantResources.r ¶
+				PPSemanticActions.r ¶
+				prefw.r
+				
+DerezOptions =
+
+: Ä {ObjectFolder}
+
+.r Ä .rsrc
+	Derez -skip 'ckid' {ObjectFolder}{Default}.rsrc > {Default}.r
+#	Derez -d SystemSevenOrLater -skip 'ckid' {ObjectFolder}{Default}.rsrc Types.r > {Default}.r
+
+ascii Ä			{AsciiFiles}

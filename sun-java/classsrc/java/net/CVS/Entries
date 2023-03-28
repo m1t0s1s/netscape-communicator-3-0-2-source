@@ -1,0 +1,23 @@
+/ContentHandler.java/1.2/Thu Mar  6 00:45:17 1997//TNav301_SMIME_BRANCH
+/ContentHandlerFactory.java/1.5/Thu Mar  6 00:45:17 1997//TNav301_SMIME_BRANCH
+/DatagramPacket.java/1.2/Thu Mar  6 00:45:17 1997//TNav301_SMIME_BRANCH
+/DatagramSocket.java/1.5/Thu Mar  6 00:45:17 1997//TNav301_SMIME_BRANCH
+/InetAddress.java/1.13/Thu Mar  6 00:45:19 1997//TNav301_SMIME_BRANCH
+/MalformedURLException.java/1.7/Thu Mar  6 00:45:19 1997//TNav301_SMIME_BRANCH
+/PlainSocketImpl.java/1.8/Thu Mar  6 00:45:19 1997//TNav301_SMIME_BRANCH
+/ProtocolException.java/1.7/Thu Mar  6 00:45:19 1997//TNav301_SMIME_BRANCH
+/ServerSocket.java/1.8/Thu Mar  6 00:45:19 1997//TNav301_SMIME_BRANCH
+/Socket.java/1.10/Thu Mar  6 00:45:20 1997//TNav301_SMIME_BRANCH
+/SocketException.java/1.7/Thu Mar  6 00:45:20 1997//TNav301_SMIME_BRANCH
+/SocketImpl.java/1.7/Thu Mar  6 00:45:20 1997//TNav301_SMIME_BRANCH
+/SocketImplFactory.java/1.6/Thu Mar  6 00:45:20 1997//TNav301_SMIME_BRANCH
+/SocketInputStream.java/1.7/Thu Mar  6 00:45:21 1997//TNav301_SMIME_BRANCH
+/SocketOutputStream.java/1.7/Thu Mar  6 00:45:21 1997//TNav301_SMIME_BRANCH
+/URL.java/1.15/Thu Mar  6 00:45:21 1997//TNav301_SMIME_BRANCH
+/URLConnection.java/1.11/Thu Mar  6 00:45:23 1997//TNav301_SMIME_BRANCH
+/URLEncoder.java/1.2/Thu Mar  6 00:45:23 1997//TNav301_SMIME_BRANCH
+/URLStreamHandler.java/1.10/Thu Mar  6 00:45:23 1997//TNav301_SMIME_BRANCH
+/URLStreamHandlerFactory.java/1.7/Thu Mar  6 00:45:23 1997//TNav301_SMIME_BRANCH
+/UnknownHostException.java/1.7/Thu Mar  6 00:45:24 1997//TNav301_SMIME_BRANCH
+/UnknownServiceException.java/1.2/Thu Mar  6 00:45:24 1997//TNav301_SMIME_BRANCH
+D

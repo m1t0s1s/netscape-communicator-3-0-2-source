@@ -1,0 +1,75 @@
+<HTML>
+<HEAD>
+<TITLE>LiveScript Check-Boxes</TITLE>
+<SCRIPT>
+msg = open("", "MessageBox", "scrollbars=yes");
+msg.document.writeln("<PRE><TITLE>LiveScript Messages</TITLE>");
+
+// XXX should test setting of name and value too
+function doClick(checkbox) {
+    msg.document.writeln("clicked on NAME " + checkbox.name +
+			 ", VALUE " + checkbox.value +
+			 ", CHECKED " + checkbox.checked);
+}
+</SCRIPT>
+</HEAD>
+
+<BODY>
+
+Here are two checkboxes, in a PRE.
+The first is named <B>checkbox1</B> and has value <CODE> 1 </CODE>.
+The second is named <B>checkbox2</B> and has value <CODE> 2 </CODE>.
+Click to verify:
+<PRE>
+<FORM>
+1: <INPUT TYPE="checkbox" NAME="checkbox1" VALUE=" 1 " ONCLICK="doClick(this)">
+2: <INPUT TYPE="checkbox" NAME="checkbox2" VALUE=" 2 " ONCLICK="doClick(this)">
+</FORM>
+</PRE>
+<P>
+
+The same checkboxes, but inside a table:
+<FORM>
+<TABLE BORDER>
+<TR>
+<TD>
+<INPUT TYPE="checkbox" NAME="checkbox1" VALUE=" 1 " ONCLICK="doClick(this)">
+<TD>
+<INPUT TYPE="checkbox" NAME="checkbox2" VALUE=" 2 " ONCLICK="doClick(this)">
+</TR>
+</TABLE>
+</FORM>
+<P>
+
+Appended below is a property dump of all forms in this document.
+
+<SCRIPT>
+function slotstr(slot) {
+    var str = "" + slot;
+    var chr = str.substring(0, 1);
+    return ("0" <= chr && chr <= "9")
+	    ? "[" + slot + "]"
+	    : "." + slot;
+}
+
+document.writeln("<XMP>");
+for (var i in document.forms) {
+    if (i == "length") continue;
+    var form = document.forms[i];
+    for (var j in form) {
+	if (j == "length") continue;
+	var element = form[j];
+	if (element == null || element == form) continue;
+	document.writeln("forms" + slotstr(i) + slotstr(j) + " is " + element);
+	for (k in element) {
+	    if (element[k] == null) continue;
+	    document.writeln("forms" + slotstr(i) + slotstr(j) + slotstr(k) +
+			     " is " + element[k]);
+	}
+    }
+}
+document.writeln("</XMP>");
+</SCRIPT>
+
+</BODY>
+</HTML>

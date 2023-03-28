@@ -1,0 +1,75 @@
+# With an ANSI libc, calling realloc with 0 is ok
+suppress par realloc
+
+# These are in Xlib, and are actually not bugs
+suppress umr ...; _X11TransSocketWritev
+suppress umr ...; _X11TransSocketWrite
+
+# R5
+suppress umr write*; ...; _XSendClientPrefix
+suppress umr write*; ...; _XReply
+suppress umr write*; ...; _XFlush
+suppress umr write*; ...; _XSend
+suppress umr EnterBindCache; _XtBindActions
+suppress umr WidgetToInfo; ...; *DropSite*
+suppress umr InsertInfo; ...; *DropSite*
+# dubious....
+suppress umr XListFonts
+suppress umr WidgetToInfo
+suppress umr RemoveInfo; DestroyInfo
+suppress umr UnregisterInfo; DestroyInfo
+suppress umr UnregisterInfo; RemoveInfo
+suppress abr strchr; _XipOpenIM
+suppress abr strncmp; _XipOpenIM
+suppress umr AddItem; APIAddItems
+suppress umr AddInternalElement; APIAddItems
+
+# This junk is all because of Motif, I think
+suppress umr ...; Get*GC; Initialize
+suppress umr ...; SetNormalGC
+suppress umr ...; GetBackgroundGC
+suppress umr ...; _XmSetDragReceiverInfo
+suppress umr _XtProcessKeyboardEvent
+suppress umr XGetGCValues; ...; XtAllocateGC
+suppress fmr ...; XmProcessTraversal
+suppress fmr GetNodeList
+suppress fmr _XimLocalFilter
+suppress umr _XimLocalFilter
+suppress umr XLookupString; _XimLocalFilter
+suppress umr QueryGeometry; XtQueryGeometry
+suppress abr _XmClipboardFindFormat
+
+# I think XmStringLength() is bogus
+#suppress abr _read_asn1_length
+
+# It looks like XmCreateOptionMenu() is pretty buggy
+# (or maybe it's my fault, but I can't see the bug.)
+#
+suppress umr position_cascade; ...; ResizeWrapper3
+suppress umr position_cascade; ...; ResizeWrapper
+suppress umr CacheArgs; ...; XmCreatePushButton
+suppress umr ImportArgs; ...; _XmPrimitiveImportArgs
+suppress umr CheckAndSetOptionCascade
+
+# This happens when resizing labels!
+suppress umr CalcEdgeValues; ...; _XtMakeGeometryRequest
+suppress umr PlaceChildren; ...; _XtMakeGeometryRequest
+
+# I think this is a Motif bug, but I don't know...
+suppress umr AddInternalElement; APIAddItems; XmListAddItems
+suppress umr AddItem; APIAddItems; XmListAddItems
+
+# These leak, and there's nothing I can do about it...
+suppress mlk ...; XmImRegister
+suppress mlk ...; XCreateIC
+suppress mlk ...; XrmGetStringDatabase
+suppress umr GetDatabase
+suppress umr XrmDestroyDatabase
+suppress umr _s_sosendxx
+suppress umr __bind
+suppress umr NET_ContainsHTML
+suppress umr putmsg; _s_sosendxx
+suppress umr _s_soreceivexx
+suppress umr HandleComposeSequence
+suppress umr _s_alloc_bufs
+suppress umr _s_synch

@@ -1,0 +1,83 @@
+IGNORE_MANIFEST=1
+#//------------------------------------------------------------------------
+#//
+#// Makefile to build the ssl library
+#//
+#//------------------------------------------------------------------------
+
+
+#//------------------------------------------------------------------------
+#//
+#// Specify the depth of the current directory relative to the
+#// root of NS
+#//
+#//------------------------------------------------------------------------
+DEPTH= ..\..\..
+
+!ifndef MAKE_OBJ_TYPE
+MAKE_OBJ_TYPE=EXE
+!endif
+
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Make Variables here: (ie. PDFFILE, MAPFILE, ...)
+#//
+#//------------------------------------------------------------------------
+LIBNAME=ssl$(MOZ_BITS)
+PDBFILE=$(LIBNAME).pdb
+
+LINCS = -I$(PUBLIC)/security \
+        -I$(DEPTH)\include \
+        -I$(PUBLIC)\util \
+        -I$(PUBLIC)\img
+
+LCFLAGS = -DEXPORT_VERSION
+
+#//------------------------------------------------------------------------
+#// 
+#// Define the files necessary to build the target (ie. OBJS)
+#//
+#//------------------------------------------------------------------------
+OBJS=                         \
+    .\$(OBJDIR)\ssl3con.obj  \
+    .\$(OBJDIR)\ssl3gthr.obj   \
+    .\$(OBJDIR)\sslauth.obj  \
+    .\$(OBJDIR)\sslcon.obj   \
+    .\$(OBJDIR)\ssldef.obj  \
+    .\$(OBJDIR)\sslgathr.obj   \
+    .\$(OBJDIR)\sslnonce.obj   \
+    .\$(OBJDIR)\sslsecur.obj    \
+    .\$(OBJDIR)\sslsnce.obj   \
+    .\$(OBJDIR)\sslsock.obj   \
+    .\$(OBJDIR)\sslsocks.obj   \
+    .\$(OBJDIR)\ssltrace.obj   \
+    $(NULL)
+
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Targets here (ie. PROGRAM, LIBRARY, DLL, ...)
+#// (these must be defined before the common makefiles are included)
+#//
+#//------------------------------------------------------------------------
+LIBRARY=.\$(OBJDIR)\$(LIBNAME).lib
+
+#//------------------------------------------------------------------------
+#//
+#// install headers
+#//
+#//------------------------------------------------------------------------
+INSTALL_DIR=$(PUBLIC)\security
+INSTALL_FILE_LIST=ssl.h sslerr.h sslproto.h
+
+#//------------------------------------------------------------------------
+#//
+#// Include the common makefile rules
+#//
+#//------------------------------------------------------------------------
+include <$(DEPTH)/config/rules.mak>
+
+install:: $(LIBRARY)
+    $(MAKE_INSTALL) $(LIBRARY) $(DIST)\lib
+
+export:: INSTALL_FILES
+

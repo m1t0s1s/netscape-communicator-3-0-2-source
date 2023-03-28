@@ -1,0 +1,15 @@
+#--Netscape Communications Corporation MIME Information
+# Do not delete the above line. It is used to identify the file type.
+
+# This file defines all of the default file extensions recognised by Netscape
+# on non-Unix platforms.  See also mime.types and mime.types-unix.
+
+####################################################################
+#                               Archives
+####################################################################
+
+exts="Z"                        type=application/x-compress     \
+desc="Compressed Data"          icon=internal-gopher-binary
+
+exts="gz"                       type=application/x-gzip         \
+desc="GNU Zip Compressed Data"  icon=internal-gopher-binary

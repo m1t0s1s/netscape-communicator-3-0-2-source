@@ -1,0 +1,24 @@
+#
+# $Id: Makefile.local,v 1.1 1996/01/31 23:25:46 dkarlton Exp $
+#
+# Makefile for local overrides of default variables
+#
+# Use this file to set and/or override any variables found
+# in the "mf/Makefile.var" file.  To override the default
+# BIN_DIR variable, you would uncomment the following line
+# or add your own line.
+#
+#BIN_DIR	= /usr/bin
+
+#
+# Add any local definetions you want pass to the compiler to DEFS_LOCAL
+# below.  This includes those items found in "config/config.h".
+#
+DEFS_LOCAL	=-DUSE_SSL
+
+#
+# Add any local libraries that your system might need to LIBS_LOCAL below.
+#
+# HPUX systems that use GNU bison need "-lPW".
+# 
+LIBS_LOCAL	=

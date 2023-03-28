@@ -1,0 +1,258 @@
+#//------------------------------------------------------------------------
+#//
+#// Makefile to build the machine independent java runtime library
+#//
+#//------------------------------------------------------------------------
+
+
+#//------------------------------------------------------------------------
+#//
+#// Specify the depth of the current directory relative to the
+#// root of NS
+#//
+#//------------------------------------------------------------------------
+DEPTH= ..\..\..
+
+MAKE_OBJ_TYPE=DLL
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Make Variables here: (ie. PDFFILE, MAPFILE, ...)
+#//
+#//------------------------------------------------------------------------
+DLLNAME=awt$(OS_RELEASE)301
+PDBFILE=$(DLLNAME).pdb
+MAPFILE=$(DLLNAME).map
+RESFILE=winawt.res
+!if "$(OS_RELEASE)" == "16"
+DEFFILE=awt$(OS_RELEASE).def
+!endif
+
+#//------------------------------------------------------------------------
+#// 
+#// Define the files necessary to build the target (ie. OBJS)
+#//
+#//------------------------------------------------------------------------
+!if "$(OS_RELEASE)" == "16"
+LONG_NAME_OBJS=                         \
+    .\$(OBJDIR)\AWT_NODL.obj            \
+    .\$(OBJDIR)\AWT_OB~1.obj            \
+    .\$(OBJDIR)\AWT_TO~1.obj            \
+    .\$(OBJDIR)\AWT_GR~1.obj            \
+    .\$(OBJDIR)\AWT_PA~1.obj            \
+    .\$(OBJDIR)\AWT_IM~2.obj            \
+    .\$(OBJDIR)\AWT_IM~1.obj            \
+    .\$(OBJDIR)\AWT_CO~2.obj            \
+    .\$(OBJDIR)\AWT_WI~1.obj            \
+    .\$(OBJDIR)\AWT_CH~1.obj            \
+    .\$(OBJDIR)\AWT_CA~1.obj            \
+    .\$(OBJDIR)\AWT_TE~2.obj            \
+    .\$(OBJDIR)\AWT_TE~1.obj            \
+    .\$(OBJDIR)\AWT_TE~3.obj            \
+    .\$(OBJDIR)\AWT_LA~1.obj			\
+    .\$(OBJDIR)\AWT_LI~1.obj			\
+    .\$(OBJDIR)\AWT_BU~1.obj            \
+    .\$(OBJDIR)\AWT_CO~1.obj	        \
+    .\$(OBJDIR)\AWT_SC~1.obj	        \
+    .\$(OBJDIR)\AWT_FR~1.obj            \
+    .\$(OBJDIR)\AWT_CO~4.obj			\
+    .\$(OBJDIR)\AWT_JA~1.obj			\
+    .\$(OBJDIR)\AWT_DI~1.obj			\
+    .\$(OBJDIR)\AWT_PA~2.obj			\
+    .\$(OBJDIR)\AWT_EV~1.obj            \
+    .\$(OBJDIR)\AWT_RE~1.obj            \
+    .\$(OBJDIR)\AWT_CO~3.obj            \
+    .\$(OBJDIR)\AWT_WC~1.obj            \
+    $(NULL)
+!else
+LONG_NAME_OBJS=                         \
+    .\$(OBJDIR)\awt_Object.obj          \
+    .\$(OBJDIR)\awt_Toolkit.obj         \
+    .\$(OBJDIR)\awt_Graphics.obj        \
+    .\$(OBJDIR)\awt_Palette.obj         \
+    .\$(OBJDIR)\awt_ImageConvert.obj    \
+    .\$(OBJDIR)\awt_Image.obj           \
+    .\$(OBJDIR)\awt_Component.obj       \
+    .\$(OBJDIR)\awt_Window.obj          \
+    .\$(OBJDIR)\awt_Child.obj           \
+    .\$(OBJDIR)\awt_Canvas.obj          \
+    .\$(OBJDIR)\awt_TextComponent.obj   \
+    .\$(OBJDIR)\awt_TextArea.obj        \
+    .\$(OBJDIR)\awt_TextField.obj       \
+    .\$(OBJDIR)\awt_Label.obj           \
+    .\$(OBJDIR)\awt_Listbox.obj         \
+    .\$(OBJDIR)\awt_Button.obj          \
+    .\$(OBJDIR)\awt_Combobox.obj        \
+    .\$(OBJDIR)\awt_Scrollbar.obj       \
+    .\$(OBJDIR)\awt_Frame.obj           \
+    .\$(OBJDIR)\awt_Container.obj       \
+    .\$(OBJDIR)\awt_Dialog.obj          \
+    .\$(OBJDIR)\awt_JavaWindow.obj      \
+    .\$(OBJDIR)\awt_Panel.obj           \
+    .\$(OBJDIR)\awt_Event.obj           \
+    .\$(OBJDIR)\awt_Resource.obj        \
+    .\$(OBJDIR)\awt_compstr.obj         \
+    .\$(OBJDIR)\awt_wcompstr.obj        \
+    $(NULL)
+!endif
+
+OBJS=                                   \
+    $(LONG_NAME_OBJS)                   \
+    .\$(OBJDIR)\awt_Menu.obj            \
+    .\$(OBJDIR)\awt_dc.obj              \
+    .\$(OBJDIR)\awt_font.obj            \
+    .\$(OBJDIR)\awt_i18n.obj            \
+    .\$(OBJDIR)\awt_vf.obj            \
+    .\$(OBJDIR)\libstubs.obj            \
+    $(NULL)
+
+!if !defined(BUILD_OPT) &&"$(OS_RELEASE)" != "16"
+OBJS=                                   \
+    .\$(OBJDIR)\awt_Debug.obj          \
+    $(OBJS)
+!endif
+
+GENERATED_JAVA_HEADERS_CLASSFILES =     \
+    java.awt.Button                     \
+    java.awt.Canvas                     \
+    java.awt.CheckboxGroup              \
+    java.awt.CheckboxMenuItem           \
+    java.awt.Checkbox                   \
+    java.awt.Choice                     \
+    java.awt.Color                      \
+    java.awt.Component                  \
+    java.awt.Dialog                     \
+    java.awt.Event                      \
+    java.awt.FileDialog                 \
+    java.awt.Font                       \
+    java.awt.FontMetrics                \
+    java.awt.Frame                      \
+    java.awt.Graphics                   \
+    java.awt.Image                      \
+    java.awt.Insets                     \
+    java.awt.Label                      \
+    java.awt.List                       \
+    java.awt.Menu                       \
+    java.awt.MenuBar                    \
+    java.awt.MenuItem                   \
+    java.awt.Rectangle                  \
+    java.awt.Scrollbar                  \
+    java.awt.TextArea                   \
+    java.awt.TextField                  \
+    java.awt.Window                     \
+    java.awt.image.ColorModel           \
+    java.awt.image.IndexColorModel      \
+    java.awt.image.DirectColorModel     \
+    java.awt.image.ImageObserver        \
+    java.awt.image.ImageConsumer        \
+    $(NULL)
+
+GENERATED_NETSCAPE_HEADERS_CLASSFILES = \
+    netscape.applet.EmbeddedAppletFrame
+
+GENERATED_SUN_HEADERS_CLASSFILES =      \
+    sun.awt.windows.WToolkit            \
+    sun.awt.windows.WComponentPeer      \
+    sun.awt.windows.WCanvasPeer         \
+    sun.awt.windows.WPanelPeer          \
+    sun.awt.windows.WContainerPeer          \
+    sun.awt.windows.WDialogPeer         \
+    sun.awt.windows.WWindowPeer         \
+    sun.awt.windows.WTextComponentPeer  \
+    sun.awt.windows.WTextAreaPeer       \
+    sun.awt.windows.WTextFieldPeer      \
+    sun.awt.windows.WLabelPeer          \
+    sun.awt.windows.WListPeer           \
+    sun.awt.windows.WScrollbarPeer      \
+    sun.awt.windows.WCheckboxPeer       \
+    sun.awt.windows.WButtonPeer         \
+    sun.awt.windows.WChoicePeer         \
+    sun.awt.windows.WFramePeer          \
+    sun.awt.windows.WMenuPeer           \
+    sun.awt.windows.WMenuBarPeer        \
+    sun.awt.windows.WMenuItemPeer       \
+    sun.awt.windows.WCheckboxMenuItemPeer \
+    sun.awt.image.ImageRepresentation   \
+    sun.awt.windows.WFontMetrics        \
+    sun.awt.image.OffScreenImageSource  \
+    sun.awt.windows.WGraphics           \
+    sun.awt.windows.WImage \
+    $(NULL)
+
+GENERATED_STUBS_CLASSFILES =            \
+    sun.awt.windows.WToolkit            \
+    sun.awt.windows.WComponentPeer      \
+    sun.awt.windows.WCanvasPeer         \
+    sun.awt.windows.WPanelPeer          \
+    sun.awt.windows.WDialogPeer         \
+    sun.awt.windows.WWindowPeer         \
+    sun.awt.windows.WContainerPeer          \
+    sun.awt.windows.WTextComponentPeer  \
+    sun.awt.windows.WTextAreaPeer       \
+    sun.awt.windows.WTextFieldPeer      \
+    sun.awt.windows.WLabelPeer          \
+    sun.awt.windows.WListPeer           \
+    sun.awt.windows.WScrollbarPeer      \
+    sun.awt.windows.WCheckboxPeer       \
+    sun.awt.windows.WButtonPeer         \
+    sun.awt.windows.WChoicePeer         \
+    sun.awt.windows.WFramePeer          \
+    sun.awt.windows.WMenuPeer           \
+    sun.awt.windows.WMenuBarPeer        \
+    sun.awt.windows.WMenuItemPeer       \
+    sun.awt.windows.WCheckboxMenuItemPeer \
+    sun.awt.windows.WFontMetrics        \
+    sun.awt.windows.WGraphics           \
+    sun.awt.windows.WImage \
+    sun.awt.image.ImageRepresentation   \
+    sun.awt.image.OffScreenImageSource  \
+    java.awt.Font                       \
+    $(NULL)
+
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Targets here (ie. PROGRAM, LIBRARY, DLL, ...)
+#// (these must be defined before the common makefiles are included)
+#//
+#//------------------------------------------------------------------------
+JAVA_HEADER_FILES=$(GENERATED_JAVA_HEADERS_CLASSFILES)     \
+		  $(GENERATED_SUN_HEADERS_CLASSFILES)      \
+		  $(GENERATED_NETSCAPE_HEADERS_CLASSFILES)
+JAVA_LIBSTUB_FILES=$(GENERATED_STUBS_CLASSFILES)
+
+DLL=.\$(OBJDIR)\$(DLLNAME).dll
+
+#//------------------------------------------------------------------------
+#//
+#// Define any local options for the make tools 
+#//     (ie. LCFLAGS, LLFLAGS, LLIBS, LINCS)
+#//
+#//------------------------------------------------------------------------
+LLIBS=$(LLIBS) $(LIBNSPR) $(LIBJRT)
+LINCS=$(LINCS) -I_gen
+LCFLAGS=$(LCFLAGS) -DNETSCAPE /Fr
+
+!if "$(OS_RELEASE)" != "16"
+LLFLAGS=/BASE:0x100A0000
+!endif
+
+#//------------------------------------------------------------------------
+#//
+#// Include the common makefile rules
+#//
+#//------------------------------------------------------------------------
+include <$(DEPTH)/sun-java/config/rules.mak>
+
+export:: $(JAVA_HEADER_FILES) libstubs.c $(DLL)
+    $(MAKE_INSTALL) .\$(OBJDIR)\$(DLLNAME).dll $(DIST)\bin
+    $(MAKE_INSTALL) .\$(OBJDIR)\$(DLLNAME).lib $(DIST)\lib
+
+install:: export
+
+clobber::
+    $(RM_R) libstubs.c _gen
+
+!if exist($(DEPFILE))
+!message +++ MAKE: Found local dependancies file!!
+!message 
+include <$(DEPFILE)>
+!endif

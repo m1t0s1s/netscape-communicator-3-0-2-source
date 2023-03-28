@@ -1,0 +1,170 @@
+//	===========================================================================
+//	VText_sets.rh
+//	===========================================================================
+
+#ifdef	__VText_sets_rh__
+#else
+
+	#define	__VText_sets_rh__
+
+	#include	<PP_DM_RezStreaming.rh>
+	
+	#define	fixed	longint
+
+//	---------------------------------------------------------------------------
+//	VTextView
+
+#define	VText_TextViewData														\
+		PP_SelectHandlerViewData												\
+	;	StreamRefData							/*	mTextModel				*/	\
+	;	StreamRefData							/*	mTextEngine				*/	\
+	;	Byte		independentImageWidth = 0									\
+			,		imageWidthFollowsFrame = 1									\
+
+//	---------------------------------------------------------------------------
+//	VSimpleTextView
+
+#define	VText_SimpleTextViewData												\
+		VText_TextViewData														\
+	;	Rect		defaultMargins = {4, 4, 4, 4}								\
+	;	ResID		defaultTraitsID = 0			/*	used if styleset id = 0	*/	\
+	;	ResID		defaultStyleSetID = 0										\
+	;	ResID		defaultRulerSetID = 0										\
+	;	ResID		defaultIntialTextID = 0										\
+	;	longint		defaultImageWidth = 0										\
+	;	Byte		noMultiStyle, hasMultiStyle									\
+	;	Byte		noMultiRuler, hasMultiRuler									\
+	;	Byte		noEdit, hasEdit				/*	Read/write				*/	\
+	;	Byte		noSelect, hasSelect			/*	Allow Selection			*/	\
+	;	Byte		noSelectAllOnTabSelect, hasSelectAllOnTabSelect				\
+	
+//	---------------------------------------------------------------------------
+//	styleset
+
+#define	VText_StyleSetSDataB																\
+	switch {																				\
+		case	TextTrait:					/*	TextTrait								*/	\
+				key literal integer = 0			/*	style stream TextTraits version		*/	\
+			;	integer							/*	resid of texttrait					*/	\
+			;																				\
+}
+#if	0
+		case	MacOS7:						/*	MacOS 7									*/	\
+				key literal integer = 1			/*	style stream MacOS7 version			*/	\
+			;	integer		defaultScript = 0	/*	script code for font				*/	\
+					,		smCurrentScript = -2											\
+					,		smRoman = 0														\
+			;	fill longint					/*	filler for MacOS8 locale			*/	\
+			;	pstring		defaultFont			/*	font								*/	\
+								= "Monaco"													\
+			;	fixed		defaultSize			/*	font size							*/	\
+								= 0x000c0000												\
+			;	integer		defaultRed = 0		/*	red color component					*/	\
+			;	integer		defaultGreen = 0	/*	green color component				*/	\
+			;	integer		defaultBlue = 0		/*	blue color component				*/	\
+			;	integer		defaultFace = 0		/*	font face							*/	\
+					,		normal = 0														\
+					,		bold = 1														\
+					,		italic = 2														\
+					,		underline = 4													\
+					,		outline = 8														\
+					,		shadow = 0x10													\
+					,		condense = 0x20													\
+					,		extend = 0x40													\
+			;	integer		defaultMode = 0		/*	text transfer mode					*/	\
+					,		srcCopy = 0														\
+					,		srcOr = 1														\
+					,		srcXor = 2														\
+			;																				\
+		case	MacOS8:						/*	MacOS 8		!!!	NOT YET SUPPORTED !!!	*/	\
+				key literal integer = 2			/*	style stream MacOS8 version			*/	\
+			;	integer		defaultEncoding = 0	/*	text encoding						*/	\
+					,		macRoman = 0													\
+			;	longint		defaultLocale		/*	text locale							*/	\
+								= 0x7EEEEEEE												\
+			;	pstring		defaultFont			/*	font								*/	\
+								= "Monaco"													\
+			;	fixed		defaultSize			/*	font size							*/	\
+								= 0x000c0000												\
+			;	integer		defaultRed = 0		/*	red color component					*/	\
+			;	integer		defaultGreen = 0	/*	green color component				*/	\
+			;	integer		defaultBlue = 0		/*	blue color component				*/	\
+			;	integer		defaultFace = 0		/*	font face							*/	\
+					,		normal = 0														\
+					,		bold = 1														\
+					,		italic = 2														\
+					,		underline = 4													\
+					,		outline = 8														\
+					,		shadow = 0x10													\
+					,		condense = 0x20													\
+					,		extend = 0x40													\
+			;	integer		defaultMode = 0		/*	text transfer mode					*/	\
+					,		srcCopy = 0														\
+					,		srcOr = 1														\
+					,		srcXor = 2														\
+			;																				\
+	}
+#endif
+
+#define	VText_StyleSetSDataO																\
+		StreamRefData							/*	super model							*/	\
+	;	StreamRefData							/*	parent style						*/	
+
+//	---------------------------------------------------------------------------
+//	tab
+
+#define	VText_TabSDataB																		\
+		integer		defaultVersion = 1			/*	tab stream version number			*/	\
+	;	OSType		defaultTabOrientation		/*	tab orientation						*/	\
+						 		= kVTextTabLeading											\
+	;	fixed		defaultTabPosition			/*	tab indent from ruler begin			*/	\
+								 = 0x00180000												\
+	;	fixed		defaultTabRepeat			/*	tab repeats every x units			*/	\
+								 = 0x00180000												\
+			,		noTabRepeat = 0															\
+	;	integer		defaultAligner = '.'			/*	alignment char (16 bit)		*/	
+
+//	---------------------------------------------------------------------------
+//	rulerset
+
+#define	VText_RulerSetSDataB																\
+		integer		defaultVersion = 1			/*	ruler stream version number			*/	\
+	;	OSType		defaultRulerJustification	/*	ruler justifcation					*/	\
+								= kVTextRulerLeading										\
+	;	OSType		defaultRulerOrientation		/*	ruler direction						*/	\
+								= kVTextLeftToRight											\
+	;	fixed		defaultBegin = 0			/*	ruler begin from parent begin		*/	\
+	;	fixed		defaultFirstBegin = 0		/*	ruler first begin offset from begin	*/	\
+	;	fixed		defaultEnd = 0				/*	ruler end offset from parent end	*/	\
+	;	pstring		noName = ""					/*	ruler name							*/	\
+	;	integer		= $$CountOf(Tabs)														\
+	;	array Tabs {																		\
+			switch	{																		\
+				case TabData:																\
+						EmptyRezKey															\
+					;	VText_TabSDataB														\
+					;																		\
+			};																				\
+		}
+
+#define	VText_RulerSetSDataO																\
+		StreamRefData							/*	super model							*/	\
+	;	StreamRefData							/*	parent ruler						*/
+	
+//	---------------------------------------------------------------------------
+//	text menu attachments
+
+#define	VText_FontMenuAttachmentData									\
+		PP_AttachmentData												\
+	;	integer		defaultMenuID = kVText_MENU_ID_Font					\
+
+	
+#define	VText_SizeMenuAttachmentData									\
+		PP_AttachmentData												\
+	;	integer		defaultMenuID = kVText_MENU_ID_Size					\
+	
+#define	VText_StyleMenuAttachmentData									\
+		PP_AttachmentData												\
+	;	integer		defaultMenuID = kVText_MENU_ID_Style				\
+
+#endif

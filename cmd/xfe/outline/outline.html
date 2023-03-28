@@ -1,0 +1,79 @@
+<HEAD>
+  <xBASE HREF="http://www.ii.uib.no/~torgeir/work/outline.html">
+  <TITLE>Outline Widget</TITLE>
+  <LINK REV="MADE" HREF="mailto:torgeir@ii.uib.no">
+</HEAD><BODY>
+
+<h1>The Outline Widget</h1>
+
+<h5>originally found at 
+<A HREF="http://www.ii.uib.no/~torgeir/work/outline.html">
+http://www.ii.uib.no/~torgeir/work/outline.html</A></H5>
+
+<p align=center><img src="outline.jpg" alt="[another image of the widget]">
+
+ 
+<p>The Outline Widget is something I'm working on when I'm not busy doing anything
+else; hence, it's a slow project. It is currently in alpha state (v0.1.1alpha). I'd
+prefer feedback on the usability on this code, so please go ahead and download it.
+
+<p>It is really two widgets, that together form the basis for multilevel outlines. The
+advantage of using two widgets instead of a huge, complex tree-like widget becomes
+apparent when there is need for a flexible layout scheme with different types of
+outlines.  
+
+<p>The outline widget is a manager widget, not unlike a simple column manager. In
+addition to manage children, it draws an outline.
+
+<p align=center><img src="outline2.gif" alt="[the basic outline widget]">
+
+<p>The other widget, the handle widget, manages a handle, a label, and an outline
+widget. It enables collapsing and expanding, by unmanaging and managing its outline
+widget. It manages children left to right, so having multiple children is possible.
+
+<p>A typical example of a handle widget would be a toggle button, or an arrow button
+that changes its direction depending on the state of the outlineHandle (collapsed |
+expanded).
+
+<p>I'm currently working on a folder widget which uses the outline widget to display
+the contents of a folder (directory). This widget is not subclassed from the handle
+widget, but is similar in design. It will be available in the 0.2alpha release.
+
+<h2>Bugs</h2>
+
+<ol>
+
+<li>The handle widget does not correctly calculate child geometry.</li>
+
+<li>Recalculating the layout implies a total redraw for the outline.</li>
+
+</ol>
+
+<h2>Todo</h2>
+
+<ol>
+
+<li>Implement proper navigation in multilevel outlines.</li>
+
+<li>Implement XmNpacking support (XmPACK_TIGHT and XmPACK_NONE).
+
+<li>Add code to simplify the creation of multilevel outlines.</li>
+
+<li>Athena compatibility.</li>
+
+</ol>
+
+<p align=center><img src="outline3.gif" alt="[the outline again]"></p>
+
+<p>This is alpha software. Now you are warned. The sources are available <a
+href="outline.tar.gz">here</a>. Note that this file will untar into the current
+directory.</p>
+
+<p>The sources are also available at ftp.x.org in the /contrib/widgets/motif area as
+outline.tar.gz.</p>
+
+<HR>
+
+<ADDRESS><A HREF="http://www.ii.uib.no/~torgeir/">torgeir@ii.uib.no</A></ADDRESS>
+
+</BODY>

@@ -1,0 +1,501 @@
+
+pk11cert.c,1596
+#define PK11_SEARCH_CHUNKSIZE 26,518
+PK11_GetAttributes(33,683
+static int toHex(92,2147
+#define MAX_CERT_ID 93,2215
+#define DEFAULT_STRING 94,2237
+pk11_buildNickname(96,2285
+pk11_FindObjectByTemplate(151,3835
+PK11_MatchItem(185,4862
+PK11_MakeCertFromHandle(227,6085
+PK11_GetCertFromPrivateKey(315,8383
+PK11_NumberObjectsFor(347,9177
+typedef struct pk11CertCallbackStr pk11CertCallbackStr382,10045
+pk11_DoCerts(391,10250
+typedef struct pk11KeyCallbackStr pk11KeyCallbackStr415,10712
+pk11_DoKeys(425,10922
+typedef struct pk11TraverseSlotStr pk11TraverseSlotStr447,11436
+PK11_TraverseSlot(458,11709
+typedef struct pk11OldCertCallbackStr pk11OldCertCallbackStr521,13354
+pk11_SaveCert(527,13514
+pk11_ExtractCertsFromSlot(549,14046
+pk11_TraverseAllSlots(586,14956
+PK11_TraverseSlotCerts(638,16427
+PK11_FindObjectFromNickname(662,17192
+PK11_FindCertFromNickname(740,19580
+PK11_GetPubIndexKeyID(758,20145
+pk11_mkcertKeyID(783,20734
+PK11_ImportCert(839,22014
+PK11_FindPrivateKeyFromCert(918,24463
+pk11_FindPrivateKeyFromCertID(962,25702
+PK11_KeyForCertExists(983,26390
+PK11_ImportCertForKey(1048,28153
+pk11_FindCertObjectByTemplate(1067,28566
+PK11_FindCertByIssuerAndSN(1133,30320
+PK11_FindObjectForCert(1163,31227
+PK11_FindKeyByAnyCert(1191,32019
+PK11_FindKeyByKeyID(1213,32618
+PK11_NumberCertsForCertSubject(1230,33049
+PK11_TraverseCertsForSubject(1254,33707
+PK11_FindCertFromDERCert(1287,34723
+PK11_FindCertFromDERSubjectAndNickname(1327,35819
+pk11_findKeyObjectByDERCert(1372,37114
+PK11_FindKeyByDERCert(1403,37736
+PK11_ImportCertForKeyToSlot(1420,38125
+
+pk11err.c,91
+#define MAPERROR(MAPERROR31,887
+PK11_MapError(37,980
+#define MAPERROR(MAPERROR40,1022
+
+pk11fips.c,2709
+#define NETSCAPE_SLOT_ID 32,1304
+#define PRIVATE_KEY_SLOT_ID 33,1331
+PK11_ConfigureFIPS(39,1397
+static CK_RV pk11_fipsCheck(57,1868
+#define PK11_FIPSCHECK(PK11_FIPSCHECK66,2038
+#define PK11_FIPSFATALCHECK(PK11_FIPSFATALCHECK70,2136
+#define __PASTE(__PASTE73,2214
+#define CK_EXTERN 82,2386
+#define CK_FUNC(CK_FUNC83,2405
+#define _CK_RV 84,2452
+#define CK_NEED_ARG_LIST 85,2473
+#define CK_EXTERN 98,2725
+#define CK_FUNC(CK_FUNC99,2744
+#define _CK_RV100,2783
+ CK_RV FC_GetFunctionList(120,3107
+  CK_RV FC_Initialize(127,3286
+CK_RV FC_Finalize 149,3784
+ CK_RV  FC_GetInfo(155,3926
+ CK_RV FC_GetSlotList(160,4057
+ CK_RV FC_GetSlotInfo(166,4300
+ CK_RV FC_GetTokenInfo(192,4900
+ CK_RV FC_GetMechanismList(209,5344
+ CK_RV FC_GetMechanismInfo(218,5657
+ CK_RV FC_InitToken(226,5887
+ CK_RV FC_InitPIN(233,6122
+ CK_RV FC_SetPIN(241,6380
+ CK_RV FC_OpenSession(249,6719
+ CK_RV FC_CloseSession(257,7031
+ CK_RV FC_CloseAllSessions 263,7184
+ CK_RV FC_GetSessionInfo(269,7339
+ CK_RV FC_Login(287,7814
+ CK_RV FC_Logout(310,8420
+ CK_RV FC_CreateObject(321,8637
+ CK_RV FC_CopyObject(333,8941
+ CK_RV FC_DestroyObject(342,9251
+ CK_RV FC_GetObjectSize(350,9469
+ CK_RV FC_GetAttributeValue(358,9738
+ CK_RV FC_SetAttributeValue 366,10039
+ CK_RV FC_FindObjectsInit(376,10366
+ CK_RV FC_FindObjects(385,10691
+ CK_RV FC_EncryptInit(399,11093
+ CK_RV FC_Encrypt 406,11320
+ CK_RV FC_EncryptUpdate(416,11669
+ CK_RV FC_EncryptFinal(426,12024
+ CK_RV FC_DecryptInit(439,12393
+ CK_RV FC_Decrypt(446,12637
+ CK_RV FC_DecryptUpdate(456,12990
+ CK_RV FC_DecryptFinal(466,13352
+ CK_RV FC_DigestInit(478,13697
+ CK_RV FC_Digest(486,13910
+ CK_RV FC_DigestUpdate(495,14233
+ CK_RV FC_DigestFinal(503,14491
+ CK_RV FC_SignInit(517,14960
+ CK_RV FC_Sign(527,15327
+ CK_RV FC_SignUpdate(538,15758
+ CK_RV FC_SignFinal(547,16028
+ CK_RV FC_SignRecoverInit(559,16481
+ CK_RV FC_SignRecover(569,16839
+ CK_RV FC_VerifyInit(582,17346
+ CK_RV FC_Verify(592,17704
+ CK_RV FC_VerifyUpdate(603,18154
+ CK_RV FC_VerifyFinal(612,18429
+ CK_RV FC_VerifyRecoverInit(625,18879
+ CK_RV FC_VerifyRecover(635,19245
+ CK_RV FC_GenerateKey(648,19666
+ CK_RV FC_GenerateKeyPair 658,20025
+ CK_RV FC_WrapKey(671,20600
+ CK_RV FC_UnwrapKey(682,21004
+ CK_RV FC_DeriveKey(694,21496
+ CK_RV FC_SeedRandom(709,21996
+ CK_RV FC_GenerateRandom(718,22219
+ CK_RV FC_GetFunctionStatus(727,22530
+ CK_RV FC_CancelFunction(734,22718
+CK_RV FC_GetOperationState(745,23015
+CK_RV FC_SetOperationState(754,23343
+CK_RV FC_FindObjectsFinal(763,23770
+CK_RV FC_DigestEncryptUpdate(773,24033
+CK_RV FC_DecryptDigestUpdate(784,24428
+CK_RV FC_SignEncryptUpdate(795,24825
+CK_RV FC_DecryptVerifyUpdate(806,25211
+CK_RV FC_DigestKey(819,25660
+
+pk11load.c,56
+SECMOD_LoadModule(18,346
+SECMOD_UnloadModule(148,3723
+
+pk11slot.c,2845
+} pk11MechanismData;pk11MechanismData67,1772
+static struct PK11GlobalStruct PK11GlobalStruct86,2606
+PK11_NewSlotList(100,2998
+pk11_FreeListElement(123,3426
+PK11_FreeSlotList(142,3865
+PK11_AddSlotToList(158,4200
+PK11_DeleteSlotFromList(180,4772
+PK11_GetFirstSafe(195,5313
+PK11_GetNextSafe(211,5807
+PK11_FindSlotElement(234,6534
+PK11_NewSlotInfo(251,6980
+PK11_ReferenceSlot(292,7984
+PK11_DestroySlot(301,8216
+PK11_FreeSlot(331,9005
+pk11_CheckPassword(350,9532
+PK11_CheckUserPassword(380,10331
+PK11_Logout(408,11056
+void PK11_StartAuthTransaction(420,11382
+void PK11_EndAuthTransaction(425,11488
+PK11_HandlePasswordCheck(435,11688
+PK11_SlotDBUpdate(461,12355
+PK11_SetSlotPWValues(469,12482
+PK11_GetSlotPWValues(480,12760
+CK_RV pk11_notify(497,13256
+CK_SESSION_HANDLE PK11_GetRWSession(506,13408
+PK11_RestoreROSession(538,14321
+PK11_CheckSSOPassword(551,14735
+PK11_VerifyPW(586,15700
+PK11_InitPin(599,15943
+PK11_ChangePW(639,16982
+pk11_GetPassword(668,17657
+PK11_SetPasswordFunc(674,17815
+PK11_DoPassword(687,18246
+void PK11_LogoutAll(714,19063
+pk11_initSlotList(738,19785
+PK11_InitSlotLists(749,19993
+PK11_GetSlotList(762,20393
+PK11_LoadSlotList(797,21203
+PK11_ClearSlotList(841,22323
+PK11_MakeString(870,23129
+PK11_VerifyMechanism(898,23809
+#define MAX_MECH_LIST_SIZE 947,25402
+PK11_VerifySlotMechanisms(949,25485
+pk11_CheckVerifyTest(1022,27481
+PK11_InitToken(1041,27952
+PK11_InitSlot(1109,30140
+PK11_IsPresent(1167,32167
+PK11_IsDisabled(1190,32670
+PK11_GetDisabledReason(1196,32757
+PRBool PK11_NeedPWInit(1205,33039
+PK11_IsReadOnly(1220,33431
+PK11_IsInternal(1225,33506
+PK11_NeedLogin(1230,33583
+PK11_GetTokenName(1236,33659
+ PK11_GetSlotName(1241,33739
+PK11_GetSlotInfo(1246,33821
+PK11_GetTokenInfo(1257,34046
+PK11_NeedUserInit(1266,34261
+PK11_GetInternalKeySlot(1271,34377
+PK11_GetInternalSlot(1276,34493
+PK11_IsLoggedIn(1285,34742
+PK11_DoesMechanism(1334,35996
+PK11_GetAllTokens(1377,37257
+PK11_GetPrivateKeyTokens(1408,38140
+PK11_GetBestSlot(1445,39159
+pk11_lookup(1512,41166
+PK11_AddMechanismEntry(1531,41697
+PK11_GetKeyType(1566,42674
+PK11_GetKeyGen(1631,44211
+PK11_GetBlockSize(1703,46154
+PK11_GetIVLength(1759,47591
+PK11_ParamFromIV(1816,49137
+typedef struct sec_rc2cbcParameterStr sec_rc2cbcParameterStr1889,51081
+} sec_rc2cbcParameter;sec_rc2cbcParameter1892,51170
+static unsigned char  rc2_map(1907,51707
+static unsigned long  rc2_unmap(1920,51948
+PK11_ParamFromAlgid(1932,52202
+PK11_GenerateRandom(2146,57817
+pk11_GenIV(2164,58227
+PK11_GenerateNewParam(2195,58832
+PK11_ParamToAlgid(2287,61016
+PK11_AlgtagToMechanism(2422,64732
+PK11_BlockData(2433,64982
+PK11_DestroyObject(2453,65450
+PK11_DestroyTokenObject(2464,65686
+PK11_ReadAttribute(2482,66103
+pk11_MapPBEMechanismTypeToAlgtag(2514,66973
+PK11_MapPBEMechanismToCryptoMechanism(2543,68040
+
+pkcs11.c,4959
+#define NETSCAPE_SLOT_ID 56,1911
+#define PRIVATE_KEY_SLOT_ID 57,1938
+#define __PASTE(__PASTE60,1999
+#define CK_EXTERN78,2273
+#define CK_FUNC(CK_FUNC79,2291
+#define _CK_RV80,2319
+typedef unsigned char desKey[desKey94,2459
+struct mechanismList mechanismList190,6389
+PK11_ConfigurePKCS11(253,9269
+static SECItem *pk11_givePass(288,10223
+static void pk11_FreePrivKey(296,10422
+static void pk11_Null(300,10535
+pk11_hasNullPassword(308,10656
+pk11_NewAttribute(340,11385
+pk11_DestroyAttribute(380,12457
+pk11_FindAttribute(399,13096
+pk11_FreeAttribute(420,13648
+pk11_hasAttribute(436,14027
+void pk11_AddAttribute(450,14373
+pk11_DeleteAttribute(460,14684
+pk11_isTrue(475,15143
+pk11_nullAttribute(493,15637
+pk11_getString(513,16242
+pk11_modifyType(548,17311
+pk11_isSensitive(620,18893
+pk11_Attribute2SecItem(647,19489
+pk11_DeleteAttributeType(672,20185
+pk11_AddAttributeType(680,20431
+pk11_NewObject(697,20869
+pk11_DestroyObject(744,22010
+static PK11Object * pk11_ObjectFromHandle(801,23705
+pk11_FreeObject(831,24451
+void pk11_AddSlotObject(854,24936
+void pk11_AddObject(861,25177
+void pk11_DeleteObject(876,25599
+pk11_CopyObject(896,26362
+AddToList(930,27346
+pk11_objectMatch(949,27836
+pk11_searchObjectList(973,28465
+pk11_FreeObjectListElement(1000,29211
+pk11_FreeObjectList(1010,29450
+pk11_FreeSearch(1020,29658
+pk11_update_state(1034,29973
+pk11_update_all_states(1054,30562
+pk11_FreeContext(1071,30994
+pk11_NewSession(1083,31308
+pk11_DestroySession(1128,32477
+pk11_SessionFromHandle(1158,33290
+pk11_FreeSession(1174,33711
+pk11_forceAttribute(1195,34275
+pk11_handleDataObject(1207,34579
+pk11_handleCertObject(1228,35171
+pk11_handlePublicKeyObject(1341,38416
+} find_cert_callback_arg;find_cert_callback_arg1401,40147
+find_cert_by_pub_key(1404,40191
+pk11_handlePrivateKeyObject(1453,41389
+pk11_handleSecretKeyObject(1603,45855
+pk11_handleKeyObject(1632,46949
+pk11_handleObject(1685,48714
+pk11_importPrivateKey(1760,50954
+pk11_importCertificate(1946,56933
+SECKEYLowPublicKey *pk11_GetPubKey(2043,59932
+pk11_mkPrivKey(2110,61790
+SECKEYLowPrivateKey *pk11_GetPrivKey(2192,64430
+pk11_CheckDESKey(2233,65518
+pk11_IsWeakKey(2250,65836
+CK_RV C_GetFunctionList(2281,66514
+CK_RV C_Initialize(2288,66690
+CK_RV C_Finalize 2341,68282
+CK_RV  C_GetInfo(2349,68410
+CK_RV C_GetSlotList(2361,68825
+CK_RV C_GetSlotInfo(2372,69150
+#define CKF_THREAD_SAFE 2397,70014
+CK_RV C_GetTokenInfo(2400,70147
+CK_RV C_GetMechanismList(2466,72502
+CK_RV C_GetMechanismInfo(2499,73256
+CK_RV C_InitToken(2529,73960
+CK_RV C_InitPIN(2536,74193
+CK_RV C_SetPIN(2610,76076
+CK_RV C_OpenSession(2686,78162
+CK_RV C_CloseSession(2724,79381
+CK_RV C_CloseAllSessions 2757,80333
+CK_RV C_GetSessionInfo(2815,82148
+CK_RV C_Login(2828,82530
+CK_RV C_Logout(2922,85514
+CK_RV C_CreateObject(2955,86665
+CK_RV C_CopyObject(3006,87856
+CK_RV C_DestroyObject(3091,90248
+CK_RV C_GetObjectSize(3152,92117
+CK_RV C_GetAttributeValue(3160,92343
+CK_RV C_SetAttributeValue 3215,93988
+#define KEYDB_PW_CHECK_STRING 3301,96322
+#define KEYDB_PW_CHECK_LEN 3302,96371
+typedef struct keyNode keyNode3306,96507
+} keyNode;keyNode3311,96641
+} keyList;keyList3317,96733
+add_key_to_list(3320,96762
+add_cert_to_list(3377,98029
+decodeKeyDBGlobalSalt(3457,99968
+CK_RV C_FindObjectsInit(3480,100530
+CK_RV C_FindObjects(3659,105416
+CK_RV C_FindObjectsFinal(3689,106390
+CK_RV pk11_InitGeneric(3716,107027
+pk11_GetContext(3770,108544
+static CK_RV pk11_EncryptInit(3799,109520
+CK_RV C_EncryptInit(3936,113130
+CK_RV C_Encrypt 3942,113348
+CK_RV C_EncryptUpdate(3969,114263
+CK_RV C_EncryptFinal(3991,115057
+static CK_RV pk11_DecryptInit(4014,115699
+CK_RV C_DecryptInit(4152,119403
+CK_RV C_Decrypt(4158,119638
+CK_RV C_DecryptUpdate(4183,120483
+CK_RV C_DecryptFinal(4205,121268
+CK_RV C_DigestInit(4229,121897
+CK_RV C_Digest(4306,124020
+CK_RV C_DigestUpdate(4332,124867
+CK_RV C_DigestFinal(4347,125331
+CK_RV C_SignInit(4380,126290
+CK_RV C_Sign(4464,128930
+CK_RV C_SignUpdate(4492,129870
+CK_RV C_SignFinal(4500,130107
+CK_RV C_SignRecoverInit(4511,130517
+CK_RV C_SignRecover(4527,130986
+CK_RV C_VerifyInit(4539,131462
+CK_RV C_Verify(4611,133331
+CK_RV C_VerifyUpdate(4636,134149
+CK_RV C_VerifyFinal(4644,134389
+CK_RV C_VerifyRecoverInit(4656,134795
+CK_RV C_VerifyRecover(4713,136294
+#define MAX_KEY_LEN 4741,137150
+CK_RV C_GenerateKey(4743,137245
+CK_RV C_GenerateKeyPair 4970,143917
+CK_RV pk11_mapWrap(5274,154551
+CK_RV C_WrapKey(5277,154642
+CK_RV C_UnwrapKey(5361,157095
+CK_RV C_DeriveKey(5468,159853
+CK_RV C_SeedRandom(5481,160266
+CK_RV C_GenerateRandom(5490,160468
+CK_RV C_GetFunctionStatus(5500,160768
+CK_RV C_CancelFunction(5506,160928
+CK_RV C_GetOperationState(5512,161112
+CK_RV C_SetOperationState(5541,162139
+CK_RV C_DigestEncryptUpdate(5584,163621
+CK_RV C_DecryptDigestUpdate(5592,163925
+CK_RV C_SignEncryptUpdate(5600,164227
+CK_RV C_DecryptVerifyUpdate(5608,164524
+CK_RV C_DigestKey(5617,164885
+
+pk11db.c,1243
+SECMODModule *SECMOD_NewModule(15,366
+SECMODModuleList *SECMOD_NewModuleListElement(66,1532
+SECMODModule *SECMOD_NewInternal(79,1837
+SECMODModule *SECMOD_GetFIPSInternal(102,2432
+SECMODModule *SECMOD_DupModule(119,2770
+SECMOD_ReferenceModule(141,3247
+SECMOD_DestroyModule(153,3536
+SECMOD_SlotDestroyModule(193,4702
+SECMOD_DestroyModuleListElement(217,5536
+SECMOD_DestroyModuleList(233,5830
+static SECStatus secmod_MakeKey(241,6039
+static void secmod_FreeKey(251,6290
+typedef struct secmodDataStr secmodData;secmodData256,6373
+typedef struct secmodSlotDataStr secmodSlotData;secmodSlotData257,6414
+struct secmodDataStr secmodDataStr258,6463
+struct secmodSlotDataStr secmodSlotDataStr269,6752
+#define SECMOD_DB_VERSION_MAJOR 277,6971
+#define SECMOD_DB_VERSION_MINOR 278,7005
+#define SECMOD_PUTSHORT(SECMOD_PUTSHORT280,7040
+#define SECMOD_PUTLONG(SECMOD_PUTLONG283,7173
+#define SECMOD_GETSHORT(SECMOD_GETSHORT288,7415
+#define SECMOD_GETLONG(SECMOD_GETLONG290,7495
+static SECStatus secmod_EncodeData(298,7743
+static void secmod_FreeData(380,10339
+static SECMODModule *secmod_DecodeData(390,10487
+void SECMOD_InitDB(455,12488
+SECMOD_ReadPermDB(471,12930
+SECMOD_DeletePermDB(507,13665
+SECMOD_AddPermDB(537,14220
+
+pk11list.c,377
+#define ISREADING 12,176
+#define ISWRITING 13,196
+#define WANTWRITE 14,216
+#define ISLOCKED 15,236
+SECMODListLock *SECMOD_NewListLock(20,302
+void SECMOD_DestroyListLock(39,690
+void SECMOD_GetReadLock(50,987
+void SECMOD_ReleaseReadLock(69,1476
+void SECMOD_GetWriteLock(89,1942
+void SECMOD_ReleaseWriteLock(108,2460
+SECMOD_RemoveList(124,2827
+SECMOD_AddList(133,3018
+
+pk11skey.c,2076
+#define PAIRWISE_SECITEM_TYPE	24,498
+#define PAIRWISE_DIGEST_LENGTH	25,539
+#define PAIRWISE_MESSAGE_LENGTH	26,599
+pk11_SignedToUnsigned(32,722
+pk11_GetNewSession(49,1130
+PK11_CreateNewObject(63,1444
+PK11_CreateSymKey(87,2024
+PK11_FreeSymKey(119,2705
+PK11_ReferenceSymKey(144,3344
+PK11_ImportSymKey(156,3599
+pk11_ImportTokenPublicKey(211,5195
+PK11_ImportPublicKey(357,9976
+PK11_ExtractKeyValue(367,10298
+PK11_GetKeyData(412,11560
+PK11_ExtractPublicKey(421,11695
+PK11_MakePrivKey(660,18770
+PK11_GetKeyLength(712,20238
+PK11_GetKeyStrength(755,21657
+PK11_SignatureLen(780,22083
+PK11_GetPrivateModulusLen(809,22635
+pk11_mapSignKeyType(845,23481
+pk11_mapWrapKeyType(860,23727
+PK11_CopyKey(876,23988
+pk11_CopyToSlot(894,24505
+pk11_ForceSlot(915,25070
+PK11_KeyGen(939,25720
+PK11_HasAttributeSet(1013,27959
+pk11_PairwiseConsistencyCheck(1038,28656
+pk11_loadPrivKey(1260,35518
+PK11_GenerateKeyPair(1386,39036
+PK11_PubWrapSymKey(1618,45896
+pk11_HandWrap(1665,47124
+PK11_WrapSymKey(1718,48728
+PK11_DeriveSymKey(1807,51548
+pk11_HandUnwrap(1913,54658
+pk11_AnyUnwrapKey(1968,56268
+PK11_UnwrapSymKey(2035,58434
+PK11_PubUnwrapSymKey(2044,58769
+PK11_VerifyRecover(2060,59348
+PK11_Verify(2100,60336
+PK11_Sign(2136,61263
+PK11_PubDecryptRaw(2170,62289
+PK11_PubEncryptRaw(2205,63349
+PK11_DestroyContext(2251,64486
+pk11_saveContext(2268,65048
+pk11_restoreContext(2297,65738
+pk11_context_init(2321,66386
+static PK11Context *pk11_CreateNewContextInSlot(2370,67646
+PK11_CreateContextByRawKey(2421,69105
+PK11_CreateContextBySymKey(2456,69949
+PK11_CreateDigestContext(2482,70675
+PK11Context * PK11_CloneContext(2509,71363
+PK11_HashOK(2569,73045
+SECStatus PK11_DigestBegin(2583,73309
+PK11_HashBuf(2605,73745
+PK11_CipherOp(2645,74744
+PK11_DigestOp(2702,76183
+PK11_Finalize(2756,77482
+PK11_DigestFinal(2800,78487
+PK11_CreatePBEAlgorithmID(2852,79711
+PK11_PBEKeyGen(2863,80016
+PK11_ImportEncryptedPrivateKeyInfo(2960,82980
+PK11_ImportPrivateKeyInfo(3072,85864
+PK11_ExportPrivateKeyInfo(3232,91599
+PK11_ExportEncryptedPrivateKeyInfo(3343,94174
+
+pk11util.c,373
+void SECMOD_init(15,280
+SECMOD_GetInternalModule(65,1514
+SECMODModuleList *SECMOD_GetDefaultModuleList(72,1637
+SECMODListLock *SECMOD_GetDefaultModuleListLock(73,1705
+SECMODModule *SECMOD_FindModule(81,1864
+SECMOD_DeleteModule(103,2341
+SECMOD_DeleteInternalModule(142,3237
+SECMOD_AddModule(198,4691
+PK11SlotInfo *SECMOD_FindSlot(233,5594
+PK11_GetModInfo(253,6008

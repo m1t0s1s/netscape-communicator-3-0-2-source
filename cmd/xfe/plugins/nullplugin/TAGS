@@ -1,0 +1,28 @@
+
+npshell.c,331
+NPP_GetMIMEDescription(32,789
+NPP_GetValue(38,860
+NPP_Initialize(56,1209
+NPP_GetJavaClass(62,1267
+NPP_Shutdown(68,1313
+NPP_New(74,1347
+NPP_Destroy(120,2322
+NPP_SetWindow(152,2928
+NPP_NewStream(248,5737
+NPP_WriteReady(270,6205
+NPP_Write(282,6433
+NPP_DestroyStream(296,6690
+NPP_StreamAsFile(309,6922
+NPP_Print(318,7092
+
+stubs.c,0
+
+nullplugin.c,183
+UnmanageChild_safe 20,273
+nullPlugin_destroy_cb(26,350
+nullPlugin_cb(34,579
+showPluginDialog(66,1298
+isEqual(121,2807
+isExist(127,2895
+dupMimeType(143,3153
+addToList(152,3304

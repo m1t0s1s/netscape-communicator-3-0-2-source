@@ -1,0 +1,349 @@
+
+algdes.c,764
+typedef unsigned short int UINT2;UINT214,532
+struct DESContextStr DESContextStr16,567
+static void DES(198,10902
+static void Select 415,17307
+static void LShift1 429,17600
+static void LShift2 443,17864
+static void RShift1 461,18185
+static void RShift2 475,18442
+static void SetDESParity 494,18737
+static void DESKey(520,19437
+static SECStatus DES_Crypt(589,21491
+static SECStatus DESCBC_Encrypt(608,21875
+static SECStatus DESCBC_Decrypt(633,22333
+static SECStatus DESEDE3_Crypt(662,23080
+static SECStatus DESEDE3CBC_Encrypt(683,23528
+static SECStatus DESEDE3CBC_Decrypt(710,24039
+DESContext *DES_CreateContext(738,24780
+void DES_DestroyContext(792,26030
+SECStatus DES_Encrypt(799,26151
+SECStatus DES_Decrypt(809,26492
+DES_PadBuffer(829,27127
+
+algrc2.c,715
+typedef unsigned short int UINT2;UINT215,520
+struct RC2ContextStr RC2ContextStr17,555
+#define MAX_EFFECTIVE_KEY_BITS 31,984
+#define MIN_EFFECTIVE_KEY_BITS 35,1059
+#define ROTATE_LEFT(ROTATE_LEFT67,2683
+#define ROTATE_RIGHT(ROTATE_RIGHT68,2744
+static void ForwardMixRound 72,2836
+static void ReverseMixRound 86,3184
+static void ForwardMashRound 100,3533
+static void ReverseMashRound 110,3728
+static void RC2 121,3986
+static SECStatus RC2_Enc(165,5480
+static SECStatus RC2_Dec(179,5755
+static SECStatus RC2CBC_Enc(193,6030
+static SECStatus RC2CBC_Dec(215,6449
+RC2Context *RC2_CreateContext(243,7209
+void RC2_DestroyContext(294,8573
+SECStatus RC2_Encrypt(301,8694
+SECStatus RC2_Decrypt(315,9063
+
+algrc4.c,163
+struct RC4ContextStr RC4ContextStr13,450
+RC4_DupContext(22,598
+RC4_CreateContext(34,784
+RC4_DestroyContext(76,1583
+RC4_Encrypt(84,1690
+RC4_Decrypt(121,2448
+
+algrc5.c,1045
+typedef unsigned long UINT4;UINT413,479
+typedef UINT4 RC5_WORD;RC5_WORD14,508
+#define RC5_WORDSIZE 20,634
+#define RC5_ROTMASK 21,660
+#define MAX_RC5_ROUNDS 23,703
+#define MIN_RC5_ROUNDS 24,737
+#define MAX_RC5_KEY_BYTES 25,769
+#define MIN_RC5_KEY_BYTES 26,803
+#define MAX_RC5_VERSION 27,835
+#define RC5_VALID_WORDSIZE_1 28,870
+#define RC5_VALID_WORDSIZE_2 29,903
+#define RC5_VALID_WORDSIZE_3 30,936
+#define AUX_TABLE_WORDS 33,1006
+#define AUX_TABLE_BYTES 34,1061
+#define P32 37,1139
+#define Q32 38,1163
+#define RC5_ROTL(RC5_ROTL47,1451
+#define RC5_ROTR(RC5_ROTR50,1571
+#define RC5_LOAD_UINT4(RC5_LOAD_UINT456,1836
+#define RC5_SAVE_UINT4(RC5_SAVE_UINT460,1982
+#define RC5_LOAD_UINT4(RC5_LOAD_UINT466,2182
+#define RC5_SAVE_UINT4(RC5_SAVE_UINT467,2239
+struct RC5ContextStr RC5ContextStr70,2321
+rc5_encrypt(104,3602
+rc5_decrypt(131,4195
+rc5_enc(158,4731
+rc5_dec(172,4995
+rc5cbc_enc(186,5259
+rc5cbc_dec(208,5664
+RC5_CreateContext(231,6139
+RC5_DestroyContext(344,9126
+RC5_Encrypt(356,9331
+RC5_Decrypt(372,9767
+
+algrsa.c,758
+#define RSA_BLOCK_MIN_PAD_LEN	17,520
+#define RSA_BLOCK_FIRST_OCTET	18,553
+#define RSA_BLOCK_PRIVATE0_PAD_OCTET	19,589
+#define RSA_BLOCK_PRIVATE_PAD_OCTET	20,631
+#define RSA_BLOCK_AFTER_PAD_OCTET	21,672
+#define OAEP_SALT_LEN	23,712
+#define OAEP_PAD_LEN	24,737
+#define OAEP_PAD_OCTET	25,761
+oaep_xor_with_h1(31,872
+oaep_xor_with_h2(92,2290
+RSA_FormatOneBlock(126,3048
+RSA_FormatBlock(300,7121
+RSA_DecodeOneBlock(388,9718
+RSA_PrivateKeyOp(564,13898
+RSA_PublicKeyOp(596,14660
+RSA_Sign(625,15302
+RSA_CheckSign(656,16116
+RSA_CheckSignRecover(692,17051
+RSA_EncryptBlock(729,18028
+RSA_DecryptBlock(759,18888
+RSA_SignRaw(793,19801
+RSA_CheckSignRaw(823,20610
+RSA_CheckSignRecoverRaw(850,21320
+RSA_EncryptRaw(877,21984
+RSA_DecryptRaw(906,22835
+
+algrsaky.c,19
+RSA_NewKey(19,336
+
+secdig.c,184
+SGN_EncodeDigestInfo(52,1514
+SGN_CreateDigestInfo(58,1693
+SGN_DecodeDigestInfo(107,2705
+SGN_DestroyDigestInfo(134,3237
+SGN_CopyDigestInfo(144,3378
+SGN_CompareDigestInfo(166,3879
+
+secsign.c,246
+struct SGNContextStr SGNContextStr22,462
+SGN_NewContext(30,594
+SGN_DestroyContext(90,2312
+SGN_Begin(104,2561
+SGN_Update(135,3203
+SGN_End(146,3462
+SEC_SignData(227,5240
+SEC_SignFile(260,5866
+SEC_DerSignData(336,7545
+SGN_Digest(391,8906
+
+secvfy.c,260
+DecryptSigBlock(30,657
+struct VFYContextStr VFYContextStr84,1942
+VFY_CreateContext(96,2209
+VFY_DestroyContext(141,3148
+VFY_Begin(158,3455
+VFY_Update(189,4097
+VFY_End(200,4356
+VFY_VerifyDigest(243,5497
+VFY_VerifyData(279,6199
+SEC_VerifyFile(301,6629
+
+cmpmontg.c,137
+CMP_ConvertToMont(22,739
+CMP_ConvertFromMont(89,2568
+CMP_ComputeMontCoeff(129,3518
+CMP_MontSquare(198,5363
+CMP_MontProduct(293,8545
+
+cmpmuldv.c,469
+#define U_BIGGER_THAN_V 20,682
+#define U_SMALLER_THAN_V 21,710
+CMP_Multiply(39,1387
+CMP_Divide(95,3168
+CMP_ModularReduce(259,8009
+CMP_AppendWord(413,12497
+CMP_EstimateMSWQuotient(457,13760
+CMP_DivideTwoWordsByWord(521,15747
+CMP_DivOneAndHalfWordsByWord(571,17453
+CMP_CMPWordModularReduce(602,18379
+CMP_FullCMPWordModReduce(651,20062
+CMP_ComputeGCD(728,22308
+CMP_ComputeExtendedGCD(880,26998
+CMP_UpdateCoefficients(1105,33666
+CMP_AbsDifference(1148,34757
+
+rsa.c,141
+RSA_CreatePublicContext(29,913
+RSA_PublicUpdate(74,2378
+RSA_PublicEnd 135,4366
+RSA_Operation(151,4742
+RSA_DestroyPublicContext 198,6265
+
+cmpcnv.c,233
+CMP_OctetStringToCMPInt(20,666
+CMP_CMPIntToFixedLenOctetStr(84,2647
+CMP_CMPIntToOctetString(122,3877
+CMP_CMPIntToSignedOctetString(203,6189
+CMP_CMPWordToCMPInt(297,8674
+CMP_PowerOfTwo(314,9021
+CMP_OctetLengthOfCMPInt(346,9952
+
+crt.c,169
+RSA_CreatePrivateContext(33,1106
+RSA_PrivateUpdate(122,4168
+RSA_PrivateEnd(182,6168
+RSA_DestroyPrivateContext(199,6602
+RSA_CRT(224,7286
+BlindingMultiply(313,10586
+
+cmparith.c,134
+CMP_Move(20,608
+CMP_Compare(59,1697
+CMP_Add(106,2982
+CMP_AddCMPWord(193,5484
+CMP_Subtract(242,6777
+CMP_SubtractCMPWord(325,8965
+
+cmpmdexp.c,277
+CMP_ModExp(30,1066
+CMP_GetBitsFromWord(149,4911
+CMP_GetBitsFromCMPInt(162,5422
+CMP_GetMSBitFromWord(202,6621
+CMP_ComputeLogOfTableSize(221,6914
+CMP_InitExponentTable(243,7709
+CMP_DestructExponentTable(314,9550
+CMP_GenerateNewExponent(355,11191
+CMP_ModExpCRT(466,15174
+
+cmpvectr.c,52
+CMP_VectorMultiply(21,696
+CMP_AddInTrace(114,2997
+
+cmpmem.c,115
+CMP_Constructor(20,650
+CMP_Destructor(31,915
+CMP_realloc(47,1431
+CMP_reallocNoCopy(102,3456
+CMP_free(155,5295
+
+cmpmod.c,94
+CMP_ModAdd(20,681
+CMP_ModSubtract(74,2037
+CMP_ModMultiply(167,4749
+CMP_ModInvert(206,5726
+
+cmpspprt.c,246
+CMP_AddInPlace(21,647
+CMP_SubtractInPlace(111,3516
+CMP_ShiftLeftByCMPWords(199,5781
+CMP_ShiftLeftByBits(276,8062
+CMP_ShiftRightByCMPWords(382,10831
+CMP_ShiftRightByBits(415,11860
+CMP_RecomputeLength(475,13594
+CMP_GetOffsetOfMSB(505,14487
+
+rsakeygn.c,147
+RSA_CreateKeyGenContext 31,1038
+RSA_KeyGen(94,2988
+RSAParameters(172,5252
+SetRSAKeyGenResult(248,7425
+void RSA_DestroyKeyGenContext(340,10662
+
+cmpbits.c,93
+CMP_BitLengthOfCMPInt(19,568
+CMP_GetBit(49,1313
+CMP_ClearBit(79,2090
+CMP_SetBit(113,3019
+
+prime.c,363
+#define SIZE_OF_PRIME_ROSTER 18,534
+#define SIZE_OF_LIST_OF_PRIMES 19,571
+#define SIEVE_INCREMENTS 20,607
+#define SIEVE_STEPS 22,716
+prm_PrimeFind(50,1775
+prm_PseudoPrime(230,6984
+GeneratePrimeArray(285,8509
+prm_GeneratePrimeRoster(333,9997
+FilterCandidateRoster(401,12605
+ComputeInverse(448,13931
+ByteVectorToCMPInt(477,14575
+prm_RabinTest(518,15662
+
+dsakg.c,109
+DSA_CreateKeyGenContext(22,721
+DSA_KeyGen(123,3640
+DSA_DestroyKeyGenContext(272,8172
+DSA_NewKey(316,9373
+
+dsas.c,120
+DSASignContext *DSA_CreateSignContext(17,553
+DSA_Presign(100,2813
+DSA_Sign(171,4868
+DSA_DestroySignContext(258,7357
+
+dsav.c,87
+DSA_CreateVerifyContext(16,552
+DSA_Verify(91,2649
+DSA_DestroyVerifyContext(213,6068
+
+dsautil.c,160
+} DSA_ASN1Signature;DSA_ASN1Signature10,144
+DSAU_EncodeDerSig(21,419
+DSAU_DecodeDerSig(78,1717
+DSAU_VerifyDerSignature(143,3179
+DSAU_DerSignData(162,3583
+
+pqggen.c,202
+#define ROSTER_SIZE 15,477
+PQG_CreateParamGenContext(22,635
+PQG_ParamGen(58,1539
+PQG_DestroyParamGenContext(282,7848
+PQG_VerifyParams(292,8047
+PQG_DestroyParams(383,10092
+PQG_DupParams(390,10241
+
+fipstest.c,1869
+#define FIPS_RC2_KEY_LENGTH 23,900
+#define FIPS_RC2_ENCRYPT_LENGTH 24,967
+#define FIPS_RC2_DECRYPT_LENGTH 25,1034
+#define FIPS_RC4_KEY_LENGTH 29,1170
+#define FIPS_RC4_ENCRYPT_LENGTH 30,1237
+#define FIPS_RC4_DECRYPT_LENGTH 31,1304
+#define FIPS_DES_ENCRYPT_LENGTH 35,1440
+#define FIPS_DES_DECRYPT_LENGTH 36,1507
+#define FIPS_DES3_ENCRYPT_LENGTH 40,1643
+#define FIPS_DES3_DECRYPT_LENGTH 41,1710
+#define FIPS_MD2_HASH_MESSAGE_LENGTH 45,1846
+#define FIPS_MD5_HASH_MESSAGE_LENGTH 49,1982
+#define FIPS_SHA1_HASH_MESSAGE_LENGTH 53,2118
+#define FIPS_RSA_TYPE 57,2254
+#define FIPS_RSA_PUBLIC_EXPONENT_LENGTH 58,2311
+#define FIPS_RSA_PRIVATE_VERSION_LENGTH 59,2378
+#define FIPS_RSA_MESSAGE_LENGTH 60,2445
+#define FIPS_RSA_PRIVATE_COEFFICIENT_LENGTH 61,2512
+#define FIPS_RSA_PRIVATE_PRIME0_LENGTH 62,2579
+#define FIPS_RSA_PRIVATE_PRIME1_LENGTH 63,2646
+#define FIPS_RSA_PRIVATE_PRIME_EXPONENT0_LENGTH 64,2713
+#define FIPS_RSA_PRIVATE_PRIME_EXPONENT1_LENGTH 65,2780
+#define FIPS_RSA_PRIVATE_EXPONENT_LENGTH 66,2847
+#define FIPS_RSA_ENCRYPT_LENGTH 67,2914
+#define FIPS_RSA_DECRYPT_LENGTH 68,2981
+#define FIPS_RSA_CRYPTO_LENGTH 69,3048
+#define FIPS_RSA_SIGNATURE_LENGTH 70,3115
+#define FIPS_RSA_MODULUS_LENGTH 71,3182
+#define FIPS_DSA_TYPE 75,3318
+#define FIPS_DSA_DIGEST_LENGTH 76,3375
+#define FIPS_DSA_SUBPRIME_LENGTH 77,3442
+#define FIPS_DSA_SIGNATURE_LENGTH 78,3509
+#define FIPS_DSA_PRIME_LENGTH 79,3576
+#define FIPS_DSA_BASE_LENGTH 80,3643
+pk11_fips_RC2_PowerUpSelfTest(84,3725
+pk11_fips_RC4_PowerUpSelfTest(218,9158
+pk11_fips_DES_PowerUpSelfTest(287,11660
+pk11_fips_DES3_PowerUpSelfTest(417,16824
+pk11_fips_MD2_PowerUpSelfTest(550,22252
+pk11_fips_MD5_PowerUpSelfTest(596,23717
+pk11_fips_SHA1_PowerUpSelfTest(630,24912
+pk11_fips_RSA_PowerUpSelfTest(665,26195
+pk11_fips_DSA_PowerUpSelfTest(1093,44989
+pk11_fipsPowerUpSelfTest(1315,53871

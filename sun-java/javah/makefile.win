@@ -1,0 +1,162 @@
+#//------------------------------------------------------------------------
+#//
+#// Makefile to build JAVAH - the native method stub compiler
+#//
+#//------------------------------------------------------------------------
+
+
+#//------------------------------------------------------------------------
+#//
+#// Specify the depth of the current directory relative to the
+#// root of NS
+#//
+#//------------------------------------------------------------------------
+DEPTH= ..\..
+
+MAKE_OBJ_TYPE=EXE
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Make Variables here: (ie. PDFFILE, MAPFILE, ...)
+#//
+#//------------------------------------------------------------------------
+EXENAME=javah
+PDBFILE=$(EXENAME).pdb
+MAPFILE=$(EXENAME).map
+
+RTDIR=$(DEPTH)\sun-java\runtime
+MDDIR=$(DEPTH)\sun-java\md
+RTOBJDIR=$(RTDIR)\$(OBJDIR)
+MDOBJDIR=$(MDDIR)\$(OBJDIR)
+
+#//------------------------------------------------------------------------
+#// 
+#// Define the files necessary to build the target (ie. OBJS)
+#//
+#//------------------------------------------------------------------------
+!if "$(OS_RELEASE)" == "16"
+LONG_NAME_RUNTIME_OBJS=                         \
+    $(RTOBJDIR)\classl~1.obj                    \
+    $(RTOBJDIR)\classr~1.obj                    \
+    $(RTOBJDIR)\classr~2.obj                    \
+    $(RTOBJDIR)\runtim~1.obj                    \
+    $(NULL)
+!else
+LONG_NAME_RUNTIME_OBJS=                         \
+    $(RTOBJDIR)\classloader.obj                 \
+    $(RTOBJDIR)\classresolver.obj               \
+    $(RTOBJDIR)\classresolver_stubs.obj         \
+    $(RTOBJDIR)\runtime_stubs.obj               \
+    $(NULL)
+!endif
+
+RUNTIME_OBJS=                                   \
+    $(RTOBJDIR)\util.obj                        \
+    $(RTOBJDIR)\utf.obj                         \
+    $(RTOBJDIR)\zip.obj                         \
+    $(RTOBJDIR)\globals.obj                     \
+    $(LONG_NAME_RUNTIME_OBJS)                   \
+    $(NULL)
+
+
+!if "$(OS_RELEASE)" == "16"
+LONG_NAME_MACHINE_DEP_OBJS=                     \
+    $(MDOBJDIR)\system~1.obj                    \
+    $(NULL)
+!else
+LONG_NAME_MACHINE_DEP_OBJS=                     \
+    $(MDOBJDIR)\system_md.obj                   \
+    $(NULL)
+!endif
+
+MACHINE_DEP_OBJS=                               \
+    $(MDOBJDIR)\car_md.obj                      \
+    $(MDOBJDIR)\path_md.obj                     \
+    $(MDOBJDIR)\stubs_md.obj                    \
+    $(LONG_NAME_MACHINE_DEP_OBJS)               \
+    $(NULL)
+
+OBJS=                                           \
+    .\$(OBJDIR)\javah.obj                       \
+    $(RUNTIME_OBJS)                             \
+    $(MACHINE_DEP_OBJS)                         \
+    $(NULL)
+
+GLUE_OBJS=										\
+	.\$(OBJDIR)\jriauto.obj						\
+	$(NULL)
+
+GLUE_LIB=										\
+	.\$(OBJDIR)\libjri.lib						\
+	$(NULL)
+
+
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Targets here (ie. PROGRAM, LIBRARY, DLL, ...)
+#// (these must be defined before the common makefiles are included)
+#//
+#//------------------------------------------------------------------------
+PROGRAM=.\$(OBJDIR)\$(EXENAME).exe
+
+#//------------------------------------------------------------------------
+#//
+#// Define any local options for the make tools 
+#//     (ie. LCFLAGS, LLFLAGS, LLIBS, LINCS)
+#//
+#//------------------------------------------------------------------------
+LLIBS=$(LLIBS) $(LIBNSPR)
+
+#//------------------------------------------------------------------------
+#//
+#// Include the common makefile rules
+#//
+#//------------------------------------------------------------------------
+include <$(DEPTH)/sun-java/config/rules.mak>
+
+export:: $(PROGRAM) #$(GLUE_LIB)
+    $(MAKE_INSTALL) $(PROGRAM) $(DIST)\bin
+#    $(MAKE_INSTALL) $(GLUE_LIB) $(DIST)\lib
+
+install:: export
+
+clobber::
+	-$(RM) $(RUNTIME_OBJS)
+	-$(RM) $(MACHINE_DEP_OBJS)
+
+#//------------------------------------------------------------------------
+#//
+#// Local rules to build object files from other directories
+#//
+#//------------------------------------------------------------------------
+$(RUNTIME_OBJS):
+    echo +++ MAKE entering directory: $(RTDIR)
+    cd $(RTDIR)
+    nmake /nologo -f makefile.win MAKE_OBJ_TYPE=EXE javah_objs
+    cd ..\javah
+
+$(MACHINE_DEP_OBJS):
+    echo +++ MAKE entering directory: $(MDDIR)
+    cd $(MDDIR)
+    nmake /nologo -f makefile.win MAKE_OBJ_TYPE=EXE javah_objs
+    cd ..\javah
+
+!if "$(OS_RELEASE)" == "16"
+$(GLUE_LIB): $(GLUE_OBJS)
+    $(AR) $@ @<<$(CFGFILE)
+        -+ .\$(OBJDIR)\jriauto.obj
+<<
+    $(RANLIB) $@
+!else
+$(GLUE_LIB): $(GLUE_OBJS)
+    $(AR) @<<$(CFGFILE)
+        -NOLOGO -OUT:$@
+        $(GLUE_OBJS)
+<<
+    $(RANLIB) $@
+!endif
+
+!if exist($(DEPFILE))
+!message +++ MAKE: Found local dependancies file!!
+!message 
+include <$(DEPFILE)>
+!endif

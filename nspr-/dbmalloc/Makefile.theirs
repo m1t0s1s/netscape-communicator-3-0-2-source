@@ -1,0 +1,354 @@
+#
+# 
+#  (c) Copyright 1990, 1991, 1992 Conor P. Cahill (uunet!virtech!cpcahil).  
+# 
+#  This software may be distributed freely as long as the following conditions
+#  are met:
+#  		* the distribution, or any derivative thereof, may not be
+# 		  included as part of a commercial product
+# 		* full source code is provided including this copyright
+# 		* there is no charge for the software itself (there may be
+# 		  a minimal charge for the copying or distribution effort)
+# 		* this copyright notice is not modified or removed from any
+# 		  source file
+#
+#
+# $Id: Makefile.theirs,v 1.1 1996/06/18 03:29:10 warren Exp $
+#
+# This is the Makefile for the malloc debugging library
+#
+# NOTE: while most porting changes are made here, the malloc.h file
+#       may require hand editing (mostly the DATATYPE and SIZETYPE
+#	typedefs) because of system wierdities.
+#
+# Usefull targets:
+#
+#	all		make all programs/libs in the local directory
+#	install		install updated programs/libs
+#	frcinstall	install all programs/libs
+#	tests		build tests
+#	runtests	build and run all tests
+#	clean		clean up after yourself
+#	fullclean	clean up everything (including configure stuff)
+#
+# NOTE: there are several other targets used by myself for souce code
+# maintenance related functions.  These are probably specific to my system
+# and may not do what they are supposed to do in a different environment.
+# Therefore, unless you know what you are doing, I would suggest not running
+# them (hence why they are not documented here).
+#
+# And now, onto a few definitions that you may need to alter
+#
+# The following defines may be added as necessary to the CFLAGS definition:
+#
+# -DANSI_NULLS  	if you want to allow passing of NULL pointers to realloc
+#			and/or free (as ANSI does) even if the library is
+#			compiled by a non-ANSI compiler.
+# -DNO_ANSI_NULLS 	if you DON'T want to allow passing of NULL pointers to
+#			realloc and/or free, even if the library is compiled by
+#			an ANSI conforming compiler.
+# -DDONT_USE_ASM	don't use ASM speedups when replacing system memcpy
+#			and/or memset routines
+# -DCTYPE_SUPPORT=x	where x is one of the following
+#
+#				1 - use plain-jane ctype.h which is only valid
+#				    for the ansii character set (DEFAULT)
+#				2 - use POSIX setlocal() to setup the character
+#				    set definitions
+#				3 - use C library islower() & toupper()
+#				    functions
+#
+# NOTE: if you add any flags other than the above to the CFLAGS, you might want
+#	to add a similar arguement in the Config.flags file.  However, you
+# 	should remember that the malloc.h configuration will depend upon these
+#	settings and you could have a problem if you attempt to use the file
+#	in a compile session that doesn't include these flags.
+#
+CFLAGS=-g
+#
+# Where the code will be installed
+#
+#	DESTDIR		root for installation directory
+#	INSTDIR 	installation directory
+#	LIBINSTDIR	install directory for library
+#	INCINSTDIR	install directory for include files
+#	MANINSTDIR	manual installation directory
+#	MANINSTNAME	name to install the manual as
+#	MANINSTVER	manual install version (use malloc.3 for troff/nroff
+#			source and malloc.man for pre-formatted)
+#
+DESTDIR=
+INSTDIR=$(DESTDIR)/usr/local
+LIBINSTDIR=$(INSTDIR)/lib
+INCINSTDIR=$(INSTDIR)/debug_include
+MANINSTDIR=$(INSTDIR)/man/man3
+RANLIB=/usr/local/bin/ranlib
+MANINSTNAME=dbmalloc.3
+MANINSTVER=malloc.3
+
+#
+# miscellaneous commands
+#
+# NOTE: if you change CC to a non-K&R compiler be sure to read the 
+#       PROBLEMS file first.
+#
+CC=cc
+CPROTO=/usr/local/bin/cproto
+LINT=lint
+NROFF=nroff
+SHARCMD=makekit -p -m -nmallocshar.
+SHELL=/bin/sh
+
+LIB=libdbmalloc.a
+LINTLIB=llib-ldbmal.ln
+
+#
+# You shouldn't have to modify anything below this line
+#
+LIBSRCS=	malloc.c	\
+		datamc.c	\
+		datams.c	\
+		dgmalloc.c	\
+		fill.c		\
+		free.c		\
+		realloc.c	\
+		calloc.c	\
+		string.c	\
+		mcheck.c	\
+		mchain.c	\
+		memory.c	\
+		tostring.c	\
+		m_perror.c	\
+		m_init.c	\
+		mallopt.c	\
+		dump.c 		\
+		stack.c		\
+		xmalloc.c	\
+		xheap.c		\
+		malign.c	\
+		size.c		\
+		abort.c		\
+		leak.c	
+
+LIBOBJS=	malloc.o	\
+		datamc.o	\
+		datams.o	\
+		dgmalloc.o	\
+		fill.o		\
+		free.o		\
+		realloc.o	\
+		calloc.o	\
+		string.o	\
+		mcheck.o	\
+		mchain.o	\
+		memory.o	\
+		tostring.o	\
+		m_perror.o	\
+		m_init.o	\
+		mallopt.o	\
+		dump.o 		\
+		stack.o		\
+		xmalloc.o	\
+		xheap.o		\
+		malign.o	\
+		size.o		\
+		abort.o		\
+		leak.o	
+
+SRCS=$(LIBSRCS) testmalloc.c testmem.c testerr.c teststack.c cctest.c
+HDRS= malloc.h.org mallocin.h debug.h tostring.h
+
+BUILDFILES=malloc.man prototypes.h 
+
+MANSRCFILES=patchlevel README PROBLEMS CHANGES Buildpatch minipatch Makefile \
+	malloc.3 malloc.man $(SRCS) $(HDRS) prototypes.h \
+	Configure Config.flags Runtests testerr.base
+SRCFILES=MANIFEST $(MANSRCFILES)
+
+TESTS=testmalloc testmem testerr teststack
+
+all:	$(LIB)
+
+install: $(LIBINSTDIR)/$(LIB) $(INCINSTDIR)/malloc.h \
+	$(MANINSTDIR)/$(MANINSTNAME)
+
+frcinstall: rminstall install
+
+rminstall:
+	rm -f $(LIBINSTDIR)/$(LIB) $(INCINSTDIR)/malloc.h \
+	$(MANINSTDIR)/$(MANINSTNAME)
+
+$(LIBINSTDIR)/$(LIB): $(LIB)
+	-rm -f $@.old
+	-mv -f $@ $@.old
+	cp $? $@
+	@-if test -s $(RANLIB); then $(RANLIB) $@; \
+         else if test -s /bin/ranlib; then /bin/ranlib $@; \
+	 else if test -s /usr/bin/ranlib; then /usr/bin/ranlib $@; \
+	 else exit 0; fi; fi; fi
+	-chmod 644 $@
+	-rm -f $@.old
+
+$(INCINSTDIR)/malloc.h: malloc.h
+	-rm -f $@.old
+	-mv -f $@ $@.old
+	cp $? $@
+	-chmod 644 $@
+	-rm -f $@.old
+	
+$(MANINSTDIR)/$(MANINSTNAME): $(MANINSTVER)
+	-rm -f $@.old
+	-mv -f $@ $@.old
+	cp $? $@
+	-chmod 644 $@
+	-rm -f $@.old
+
+tests:	$(TESTS)
+
+#
+# runtests - target for building and running the tests.  Note that we 
+# run testmalloc with fill_area disabled.  This is because testmalloc is
+# a malloc exerciser and we just want to see if we broke malloc, not verify
+# that the test doesn't overwrite memory (since it doesn't).
+#
+runtests: tests
+	@echo "Running all of the test programs.  This may take a while so"
+	@echo "please be patient.  Note that you won't see any output unless"
+	@echo "a test fails....."
+	./Runtests
+
+clean:  
+	rm -f $(TESTS) pgm cctest $(LIB) *.o *.ln Runtests.out malloc.h \
+		sysdefs.h
+
+fullclean: clean
+	rm -f .configure .configure.[sO] *.O core cscope.out tags
+
+sharfile: $(SRCFILES) CHECKSUMS
+	$(SHARCMD)
+
+CHECKSUMS: $(SRCFILES)
+	echo "SYSV sums:\n" > CHECKSUMS
+	sum $(SRCFILES) >> CHECKSUMS
+	echo "\nBSD sums (generated using sum -r on SYSV system):\n" >>CHECKSUMS
+	sum -r $(SRCFILES) >> CHECKSUMS
+
+MANIFEST: $(MANSRCFILES)	
+	$(SHARCMD) -x
+	chmod -w MANIFEST
+	
+$(LIB): $(LIBOBJS)
+	ar ru $(LIB) $(LIBOBJS)
+	@-if test -s $(RANLIB); then $(RANLIB) $@; \
+         else if test -s /bin/ranlib; then /bin/ranlib $@; \
+	 else if test -s /usr/bin/ranlib; then /usr/bin/ranlib $@; \
+	 else exit 0; fi; fi; fi
+
+$(LINTLIB): $(LIBSRCS)
+	$(LINT) -x -v -o dbmal $(LIBSRCS)
+
+malloc.h: malloc.h.org Configure
+	./Configure 
+
+sysdefs.h: Configure
+	./Configure 
+
+#
+# stuff for building the nroffed version of the manual page
+#
+man:	malloc.man
+
+malloc.man: malloc.3
+	rm -f malloc.man
+	$(NROFF) -man malloc.3 | col -b > malloc.man
+
+#
+# stuff for building the test programs
+#
+testmalloc:	$(LIB) testmalloc.o
+	$(CC) $(CFLAGS) -o $@ testmalloc.o $(LIB)
+
+testmem:	$(LIB) testmem.o
+	$(CC) $(CFLAGS) -o $@ testmem.o $(LIB)
+
+teststack:	$(LIB) teststack.o
+	$(CC) $(CFLAGS) -o $@ teststack.o $(LIB)
+
+testerr:	$(LIB) testerr.o
+	$(CC) $(CFLAGS) -o $@ testerr.o $(LIB)
+
+#
+# misc stuff for source code maintenance
+#
+lint:	
+	$(LINT) $(CFLAGS) $(SRCS)
+
+proto:
+	rm -f prototypes.h
+	make prototypes.h
+
+prototypes.h: $(LIBSRCS) $(HDRS) malloc.h
+	@if [ ! -s $(CPROTO) ]; then \
+		echo "Need cproto to rebuild prototypes file";\
+		exit 1; \
+	else \
+		exit 0; \
+	fi
+	-rm -f prototypes.h
+	cp /dev/null prototypes.h
+	$(CPROTO) -Dforce_cproto_to_use_defines -D__STDC__ \
+		 -DDONT_USE_ASM -m__stdcargs -f4 $(LIBSRCS) \
+		 | sed -e "s/const/CONST/g" > prototypes.new
+	mv prototypes.new prototypes.h
+	chmod -w prototypes.h
+	
+patch: $(SRCFILES)
+	sh Buildpatch $(SRCFILES)
+
+srclist:
+	@echo $(SRCFILES)
+
+rcsclean: $(BUILDFILES)
+	-rcsclean -q $(SRCFILES)
+	-ls $(SRCFILES) 2>/dev/null > files.list
+	-rcs -i -t/dev/null `cat files.list` 2>/dev/null
+	@set -e; \
+	echo "files to be checked in: `cat files.list`"; \
+	echo "\n\tMessage: \c"; \
+	read message; \
+	echo ""; \
+	rcs -q -l `cat files.list`; \
+	ci -m"$$message" `cat files.list`; \
+	co -u $(SRCFILES)
+
+#
+# special rules for building datams.o and datamc.o
+#
+datams.o: datams.c malloc.h mallocin.h sysdefs.h
+	@rm -f datams.o; \
+	if [ -s datams.O ]; then \
+		echo "        cp datams.O $@"; \
+		cp datams.O $@; \
+	else \
+		echo "        $(CC) $(CFLAGS) -c datams.c"; \
+		$(CC) $(CFLAGS) -c datams.c; \
+	fi
+
+datamc.o: datamc.c malloc.h mallocin.h sysdefs.h
+	@rm -f datamc.o; \
+	if [ -s datamc.O ]; then \
+		echo "        cp datamc.O $@"; \
+		cp datamc.O $@; \
+	else \
+		echo "        $(CC) $(CFLAGS) -c datamc.c"; \
+		$(CC) $(CFLAGS) -c datamc.c; \
+	fi
+
+#
+# include file dependencies
+#
+$(LIBOBJS):	malloc.h mallocin.h sysdefs.h
+
+testerr.o testmalloc.o testmem.o:	malloc.h sysdefs.h
+
+tostring.o malloc.o dump.o:	tostring.h sysdefs.h

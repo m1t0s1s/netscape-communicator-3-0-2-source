@@ -1,0 +1,498 @@
+
+lm_applt.c,429
+#define IMPLEMENT_netscape_applet_MozillaAppletContext16,315
+enum applet_array_slot applet_array_slot26,550
+    APPLET_ARRAY_LENGTH 27,575
+typedef struct MochaAppletArray MochaAppletArray35,749
+} MochaAppletArray;MochaAppletArray38,835
+applet_array_get_property(41,876
+applet_array_finalize(86,2102
+lm_GetAppletArray(101,2497
+lm_ReallyReflectApplet(127,3148
+LM_ReflectApplet(190,5147
+LM_ReflectNamedApplet(270,7432
+
+lm_doc.c,1276
+enum doc_slot doc_slot27,687
+    DOC_LENGTH 28,703
+    DOC_ELEMENTS 29,733
+    DOC_FORMS 30,763
+    DOC_LINKS 31,793
+    DOC_ANCHORS 32,823
+    DOC_APPLETS 33,853
+    DOC_EMBEDS 34,883
+    DOC_IMAGES 35,913
+    DOC_TITLE 36,943
+    DOC_URL 37,973
+    DOC_REFERRER 38,1004
+    DOC_LAST_MODIFIED 39,1035
+    DOC_LOADED_DATE 40,1066
+    DOC_COOKIE 41,1097
+    DOC_DOMAIN 42,1128
+    DOC_BG_COLOR 43,1159
+    DOC_FG_COLOR 44,1190
+    DOC_LINK_COLOR 45,1221
+    DOC_VLINK_COLOR 46,1252
+    DOC_ALINK_COLOR 47,1283
+#define LO_COLOR_TYPE(LO_COLOR_TYPE75,2792
+typedef struct MochaDocument MochaDocument83,3152
+} MochaDocument;MochaDocument86,3250
+doc_get_property(89,3288
+doc_set_property(222,6714
+doc_list_properties(350,10406
+doc_resolve_name(368,10812
+doc_finalize(379,11096
+Document(394,11440
+doc_to_string(401,11582
+LM_GetBaseHrefTag(409,11789
+doc_write_stream(450,12886
+context_pathname(483,14065
+make_wysiwyg_url(508,14815
+doc_cache_converter(530,15389
+LM_WysiwygCacheConverter(577,16774
+doc_open_stream(619,17891
+doc_stream_active(750,21825
+doc_open(772,22370
+doc_close(833,24089
+doc_clear(854,24661
+doc_get_stream(876,25266
+doc_write(907,26050
+doc_writeln(948,27145
+lm_DefineDocument(984,28175
+LM_ReleaseDocument(1017,28992
+
+lm_embed.c,353
+enum embed_array_slot embed_array_slot23,495
+    EMBED_ARRAY_LENGTH 24,519
+typedef struct MochaEmbedArray MochaEmbedArray32,691
+} MochaEmbedArray;MochaEmbedArray35,776
+embed_array_get_property(38,816
+embed_array_finalize(81,2011
+lm_GetEmbedArray(96,2399
+lm_ReallyReflectEmbed(122,3042
+LM_ReflectEmbed(178,4794
+LM_ReflectNamedEmbed(243,6583
+
+lm_form.c,1354
+enum form_array_slot form_array_slot13,279
+    FORM_ARRAY_LENGTH 14,302
+typedef struct MochaFormArray MochaFormArray22,472
+} MochaFormArray;MochaFormArray25,570
+form_array_get_property(28,609
+form_array_finalize(69,1621
+FormArray(85,2032
+lm_GetFormArray(92,2170
+enum form_slot form_slot128,3063
+    FORM_LENGTH 129,3080
+    FORM_NAME 130,3110
+    FORM_ELEMENTS 131,3140
+    FORM_METHOD 132,3170
+    FORM_ACTION 133,3200
+    FORM_ENCODING 134,3230
+    FORM_TARGET 135,3260
+typedef struct MochaForm MochaForm152,3844
+} MochaForm;MochaForm157,4000
+#define form_decoder	159,4014
+#define form_type 160,4056
+#define form_object	161,4098
+#define form_event_mask	162,4133
+typedef struct FormMethodMap FormMethodMap164,4177
+} FormMethodMap;FormMethodMap167,4269
+form_method_name(176,4441
+form_method_code(187,4623
+form_get_property(198,4832
+form_set_property(277,6929
+form_list_properties(334,8298
+form_resolve_name(353,8795
+form_finalize(387,9793
+Form(404,10177
+form_native_prolog(411,10318
+form_reset(431,10873
+form_check_taint(451,11508
+form_submit(491,12730
+form_event(580,15003
+LM_SendOnReset(618,16111
+LM_SendOnSubmit(645,16847
+form_name(668,17311
+LM_ReflectForm(680,17535
+lm_GetFormObjectByID(769,19777
+lm_GetFormElementByIndex(784,20105
+lm_AddFormElement(803,20540
+lm_ReflectRadioButtonArray(847,21812
+
+lm_hist.c,430
+enum hist_slot hist_slot12,203
+    HIST_LENGTH 13,220
+    HIST_CURRENT 14,246
+    HIST_PREVIOUS 15,272
+    HIST_NEXT 16,298
+typedef struct MochaHistory MochaHistory27,693
+} MochaHistory;MochaHistory30,782
+#define DEFER(DEFER38,1032
+hist_forward(41,1122
+hist_get_property(64,1751
+hist_finalize(132,3519
+History_ctor(148,3916
+hist_go(159,4188
+hist_back(223,5844
+hist_to_string(246,6468
+lm_DefineHistory(310,8166
+
+lm_href.c,461
+enum anchor_array_slot anchor_array_slot10,191
+    ANCHOR_ARRAY_LENGTH 11,216
+typedef struct MochaAnchorArray MochaAnchorArray19,390
+} MochaAnchorArray;MochaAnchorArray22,490
+link_array_get_property(25,531
+anchor_array_finalize(64,1512
+LinkArray(80,1929
+anchor_array_get_property(87,2073
+AnchorArray(134,3226
+reflect_anchor_array(141,3375
+lm_GetLinkArray(168,4102
+lm_GetNameArray(181,4390
+LM_ReflectLink(194,4686
+LM_ReflectNamedAnchor(243,5945
+
+lm_img.c,1093
+enum image_array_slot image_array_slot14,214
+    IMAGE_ARRAY_LENGTH 15,238
+typedef struct MochaImageArray MochaImageArray23,410
+} MochaImageArray;MochaImageArray26,509
+image_array_get_property(29,549
+image_array_finalize(69,1527
+enum image_slot image_slot83,1901
+    IMAGE_NAME 84,1919
+    IMAGE_SRC 85,1953
+    IMAGE_LOWSRC 86,1987
+    IMAGE_HEIGHT 87,2021
+    IMAGE_WIDTH 88,2055
+    IMAGE_BORDER 89,2089
+    IMAGE_VSPACE 90,2123
+    IMAGE_HSPACE 91,2157
+    IMAGE_COMPLETE 92,2191
+typedef struct MochaImage MochaImage111,2999
+} MochaImage;MochaImage118,3334
+#define GET_IMAGE_DATA(GET_IMAGE_DATA120,3349
+image_get_property(125,3584
+image_set_src(194,5362
+image_set_property(227,6428
+image_finalize(286,7838
+Image(321,8739
+image_assign(404,11010
+reflect_image_array(445,12030
+lm_GetImageArray(469,12580
+LM_ReflectImage(482,12860
+LM_SendImageEvent(549,14598
+lm_InitImageClass(595,15886
+#define GET_IC_BACKPTR(GET_IC_BACKPTR612,16302
+#define SET_IC_BACKPTR(SET_IC_BACKPTR614,16389
+lm_SaveAnonymousImages(618,16487
+lm_RestoreAnonymousImages(656,17304
+
+lm_init.c,961
+lm_alert(74,2403
+lm_tracing(97,2955
+lm_BranchCallback(135,3747
+#define ERROR_REPORT_LIMIT	157,4367
+lm_ErrorReporter(162,4446
+lm_new_decoder(262,7378
+LM_InitMocha(304,8265
+LM_FinishMocha(325,9034
+LM_SetMochaEnabled(348,9493
+LM_GetMochaEnabled(354,9578
+LM_GetGlobalMochaDecoder(360,9648
+LM_PutGlobalMochaDecoder(373,9912
+LM_GetMochaDecoder(382,10164
+LM_PutMochaDecoder(407,10713
+LM_GetSourceURL(413,10843
+LM_EvaluateBuffer(429,11206
+LM_EvaluateAttribute(454,11906
+lm_SendEvent(484,12646
+LM_SetDecoderStream(515,13456
+lm_SetInputStream(523,13664
+LM_ClearDecoderStream(566,14850
+LM_ClearContextStream(596,15633
+lm_SaveParamString(615,16098
+typedef struct ContextList ContextList639,16628
+} ContextList;ContextList644,16770
+#define CL(CL646,16786
+typedef struct ObjectList ObjectList648,16824
+} ObjectList;ObjectList652,16935
+#define OL(OL654,16950
+lm_LinkObject(659,17066
+lm_UnlinkObject(684,17694
+lm_DumpLiveObjects(710,18235
+
+lm_input.c,2137
+enum input_slot input_slot17,309
+    INPUT_TYPE 18,327
+    INPUT_NAME 19,361
+    INPUT_FORM 20,395
+    INPUT_VALUE 21,429
+    INPUT_DEFAULT_VALUE 22,463
+    INPUT_LENGTH 23,497
+    INPUT_OPTIONS 24,531
+    INPUT_SELECTED_INDEX 25,565
+    INPUT_STATUS 26,599
+    INPUT_DEFAULT_STATUS 27,633
+typedef struct MochaInput MochaInput53,1858
+} MochaInput;MochaInput56,1958
+#define input_decoder 58,1973
+#define input_type 59,2022
+#define input_object 60,2068
+#define input_event_mask 61,2111
+typedef struct MochaTextInput MochaTextInput66,2198
+} MochaTextInput;MochaTextInput68,2265
+enum option_slot option_slot73,2327
+    OPTION_INDEX 74,2346
+    OPTION_TEXT 75,2380
+    OPTION_VALUE 76,2414
+    OPTION_DEFAULT_SELECTED 77,2448
+    OPTION_SELECTED 78,2482
+typedef struct MochaSelectOption MochaSelectOption90,2961
+} MochaSelectOption;MochaSelectOption96,3183
+option_get_property(99,3225
+option_set_property(174,5270
+option_finalize(277,7967
+Option(312,8980
+input_get_property(415,11523
+lm_fix_newlines(601,16571
+input_set_property(666,17699
+input_finalize(988,26696
+Input(1008,27247
+input_to_string(1015,27390
+#define FROB(FROB1208,32850
+input_method(1251,34608
+input_focus(1274,35323
+input_blur(1281,35523
+input_select(1288,35719
+input_click(1295,35923
+input_enable(1303,36138
+input_disable(1310,36331
+enum input_array_slot input_array_slot1333,37021
+    INPUT_ARRAY_LENGTH 1334,37045
+typedef struct MochaInputArray MochaInputArray1342,37217
+} MochaInputArray;MochaInputArray1345,37312
+input_array_get_property(1348,37352
+input_array_finalize(1362,37659
+InputArray(1378,38072
+#define ANTI_RECURSIVE_KLUDGE	1385,38205
+LM_ReflectFormElement(1391,38342
+lm_InitInputClasses(1567,42877
+lm_GetFormElementTaint(1588,43494
+lm_ResetFormElementTaint(1631,44640
+input_event(1669,45669
+LM_SendOnFocus(1737,47190
+LM_SendOnBlur(1745,47356
+LM_SendOnSelect(1753,47519
+LM_SendOnChange(1761,47688
+LM_SendOnClick(1769,47865
+LM_SendOnClickToAnchor(1782,48196
+LM_SendMouseOver(1792,48429
+LM_SendMouseOverAnchor(1806,48771
+LM_SendMouseOut(1816,48998
+LM_SendMouseOutOfAnchor(1825,49180
+
+lm_msg.c,0
+
+lm_nav.c,443
+enum nav_slot nav_slot11,161
+    NAV_USER_AGENT 12,177
+    NAV_APP_CODE_NAME 13,207
+    NAV_APP_VERSION 14,237
+    NAV_APP_NAME 15,267
+    NAV_PLUGINLIST 16,297
+    NAV_MIMETYPELIST 17,327
+typedef struct MochaNavigator MochaNavigator30,887
+} MochaNavigator;MochaNavigator38,1174
+nav_get_property(41,1213
+nav_finalize(80,2359
+Navigator(101,2949
+nav_java_enabled(108,3100
+nav_taint_enabled(120,3391
+lm_DefineNavigator(134,3783
+
+lm_plgin.c,1609
+typedef struct MochaMIMETypeMochaMIMEType50,1714
+} MochaMIMEType;MochaMIMEType59,2186
+typedef struct MochaPluginMochaPlugin61,2204
+} MochaPlugin;MochaPlugin71,2736
+typedef struct MochaPluginListMochaPluginList74,2753
+} MochaPluginList;MochaPluginList80,2978
+typedef struct MochaMIMETypeListMochaMIMETypeList83,2999
+} MochaMIMETypeList;MochaMIMETypeList89,3232
+enum mimetype_slotmimetype_slot145,5907
+    MIMETYPE_TYPE 147,5928
+    MIMETYPE_DESCRIPTION 148,5962
+    MIMETYPE_SUFFIXES 149,5996
+    MIMETYPE_ENABLEDPLUGIN 150,6030
+mimetype_create_self(178,6799
+mimetype_get_property(292,10097
+mimetype_finalize(329,11163
+enum plugin_slotplugin_slot353,11663
+    PLUGIN_NAME 355,11682
+    PLUGIN_FILENAME 356,11712
+    PLUGIN_DESCRIPTION 357,11742
+    PLUGIN_ARRAY_LENGTH 358,11772
+plugin_create_self(387,12511
+plugin_create_mimetype(445,14066
+plugin_get_property(501,15463
+plugin_resolve_name(567,17422
+plugin_finalize(597,18230
+enum pluginlist_slotpluginlist_slot624,18847
+    PLUGINLIST_ARRAY_LENGTH 626,18870
+PluginList(653,19369
+pluginlist_create_self(662,19572
+pluginlist_create_plugin(697,20539
+pluginlist_get_property(747,21815
+pluginlist_resolve_name(796,23195
+pluginlist_finalize(826,24038
+pluginlist_refresh(836,24233
+enum mimetypelist_slotmimetypelist_slot902,26040
+    MIMETYPELIST_ARRAY_LENGTH 904,26065
+mimetypelist_create_self(925,26541
+mimetypelist_create_mimetype(971,27731
+mimetypelist_get_property(1048,29527
+mimetypelist_resolve_name(1098,30943
+mimetypelist_finalize(1128,31811
+lm_NewPluginList(1146,32226
+lm_NewMIMETypeList(1166,32699
+
+lm_prefs.c,0
+
+lm_table.c,0
+
+lm_taint.c,1313
+#define TAINT_FREELIST_MIN 25,685
+#define TAINT_FREELIST_MAX 26,715
+typedef struct TaintEntry TaintEntry28,746
+} TaintEntry;TaintEntry35,1160
+#define APPEND_TO_TAINT_FREELIST(APPEND_TO_TAINT_FREELIST37,1175
+#define REMOVE_FROM_TAINT_FREELIST(REMOVE_FROM_TAINT_FREELIST43,1498
+#define TAINT_INDEX_BUFFER_MAX 53,1968
+#define FILE_URL_PREFIX_LEN	54,2003
+lm_InitTaint(67,2478
+is_taint_unique(94,3261
+generate_taint(107,3526
+new_taint_entry(129,4137
+context_taint_entry(183,5387
+switch_context_taint_entry(189,5483
+destroy_taint_entry(212,5933
+free_taint_entry(230,6337
+find_taint_entry(242,6636
+#define HOLD_TAINT_ENTRY(HOLD_TAINT_ENTRY250,6825
+hold_taint(258,7233
+drop_taint(267,7375
+get_taint_entry(276,7524
+put_taint_entry(306,8204
+set_taint_entry(323,8642
+split_sort_uniq(338,8947
+join_vec(405,10208
+free_vec(422,10497
+mix_taint_entries(432,10667
+mix_taint(452,11187
+#define WYSIWYG_TYPE_LEN	469,11655
+LM_SkipWysiwygURLPrefix(472,11714
+find_creator_url(484,11988
+find_origin_url(535,13162
+lm_GetTaint(564,13914
+lm_SetTaint(607,15144
+lm_MergeTaint(626,15597
+lm_ClearTaint(654,16350
+lm_CheckTaint(660,16439
+LM_CheckGetURL(729,18270
+strip_file_double_slash(775,19697
+lm_GetOrigin(794,20241
+lm_GetOriginURL(811,20703
+lm_SetOriginURL(817,20819
+lm_CheckOrigins(834,21274
+
+lm_url.c,910
+enum url_slot url_slot16,474
+    URL_HREF,17,490
+    URL_PROTOCOL,18,539
+    URL_HOST,19,577
+    URL_HOSTNAME,20,619
+    URL_PORT,21,668
+    URL_PATHNAME,22,719
+    URL_HASH,23,776
+    URL_SEARCH,24,828
+    URL_TARGET,25,884
+    LOC_ASSIGN 26,930
+    LOC_RELOAD 27,952
+    LOC_REPLACE 28,974
+#define ParseURL(ParseURL47,1833
+url_get_property(50,1918
+url_set_property(127,3605
+#define GET_SLOT(GET_SLOT175,4749
+#define ADD_SLOT(ADD_SLOT187,5510
+url_finalize(278,8003
+URL(306,8711
+url_to_string(313,8850
+lm_NewURL(326,9152
+loc_get_property(384,10566
+url_notify(421,11571
+lm_ReplaceURL(426,11648
+get_next_url(439,11941
+lm_ClearNextURLList(472,12863
+lm_GetURL(485,13199
+lm_CheckURL(539,14750
+url_load(610,16524
+loc_set_property(627,16981
+Location(676,18485
+loc_to_string(683,18627
+loc_assign(691,18842
+loc_reload(708,19297
+loc_replace(720,19649
+lm_DefineLocation(741,20235
+
+lm_win.c,1309
+enum window_slot window_slot18,345
+    WIN_LENGTH 19,364
+    WIN_FRAMES 20,394
+    WIN_PARENT 21,424
+    WIN_TOP 22,454
+    WIN_SELF 23,484
+    WIN_NAME 24,514
+    WIN_STATUS 25,544
+    WIN_DEFAULT_STATUS 26,574
+    WIN_OPENER 27,604
+    WIN_CLOSED 28,634
+win_get_property(47,1495
+win_set_property(145,4010
+win_list_properties(236,6257
+win_resolve_name(264,6926
+win_finalize(294,7666
+win_alert(313,8083
+win_confirm(337,8748
+win_prompt(367,9579
+lm_CheckWindowName(413,10786
+win_has_option(429,11161
+delete_window(455,11691
+win_open(466,11944
+win_close(622,17003
+#define FREE_TIMEOUT(FREE_TIMEOUT668,18412
+win_run_timeout(675,18747
+lm_ClearWindowTimeouts(716,19949
+win_set_timeout(729,20257
+win_clear_timeout(789,21953
+win_escape(814,22616
+win_unescape(850,23542
+win_focus(869,24056
+win_blur(883,24435
+win_scroll(900,24839
+load_event(926,25549
+is_context_really_busy(943,25921
+is_context_busy(970,26506
+try_load_event(978,26658
+LM_SendLoadEvent(1013,27648
+LM_SendOnScroll(1075,29287
+lm_NewWindow(1109,30431
+lm_DestroyWindow(1182,32411
+lm_InitWindowContent(1204,33016
+lm_FreeWindowContent(1233,33917
+#define FREE_AND_CLEAR(FREE_AND_CLEAR1256,34692
+#define DROP_AND_CLEAR(DROP_AND_CLEAR1273,35121
+LM_RemoveWindowContext(1324,36596
+LM_DropSavedWindow(1390,38741

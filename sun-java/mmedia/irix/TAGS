@@ -1,0 +1,10 @@
+
+audio.c,183
+#define JAVAIO 16,242
+#define ULAW_BUFFER_SIZE	22,344
+sun_audio_AudioDevice_audioOpen(63,2696
+sun_audio_AudioDevice_audioClose(105,3739
+sun_audio_AudioDevice_audioWrite(111,3862
+
+stubs.c,29
+void _java_mmedia_init(3,43

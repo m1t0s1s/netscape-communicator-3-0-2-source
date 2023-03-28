@@ -1,0 +1,59 @@
+# 
+#           CONFIDENTIAL AND PROPRIETARY SOURCE CODE OF
+#              NETSCAPE COMMUNICATIONS CORPORATION
+# Copyright (C) 1996 Netscape Communications Corporation.  All Rights
+# Reserved.  Use of this Source Code is subject to the terms of the
+# applicable license agreement from Netscape Communications Corporation.
+# The copyright notice(s) in this Source Code does not indicate actual or
+# intended publication of this Source Code.
+#
+DEPTH = ../../..
+
+EXPORTS = \
+	alghmac.h \
+	base64.h \
+	secasn1.h \
+	secasn1t.h \
+	seccomon.h \
+	secder.h \
+	secdert.h \
+	secitem.h \
+	secoid.h \
+	secoidt.h \
+	secport.h \
+	secrng.h \
+	secrngt.h \
+	secerr.h \
+	secpkcs5.h \
+	$(NULL)
+
+MODULE = security
+
+CSRCS = \
+	alg1113.c \
+	alghmac.c \
+	algrand.c \
+	derdec.c \
+	derenc.c \
+	dersubr.c \
+	dertime.c \
+	secalgid.c \
+	secasn1d.c \
+	secasn1e.c \
+	secasn1u.c \
+	secitem.c \
+	secoid.c \
+	sectime.c \
+	unix_rand.c \
+	secport.c \
+	secinit.c \
+	secpkcs5.c \
+	$(NULL)
+
+#	mac_rand.c
+#	win_rand.c
+#	prelib.c
+
+REQUIRES = security nspr libdbm img util layer
+
+LIBRARY_NAME = secutil

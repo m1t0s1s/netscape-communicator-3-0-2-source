@@ -1,0 +1,15 @@
+STRINGTABLE DISCARDABLE
+BEGIN
+IDS_ABOUTPLG_0	"!<HTML>\r\n<HEAD>\r\n<TITLE>About Plug-ins</TITLE>\r\n</HEAD>\r\n<BODY>\r\n<SCRIPT language=""javascript"">\r\n\r\n<!-- JavaScript to enumerate and display all installed plug-ins -->\r\n\r\nnumPlugins = navigator.plugin"
+IDS_ABOUTPLG_1	"!s.length;\r\n\r\nif (numPlugins > 0)\r\n	document.writeln(""<b><font size=+3>Installed plug-ins</font></b><br>"");\r\nelse\r\n	document.writeln(""<b><font size=+2>No plug-ins are installed.</font></b><br>"""
+IDS_ABOUTPLG_2	"!);\r\n\r\ndocument.writeln(""For more information on Netscape plug-ins, <A HREF=http://home.netscape.com/comprod/products/navigator/version_2.0/plugins/index.html>click here</A>.<p><hr>"");\r\n\r\nfor (i"
+IDS_ABOUTPLG_3	"! = 0; i < numPlugins; i++)\r\n{\r\n	plugin = navigator.plugins[i];\r\n	\r\n	document.write(""<center><font size=+1><b>"");\r\n	document.write(plugin.name);\r\n	document.writeln(""</b></font></center><br>"");\r\n	"
+IDS_ABOUTPLG_4	"!\r\n	document.writeln(""<dl>"");\r\n	document.writeln(""<dd>File name:"");\r\n	document.write(plugin.filename);\r\n	document.write(""<dd><br>"");\r\n	document.write(plugin.description);\r\n	document.writeln("""
+IDS_ABOUTPLG_5	"!</dl>"");\r\n	document.writeln(""<p>"");\r\n\r\n	document.writeln(""<table width=100% border=2 cellpadding=5>"");\r\n	document.writeln(""<tr>"");\r\n	document.writeln(""<th width=20%><font size=-1>Mime Type"
+IDS_ABOUTPLG_6	"!</font></th>"");\r\n	document.writeln(""<th width=50%><font size=-1>Description</font></th>"");\r\n	document.writeln(""<th width=20%><font size=-1>Suffixes</font></th>"");\r\n	document.writeln(""<th><"
+IDS_ABOUTPLG_7	"!font size=-1>Enabled</th>"");\r\n	document.writeln(""</tr>"");\r\n	numTypes = plugin.length;\r\n	for (j = 0; j < numTypes; j++)\r\n	{\r\n		mimetype = plugin[j];\r\n		\r\n		if (mimetype)\r\n		{\r\n			enabled = ""No"";\r\n	"
+IDS_ABOUTPLG_8	"!		enabledPlugin = mimetype.enabledPlugin;\r\n			if (enabledPlugin && (enabledPlugin.name == plugin.name))\r\n				enabled = ""Yes"";\r\n\r\n			document.writeln(""<tr align=center>"");\r\n			document.writeln("
+IDS_ABOUTPLG_9	"!""<td>"");\r\n			document.write(mimetype.type);\r\n			document.writeln(""</td>"");\r\n			document.writeln(""<td>"");\r\n			document.write(mimetype.description);\r\n			document.writeln(""</td>"");\r\n			documen"
+IDS_ABOUTPLG_A	"!t.writeln(""<td>"");\r\n			document.write(mimetype.suffixes);\r\n			document.writeln(""</td>"");\r\n			document.writeln(""<td>"");\r\n			document.writeln(enabled);\r\n			document.writeln(""</td>"");\r\n			docu"
+IDS_ABOUTPLG_B	"ment.writeln(""</tr>"");\r\n		}\r\n	}\r\n	\r\n	document.write(""</table>"");\r\n	document.write(""<p><hr><p>"");\r\n}\r\n\r\n</SCRIPT>\r\n</BODY>\r\n</HTML>\r\n"
+END

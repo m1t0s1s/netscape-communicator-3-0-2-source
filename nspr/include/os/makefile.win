@@ -1,0 +1,36 @@
+#//------------------------------------------------------------------------
+#//
+#// Makefile to install NSPR/INCLUDE/OS header files into the distribution
+#// directory.
+#//
+#//------------------------------------------------------------------------
+
+#//------------------------------------------------------------------------
+#//
+#// Specify the depth of the current directory relative to the
+#// root of NS
+#//
+#//------------------------------------------------------------------------
+DEPTH = ..\..\..
+
+#//------------------------------------------------------------------------
+#//
+#// Specify any "command" targets. (ie. DIRS, INSTALL_FILES, ...)
+#// (these must come before the common makefiles are included)
+#// 
+#// INSTALL_FILES - Files to be installed in the distribution area
+#//
+#//------------------------------------------------------------------------
+INSTALL_FILE_LIST=*.h
+INSTALL_DIR=$(DIST)\include\nspr\os
+
+#//------------------------------------------------------------------------
+#//
+#// Include the common makefile rules
+#//
+#//------------------------------------------------------------------------
+include <$(DEPTH)/nspr/config/rules.mak>
+
+export:: INSTALL_FILES
+
+install:: export

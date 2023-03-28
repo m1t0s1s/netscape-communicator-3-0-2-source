@@ -1,0 +1,23 @@
+#! /bin/sh
+
+dest=$1; shift
+name=$1; shift
+class=$1; shift
+vsuffix=$1; shift
+ss=$1; shift
+progname=$1
+
+echo Generating $dest from README.tmpl...
+
+NAME=$name
+CLASS=$class
+VN=`sed -n 's/^#define VERSION_NUMBER *\(.*\)$/\1/p' versionn.h`
+VERS=`echo $VN$vsuffix`
+PROGNAME=$progname
+
+rm -f $dest
+sed    "s/@NAME@/$NAME/g;
+	s/@CLASS@/$CLASS/g;
+	s/@PROGNAME@/$PROGNAME/g;
+	s/@VERSION@/$VERS/g;
+	s/@URLVERSION@/$VERS/g" < README.tmpl > $dest

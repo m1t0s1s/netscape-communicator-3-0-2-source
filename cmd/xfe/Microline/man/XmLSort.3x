@@ -1,0 +1,75 @@
+.\" (c) Copyright 1994, 1995, Microline Software, Inc.  ALL RIGHTS RESERVED
+.\"  
+.\" THIS SOFTWARE IS FURNISHED UNDER A LICENSE AND MAY BE COPIED AND USED 
+.\" ONLY IN ACCORDANCE WITH THE TERMS OF THAT LICENSE AND WITH THE INCLUSION
+.\" OF THE ABOVE COPYRIGHT NOTICE.  THIS SOFTWARE AND DOCUMENTATION, AND ITS 
+.\" COPYRIGHTS ARE OWNED BY MICROLINE SOFTWARE AND ARE PROTECTED BY UNITED
+.\" STATES COPYRIGHT LAWS AND INTERNATIONAL TREATY PROVISIONS.
+.\"  
+.\" THE INFORMATION IN THIS SOFTWARE IS SUBJECT TO CHANGE WITHOUT NOTICE
+.\" AND SHOULD NOT BE CONSTRUED AS A COMMITMENT BY MICROLINE SOFTWARE.
+.\" 
+.\" THIS SOFTWARE AND REFERENCE MATERIALS ARE PROVIDED "AS IS" WITHOUT
+.\" WARRANTY AS TO THEIR PERFORMANCE, MERCHANTABILITY, FITNESS FOR ANY 
+.\" PARTICULAR PURPOSE, OR AGAINST INFRINGEMENT.  MICROLINE SOFTWARE
+.\" ASSUMES NO RESPONSIBILITY FOR THE USE OR INABILITY TO USE THIS 
+.\" SOFTWARE.
+.\" 
+.\" MICROLINE SOFTWARE SHALL NOT BE LIABLE FOR INDIRECT, SPECIAL OR
+.\" CONSEQUENTIAL DAMAGES RESULTING FROM THE USE OF THIS PRODUCT. SOME 
+.\" STATES DO NOT ALLOW THE EXCLUSION OR LIMITATION OF INCIDENTAL OR
+.\" CONSEQUENTIAL DAMAGES, SO THE ABOVE LIMITATIONS MIGHT NOT APPLY TO
+.\" YOU.
+.\" 
+.\" MICROLINE SOFTWARE SHALL HAVE NO LIABILITY OR RESPONSIBILITY FOR SOFTWARE
+.\" ALTERED, MODIFIED, OR CONVERTED BY YOU OR A THIRD PARTY, DAMAGES
+.\" RESULTING FROM ACCIDENT, ABUSE OR MISAPPLICATION, OR FOR PROBLEMS DUE
+.\" TO THE MALFUNCTION OF YOUR EQUIPMENT OR SOFTWARE NOT SUPPLIED BY
+.\" MICROLINE SOFTWARE.
+.\"   
+.\" U.S. GOVERNMENT RESTRICTED RIGHTS
+.\" This Software and documentation are provided with RESTRICTED RIGHTS.
+.\" Use, duplication or disclosure by the Government is subject to
+.\" restrictions as set forth in subparagraph (c)(1) of the Rights in
+.\" Technical Data and Computer Software Clause at DFARS 252.227-7013 or
+.\" subparagraphs (c)(1)(ii) and (2) of Commercial Computer Software -
+.\" Restricted Rights at 48 CFR 52.227-19, as applicable, supplier is
+.\" Microline Software, 41 Sutter St Suite 1374, San Francisco, CA 94104.
+.\"
+.TH XmLSort 3X "R1" "XML1" "XML"
+.SH NAME
+XmLSort \- sort an array using a quicksort algorithm
+.SH SYNTAX
+void XmLSort(\fIbase\fP, \fInumItems\fP, \
+\fIitemSize\fP, \fIcompare\fP, \fIuserData\fP)
+.br
+void *\fIbase\fP;
+.br
+int \fInumItems\fP;
+.br
+unsigned int \fIitemSize\fP;
+.br
+XmLSortCompareFunc \fIcompare\fP;
+.br
+void *\fIuserData\fP;
+.LP
+.SH ARGUMENTS
+.IP \fIbase\fP 1i
+base of array to sort
+.IP \fInumItems\fP 1i
+number of items to be sorted
+.IP \fIitemSize\fP 1i
+size of items to be sorted
+.IP \fIcompare\fP 1i
+comparison function
+.IP \fIuserData\fP 1i
+user data
+.SH DESCRIPTION
+Performs a median-of-three quicksort to sort the array starting
+at the address \fIbase\fP which contains \fInumItems\fP items of size
+\fIitemSize\fP. The \fIcompare\fP function given is used to compare
+items, and when sorting occurs, it is passed pointers to the
+two items to compare, as well as the \fIuserData\fP pointer given
+to this function. The compare function must return a value
+less than, greater than, or equal to 0 based on whether the
+first item is less than, greater than, or equal to the second item.

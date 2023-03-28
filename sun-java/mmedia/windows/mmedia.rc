@@ -1,0 +1,29 @@
+/////////////////////////////////////////////////////////////////////////////
+// Version stamp for this .DLL
+#include <winver.h>
+
+VS_VERSION_INFO     VERSIONINFO
+  FILEVERSION       3,0,0,06 // major, minor, release (alpha 1), build #
+  PRODUCTVERSION    3,0,0,06
+  FILEFLAGSMASK     VS_FFI_FILEFLAGSMASK
+  FILEFLAGS         0 // final version
+  FILEOS            VOS_DOS_WINDOWS32
+  FILETYPE          VFT_DLL
+  FILESUBTYPE       0   // not used
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904E4" // Lang=US English, CharSet=Windows Multilingual
+        BEGIN
+            VALUE "CompanyName",     "Netscape Communications Corporation\0"
+            VALUE "FileDescription", "Netscape Java Audio Library\0"
+            VALUE "FileVersion",     "3.0beta6.001\0"
+            VALUE "InternalName",    "MM3230\0"
+            VALUE "LegalCopyright",  "Copyright Netscape Communications. 1994, 1995, 1996\0"
+            VALUE "LegalTrademarks", "Netscape, Mozilla\0"
+            VALUE "OriginalFilename","MM3230.DLL\0"
+            VALUE "ProductName",     "NETSCAPE\0"
+            VALUE "ProductVersion",  "3.0.000\0"
+        END
+    END
+END

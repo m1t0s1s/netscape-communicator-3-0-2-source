@@ -1,0 +1,252 @@
+
+color.c,473
+ConvertRGBToCI(24,556
+DitherConvertRGBToCI(76,1747
+struct fs_data fs_data108,2613
+init_fs_dither(121,2807
+ConvertRGBToBW(150,3499
+#define SHIFT_IMAGE_MASK(SHIFT_IMAGE_MASK265,5819
+ConvertRGBToGrey8(302,7212
+ConvertRGBToRGB8(354,8437
+ConvertRGBToRGB16(399,9462
+ConvertRGBToRGB24(444,10501
+ConvertRGBToRGB32(479,11306
+compare_uint32(525,12380
+unique_map_colors(535,12612
+#define AUTO_DITHER_COLOR_THRESHOLD 569,13555
+il_setup_color_space_converter(573,13662
+
+colormap.c,1139
+#        define CUSTOM_COLORMAP14,311
+select_ncolors(23,564
+static int output_value(80,2274
+static int largest_input_value(93,2767
+il_createColormap(107,3082
+il_add_context_to_colorspace(182,5194
+new_imageProcess(201,5631
+IL_NewGreyScaleSpace(213,5827
+IL_GreyScale(225,6040
+IL_NewPseudoColorSpace(261,6799
+IL_UpdateColorMap(367,9218
+il_IRGB_colormap_close_matches(417,10388
+il_copy_IRGB_map(443,11129
+IL_RealizeDefaultColormap(454,11391
+IL_NewTrueColorSpace(528,13565
+#define _W1(_W1585,14965
+#define WACKY(WACKY586,15016
+#define ROUND(ROUND588,15077
+IL_EnableTrueColor(659,16591
+IL_InitContext(702,17613
+il_free_colorspace(728,18183
+IL_ScourContext(758,18957
+IL_ColormapTag(781,19429
+il_reset_palette(788,19574
+il_closest_color(799,19825
+il_copy_map(826,20256
+il_colormap_close_matches(862,21086
+#define CLOSE_COLOR_THRESHOLD 883,21737
+il_install_default_colormap(894,21930
+il_set_color_palette(917,22517
+il_convert_image_to_default_colormap(1051,26791
+IL_SetColorRenderMode(1084,27745
+IL_NoMoreImages(1096,28001
+IL_UseDefaultColormapThisPage(1118,28661
+IL_SamePage(1125,28799
+IL_EndPage(1130,28836
+
+dither.c,395
+typedef INT32 FSERROR;FSERROR13,179
+typedef int LOCFSERROR;LOCFSERROR14,234
+typedef FSERROR FAR *FSERRPTR;FSERRPTR16,298
+typedef struct my_cquantize_str my_cquantize_str18,377
+} my_cquantize;my_cquantize24,614
+typedef my_cquantize *my_cquantize_ptr;my_cquantize_ptr26,631
+il_setup_quantize(32,780
+il_init_quantize(77,2033
+il_free_quantize(131,3210
+il_quantize_fs_dither(170,3862
+
+external.c,208
+il_view_write_ready(10,189
+il_view_write(21,484
+il_view_complete(31,768
+il_view_abort(36,822
+il_reconnect(46,1008
+il_abort_reconnect(67,1677
+IL_ViewStream(79,1931
+il_set_view_image_doc_title(146,3865
+
+gif.c,795
+#    define MAX(MAX15,326
+} gstate;gstate59,1186
+} gdispose;gdispose69,1576
+#define MAX_HOLD 71,1589
+#define	MAX_LZW_BITS	73,1656
+#define MAX_BITS 74,1686
+#define MINIMUM_DELAY_TIME 75,1742
+gif_struct gif_struct79,1811
+} gif_struct;gif_struct142,5104
+#define GETN(GETN145,5191
+#define GETINT16(GETINT16150,5450
+#define GETINT32(GETINT32153,5548
+output_row(157,5684
+do_lzw(279,8491
+#define OUTPUT_ROW(OUTPUT_ROW306,9353
+il_gif_init(424,12195
+il_gif_init_transparency(439,12412
+il_gif_compute_percentage_complete(457,12882
+#define MAX_READ_AHEAD 485,13699
+il_gif_write_ready(488,13746
+process_buffered_gif_input_data(505,14185
+gif_delay_time_callback(526,14866
+gif_clear_screen(563,15755
+il_gif_write(669,18835
+il_gif_complete(1396,41199
+il_gif_abort(1421,41999
+
+if.c,1139
+#define HOWMANY(HOWMANY19,414
+#define ROUNDUP(ROUNDUP20,466
+il_init_scaling(39,808
+il_size(59,1255
+#define IL_SIZE_CHUNK	231,5748
+#        define IL_PREFERRED_CHUNK 234,5814
+#        define IL_OFFSCREEN_CHUNK 235,5855
+#        define IL_PREFERRED_CHUNK 237,5922
+#        define IL_OFFSCREEN_CHUNK 238,5963
+#    define IL_PREFERRED_CHUNK 241,6033
+#    define IL_OFFSCREEN_CHUNK 242,6070
+il_write_ready(246,6127
+il_type(307,7864
+IL_Type(358,9086
+il_write(364,9181
+il_first_write(398,9918
+il_bad_container(463,11385
+il_netgeturldone 492,11913
+il_image_abort(584,14534
+il_stream_complete(599,14815
+il_image_complete(619,15215
+il_abort(823,21514
+IL_NewStream 877,22826
+il_hash(931,24088
+#define IL_LAST_ICON 943,24264
+il_setup_icon_table(949,24442
+il_internal_image(1110,32139
+IL_DeleteImages(1128,32454
+IL_PreferredStream(1134,32496
+IL_GetImage 1169,33327
+IL_SetTransparent(1444,41305
+IL_SetByteOrder(1472,41848
+IL_DisableScaling(1477,41928
+IL_DisableLowSrc(1491,42070
+IL_SetPreferences(1505,42210
+IL_InterruptContext(1531,42780
+il_image_stopped(1555,43288
+IL_AreThereLoopingImagesForContext(1569,43616
+
+ilclient.c,1078
+struct il_cache_struct il_cache_struct42,1121
+IL_SetImageCacheSize(53,1278
+il_disconnect_container_from_context(60,1397
+il_image_match(99,2256
+il_images_match(157,4133
+il_find_in_cache(167,4475
+il_get_container(212,5480
+il_scour_container(311,8811
+il_delete_container(335,9362
+il_visual_info(377,10299
+#define CELL_TOP 412,11154
+#define CELL_TITLE(CELL_TITLE415,11257
+#define CELL_MIDDLE	417,11318
+#define CELL_BODY(CELL_BODY421,11409
+#define CELL_END	423,11468
+#define ADD_CELL(ADD_CELL426,11540
+il_HTML_image_info(434,11701
+IL_HTMLImageInfo(497,13981
+IL_DisplayMemCacheInfoAsHTML(536,14923
+#define PUT_PART(PUT_PART568,15702
+il_removefromcache(677,19062
+il_adjust_cache_fullness(715,20001
+il_addtocache(733,20483
+IL_ReduceImageCacheSizeTo(756,21060
+IL_ShrinkCache(767,21292
+uint32 IL_GetCacheSize(796,21979
+il_replace_client(802,22045
+IL_UnCache(827,22388
+il_add_client(845,22638
+il_delete_client(895,23792
+il_delete_all_clients(960,25493
+IL_Shutdown(982,26147
+IL_FreeImage(1002,26667
+IL_ReplaceImage(1080,28692
+IL_StartPage(1109,29338
+
+jpeg.c,1124
+#define MAX_JPEG_MARKER_LENGTH	35,632
+} jstate;jstate50,1246
+} il_error_mgr;il_error_mgr55,1403
+typedef struct jpeg_struct jpeg_struct60,1480
+} jpeg_struct;jpeg_struct75,1882
+enum data_source_state data_source_state81,1948
+	dss_consuming_backtrack_buffer 82,1973
+	dss_consuming_netlib_buffer83,2047
+} il_source_mgr;il_source_mgr110,2903
+il_error_exit 115,3008
+init_source 143,3632
+fill_input_buffer 176,5372
+skip_input_data 288,9104
+term_source 320,10070
+setup_jpeg_src 337,10660
+#define INPUT_VARS(INPUT_VARS374,11593
+#define INPUT_SYNC(INPUT_SYNC380,11859
+#define INPUT_RELOAD(INPUT_RELOAD385,12059
+#define MAKE_BYTE_AVAIL(MAKE_BYTE_AVAIL393,12399
+#define INPUT_BYTE(INPUT_BYTE404,12706
+#define INPUT_2BYTES(INPUT_2BYTES411,12964
+il_jpeg_COM_handler 420,13285
+int il_jpeg_init(470,14461
+output_jpeg_scanlines(539,16259
+#define JPEG_TIMEOUT_INITIAL_DELAY 611,18332
+#define JPEG_TIMEOUT_DELAY 617,18520
+#define JPEG_OUTPUT_CHUNK_SIZE 619,18562
+jpeg_timeout_callback(622,18616
+jpeg_idle_callback(636,18988
+il_jpeg_write(644,19118
+il_jpeg_abort(887,26750
+il_jpeg_complete(930,27802
+
+scale.c,640
+#define MAX(MAX22,653
+#define OUTPUT_CHUNK_SIZE 25,767
+#define ROW_OUTPUT_INITIAL_DELAY 28,878
+#define ROW_OUTPUT_DELAY 31,968
+il_timeout_callback(34,1020
+il_partial(67,2151
+il_update_thermometer(116,3906
+il_flush_image_data(177,5963
+#define COPY_RGB(COPY_RGB243,8384
+il_scale_RGB_row(252,8802
+il_scale_CI_row(299,10075
+#define SCALE_YCOORD(SCALE_YCOORD349,11457
+#define SCALE_XCOORD(SCALE_XCOORD352,11609
+il_generate_scaled_transparency_mask(361,12098
+#define SHIFT_IMAGE_MASK(SHIFT_IMAGE_MASK394,13438
+il_reset_background_pixels(469,16339
+il_generate_byte_mask(518,17874
+il_overlay(565,19272
+il_emit_row(593,20259
+
+xbm.c,349
+} xstate;xstate27,488
+#define MAX_HOLD 29,499
+typedef struct xbm_struct xbm_struct31,521
+} xbm_struct;xbm_struct40,856
+#define MAX_LINE 42,871
+#define GETN(GETN45,939
+#define GETC(GETC46,1011
+il_init_hex_table(52,1156
+int il_xbm_init(69,1560
+copyline(87,1830
+int il_xbm_write(95,1961
+il_xbm_abort(340,7902
+il_xbm_complete(351,8039

@@ -1,0 +1,20 @@
+
+nsinstall.c,133
+#define HAVE_LCHOWN20,386
+#define S_ISLNK(S_ISLNK32,683
+usage(37,757
+mkdirs(47,974
+touid(68,1377
+togid(84,1647
+main(100,1907
+
+pathsub.c,165
+fail(21,305
+getcomponent(38,601
+ino2name(56,884
+xmalloc(77,1249
+xstrdup(86,1377
+xbasename(92,1452
+xchdir(103,1612
+relatepaths(110,1708
+reversepath(144,2462

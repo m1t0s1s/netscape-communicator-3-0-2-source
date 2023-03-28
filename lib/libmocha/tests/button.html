@@ -1,0 +1,79 @@
+<HTML>
+<HEAD>
+<TITLE>LiveScript Buttons</TITLE>
+<SCRIPT>
+msg = open("", "MessageBox", "scrollbars=yes");
+msg.document.writeln("<PRE><TITLE>LiveScript Messages</TITLE>");
+
+// XXX should test setting of name and value too
+function doClick(button) {
+    msg.document.writeln("clicked on NAME " + button.name +
+			 ", VALUE " + button.value);
+}
+</SCRIPT>
+</HEAD>
+
+<BODY>
+
+Here are two buttons, in a PRE.
+The first is named <B>button1</B> and has value <CODE> 1 </CODE>.
+The second is named <B>button2</B> and has value <CODE> 2 </CODE>.
+In beta 2, there was a <A
+HREF="http://bugserver/scopus-gate/show_bug.cgi?id=9275&who=brendan">bug</A>:
+buttons (plain, submit, or reset) do not have their NAME and VALUE attributes
+reflected.
+Click to verify:
+<PRE>
+<FORM>
+1: <INPUT TYPE="button" NAME="button1" VALUE=" 1 " ONCLICK="doClick(this)">
+2: <INPUT TYPE="button" NAME="button2" VALUE=" 2 " ONCLICK="doClick(this)">
+</FORM>
+</PRE>
+<P>
+
+The same buttons, but inside a table:
+<FORM>
+<TABLE BORDER>
+<TR>
+<TD>
+<INPUT TYPE="button" NAME="button1" VALUE=" 1 " ONCLICK="doClick(this)">
+<TD>
+<INPUT TYPE="button" NAME="button2" VALUE=" 2 " ONCLICK="doClick(this)">
+</TR>
+</TABLE>
+</FORM>
+<P>
+
+Appended below is a property dump of all forms in this document.
+
+<SCRIPT>
+function slotstr(slot) {
+    var str = "" + slot;
+    var chr = str.substring(0, 1);
+    return ("0" <= chr && chr <= "9")
+	    ? "[" + slot + "]"
+	    : "." + slot;
+}
+
+document.writeln("<XMP>");
+for (var i in document.forms) {
+    if (i == "length") continue;
+    var form = document.forms[i];
+    document.writeln("forms" + slotstr(i) + " is " + form);
+    for (var j in form) {
+	if (j == "length") continue;
+	var element = form[j];
+	if (element == null || element == form) continue;
+	document.writeln("forms" + slotstr(i) + slotstr(j) + " is " + element);
+	for (k in element) {
+	    if (element[k] == null) continue;
+	    document.writeln("forms" + slotstr(i) + slotstr(j) + slotstr(k) +
+			     " is " + element[k]);
+	}
+    }
+}
+document.writeln("</XMP>");
+</SCRIPT>
+
+</BODY>
+</HTML>

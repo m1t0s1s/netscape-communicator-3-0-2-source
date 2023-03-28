@@ -1,0 +1,745 @@
+
+jdapimin.c,352
+#define JPEG_INTERNALS19,688
+jpeg_create_decompress 30,902
+jpeg_destroy_decompress 77,2058
+jpeg_abort_decompress 89,2291
+jpeg_set_marker_processor 100,2489
+default_decompress_parms 117,2933
+jpeg_read_header 244,7521
+jpeg_consume_input 290,8941
+jpeg_input_complete 337,10326
+jpeg_has_multiple_scans 352,10654
+jpeg_finish_decompress 372,11202
+
+jdapistd.c,204
+#define JPEG_INTERNALS17,701
+jpeg_start_decompress 38,1220
+output_pass_setup 95,3320
+jpeg_read_scanlines 152,5434
+jpeg_read_raw_data 185,6355
+jpeg_start_output 228,7646
+jpeg_finish_output 253,8421
+
+jdatasrc.c,247
+} my_source_mgr;my_source_mgr31,1069
+typedef my_source_mgr * my_src_ptr;my_src_ptr33,1087
+#define INPUT_BUF_SIZE 35,1124
+init_source 44,1311
+fill_input_buffer 90,3492
+skip_input_data 128,4660
+term_source 169,5985
+jpeg_stdio_src 182,6240
+
+jdmaster.c,396
+#define JPEG_INTERNALS14,442
+} my_decomp_master;my_decomp_master33,928
+typedef my_decomp_master * my_master_ptr;my_master_ptr35,949
+use_merged_upsample 44,1151
+jpeg_calc_output_dimensions 84,2727
+prepare_range_limit_table 246,9272
+master_selection 286,10836
+prepare_for_output_pass 436,15953
+finish_output_pass 496,18023
+jpeg_new_colormap 513,18347
+jinit_master_decompress 541,19213
+
+jdinput.c,376
+#define JPEG_INTERNALS14,488
+} my_input_controller;my_input_controller25,711
+typedef my_input_controller * my_inputctl_ptr;my_inputctl_ptr27,735
+initial_setup 39,971
+per_scan_setup 121,4407
+latch_quant_tables 220,8408
+start_input_pass 254,9523
+finish_input_pass 271,9950
+consume_markers 288,10483
+reset_input_controller 339,11957
+jinit_input_controller 361,12643
+
+jdmarker.c,773
+#define JPEG_INTERNALS15,494
+} JPEG_MARKER;JPEG_MARKER85,1590
+#define INPUT_VARS(INPUT_VARS97,1941
+#define INPUT_SYNC(INPUT_SYNC103,2207
+#define INPUT_RELOAD(INPUT_RELOAD108,2407
+#define MAKE_BYTE_AVAIL(MAKE_BYTE_AVAIL116,2747
+#define INPUT_BYTE(INPUT_BYTE127,3054
+#define INPUT_2BYTES(INPUT_2BYTES134,3312
+get_soi 166,4596
+get_sof 204,5447
+get_sos 268,7497
+get_app0 338,9169
+#define JFIF_LEN 341,9234
+get_app14 397,11057
+#define ADOBE_LEN 400,11124
+get_dac 444,12358
+get_dht 481,13241
+get_dqt 546,14816
+get_dri 598,16068
+skip_variable 622,16466
+next_marker 649,17164
+first_marker 696,18514
+read_markers 727,19328
+read_restart_marker 887,23990
+jpeg_resync_to_restart 966,27840
+reset_marker_reader 1016,29389
+jinit_marker_reader 1033,29875
+
+jdhuff.c,635
+#define JPEG_INTERNALS17,620
+} savable_state;savable_state32,1051
+#define ASSIGN_STATE(ASSIGN_STATE40,1284
+#define ASSIGN_STATE(ASSIGN_STATE43,1366
+} huff_entropy_decoder;huff_entropy_decoder67,2256
+typedef huff_entropy_decoder * huff_entropy_ptr;huff_entropy_ptr69,2281
+start_pass_huff_decoder 77,2400
+jpeg_make_d_derived_tbl 128,4255
+#define MIN_GET_BITS 227,7511
+#define MIN_GET_BITS 229,7572
+jpeg_fill_bit_buffer 234,7635
+jpeg_huff_decode 322,10398
+#define HUFF_EXTEND(HUFF_EXTEND368,11569
+#define HUFF_EXTEND(HUFF_EXTEND372,11656
+process_restart 393,12394
+decode_mcu 437,13885
+jinit_huff_decoder 558,17037
+
+jdphuff.c,587
+#define JPEG_INTERNALS17,637
+} savable_state;savable_state35,1167
+#define ASSIGN_STATE(ASSIGN_STATE43,1400
+#define ASSIGN_STATE(ASSIGN_STATE46,1482
+} phuff_entropy_decoder;phuff_entropy_decoder72,2425
+typedef phuff_entropy_decoder * phuff_entropy_ptr;phuff_entropy_ptr74,2451
+start_pass_phuff_decoder 92,2996
+#define HUFF_EXTEND(HUFF_EXTEND203,6655
+#define HUFF_EXTEND(HUFF_EXTEND207,6742
+process_restart 228,7480
+decode_mcu_DC_first 281,9233
+decode_mcu_AC_first 346,11055
+decode_mcu_DC_refine 425,13333
+decode_mcu_AC_refine 470,14539
+jinit_phuff_decoder 615,18795
+
+jdmainct.c,550
+#define JPEG_INTERNALS16,556
+} my_main_controller;my_main_controller132,6915
+typedef my_main_controller * my_main_ptr;my_main_ptr134,6938
+#define CTX_PREPARE_FOR_IMCU	137,7009
+#define CTX_PROCESS_IMCU	138,7074
+#define CTX_POSTPONED_ROW	139,7137
+alloc_funny_pointers 157,7736
+make_funny_pointers 195,9088
+set_wraparound_pointers 238,10665
+set_bottom_pointers 266,11594
+start_pass_main 307,13086
+process_data_simple_main 345,14163
+process_data_context_main 385,15524
+process_data_crank_post 459,18644
+jinit_d_main_controller 476,19036
+
+jdcoefct.c,450
+#define JPEG_INTERNALS17,643
+#define SAVED_COEFS 58,2245
+} my_coef_controller;my_coef_controller60,2306
+typedef my_coef_controller * my_coef_ptr;my_coef_ptr62,2329
+start_iMCU_row 79,2817
+start_input_pass 107,3611
+start_output_pass 119,3781
+decompress_onepass 147,4692
+dummy_consume_data 227,7699
+consume_data 243,8162
+decompress_data 314,10743
+smoothing_ok 397,13825
+decompress_smooth_data 450,15416
+jinit_d_coef_controller 665,22649
+
+jdpostct.c,290
+#define JPEG_INTERNALS19,738
+} my_post_controller;my_post_controller40,1559
+typedef my_post_controller * my_post_ptr;my_post_ptr42,1582
+start_pass_dpost 73,2500
+post_process_1pass 126,4234
+post_process_prepass 158,5232
+post_process_2pass 202,6658
+jinit_d_post_controller 250,8109
+
+jddctmgr.c,337
+#define JPEG_INTERNALS18,676
+} my_idct_controller;my_idct_controller52,2080
+typedef my_idct_controller * my_idct_ptr;my_idct_ptr54,2103
+} multiplier_table;multiplier_table67,2427
+#define PROVIDE_ISLOW_TABLES74,2631
+#define PROVIDE_ISLOW_TABLES77,2696
+start_pass 89,2898
+#define CONST_BITS 184,5854
+jinit_inverse_dct 248,7661
+
+jidctfst.c,865
+#define JPEG_INTERNALS35,1797
+#define CONST_BITS 77,3544
+#define PASS1_BITS 78,3566
+#define CONST_BITS 80,3594
+#define PASS1_BITS 81,3616
+#define FIX_1_082392200 92,4072
+#define FIX_1_414213562 93,4136
+#define FIX_1_847759065 94,4200
+#define FIX_2_613125930 95,4264
+#define FIX_1_082392200 97,4334
+#define FIX_1_414213562 98,4376
+#define FIX_1_847759065 99,4418
+#define FIX_2_613125930 100,4460
+#define DESCALE(DESCALE111,4749
+#define MULTIPLY(MULTIPLY119,4910
+#define DEQUANTIZE(DEQUANTIZE129,5277
+#define DEQUANTIZE(DEQUANTIZE131,5360
+#define ISHIFT_TEMPS	141,5633
+#define DCTELEMBITS 143,5700
+#define DCTELEMBITS 145,5766
+#define IRIGHT_SHIFT(IRIGHT_SHIFT147,5828
+#define ISHIFT_TEMPS152,6007
+#define IRIGHT_SHIFT(IRIGHT_SHIFT153,6028
+#define IDESCALE(IDESCALE157,6110
+#define IDESCALE(IDESCALE159,6185
+jpeg_idct_ifast 168,6336
+
+jidctflt.c,95
+#define JPEG_INTERNALS39,1962
+#define DEQUANTIZE(DEQUANTIZE60,2393
+jpeg_idct_float 68,2559
+
+jidctint.c,1090
+#define JPEG_INTERNALS28,1345
+#define CONST_BITS 78,3404
+#define PASS1_BITS 79,3427
+#define CONST_BITS 81,3455
+#define PASS1_BITS 82,3478
+#define FIX_0_298631336 93,3935
+#define FIX_0_390180644 94,3999
+#define FIX_0_541196100 95,4063
+#define FIX_0_765366865 96,4127
+#define FIX_0_899976223 97,4191
+#define FIX_1_175875602 98,4255
+#define FIX_1_501321110 99,4319
+#define FIX_1_847759065 100,4384
+#define FIX_1_961570560 101,4449
+#define FIX_2_053119869 102,4514
+#define FIX_2_562915447 103,4579
+#define FIX_3_072711026 104,4644
+#define FIX_0_298631336 106,4715
+#define FIX_0_390180644 107,4757
+#define FIX_0_541196100 108,4799
+#define FIX_0_765366865 109,4841
+#define FIX_0_899976223 110,4883
+#define FIX_1_175875602 111,4925
+#define FIX_1_501321110 112,4967
+#define FIX_1_847759065 113,5009
+#define FIX_1_961570560 114,5051
+#define FIX_2_053119869 115,5093
+#define FIX_2_562915447 116,5135
+#define FIX_3_072711026 117,5177
+#define MULTIPLY(MULTIPLY129,5611
+#define MULTIPLY(MULTIPLY131,5671
+#define DEQUANTIZE(DEQUANTIZE140,5942
+jpeg_idct_islow 148,6113
+
+jidctred.c,1250
+#define JPEG_INTERNALS23,913
+#define CONST_BITS 43,1308
+#define PASS1_BITS 44,1331
+#define CONST_BITS 46,1359
+#define PASS1_BITS 47,1382
+#define FIX_0_211164243 58,1839
+#define FIX_0_509795579 59,1903
+#define FIX_0_601344887 60,1967
+#define FIX_0_720959822 61,2031
+#define FIX_0_765366865 62,2095
+#define FIX_0_850430095 63,2159
+#define FIX_0_899976223 64,2223
+#define FIX_1_061594337 65,2287
+#define FIX_1_272758580 66,2351
+#define FIX_1_451774981 67,2416
+#define FIX_1_847759065 68,2481
+#define FIX_2_172734803 69,2546
+#define FIX_2_562915447 70,2611
+#define FIX_3_624509785 71,2676
+#define FIX_0_211164243 73,2747
+#define FIX_0_509795579 74,2789
+#define FIX_0_601344887 75,2831
+#define FIX_0_720959822 76,2873
+#define FIX_0_765366865 77,2915
+#define FIX_0_850430095 78,2957
+#define FIX_0_899976223 79,2999
+#define FIX_1_061594337 80,3041
+#define FIX_1_272758580 81,3083
+#define FIX_1_451774981 82,3125
+#define FIX_1_847759065 83,3167
+#define FIX_2_172734803 84,3209
+#define FIX_2_562915447 85,3251
+#define FIX_3_624509785 86,3293
+#define MULTIPLY(MULTIPLY98,3727
+#define MULTIPLY(MULTIPLY100,3787
+#define DEQUANTIZE(DEQUANTIZE109,4058
+jpeg_idct_4x4 118,4275
+jpeg_idct_2x2 270,9268
+jpeg_idct_1x1 378,12780
+
+jdsample.c,393
+#define JPEG_INTERNALS21,784
+} my_upsampler;my_upsampler59,2159
+typedef my_upsampler * my_upsample_ptr;my_upsample_ptr61,2176
+start_pass_upsample 69,2279
+sep_upsample 89,2858
+fullsize_upsample 157,5201
+noop_upsample 170,5523
+int_upsample 189,6246
+h2v1_upsample 233,7543
+h2v2_upsample 261,8272
+h2v1_fancy_upsample 304,9755
+h2v2_fancy_upsample 345,11191
+jinit_upsampler 399,13107
+
+jdcolor.c,427
+#define JPEG_INTERNALS11,272
+} my_color_deconverter;my_color_deconverter26,718
+typedef my_color_deconverter * my_cconvert_ptr;my_cconvert_ptr28,743
+#define SCALEBITS	60,2257
+#define ONE_HALF	61,2323
+#define FIX(FIX62,2369
+build_ycc_rgb_table 70,2503
+ycc_rgb_convert 120,4422
+null_convert 169,6015
+grayscale_convert 201,6883
+ycck_cmyk_convert 218,7359
+start_pass_dcolor 266,8985
+jinit_color_deconverter 277,9144
+
+jquant1.c,1092
+#define JPEG_INTERNALS13,439
+#define ODITHER_SIZE 71,3409
+#define ODITHER_CELLS 73,3543
+#define ODITHER_MASK 74,3617
+typedef int ODITHER_MATRIX[ODITHER_MATRIX76,3697
+typedef int (*ODITHER_MATRIX_PTR)ODITHER_MATRIX_PTR77,3753
+typedef INT16 FSERROR;FSERROR128,6432
+typedef int LOCFSERROR;LOCFSERROR129,6487
+typedef INT32 FSERROR;FSERROR131,6556
+typedef INT32 LOCFSERROR;LOCFSERROR132,6613
+typedef FSERROR FAR *FSERRPTR;FSERRPTR135,6694
+#define MAX_Q_COMPS 140,6799
+} my_cquantizer;my_cquantizer165,7873
+typedef my_cquantizer * my_cquantize_ptr;my_cquantize_ptr167,7891
+select_ncolors 186,8569
+output_value 245,10666
+largest_input_value 259,11216
+create_colormap 282,11860
+create_colorindex 342,13998
+make_odither_array 405,16076
+create_odither_tables 441,17204
+color_quantize 468,17923
+color_quantize3 496,18690
+quantize_ord_dither 524,19602
+quantize3_ord_dither 574,21369
+quantize_fs_dither 619,22934
+alloc_fs_workspace 731,27319
+start_pass_1_quant 750,27785
+finish_pass_1_quant 807,29692
+new_color_map_1_quant 819,29890
+jinit_1pass_quantizer 830,30063
+
+jquant2.c,2039
+#define JPEG_INTERNALS20,786
+#define R_SCALE 73,3440
+#define G_SCALE 74,3496
+#define B_SCALE 75,3552
+#define C0_SCALE 85,3973
+#define C0_SCALE 88,4023
+#define C1_SCALE 91,4074
+#define C2_SCALE 94,4123
+#define C2_SCALE 97,4173
+#define MAXNUMCOLORS 127,5787
+#define HIST_C0_BITS 132,5992
+#define HIST_C1_BITS 133,6058
+#define HIST_C2_BITS 134,6122
+#define HIST_C0_ELEMS 137,6236
+#define HIST_C1_ELEMS 138,6277
+#define HIST_C2_ELEMS 139,6318
+#define C0_SHIFT 142,6438
+#define C1_SHIFT 143,6487
+#define C2_SHIFT 144,6536
+typedef UINT16 histcell;histcell147,6587
+typedef histcell FAR * histptr;histptr149,6659
+typedef histcell hist1d[hist1d151,6730
+typedef hist1d FAR * hist2d;hist2d152,6799
+typedef hist2d * hist3d;hist3d153,6866
+typedef INT16 FSERROR;FSERROR181,8147
+typedef int LOCFSERROR;LOCFSERROR182,8202
+typedef INT32 FSERROR;FSERROR184,8271
+typedef INT32 LOCFSERROR;LOCFSERROR185,8328
+typedef FSERROR FAR *FSERRPTR;FSERRPTR188,8409
+} my_cquantizer;my_cquantizer209,9183
+typedef my_cquantizer * my_cquantize_ptr;my_cquantize_ptr211,9201
+prescan_quantize 224,9584
+} box;box267,10920
+typedef box * boxptr;boxptr269,10928
+find_biggest_color_pop 273,10965
+find_biggest_volume 293,11436
+update_box 313,11874
+median_cut 424,15135
+compute_color 499,17504
+select_colors 539,18851
+#define BOX_C0_LOG 624,23441
+#define BOX_C1_LOG 625,23478
+#define BOX_C2_LOG 626,23515
+#define BOX_C0_ELEMS 628,23553
+#define BOX_C1_ELEMS 629,23627
+#define BOX_C2_ELEMS 630,23665
+#define BOX_C0_SHIFT 632,23704
+#define BOX_C1_SHIFT 633,23750
+#define BOX_C2_SHIFT 634,23796
+find_nearby_colors 646,24190
+find_best_colors 775,28596
+#define STEP_C0 807,30086
+#define STEP_C1 808,30132
+#define STEP_C2 809,30178
+fill_inverse_cmap 855,31511
+pass2_no_dither 915,33775
+pass2_fs_dither 949,34859
+init_error_limit 1108,41813
+#define STEPSIZE 1120,42232
+finish_pass1 1143,42794
+finish_pass2 1156,43167
+start_pass_2_quant 1167,43290
+new_color_map_2_quant 1230,45398
+jinit_2pass_quantizer 1244,45674
+
+jdmerge.c,430
+#define JPEG_INTERNALS35,1457
+} my_upsampler;my_upsampler68,2632
+typedef my_upsampler * my_upsample_ptr;my_upsample_ptr70,2649
+#define SCALEBITS	72,2690
+#define ONE_HALF	73,2756
+#define FIX(FIX74,2802
+build_ycc_rgb_table 83,3007
+start_pass_merged_upsample 126,4539
+merged_2v_upsample 144,5003
+merged_1v_upsample 193,6720
+h2v1_merged_upsample 226,7728
+h2v2_merged_upsample 288,9850
+jinit_merged_upsampler 370,12885
+
+jcomapi.c,134
+#define JPEG_INTERNALS12,316
+jpeg_abort 29,821
+jpeg_destroy 57,1684
+jpeg_alloc_quant_table 74,2208
+jpeg_alloc_huff_table 86,2485
+
+jutils.c,288
+#define JPEG_INTERNALS14,425
+jdiv_round_up 68,2033
+jround_up 77,2197
+#define FMEMCOPY(FMEMCOPY96,2968
+#define FMEMZERO(FMEMZERO97,3023
+#define FMEMCOPY(FMEMCOPY100,3134
+#define FMEMZERO(FMEMZERO101,3236
+jcopy_sample_rows 107,3344
+jcopy_block_row 141,4296
+jzero_far 161,4793
+
+jerror.c,247
+#define EXIT_FAILURE 23,770
+#define jpeg_std_message_table	39,1197
+#define JMESSAGE(JMESSAGE42,1246
+error_exit 64,1951
+output_message 83,2344
+emit_message 114,3149
+format_message 149,4226
+reset_error_mgr 204,5889
+jpeg_std_error 223,6423
+
+jmemmgr.c,1108
+#define JPEG_INTERNALS27,1249
+#define AM_MEMORY_MANAGER	28,1272
+#define ALIGN_TYPE 73,3240
+typedef union small_pool_struct * small_pool_ptr;small_pool_ptr89,3889
+typedef union small_pool_struct small_pool_struct91,3940
+} small_pool_hdr;small_pool_hdr98,4247
+typedef union large_pool_struct FAR * large_pool_ptr;large_pool_ptr100,4266
+typedef union large_pool_struct large_pool_struct102,4321
+} large_pool_hdr;large_pool_hdr109,4628
+} my_memory_mgr;my_memory_mgr138,5552
+typedef my_memory_mgr * my_mem_ptr;my_mem_ptr140,5570
+struct jvirt_sarray_control jvirt_sarray_control150,5842
+struct jvirt_barray_control jvirt_barray_control166,6710
+print_mem_stats 186,7651
+out_of_memory 217,8594
+#define MIN_SLOP 253,9797
+alloc_small 257,9883
+alloc_large 342,13157
+alloc_sarray 395,15204
+alloc_barray 443,16571
+request_virt_sarray 523,19827
+request_virt_barray 553,20823
+realize_virt_arrays 583,21815
+do_sarray_io 690,25798
+do_barray_io 723,27121
+access_virt_sarray 756,28463
+access_virt_barray 841,31706
+free_pool 930,35001
+self_destruct 1002,37203
+jinit_memory_mgr 1028,37903
+
+jmemnobs.c,237
+#define JPEG_INTERNALS18,711
+jpeg_get_small 35,1129
+jpeg_free_small 41,1243
+jpeg_get_large 55,1636
+jpeg_free_large 61,1754
+jpeg_mem_available 73,1997
+jpeg_open_backing_store 87,2324
+jpeg_mem_init 100,2605
+jpeg_mem_term 106,2709
+
+jconfig.h,343
+#define HAVE_PROTOTYPES 13,334
+#define HAVE_UNSIGNED_CHAR 14,359
+#define HAVE_UNSIGNED_SHORT 15,387
+#define CHAR_IS_UNSIGNED 18,441
+#define HAVE_STDDEF_H 19,467
+#define HAVE_STDLIB_H 20,490
+#define INLINE 31,771
+#define BMP_SUPPORTED	40,947
+#define GIF_SUPPORTED	41,998
+#define PPM_SUPPORTED	42,1049
+#define TARGA_SUPPORTED	44,1167
+
+jerror.h,781
+#define JMAKE_ENUM_LIST24,861
+#define JMESSAGE(JMESSAGE27,968
+#define JMESSAGE(JMESSAGE35,1083
+} J_MESSAGE_CODE;J_MESSAGE_CODE177,9051
+#define JERROR_H187,9234
+#define ERREXIT(ERREXIT193,9420
+#define ERREXIT1(ERREXIT1196,9546
+#define ERREXIT2(ERREXIT2200,9717
+#define ERREXIT3(ERREXIT3205,9932
+#define ERREXIT4(ERREXIT4211,10191
+#define ERREXITS(ERREXITS218,10494
+#define MAKESTMT(MAKESTMT223,10692
+#define WARNMS(WARNMS226,10817
+#define WARNMS1(WARNMS1229,10948
+#define WARNMS2(WARNMS2233,11124
+#define TRACEMS(TRACEMS240,11384
+#define TRACEMS1(TRACEMS1243,11523
+#define TRACEMS2(TRACEMS2247,11707
+#define TRACEMS3(TRACEMS3252,11935
+#define TRACEMS4(TRACEMS4257,12190
+#define TRACEMS8(TRACEMS8262,12463
+#define TRACEMSS(TRACEMSS268,12814
+
+jinclude.h,260
+#define JCONFIG_INCLUDED	27,858
+#define MEMZERO(MEMZERO67,2066
+#define MEMCOPY(MEMCOPY68,2135
+#define MEMZERO(MEMZERO73,2296
+#define MEMCOPY(MEMCOPY74,2369
+#define SIZEOF(SIZEOF86,2851
+#define JFREAD(JFREAD94,3126
+#define JFWRITE(JFWRITE96,3241
+
+jmorecfg.h,2199
+#define BITS_IN_JSAMPLE 23,761
+#define MAX_COMPONENTS 35,1242
+typedef unsigned char JSAMPLE;JSAMPLE59,2078
+#define GETJSAMPLE(GETJSAMPLE60,2109
+typedef char JSAMPLE;JSAMPLE64,2189
+#define GETJSAMPLE(GETJSAMPLE66,2235
+#define GETJSAMPLE(GETJSAMPLE68,2284
+#define MAXJSAMPLE	73,2398
+#define CENTERJSAMPLE	74,2421
+typedef short JSAMPLE;JSAMPLE84,2639
+#define GETJSAMPLE(GETJSAMPLE85,2662
+#define MAXJSAMPLE	87,2706
+#define CENTERJSAMPLE	88,2730
+typedef short JCOEF;JCOEF99,3056
+typedef unsigned char JOCTET;JOCTET110,3387
+#define GETJOCTET(GETJOCTET111,3417
+typedef char JOCTET;JOCTET115,3488
+#define GETJOCTET(GETJOCTET117,3533
+#define GETJOCTET(GETJOCTET119,3573
+typedef unsigned char UINT8;UINT8135,4110
+typedef char UINT8;UINT8138,4198
+typedef short UINT8;UINT8140,4251
+typedef unsigned short UINT16;UINT16147,4416
+typedef unsigned int UINT16;UINT16149,4483
+typedef short INT16;INT16155,4660
+typedef long INT32;INT32161,4799
+typedef unsigned int JDIMENSION;JDIMENSION171,5151
+#define JPEG_MAX_DIMENSION 173,5185
+#define METHODDEF 182,5543
+#define LOCAL	183,5616
+#define GLOBAL	184,5680
+#define EXTERN 186,5757
+#define EXTERN 188,5834
+#define FAR 199,6249
+#define FAR201,6272
+typedef int boolean;boolean213,6627
+#define FALSE	216,6712
+#define TRUE	219,6773
+#define JPEG_INTERNAL_OPTIONS231,7121
+#define DCT_ISLOW_SUPPORTED	249,7707
+#define DCT_IFAST_SUPPORTED	250,7777
+#define DCT_FLOAT_SUPPORTED	251,7848
+#define C_MULTISCAN_FILES_SUPPORTED 256,8030
+#define C_PROGRESSIVE_SUPPORTED	257,8098
+#define ENTROPY_OPT_SUPPORTED	258,8178
+#define INPUT_SMOOTHING_SUPPORTED 267,8768
+#define D_MULTISCAN_FILES_SUPPORTED 272,8946
+#define D_PROGRESSIVE_SUPPORTED	273,9014
+#define BLOCK_SMOOTHING_SUPPORTED 274,9094
+#define IDCT_SCALING_SUPPORTED	275,9172
+#define UPSAMPLE_MERGING_SUPPORTED 277,9318
+#define QUANT_1PASS_SUPPORTED	278,9393
+#define QUANT_2PASS_SUPPORTED	279,9460
+#define RGB_RED	299,10424
+#define RGB_GREEN	300,10490
+#define RGB_BLUE	301,10532
+#define RGB_PIXELSIZE	302,10572
+#define INLINE 314,10891
+#define INLINE	317,10939
+#define MULTIPLIER 328,11263
+#define FAST_FLOAT 342,11840
+#define FAST_FLOAT 344,11872
+
+jpeglib.h,5724
+#define JPEGLIB_H14,434
+#define JPEG_LIB_VERSION 36,1068
+#define DCTSIZE	44,1280
+#define DCTSIZE2	45,1344
+#define NUM_QUANT_TBLS 46,1416
+#define NUM_HUFF_TBLS 47,1490
+#define NUM_ARITH_TBLS 48,1559
+#define MAX_COMPS_IN_SCAN 49,1635
+#define MAX_SAMP_FACTOR 50,1713
+#define C_MAX_BLOCKS_IN_MCU 58,2237
+#define D_MAX_BLOCKS_IN_MCU 60,2341
+#define JMETHOD(JMETHOD70,2656
+#define JMETHOD(JMETHOD72,2731
+typedef JSAMPLE FAR *JSAMPROW;JSAMPROW81,3004
+typedef JSAMPROW *JSAMPARRAY;JSAMPARRAY82,3080
+typedef JSAMPARRAY *JSAMPIMAGE;JSAMPIMAGE83,3154
+typedef JCOEF JBLOCK[JBLOCK85,3232
+typedef JBLOCK FAR *JBLOCKROW;JBLOCKROW86,3296
+typedef JBLOCKROW *JBLOCKARRAY;JBLOCKARRAY87,3374
+typedef JBLOCKARRAY *JBLOCKIMAGE;JBLOCKIMAGE88,3447
+typedef JCOEF FAR *JCOEFPTR;JCOEFPTR90,3522
+} JQUANT_TBL;JQUANT_TBL109,4257
+} JHUFF_TBL;JHUFF_TBL125,4909
+} jpeg_component_info;jpeg_component_info193,8259
+} jpeg_scan_info;jpeg_scan_info203,8651
+} J_COLOR_SPACE;J_COLOR_SPACE215,8918
+} J_DCT_METHOD;J_DCT_METHOD223,9160
+#define JDCT_DEFAULT 226,9236
+#define JDCT_FASTEST 229,9335
+} J_DITHER_MODE;J_DITHER_MODE238,9574
+#define jpeg_common_fields 243,9673
+struct jpeg_common_struct jpeg_common_struct283,11120
+typedef struct jpeg_common_struct * j_common_ptr;j_common_ptr291,11424
+typedef struct jpeg_compress_struct * j_compress_ptr;j_compress_ptr292,11474
+typedef struct jpeg_decompress_struct * j_decompress_ptr;j_decompress_ptr293,11528
+struct jpeg_compress_struct jpeg_compress_struct298,11636
+struct jpeg_decompress_struct jpeg_decompress_struct437,17564
+struct jpeg_error_mgr jpeg_error_mgr661,27265
+#define JMSG_LENGTH_MAX 670,27778
+#define JMSG_STR_PARM_MAX 678,28128
+struct jpeg_progress_mgr jpeg_progress_mgr719,29827
+struct jpeg_destination_mgr jpeg_destination_mgr731,30206
+struct jpeg_source_mgr jpeg_source_mgr743,30604
+#define JPOOL_PERMANENT	766,31666
+#define JPOOL_IMAGE	767,31737
+#define JPOOL_NUMPOOLS	768,31804
+typedef struct jvirt_sarray_control * jvirt_sarray_ptr;jvirt_sarray_ptr770,31830
+typedef struct jvirt_barray_control * jvirt_barray_ptr;jvirt_barray_ptr771,31886
+struct jpeg_memory_mgr jpeg_memory_mgr774,31944
+#define JPP(JPP833,34149
+#define JPP(JPP835,34184
+#define jpeg_std_error	847,34574
+#define jpeg_create_compress	848,34608
+#define jpeg_create_decompress	849,34651
+#define jpeg_destroy_compress	850,34698
+#define jpeg_destroy_decompress	851,34742
+#define jpeg_stdio_dest	852,34790
+#define jpeg_stdio_src	853,34824
+#define jpeg_set_defaults	854,34856
+#define jpeg_set_colorspace	855,34895
+#define jpeg_default_colorspace	856,34938
+#define jpeg_set_quality	857,34985
+#define jpeg_set_linear_quality	858,35022
+#define jpeg_add_quant_table	859,35067
+#define jpeg_quality_scaling	860,35111
+#define jpeg_simple_progression	861,35156
+#define jpeg_suppress_tables	862,35201
+#define jpeg_alloc_quant_table	863,35246
+#define jpeg_alloc_huff_table	864,35288
+#define jpeg_start_compress	865,35329
+#define jpeg_write_scanlines	866,35371
+#define jpeg_finish_compress	867,35414
+#define jpeg_write_raw_data	868,35456
+#define jpeg_write_marker	869,35496
+#define jpeg_write_tables	870,35533
+#define jpeg_read_header	871,35570
+#define jpeg_start_decompress	872,35607
+#define jpeg_read_scanlines	873,35653
+#define jpeg_finish_decompress	874,35696
+#define jpeg_read_raw_data	875,35742
+#define jpeg_has_multiple_scans	876,35782
+#define jpeg_start_output	877,35826
+#define jpeg_finish_output	878,35864
+#define jpeg_input_complete	879,35902
+#define jpeg_new_colormap	880,35942
+#define jpeg_consume_input	881,35977
+#define jpeg_calc_output_dimensions	882,36018
+#define jpeg_set_marker_processor	883,36070
+#define jpeg_read_coefficients	884,36115
+#define jpeg_write_coefficients	885,36157
+#define jpeg_copy_critical_parameters	886,36199
+#define jpeg_abort_compress	887,36247
+#define jpeg_abort_decompress	888,36289
+#define jpeg_abort	889,36335
+#define jpeg_destroy	890,36362
+#define jpeg_resync_to_restart	891,36393
+#define JPEG_SUSPENDED	956,39388
+#define JPEG_HEADER_OK	957,39456
+#define JPEG_HEADER_TABLES_ONLY	958,39517
+#define JPEG_REACHED_SOS	987,40961
+#define JPEG_REACHED_EOI	988,41020
+#define JPEG_ROW_COMPLETED	989,41074
+#define JPEG_SCAN_COMPLETED	990,41132
+#define JPEG_RST0	1031,42912
+#define JPEG_EOI	1032,42958
+#define JPEG_APP0	1033,43002
+#define JPEG_COM	1034,43048
+struct jvirt_sarray_control jvirt_sarray_control1044,43401
+struct jvirt_barray_control jvirt_barray_control1045,43446
+struct jpeg_comp_master jpeg_comp_master1046,43491
+struct jpeg_c_main_controller jpeg_c_main_controller1047,43532
+struct jpeg_c_prep_controller jpeg_c_prep_controller1048,43579
+struct jpeg_c_coef_controller jpeg_c_coef_controller1049,43626
+struct jpeg_marker_writer jpeg_marker_writer1050,43673
+struct jpeg_color_converter jpeg_color_converter1051,43716
+struct jpeg_downsampler jpeg_downsampler1052,43761
+struct jpeg_forward_dct jpeg_forward_dct1053,43802
+struct jpeg_entropy_encoder jpeg_entropy_encoder1054,43843
+struct jpeg_decomp_master jpeg_decomp_master1055,43888
+struct jpeg_d_main_controller jpeg_d_main_controller1056,43931
+struct jpeg_d_coef_controller jpeg_d_coef_controller1057,43978
+struct jpeg_d_post_controller jpeg_d_post_controller1058,44025
+struct jpeg_input_controller jpeg_input_controller1059,44072
+struct jpeg_marker_reader jpeg_marker_reader1060,44118
+struct jpeg_entropy_decoder jpeg_entropy_decoder1061,44161
+struct jpeg_inverse_dct jpeg_inverse_dct1062,44206
+struct jpeg_upsampler jpeg_upsampler1063,44247
+struct jpeg_color_deconverter jpeg_color_deconverter1064,44286
+struct jpeg_color_quantizer jpeg_color_quantizer1065,44333

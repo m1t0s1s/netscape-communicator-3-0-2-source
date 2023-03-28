@@ -1,0 +1,144 @@
+Locale = 		"us"
+ 
+ObjectFolder =	"{resourcedir}{Locale}:"
+
+EmbedFiles = 	"{srcdir}ns:lib:xp:"
+EmbedFilesI =	"{srcdir}ns:l10n:{Locale}:xp:"
+
+RsrcFiles =		{ObjectFolder}aete.rsrc ¶
+				{ObjectFolder}artwork.rsrc ¶
+				{ObjectFolder}bookmark.rsrc ¶
+				{ObjectFolder}edtprop.rsrc ¶
+				{ObjectFolder}err.rsrc ¶
+				{ObjectFolder}forms.rsrc ¶
+				{ObjectFolder}hist.rsrc ¶
+				{ObjectFolder}macdlg.rsrc ¶
+				{ObjectFolder}macfe.rsrc ¶
+				{ObjectFolder}mail.rsrc ¶
+				{ObjectFolder}mainview.rsrc ¶
+				{ObjectFolder}PowerPlantResources.rsrc ¶
+				{ObjectFolder}PPSemanticActions.rsrc ¶
+				{ObjectFolder}prefw.rsrc ¶
+				{ObjectFolder}license.rsrc ¶
+				{ObjectFolder}ufrm.rsrc ¶
+				{ObjectFolder}lang.rsrc ¶
+				{ObjectFolder}xpstring.rsrc
+
+IncRsrcFiles = "INCLUDE ¶"{ObjectFolder}aete.rsrc¶"		¶;¶n ¶
+				INCLUDE ¶"{ObjectFolder}artwork.rsrc¶"	¶;¶n ¶
+				INCLUDE ¶"{ObjectFolder}bookmark.rsrc¶"	¶;¶n ¶
+				INCLUDE ¶"{ObjectFolder}edtprop.rsrc¶"	¶;¶n ¶
+				INCLUDE ¶"{ObjectFolder}err.rsrc¶"		¶;¶n ¶
+				INCLUDE ¶"{ObjectFolder}forms.rsrc¶"	¶;¶n ¶
+				INCLUDE ¶"{ObjectFolder}hist.rsrc¶"		¶;¶n ¶
+				INCLUDE ¶"{ObjectFolder}macdlg.rsrc¶"	¶;¶n ¶
+				INCLUDE ¶"{ObjectFolder}macfe.rsrc¶"	¶;¶n ¶
+				INCLUDE ¶"{ObjectFolder}mail.rsrc¶"		¶;¶n ¶
+				INCLUDE ¶"{ObjectFolder}mainview.rsrc¶"	¶;¶n ¶
+				INCLUDE ¶"{ObjectFolder}PowerPlantResources.rsrc¶"	¶;¶n ¶
+				INCLUDE ¶"{ObjectFolder}PPSemanticActions.rsrc¶"	¶;¶n ¶
+				INCLUDE ¶"{ObjectFolder}prefw.rsrc¶"	¶;¶n ¶
+				INCLUDE ¶"{ObjectFolder}license.rsrc¶"	¶;¶n ¶
+				INCLUDE ¶"{ObjectFolder}ufrm.rsrc¶"	¶;¶n ¶
+				INCLUDE ¶"{ObjectFolder}xpstring.rsrc¶"	¶;¶n "
+
+
+RezOptions = 	-c Doug ¶
+				-t RSRC ¶
+				-d qNames=1 ¶
+				-d SystemSevenOrLater=1 ¶
+				-d XP_MAC=1 ¶
+				-d EMBED_LOC='"'{EmbedFiles}'"' ¶
+				-d EMBED_LOCI='"'{EmbedFilesI}'"' ¶
+				-i "{srcdir}ns:include:" ¶
+				-i "{srcdir}ns:cmd:macfe:include:" ¶
+				-i "{CWDir}MacOS Support:PowerPlant:PowerPlant Resources:" ¶
+				-i "{CWDir}MacOS Support:Headers:RIncludes:" ¶
+				-i "{srcdir}ns:lib:libi18n:unicode:ufrmtbl:" ¶
+				-i "{srcdir}ns:lib:libi18n:unicode:utotbl:" ¶
+				-i "{CrossProductDir}PrecompiledHeaders:" ¶
+				-i "{NavigatorDir}PrecompiledHeaders:"
+				
+{ObjectFolder} Ä :
+
+
+all Ä {RsrcFiles} 
+
+.rsrc Ä .r
+	Rez -o {Targ} {RezOptions} {Default}.r
+
+
+{ObjectFolder}ufrm.rsrc Ä	"ufrm.r" ¶
+				{srcdir}ns:include:csid.h ¶
+				{srcdir}ns:cmd:macfe:include:resgui.h ¶
+				{srcdir}ns:lib:libi18n:unicode:utotbl:macroman.ut ¶
+				{srcdir}ns:lib:libi18n:unicode:utotbl:sjis.ut ¶
+				{srcdir}ns:lib:libi18n:unicode:utotbl:macce.ut ¶
+				{srcdir}ns:lib:libi18n:unicode:utotbl:big5.ut ¶
+				{srcdir}ns:lib:libi18n:unicode:utotbl:gb2312.ut ¶
+				{srcdir}ns:lib:libi18n:unicode:utotbl:ksc5601.ut ¶
+				{srcdir}ns:lib:libi18n:unicode:utotbl:macdingb.ut ¶
+				{srcdir}ns:lib:libi18n:unicode:utotbl:macsymbo.ut ¶
+				{srcdir}ns:lib:libi18n:unicode:ufrmtbl:macroman.uf ¶
+				{srcdir}ns:lib:libi18n:unicode:ufrmtbl:sjis.uf ¶
+				{srcdir}ns:lib:libi18n:unicode:ufrmtbl:macce.uf ¶
+				{srcdir}ns:lib:libi18n:unicode:ufrmtbl:big5.uf ¶
+				{srcdir}ns:lib:libi18n:unicode:ufrmtbl:gb2312.uf ¶
+				{srcdir}ns:lib:libi18n:unicode:ufrmtbl:macdingb.uf ¶
+				{srcdir}ns:lib:libi18n:unicode:ufrmtbl:macsymbo.uf ¶
+				{srcdir}ns:lib:libi18n:unicode:ufrmtbl:ksc5601.uf
+
+{ObjectFolder}license.rsrc Ä	"license.r" ¶
+				"::xp:LICENSE-alpha" ¶
+				"::xp:LICENSE-export-beta" ¶
+				"::xp:LICENSE-us-beta" ¶
+				"::xp:LICENSE-export" ¶
+				"::xp:LICENSE-us"
+
+{ObjectFolder}macfe.rsrc Ä	macfe.r ¶
+				{srcdir}ns:cmd:macfe:include:mversion.h ¶
+				{srcdir}ns:cmd:macfe:include:resgui.h ¶
+				{srcdir}ns:cmd:macfe:include:resae.h ¶
+				{srcdir}ns:include:csid.h ¶
+				custom.r ¶
+				PowerPlantResources.r ¶
+				"::xp:about.html" ¶
+				"::xp:authors.html" ¶
+				"::xp:authors2.html" ¶
+				"::xp:aboutplg.html" ¶
+				"::::lib:xp:biglogo.gif" ¶
+				"::::lib:xp:rsalogo.gif" ¶
+				"::::lib:xp:hype.au" ¶
+				"::xp:mozilla.html" ¶
+				"::xp:mail.msg"
+				
+				
+XPSTROptions = 	-i "{srcdir}ns:include:" ¶
+				-i "{srcdir}ns:cmd:macfe:include:" ¶
+				-i "{CWdir}MacOS Support:PowerPlant:PowerPlant Resources:" ¶
+				-i "{Rincludes}" ¶
+				-i "{Headers}" ¶
+				-i "{srcdir}ns:nspr:include:"
+				
+COptions = 	-i "{srcdir}ns:include:" ¶
+			-i "{CrossProductDir}PrecompiledHeaders:" ¶
+			-i "{NavigatorDir}PrecompiledHeaders:" ¶
+			-i "{CWDir}MacOS Support:Headers:Universal Headers:" ¶
+			-i "{CWdir}MacOS Support:Headers:System Extras Headers:Open Transport Headers:" ¶
+			-i "{CWdir}MacOS Support:Headers:ANSI Headers:" ¶
+			-D _XP_Core_ -D XP_MAC 
+				
+xpstring.r Ä xpstring.c resdef.pl ¶
+					{srcdir}ns:include:allxpstr.h 
+	C {COptions} -e2 xpstring.c > tmp.r
+	if {status} == 0
+		perl resdef.pl tmp.r
+#		delete tmp.r
+	end
+ 
+ 
+clean Ä
+	delete {srcdir}ns:l10n:us:macfe:xpstring.r Å.rsrc 
+
+binary Ä 		{RsrcFiles} 
+

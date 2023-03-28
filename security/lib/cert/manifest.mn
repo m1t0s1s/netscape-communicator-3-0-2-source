@@ -1,0 +1,41 @@
+# 
+#           CONFIDENTIAL AND PROPRIETARY SOURCE CODE OF
+#              NETSCAPE COMMUNICATIONS CORPORATION
+# Copyright (C) 1996 Netscape Communications Corporation.  All Rights
+# Reserved.  Use of this Source Code is subject to the terms of the
+# applicable license agreement from Netscape Communications Corporation.
+# The copyright notice(s) in this Source Code does not indicate actual or
+# intended publication of this Source Code.
+#
+DEPTH = ../../..
+
+EXPORTS = \
+	cert.h \
+	certt.h \
+	$(NULL)
+
+MODULE = security
+
+CSRCS = \
+	alg1485.c \
+	certdb.c \
+	certhtml.c \
+	certinit.c \
+	certread.c \
+	certreq.c \
+	certv3.c \
+	crl.c \
+	crlv2.c \
+	gename.c \
+	pcertdb.c \
+	polcyxtn.c \
+	secname.c \
+	xauthkid.c \
+	xbsconst.c \
+	xcrldist.c \
+	certxutl.c \
+	$(NULL)
+
+REQUIRES = security nspr libdbm
+
+LIBRARY_NAME = cert

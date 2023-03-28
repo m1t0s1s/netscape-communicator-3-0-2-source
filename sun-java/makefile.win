@@ -1,0 +1,36 @@
+#//------------------------------------------------------------------------
+#//
+#// Makefile to build the SUN-JAVA tree
+#//
+#//------------------------------------------------------------------------
+
+#//------------------------------------------------------------------------
+#//
+#// Specify the depth of the current directory relative to the
+#// root of NS
+#//
+#//------------------------------------------------------------------------
+DEPTH=..
+
+#//------------------------------------------------------------------------
+#//
+#// Specify any "command" targets. (ie. DIRS, INSTALL_FILES, ...)
+#// (these must come before the common makefiles are included)
+#// 
+#// DIRS          - There are subdirectories to process
+#//
+#//------------------------------------------------------------------------
+!if "$(OS_RELEASE)" == "16"
+DIRS=javah include md-include runtime md nsjava java netscape awt
+!else
+DIRS=javah include md-include runtime md nsjava java netscape awt mmedia jit\win32
+!endif
+
+#//------------------------------------------------------------------------
+#//
+#// Include the common makefile rules
+#//
+#//------------------------------------------------------------------------
+include <$(DEPTH)\config\rules.mak>
+
+

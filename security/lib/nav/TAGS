@@ -1,0 +1,401 @@
+
+advisor.c,2263
+init_sa_strings(86,1979
+#define NOINFO 233,4907
+#define COMPOSE 234,4924
+#define MAIL_MESSAGE 235,4942
+#define NEWS_MESSAGE 236,4965
+#define SNEWS_MESSAGE 237,4988
+#define NAVIGATOR 238,5012
+#define MAIL_THREADS 239,5032
+#define NEWS_THREADS 240,5055
+#define ENC_NOERR 242,5079
+#define SIG_NOERR 243,5159
+#define ENC_NORECIPIENT 246,5270
+#define ENC_CERTMISSING 247,5339
+#define ENC_CERTEXPIRED 248,5407
+#define ENC_CERTREVOKED 249,5483
+#define ENC_CERTNOALIAS 250,5556
+#define ENC_NEWSGROUP 251,5634
+#define ENC_CERTINVALID 252,5723
+#define ENC_CERTUNTRUSTED 253,5753
+#define ENC_ISSUERUNTRUSTED 254,5783
+#define ENC_ISSUERUNKNOWN 255,5813
+#define ENC_CERT_UNKNOWN_ERROR 256,5844
+#define SIG_CERTMISSING 259,5880
+#define ENC_NOTENCRYPTED 262,6037
+#define ENC_FORANOTHER 263,6092
+#define ENC_UNKNOWN_ERROR 264,6169
+#define SIG_NOTSIGNED 266,6226
+#define SIG_INVALID 267,6288
+#define SIG_TAMPERED 268,6368
+#define SIG_ADDR_MISMATCH 269,6432
+#define ENC_SECURE 272,6588
+#define ENC_NOTSECURE 273,6613
+typedef struct _nnNode _nnNode332,8717
+} nnNode;nnNode335,8788
+} SecurityAdvisorState;SecurityAdvisorState408,10652
+SECNAV_GetDefaultEMailCert(411,10695
+setupDefaultEmailCert(434,11243
+PR_CALLBACK SECNAV_MailCertPrefChange(454,11709
+initDefaultMailCertPref(463,11869
+SECNAV_DefaultEmailCertInit(510,13060
+sa_make_js_string(541,13720
+sa_push_js_string(607,14923
+sa_push_js_int(630,15502
+getAdvisorStrings(643,15752
+#define PUSH_RAW(PUSH_RAW664,16249
+#define PUSH_INT(PUSH_INT666,16354
+#define PUSH_BOOL(PUSH_BOOL668,16459
+#define PUSH_STRING(PUSH_STRING671,16594
+addNickname(760,20992
+collectCertStrings(788,21610
+sa_make_cert_list(856,23583
+getCertVarStrings(879,24047
+sa_get_algorithm_string(948,26005
+getStatusValues(978,26780
+getCryptoModuleStrings(1439,40995
+getJavaPrincipalStrings(1465,41782
+setInfoContext(1496,42588
+freeSecurityAdvisorState(1587,45073
+SECNAV_AskPrefToPK11(1653,46546
+setSecurityPrefs(1664,46687
+getSecurityPrefs(1764,50012
+getSecurityAdvisorState(1835,52086
+collectAdvisorState(1889,53137
+} DeleteCallbackArg;DeleteCallbackArg2012,56366
+redrawCallback(2016,56401
+SECNAV_AdvisorRedraw(2064,57430
+securityAdvisorHandler(2070,57518
+SECNAV_SecurityAdvisor(2534,71477
+
+certdlgs.c,3592
+compress_spaces(184,6155
+ErrorNeedsDialog(226,6804
+AddSockToCert(242,7292
+AuthAddSockToCert(266,7770
+AlwaysBlock(290,8238
+SetAlwaysBlock(300,8375
+RestartHandshakeAfterServerCert(312,8598
+SendError(407,10932
+RestartHandshakeAfterClientAuth(476,12410
+} SSLServerPanelState;SSLServerPanelState523,13440
+sslServerHandler3(526,13475
+sslServerHandler4(545,13914
+sslServerHandler5(564,14357
+sslServerPanel1(584,14877
+sslServerHandler2(607,15309
+sslServerPanel2(636,16087
+sslServerPanel3(694,17461
+sslServerPanel4(732,18338
+sslServerPanel5(754,18788
+default_server_nickname(797,19991
+server_cert_restart_cb(852,20885
+sec_sslServerFinish(868,21229
+SEC_MakeSSLServerPanel(972,23636
+} CADownloadPanelState;CADownloadPanelState1012,24561
+getDisplayName(1015,24593
+caDownloadPanel3(1040,24984
+caDownloadPanel4(1065,25519
+caDownloadPanel5(1133,27362
+caDownloadPanelX(1159,27905
+caDownloadFinish(1199,28699
+caDownloadHandler3(1292,30708
+caDownloadHandler4(1320,31470
+caDownloadHandler5(1355,32300
+caDownloadHandler6(1378,32785
+caDownloadHandler7(1404,33352
+SECNAV_MakeCADownloadPanel(1434,34087
+certDomainDialogHandler(1459,34760
+SEC_MakeCertDomainDialog(1506,35946
+certExpiredDialogHandler(1575,37468
+SEC_MakeCertExpiredDialog(1629,38808
+} CAExpiredDialogState;CAExpiredDialogState1710,40709
+caExpiredDialogHandler(1713,40748
+SEC_MakeCAExpiredDialog(1775,42354
+SetPostWarnOK(1883,44953
+certPostWarnDialogHandler(1898,45164
+SEC_MakeCertPostWarnDialog(1958,46825
+MakeBadCertDialog(2018,48158
+MakeCertDialog(2041,48918
+SECNAV_HandleBadCert(2070,49581
+SECNAV_ViewUserCertificate(2103,50102
+SECNAV_MakeDeleteCertCB(2132,50744
+} deleteCertState;deleteCertState2152,51179
+deleteCertHandler(2155,51213
+SECNAV_DeleteUserCertificate(2214,52740
+DeleteCertificate(2315,55056
+SECNAV_DeleteSiteCertificate(2373,56289
+SECNAV_DeleteEmailCertificate(2406,57136
+editSiteCertHandler(2427,57582
+editSiteCertificate(2495,59057
+editCACertHandler(2542,60162
+editCACertificate(2657,62988
+SECNAV_EditSiteCertificate(2767,65748
+GetKeyAndRestart(2788,66269
+clientAuthNoCertDialogHandler(2824,66980
+MakeClientAuthNoCertDialog(2844,67447
+} clientCertExpiredState;clientCertExpiredState2884,68370
+fetchURL(2887,68409
+HandleInternalCertRenewalURL(2898,68597
+clientCertExpiredDialogHandler(2950,69678
+MakeClientCertExpiredDialog(2994,70804
+clientAuthWhichCertDialogHandler(3045,72137
+SEC_MakeClientAuthDialog(3138,74399
+SECNAV_MakeClientAuthDialog(3223,76606
+browserSecInfoDialogHandler(3255,77376
+SECNAV_BrowserSecInfoDialog(3275,77745
+} UserCertDownloadPanelState;UserCertDownloadPanelState3312,78706
+user_cert_pkcs12_cb(3315,78749
+userCertSaveHandler(3338,79423
+user_cert_save_cb(3373,80144
+userCertDownloadHandler(3388,80541
+default_nickname(3500,83622
+SECNAV_MakeUserCertDownloadDialog(3574,84967
+} KeyGenFormState;KeyGenFormState3669,87576
+} KeyGenDialogState;KeyGenDialogState3680,87788
+GenKey(3683,87827
+PostKey(3812,91031
+KeyGenPWCallback(3825,91365
+PostKeyPWCallback(3857,92110
+do_keygen_pw_cb(3889,92788
+do_post_key_cb(3900,93041
+keyGenDialogHandler(3909,93208
+SEC_MakeKeyGenDialog(3998,95614
+SECNAV_DisplayCertDialog(4101,98799
+} EmailCertDownloadDialogState;EmailCertDownloadDialogState4123,99333
+emailCertDownloadDialogHandler(4126,99380
+SECNAV_MakeEmailCertDownloadDialog(4199,101145
+} collectSubjectCertsState;collectSubjectCertsState4285,103265
+collectSubjectCerts(4288,103311
+doSelectCallback(4320,104077
+certSelectDialogHandler(4335,104349
+SECNAV_SelectCert(4383,105377
+SECNAV_VerifyCertificate(4475,107481
+
+certmime.c,656
+typedef struct _certStream _certStream32,753
+} certStream;certStream37,896
+SEC_CertificateConflict(40,925
+handle_ca_cert(86,1769
+handle_user_cert(93,1961
+collect_certs(114,2465
+cert_complete(150,3224
+cert_abort(229,5020
+cert_is_write_ready(247,5391
+cert_write(268,5790
+SECNAV_CertificateStream(312,6765
+typedef struct _revokeStream _revokeStream346,7657
+} revokeStream;revokeStream352,7796
+revoke_complete(359,7930
+revoke_abort(384,8487
+revoke_is_write_ready(399,8697
+revoke_write(408,8825
+SECNAV_RevocationStream(440,9475
+crl_alert_invalid(477,10466
+crl_complete(487,10702
+crl_is_write_ready(567,12697
+SECNAV_CrlStream(577,12838
+
+javadlgs.c,535
+SECNAV_IsJavaPrinCert(48,1323
+} deleteJavaPrinState;deleteJavaPrinState71,1782
+deleteJavaPrinHandler(74,1820
+SECNAV_DeleteJavaPrincipal(114,2668
+} deleteJavaPrivilegeState;deleteJavaPrivilegeState172,3933
+deleteJavaPrivilegeHandler(175,3976
+SECNAV_DeleteJavaPrivilege(217,4913
+} editJavaPrinState;editJavaPrinState286,6459
+editJavaPrivilegesHandler(290,6496
+SECNAV_EditJavaPrivileges(372,8451
+} signedAppletPriv;signedAppletPriv454,10318
+signedAppletPrivilegesHandler(458,10354
+SECNAV_signedAppletPrivileges(574,13216
+
+keypw.c,196
+SECNAV_ZeroPassword(25,570
+secmoz_SetPWEnabled(41,776
+SECNAV_SetPasswordAskPrefs(47,885
+SECNAV_GetKeyDBPassword(61,1231
+SECNAV_GetKeyDBPasswordStatus(129,2465
+SECNAV_PromptPassword(156,3109
+
+pwdlgs.c,511
+} PWSetupPanelState;PWSetupPanelState61,1663
+pw_setup_retry_cb(71,1855
+pwSetupNoPWHandler(112,2701
+pw_setup_nopw_cb(143,3317
+pw_setup_done_cb(158,3702
+pwSetupHandler(183,4239
+pw_setup_sso_retry_cb(274,6446
+pw_setup_sso_fail_cb(300,7087
+pwSetupSSOHandler(328,7875
+SECNAV_MakePWSetupDialog(366,8825
+} PWChangePanelState;PWChangePanelState415,10155
+pw_change_retry_cb(425,10350
+pw_change_fail_cb(467,11343
+pw_change_nopw_cb(487,11754
+pwChangeHandler(512,12352
+SECNAV_MakePWChangeDialog(625,15062
+
+secconfg.c,760
+PR_STATIC_CALLBACK(28,460
+} certPropType;certPropType63,1357
+} certIndexType;certIndexType69,1448
+UTCTimeToDateObject(89,1742
+PR_STATIC_CALLBACK(113,2243
+NewCertObject(128,2547
+DefineCertObject(148,3085
+PR_STATIC_CALLBACK(164,3531
+PR_STATIC_CALLBACK(232,5132
+	switch(299,6687
+    switch 337,7545
+    if 358,7927
+    if 362,7978
+InitCertClass(399,9433
+PR_STATIC_CALLBACK(417,9751
+PR_STATIC_CALLBACK(424,9903
+} enumCertState;enumCertState486,11146
+PR_STATIC_CALLBACK(488,11164
+PR_STATIC_CALLBACK(515,11690
+PR_STATIC_CALLBACK(544,12293
+PR_STATIC_CALLBACK(569,12811
+DeleteCertCB(659,14791
+PR_STATIC_CALLBACK(668,14933
+InitCertDB(757,16652
+InitCertIndex(799,17428
+SECNAV_InitConfigObject(899,19620
+SECNAV_RunInitialSecConfig(958,20621
+
+secmoz.c,2656
+typedef struct SECKeySizeChoiceInfoStr SECKeySizeChoiceInfoStr141,4144
+} SECKeySizeChoiceInfo;SECKeySizeChoiceInfo145,4244
+typedef struct _CipherConfigState CipherConfigState;CipherConfigState163,4732
+struct _CipherConfigState _CipherConfigState165,4786
+decode_pqg_params(177,4995
+pqg_prime_bits(211,5680
+SECNAV_GetKeyChoiceList(237,6312
+SECNAV_GenKeyFromChoice(296,7652
+SECNAV_GetHostFromURL(363,9169
+SECNAV_Posting(387,9668
+SECNAV_HTTPHead(401,9849
+SECNAV_ConfirmServerCert(418,10099
+void mydestroy(466,11244
+SECCmpCertChainWCANames(472,11361
+SECNAV_GetClientAuthData(535,12977
+certDBNameCallback(627,15255
+keyDBNameCallback(651,15581
+SECNAV_GetCAPolicyString(671,15870
+SECNAV_Init(714,16753
+SECNAV_Shutdown(860,20980
+SECNAV_SetupSecureSocket(877,21306
+SECNAV_NewUserCertificate(938,22432
+SECNAV_MungeString(973,23209
+SECNAV_UnMungeString(1025,24434
+secmoz_CertToKeyString(1088,25924
+secmoz_URLToCert(1102,26237
+secmoz_GetCertSNString(1140,26973
+fetchURL(1182,27728
+secmoz_HandleInternalCertRevokeURL(1195,27948
+secmoz_HandleInternalCertPolicyURL(1260,29245
+secmoz_HandleInternalCertURL(1311,30281
+SECNAV_HandleInternalSecURL(1330,30749
+#define POLICY_START_STRING 1340,30984
+#define POLICY_MID_STRING 1341,31060
+#define POLICY_END_STRING 1342,31131
+SECMOZ_MakeCertPolicyButtonString(1345,31182
+#define REVOKE_START_STRING 1392,32350
+#define REVOKE_MID_STRING 1393,32426
+#define REVOKE_END_STRING 1394,32497
+SECMOZ_MakeCertRevokeButtonString(1397,32548
+SECNAV_MakeCertButtonString(1446,33734
+enable_SSL_cipher_prefs(1481,34506
+enable_SSL_cipher_policies(1501,34915
+enable_SMIME_cipher_prefs(1520,35327
+enable_SMIME_cipher_policies(1543,35862
+enable_PKCS12_cipher_policies(1562,36282
+ciphers_dialog_handler(1582,36701
+SECNAV_MakeCiphersDialog(1642,38291
+SECNAV_GetDefUserCertList(1720,40507
+SECNAV_SetDefUserCertList(1762,41722
+SECNAV_SecurityDialog(1790,42358
+void SECNAV_Logout(1843,43520
+struct secnav_ExportFileInfo{secnav_ExportFileInfo1849,43659
+secnav_DestroyExportFileInfo(1857,43870
+secnav_OpenExportFile(1875,44237
+secnav_WriteExportFile(1913,45234
+simple_copy(1937,45852
+secnav_ReadExportFile(1951,46034
+SECNAV_ReadExportFile(2026,48111
+SECNAV_WriteExportFile(2094,49963
+SECItem *SECNAV_GetExportPassword(2147,51457
+SECNAV_NicknameCollisionCallback(2238,53362
+SECNAV_GetUserCertCountries(2279,54279
+secnav_DoPKCS12ImportErrors(2285,54393
+} PKCS12RedrawCallbackArg;PKCS12RedrawCallbackArg2313,55450
+typedef void (*refreshCallback)refreshCallback2315,55478
+SECNAV_ImportPKCS12Object(2318,55531
+secnav_DoPKCS12ExportErrors(2407,57684
+SECNAV_ExportPKCS12Object(2424,58183
+
+securl.c,413
+#define SEC_URL_EMPTY	28,575
+#define SEC_URL_CERT_ISSUER_LOGO	29,601
+#define SEC_URL_CERT_SUBJECT_LOGO	30,636
+#define SEC_URL_BANNER_SECURE	31,672
+#define SEC_URL_BANNER_INSECURE	32,705
+#define SEC_URL_BANNER_MIXED	33,740
+#define SEC_URL_ADVISOR	34,772
+putItemToStream(37,812
+sec_URLType(55,1181
+SECNAV_SecURLData(109,2356
+SECNAV_SecURLContentType(203,4349
+SECNAV_SecHandleSecurityAdvisorURL(232,4917
+
+pk11dlgs.c,372
+secnav_InfoDialogHandler(54,1479
+secnav_SlotInfoDialog(67,1737
+secnav_EditDialogHandler(189,5871
+secnav_EditDialog(273,8702
+stripblanks(360,11529
+secnav_NewDialogHandler(373,11748
+SECNAV_EditModule(416,12898
+SECNAV_LogoutSecurityModule(430,13196
+SECNAV_LogoutAllSecurityModules(446,13515
+SECNAV_NewSecurityModule(452,13600
+SECNAV_DeleteSecurityModule(473,14171
+
+policy.c,1062
+#define NOT_FOR_RELEASE_TO_THE_PUBLIC 26,632
+#define PR_MAYBE 28,673
+#define ACQUIRE_WRITE_LOCK30,716
+#define RELEASE_WRITE_LOCK31,743
+#define ACQUIRE_READ_LOCK32,770
+#define RELEASE_READ_LOCK33,796
+#define PORT_Atol 73,1790
+} valueType;valueType82,1971
+typedef struct _algdesc _algdesc84,1985
+} policyAlgorithmDesc;policyAlgorithmDesc95,2604
+#define ALGNDX_SW_VERSION	100,2695
+#define ALGNDX_COUNTRIES	101,2723
+#define ALGNDX_EXCLUDED	102,2750
+#define ALGNDX_KEYGEN_BITS	103,2777
+SECNAV_PrefsRefresh(380,10561
+SECNAV_PrefBoolUpdate(408,11211
+parseMetaInfo(434,11767
+processMetaInfo(465,12516
+isPolicyCert(481,12891
+numStrNCpy(496,13368
+wrongVersion(517,13905
+readPolicyFile(565,15507
+SECNAV_PolicyInit(620,16659
+struct SECNAVPolicyFindStr SECNAVPolicyFindStr659,17409
+SECNAV_FindInit(671,17647
+SECNAV_FindNext(705,18462
+SECNAV_FindEnd(714,18631
+SECNAV_AlgPreferred(721,18705
+SECNAV_AlgAllowed(737,19001
+SECNAV_AlgOKToDo(753,19293
+SECNAV_getMaxKeyGenBits(766,19561
+SECNAV_GetProtoName(772,19660
+SECNAV_GetProtoDesc(788,19976

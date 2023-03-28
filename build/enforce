@@ -1,0 +1,42 @@
+#! /bin/sh
+
+usage() {
+  echo "usage: enforce [ snap | check ]"
+  echo "  use 'snap' to set the beginning date for subsequent 'check's"
+  echo "  use 'check' to list all files changed since the last 'snap'"
+  exit 1
+}
+
+if [ $# -ne 1 ]; then
+  usage
+fi
+
+case $1 in
+
+  snap|SNAP)
+    date > .snap
+    ;;
+
+  check|CHECK)
+    perl fascist.pl ">`cat .snap`" \
+      /m/src/ns/cmd/xfe \
+      /m/src/ns/cmd/winfe \
+      /m/src/ns/cmd/macfe \
+      /m/src/ns/config \
+      /m/src/ns/include \
+      /m/src/ns/ishield \
+      /m/src/ns/java \
+      /m/src/ns/jpeg \
+      /m/src/ns/l10n \
+      /m/src/ns/lib \
+      /m/src/ns/mocha \
+      /m/src/ns/nspr \
+      /m/src/ns/plugins \
+      /m/src/ns/sun-java \
+      /m/src/PowerPlant5
+	  ;;
+	
+  *)
+    usage
+    ;;
+esac

@@ -1,0 +1,111 @@
+#!/bin/sh
+#
+# This script is run from cron on the source machine at 1am every day.
+# It checks out the about page, updates it to include the current
+# build, generates the proper files, and checks them all in.
+#
+# Trust me, I'm from the government, I'm here to help you.
+#
+
+AWK="nawk"
+CVSROOT="/m/src"
+TMP="/var/tmp/aboutime.$$"
+
+FILES="ns/config
+       ns/l10n/us/xp \
+       ns/l10n/config \
+       ns/l10n/tools \
+       ns/lib/xp/html-to-pc.el \
+       ns/cmd/winfe/res/about.rc \
+       ns/cmd/winfe/res/about16.rc \
+       ns/cmd/winfe/res/about32.rc \
+       ns/cmd/winfe/res/aboutplg.rc \
+       ns/cmd/winfe/res/abtgld16.rc \
+       ns/cmd/winfe/res/abtgld32.rc \
+       ns/cmd/winfe/res/license.rc \
+       ns/cmd/xfe/versionn.h \
+       ns/build/build_number \
+       ns/build/genrc.sh"
+
+export CVSROOT
+
+if test -x /usr/local/bin/cvs-safer
+then
+	CVS="/usr/local/bin/cvs-safer"
+else
+	CVS="cvs"
+fi
+
+build=`date +%y%j`
+
+echo "-------- Checkout fresh copy of files into ${TMP} --------"
+
+set -e
+
+mkdir ${TMP}
+cd ${TMP}
+${CVS} checkout ${FILES}
+
+echo $build > ns/build/build_number
+
+cd ns/config
+gmake
+
+cd ../l10n/us/xp
+gmake
+
+echo ""
+
+#
+# Look for the title, add the build # to it, with a special hack
+# to make it re-appear if it seems to be missing
+#
+for i in about-all
+do
+	echo "-------- Modify ${i}.html for build ${build} --------"
+	cp ${i}.html ${i}.old.$$
+	${AWK} '/^<TITLE>/ { sub("-[0-9]+", ""); sub("</TITLE>", "-'$build'</TITLE>"); } { print; }' < ${i}.old.$$ > ${i}.html
+	diff ${i}.old.$$ ${i}.html || true
+done
+
+echo "-------- Building derivative files --------"
+
+gmake about.h about-java.h about-gold.h about-gold-java.h
+cp about.pc ${TMP}/ns/cmd/winfe/res/about16.rc
+sed 's/IDS_ABOUT-JAVA/IDS_ABOUT/' about-java.pc > ${TMP}/ns/cmd/winfe/res/about32.rc
+sed 's/IDS_ABOUT-GOLD/IDS_ABOUT/' about-gold.pc > ${TMP}/ns/cmd/winfe/res/abtgld16.rc
+sed 's/IDS_ABOUT-GOLD-JAVA/IDS_ABOUT/' about-gold-java.pc > ${TMP}/ns/cmd/winfe/res/abtgld32.rc
+
+#
+# Generate new license.rc and aboutplg.rc files.
+#
+mv ${TMP}/ns/cmd/winfe/res/aboutplg.rc ${TMP}/ns/cmd/winfe/res/aboutplg.rc.old.$$
+mv ${TMP}/ns/cmd/winfe/res/license.rc ${TMP}/ns/cmd/winfe/res/license.rc.old.$$
+../../../build/genrc.sh aboutplg aboutplg.html > ${TMP}/ns/cmd/winfe/res/aboutplg.rc
+fmt -58 LICENSE-export-beta | ../../../build/genrc.sh license > ${TMP}/ns/cmd/winfe/res/license.rc
+
+echo ""
+echo "-------- Checking In Modified Files --------"
+
+cd ${TMP}
+
+${CVS} commit -m "Nightly Build Update" ns/l10n/us/xp/about-all.html
+${CVS} commit -m "Nightly Build Update" ns/cmd/winfe/res/about16.rc
+${CVS} commit -m "Nightly Build Update" ns/cmd/winfe/res/about32.rc
+${CVS} commit -m "Nightly Build Update" ns/cmd/winfe/res/abtgld16.rc
+${CVS} commit -m "Nightly Build Update" ns/cmd/winfe/res/abtgld32.rc
+${CVS} commit -m "Nightly Build Update" ns/build/build_number
+
+if test ! -z "`diff ns/cmd/winfe/res/aboutplg.rc ns/cmd/winfe/res/aboutplg.rc.old.$$ | /usr/bsd/head -1`"
+then
+	${CVS} commit -m "Nightly Build Update" ns/cmd/winfe/res/aboutplg.rc
+fi
+if test ! -z "`diff ns/cmd/winfe/res/license.rc ns/cmd/winfe/res/license.rc.old.$$ | /usr/bsd/head -1`"
+then
+	${CVS} commit -m "Nightly Build Update" ns/cmd/winfe/res/license.rc
+fi
+
+echo "-------- Cleaning Up --------"
+
+cd /
+rm -rf ${TMP}

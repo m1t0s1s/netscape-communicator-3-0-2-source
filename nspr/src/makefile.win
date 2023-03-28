@@ -1,0 +1,176 @@
+#//------------------------------------------------------------------------
+#//
+#// Makefile to build the NSPR DLL
+#//
+#//------------------------------------------------------------------------
+
+#//------------------------------------------------------------------------
+#//
+#// Specify the depth of the current directory relative to the
+#// root of NS
+#//
+#//------------------------------------------------------------------------
+DEPTH= ..\..
+
+#//
+#// Since this Makefile requires OS_RELEASE before the common makefiles
+#// have been included, make sure that it is defined here !!
+#//
+!ifndef OS_RELEASE
+OS_RELEASE=32
+!endif
+
+MAKE_OBJ_TYPE=DLL
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Make Variables here: (ie. PDFFILE, MAPFILE, ...)
+#//
+#//------------------------------------------------------------------------
+DLLNAME=pr$(OS_RELEASE)301
+PDBFILE=$(DLLNAME).pdb
+MAPFILE=$(DLLNAME).map
+RESFILE=pr$(OS_RELEASE)30.res
+
+!if "$(OS_RELEASE)" == "16"
+DEFFILE=pr$(OS_RELEASE)30.def
+!endif
+
+#//------------------------------------------------------------------------
+#//
+#// Decide whether to build NSPR using native or software threading...
+#// Currently, the 32-bit builds always use native threads and the
+#// 16-bit builds always use software threads.
+#//
+#// To change this behavior, define KERN_OBJS differently.
+#//
+#//------------------------------------------------------------------------
+!if "$(OS_RELEASE)" == "32"
+KERN_OBJS=$(HW_KERN_OBJS)
+!else
+KERN_OBJS=$(SW_KERN_OBJS)
+!endif
+
+#//------------------------------------------------------------------------
+#// 
+#// Define the files necessary to build the target (ie. OBJS)
+#//
+#//------------------------------------------------------------------------
+
+#//
+#// Native threading modules
+#//
+HW_KERN_OBJS=                           \
+        .\$(OBJDIR)\hwthread.obj        \
+        .\$(OBJDIR)\hwsched.obj         \
+        .\$(OBJDIR)\hwmon.obj           \
+        $(NULL)
+
+#//
+#// User-level threading modules
+#//
+SW_KERN_OBJS=                           \
+        .\$(OBJDIR)\swthread.obj        \
+        .\$(OBJDIR)\swsched.obj         \
+        .\$(OBJDIR)\swmon.obj           \
+        .\$(OBJDIR)\swintr.obj          \
+        $(NULL)
+
+#//
+#// Garbage collector modules 
+#//
+GC_OBJS=                                \
+       .\$(OBJDIR)\prgcapi.obj          \
+       .\$(OBJDIR)\prmsgc.obj           \
+       $(NULL)
+
+#//
+#// Modules with non-8.3 names
+#//
+!if "$(OS_RELEASE)" == "16"
+LONG_NAME_OBJS=                         \
+        .\$(OBJDIR)\prwind~1.obj        \
+		.\$(OBJDIR)\lfn_w16.obj			\
+       $(NULL)
+!else
+LONG_NAME_OBJS=                         \
+        .\$(OBJDIR)\prwindows.obj       \
+       $(NULL)
+!endif
+
+OBJS=                                   \
+!ifdef NSWINDBGMALLOC
+        .\$(OBJDIR)\prdbmem.obj         \
+        .\$(OBJDIR)\dbmalloc.obj        \
+!endif
+        .\$(OBJDIR)\file.obj            \
+        .\$(OBJDIR)\getopt.obj          \
+        .\$(OBJDIR)\linker.obj          \
+        .\$(OBJDIR)\log2.obj            \
+        .\$(OBJDIR)\longlong.obj        \
+        .\$(OBJDIR)\page.obj            \
+        .\$(OBJDIR)\prabort.obj         \
+        .\$(OBJDIR)\prarena.obj         \
+        .\$(OBJDIR)\prdump.obj          \
+        .\$(OBJDIR)\prevent.obj         \
+        .\$(OBJDIR)\prhash.obj          \
+        .\$(OBJDIR)\prmcache.obj        \
+        .\$(OBJDIR)\prtime.obj          \
+        .\$(OBJDIR)\prmjtime.obj        \
+        .\$(OBJDIR)\prfile.obj          \
+        .\$(OBJDIR)\prfileio.obj        \
+        .\$(OBJDIR)\prnetdb.obj         \
+        .\$(OBJDIR)\prlog.obj           \
+        .\$(OBJDIR)\prprf.obj           \
+        .\$(OBJDIR)\prsystem.obj        \
+	.\$(OBJDIR)\prdtoa.obj		\
+        .\$(OBJDIR)\md_WIN.obj          \
+        .\$(OBJDIR)\md_WIN$(OS_RELEASE).obj   \
+        .\$(OBJDIR)\os_WIN.obj          \
+        $(LONG_NAME_OBJS)               \
+        $(GC_OBJS)                      \
+        $(KERN_OBJS)                    \
+        $(NULL)
+
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Targets here (ie. PROGRAM, LIBRARY, DLL, ...)
+#// (these must be defined before the common makefiles are included)
+#//
+#//------------------------------------------------------------------------
+DLL=.\$(OBJDIR)\$(DLLNAME).dll
+
+!ifdef NSWINDBGMALLOC
+LLFLAGS= $(LLFLAGS)                 \
+        /EXPORT:malloc=ns_malloc    \
+        /EXPORT:realloc=ns_realloc  \
+        /EXPORT:calloc=ns_calloc    \
+        /EXPORT:free=ns_free        \
+        /EXPORT:_strdup=ns_strdup
+!endif
+
+#//------------------------------------------------------------------------
+#//
+#// Include the common makefile rules for building a DLL
+#//
+#//------------------------------------------------------------------------
+include <$(DEPTH)/nspr/config/rules.mak>
+
+LCFLAGS=-D_USE_PR_DEBUG_MEMORY $(LCFLAGS)
+
+export:: $(DLL)
+!if "$(OS_RELEASE)" == "16"
+#    copy .\$(OBJDIR)\$(DLLNAME).dll .\$(OBJDIR)\$(DLLNAME)00.dll
+#    $(MAKE_INSTALL) .\$(OBJDIR)\$(DLLNAME)00.dll $(DIST)\bin
+    $(MAKE_INSTALL) .\$(OBJDIR)\$(DLLNAME).dll $(DIST)\bin
+!else
+    $(MAKE_INSTALL) .\$(OBJDIR)\$(DLLNAME).dll $(DIST)\bin
+!endif
+    $(MAKE_INSTALL) .\$(OBJDIR)\$(DLLNAME).lib $(DIST)\lib
+
+install:: export
+
+!if exist($(DEPFILE))
+!message +++ MAKE: Found local dependancies file!!
+!message 
+include <$(DEPFILE)>
+!endif

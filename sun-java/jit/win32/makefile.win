@@ -1,0 +1,74 @@
+#//------------------------------------------------------------------------
+#//
+#// Makefile to build Win32 JIT
+#//
+#//------------------------------------------------------------------------
+
+
+#//------------------------------------------------------------------------
+#//
+#// Specify the depth of the current directory relative to the
+#// root of NS
+#//
+#//------------------------------------------------------------------------
+DEPTH= ..\..\..
+!ifndef MAKE_OBJ_TYPE
+MAKE_OBJ_TYPE=DLL
+!endif
+
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Make Variables here: (ie. PDFFILE, MAPFILE, ...)
+#//
+#//------------------------------------------------------------------------
+DLLNAME=jit$(OS_RELEASE)301
+PDBFILE=$(DLLNAME).pdb
+MAPFILE=$(DLLNAME).map
+
+
+LINCS = -I$(DEPTH)/sun-java/md-include \
+	-I$(DEPTH)/sun-java/include 
+
+LLIBS = $(LLIBS) $(LIBNSPR)
+
+#//------------------------------------------------------------------------
+#// 
+#// Define the files necessary to build the target (ie. OBJS)
+#//
+#//------------------------------------------------------------------------
+OBJS=                         \
+    .\$(OBJDIR)\jcodegen.obj  \
+    .\$(OBJDIR)\jcompile.obj  \
+    .\$(OBJDIR)\jcompsup.obj  \
+    .\$(OBJDIR)\jinterf.obj   \
+    $(NULL)
+
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Targets here (ie. PROGRAM, LIBRARY, DLL, ...)
+#// (these must be defined before the common makefiles are included)
+#//
+#//------------------------------------------------------------------------
+DLL=.\$(OBJDIR)\$(DLLNAME).dll
+
+#//------------------------------------------------------------------------
+#//
+#// Include the common makefile rules
+#//
+#//------------------------------------------------------------------------
+include <$(DEPTH)/sun-java/config/rules.mak>
+#
+LCFLAGS = $(LCFLAGS) -DIN_NETSCAPE_NAVIGATOR 
+
+export:: $(DLL)
+!if "$(OS_RELEASE)" == "32"
+    $(MAKE_INSTALL) .\$(OBJDIR)\$(DLLNAME).dll $(DIST)\bin
+!endif
+
+install:: export
+
+!if exist($(DEPFILE))
+!message +++ MAKE: Found local dependancies file!!
+!message 
+include <$(DEPFILE)>
+!endif

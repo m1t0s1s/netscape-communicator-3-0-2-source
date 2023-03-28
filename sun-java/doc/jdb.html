@@ -1,0 +1,223 @@
+<html>
+<head>
+<title>jdb - The Java Debugger</title>
+<body>
+
+<h1>jdb - The Java Debugger</h1>
+<blockquote>
+<b>jdb</b> helps you find and fix bugs in Java language programs.
+</blockquote>
+
+<h2>SYNOPSIS</h2>
+<blockquote>
+<pre>
+jdb [ <a href="jdb.html#Options">options</a> ]
+</pre>
+</blockquote>
+
+<h2>DESCRIPTION</h2>
+<blockquote>
+The Java Debugger, <b>jdb</b>, is a dbx-like command-line debugger for Java 
+classes. It uses the <a href="../doc/api/sun.tools.debug.html">Java Debugger API</a>
+to provide inspection and debugging of a local or remote Java interpreter.
+<p>
+
+<h3>Starting a jdb Session</h3>
+<blockquote>
+Like dbx, there are two ways <b>jdb</b> can be used for debugging. The most
+frequently used way is to have <b>jdb</b> start the Java interpreter with
+the class to be debugged. This is done by substituting the command <b>jdb</b>
+for <b>java</b> in the command line. For example, to start HotJava under
+<b>jdb</b>, you use the following: 
+
+<blockquote>
+<pre width=80>
+% jdb browser.hotjava
+</pre>
+</blockquote>
+or
+<blockquote>
+<pre width=80>
+% jdb -classpath $INSTALL_DIR/classes -ms4m browser.hotjava
+</pre>
+</blockquote>
+When started this way, <b>jdb</b> invokes a second Java interpreter with any
+specified parameters, loads the specified class, and stops before executing
+that class's first instruction.
+
+<p>
+The second way to use <b>jdb</b> is by attaching it to a Java interpreter
+that is already running. For security reasons, Java interpreters can only
+be debugged if they have been started with the <i>-debug</i> option.
+When started with the <i>-debug</i> option, the Java interpreter prints
+out a password for <b>jdb</b>'s use.
+
+<p>
+To attach <b>jdb</b> to a running Java interpreter (once the session 
+password is known), invoke it as follows:
+<blockquote>
+<pre width=80>
+% jdb -host &lt;hostname&gt; -password &lt;password&gt;
+</pre>
+</blockquote>
+</blockquote>
+
+<h3>Basic jdb Commands</h3>
+The following is a list of the basic <b>jdb</b> commands. The Java debugger
+supports other commands which you can list using <b>jdb</b>'s <tt>help</tt>
+command.
+<p>
+<em>NOTE: To browse local (stack) variables, the class must have been
+compiled with the <i>-g</i> option.</em>
+<blockquote>
+<dl>
+<dt><b>help</b>, or <b>?</b>
+<dd>
+The most important <b>jdb</b> command, <tt>help</tt> displays the list of
+recognized commands with a brief description.
+
+<dt><b>print</b>
+<dd>
+Browses Java objects. The <tt>print</tt> command calls the object's
+<tt>toString()</tt> method, so it will be formatted differently depending
+on its class.
+<p>
+Classes are specified by either their object ID or by name. If a class is 
+already loaded, a substring can be used, such as <tt>Thread</tt> for 
+<tt>java.lang.Thread</tt>. If a class isn't loaded, its full name must be
+specified, and the class will be loaded as a side effect. This is needed
+to set breakpoints in referenced classes before an applet runs.
+<p>
+<tt>print</tt> supports Java expressions, such as <tt>print MyClass.clsVar</tt>.
+Method invocation will <em>not</em> be supported in the 1.0 release, however, 
+as the compiler needs to be enhanced first.
+<p>
+
+<dt><b>dump</b>
+<dd>
+Dumps an object's instance variables. Objects are specified by their
+object ID (a hexadecimal integer).
+<p>
+Classes are specified by either their object ID or by name. If a class is 
+already loaded, a substring can be used, such as <tt>Thread</tt> for 
+<tt>java.lang.Thread</tt>. If a class isn't loaded, its full name must be
+specified, and the class will be loaded as a side effect. This is needed
+to set breakpoints in referenced classes before an applet runs.
+<p>
+The <tt>dump</tt> command supports Java expressions such as
+<tt>dump 0x12345678.myCache[3].foo</tt>. Method invocation will <em>not</em>
+be supported in the 1.0 release, however, as the compiler needs to be enhanced
+first.
+<p>
+
+<dt><b>threads</b>
+<dd>
+Lists the current threads. This lists all threads in the default threadgroup,
+which is normally the first non-system group. (The <tt>threadgroups</tt> command
+lists all threadgroups.) Threads are referenced by their object ID, or if they
+are in the default thread group, with the form <tt>t@&lt;index&gt;</tt>, such
+as <tt>t@3</tt>.
+<p>
+
+<dt><b>where</b>
+<dd>
+Dumps the stack of either a specified thread, or the current thread (which is
+set with the <tt>thread</tt> command). If that thread is suspended (either
+because it's at a breakpoint or via the <tt>suspend</tt> command), local
+(stack) and instance variables can be browsed with the <tt>print</tt> and
+<tt>dump</tt> commands. The <tt>up</tt> and <tt>down</tt> commands select
+which stack frame is current.
+
+</dl>
+</blockquote>
+
+<h3>Breakpoints</h3>
+<blockquote>
+Breakpoints are set in <b>jdb</b> in classes, such as "<tt>stop at MyClass:45</tt>".
+The source file line number must be specified, or the name of the method (the
+breakpoint will then be set at the first instruction of that method). The
+<tt>clear</tt> command removes breakpoints using a similar syntax, while the
+<tt>cont</tt> command continues execution.
+<p>
+Single-stepping is not currently implemented, but is hoped to be available
+for version 1.0.
+</blockquote>
+
+<h3>Exceptions</h3>
+<blockquote>
+When an exception occurs for which there isn't a catch statement anywhere up
+a Java program's stack, the Java runtime normally dumps an exception trace
+and exits. When running under <b>jdb</b>, however, that exception is
+treated as a non-recoverable breakpoint, and <b>jdb</b> stops at the 
+offending instruction. If that class was compiled with the <i>-g</i>
+option, instance and local variables can be printed to determine the cause
+of the exception.
+
+<p>
+Specific exceptions may be optionally debugged with the <tt>catch</tt> command,
+for example: "<tt>catch FileNotFoundException</tt>" or 
+"<tt>catch mypackage.BigTroubleException</tt>. The Java debugging facility 
+keeps a list of these exceptions, and when one is thrown, it is treated as if 
+a breakpoint was set on the instruction which caused the exception. 
+The <tt>ignore</tt> command removes exception classes from this list.
+
+<p>
+<em>NOTE: The <tt>ignore</tt> command does not cause the Java interpreter
+to ignore specific exceptions, only the debugger.</em>
+</blockquote>
+
+<a name=Options>
+<h2>OPTIONS</h2>
+</a>
+<blockquote>
+When you use <b>jdb</b> in place of the Java interpreter on the command line
+<b>jdb</b> accepts the same options as the <a href="java.html">java</a> command.
+
+<p>
+When you use <b>jdb</b> to attach to a running Java interpreter session,
+<b>jdb</b> accepts these options:
+
+<dl>
+<dt><b>-host <i>&lt;hostname&gt;</i></b>
+<dd>
+Sets the name of the host machine on which the interpreter session to attach
+to is running.
+
+<dt><b>-password <i>&lt;password&gt;</i></b>
+<dd>
+"Logs in" to the active interpreter session. This is the password printed by
+the Java interpreter prints out when invoked with the <i>-debug</i> option.
+
+</dl>
+</blockquote>
+
+<h2>ENVIRONMENT VARIABLES</h2>
+<blockquote>
+ 
+<dl>
+
+<dt><b>CLASSPATH</b>
+<dd>
+Used to provide the system a path to user-defined classes. Directories are
+separated by colons, for example,
+<blockquote>
+<pre>
+.:/home/avh/classes:/usr/local/java/classes
+</pre>
+</blockquote>
+
+</dl>
+</blockquote>
+
+<h2>SEE ALSO</h2>
+<blockquote>
+<a href="javac.html">javac</a>,
+<a href="java.html">java</a>,
+<a href="javah.html">javah</a>,
+<a href="javap.html">javap</a>,
+<a href="javadoc.html">javadoc</a>
+<a href="../javaspec/javaspec_1.html">The Java Language Specification</a>
+</blockquote>
+
+</body>
+</html>

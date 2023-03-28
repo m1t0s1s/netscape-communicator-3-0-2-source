@@ -1,0 +1,30 @@
+/////////////////////////////////////////////////////////////////////////////
+// Version stamp for this .DLL
+#include <windows.h>
+#include <ver.h>
+
+VS_VERSION_INFO     VERSIONINFO
+  FILEVERSION       3,0,0,06 // major, minor, release (alpha 1), build #
+  PRODUCTVERSION    3,0,0,06
+  FILEFLAGSMASK     0
+  FILEFLAGS         0 // final version
+  FILEOS            VOS_DOS_WINDOWS16
+  FILETYPE          VFT_DLL
+  FILESUBTYPE       0   // not used
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904E4" // Lang=US English, CharSet=Windows Multilingual
+        BEGIN
+            VALUE "CompanyName",     "Netscape Communications Corporation\0"
+            VALUE "FileDescription", "Java 16-bit Runtime\0"
+            VALUE "FileVersion",     "3.0beta6.000\0"
+            VALUE "InternalName",    "JRT1630\0"
+            VALUE "LegalCopyright",  "Copyright Netscape Communications. 1994, 1995, 1996\0"
+            VALUE "LegalTrademarks", "Netscape, Mozilla\0"
+            VALUE "OriginalFilename","JRT1630.DLL\0"
+            VALUE "ProductName",     "NETSCAPE\0"
+            VALUE "ProductVersion",  "3.0.000\0"
+        END
+    END
+END

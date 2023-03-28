@@ -1,0 +1,125 @@
+
+
+! This table maps the host's locale names to MIME charsets.
+! Only some of these locales are supported.
+!
+*localeCharset*C.iso88591:		iso-8859-1
+*localeCharset*C:			iso-8859-1
+*localeCharset*POSIX:			iso-8859-1
+*localeCharset*american.iso88591:	iso-8859-1
+*localeCharset*american:		hp-roman8
+*localeCharset*ar_DZ.arabic8:		x-arabic8
+*localeCharset*ar_SA.arabic8:		x-arabic8
+*localeCharset*ar_SA.iso88596:		iso-8859-6
+*localeCharset*arabic-w:		x-arabic8
+*localeCharset*arabic.iso88596:		iso-8859-6
+*localeCharset*arabic:			x-arabic8
+*localeCharset*bg_BG.iso88595:		iso-8859-5
+*localeCharset*bulgarian:		iso-8859-5
+*localeCharset*c-french.iso88591:	iso-8859-1
+*localeCharset*c-french:		hp-roman8
+*localeCharset*chinese-s:		gb2312
+*localeCharset*chinese-t.big5:		big5
+*localeCharset*chinese-t:		x-ccdc
+*localeCharset*cs_CZ.iso88592:		iso-8859-2
+*localeCharset*czech:			iso-8859-2
+*localeCharset*da_DK.iso88591:		iso-8859-1
+*localeCharset*da_DK.roman8:		hp-roman8
+*localeCharset*danish.iso88591:		iso-8859-1
+*localeCharset*danish:			hp-roman8
+*localeCharset*de_DE.iso88591:		iso-8859-1
+*localeCharset*de_DE.roman8:		hp-roman8
+*localeCharset*dutch.iso88591:		iso-8859-1
+*localeCharset*dutch:			hp-roman8
+*localeCharset*el_GR.greek8:		x-greek8
+*localeCharset*el_GR.iso88597:		iso-8859-7
+*localeCharset*en_GB.iso88591:		iso-8859-1
+*localeCharset*en_GB.roman8:		hp-roman8
+*localeCharset*en_US.iso88591:		iso-8859-1
+*localeCharset*en_US.roman8:		hp-roman8
+*localeCharset*english.iso88591:	iso-8859-1
+*localeCharset*english:			hp-roman8
+*localeCharset*es_ES.iso88591:		iso-8859-1
+*localeCharset*es_ES.roman8:		hp-roman8
+*localeCharset*fi_FI.iso88591:		iso-8859-1
+*localeCharset*fi_FI.roman8:		hp-roman8
+*localeCharset*finnish.iso88591:	iso-8859-1
+*localeCharset*finnish:			hp-roman8
+*localeCharset*fr_CA.iso88591:		iso-8859-1
+*localeCharset*fr_CA.roman8:		hp-roman8
+*localeCharset*fr_FR.iso88591:		iso-8859-1
+*localeCharset*fr_FR.roman8:		hp-roman8
+*localeCharset*french.iso88591:		iso-8859-1
+*localeCharset*french:			hp-roman8
+*localeCharset*german.iso88591:		iso-8859-1
+*localeCharset*german:			hp-roman8
+*localeCharset*greek.iso88597:		iso-8859-7
+*localeCharset*greek:			x-greek8
+*localeCharset*hebrew.iso88598:		iso-8859-8
+*localeCharset*hebrew:			x-hebrew8
+*localeCharset*hr_HR.iso88592:		iso-8859-2
+*localeCharset*hu_HU.iso88592:		iso-8859-2
+*localeCharset*hungarian:		iso-8859-2
+*localeCharset*icelandic.iso88591:	iso-8859-1
+*localeCharset*icelandic:		hp-roman8
+*localeCharset*is_IS.iso88591:		iso-8859-1
+*localeCharset*is_IS.roman8:		hp-roman8
+*localeCharset*it_IT.iso88591:		iso-8859-1
+*localeCharset*it_IT.roman8:		hp-roman8
+*localeCharset*italian.iso88591:	iso-8859-1
+*localeCharset*italian:			hp-roman8
+*localeCharset*iw_IL.hebrew8:		x-hebrew8
+*localeCharset*iw_IL.iso88598:		iso-8859-8
+*localeCharset*ja_JP.SJIS:		shift_jis
+*localeCharset*ja_JP.eucJP:		x-euc-jp
+*localeCharset*japanese.euc:		x-euc-jp
+*localeCharset*japanese:		shift_jis
+*localeCharset*katakana:		shift_jis
+*localeCharset*ko_KR.eucKR:		euc-kr
+*localeCharset*korean:			euc-kr
+*localeCharset*n-computer:		hp-roman8
+*localeCharset*nl_NL.iso88591:		iso-8859-1
+*localeCharset*nl_NL.roman8:		hp-roman8
+*localeCharset*no_NO.iso88591:		iso-8859-1
+*localeCharset*no_NO.roman8:		hp-roman8
+*localeCharset*norwegian.iso88591:	iso-8859-1
+*localeCharset*norwegian:		hp-roman8
+*localeCharset*pl_PL.iso88592:		iso-8859-2
+*localeCharset*polish:			iso-8859-2
+*localeCharset*portuguese.iso88591:	iso-8859-1
+*localeCharset*portuguese:		hp-roman8
+*localeCharset*pt_PT.iso88591:		iso-8859-1
+*localeCharset*pt_PT.roman8:		hp-roman8
+*localeCharset*ro_RO.iso88592:		iso-8859-2
+*localeCharset*ru_RU.iso88595:		iso-8859-5
+*localeCharset*rumanian:		iso-8859-2
+*localeCharset*russian:			iso-8859-5
+*localeCharset*serbocroatian:		iso-8859-2
+*localeCharset*sk_SK.iso88592:		iso-8859-2
+*localeCharset*sl_SI.iso88592:		iso-8859-2
+*localeCharset*slovene:			iso-8859-2
+*localeCharset*spanish.iso88591:	iso-8859-1
+*localeCharset*spanish:			hp-roman8
+*localeCharset*sv_SE.iso88591:		iso-8859-1
+*localeCharset*sv_SE.roman8:		hp-roman8
+*localeCharset*swedish.iso88591:	iso-8859-1
+*localeCharset*swedish:			hp-roman8
+*localeCharset*th_TH.tis620:		x-tis620
+*localeCharset*thai:			x-tis620
+*localeCharset*tr_TR.iso88599:		iso-8859-9
+*localeCharset*tr_TR.turkish8:		x-turkish8
+*localeCharset*turkish.iso88599:	iso-8859-9
+*localeCharset*turkish:			x-turkish8
+*localeCharset*zh_CN.hp15CN:		gb2312
+*localeCharset*zh_TW.big5:		big5
+*localeCharset*zh_TW.ccdc:		x-ccdc
+*localeCharset*zh_TW.eucTW:		x-euc-tw
+
+
+! OS-dependent font charset mappings
+!
+*documentFonts.charset*cns11643-0:				x-cns11643-1
+*documentFonts.charset*cns11643-1:				x-cns11643-2
+*documentFonts.charset*cns11643-2:				x-ignore
+
+

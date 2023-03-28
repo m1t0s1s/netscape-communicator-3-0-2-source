@@ -1,0 +1,1293 @@
+#!/bin/sh
+#
+#
+# (c) Copyright 1990, 1991, 1992 Conor P. Cahill (cpcahil@virtech.vti.com)
+#
+# This software may be distributed freely as long as the following conditions
+# are met:
+# 		* the distribution, or any derivative thereof, may not be
+#		  included as part of a commercial product
+#		* full source code is provided including this copyright
+#		* there is no charge for the software itself (there may be
+#		  a minimal charge for the copying or distribution effort)
+#		* this copyright notice is not modified or removed from any
+#		  source file
+#
+# $Id: Configure,v 1.1 1996/06/18 03:29:08 warren Exp $
+#
+# This shell script attempts to automatically determine the correct settings
+# for the malloc library include file and compile pre-defines.  This script has
+# been tested by the author in the following environments:
+#
+#	Intel 486	ISC UNIX 3.0	cc & gcc 2.1
+#	Intel 486	DELL SVR4 	cc & gcc 1.40
+#	HP9000		HP/UX 8.0	cc & cc -Aa -D_POSIX_SOURCE
+#	AT&T 3B2-600	SVR4.1ES	cc (relaxed ansi - no cc flags)
+#	IBM RS6000	AIX 3.1		cc 
+#	Sun Sparc 2	SunOS 4.1.1	cc
+#
+# It has also been reported to work in the following environments:
+#
+#	DG AViiON	DG/UX		gcc 2.1 & cc (which is gcc -traditional)
+#	Sun Sparc 2	SunOS 4.1.1	cc (apparently in the sys5 environment)
+#	Hp 9000/400	HP-UX 7.0x	cc
+#	Hp 9000/700	HP-UX 8.05	cc
+#	Sun Sparc 	SunOs 4.1.1	cc (in bsd environment)
+#	Motorola 88K	SysV 3.2
+#	DecStation 5100	Ultrix 4.2	
+#	IBM rs/6000	AIX 3.1.1	
+#	IBM rs/6000	AIX 3.2	
+#	Intel 486	ESIX SysV 4.0
+#
+# If you run this script in a different environment it may not work correctly or
+# it may make an incorrect determination, so be more cautious about the results.
+#
+SP="           "
+CCFILE=CF$$c
+CCLIST="gcc2 gcc como CC g++ c89 cc pcc"
+CONFFILE=.configure
+DIRLIST="`echo $PATH | tr ':' ' '`"
+INCDIR=/usr/include
+LIBDIRS="/lib /usr/lib /usr/ucb/lib"
+TMPDIR=/tmp
+TMPBREAK=${TMPDIR}/CF$$break
+TMPCC=${TMPDIR}/CF$$cc
+TMPCCFILE=${TMPDIR}/${CCFILE}.c
+TMPCOMP=${TMPDIR}/CF$$cmp
+TMPDEF=${TMPDIR}/CF$$def
+TMPEND=${TMPDIR}/CF$$end
+TMPFATAL=${TMPDIR}/CF$$fatal
+TMPFIRST=${TMPDIR}/CF$$first
+TMPFOUND=${TMPDIR}/CF$$fnd
+TMPPREDEF=${TMPDIR}/CF$$pred
+TMPSET=${TMPDIR}/CF$$set
+TMPSKIPPED=${TMPDIR}/CF$$skip
+WARN_REGEXP="[Ww]arning|^w "\"".*"\"",L[0-9]*/C[0-9]*:"
+
+if [ $# != 0 ]; then
+	debug=$1
+
+	if [ $debug -gt 10 ]; then
+		set -x
+	fi
+else
+	debug=0
+fi
+
+#
+# if we already have a configuration 
+#
+if [ $# = 0 -a -s "${CONFFILE}" -a -s "${CONFFILE}.s" ]; then
+
+	echo "Using existing configuration.  If this is not correct, you"
+	echo "need to remove the ${CONFFILE} file and re-run the make"
+
+else
+
+	echo "Determining the correct configuration for malloc.h on this" \
+			"system."
+	echo "This may take a while, please be patient"
+
+	
+	#
+	# Determine default sizetype (for use when we are guessing at 
+	# parameter settings).
+	#
+	grep size_t ${INCDIR}/sys/types.h >/dev/null 2>&1
+	if [ $? = 0 ]; then
+		dfltsize=size_t
+	else
+		dfltsize="unsigned int"
+	fi
+
+	#
+	# determine the compiler(s) that are available on this system
+	#
+
+	echo "    Looking for compilers..."
+	rm -f ${TMPCOMP}
+	touch ${TMPCOMP}
+
+	#
+	# if in debug mode and the compiler is specified as an argument
+	#
+	if [ $# -gt 1 ]; then
+		echo $2 > ${TMPCOMP}
+	else
+
+		#
+		# look for the listed compilers.  Note that cc is last.  This
+		# is as it should be because cc is probably the only compiler
+		# listed that doesn't have one of the pre-defined symbols that
+		# we look for and therefore must be last because the
+		# configuration check loop requires that all compilers other
+		# than the last compiler have one of the pre-defined symbols.
+		#
+		for compiler in ${CCLIST}
+		do
+			for dir in ${DIRLIST}
+			do
+				if [ -s $dir/$compiler ]; then
+					echo "        found $compiler in $dir"
+					echo $dir/$compiler >> ${TMPCOMP}
+					#
+					# if this is gcc, also add a second 
+					#   entry with the -traditional flag
+					#
+					if [ $compiler = "gcc" ]; then
+						echo $dir/$compiler \
+						  -traditional >> ${TMPCOMP}
+					fi
+					
+					break
+				fi
+			done
+		done
+
+		#
+		# if we didn't find any compilers
+		#
+		if [ ! -s ${TMPCOMP} ]; then
+			echo "I can't find your compiler"
+			echo 1 > ${TMPFATAL}
+			exit 1
+		fi
+
+	fi
+
+	rm -f ${TMPSET} ${TMPEND} ${TMPSET}.s ${TMPEND}.s ${TMPFIRST} ${TMPSKIPPED}
+
+	cp /dev/null ${TMPSET}
+	cp /dev/null ${TMPSET}.s
+	cp /dev/null ${TMPEND}
+	cp /dev/null ${TMPEND}.s
+	first=1
+	ending=
+	#
+	# for each compiler. 
+	#
+	echo "    checking compiler configuration(s)..."
+	while read cc
+	do
+		(
+		echo "        checking $cc..."
+
+		#
+		# if we should be using any special flags for this compile
+		#
+		if [ -s Config.flags ]; then
+			newcc="`basename $cc`"
+			newcc="`eval grep \"\^$newcc\" Config.flags`"
+			if [ ! -z "$newcc" ]; then
+				cc="$newcc"
+			fi
+		fi
+
+		if [ -s ${TMPFIRST} ]; then
+			#
+			# See if the current set of defines meets the conditions
+			# for this compiler.  If so, there is no need to verify
+			# the parameters further.
+			#
+			rm -f ${TMPCCFILE}
+			cat ${TMPSET} ${TMPEND} cctest.c > ${TMPCCFILE}
+			$cc -DMALLOC_COMPILETEST -DMEM_COMPILETEST \
+			   -DSTR_COMPILETEST -DFREE_COMPILETEST -DEXITTEST\
+			   -c ${TMPCCFILE} >${TMPCC} 2>&1
+			ccresult=$?
+
+			rm -f ${TMPCCFILE}
+
+			if [ $ccresult = 0 ]; then
+				if egrep "${WARN_REGEXP}" ${TMPCC}>/dev/null; then
+					rm ${TMPCC};
+				else
+					continue
+				fi
+			fi
+
+			#
+			# otherwise if the last compiler didn't have a
+			# pre-defined symbol we can't add another set
+			# because it would conflict with the previous 
+			# set of definitions.
+			#
+			if [ ! -s ${TMPPREDEF} ]; then
+			
+				echo "${SP}More than one compiler and no way to tell the" \
+					 "difference between them"
+				echo "${SP}So, hopefully the one set of defs will suffice"
+				echo "break" > ${TMPBREAK}
+				exit
+			fi
+
+			PREDEF=`cat ${TMPPREDEF}`
+
+			if [ ! -s ${TMPSKIPPED} ]; then
+				echo >> ${TMPSET}
+				echo "#else  /* $PREDEF */" >> ${TMPSET}
+				echo >> ${TMPSET}
+	
+				echo >> ${TMPSET}.s
+				echo "#else  /* $PREDEF */" >> ${TMPSET}.s
+				echo >> ${TMPSET}.s
+			fi
+
+		fi
+
+		#
+		# add the appropriate #ifdef to the settings file for this 
+		# compiler (if it has any)
+		#
+		$cc -DPRE_DEFINES -o cctest cctest.c > /dev/null 2>&1
+
+		./cctest > ${TMPPREDEF}1
+
+		if [ ! -s ${TMPPREDEF}1 ]; then
+			echo "skipped" >> ${TMPSKIPPED}
+			echo "${SP}Failed to determine pre-definitions for this compiler"
+			echo "${SP}    skipping this set of pre-defs.  NOTE: this problem"
+			echo "${SP}    is usually caused by a compiler installed without"
+			echo "${SP}    its libraries (like g++)"
+			exit 0
+			
+		else
+
+			rm -f ${TMPSKIPPED}
+
+			PREDEF=`cat ${TMPPREDEF}1`
+
+			if [ "x${PREDEF}" = "xnone" ]; then
+				cp /dev/null ${TMPPREDEF}
+				PREDEF=""
+			else
+
+				mv ${TMPPREDEF}1 ${TMPPREDEF}
+
+				echo >> ${TMPSET}
+				echo "#if       $PREDEF" >> ${TMPSET}
+				echo >> ${TMPSET}
+
+				if [ -s ${TMPEND}.o ]; then
+					rm -f ${TMPEND}.o
+				fi
+				if [ -s ${TMPEND} ]; then
+					mv ${TMPEND} ${TMPEND}.o
+				fi
+				echo > ${TMPEND}
+				echo "#endif /* $PREDEF */" >> ${TMPEND}
+				echo >> ${TMPEND}
+
+				if [ -s ${TMPEND}.o ]; then
+					cat ${TMPEND}.o >> ${TMPEND}
+					rm -f ${TMPEND}.o
+				fi
+
+				echo >> ${TMPSET}.s
+				echo "#if       $PREDEF" >> ${TMPSET}.s
+				echo >> ${TMPSET}.s
+
+				if [ -s ${TMPEND}.s.o ]; then
+					rm -f ${TMPEND}.s.o
+				fi
+				if [ -s ${TMPEND}.s ]; then
+					mv ${TMPEND}.s ${TMPEND}.s.o
+				fi
+				echo > ${TMPEND}.s
+				echo "#endif /* $PREDEF */" >> ${TMPEND}.s
+				echo >> ${TMPEND}.s
+
+				if [ -s ${TMPEND}.s.o ]; then
+					cat ${TMPEND}.s.o >> ${TMPEND}.s
+					rm -f ${TMPEND}.s.o
+				fi
+			fi
+		fi
+
+		#
+		# flag that this is not the first time
+		#
+		echo "second" > ${TMPFIRST}
+
+		#
+		# First step is to determine the correct settings for the
+		# DATATYPE, SIZETYPE and VOIDTYPE pre-defines for this compiler.
+		#
+		# Check void
+		#
+		$cc -DVOIDTEST -c cctest.c > ${TMPCC} 2>&1
+		cc_result=$?
+		egrep "${WARN_REGEXP}" ${TMPCC} > /dev/null 2>&1
+		grep_result=$?
+
+		if [ $cc_result = 0 -a $grep_result != 0 ] ; then
+			voidtype=void
+		else
+			voidtype=int
+		fi
+
+		echo "#define VOIDTYPE $voidtype" >> ${TMPSET}
+
+		#
+		# Check const
+		#
+		$cc -DCONSTTEST -c cctest.c > ${TMPCC} 2>&1
+		cc_result=$?
+		egrep "${WARN_REGEXP}" ${TMPCC} > /dev/null 2>&1
+		grep_result=$?
+
+		if [ $cc_result = 0 -a $grep_result != 0 ] ; then
+			const=const
+		else
+			const=
+		fi
+
+		echo "#define CONST $const" >> ${TMPSET}
+
+		#
+		# Check ABORT_SIGNAL.  Note that this goes into the settings.s
+		# file which eventually goes into sysdefs.h
+		#
+		$cc -DSIGABRTTEST -c cctest.c > ${TMPCC} 2>&1
+		cc_result=$?
+		egrep "${WARN_REGEXP}" ${TMPCC} > /dev/null 2>&1
+		grep_result=$?
+		if [ $cc_result = 0 -a $grep_result != 0 ] ; then
+			abortsig=SIGABRT
+		else
+			$cc -DSIGIOTTEST -c cctest.c > ${TMPCC} 2>&1
+			cc_result=$?
+			egrep "${WARN_REGEXP}" ${TMPCC} > /dev/null 2>&1
+			grep_result=$?
+			if [ $cc_result = 0 -a $grep_result != 0 ] ; then
+				abortsig=SIGIOT
+			else
+				abortsig=6
+			fi
+		fi
+
+		echo "/*" >> ${TMPSET}.s
+		echo " * Signal to use to abort program " >> ${TMPSET}.s
+		echo " */" >> ${TMPSET}.s
+		echo "#define ABORT_SIGNAL $abortsig" >> ${TMPSET}.s
+		echo "" >> ${TMPSET}.s
+
+		#
+		# Check SETENV stuff.  Note that this goes into the settings.s
+		# file which eventually goes into sysdefs.h
+		#
+		$cc -DSETENVTEST cctest.c > ${TMPCC} 2>&1
+		cc_result=$?
+		egrep "${WARN_REGEXP}" ${TMPCC} > /dev/null 2>&1
+		gres=$?
+		grep "setenv" ${TMPCC} > /dev/null 2>&1
+		gres2=$?
+		if [ $cc_result = 0 -a $gres != 0 -a $gres2 != 0 ]; then
+			echo "/*" >> ${TMPSET}.s
+			echo " * Use setenv() for env mods" >> ${TMPSET}.s
+			echo " */" >> ${TMPSET}.s
+			echo "#define USE_SETENV 1" >> ${TMPSET}.s
+			echo "" >> ${TMPSET}.s
+		fi
+
+		#
+		# Check to see if POSIX header files (in particular,
+		# <unistd.h>) are available
+		#
+		$cc -DPOSIXHEADERTEST cctest.c > ${TMPCC} 2>&1
+		cc_result=$?
+		egrep "$WARN_REGEXP" ${TMPCC} > /dev/null 2>&1
+		gres=$?
+		if [ $cc_result = 0 -a $gres != 0 ]; then
+			echo "/*" >> ${TMPSET}.s
+			echo " * POSIX header files are available" >> ${TMPSET}.s
+			echo " */" >> ${TMPSET}.s
+			echo "#define POSIX_HEADERS 1" >> ${TMPSET}.s
+			echo "" >> ${TMPSET}.s
+			USE_UNISTD=-DUSE_UNISTD
+		else
+			USE_UNISTD=
+		fi
+
+		#
+		# Check to see if ANSI header files (in particular,
+		# <stdlib.h>) are available
+		#
+		$cc -DANSIHEADERTEST cctest.c > ${TMPCC} 2>&1
+		cc_result=$?
+		egrep "$WARN_REGEXP" ${TMPCC} > /dev/null 2>&1
+		gres=$?
+		if [ $cc_result = 0 -a $gres != 0 ]; then
+			echo "/*" >> ${TMPSET}.s
+			echo " * ANSI header files are available" >> ${TMPSET}.s
+			echo " */" >> ${TMPSET}.s
+			echo "#define ANSI_HEADERS 1" >> ${TMPSET}.s
+			echo "" >> ${TMPSET}.s
+			USE_STDLIB=-DUSE_STDLIB
+		else
+			USE_STDLIB=
+		fi
+
+		#
+		# Check the type of exit
+		#
+		
+		for type in ${voidtype} int
+		do
+			$cc -DEXITTEST ${USE_UNISTD} ${USE_STDLIB} \
+				-DEXITTYPE=${type} -c cctest.c > ${TMPCC} 2>&1
+			cc_result=$?
+			egrep "${WARN_REGEXP}" ${TMPCC} > /dev/null 2>&1
+			grep_result=$?
+
+			if [ $cc_result = 0 -a $grep_result != 0 ] ; then
+				exittype=${type}
+				break
+			else
+				exittype=
+			fi
+		done
+		
+		if [ "x${exittype}" != "x" ]; then
+			echo "#define EXITTYPE $exittype" >> ${TMPSET}
+		else
+			echo "${SP}couldn't determine the correct setting for"
+			echo "${SP}  the return type of exit, guessing"
+			echo "${SP}  VOIDTYPE"
+			echo "#define EXITTYPE VOIDTYPE  /* *GUESS* */" \
+				>> ${TMPSET}
+		fi
+
+		#
+		# Check to see if <malloc.h> is available -- if it
+		# isn't, we don't have to try using it later in the
+		# script and things will go faster
+		# 
+		$cc -DMALLOCHTEST cctest.c > ${TMPCC} 2>&1
+		cc_result=$?
+		egrep "$WARN_REGEXP" ${TMPCC} > /dev/null 2>&1
+		gres=$?
+		if [ $cc_result = 0 -a $gres != 0 ]; then
+			USE_MALLOC=-DUSE_MALLOC
+		else
+			USE_MALLOC=
+		fi
+
+		#
+		# check ASM stuff for i386 systems (need for underscore and/or repe
+		# instruction
+		#
+		echo "/*" >> ${TMPSET}.s
+		echo " * ASM settings that only apply to 80x86 systems ">> ${TMPSET}.s
+		echo " */" >> ${TMPSET}.s
+		echo "" >> ${TMPSET}.s
+
+		$cc -DASM_UNDTEST cctest.c > ${TMPCC} 2>&1
+		cc_result=$?
+		if [ -s a.out ]; then
+			res=`./a.out 2>&1`
+		else
+			res=""
+		fi
+
+		echo "/*" >> ${TMPSET}.s
+		echo " * Use Underscores for ASM global symbols" >> ${TMPSET}.s
+		echo " */" >> ${TMPSET}.s
+		if [ $cc_result = 0 -a "$res" = "OK" ]; then
+			cflag="-DUSE_UNDERSCORE"
+			echo "#define USE_UNDERSCORE 1" >> ${TMPSET}.s
+		else
+			cflag=""
+			echo "/* #define USE_UNDERSCORE 1 */" >> ${TMPSET}.s
+		fi
+		echo "" >> ${TMPSET}.s
+
+		$cc -DASM_REPTEST $cflag cctest.c > ${TMPCC} 2>&1
+		cc_result=$?
+		if [ -s a.out ]; then
+			res=`./a.out 2>&1`
+		else
+			res=""
+		fi
+
+		echo "/*" >> ${TMPSET}.s
+		echo " * Use REPE instruction for ASM repeat op" >> ${TMPSET}.s
+		echo " */" >> ${TMPSET}.s
+
+		if [ $cc_result = 0 -a "$res" = "OK" ]; then
+			echo "#define USE_REPE 1" >> ${TMPSET}.s
+		else
+			echo "/*#define USE_REPE 1*/" >> ${TMPSET}.s
+		fi
+		echo "" >> ${TMPSET}.s
+
+		#
+		# the only way to test the malloc and size datatypes is to
+		# define them and install them into the test malloc.h to
+		# see if they are valid
+		#
+		# NOTE: this will fail if a prior version of the debug
+		# malloc.h is in the include path for the compiler before
+		# the system malloc.h file.
+		#
+
+		#
+		# check settings for malloc
+		#
+		if [ "$debug" -gt 0 ]; then
+			DSP="${SP}    "
+	        echo "${DSP}Checking malloc"
+			DSP="${DSP}    "
+		fi
+
+		rm -f ${TMPDEF}
+		for fileinc in ${USE_STDLIB} ${USE_MALLOC} "${USE_STDLIB} ${USE_MALLOC}"
+		do
+				for datatype in void char
+				do
+					for sizetype in size_t int "unsigned int" \
+						long "unsigned long"
+					do
+						if [ $debug != 0 ]; then
+							echo "${DSP}data:$datatype size:$sizetype"
+						fi
+
+						#
+						# compile the test module
+						#
+						$cc -DDATATYPE="$datatype" -DSIZETYPE="$sizetype"   \
+							$fileinc -DCONST="$const" -DMALLOC_COMPILETEST  \
+							-c cctest.c >${TMPCC} 2>&1
+						result=$?
+
+						if [ $debug -gt 5 ]; then
+							cat ${TMPCC}
+						fi
+						if [ $result = 0 ]; then
+							egrep "${WARN_REGEXP}" ${TMPCC} > /dev/null 2>&1
+							if [ $? != 0 ]; then
+								echo "#define DATATYPE $datatype" > ${TMPDEF}
+								echo "#define SIZETYPE $sizetype" >> ${TMPDEF}
+								break
+							fi
+						fi
+
+					done
+
+					if [ -s ${TMPDEF} ]; then
+						break
+					fi
+
+				done
+
+				if [ -s ${TMPDEF} ]; then
+					break
+				fi
+
+		done
+
+		if [ ! -s ${TMPDEF} ]; then
+			#
+			# guess at what the correct settings should be.  If the compiler
+			# supports the void data type, guess that the pointer returned
+			# by malloc is a void * and the size is size_t, otherwise use
+			# char * and unsigned int
+			#
+			if [ "$voidtype" = void ]; then
+				datatype=void
+				sizetype=size_t
+			else
+				datatype=char
+				sizetype="unsigned int"
+			fi
+
+			echo "${SP}couldn't determine the correct settings for the datatype"
+			echo "${SP}  and sizetype parameters for malloc, guessing that the"
+			echo "${SP}  datatype is $datatype and sizetype is $sizetype"
+
+			#
+			# put the guesses into the tmpdef file and flag them as a guess
+			#
+			echo "#define DATATYPE $datatype  /* *GUESS* */" >  ${TMPDEF}
+			echo "#define SIZETYPE $sizetype  /* *GUESS* */" >> ${TMPDEF}
+		fi
+
+		cat < ${TMPDEF} >> ${TMPSET}
+
+		rm -f ${TMPDEF}
+		for fileinc in ${USE_STDLIB} ${USE_MALLOC} "${USE_STDLIB} ${USE_MALLOC}"
+		do
+			for freetype in ${voidtype} int
+			do
+				if [ $debug != 0 ]; then
+					echo "${DSP}freetype:$freetype"
+				fi
+
+				#
+				# compile the test module
+				#
+				$cc -DFREETYPE="$freetype" -DDATATYPE="$datatype" \
+					$fileinc -DCONST="$const" -DFREE_COMPILETEST  \
+					-c cctest.c >${TMPCC} 2>&1
+				result=$?
+
+				if [ $debug -gt 5 ]; then
+					cat ${TMPCC}
+				fi
+				if [ $result = 0 ]; then
+					egrep "${WARN_REGEXP}" ${TMPCC} > /dev/null 2>&1
+					if [ $? != 0 ]; then
+						echo "#define FREETYPE $freetype" > ${TMPDEF}
+						break
+					fi
+				fi
+			done
+
+			if [ -s ${TMPDEF} ]; then
+				break;
+			fi
+		done
+
+		if [ ! -s ${TMPDEF} ]; then
+			#
+			# guess at what the correct settings should be.
+			#
+
+			echo "${SP}couldn't determine the correct settings for the return"
+			echo "${SP}  value of free, guessing VOIDTYPE"
+
+			#
+			# put the guesses into the tmpdef file and flag them as a guess
+			#
+			echo "#define FREETYPE VOIDTYPE  /* *GUESS* */" >  ${TMPDEF}
+		fi
+
+		cat < ${TMPDEF} >> ${TMPSET}
+
+		#
+		# check settings for memory functions
+		#
+		if [ "$debug" -gt 0 ]; then
+			DSP="${SP}    "
+			echo "${DSP}Checking memory functions"
+			DSP="${DSP}    "
+		fi
+		rm -f ${TMPDEF}
+
+		#
+		# see if we should try to use string.h if memory.h fails.
+		#
+		if grep "memcpy" ${INCDIR}/string.h > /dev/null 2>&1; then
+			extra="-DUSE_STRING_H"
+		else
+			extra=""
+		fi
+
+		# 
+		# for each include file we are checking
+		#
+		for fileinc in -DUSE_MEMORY_H  $extra
+		do
+			if [ $debug -ge 1 ]; then
+				echo "${DSP}checking inc: $fileinc"
+				ODSP="${DSP}"
+				DSP="${DSP}    "
+			fi
+			for datatype in void char
+			do
+				for sizetype in size_t int "unsigned int" long "unsigned long"
+				do
+					if [ $debug -ge 3 ]; then
+						echo "${DSP}data:$datatype size:$sizetype"
+					fi
+
+					#
+					# compile the test module
+					#
+					$cc -DMEMDATA="$datatype" -DMEMSIZE="$sizetype" \
+						-DCONST="$const" -DMEM_COMPILETEST  \
+						$fileinc -c cctest.c >${TMPCC} 2>&1
+					result=$?
+					if [ $debug -gt 10 ]; then
+						cat ${TMPCC}
+					fi
+					if [ $result = 0 ]; then
+						egrep "${WARN_REGEXP}" ${TMPCC} > /dev/null 2>&1
+						if [ $? != 0 ]; then
+							echo "#define MEMDATA $datatype" > ${TMPDEF}
+							echo "#define MEMSIZE $sizetype" >> ${TMPDEF}
+							break
+						fi
+					fi
+
+				done
+
+				if [ -s ${TMPDEF} ]; then
+					break
+				fi
+			done
+
+			if [ $debug -ge 1 ]; then
+				DSP="${ODSP}"
+			fi
+
+			if [ -s ${TMPDEF} ]; then
+				break;
+			fi
+
+		done
+
+		if [ ! -s ${TMPDEF} ]; then
+			#
+			# guess at what the correct settings should be.  If the compiler
+			# supports the void data type, guess that the pointer used by
+			# memcpy is a void * and the size is size_t, otherwise use
+			# char * and unsigned int
+			#
+			if [ "$voidtype" = void ]; then
+				datatype=void
+				sizetype=size_t
+			else
+				datatype=char
+				sizetype="unsigned int"
+			fi
+
+			echo "${SP}Couldn't determine the correct settings for the datatype"
+			echo "${SP}  and sizetype parameters for mem* functions, I will"
+			echo "${SP}  guess that the datatype is $datatype and sizetype"
+			echo "${SP}  is $sizetype"
+
+			#
+			# put the guesses into the tmpdef file and flag them as a guess
+			#
+			echo "#define MEMDATA $datatype  /* *GUESS* */" >  ${TMPDEF}
+			echo "#define MEMSIZE $sizetype  /* *GUESS* */" >> ${TMPDEF}
+		fi
+
+		cat < ${TMPDEF} >> ${TMPSET}
+
+		#
+		# check memory comparison setting
+		#
+		if [ "$debug" -gt 0 ]; then
+			DSP="${SP}    "
+			echo "${DSP}Checking memory func comparision type"
+			DSP="${DSP}    "
+		fi
+		rm -f ${TMPDEF}
+		for comptype in "char" "unsigned char" "signed char"
+		do
+			if [ "x$comptype" = "xchar" ]; then
+				testtype=TESTCHAR
+			else
+				testtype=TESTUCHAR
+			fi
+
+			#
+			# compile the test module
+			#
+			rm -f cctest
+			$cc -D$testtype -DCOMPARETEST=memcmp \
+				cctest.c -o cctest >${TMPCC} 2>&1
+	
+			if [ -s ./cctest ]; then
+				./cctest
+				if [ $? = 0 ]; then
+					echo "#define MEMCMPTYPE $comptype" \
+							> ${TMPDEF}
+					break
+				fi
+			fi
+			rm -f ${TMPCC};
+		done
+
+		if [ ! -s ${TMPDEF} ]; then
+			#
+			# if we don't know, then guess the natural character type
+			# (which may be signed or unsigned)
+			#
+			comptype=char
+
+			echo "${SP}Couldn't determine the correct settings for the"
+			echo "${SP}  comparison type for the memory funcs, I will guess"
+			echo "${SP}  that the comparison type is $comptype"
+
+			#
+			# put the guesses into the tmpdef file and flag them as a guess
+			#
+			echo "#define MEMCMPTYPE $comptype  /* *GUESS* */" >  ${TMPDEF}
+		fi
+
+		cat < ${TMPDEF} >> ${TMPSET}
+
+		#
+		# check settings for string functions
+		#
+		rm -f ${TMPDEF}
+		for sizetype in size_t int "unsigned int" long "unsigned long"
+		do
+			#
+			# compile the test module
+			#
+			$cc -DSTRSIZE="$sizetype"   -DCONST="$const" \
+			    -DSTR_COMPILETEST  -c cctest.c >${TMPCC} 2>&1
+			
+			if [ $? = 0 ]; then
+				if egrep "${WARN_REGEXP}" ${TMPCC}>/dev/null; then
+					rm ${TMPCC};
+				else
+					echo "#define STRSIZE $sizetype" > ${TMPDEF}
+					break
+				fi
+			fi
+
+		done
+		
+		if [ ! -s ${TMPDEF} ]; then
+			#
+			# guess at what the correct setting should be.  If size_t is in
+			# /usr/include/string.h, use it, otherwise use the default size 
+			# type
+			#
+			if grep size_t ${INCDIR}/string.h >/dev/null 2>&1; then
+				sizetype=size_t
+			else
+				sizetype="$dfltsize"
+			fi
+
+			echo "${SP}Couldn't determine the correct settings for the sizetype"
+			echo "${SP}  parameter for the string functions.  I will guess "
+			echo "${SP}  that the correct setting is $sizetype"
+
+			#
+			# put the guesses into the tmpdef file and flag them as a guess
+			#
+			echo "#define STRSIZE $sizetype  /* *GUESS* */" >> ${TMPDEF}
+		fi
+
+		cat < ${TMPDEF} >> ${TMPSET}
+
+		#
+		# check string comparison setting
+		#
+		rm -f ${TMPDEF}
+		for comptype in "char" "unsigned char" "signed char"
+		do
+			if [ "x$comptype" = "xchar" ]; then
+				testtype=TESTCHAR
+			else
+				testtype=TESTUCHAR
+			fi
+
+			#
+			# compile the test module
+			#
+			rm -f cctest
+			$cc -D$testtype -DCOMPARETEST=strncmp \
+				cctest.c -o cctest >${TMPCC} 2>&1
+	
+			if [ -s ./cctest ]; then
+				./cctest
+				if [ $? = 0 ]; then
+					echo "#define STRCMPTYPE $comptype" \
+							> ${TMPDEF}
+					break
+				fi
+			fi
+			rm -f ${TMPCC};
+		done
+
+		if [ ! -s ${TMPDEF} ]; then
+			#
+			# if we don't know, then guess the natural character type
+			# (which may be signed or unsigned)
+			#
+			comptype=char
+
+			echo "${SP}Couldn't determine the correct settings for the"
+			echo "${SP}  comparison type for the string funcs, I will guess"
+			echo "${SP}  that the comparison type is $comptype"
+
+			#
+			# put the guesses into the tmpdef file and flag them as a guess
+			#
+			echo "#define STRCMPTYPE $comptype  /* *GUESS* */" >  ${TMPDEF}
+		fi
+
+		cat < ${TMPDEF} >> ${TMPSET}
+		
+		#
+		# check settings for write size
+		#
+		rm -f ${TMPDEF}
+		for fileinc in -DUSE_SYSENT -DUSE_NONE
+		do
+			for sizetype in size_t "unsigned int" int long "unsigned long"
+			do
+				#
+				# compile the test module
+				#
+				$cc -DWRTSIZE="$sizetype"   $fileinc -DCONST="$const" \
+					${USE_UNISTD} ${USE_STDLIB} \
+				    -DWRT_COMPILETEST  -c cctest.c >${TMPCC} 2>&1
+				
+				if [ $? = 0 ]; then
+					if egrep "${WARN_REGEXP}" ${TMPCC} >/dev/null; then
+						rm ${TMPCC};
+					else
+						echo "#define WRTSIZE $sizetype" > ${TMPDEF}
+						break
+					fi
+				fi
+
+			done
+		done
+		
+		if [ ! -s ${TMPDEF} ]; then
+			#
+			# if we don't know, then guess the natural character type
+			# (which may be signed or unsigned)
+			#
+			sizetype="$dfltsize"
+
+			echo "${SP}Couldn't determine the correct settings for the"
+			echo "${SP}  sizetype parameter for the write func, I will guess"
+			echo "${SP}  that the sizetype is $sizetype"
+
+			#
+			# put the guesses into the tmpdef file and flag them as a guess
+			#
+			echo "#define WRTSIZE $siztype  /* *GUESS* */" >  ${TMPDEF}
+		fi
+
+		cat < ${TMPDEF} >> ${TMPSET}.s
+
+		#
+		# now that we have the settings determined, lets see if we have
+		# any routines that are built in by the compiler.  These will
+		# typically be string functions like strcpy and/or memory funcs
+		#
+		# -- not implemented yet
+		#
+		
+		) < /dev/null
+
+		if [ -s ${TMPBREAK} ]; then
+			break;
+		fi
+
+	done < ${TMPCOMP}
+
+	if [ -s ${TMPFATAL} ]; then
+		exit `cat ${TMPFATAL}`
+	fi
+
+	cat ${TMPEND} >> ${TMPSET}
+
+	cp ${TMPSET} ${CONFFILE}
+
+	#
+	# now make the correct determinations for building the library (see
+	# what #defs are needed for the compilation).
+	#
+
+	rm -f ${CONFFILE}.s
+	(
+	echo "/*"
+	echo " * This file is mechanically generated by the Configure script."
+	echo " * If there is something wrong here, modify the configure script"
+	echo " * so that it is no longer generated wrong and please send email"
+	echo " * to the author so that the fix is included with the next patch"
+	echo " * release."
+	echo " */"
+	echo ""
+	echo "#ifndef _SYSDEF_H     /* double inclusion guard */"
+	echo "#define _SYSDEF_H 1"
+	echo ""
+	) > ${CONFFILE}.s
+
+	#
+	# put in the compiler settings
+	#
+	cat ${TMPSET}.s >> ${CONFFILE}.s
+
+	if [ -s ${TMPEND}.s ]; then
+		cat ${TMPEND}.s >> ${CONFFILE}.s
+	fi
+
+	rm -f ${TMPFOUND}
+
+	#
+	# if we have the Intrinsic.h file, then set the flag to indicate so
+	#
+	if [ -s /usr/include/X11/Intrinsic.h ]; then
+		(	
+		echo "/*" 
+		echo " * Found X intrinsic file in /usr/include/X11"
+		echo " */"
+		echo "#define FOUND_X_INTRINSIC 1"
+		echo ""
+		) >> ${CONFFILE}.s
+	else
+		(	
+		echo "/*" 
+		echo " * Didn't find X intrinsic file in /usr/include/X11"
+		echo " */"
+		echo "/* #define FOUND_X_INTRINSIC 1 */" 
+		echo ""
+		) >> ${CONFFILE}.s
+	fi
+	
+
+	#
+	# if wait.h is present in /usr/include/sys/wait.h
+	#
+	if [ -s /usr/include/sys/wait.h ]; then
+		(	
+		echo "/*" 
+		echo " * Found wait.h in /usr/include/sys"
+		echo " */"
+		echo "#define NEED_WAIT 1"
+		echo ""
+		) >> ${CONFFILE}.s
+	else
+		(	
+		echo "/*" 
+		echo " * Didn't find wait.h in /usr/include/sys"
+		echo " */"
+		echo "/* #define NEED_WAIT 1 */" 
+		echo ""
+		) >> ${CONFFILE}.s
+	fi
+	
+	#
+	# check to see if the XtAlloc module includes definitions for the Heap
+	# management.  Note that this is generic for all compilers, so it
+	# will come after the per-compiler stuff in ${CONFFILE}.s
+	#
+	for i in $LIBDIRS
+	do
+		if [ -s $i/libXt.a ]; then
+			ar xv $i/libXt.a Alloc.o > /dev/null 2>&1
+			heap=`( nm Alloc.o | grep XtHeapInit ) 2>/dev/null`
+			rm -f Alloc.o
+			echo found >> ${TMPFOUND}
+
+			if [ -z "$heap" ]; then
+			
+				(
+				echo "/*" 
+				echo " * don't force inclusion of XtHeap"
+				echo " */"
+				echo "#define DONT_FORCE_HEAPSTUFF 1"
+				echo ""
+				) >> ${CONFFILE}.s
+		
+				break
+			fi
+
+		fi
+	done
+
+	if [ ! -s ${TMPFOUND} ]; then
+		(
+		echo "/*" 
+		echo " * don't force inclusion of XtHeap"
+		echo " */"
+		echo "#define DONT_FORCE_HEAPSTUFF 1"
+		echo ""
+		) >> ${CONFFILE}.s
+	fi
+
+	(
+	echo ""
+	echo "#endif  /* _SYSDEF_H */"
+	echo ""
+	) >> ${CONFFILE}.s
+
+fi
+
+#
+# if we guessed at any of the settings, tell the user about it
+#
+if grep "\*GUESS\*" ${CONFFILE} ${CONFFILE}.s > /dev/null 2>&1; then
+	echo ""
+	echo "    Warning: There were some settings that I could not determine"
+	echo "             the correct values for and so I have guessed at the"
+	echo "             correct settings.  You should review the .configure"
+	echo "             and .configure.s files and review the settings to"
+	echo "             make sure they are correct.  The settings that were"
+	echo "             guessed at will be marked with '/* *GUESS* */'"
+	echo ""
+	echo "             See the PROBLEMS file for a description of what the"
+	echo "             settings are supposed to be"
+	echo ""
+	echo "             Most of the time you can ignore this warning and"
+	echo "             just continue with the compilation of the library"
+	echo "             and have no problems."
+	echo ""
+	echo "             Once you determine that the settings are correct, you"
+	echo "             can remove the GUESS flags and you will no longer get"
+	echo "             this warning when building the library"
+	echo ""
+fi
+
+#
+# Create malloc.h with the new settings
+#
+ed malloc.h.org <<ended > /dev/null 2>&1
+/^DATATYPES_MARKER/
+d
+. r ${CONFFILE}
+w malloc.h
+q
+ended
+
+#
+# and now add in the system definitions
+#
+cp ${CONFFILE}.s sysdefs.h
+
+#
+# and now handle the memset and memcpy routines (if it hasn't been done
+# already)
+#
+if [ ! -s ${CONFFILE}.O ]; then
+
+	#
+	# find compiler for testing modified modules Note that we only use cc
+	# or gcc for this step because we think that these are the only usefull
+	# compilers to perform this step
+	#
+	rm -f ${TMPCC}
+	for compiler in cc gcc
+	do
+		for dir in ${DIRLIST}
+		do
+			if [ -s ${dir}/${compiler} ]; then
+				echo "${dir}/${compiler}" > ${TMPCC}
+				break
+			fi
+		done
+		if [ -s ${TMPCC} ]; then
+			break;
+		fi
+	done
+
+	cc=`cat ${TMPCC} < /dev/null`
+
+	#
+	# find libc.a
+	#
+	for i in $LIBDIRS
+	do
+		if [ -s $i/libc.a ]; then
+		
+			LIBC=$i/libc.a
+			break
+		
+		fi
+	done
+
+	ar xv ${LIBC} memcpy.o memset.o memmove.o > /dev/null 2>&1
+
+	#
+	# If at least one of the modules were found, build the changestr module
+	#
+	if [ -s memset.o -o -s memcpy.o  -o -s memmove.o ]; then
+
+		${cc} -DCHANGESTR cctest.c -o changestr > /dev/null 2>&1
+
+	fi
+
+	if [ -s memmove.o ]; then
+		TESTPGMS="memset memmove"
+	else
+		TESTPGMS="memset memcpy"
+	fi
+
+	#
+	# if we found memset.o
+	#
+	for i in ${TESTPGMS}
+	do
+		#
+		# get the name of the target
+		#
+		case $i in
+			memmove|memcpy)
+				tgtstr=DataMC
+				tgtfile=datamc
+				def=TESTDATAMC
+				;;
+			memset)
+				tgtstr=DataMS
+				tgtfile=datams
+				def=TESTDATAMS
+				;;
+		esac
+
+		rm -f ${tgtfile}.O
+
+		if [ -s ${i}.o ]; then
+
+			#
+			# change the file
+			#
+			chmod +w ${i}.o
+			./changestr ${i}.o ${i} ${tgtstr}
+
+			if [ $? = 0 ]; then
+		
+				#
+				# test new memset module
+				# 
+				rm -f cctest
+				${cc} -D${def} cctest.c -o cctest ${i}.o  \
+					> /dev/null 2>&1
+
+				if [ -s cctest ];  then
+					output=`./cctest`
+				else
+					output=0
+				fi
+			else
+				output=0
+			fi
+
+			#
+			# if the output from the command is correct then
+			# save the .o file in DataMS.O so that the
+			# makefile knows to use it
+			#
+			if [ "x${output}" = "xx   yyy" ]; then
+			
+				#
+				# move the object module so the makefile
+				# knows to use it
+				#
+				rm -f ${tgtfile}.O
+				mv ${i}.o ${tgtfile}.O
+				rm -f ${i}.o
+		
+			fi
+
+			#
+			# clean up after ourselves
+			#
+			rm -f ${i}.o
+
+		fi
+
+	done
+
+	echo "Configured .O files at `date`" >> ${CONFFILE}.O
+
+fi
+
+rm -f changestr
+
+#
+# clean up after ourselves
+#
+rm  -f ${TMPDIR}/CF$$* cctest cctest.o ${CCFILE}.[co] a.out

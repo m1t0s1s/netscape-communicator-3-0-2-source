@@ -1,0 +1,99 @@
+#           CONFIDENTIAL AND PROPRIETARY SOURCE CODE OF
+#              NETSCAPE COMMUNICATIONS CORPORATION
+# Copyright (C) 1997 Netscape Communications Corporation.  All Rights
+# Reserved.  Use of this Source Code is subject to the terms of the
+# applicable license agreement from Netscape Communications Corporation.
+# The copyright notice(s) in this Source Code does not indicate actual or
+# intended publication of this Source Code.
+#
+
+# prevent TARGETS from being defined
+IGNORE_MANIFEST	= 1
+DEPTH = ..\..
+include <$(DEPTH)\config\config.mak>
+
+INSTALL_DIR = $(XPDIST:/=\)\xpdist
+
+PATTERNS= \
+    PREF.da-export.zip \
+    PREF.de-export.zip \
+    PREF.en-export.zip \
+    PREF.en-france.zip \
+    PREF.en-us.zip \
+    PREF.es-export.zip \
+    PREF.fr-export.zip \
+    PREF.fr-france.zip \
+    PREF.fr-us.zip \
+    PREF.it-export.zip \
+    PREF.ja-export.zip \
+    PREF.ko-export.zip \
+    PREF.nl-export.zip \
+    PREF.pt-export.zip \
+    PREF.sv-export.zip \
+    $(NULL)
+
+JARS	= $(PATTERNS:PREF.=)
+
+# gmake won't accept a make variables for a substitution string, only literals.
+#TARGETS	= $(PATTERNS:PREF.=$(INSTALL_DIR)\)
+TARGETS	=  \
+    $(INSTALL_DIR)\da-export.zip \
+    $(INSTALL_DIR)\de-export.zip \
+    $(INSTALL_DIR)\en-export.zip \
+    $(INSTALL_DIR)\en-france.zip \
+    $(INSTALL_DIR)\en-us.zip \
+    $(INSTALL_DIR)\es-export.zip \
+    $(INSTALL_DIR)\fr-export.zip \
+    $(INSTALL_DIR)\fr-france.zip \
+    $(INSTALL_DIR)\fr-us.zip \
+    $(INSTALL_DIR)\it-export.zip \
+    $(INSTALL_DIR)\ja-export.zip \
+    $(INSTALL_DIR)\ko-export.zip \
+    $(INSTALL_DIR)\nl-export.zip \
+    $(INSTALL_DIR)\pt-export.zip \
+    $(INSTALL_DIR)\sv-export.zip \
+    $(NULL)
+
+# Get rid of old crufty policy files that don't work any more
+GARBAGE	= $(GARBAGE) \
+    $(INSTALL_DIR)\export.zip \
+    $(INSTALL_DIR)\france.zip \
+    $(INSTALL_DIR)\us.zip \
+    $(NULL)
+
+NOCVS	= -x CVS
+
+include <$(DEPTH)\config\rules.mak>
+
+# only build this on UNIX.
+# Note:  the reason for using "*.*" instead of "*" is to exclude CVS 
+!ifdef BUILD_JARS
+$(JARS):: $(@:.zip=) $(@:.zip=/META-INF) $(@:.zip=/META-INF/*.*)
+#	cd $(@:.zip=)
+	-rm $@
+	@cd $(@B)
+	-$(ZIP) ../$@  META-INF/*.* $(NOCVS) 
+	@cd ..
+
+!endif
+
+$(TARGETS):: $(JARS) $(INSTALL_DIR)
+#	for %g in ($(JARS)) do $(MAKE_INSTALL:/=\) %g $(INSTALL_DIR)
+	$(MAKE_INSTALL:/=\) $(@F) $(INSTALL_DIR)
+
+$(INSTALL_DIR):
+	-mkdir $(INSTALL_DIR:/=\)
+
+install:: $(TARGETS)
+
+# note, the rmdir command below does not have switches to force a recursive
+# delete.  It is intended to fail if any files remain in $(INSTALL_DIR)
+clobber_all::
+	-rmdir $(INSTALL_DIR:/=\) 2>NUL
+
+showsymbols::
+        @echo "INSTALL_DIR = $(INSTALL_DIR)"
+        @echo "PATTERNS    = $(PATTERNS)"
+        @echo "JARS        = $(JARS)"
+        @echo "TARGETS     = $(TARGETS)"
+

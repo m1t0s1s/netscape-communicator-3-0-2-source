@@ -1,0 +1,89 @@
+//	===========================================================================
+//	V_RezStreaming.ri
+//
+//	Copyright 1996 ViviStar Consulting.
+//	===========================================================================
+
+/*	---------------------------------------------------------------------------
+	¥	OpenStreamable
+	¥	CloseStreamable
+	
+	Use Open/CloseStreamable to delineate the beginning and ending of
+	streamable objects.
+	
+	Between Open/CloseStreamable invoke ...SData macros to fill in
+	non-object data.  SData stands for {S}tream segment {Data}.
+	For object data fields use ObjectRef, NullRef, or open another
+	streamable with Open/CloseStreamable.  Yes, you can have
+	nested/recursive objects in Rez'd stream segments.
+	
+	Note you may encounter multiple ...SData macros (...SData1, ...SData2,
+	etc) for a given streamable.  This is necessary when a streamable's non
+	object fields intersperses its object fields (object pointers).
+	
+	This complication means it is very easy to make streams
+	for .r files that are incorrect.  This can be frustrating but it IS
+	better than having complicated constructions hard coded in C++!
+	Indent your Open/CloseStreamable nests.
+	
+	This complication could be removed if Rez type statements were
+	fully recursive.  If you're a Rez whiz and figure out how to do this,
+	please contact ViviStar Consulting <support@vivistar.com>.  If you
+	know of another resource compiler that is fully recursive,
+	let us know that to.
+*/
+case	OpenStreamable:
+	EmptyRezKey;
+	longint;										//	ClassIDT
+	longint;										//	stream key for object
+
+case	CloseStreamable:		//	Entirely bogus in reality
+	EmptyRezKey;
+
+
+/*	---------------------------------------------------------------------------
+	¥	StreamRef
+
+	Use to indicate an object that has already occured in the stream.
+*/
+case	StreamRef:
+	EmptyRezKey;
+	longint = 'oref';
+	longint;										//	stream key for streamable object
+
+
+/*	---------------------------------------------------------------------------
+	¥	NullRef
+	
+	Use to indicate null object (pointers).
+*/
+case	NullRef:
+	EmptyRezKey;
+	longint = 'null';
+
+
+/*	---------------------------------------------------------------------------
+	¥	ObjectRef
+
+	Use to indicate an object that has already occured in the stream.
+	Note that the object may have been explicitly entered into the
+	stream's object table.
+	
+	WARNING:
+		Since the object may not be a streamable, it is presumed you
+		know what to safely cast the value to!  In comparison, dealing
+		with an LStreamable/StreamRef is safer.
+*/
+case	ObjectRef:
+	EmptyRezKey;
+	longint = 'oref';
+	longint;										//	stream key for object
+
+/*	---------------------------------------------------------------------------
+	¥	RawHex
+*/
+case	RawData:
+	EmptyRezKey;
+	string;
+
+

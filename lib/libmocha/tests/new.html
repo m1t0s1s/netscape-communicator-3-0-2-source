@@ -1,0 +1,46 @@
+<HTML>
+<HEAD>
+<SCRIPT>
+function Array() {
+    this.length = 0;
+}
+
+function History() {
+    this.index = 0;
+    this.array = new Array();
+}
+
+var hist = new History();
+
+function Add(text) {
+    hist.array[++hist.array.length] = text;
+}
+
+function Retreat(form) {
+    if (hist.index > 1)
+	form.input.value = hist.array[--hist.index];
+}
+
+function Advance(form) {
+    if (hist.index < hist.array.length)
+	form.input.value = hist.array[++hist.index];
+}
+</SCRIPT>
+</HEAD>
+
+<BODY>
+<FORM>
+<TABLE>
+<TR>
+<TD COLSPAN=2>
+<INPUT TYPE="text" NAME="input" VALUE="" ONCHANGE="Add(this.value)">
+</TR>
+<TR>
+<TD>
+<INPUT TYPE="button" NAME="prev" VALUE="Prev" ONCLICK="Retreat(this.form)">
+<TD>
+<INPUT TYPE="button" NAME="next" VALUE="Next" ONCLICK="Advance(this.form)">
+</TR>
+</FORM>
+</BODY>
+</HTML>

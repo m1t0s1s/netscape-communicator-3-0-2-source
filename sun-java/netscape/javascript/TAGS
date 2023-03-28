@@ -1,0 +1,54 @@
+
+jsStubs.c,1672
+#define IMPLEMENT_netscape_javascript_JSObject26,613
+#define IMPLEMENT_netscape_applet_AppletClassLoader34,814
+#define IMPLEMENT_netscape_applet_MozillaAppletContext35,866
+#define NaEnv2EE(NaEnv2EE49,1240
+#define java_MochaContext(java_MochaContext51,1330
+#define java_SetMochaContext(java_SetMochaContext52,1410
+#define JAVA_MOCHA_STACK_SIZE 59,1571
+} SavedMochaContext;SavedMochaContext64,1674
+typedef struct JSErrorState JSErrorState;JSErrorState66,1696
+struct JSErrorState JSErrorState67,1738
+js_throwJSException(74,1847
+js_currentClassLoader(87,2247
+js_checkMayScript(118,3114
+js_findMochaContext(136,3618
+} js_CallMocha_data_prefix;js_CallMocha_data_prefix221,6384
+} js_CallMocha_data;js_CallMocha_data229,6540
+js_CallMocha_stub(237,6816
+js_CallMocha(276,7862
+} js_GetMember_data;js_GetMember_data318,9048
+js_GetMember_stub(321,9082
+JRI_PUBLIC_API(338,9600
+JRI_PUBLIC_API(366,10379
+} js_SetMember_data;js_SetMember_data394,11001
+js_SetMember_stub(397,11035
+JRI_PUBLIC_API(458,12806
+JRI_PUBLIC_API(484,13515
+} js_RemoveMember_data;js_RemoveMember_data511,14130
+js_RemoveMember_stub(514,14167
+JRI_PUBLIC_API(528,14494
+} js_Call_data;js_Call_data561,15388
+js_Call_stub(564,15417
+JRI_PUBLIC_API(609,16722
+} js_Eval_data;js_Eval_data651,17851
+js_Eval_stub(654,17880
+JRI_PUBLIC_API(672,18439
+} js_Finalize_data;js_Finalize_data707,19337
+js_Finalize_stub(710,19370
+JRI_PUBLIC_API(722,19625
+} js_toString_data;js_toString_data741,20054
+js_toString_stub(744,20087
+JRI_PUBLIC_API(765,20605
+} js_getWindow_data;js_getWindow_data795,21353
+js_getWindow_stub(798,21387
+JRI_PUBLIC_API(807,21561
+JRI_PUBLIC_API(838,22321
+
+stubs.c,140
+#define IMPLEMENT_netscape_javascript_JSObject1,0
+#define IMPLEMENT_netscape_javascript_JSException3,96
+void _java_javascript_init(6,199
+
+njs_nodl.c,0

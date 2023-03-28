@@ -1,0 +1,33 @@
++ Comment:                                 Export policy
++ Software-Version:                        Mozilla/4.0P2 [ko]
++ MAX-GEN-KEY-BITS:                        512
++ PKCS12-DES-EDE3:                         false 
++ PKCS12-RC2-128:                          false 
++ PKCS12-RC4-128:                          false 
++ PKCS12-DES-56:                           true 
++ PKCS12-RC2-40:                           true 
++ PKCS12-RC4-40:                           true 
++ PKCS12-NULL:                             true 
++ SSL2-RC4-128-WITH-MD5:                   conditional
++ SSL2-RC2-128-CBC-WITH-MD5:               conditional
++ SSL2-DES-168-EDE3-CBC-WITH-MD5:          conditional
++ SSL2-DES-56-CBC-WITH-MD5:                true
++ SSL2-RC4-128-EXPORT40-WITH-MD5:          true
++ SSL2-RC2-128-CBC-EXPORT40-WITH-MD5:      true
++ SSL3-FORTEZZA-DMS-WITH-FORTEZZA-CBC-SHA: false
++ SSL3-FORTEZZA-DMS-WITH-RC4-128-SHA:      false
++ SSL3-RSA-WITH-RC4-128-MD5:               conditional
++ SSL3-RSA-WITH-3DES-EDE-CBC-SHA:          conditional
++ SSL3-RSA-WITH-DES-CBC-SHA:               true
++ SSL3-RSA-WITH-RC4-40-MD5:                true
++ SSL3-RSA-WITH-RC2-CBC-40-MD5:            true
++ SSL3-FORTEZZA-DMS-WITH-NULL-SHA:         false
++ SSL3-RSA-WITH-NULL-MD5:                  true
++ SMIME-DES-EDE3:                          false
++ SMIME-RC2-CBC-128:                       false
++ SMIME-RC5PAD-64-16-128:                  false
++ SMIME-DES-CBC:                           true
++ SMIME-RC2-CBC-64:                        false
++ SMIME-RC5PAD-64-16-64:                   false
++ SMIME-RC2-CBC-40:                        true
++ SMIME-RC5PAD-64-16-40:                   true

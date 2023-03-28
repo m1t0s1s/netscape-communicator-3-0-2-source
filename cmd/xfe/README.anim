@@ -1,0 +1,28 @@
+The steps to providing a custom animation are as follows:
+
+1 - Each frame of the animation is a separate GIF file.
+    The person creating the animation should provide two series
+    of GIFs, one for the small animation (recommended size 30x30)
+    and one for the large animation (recommended size 60x60).
+    You are free to use whatever size they want, but the small
+    GIFs should all be the same size, and the large GIFS should all be the
+    same size.
+
+2 - Create an 'animation.dat' file by running 'mkanim'.
+    Usage of mkanim is:  'mkanim image-files'.  All of the large image
+    files should come first, followed by all of the small image files.
+    Example:  If you have just two frames per animation, the command
+    line might look like:
+        mkanim big1.gif big2.gif small1.gif small2.gif
+    This will create a file called 'animation.dat'
+
+3 - Put the 'animation.dat' file in a publically accessable place.
+
+4 - Specify the location of the 'animation.dat' file in the kit input
+    file with the label "X animation file".
+
+    Example: If the animation.dat is in /usr/local/netscape, the input
+    file would have the line:
+
+    X animation file = /usr/local/netscape/animation.dat
+

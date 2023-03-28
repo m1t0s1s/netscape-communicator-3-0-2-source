@@ -1,0 +1,54 @@
+#! /bin/sh
+
+DEST=$1; shift
+NAME=$1; shift
+CLASS=$1; shift
+VSUFFIX=$1; shift
+SS=$1; shift
+LOCALE_MAP=$1; shift
+
+if test $# -eq 2
+then
+	MAIL_IM_HACK=$1; shift
+	NEWS_IM_HACK=$1; shift
+else
+	MAIL_IM_HACK=""
+	NEWS_IM_HACK=""
+fi
+
+PROGNAME="netscape"
+
+echo "Generating ${DEST} from resources..."
+
+VN=`sed -n 's/^#define VERSION_NUMBER *\(.*\)$/\1/p' versionn.h`
+VERS=`echo ${VN}${VSUFFIX}`
+
+SGIP=`echo ${DEST} | sed -n 's/.*sgi.*/TRUE/p'`
+if [ "x${SGIP}" = "xTRUE" ]; then
+	NONSGI=""
+else
+	NONSGI="!"
+fi
+
+SCOP=`echo ${DEST} | sed -n 's/.*SCO.*/TRUE/p'`
+if [ "x${SCOP}" = "xTRUE" ]; then
+	NONSCO=""
+else
+	NONSCO="!"
+fi
+
+rm -f ${DEST}
+cat resources ${LOCALE_MAP} strs | sed \
+	"s/@NAME@/${NAME}/g;
+	 s/@CLASS@/${CLASS}/g;
+	 s/@PROGNAME@/${PROGNAME}/g;
+	 s/@VERSION@/${VERS}/g;
+	 s/@NONSGI@/${NONSGI}/g;
+	 s/@NONSCO@/${NONSCO}/g;
+	 s/@LOC@//g;
+	 s/@LTD@//g;
+	 s:@LIBDIR@:${LOC_LIB_DIR}:g;
+	 s/@MAIL_IM_HACK@/${MAIL_IM_HACK}/g;
+	 s/@NEWS_IM_HACK@/${NEWS_IM_HACK}/g;
+	 s/@URLVERSION@/${VERS}/g" > ${DEST}
+

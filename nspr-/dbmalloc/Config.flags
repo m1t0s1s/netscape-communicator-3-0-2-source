@@ -1,0 +1,31 @@
+#!/bin/sh
+#
+#
+# (c) Copyright 1990, 1991, 1992 Conor P. Cahill (cpcahil@virtech.vti.com)
+#
+# This software may be distributed freely as long as the following conditions
+# are met:
+# 		* the distribution, or any derivative thereof, may not be
+#		  included as part of a commercial product
+#		* full source code is provided including this copyright
+#		* there is no charge for the software itself (there may be
+#		  a minimal charge for the copying or distribution effort)
+#		* this copyright notice is not modified or removed from any
+#		  source file
+#
+# $Id: Config.flags,v 1.1 1996/06/18 03:29:08 warren Exp $
+#
+# This file is used by the configure script to determine the flags that should
+# be specified for each compiler as the configuration is determined.  The
+# compiler *MUST* start in column one and the flags must be on the same line
+#
+# For example, if you wanted to add -pedantic to gcc (although this would
+# probably cause the configure to fail because it is so restrictive) you
+# would add the following line:
+#
+# 	gcc -pedantic
+#
+# Note that the g in gcc would be in column 1
+#
+# By default, the compilers use no flags and therefore are not specified here
+#

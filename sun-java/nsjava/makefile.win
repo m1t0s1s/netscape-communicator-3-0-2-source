@@ -1,0 +1,129 @@
+#//------------------------------------------------------------------------
+#//
+#// Makefile to build SUN-JAVA/MD Library (NEW)
+#//
+#//------------------------------------------------------------------------
+
+
+#//------------------------------------------------------------------------
+#//
+#// Specify the depth of the current directory relative to the
+#// root of NS
+#//
+#//------------------------------------------------------------------------
+DEPTH= ..\..
+
+!ifndef MAKE_OBJ_TYPE
+MAKE_OBJ_TYPE=DLL
+!endif
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Make Variables here: (ie. PDFFILE, MAPFILE, ...)
+#//
+#//------------------------------------------------------------------------
+DLLNAME=jrt$(OS_RELEASE)301
+PDBFILE=$(DLLNAME).pdb
+DEFFILE=nsjava$(OS_RELEASE).def
+RESFILE=nsjava$(OS_RELEASE).res
+
+RTDIR=..\runtime
+JAVADIR=..\java
+
+RTOBJDIR=$(RTDIR)\$(OBJDIR)
+JAVAOBJDIR=$(JAVADIR)\$(OBJDIR)
+#//------------------------------------------------------------------------
+#// 
+#// Define the files necessary to build the target (ie. OBJS)
+#//
+#//------------------------------------------------------------------------
+RUNTIME_OBJS=                     \
+#   $(RTOBJDIR)\allstubs.obj      \
+#   $(RTOBJDIR)\globals.obj	  \
+    $(NULL)
+
+JAVA_OBJS=                        \
+    $(JAVAOBJDIR)\javai.obj       \
+    $(NULL)
+
+!if "$(MAKE_OBJ_TYPE)" == "DLL"
+OBJS=                             \
+    .\$(OBJDIR)\nsjava.obj        \
+    $(RUNTIME_OBJS)               \
+    $(JAVA_OBJS)                  \
+    $(NULL)
+!else
+OBJS=                             \
+    .\$(OBJDIR)\nsjava.obj        \
+    $(JAVA_OBJS)                  \
+    $(NULL)
+!endif
+
+
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Targets here (ie. PROGRAM, LIBRARY, DLL, ...)
+#// (these must be defined before the common makefiles are included)
+#//
+#//------------------------------------------------------------------------
+!if "$(MAKE_OBJ_TYPE)" == "DLL"
+DLL=.\$(OBJDIR)\$(DLLNAME).dll
+MAPFILE= $(DLLNAME).map
+!else
+LIBRARY=.\$(OBJDIR)\$(DLLNAME)
+!endif
+
+#//------------------------------------------------------------------------
+#//
+#// Define any local options for the make tools 
+#//     (ie. LCFLAGS, LLFLAGS, LLIBS, LINCS)
+#//
+#//------------------------------------------------------------------------
+LLIBS=$(LLIBS) $(LIBJAVA) $(LIBMD) $(LIBNSPR)
+!if "$(OS_RELEASE)" == "16"
+# LLIBS=$(LLIBS) win87em.lib  $(DEPTH)\config\winsock2.lib
+LLIBS=$(LLIBS) win87em.lib  
+!else
+LLFLAGS=/BASE:0x10050000
+!endif
+
+
+#//------------------------------------------------------------------------
+#//
+#// Include the common makefile rules
+#//
+#//------------------------------------------------------------------------
+include <$(DEPTH)/sun-java/config/rules.mak>
+
+!if "$(MAKE_OBJ_TYPE)" == "DLL"
+export:: $(DLL)
+    $(MAKE_INSTALL) .\$(OBJDIR)\$(DLLNAME).dll $(DIST)\bin
+    $(MAKE_INSTALL) .\$(OBJDIR)\$(DLLNAME).lib $(DIST)\lib
+!else
+export:: $(LIBRARY)
+    $(MAKE_INSTALL) $(LIBRARY).lib $(DIST)\lib
+!endif
+
+install:: export
+
+clobber::
+	$(RM) $(RUNTIME_OBJS) $(JAVA_OBJS)
+
+#//------------------------------------------------------------------------
+#//
+#// Local rules to build object files from other directories
+#//
+#//------------------------------------------------------------------------
+!if "$(RUNTIME_OBJS)" != ""
+$(RUNTIME_OBJS): 
+    echo +++ MAKE entering directory: $(RTDIR)
+    cd $(RTDIR)
+    nmake /S /nologo -f makefile.win MAKE_OBJ_TYPE=DLL nsjava_objs
+    cd ..\nsjava
+!endif
+
+$(JAVA_OBJS):
+    echo +++ MAKE entering directory: $(JAVADIR)
+    cd $(JAVADIR)
+    nmake /S /nologo -f makefile.win MAKE_OBJ_TYPE=DLL nsjava_objs
+    cd ..\nsjava
+

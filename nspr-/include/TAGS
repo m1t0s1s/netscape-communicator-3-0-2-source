@@ -1,0 +1,612 @@
+
+nspr.h,23
+#define nspr_h___2,18
+
+prarena.h,1154
+#define prarena_h___2,21
+typedef struct PRArena          PRArena;PRArena20,552
+typedef struct PRArenaPool      PRArenaPool;PRArenaPool21,593
+struct PRArena PRArena23,639
+typedef struct PRArenaStats PRArenaStats;PRArenaStats30,881
+struct PRArenaStats PRArenaStats32,924
+struct PRArenaPool PRArenaPool49,1829
+#define PR_ARENA_ALIGN(PR_ARENA_ALIGN65,2401
+#define PR_INIT_ARENA_POOL(PR_INIT_ARENA_POOL68,2515
+#define PR_ARENA_ALIGN(PR_ARENA_ALIGN71,2631
+#define PR_ARENA_ALLOCATE(PR_ARENA_ALLOCATE74,2717
+#define PR_ARENA_GROW(PR_ARENA_GROW88,3627
+#define PR_ARENA_MARK(PR_ARENA_MARK102,4537
+#define PR_UPTRDIFF(PR_UPTRDIFF103,4595
+#define PR_CLEAR_UNUSED(PR_CLEAR_UNUSED106,4668
+#define PR_CLEAR_UNUSED(PR_CLEAR_UNUSED110,4832
+#define PR_ARENA_RELEASE(PR_ARENA_RELEASE113,4881
+extern PR_PUBLIC_API(131,5938
+#define PR_ArenaCountAllocation(PR_ArenaCountAllocation178,7762
+#define PR_ArenaCountInplaceGrowth(PR_ArenaCountInplaceGrowth179,7832
+#define PR_ArenaCountGrowth(PR_ArenaCountGrowth180,7902
+#define PR_ArenaCountRelease(PR_ArenaCountRelease181,7972
+#define PR_ArenaCountRetract(PR_ArenaCountRetract182,8042
+
+prclist.h,606
+#define prclist_h___2,21
+struct PRCListStr PRCListStr10,117
+#define PR_INSERT_BEFORE(PR_INSERT_BEFORE18,236
+#define PR_INSERT_AFTER(PR_INSERT_AFTER29,474
+#define PR_APPEND_LINK(PR_APPEND_LINK40,715
+#define PR_INSERT_LINK(PR_INSERT_LINK45,831
+#define PR_LIST_HEAD(PR_LIST_HEAD48,924
+#define PR_LIST_TAIL(PR_LIST_TAIL49,960
+#define PR_REMOVE_LINK(PR_REMOVE_LINK54,1055
+#define PR_REMOVE_AND_INIT_LINK(PR_REMOVE_AND_INIT_LINK64,1301
+#define PR_CLIST_IS_EMPTY(PR_CLIST_IS_EMPTY76,1628
+#define PR_INIT_CLIST(PR_INIT_CLIST82,1722
+#define PR_INIT_STATIC_CLIST(PR_INIT_STATIC_CLIST88,1841
+
+prdtoa.h,54
+#define prdtoa_h___2,20
+extern PR_PUBLIC_API(21,560
+
+prdump.h,230
+#define prdump_h___2,20
+extern PR_PUBLIC_API(14,176
+typedef void (*PRFileDumper)PRFileDumper39,1018
+extern PR_PUBLIC_API(41,1077
+#define _PR_DebugPrint 52,1396
+#define _PR_DebugPrint 61,1642
+#define _PR_DebugPrint 65,1776
+
+prevent.h,388
+#define prevent_h___2,21
+extern PR_PUBLIC_API(16,357
+extern PR_PUBLIC_API(66,1771
+(*PRHandleEventProc)PRHandleEventProc91,2576
+(*PRDestroyEventProc)PRDestroyEventProc99,2786
+extern PR_PUBLIC_API(106,3018
+#define PR_EventType(PR_EventType132,3555
+struct PREventQueueStr PREventQueueStr138,3778
+struct PREventStr PREventStr144,3866
+#define PR_EVENT_PTR(PR_EVENT_PTR152,4042
+
+prexc.h,115
+#define prexc_h___2,19
+#define PR_MarkException(PR_MarkException5,59
+#define PR_CACHED_MONITOR_NOT_FOUND 7,121
+
+prfile.h,2255
+#define prfile_h___2,20
+typedef int PRFileHandle;PRFileHandle28,465
+typedef struct PRFileDescStr PRFileDesc;PRFileDesc30,492
+typedef struct PRIOMethodsStr PRIOMethods;PRIOMethods31,533
+typedef struct PRIOVecStr PRIOVec;PRIOVec34,583
+struct PRIOVecStr PRIOVecStr35,618
+struct PRIOMethodsStr PRIOMethodsStr41,680
+struct PRFileDescStr PRFileDescStr48,916
+#define PR_HANDLE_TO_DESC(PR_HANDLE_TO_DESC69,1312
+extern PR_PUBLIC_API(84,1490
+#define PR_CONNECT(PR_CONNECT112,2620
+#define PR_RECV(PR_RECV116,2728
+#define PR_RECVFROM(PR_RECVFROM117,2787
+#define PR_RECVMSG(PR_RECVMSG118,2862
+#define PR_READV(PR_READV119,2923
+#define PR_SEND(PR_SEND121,2981
+#define PR_SENDTO(PR_SENDTO122,3040
+#define PR_SENDMSG(PR_SENDMSG123,3111
+#define PR_WRITEV(PR_WRITEV124,3172
+#define PR_GETMSG(PR_GETMSG127,3252
+#define PR_PUTMSG(PR_PUTMSG128,3315
+typedef struct PRDirStr PRDir;PRDir137,3700
+typedef struct PRDirEntryStr PRDirEntry;PRDirEntry138,3731
+typedef struct PRFileInfoStr PRFileInfo;PRFileInfo139,3772
+struct PRDirEntryStr PRDirEntryStr141,3814
+struct PRFileInfoStr PRFileInfoStr148,3899
+#define PR_FI_FILE 155,4145
+#define PR_FI_DIRECTORY 156,4196
+#define PR_FI_OTHER 157,4244
+extern PR_PUBLIC_API(165,4413
+#define PR_AF_EXISTS 169,4611
+#define PR_AF_WRITE_OK 170,4641
+#define PR_AF_READ_OK 171,4671
+#define PR_RD_SKIP_DOT 175,4761
+#define PR_RD_SKIP_DOT_DOT 176,4793
+#define _PR_ASYNC 185,5058
+#define _PR_USER_ASYNC 186,5090
+#define _OS_PREPARE_NAME(_OS_PREPARE_NAME204,5512
+#define _OS_FREE_NAME(_OS_FREE_NAME205,5558
+#define _OS_COMPARE_FDS(_OS_COMPARE_FDS206,5583
+#define _OS_INVALID_FD(_OS_INVALID_FD207,5628
+#define _OS_INVALID_FD_VALUE 208,5677
+#define EWOULDBLOCK 215,5792
+#define _OS_FREE_NAME(_OS_FREE_NAME218,5901
+#define _OS_COMPARE_FDS(_OS_COMPARE_FDS219,5941
+#define _OS_INVALID_FD(_OS_INVALID_FD220,5986
+#define _OS_INVALID_FD_VALUE 221,6035
+#define _OS_WRITE(_OS_WRITE236,6551
+#define _OS_CLOSE_SOCKET(_OS_CLOSE_SOCKET254,7051
+#define _OS_OPEN(_OS_OPEN286,8084
+#define _OS_CLOSE(_OS_CLOSE287,8147
+#define _OS_READ(_OS_READ289,8199
+#define _OS_WRITE(_OS_WRITE290,8265
+#define _OS_SOCKET(_OS_SOCKET292,8333
+#define _OS_CLOSE_SOCKET(_OS_CLOSE_SOCKET293,8375
+
+prgc.h,1356
+#define prgc_h___2,18
+extern PR_PUBLIC_API(22,396
+typedef struct GCTypeStr GCTypeStr30,666
+typedef struct PRSummaryEntry PRSummaryEntry70,1960
+} PRSummaryEntry;PRSummaryEntry74,2056
+typedef void (*PRSummaryPrinter)PRSummaryPrinter81,2227
+extern PR_PUBLIC_API(83,2288
+typedef void GCRootFinder(GCRootFinder86,2381
+typedef void GCBeginFinalizeHook(GCBeginFinalizeHook87,2419
+typedef void GCEndFinalizeHook(GCEndFinalizeHook88,2464
+typedef void GCBeginGCHook(GCBeginGCHook89,2507
+typedef void GCEndGCHook(GCEndGCHook90,2546
+extern PR_PUBLIC_API(99,2905
+#define PR_PROCESS_ROOT_LOG(PR_PROCESS_ROOT_LOG141,4826
+#define PR_PROCESS_ROOT_LOG(PR_PROCESS_ROOT_LOG143,4899
+#define PR_LIVE_OBJECT_LOG(PR_LIVE_OBJECT_LOG150,5028
+#define PR_LIVE_OBJECT_LOG(PR_LIVE_OBJECT_LOG152,5086
+#define PR_ALLOC_CLEAN	178,6112
+#define PR_ALLOC_DOUBLE	179,6138
+#define PR_ALLOC_ZERO_HANDLE 180,6165
+typedef struct GCInfoStr GCInfoStr278,9074
+extern PR_PUBLIC_API(296,9870
+#define GC_IN_HEAP(GC_IN_HEAP305,10191
+#define GC_IN_HEAP(GC_IN_HEAP313,10533
+#define GC_TRACE	319,10729
+#define GC_ROOTS	320,10753
+#define GC_LIVE	321,10777
+#define GC_ALLOC	322,10801
+#define GC_MARK	323,10825
+#define GC_SWEEP	324,10849
+#define GC_DEBUG	325,10873
+#define GC_FINAL	326,10897
+#define GCTRACE(GCTRACE329,10935
+#define GCTRACE(GCTRACE332,11056
+
+prglobal.h,222
+#define prglobal_h___4,60
+extern PR_PUBLIC_API(11,148
+#define PR_ASSERT(PR_ASSERT38,848
+#define PR_NOT_REACHED(PR_NOT_REACHED39,929
+#define PR_ASSERT(PR_ASSERT43,1006
+#define PR_NOT_REACHED(PR_NOT_REACHED44,1042
+
+prhash.h,777
+#define prhash_h___4,80
+typedef struct PRHashEntryStr PRHashEntry;PRHashEntry16,247
+typedef struct PRHashTableStr PRHashTable;PRHashTable17,290
+typedef uint32 PRHashNumber;PRHashNumber18,333
+#define PR_HASH_BITS 19,362
+typedef PRHashNumber (*PRHashFunction)PRHashFunction20,386
+typedef int (*PRHashComparator)PRHashComparator21,443
+typedef int (*PRHashEnumerator)PRHashEnumerator22,508
+#define HT_ENUMERATE_NEXT 25,628
+#define HT_ENUMERATE_STOP 26,703
+#define HT_ENUMERATE_REMOVE 27,774
+#define HT_ENUMERATE_UNHASH 28,854
+typedef struct PRHashAllocOps PRHashAllocOps30,931
+#define HT_FREE_VALUE 37,1236
+#define HT_FREE_ENTRY 38,1310
+struct PRHashEntryStr PRHashEntryStr40,1389
+struct PRHashTableStr PRHashTableStr47,1683
+extern PR_PUBLIC_API(68,2699
+
+prlink.h,247
+#define prlink_h___2,20
+typedef struct PRLibraryStr PRLibrary;PRLibrary16,214
+typedef struct PRStaticLinkTableStr PRStaticLinkTable;PRStaticLinkTable17,253
+struct PRStaticLinkTableStr PRStaticLinkTableStr19,309
+extern PR_PUBLIC_API(28,468
+
+prlock.h,136
+#define prlock_h___2,20
+typedef struct PRLockStr PRLock;PRLock13,180
+extern PR_PUBLIC_API(15,214
+struct PRLockStr PRLockStr27,574
+
+prlog.h,784
+#define prlog2_h___112,3485
+typedef enum PRLogLevel PRLogLevel120,3593
+} PRLogLevel;PRLogLevel129,3939
+typedef struct PRLogModule PRLogModule131,3954
+} PRLogModule;PRLogModule135,4041
+#define PR_LOG_DEFINE(PR_LOG_DEFINE140,4161
+#define PR_LOG_TEST(PR_LOG_TEST145,4337
+#define PR_LOG1(PR_LOG1149,4515
+#define PR_LOG(PR_LOG162,5032
+#define PR_LOG_BEGIN(PR_LOG_BEGIN165,5142
+#define PR_LOG_END(PR_LOG_END168,5257
+#define PR_LOG_FLUSH(PR_LOG_FLUSH171,5371
+extern PR_PUBLIC_API(175,5439
+#define PR_LOG_DEFINE(PR_LOG_DEFINE192,5836
+#define PR_LOG_TEST(PR_LOG_TEST193,5870
+#define PR_LOG(PR_LOG194,5914
+#define PR_LOG_BEGIN(PR_LOG_BEGIN195,5960
+#define PR_LOG_END(PR_LOG_END196,6012
+#define PR_LOG_FLUSH(PR_LOG_FLUSH197,6062
+#define PR_LOG_SKIP	201,6124
+
+prlong.h,2606
+#define prlong_h___2,20
+typedef long int64;int6420,368
+typedef unsigned long uint64;uint6421,388
+#define LL_MAXINT	23,419
+#define LL_MININT	24,458
+#define LL_ZERO	25,497
+typedef LONGLONG  int64;int6429,544
+typedef DWORDLONG uint64;uint6430,569
+#define LL_MAXINT	32,596
+#define LL_MININT	33,637
+#define LL_ZERO	34,678
+typedef long long int64;int6438,711
+typedef unsigned long long uint64;uint6439,736
+#define LL_MAXINT	41,772
+#define LL_MININT	42,812
+#define LL_ZERO	43,852
+#define LL_IS_ZERO(LL_IS_ZERO47,934
+#define LL_EQ(LL_EQ48,968
+#define LL_NE(LL_NE49,1002
+#define LL_GE_ZERO(LL_GE_ZERO50,1036
+#define LL_CMP(LL_CMP51,1070
+#define LL_AND(LL_AND53,1109
+#define LL_OR(LL_OR54,1152
+#define LL_XOR(LL_XOR55,1194
+#define LL_OR2(LL_OR256,1237
+#define LL_NOT(LL_NOT57,1277
+#define LL_NEG(LL_NEG59,1313
+#define LL_ADD(LL_ADD60,1348
+#define LL_SUB(LL_SUB61,1391
+#define LL_MUL(LL_MUL63,1435
+#define LL_DIV(LL_DIV64,1478
+#define LL_MOD(LL_MOD65,1521
+#define LL_SHL(LL_SHL67,1565
+#define LL_SHR(LL_SHR68,1609
+#define LL_USHR(LL_USHR69,1653
+#define LL_ISHL(LL_ISHL70,1705
+#define LL_L2I(LL_L2I72,1759
+#define LL_L2UI(LL_L2UI73,1798
+#define LL_L2F(LL_L2F74,1848
+#define LL_L2D(LL_L2D75,1882
+#define LL_I2L(LL_I2L77,1917
+#define LL_UI2L(LL_UI2L78,1951
+#define LL_F2L(LL_F2L79,1988
+#define LL_D2L(LL_D2L80,2022
+#define LL_UDIVMOD(LL_UDIVMOD82,2057
+} int64;int6494,2286
+typedef int64				uint64;uint6495,2295
+#define LL_IS_ZERO(LL_IS_ZERO99,2366
+#define LL_EQ(LL_EQ100,2422
+#define LL_NE(LL_NE101,2486
+#define LL_GE_ZERO(LL_GE_ZERO102,2550
+#define LL_CMP(LL_CMP107,2670
+#define LL_UCMP(LL_UCMP109,2792
+#define LL_AND(LL_AND112,2916
+#define LL_OR(LL_OR114,3020
+#define LL_XOR(LL_XOR116,3123
+#define LL_OR2(LL_OR2118,3227
+#define LL_NOT(LL_NOT120,3328
+#define LL_NEG(LL_NEG123,3417
+#define LL_ADD(LL_ADD125,3533
+#define LL_SUB(LL_SUB132,3888
+#define LL_MUL(LL_MUL144,4512
+#define _lo16(_lo16152,4944
+#define _hi16(_hi16153,4985
+#define LL_MUL32(LL_MUL32159,5155
+#define LL_UDIVMOD(LL_UDIVMOD179,6409
+extern PR_PUBLIC_API(181,6468
+#define LL_DIV(LL_DIV184,6590
+#define LL_MOD(LL_MOD203,7912
+#define LL_SHL(LL_SHL224,9229
+#define LL_ISHL(LL_ISHL241,10292
+#define LL_SHR(LL_SHR259,11498
+#define LL_USHR(LL_USHR275,12510
+#define LL_L2I(LL_L2I291,13522
+#define LL_L2UI(LL_L2UI292,13559
+#define LL_L2F(LL_L2F293,13599
+#define LL_L2D(LL_L2D295,13670
+#define LL_I2L(LL_I2L310,14694
+#define LL_UI2L(LL_UI2L312,14787
+#define LL_F2L(LL_F2L313,14842
+#define LL_D2L(LL_D2L315,14908
+
+prmacos.h,1743
+#define prmacos_h___2,21
+		#define TRUE 21,465
+		#define FALSE 24,544
+#define GCPTR28,578
+#define CALLBACK29,592
+typedef int (*FARPROC)FARPROC30,609
+#define gcmemcpy(gcmemcpy31,635
+#define PR_CONTEXT_TYPE 33,674
+	#define PR_GetSP(PR_GetSP39,805
+	#define INIT_STACKPTR(INIT_STACKPTR40,872
+	#define PR_NUM_GCREGS 41,938
+	#define PR_GetSP(PR_GetSP43,970
+	#define INIT_STACKPTR(INIT_STACKPTR44,1038
+	#define PR_NUM_GCREGS 45,1102
+#define PR_NO_PREEMPT	48,1136
+#define MAX_NON_PRIMARY_TIME_SLICES 49,1160
+#define _MD_INIT_CONTEXT(_MD_INIT_CONTEXT54,1277
+#define _MD_SWITCH_CONTEXT(_MD_SWITCH_CONTEXT65,1679
+#define _MD_RESTORE_CONTEXT(_MD_RESTORE_CONTEXT76,1916
+typedef short PROSFD;PROSFD85,2159
+#define EACCES 88,2221
+#define ENOENT	89,2269
+#define EINTR	91,2365
+#define EBADF	92,2413
+#define _OS_INVALID_FD_VALUE 94,2505
+#define	STDERR_FILENO	96,2538
+#define MAC_PATH_SEPARATOR 98,2563
+#define PATH_SEPARATOR 99,2598
+#define DIRECTORY_SEPARATOR	100,2630
+#define DIRECTORY_SEPARATOR_STR	101,2665
+#define UNIX_THIS_DIRECTORY_STR	102,2703
+#define UNIX_PARENT_DIRECTORY_STR	103,2742
+#define MAX_PATH 105,2784
+#define MAX_MAC_FILENAME	106,2808
+#define putenv	110,2859
+#define getenv	111,2884
+typedef unsigned char (*MemoryCacheFlusherProc)MemoryCacheFlusherProc113,2910
+typedef void (*PreAllocationHookProc)PreAllocationHookProc114,2972
+#define gethostbyaddr	135,3625
+#define getsockname 136,3670
+#define socket 137,3712
+#define listen	138,3746
+#define accept	139,3779
+#define bind	140,3812
+#define connect	141,3841
+#define send	142,3876
+#define sendto	143,3905
+#define socketavailable	144,3938
+#define	dprintTrace	155,4162
+#define	dprintNoTrace	156,4203
+	kPrivateNSPREventType 164,4392
+
+prmacros.h,395
+#define prmacros_h___2,22
+#define NSPR_BEGIN_MACRO	12,241
+#define NSPR_END_MACRO	13,271
+#define NSPR_BEGIN_EXTERN_C	19,398
+#define NSPR_END_EXTERN_C	20,439
+#define NSPR_BEGIN_EXTERN_C22,473
+#define NSPR_END_EXTERN_C23,501
+#define PR_BIT(PR_BIT29,600
+#define PR_BITMASK(PR_BITMASK30,640
+#define PR_ROUNDUP(PR_ROUNDUP33,706
+#define PR_MIN(PR_MIN34,756
+#define PR_MAX(PR_MAX35,798
+
+prmem.h,162
+#define prmem_h___2,19
+#define PR_NEW(PR_NEW24,483
+#define PR_NEWZAP(PR_NEWZAP26,546
+#define PR_DELETE(PR_DELETE28,615
+#define PR_FREEIF(PR_FREEIF30,651
+
+prmjtime.h,56
+#define prmjtime_h___2,22
+extern PR_PUBLIC_API(14,284
+
+prmon.h,225
+#define prmon_h___2,19
+extern PR_PUBLIC_API(22,511
+struct PRMonitorStr PRMonitorStr144,4275
+#define _PR_HAS_EVENT_PIPE 173,4795
+#define MONITOR_PTR(MONITOR_PTR180,5010
+#define MONITOR_ALL_PTR(MONITOR_ALL_PTR183,5101
+
+prnetdb.h,257
+#define prnetdb_h___2,21
+typedef struct PRHostEnt PRHostEnt19,357
+} PRHostEnt;PRHostEnt25,620
+#define PRHostEnt 27,639
+#define PR_NETDB_BUF_SIZE	31,730
+extern PR_PUBLIC_API(42,1077
+#define PR_NETDB_OK	63,1765
+#define PR_NETDB_BUF_OVERFLOW	64,1805
+
+prntohl.h,26
+#define prntohl_h___2,21
+
+prosdep.h,26
+#define prosdep_h___2,21
+
+prpcos.h,498
+#define prpcos_h___2,20
+#define malloc 20,387
+#define calloc 21,415
+#define realloc 22,443
+#define _expand 23,473
+#define free 24,503
+#define _msize 25,527
+#define USE_SETJMP37,751
+#define DIRECTORY_SEPARATOR 38,770
+#define DIRECTORY_SEPARATOR_STR 39,811
+#define PATH_SEPARATOR 40,852
+#define GCPTR43,907
+#define GCPTR 45,927
+#define gcmemcpy(gcmemcpy59,1162
+typedef int PROSFD;PROSFD109,2163
+struct PRMethodCallbackStr PRMethodCallbackStr115,2245
+extern PR_PUBLIC_API(152,4737
+
+prprf.h,181
+#define prprf_h___2,19
+typedef int (*PR_vsxprintf_callback)PR_vsxprintf_callback8,100
+typedef int (*PR_sxprintf_callback)PR_sxprintf_callback9,177
+extern PR_PUBLIC_API(18,474
+
+prsync.h,55
+#define prsync_h___2,20
+#define PR_CAS(PR_CAS15,249
+
+prsystem.h,88
+#define prsystem_h___2,22
+} PR_SYSINFO;PR_SYSINFO18,305
+extern PR_PUBLIC_API(21,376
+
+prthread.h,1100
+#define prthread_h___2,22
+typedef struct PRPerThreadDataStr PRPerThreadData;PRPerThreadData11,169
+typedef struct PRThreadStackStr PRThreadStack;PRThreadStack12,220
+#define PR_NUM_PRIORITIES 23,534
+extern PR_PUBLIC_API(39,850
+typedef int (*PREnumerator)PREnumerator192,6219
+extern PR_PUBLIC_API(193,6279
+struct PRPerThreadDataStr PRPerThreadDataStr259,8362
+struct PRThreadStackStr PRThreadStackStr265,8451
+#define _PR_THREAD_STACK_BUSY 278,9006
+#define _PR_THREAD_STACK_MAPPED 279,9042
+typedef void (*PRDumpThreadProc)PRDumpThreadProc281,9079
+struct PRThreadStr PRThreadStr282,9137
+#define _PR_UNBORN 336,10334
+#define _PR_RUNNING 337,10360
+#define _PR_RUNNABLE 338,10386
+#define _PR_LOCK_WAIT 339,10412
+#define _PR_COND_WAIT 340,10438
+#define _PR_MON_WAIT 341,10464
+#define _PR_SLEEPING 342,10490
+#define _PR_SUSPENDED 343,10516
+#define _PR_ZOMBIE 344,10542
+#define _PR_ON_SLEEPQ 347,10593
+#define _PR_SUSPENDING 348,10629
+#define _PR_SYSTEM 349,10665
+#define _PR_NO_SUSPEND 350,10701
+#define THREAD_PTR(THREAD_PTR357,10915
+#define WAITER_PTR(WAITER_PTR360,11007
+
+prtime.h,254
+#define prtime_h___2,20
+struct PRTimeStr PRTimeStr18,375
+#define PR_MSEC_PER_SEC	32,909
+#define PR_USEC_PER_SEC	33,939
+#define PR_NSEC_PER_SEC	34,973
+#define PR_USEC_PER_MSEC	35,1010
+#define PR_NSEC_PER_MSEC	36,1040
+extern PR_PUBLIC_API(39,1128
+
+prtypes.h,2511
+#define prtypes_h___2,21
+#define PR_PUBLIC_API(PR_PUBLIC_API10,107
+#define PR_CALLBACK11,164
+#define PR_CALLBACK_DECL12,184
+#define PR_STATIC_CALLBACK(PR_STATIC_CALLBACK13,209
+#define PR_CALLBACK_DECL 17,275
+#define PR_PUBLIC_API(PR_PUBLIC_API20,336
+#define PR_CALLBACK 21,395
+#define PR_STATIC_CALLBACK(PR_STATIC_CALLBACK22,444
+#define PR_PUBLIC_API(PR_PUBLIC_API26,524
+#define PR_CALLBACK 27,575
+#define PR_STATIC_CALLBACK(PR_STATIC_CALLBACK28,624
+#define PR_PUBLIC_API(PR_PUBLIC_API35,745
+#define PR_CALLBACK36,781
+#define PR_CALLBACK_DECL37,801
+#define PR_STATIC_CALLBACK(PR_STATIC_CALLBACK38,826
+typedef struct PRCListStr PRCList;PRCList43,911
+typedef struct PRMonitorStr PRMonitor;PRMonitor44,946
+typedef struct PRThreadStr PRThread;PRThread45,985
+typedef struct PRTimeStr PRTime;PRTime46,1022
+typedef struct PREventQueueStr PREventQueue;PREventQueue47,1055
+typedef struct PREventStr PREvent;PREvent48,1100
+typedef long prword_t;prword_t53,1203
+typedef unsigned long uprword_t;uprword_t54,1226
+#define BYTES_PER_WORD 56,1260
+#define BITS_PER_WORD 57,1300
+#define BITS_PER_WORD_LOG2 61,1365
+#define BYTES_PER_WORD_LOG2 62,1394
+#define WORDS_PER_DWORD_LOG2 63,1424
+#define BITS_PER_WORD_LOG2 65,1461
+#define BYTES_PER_WORD_LOG2 66,1490
+#define WORDS_PER_DWORD_LOG2 67,1520
+#define BITS_PER_WORD_LOG2 71,1566
+#define BYTES_PER_WORD_LOG2 72,1615
+#define WORDS_PER_DWORD_LOG2 73,1666
+#define WORDS_PER_DWORD 75,1721
+#define BYTES_PER_DWORD 77,1775
+#define BYTES_PER_DWORD_LOG2 78,1818
+#define BITS_PER_DWORD 79,1871
+#define BITS_PER_DWORD_LOG2 80,1912
+#define DWORDS_TO_WORDS(DWORDS_TO_WORDS82,1964
+#define WORDS_TO_DWORDS(WORDS_TO_DWORDS85,2048
+typedef unsigned long prbitmap_t;prbitmap_t91,2206
+#define TEST_BIT(TEST_BIT93,2241
+#define SET_BIT(SET_BIT95,2351
+#define CLEAR_BIT(CLEAR_BIT97,2461
+#define BITS_PER_BITMAP 100,2575
+#define BYTES_PER_BITMAP 101,2613
+#define BITS_PER_BITMAP_LOG2 102,2653
+#define BYTES_PER_BITMAP_LOG2 103,2701
+typedef unsigned int uint;uint110,2973
+typedef unsigned char uint8;uint8113,3008
+typedef signed char int8;int8114,3037
+typedef unsigned short uint16;uint16115,3063
+typedef signed short int16;int16116,3094
+typedef unsigned int uint32;uint32118,3201
+typedef signed int int32;int32119,3230
+typedef unsigned long uint32;uint32121,3262
+typedef signed long int32;int32122,3292
+typedef enum { PR_FALSE, PR_TRUE } PRBool;PRBool133,3696
+typedef uint8 PRPackedBool;PRPackedBool134,3739
+
+prunixos.h,320
+#define prunixos_h___2,22
+#define DIRECTORY_SEPARATOR	4,45
+#define DIRECTORY_SEPARATOR_STR	5,77
+#define PATH_SEPARATOR	6,113
+#define GCPTR11,183
+#define CALLBACK12,197
+typedef int (*FARPROC)FARPROC13,214
+#define gcmemcpy(gcmemcpy14,240
+#define FlipSlashes(FlipSlashes16,279
+typedef int PROSFD;PROSFD22,347
+
+sunos4.h,201
+#define pr_sunos4_h___2,23
+#define PATH_MAX 21,450
+#define strerror(strerror38,706
+#define memmove(memmove52,1003
+#define SA_RESTART 64,1468
+#define SA_SIGINFO 65,1489
+#define strtoul 95,2517
+
+LinuxELF2.0.34_DBG.OBJ/prcpucfg.h,1344
+#define nspr_cpucfg___2,23
+#define IS_LITTLE_ENDIAN 6,92
+#define PR_BYTES_PER_BYTE 9,142
+#define PR_BYTES_PER_SHORT 10,173
+#define PR_BYTES_PER_INT 11,204
+#define PR_BYTES_PER_INT64 12,235
+#define PR_BYTES_PER_LONG 13,266
+#define PR_BYTES_PER_FLOAT 14,297
+#define PR_BYTES_PER_DOUBLE 15,328
+#define PR_BYTES_PER_WORD 16,359
+#define PR_BYTES_PER_DWORD 17,390
+#define PR_BITS_PER_BYTE 19,422
+#define PR_BITS_PER_SHORT 20,453
+#define PR_BITS_PER_INT 21,485
+#define PR_BITS_PER_INT64 22,517
+#define PR_BITS_PER_LONG 23,549
+#define PR_BITS_PER_FLOAT 24,581
+#define PR_BITS_PER_DOUBLE 25,613
+#define PR_BITS_PER_WORD 26,645
+#define PR_BITS_PER_BYTE_LOG2 28,678
+#define PR_BITS_PER_SHORT_LOG2 29,713
+#define PR_BITS_PER_INT_LOG2 30,748
+#define PR_BITS_PER_INT64_LOG2 31,783
+#define PR_BITS_PER_LONG_LOG2 32,818
+#define PR_BITS_PER_FLOAT_LOG2 33,853
+#define PR_BITS_PER_DOUBLE_LOG2 34,888
+#define PR_BITS_PER_WORD_LOG2 35,923
+#define PR_ALIGN_OF_SHORT 37,959
+#define PR_ALIGN_OF_INT 38,990
+#define PR_ALIGN_OF_LONG 39,1021
+#define PR_ALIGN_OF_INT64 40,1052
+#define PR_ALIGN_OF_FLOAT 41,1083
+#define PR_ALIGN_OF_DOUBLE 42,1114
+#define PR_ALIGN_OF_POINTER 43,1145
+#define PR_ALIGN_OF_WORD 44,1176
+#define PR_BYTES_PER_WORD_LOG2 46,1208
+#define PR_BYTES_PER_DWORD_LOG2 47,1244
+#define PR_WORDS_PER_DWORD_LOG2 48,1280

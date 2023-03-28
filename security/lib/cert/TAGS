@@ -1,0 +1,369 @@
+
+alg1485.c,869
+struct NameToKind NameToKind9,186
+#define C_DOUBLE_QUOTE 27,685
+#define C_BACKSLASH 29,716
+#define C_EQUAL 31,744
+#define OPTIONAL_SPACE(OPTIONAL_SPACE33,765
+#define SPECIAL_CHAR(SPECIAL_CHAR36,847
+static int BracketThing(53,1235
+static char *BracketSomething(116,2238
+#define IS_PRINTABLE(IS_PRINTABLE163,3102
+IsPrintable(177,3546
+skipSpace(192,3778
+scanTag(202,3934
+scanVal(248,4939
+CERT_ParseRFC1485AVA(338,6737
+ParseRFC1485Name(403,8426
+CERT_AsciiToName(464,9531
+AppendStr(474,9755
+CERT_RFC1485_EscapeAndQuote(505,10467
+AppendAVA(556,11665
+CERT_NameToAscii(639,13460
+CERT_GetNameElement(687,14415
+CERT_GetCertEmailAddress(722,15138
+CERT_GetCommonName(740,15558
+CERT_GetCountryName(746,15669
+CERT_GetLocalityName(752,15782
+CERT_GetStateName(758,15892
+CERT_GetOrgName(764,16008
+CERT_GetOrgUnitName(770,16122
+CERT_GetCertUid(776,16247
+
+certdb.c,1701
+#define dbopen 23,407
+CERT_NameFromDERCert(170,4918
+CERT_KeyFromIssuerAndSN(212,5721
+CERT_KeyFromDERCert(239,6289
+GetKeyUsage(268,6921
+GetCertType(313,8052
+GetKeyID(351,8950
+CERT_DecodeDERCertificate(400,10319
+#define PENDING_SLOP 532,13462
+CERT_GetCertTimes(535,13508
+CERT_CheckCertValidTimes(558,13986
+SEC_GetCrlTimes(591,14824
+SEC_CheckCrlTimes(618,15420
+SEC_CrlIsNewer(649,16108
+CERT_CertTimesValid(674,16799
+CERT_VerifySignedData(707,17537
+#define SEC_MAX_CERT_CHAIN 750,18643
+CERT_FindExpiredIssuer(757,18793
+SEC_CheckKRL(800,19678
+SEC_CheckCRL(863,21442
+CERT_FindCertIssuer(911,22864
+AddToVerifyLog(982,25014
+#define EXIT_IF_NOT_LOGGING(EXIT_IF_NOT_LOGGING1036,26264
+#define LOG_ERROR_OR_EXIT(LOG_ERROR_OR_EXIT1041,26348
+#define LOG_ERROR(LOG_ERROR1048,26527
+CERT_VerifyCertChain(1054,26678
+CERT_VerifyCert(1414,36836
+CERT_VerifyCertNow(1563,41405
+CERT_DupCertificate(1571,41648
+CERT_SetDefaultCertDB(1586,41936
+CERT_GetDefaultCertDB(1594,42062
+CERT_OpenVolatileCertDB(1606,42418
+sec_lower_string(1650,43377
+CERT_VerifyCertName(1669,43705
+CERT_CompareCerts(1759,45531
+StringsEqual(1772,45813
+CERT_CompareCertsForRedirection(1789,46156
+typedef struct certNode certNode1876,48583
+} certNode;certNode1879,48663
+CERT_CertChainFromCert(1882,48698
+CERT_DestroyCertificateList(1967,50876
+CERT_GetCertIssuerAndSN(1974,50998
+CERT_MakeCANickname(2005,51680
+CERT_ImportCAChain(2081,53097
+CERT_DestroyCrl 2244,56584
+CERT_IsCACert(2254,56801
+CERT_IsNewer(2289,57665
+CERT_DestroyCertArray(2344,58892
+CERT_FixupEmailAddr(2362,59163
+CERT_DecodeTrustString(2390,59614
+EncodeFlags(2446,60733
+CERT_EncodeTrustString(2473,61465
+CERT_ImportCerts(2497,62011
+
+certhtml.c,406
+char *CERT_Hexify 18,409
+gatherStrings(48,897
+#define BREAK 82,1423
+#define BREAKLEN 83,1444
+#define COMMA 84,1463
+#define COMMALEN 85,1482
+#define MAX_OUS 87,1502
+char *CERT_FormatName 89,1522
+static char *sec_FortezzaClearance(224,4538
+static char *sec_FortezzaMessagePriviledge(237,4906
+static char *sec_FortezzaCertPriviledge(279,5863
+CERT_HTMLCertInfo(344,7894
+#define HTML_OFF 464,11384
+
+certinit.c,237
+#define DEFAULT_TRUST_FLAGS 458,26454
+} certUpdateOp;certUpdateOp468,26690
+} certInitEntry;certInitEntry477,26859
+ConvertAndCheckCertificate(707,32555
+CERT_InitCertDB(769,33824
+CertFromEntry(791,34279
+CERT_AddNewCerts(813,34724
+
+certread.c,411
+SEC_ReadPKCS7Certs(9,132
+SEC_ReadCertSequence(56,1065
+CERT_ConvertAndDecodeCertificate(117,2182
+#define NS_CERT_HEADER 133,2490
+#define NS_CERT_TRAILER 134,2543
+#define CERTIFICATE_TYPE_STRING 136,2596
+#define CERTIFICATE_TYPE_LEN 137,2642
+CERT_CertPackageType(140,2724
+CERT_DecodeCertPackage(252,5198
+} collect_args;collect_args471,9855
+collect_certs(474,9889
+CERT_DecodeCertFromPackage(491,10215
+
+certreq.c,111
+CERT_CreateCertificate(23,610
+CERT_CreateCertificateRequest(76,1873
+CERT_DestroyCertificateRequest(141,3494
+
+certv3.c,467
+CERT_FindCertExtensionByOID(21,445
+CERT_FindCertExtension(29,622
+CERT_StartCertExtensions(36,770
+CERT_FindIssuerCertExtension(43,980
+CERT_FindCertURLExtension(63,1467
+CERT_FindNSCertTypeExtension(181,4008
+CERT_FindNSStringExtension(193,4253
+CERT_FindKeyUsageExtension(245,5280
+CERT_FindSubjectKeyIDExten(256,5526
+CERT_FindBasicConstraintExten(275,5965
+CERT_FindAuthKeyIDExten 294,6425
+CERT_FindCRLDistributionPoints 312,6845
+CERT_CheckCertUsage(331,7281
+
+crl.c,140
+SECStatus cert_check_crl_version 184,5335
+CERT_KeyFromDERCrl(273,7956
+CERT_DecodeDERCrl(301,8609
+CERTSignedCrl * CERT_ImportCRL370,9999
+
+crlv2.c,227
+CERT_FindCRLExtensionByOID(18,364
+CERT_FindCRLExtension(25,523
+CERT_StartCRLExtensions(32,660
+SECStatus CERT_FindCRLNumberExten 38,768
+SECStatus CERT_FindCRLReasonExten 57,1247
+SECStatus CERT_FindInvalidDateExten 63,1419
+
+gename.c,173
+#define ERROR_BREAK(ERROR_BREAK6,86
+void cert_DestroyGenName 33,1044
+cert_EncodeGeneralName 55,1478
+cert_DecodeGeneralName 194,5060
+CERT_GetGeneralNameByType 285,7478
+
+pcertdb.c,4448
+#define dbopen 19,390
+DeleteDBEntry(31,674
+ReadDBEntry(62,1324
+WriteDBEntry(127,2976
+EncodeDBCertEntry(172,3876
+EncodeDBCertKey(228,5408
+EncodeDBGenericKey(245,5866
+DecodeDBCertEntry(263,6365
+NewDBCertEntry(356,8787
+DecodeV4DBCertEntry(423,10310
+WriteDBCertEntry(500,12210
+DeleteDBCertEntry(549,13241
+ReadDBCertEntry(585,13910
+EncodeDBCrlEntry(647,15257
+DecodeDBCrlEntry(691,16381
+NewDBCrlEntry(742,17799
+WriteDBCrlEntry(803,19077
+DeleteDBCrlEntry(850,20137
+ReadDBCrlEntry(887,20841
+DestroyDBEntry(951,22222
+EncodeDBNicknameEntry(962,22387
+EncodeDBNicknameKey(998,23319
+DecodeDBNicknameEntry(1021,23902
+NewDBNicknameEntry(1059,24911
+DeleteDBNicknameEntry(1113,26126
+ReadDBNicknameEntry(1153,26865
+WriteDBNicknameEntry(1223,28446
+EncodeDBSMimeEntry(1265,29321
+EncodeDBSMimeKey(1319,31002
+DecodeDBSMimeEntry(1345,31635
+NewDBSMimeEntry(1427,34182
+DeleteDBSMimeEntry(1507,36059
+ReadDBSMimeEntry(1543,36730
+WriteDBSMimeEntry(1613,38303
+EncodeDBSubjectEntry(1655,39169
+EncodeDBSubjectKey(1741,41572
+DecodeDBSubjectEntry(1760,42054
+NewDBSubjectEntry(1891,45731
+DeleteDBSubjectEntry(1992,48247
+ReadDBSubjectEntry(2028,48936
+WriteDBSubjectEntry(2092,50372
+UpdateSubjectWithEmailAddr(2131,51209
+NewDBVersionEntry(2199,52745
+ReadDBVersionEntry(2234,53505
+WriteDBVersionEntry(2294,54958
+NewDBContentVersionEntry(2345,56275
+ReadDBContentVersionEntry(2382,57125
+WriteDBContentVersionEntry(2448,58767
+DeleteDBContentVersionEntry(2502,60184
+NewSubjectList(2548,61317
+FindSubjectList(2628,63282
+AddTempCertToSubjectList(2707,65110
+FindCertSubjectNode(2790,67118
+RemoveTempCertFromSubjectList(2819,67626
+RemovePermSubjectNode(2905,69545
+AddPermSubjectNode(2965,71054
+CERT_TraversePermCertsForSubject(3089,74287
+CERT_NumPermCertsForSubject(3118,74886
+CERT_TraversePermCertsForNickname(3137,75227
+CERT_NumPermCertsForNickname(3173,76031
+CERT_NumCertsForCertSubject(3190,76386
+CERT_NumPermCertsForCertSubject(3201,76556
+CERT_TraverseCertsForSubject(3214,76785
+AddCertToPermDB(3244,77345
+UpdateV6DB(3362,80260
+updateV5Callback(3541,85287
+UpdateV5DB(3566,85946
+UpdateV4DB(3580,86234
+SEC_CertDBKeyConflict(3636,87522
+SEC_CertSubjectConflict(3697,88865
+SEC_CertNicknameConflict(3764,90332
+SEC_OpenPermCertDB(3796,91048
+DeletePermCert(3944,94493
+SEC_DeletePermCertificate(3972,95000
+SEC_FindPermCertByKey(4003,95687
+SEC_FindPermCertByName(4012,95869
+SEC_FindPermCertByNickname(4036,96386
+SEC_TraverseDBEntries(4061,96963
+} PermCertCallbackState;PermCertCallbackState4106,98056
+certcallback(4112,98170
+SEC_TraversePermCerts(4164,99525
+CERT_ClosePermCertDB(4185,99965
+CERT_GetCertTrust(4201,100231
+CERT_ChangeCertTrust(4217,100525
+typedef struct stringNode stringNode4247,101105
+} stringNode;stringNode4250,101180
+CollectNicknames(4253,101216
+CERT_GetCertNicknames(4327,103109
+CERT_FreeNicknames(4394,104503
+typedef struct dnameNode dnameNode4401,104622
+} dnameNode;dnameNode4404,104695
+CERT_FreeDistNames(4407,104714
+CollectDistNames(4415,104838
+CERT_GetSSLCACerts(4465,106020
+CERT_DistNamesFromNicknames(4526,107326
+CERT_AddTempCertToPerm(4563,108327
+CERT_OpenCertDB(4624,109898
+certDBFilenameCallback(4657,110552
+CERT_OpenCertDBFilename(4663,110641
+SEC_AddTempNickname(4674,110887
+SEC_DeleteTempNickname(4743,112384
+CERT_NewTempCertificate(4797,113493
+SEC_AddPermCertToTemp(4900,115721
+CERT_DeleteTempCertificate(4919,116061
+CERT_FindCertByKey(4983,117288
+CERT_FindCertByIssuerAndSN(5047,118691
+CERT_FindCertByName(5078,119480
+CERT_FindCertByNameString(5097,119900
+CERT_FindCertByKeyID(5136,120660
+CERT_FindCertByNickname(5165,121374
+CERT_FindCertByDERCert(5239,122975
+CERT_DestroyCertificate(5267,123592
+SEC_AddPermCrlToTemp(5295,124089
+SEC_DeleteTempCrl(5375,125722
+SEC_FindCrlByKey(5429,126764
+SEC_FindCrlByName(5492,128191
+SEC_FindCrlByDERCert(5498,128329
+SEC_DestroyCrl(5527,128945
+cert_DBInsertCRL 5544,129256
+SEC_NewCrl(5629,131644
+static SECStatus CollectCrls(5658,132241
+SEC_LookupCrls(5725,133973
+SEC_DeletePermCRL(5787,135305
+CERT_SaveSMimeProfile(5823,136173
+CERT_FindCertByEmailAddr(5967,139679
+CERT_FindSMimeProfile(5999,140357
+CERT_FindCertByNicknameOrEmailAddr(6021,140798
+CERT_IsCertRevoked(6033,141059
+CERT_NextSubjectCert(6039,141146
+CERT_PrevSubjectCert(6055,141485
+CERT_SaveImportedCert(6071,141816
+CERT_ChangeCertTrustByUsage(6199,144789
+CERT_GetDBContentVersion(6266,146324
+CERT_SetDBContentVersion(6285,146633
+
+polcyxtn.c,439
+breakLines(68,1787
+CERT_DecodeCertificatePoliciesExtension(102,2311
+CERT_DestroyCertificatePoliciesExtension(161,3707
+CERT_DecodeUserNotice(171,3898
+CERT_DestroyUserNotice(212,4676
+CERT_SetCAPolicyStringCallback(224,4928
+stringFromUserNotice(232,5088
+CERT_GetCertCommentString(314,7069
+} CERTOidSequence;CERTOidSequence381,8721
+CERT_DecodeOidSequence(390,8923
+CERT_DestroyOidSequence(431,9668
+CERT_GovtApprovedBitSet(440,9817
+
+secname.c,437
+CountArray(39,871
+**AddToArray(51,1010
+**RemoveFromArray(81,1593
+CERT_GetAVATag(110,2186
+SetupAVAType(124,2398
+SetupAVAValue(183,3687
+CERT_CreateAVA(218,4543
+CERT_CopyAVA(241,5026
+CERT_CreateRDN(268,5694
+CERT_AddAVA(304,6401
+CERT_CopyRDN(311,6596
+CERT_CreateName(341,7409
+CERT_DestroyName(389,8315
+CERT_AddRDN(397,8440
+CERT_CopyName(404,8626
+CERT_CompareAVA(430,9203
+CERT_CompareRDN(446,9542
+CERT_CompareName(478,10162
+
+xauthkid.c,83
+SECStatus CERT_EncodeAuthKeyID 36,959
+CERTAuthKeyID *CERT_DecodeAuthKeyID79,2071
+
+xbsconst.c,229
+typedef struct EncodedContext{EncodedContext24,452
+}EncodedContext;EncodedContext29,582
+#define GEN_BREAK(GEN_BREAK44,1014
+SECStatus CERT_EncodeBasicConstraintValue46,1061
+SECStatus CERT_DecodeBasicConstraintValue92,2399
+
+xcrldist.c,85
+CERT_EncodeCRLDistributionPoints 43,1475
+CERT_DecodeCRLDistributionPoints 114,3370
+
+certxutl.c,566
+GetExtension 19,357
+cert_FindExtensionByOID 42,762
+CERT_GetExtenCriticality 59,1156
+cert_FindExtension(88,1908
+typedef struct _extNode _extNode101,2165
+} extNode;extNode104,2246
+}extRec;extRec115,2422
+cert_StartExtensions(118,2439
+CERT_AddExtensionByOID 152,3152
+CERT_AddExtension(209,4437
+CERT_EncodeAndAddExtension(223,4750
+PrepareBitStringForEncoding 258,5583
+CERT_EncodeAndAddBitStrExtension 280,6136
+CERT_FinishExtensions(291,6420
+CERT_FindBitStringExtension 345,7753
+cert_HasCriticalExtension 399,8819
+cert_HasUnknownCriticalExten 422,9304

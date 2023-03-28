@@ -1,0 +1,64 @@
+/export.meta/1.3/Fri Apr 25 02:09:12 1997/-kb/TNav301_SMIME_BRANCH
+/export.zip/1.2/Fri Apr 25 02:09:12 1997/-kb/TNav301_SMIME_BRANCH
+/france.meta/1.3/Fri Apr 25 02:09:15 1997/-kb/TNav301_SMIME_BRANCH
+/france.zip/1.2/Fri Apr 25 02:09:15 1997/-kb/TNav301_SMIME_BRANCH
+/makemeta.ksh/1.1/Fri Apr 25 02:09:16 1997//TNav301_SMIME_BRANCH
+/manifest.mn/1.4/Fri Apr 25 02:09:16 1997//TNav301_SMIME_BRANCH
+/us.meta/1.3/Fri Apr 25 02:09:17 1997/-kb/TNav301_SMIME_BRANCH
+/us.zip/1.2/Fri Apr 25 02:09:18 1997/-kb/TNav301_SMIME_BRANCH
+/Makefile/1.7.2.1/Fri Apr 25 02:18:58 1997//TNav301_SMIME_BRANCH
+/da-export.zip/1.5.2.1/Fri May 23 20:16:39 1997/-kb/TNav301_SMIME_BRANCH
+/de-export.zip/1.4.2.1/Fri May 23 20:16:39 1997/-kb/TNav301_SMIME_BRANCH
+/en-export.zip/1.6.2.1/Fri May 23 20:16:39 1997/-kb/TNav301_SMIME_BRANCH
+/en-france.zip/1.6.2.1/Fri May 23 20:16:40 1997/-kb/TNav301_SMIME_BRANCH
+/en-us.zip/1.6.2.1/Fri May 23 20:16:40 1997/-kb/TNav301_SMIME_BRANCH
+/es-export.zip/1.4.2.1/Fri May 23 20:16:40 1997/-kb/TNav301_SMIME_BRANCH
+/exportdir.ksh/1.1.2.1/Tue May 13 01:38:55 1997//TNav301_SMIME_BRANCH
+/fr-export.zip/1.6.2.1/Fri May 23 20:16:42 1997/-kb/TNav301_SMIME_BRANCH
+/fr-france.zip/1.6.2.1/Fri May 23 20:16:42 1997/-kb/TNav301_SMIME_BRANCH
+/fr-us.zip/1.6.2.1/Fri May 23 20:16:42 1997/-kb/TNav301_SMIME_BRANCH
+/import.ksh/1.1.2.1/Tue May 13 01:38:57 1997//TNav301_SMIME_BRANCH
+/it-export.zip/1.4.2.1/Fri May 23 20:16:42 1997/-kb/TNav301_SMIME_BRANCH
+/ja-export.zip/1.5.2.1/Fri May 23 20:16:43 1997/-kb/TNav301_SMIME_BRANCH
+/ko-export.zip/1.4.2.1/Fri May 23 20:16:43 1997/-kb/TNav301_SMIME_BRANCH
+/nl-export.zip/1.4.2.1/Fri May 23 20:16:44 1997/-kb/TNav301_SMIME_BRANCH
+/pt-export.zip/1.4.2.1/Fri May 23 20:16:45 1997/-kb/TNav301_SMIME_BRANCH
+/sv-export.zip/1.5.2.1/Fri May 23 20:16:45 1997/-kb/TNav301_SMIME_BRANCH
+/en-france.meta/1.2.2.1/Tue Jun 17 20:54:56 1997//TNav301_SMIME_BRANCH
+/en-us.meta/1.2.2.1/Tue Jun 17 20:54:57 1997//TNav301_SMIME_BRANCH
+/fr-france.meta/1.2.2.1/Tue Jun 17 20:54:57 1997//TNav301_SMIME_BRANCH
+/fr-us.meta/1.2.2.1/Tue Jun 17 20:54:57 1997//TNav301_SMIME_BRANCH
+/xx-france.meta/1.1.2.1/Tue Jun 17 20:54:58 1997//TNav301_SMIME_BRANCH
+/xx-us.meta/1.1.2.1/Tue Jun 17 20:54:58 1997//TNav301_SMIME_BRANCH
+/xx-export.meta/1.2.2.1/Tue Jun 17 21:15:40 1997//TNav301_SMIME_BRANCH
+/sv-export.meta/1.3.2.1/Tue Jun 17 21:15:40 1997//TNav301_SMIME_BRANCH
+/pt-export.meta/1.3.2.1/Tue Jun 17 21:15:40 1997//TNav301_SMIME_BRANCH
+/nl-export.meta/1.3.2.1/Tue Jun 17 21:15:40 1997//TNav301_SMIME_BRANCH
+/makefile.win/1.3/Tue Jun 17 21:15:40 1997//TNav301_SMIME_BRANCH
+/ko-export.meta/1.3.2.1/Tue Jun 17 21:15:40 1997//TNav301_SMIME_BRANCH
+/ja-export.meta/1.3.2.1/Tue Jun 17 21:15:40 1997//TNav301_SMIME_BRANCH
+/it-export.meta/1.3.2.1/Tue Jun 17 21:15:40 1997//TNav301_SMIME_BRANCH
+/fr-export.meta/1.3.2.1/Tue Jun 17 21:15:41 1997//TNav301_SMIME_BRANCH
+/es-export.meta/1.3.2.1/Tue Jun 17 21:15:41 1997//TNav301_SMIME_BRANCH
+/en-export.meta/1.3.2.1/Tue Jun 17 21:15:41 1997//TNav301_SMIME_BRANCH
+/de-export.meta/1.3.2.1/Tue Jun 17 21:15:41 1997//TNav301_SMIME_BRANCH
+/da-export.meta/1.3.2.1/Tue Jun 17 21:15:41 1997//TNav301_SMIME_BRANCH
+/cmp-import.ksh/1.1/Tue Jun 17 21:15:41 1997//TNav301_SMIME_BRANCH
+D/us////
+D/france////
+D/en-france////
+D/fr-france////
+D/en-us////
+D/fr-us////
+D/export////
+D/nl-export////
+D/ja-export////
+D/ko-export////
+D/it-export////
+D/fr-export////
+D/de-export////
+D/da-export////
+D/en-export////
+D/es-export////
+D/sv-export////
+D/pt-export////

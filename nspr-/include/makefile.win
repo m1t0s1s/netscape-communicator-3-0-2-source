@@ -1,0 +1,58 @@
+#//------------------------------------------------------------------------
+#//
+#// Makefile to install NSPR/INCLUDE header files into the distribution
+#// directory.
+#//
+#//------------------------------------------------------------------------
+
+
+#//------------------------------------------------------------------------
+#//
+#// Specify the depth of the current directory relative to the
+#// root of NS
+#//
+#//------------------------------------------------------------------------
+DEPTH = ..\..
+
+MAKE_OBJ_TYPE=EXE
+#//------------------------------------------------------------------------
+#//
+#// Specify any "command" targets. (ie. DIRS, INSTALL_FILES, ...)
+#// (these must come before the common makefiles are included)
+#// 
+#// DIRS          - There is a subdirectory to process
+#// INSTALL_FILES - Files to be installed in the distribution area
+#//
+#//------------------------------------------------------------------------
+DIRS = os
+INSTALL_FILE_LIST=*.h prcpucfg.h
+INSTALL_DIR=$(DIST)\include\nspr
+
+#//------------------------------------------------------------------------
+#//
+#// Include the common makefile rules
+#//
+#//------------------------------------------------------------------------
+include <$(DEPTH)/nspr/config/rules.mak>
+
+
+GARBAGE = $(GARBAGE) gencfg.exe gencfg.obj prcpucfg.h
+
+#//
+#// Rule to generate PRCPUCFG.H
+#//
+prcpucfg.h:: $(OBJDIR) $(OBJDIR)\gencfg.exe
+    echo +++ MAKE Generating prcpucfg.h
+    $(RM) $@
+    .\$(OBJDIR)\gencfg.exe > $@
+
+#//
+#// Rule to generate gencfg.exe which is used to create PRCPUCFG.H
+#//
+$(OBJDIR)\gencfg.exe: gencfg.c
+    $(CC) $(OS_CFLAGS) -Fo.\$(OBJDIR)\ -Fe.\$(OBJDIR)\ gencfg.c
+
+
+export:: $(DIRS) INSTALL_FILES
+
+install:: export

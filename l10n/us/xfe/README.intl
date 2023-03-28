@@ -1,0 +1,244 @@
+==============================================================================
+                              Netscape 2.01I (X11)
+==============================================================================
+
+        ************************************************
+         IMPORTANT!  Before going any further, please
+         read and accept the terms in the file LICENSE.
+        ************************************************
+
+Release notes for this version of the Netscape Navigator are
+available online.  After starting the program, select "Release
+Notes" from the "Help" menu.  This will take you to one of the following
+URL's depending on which Navigator version you have installed:
+
+French: 
+     http://home.fr.netscape.com/fr/eng/mozilla/2.0/relnotes/unix-2.01I.html
+
+German:
+     http://home.de.netscape.com/de/eng/mozilla/2.0/relnotes/unix-2.01I.html
+
+Japanese: 
+     http://home.jp.netscape.com/ja/eng/mozilla/2.0/relnotes/unix-2.01I.html
+
+
+New features and known problems in this release are listed at this
+location.
+
+To submit bugs or other feedback, use the "How To Give Feedback"
+option (also in the "Help" menu), which will take you to one of the following URL's:
+
+French: 
+     http://cgi.fr.netscape.com/fr/cgi-bin/auto_bug.cgi 
+
+German:
+     http://cgi.de.netscape.com/de/cgi-bin/auto_bug.cgi 
+
+Japanese: 
+     http://cgi.jp.netscape.com/ja/cgi-bin/auto_bug.cgi 
+
+
+If for some reason you cannot submit feedback using that form, you may
+send email to intl-beta@netscape.com.  Please be as specific as possible
+about the version of Netscape you are using, and the hardware and
+version of the OS.   Be certain to include a test case for the problem,
+including a URL, if possible.
+
+
+==============================================================================
+                  Configuration Notes for Netscape 2.01I
+==============================================================================
+
+Configuration Files:
+
+            With release 2.01I of the Netscape Navigator, a new directory
+            is created in which configuration files are placed.  This
+            directory is called `$HOME/.netscape'.  Existing 1.x configuration
+            information is copied into this directory upon first execution
+            of Netscape.  A dialog is presented asking whether or not you
+            would like to automatically delete your 1.x files.
+
+            If you do not choose to delete the old files, then they will
+            continue to be used by older versions of Netscape, but version
+            2.01I and newer will never touch them.
+
+            If you have a file or directory in $HOME called .netscape,
+            you should rename it prior to running version 2.01I.
+            If you don't, it will be renamed for you, to `.netscape.BAK'.
+
+Mail:
+
+            Please see the Release Notes for important information on 
+            configuring and using Netscape Mail.  Knowing how to
+            configure and use Netscape Mail will prevent you from
+            losing mail messages.
+
+Java Applet Support:
+
+            Java Applet support is available for SunOS 4.1, Solaris 2.3, 
+            Solaris 2.4, HPUX, IRIX and Linux and OSF1.  
+
+            To run Java applets with the Java-enabled version, the
+            Navigator needs to be able to load Java class files from a file
+            called moz2_0.zip.  This file is included in the distribution,
+            but must be moved to any of these directories:
+
+                The current directory
+                /usr/local/netscape/java/classes
+                /usr/local/lib/netscape
+                $HOME/.netscape
+
+            If you were running Java with an earlier beta version of the 
+            Netscape Navigator, you need to replace your old moz2_0.car file
+            or old moz2_0.zip file with the new moz2_01.zip file supplied in 
+            this distribution.  
+
+A note on Solaris 2.4 installation:
+
+            The Solaris 2.4 Navigator is dynamically linked with the X and
+            Motif libraries. If the Motif dynamic libraries are not
+            properly installed, the Navigator will exit with this error:
+
+            ld.so.1: netscape: fatal: libXm.so.3: can't open file: errno=2
+
+            Installing Motif dynamic libraries will get the navigator
+            working. If you cannot install the Motif libraries, you
+            can run the Navigator for Solaris 2.3 on your Solaris 2.4
+            machine.
+
+
+==============================================================================
+                  Installation Instructions
+==============================================================================
+
+Supported Platforms:
+
+     Netscape Navigator 2.01I has been localized for the following platform and language
+     combinations (where de = German, fr = French, ja = Japanese):
+
+     DEC
+          osf/1: de, fr, ja (euc), ja (sjis)
+
+     HP
+          hpux: de, fr
+
+     SGI:
+          irix52: de, fr, ja (euc)
+ 
+     Sun:
+          sol23,sol24: de, fr, ja (euc)
+
+Tar files:
+
+     Each platform has a .tar file for the binary and a .tar file for each locale supported.
+
+     Example:
+     IRIX 5.2 binary file:
+          netscape-v201I-export.mips-sgi-irix5.2.tar.Z
+  
+     IRIX 5.2 locale files:
+          netscape-de-v201I-export.mips-sgi-irix5.2.tar.Z     
+          netscape-fr-v201I-export.mips-sgi-irix5.2.tar.Z          
+          netscape-ja-v201I-export.mips-sgi-irix5.2.tar.Z
+
+Directions to install:
+    
+     1. Download the binary and locale files that match your platform and language
+        to a directory on your system.
+
+     2. Uncompress the .Z files by typing:
+          uncompress *.Z
+
+     3. Un-tar the files by typing (example for irix de):
+          tar -xvf netscape-v201I-export.mips-sgi-irix5.2.tar
+          tar -xvf netscape-de-v201I-export.mips-sgi-irix5.2.tar
+
+        You will notice that the locale files are un-tarred into appropriate subdirectories
+        such as:
+          /netscape-de
+          /netscape-fr
+          /netscape-ja
+
+        The subdirectories contain the appropriate locale files and scripts for installing
+        and uninstalling them.
+
+        The operating system retrieves localized resource files from a standard
+        directory. The install script will copy the Navigator locale resources to this
+        standard directory. Uninstall will remove the Navigator locale files from it.
+   
+     4. Change directories to the appropriate locale directory you wish to install.
+
+        *Note: To execute uninstall and install, you may need to first gain "root"
+        (super-user) access.  
+
+        Execute the uninstall script by typing: 
+           ./uninstall
+
+           This will uninstall older Netscape locale files that may have been installed
+           previously.
+
+     5. Execute the install script by typing:
+           ./install
+
+           This will install the appropriate Netscape locale files to the standard directory.
+
+        Once you have installed the locale files you should logout as root (super-user) and 
+        login in as yourself again.
+              
+     6. The Navigator can be executed now by simply typing:
+           ./netscape      (when in the directory where the tar file was extracted).
+                  
+        You can also copy the program to a system directory of your choice.
+
+
+==============================================================================
+                  OTHER INFORMATION
+==============================================================================
+
+ * Included with all distributions is a file called XKeysymDB.  Without this
+   file, many warnings about "unknown keysyms" will be generated when the
+   program starts up, and most keyboard equivalents won't work.  This is a
+   general problem with running Motif programs on systems not configured for
+   Motif, and so will be necessary on most Sun systems.
+
+   This file is included with all packages because some systems have an older
+   version of this file, so you may still get some warnings.  The XKeysymDB
+   file normally goes in /usr/lib/X11/XKeysymDB or /usr/openwin/lib/XKeysymDB,
+   but you can override that with $XKEYSYMDB.
+
+ * Also included with all distributions is a file called Netscape.ad, which
+   lists the default resources which are built in to the program.  It is
+   not necessary to install this; it is provided for informational purposes.
+   See the comment at the top of the file for more information. This .ad file
+   is the English default resource file that resides in the same directory as
+   the netscape binary file. The localized versions of this file exist in the
+   locale subdirectories mentioned previously (e.g. /netscape-fr).
+
+ * If you get a "Cannot locate host" dialog at startup, this is a sign of
+   problems related to name resolution.  If you're on a Sun, see the comments
+   above about the two executables.
+
+ * If you get a "Cannot connect to host" dialog at startup, it could mean that
+   you are behind a firewall, and need to tell Netscape about your SOCKS
+   or proxy server.  See Options Menu -> Network... -> Proxies,
+   or consult your system administrator.
+
+ * Please read the release notes under "Help -> Release Notes".  This
+   document is updated as problems are found, so please check it before 
+   reporting a bug.
+
+ * To unpack a compressed tar file into the current directory, use some 
+   variation of the following command:
+
+       zcat the-file.tar.Z | tar -vxf -
+
+ * The files ending with ".gz" contain the exact same data, but are
+   smaller because they are compressed with `gzip' rather than
+   `compress'.  If you have gzip on your system, you can unpack
+   these files with
+
+       gzip -dc the-file.tar.gz | tar -vxf -
+
+ * And remember, it's spelled N-e-t-s-c-a-p-e, but it's pronounced "Mozilla."
+
+==============================================================================

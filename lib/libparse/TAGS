@@ -1,0 +1,41 @@
+
+pa_amp.c,49
+pa_map_escape(30,925
+pa_ExpandEscapes(122,3512
+
+pa_hash.c,212
+#define TOTAL_KEYWORDS 8,238
+#define MIN_WORD_LENGTH 9,264
+#define MAX_WORD_LENGTH 10,290
+#define MIN_HASH_VALUE 11,317
+#define MAX_HASH_VALUE 12,342
+#define MYLOWER(MYLOWER15,416
+pa_tokenize_tag(38,1241
+
+pa_mdl.c,280
+#define NAME_LIST_INC	10,106
+pa_PrintTagToken(21,352
+pa_CreateMDLTag(47,1048
+pa_CreateTextTag(174,3518
+pa_FindMDLTag(236,4917
+pa_FindMDLEndTag(349,7237
+pa_FindMDLEndComment(500,10522
+PA_TagHasParams(542,11358
+PA_FetchParamValue(619,13090
+PA_FetchAllNameValues(958,18798
+
+pa_parse.c,375
+#define	HOLD_BUF_UNIT	17,227
+#define	SIZE_LIMIT	18,256
+#define	HOLD_BUF_UNIT	20,288
+pa_caseless_equal(68,2182
+pa_TagEqual(124,3594
+PA_FreeTag(175,4604
+pa_new_document(216,5458
+pa_ParseWriteReady 296,7341
+PA_BeginParseMDL(320,8129
+PA_ParserInit(440,11308
+PA_ParseBlock(479,12238
+ensure_all_tags_closed(1099,26314
+PA_MDLComplete(1130,27342
+PA_MDLAbort(1290,31743

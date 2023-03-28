@@ -1,0 +1,698 @@
+
+bullet.c,47
+lo_ValueToAlpha(9,88
+lo_ValueToRoman(95,1255
+
+clipline.c,167
+#define SIZE_LIMIT 13,262
+lo_line_to_element(18,316
+lo_set_element_to_line(57,1288
+lo_duplicate_cell(92,2226
+lo_duplicate_element(153,3561
+lo_ClipLines(248,5645
+
+layarena.c,116
+#define ARENA_SIZE	7,60
+lo_InitializeMemoryArena(11,92
+lo_FreeMemoryArena(42,836
+lo_MemoryArenaAllocate(61,1101
+
+laycell.c,460
+#define XP_WIN1610,119
+lo_display_element_list(15,167
+lo_DisplayCellContents(119,2618
+lo_search_element_list(132,2957
+lo_XYToCellElement(183,3901
+lo_XYToNearestCellElement(230,5045
+lo_ShiftCell(299,6289
+lo_recolor_backgrounds(345,6989
+lo_RenumberCell(411,8275
+lo_free_element_list(505,10525
+lo_free_subdoc_state(521,10776
+		if 689,13895
+lo_FreePartialSubDoc(712,14292
+lo_SquishSubDocToCell(735,14713
+lo_BeginCell(844,17321
+lo_EndCell(886,18141
+
+laycols.c,222
+#define MULTICOL_MIN_WIDTH	6,60
+#define MULTICOL_GUTTER_WIDTH	7,90
+lo_BeginMulticolumn(11,130
+lo_capture_floating_elements(146,3206
+lo_CaptureLines(211,4433
+lo_find_breaking_line(318,6736
+lo_EndMulticolumn(353,7444
+
+laydisp.c,512
+# define XP_TRACE(XP_TRACE13,157
+# define XP_TRACE(XP_TRACE16,201
+lo_NormalizeStartAndEndOfSelection(22,273
+lo_DisplaySubtext(110,1499
+lo_DisplayText(120,1782
+lo_DisplayEmbed(174,3209
+lo_DisplayJavaApp(187,3443
+lo_DisplayImage(194,3585
+lo_DisplaySubImage(202,3766
+lo_ClipImage(211,4022
+lo_DisplayEdge(284,5594
+lo_DisplayTable(294,5755
+lo_DisplaySubDoc(301,5885
+lo_DisplayCell(308,6020
+lo_DisplayLineFeed(315,6145
+lo_DisplayHR(343,6928
+lo_DisplayBullet(350,7056
+lo_DisplayFormElement(357,7191
+
+layembed.c,338
+#define SIZE_LIMIT 10,146
+#define EMBED_DEF_DIM	14,208
+#define EMBED_DEF_BORDER	15,235
+#define EMBED_DEF_VERTICAL_SPACE	16,263
+#define EMBED_DEF_HORIZONTAL_SPACE	17,298
+lo_AddEmbedData(23,410
+LO_ClearEmbedBlock(115,2784
+lo_FormatEmbed(154,3565
+lo_FinishEmbed(568,12260
+LO_CopySavedEmbedData(759,16695
+LO_AddEmbedData(832,18857
+
+layfind.c,539
+# define XP_TRACE(XP_TRACE12,136
+# define XP_TRACE(XP_TRACE15,180
+#define XP_WIN1620,257
+#define INTL_FIND	23,299
+# define TOLOWER(TOLOWER31,542
+# define TOLOWER(TOLOWER49,1675
+lo_next_character(54,1779
+lo_find_in_list(347,7202
+lo_element_in_floating_cell(537,11217
+LO_FindText(586,12146
+				if 649,13474
+	else if 679,14012
+	if 686,14172
+	if 697,14396
+	if 714,14610
+	if 722,14861
+	if 741,15261
+	if 763,15734
+lo_child_search(773,15817
+lo_sibling_search(843,17230
+LO_FindGridText(930,18782
+LO_SelectText(1037,21153
+
+layform.c,1967
+# define XP_TRACE(XP_TRACE22,414
+#define XP_WIN1626,471
+#define SIZE_LIMIT 30,529
+#define	DEF_ISINDEX_PROMPT 34,591
+#define	ISINDEX_TAG_TEXT	35,672
+#define	DEF_FILE_ELE_VALUE	36,713
+#define	DEF_RESET_BUTTON_NAME	37,754
+#define	DEF_RESET_BUTTON_TEXT	38,792
+#define	DEF_SUBMIT_BUTTON_NAME	39,830
+#define	DEF_SUBMIT_BUTTON_TEXT	40,870
+#define	DEF_BUTTON_TEXT	41,916
+#define	DEF_TOGGLE_VALUE	42,946
+#define	DEF_TEXT_ELE_SIZE	43,976
+#define	DEF_TEXTAREA_ELE_ROWS	44,1005
+#define	DEF_TEXTAREA_ELE_COLS	45,1037
+#define	DEF_SELECT_ELE_SIZE	46,1070
+lo_return_next_form_element(59,1426
+LO_ReturnNextFormElement(219,5509
+LO_ReturnPrevFormElement(237,6025
+LO_ReturnNextFormElementInTabGroup(267,6717
+lo_BeginForm(301,7809
+lo_EndForm(442,10542
+lo_ResolveInputType(509,11745
+lo_recolor_form_element_bg(572,12924
+new_form_element(595,13463
+lo_next_element_data(676,15458
+lo_form_input_text(752,17252
+lo_form_textarea(876,20166
+lo_form_input_minimal(977,22383
+lo_form_input_toggle(1131,25922
+lo_form_select(1200,27545
+lo_form_keygen(1280,29466
+lo_add_element_to_form_list(1321,30536
+lo_add_form_element(1405,32496
+LO_ResizeSelectOptions(1527,35805
+lo_BeginOptionTag(1570,36643
+lo_EndOptionTag(1619,37731
+lo_BeginSelectTag(1659,38670
+lo_EndSelectTag(1670,38929
+lo_BeginTextareaTag(1752,40648
+lo_EndTextareaTag(1785,41647
+lo_ProcessInputTag(1814,42315
+lo_dup_block(1916,44622
+lo_get_form_element_data(1948,45119
+lo_GatherSubmitData(2272,52830
+LO_SubmitForm(2576,59866
+LO_SubmitImageForm(2635,60912
+lo_save_form_element_data(2646,61158
+lo_SaveFormElementState(2671,61672
+lo_RedoHistoryForms(2696,62217
+LO_RedoFormElements(2730,62923
+LO_ResetForm(2787,64044
+LO_FormRadioSet(2860,65601
+lo_ProcessIsIndexTag(2971,67728
+lo_ProcessKeygenTag(3067,70027
+LO_SaveFormData(3177,73029
+#define PA_ALLOC_FAILED(PA_ALLOC_FAILED3198,73442
+lo_copy_select_options(3205,73658
+lo_clone_form_element_data(3283,75296
+LO_CloneFormData(3436,79631
+
+layfree.c,357
+lo_FreeFormElementData(16,196
+lo_CleanFormElementData(168,3178
+lo_ScrapeElement(328,6428
+lo_FreeElement(524,11524
+lo_FreeImageAttributes(546,11858
+lo_FreeRecycleList(568,12270
+lo_FreeDocumentFormListData(604,12843
+lo_FreeDocumentEmbedListData(643,13559
+lo_FreeDocumentGridData(671,14160
+LO_FreeSubmitData(702,14677
+LO_EmptyRecyclingBin(750,15548
+
+laygrid.c,1533
+#define TOP_EDGE	7,79
+#define BOTTOM_EDGE	8,98
+#define LEFT_EDGE	9,120
+#define RIGHT_EDGE	10,140
+lo_parse_percent_list(14,187
+lo_FreeGridEdge(121,1931
+lo_FreeGridRec(132,2061
+lo_FreeGridCellRec(167,2543
+lo_new_horizontal_edge(241,4098
+lo_new_vertical_edge(312,5513
+lo_grow_edge_cell_array(383,6916
+lo_add_cell_to_edge(433,7759
+lo_adjust_percents(464,8213
+lo_LayoutGridCells(680,12391
+lo_set_edge_bounds(1130,22209
+lo_set_all_edge_bounds(1374,26529
+lo_reload_cell_from_history(1407,27249
+#define FORCE_RELOAD_FLAG(FORCE_RELOAD_FLAG1427,27673
+lo_MakeGrid(1431,27796
+lo_BeginGrid(1645,33259
+lo_EndGrid(1889,37942
+lo_is_grid_recursion(1907,38194
+lo_BeginGridCell(1961,39186
+lo_BeginSubgrid(2291,45469
+lo_EndSubgrid(2627,52572
+lo_print_edge_info(2644,52860
+lo_XYToGridEdge(2668,53484
+lo_change_left_edges(2734,54699
+lo_change_right_edges(2762,55255
+lo_change_top_edges(2792,55851
+lo_change_bottom_edges(2820,56408
+LO_MoveGridEdge(2846,56907
+lo_GetCurrentGridCellStatus(3020,60460
+lo_GetCurrentGridCellUrl(3048,60943
+lo_GetGridCellMargins(3083,61441
+lo_reset_all_edge_bounds(3133,62365
+lo_RecreateGrid(3190,63608
+lo_ContextToCell(3296,66317
+lo_UpdateOtherCells(3341,67162
+lo_grow_grid_hist_arrays(3390,68304
+LO_UpdateGridHistory(3419,68800
+lo_BackupGridHistory(3494,70443
+lo_ForwardGridHistory(3528,71150
+LO_BackInGrid(3562,71852
+LO_ForwardInGrid(3598,72426
+LO_GridCanGoForward(3634,73017
+LO_GridCanGoBackward(3667,73556
+lo_cleanup_grid_history(3700,74090
+LO_CleanupGridHistory(3766,75565
+
+layhrule.c,133
+# define XP_TRACE(XP_TRACE13,158
+# define XP_TRACE(XP_TRACE16,202
+#define	DEFAULT_HR_THICKNESS	21,262
+lo_HorizontalRule(24,299
+
+layimage.c,567
+#define IMAGE_DEF_DIM	17,294
+#define IMAGE_DEF_BORDER	18,321
+#define IMAGE_DEF_ANCHOR_BORDER	19,349
+#define IMAGE_DEF_VERTICAL_SPACE	20,384
+#define IMAGE_DEF_HORIZONTAL_SPACE	21,419
+#define IMAGE_DEF_FLOAT_HORIZONTAL_SPACE	22,456
+lo_new_image_element(27,596
+LO_ParseRGB(87,2230
+lo_BodyForeground(201,3891
+lo_BodyBackground(303,5977
+lo_BlockedImageLayout(524,10903
+lo_PartialFormatImage(945,19414
+lo_FormatImage(1053,21890
+lo_FinishImage(1579,32744
+LO_BlockedOnImage(1843,38711
+lo_NoMoreImages(1873,39342
+LO_ImageStruct* LO_NewImageElement(1938,40658
+
+layinfo.c,90
+#define STREAM_WRITE(STREAM_WRITE7,97
+lo_element_info(11,196
+LO_DocumentInfo(230,5325
+
+laylist.c,63
+lo_DefaultList(10,116
+lo_PushList(33,499
+lo_PopList(99,1765
+
+laymap.c,342
+lo_parse_coord_list(16,381
+lo_BeginMap(189,3082
+lo_remove_named_map(252,4056
+lo_EndMap(306,4877
+lo_FreeMap(327,5211
+lo_BeginMapArea(368,5875
+lo_FindNamedMap(640,11197
+lo_is_location_in_rect(670,11699
+lo_is_location_in_circle(698,12110
+lo_is_location_in_area(732,12563
+lo_MapXYToAnchorData(797,13575
+LO_MapXYToAreaAnchor(835,14184
+
+layout.c,2489
+#define XP_WIN1626,398
+#define SIZE_LIMIT	30,456
+#define DEF_LINE_HEIGHT	34,506
+#define URL_LIST_INC	35,534
+#define LINE_INC	36,559
+typedef struct lo_StateList_struct lo_StateList_struct39,583
+} lo_StateList;lo_StateList43,691
+LO_SetDefaultBackdrop(68,1530
+LO_SetUserOverride(82,1698
+LO_SetDefaultColor(89,1769
+lo_NewTopState(103,2046
+lo_NewLayout(314,7432
+lo_set_background_image(657,16454
+lo_load_user_backdrop(688,17049
+void LO_SetBackgroundImage(693,17181
+lo_FlushLineList(758,18841
+lo_CleanTextWhitespace(1118,27739
+lo_StripTextWhitespace(1190,28819
+lo_NewAnchor(1261,29781
+lo_DestroyAnchor(1284,30165
+lo_AddToUrlList(1304,30486
+lo_ProcessBodyTag(1460,34192
+lo_BlockTag(1490,34907
+lo_TopSubState(1576,36987
+lo_CurrentSubState(1596,37289
+lo_FetchTopState(1629,37999
+lo_RemoveTopState(1657,38300
+lo_StoreTopState(1689,38692
+lo_SaveSubdocTags(1720,39109
+lo_FlushBlockage(1750,39592
+lo_DisplayLine(1948,43738
+				if 2064,46150
+lo_PointToLine 2158,48423
+lo_RegionToLines 2301,51391
+LO_CalcPrintArea 2375,52768
+lo_CloseOutLayout(2419,53793
+LO_CloseAllTags(2445,54346
+lo_free_layout_state_data(2544,56455
+lo_FreeLayoutData(2666,58594
+lo_close_mocha_write_stream(2750,60535
+lo_FinishLayout_OutOfMemory(2774,60985
+lo_FinishLayout(2831,62127
+lo_GetRecycleList(2965,65184
+lo_ProcessTag_OutOfMemory(3014,66553
+#define RESTORE_SAVED_DATA(RESTORE_SAVED_DATA3036,67132
+LO_ProcessTag(3096,69028
+lo_RefreshDocumentArea(3643,81901
+LO_RefreshArea(3816,85972
+lo_GetLineEnds(3851,86829
+lo_XYToDocumentElement2(3937,88786
+lo_XYToDocumentElement(4133,92724
+LO_XYToElement(4154,93508
+LO_ClearBackdropBlock(4195,94312
+lo_set_image_info(4248,95502
+typedef struct setImageInfoClosure_structsetImageInfoClosure_struct4327,97242
+} setImageInfoClosure;setImageInfoClosure4335,97462
+lo_process_deferred_image_info(4345,97824
+LO_SetImageInfo(4364,98474
+lo_InternalDiscardDocument(4387,99099
+LO_DiscardDocument(4941,112809
+lo_NewDocumentFormListData(4997,114351
+LO_FreeDocumentFormListData(5018,114634
+lo_NewDocumentGridData(5031,114874
+LO_FreeDocumentGridData(5050,115110
+lo_NewDocumentEmbedListData(5063,115339
+LO_FreeDocumentEmbedListData(5081,115567
+LO_HighlightAnchor(5093,115792
+LO_XYToNearestElement(5375,121587
+LO_RefreshAnchors(5553,125753
+lo_split_named_anchor(5704,129682
+lo_IsAnchorInDoc(5749,130341
+lo_cell_id_to_element(5817,131515
+lo_element_id_to_xy(5863,132329
+LO_LocateNamedAnchor(5943,133813
+LO_HasBGImage(6157,137476
+
+laysel.c,5815
+# define XP_TRACE(XP_TRACE10,199
+#define XP_WIN1614,256
+#define SIZE_LIMIT 18,314
+#define LO_ASSERT_POSITION(LO_ASSERT_POSITION31,782
+#define LO_ASSERT_SELECTION(LO_ASSERT_SELECTION32,853
+#define LO_ASSERT_POSITION2(LO_ASSERT_POSITION233,926
+#define LO_ASSERT_SELECTION2(LO_ASSERT_SELECTION234,1005
+#define LO_ASSERT_POSITION(LO_ASSERT_POSITION38,1114
+#define LO_ASSERT_SELECTION(LO_ASSERT_SELECTION39,1156
+#define LO_ASSERT_POSITION2(LO_ASSERT_POSITION240,1199
+#define LO_ASSERT_SELECTION2(LO_ASSERT_SELECTION241,1245
+Bool lo_EditableElement(201,6784
+lo_ElementToCharOffset2(218,7005
+lo_ElementToCharOffset(353,10060
+LO_StartSelection(360,10240
+void LO_SelectObject(409,11292
+void LO_StartSelectionFromElement(435,11902
+LO_DUMP_SELECTIONSTATE(476,12800
+LO_DUMP_INSERT_POINT(505,13473
+LO_DUMP_POSITION(518,13725
+LO_DUMP_SELECTION2(524,13852
+LO_DUMP_SELECTION(533,14124
+LO_DUMP_HIT_RESULT(540,14323
+LO_IsSelected(609,15993
+LO_IsSelectionStarted(631,16408
+void lo_JiggleToMakeEditable(652,16824
+void LO_GetSelectionEndPoints(710,18754
+void LO_GetSelectionNewPoint(791,21168
+lo_compare_selections(816,21721
+lo_ComparePositions(865,22362
+lo_CellJumpingNext(871,22516
+lo_CellJumpingPrev(901,23244
+lo_bump_position(942,24390
+lo_BumpPosition(1086,27135
+Bool lo_ValidEditableElement(1103,27699
+Bool lo_ValidEditableElementIncludingParagraphMarks(1111,27949
+lo_BumpNormalizedEditablePosition(1123,28380
+lo_QuickBumpEditablePosition(1169,29684
+lo_BumpEditablePosition(1202,30597
+lo_BumpEditablePositionForward(1237,31614
+lo_BumpEditablePositionBackward(1245,31814
+lo_ChangeSelection(1252,32015
+Bool LO_SelectElement(1343,34428
+void LO_ExtendSelectionFromElement(1384,35516
+void LO_SelectRegion(1525,38994
+lo_SetSelection(1580,40650
+lo_FullSetSelection(1605,41256
+lo_GetSelectionEdge(1668,43307
+lo_GetAnchorPoint(1694,44006
+lo_GetExtensionPoint(1699,44201
+lo_IsEndOfParagraph2(1705,44401
+lo_IsEndOfParagraph(1723,44859
+lo_IsHardBreak2(1730,45040
+lo_ExtendToIncludeHardBreak(1748,45489
+lo_ValidatePosition(1781,46491
+lo_ValidatePosition2(1790,46697
+lo_ValidateSelection(1827,47779
+lo_ValidateSelection2(1835,48031
+Bool lo_IsAtStartOfLine(1860,49080
+Bool lo_ConvertInsertPointToSelectionEnd(1878,49600
+Bool lo_ConvertSelectionEndToInsertPoint(1943,51802
+lo_NormalizeSelectionPoint(1982,53112
+lo_NormalizeSelectionEnd(2018,54366
+lo_FancyHalfCompareSelections(2035,54870
+lo_FancyCompareSelections(2053,55375
+lo_StartNewSelection(2098,56685
+LO_ExtendSelection(2129,57800
+lo_ExtendSelectionToPosition2(2229,60841
+LO_EndSelection(2313,63593
+lo_copy_color(2335,63985
+lo_JumpCellWall(2349,64254
+lo_SetSelect(2483,67308
+lo_HighlightSelect(2659,71240
+LO_HighlightSelection(2980,78303
+LO_ClearSelection(3016,79181
+lo_SelectionToText(3043,79723
+LO_GetSelectionText(3419,87631
+LO_HaveSelection(3462,88722
+lo_GetSelection(3493,89412
+LO_GetSelectionEndpoints(3509,89965
+LO_SelectAll(3549,90997
+lo_NormalizeSelection(3611,92524
+lo_EnsureEditableSearchNext(3663,94007
+lo_EnsureEditableSearchNext2(3670,94204
+lo_EnsureEditableSearchPrev(3677,94406
+lo_EnsureEditableSearchPrev2(3684,94642
+lo_EnsureEditableSearch(3692,94936
+lo_BumpToNextElement(3698,95129
+lo_EnsureEditableSearch2(3728,95743
+lo_IsValidEditableInsertPoint2(3754,96356
+void LO_PositionCaret(3764,96695
+void LO_DoubleClick(3769,96795
+void lo_GetHorizontalBounds(3795,97324
+lo_GetTextAttrMask(3814,97732
+lo_GetElementLength(3843,98285
+lo_GetAnchorData(3866,98668
+lo_GetNeighbor(3891,99151
+lo_GetElementEdge(3904,99411
+lo_GetMaximumInsertPointPosition(3915,99617
+lo_IncrementPosition(3936,99934
+lo_DecrementPosition(3960,100503
+lo_GetLastCharBeginPosition(3983,101012
+lo_GetLastCharEndPosition(3990,101143
+void lo_HitElement(4005,101754
+void lo_FullHitElement(4092,104805
+void lo_HitCell(4127,106114
+void lo_HitLine(4144,106691
+void lo_HitLine2(4224,109594
+lo_PositionIsOffEndOfLine(4344,113426
+void LO_Hit(4365,114047
+lo_SetInsertPoint(4459,116744
+Bool LO_Click(4488,117627
+Bool lo_ProcessClick(4512,118190
+Bool lo_ProcessAnchorClick(4596,121419
+lo_FindStartOfParagraph(4633,122318
+lo_FindEndOfParagraph(4665,123160
+lo_FindParagraph(4695,124060
+lo_SelectParagraph(4704,124464
+intn pa_strcmp(4711,124682
+Bool lo_AnchorsEqual(4724,124889
+lo_FindAnchorEdge(4745,125210
+lo_FindAnchor(4772,126045
+lo_SelectAnchor(4786,126573
+#define LO_CC_SINGLE 4811,127466
+#define LO_CC_SPACE 4812,127489
+#define LO_CC_ALPHA 4813,127511
+#define LO_CC_PUNCT 4814,127533
+#define LO_CC_KANJI 4815,127555
+#define LO_CC_KANA 4816,127577
+#define LO_CC_OTHERS 4817,127599
+lo_CharacterClassOf(4821,127629
+lo_IsEdgeOfDocument2(4921,131156
+lo_IsEdgeOfDocument(4947,131894
+lo_TraverseElement(4953,132089
+lo_IsLineEdge(4969,132479
+#define LO_SO_DOCUMENT_EDGE 5018,133951
+#define LO_SO_LINEFEED 5019,133981
+#define LO_SO_NEW_CHARACTER_CLASS 5020,134006
+lo_SkipOver(5023,134048
+lo_MoveToNearestEdgeOfNextLine(5040,134700
+lo_FindEdgeOfWord(5111,137665
+lo_IsEmptyText(5187,140341
+lo_FindLineEdge(5198,140518
+lo_FindDocumentEdge(5244,141954
+lo_FindWord(5336,144327
+lo_SelectWord(5353,145028
+Bool lo_ProcessDoubleClick(5366,145384
+Bool lo_FindCharacterEdge(5431,147488
+lo_FindChunkEdge(5451,148128
+lo_GapWithBothSidesAllowed(5480,149129
+LO_ComputeNewPosition(5530,150705
+LO_NavigateChunk(5712,157488
+void LO_GetEffectiveCoordinates(5777,159301
+Bool lo_FindClosestUpDown(5833,161101
+void LO_UpDown(5880,162354
+lo_search_element_list_WideMatch(5956,164462
+Bool lo_FindClosestUpDown_SubDoc(6059,167506
+Bool lo_FindClosestUpDown_Cell(6073,168069
+LO_CellStruct* lo_FindBestCellInTable(6138,170298
+Bool lo_FindBestPositionInTable(6163,171049
+Bool lo_FindBestPositionOnLine(6188,172068
+ED_Buffer* LO_GetEDBuffer(6273,174569
+LO_TextElementWidth(6302,175080
+
+layspace.c,140
+#define SPACE_WORD	8,98
+#define SPACE_LINE	9,119
+#define SPACE_BLOCK	10,140
+lo_format_block_spacer(14,169
+lo_ProcessSpacerTag(295,5439
+
+laysub.c,459
+#define XP_WIN166,77
+#define	SUBDOC_DEF_ANCHOR_BORDER	9,119
+#define	SUBDOC_DEF_VERTICAL_SPACE	10,155
+#define	SUBDOC_DEF_HORIZONTAL_SPACE	11,192
+#define	CELL_LINE_INC	13,232
+lo_InheritParentState(17,265
+	if 54,1310
+lo_GetSubDocBaseline(96,2804
+	if 125,3392
+	while 133,3587
+	if 141,3694
+lo_BeginSubDoc(150,3778
+lo_EndSubDoc(396,8771
+	while 488,10726
+	if 566,12606
+	if 629,13936
+	if 637,14077
+	if 652,14401
+        if 663,14620
+	if 690,15389
+
+laytable.c,1321
+#define XP_WIN1610,152
+#define	TABLE_BORDERS_ON	14,195
+#define	TABLE_BORDERS_OFF	15,223
+#define	TABLE_BORDERS_GONE	16,252
+#define	TABLE_DEF_INNER_CELL_PAD	18,284
+#define	TABLE_DEF_INTER_CELL_PAD	19,319
+#define	TABLE_DEF_CELL_BORDER	20,354
+#define	TABLE_DEF_BORDER	22,388
+#define	TABLE_DEF_VERTICAL_SPACE	23,416
+#define	TABLE_DEF_HORIZONTAL_SPACE	24,451
+typedef struct lo_cell_data_struct lo_cell_data_struct27,490
+} lo_cell_data;lo_cell_data38,729
+lo_BeginCaptionSubDoc(42,752
+lo_BeginCellSubDoc(170,3619
+lo_subdoc_has_elements(529,11683
+lo_align_subdoc(544,11877
+	while 620,13394
+	while 741,16098
+lo_EndCellSubDoc(759,16399
+	while 869,19034
+	if 965,21407
+	if 973,21548
+	if 988,21871
+	if 1021,22717
+lo_relayout_recycle(1053,23470
+lo_cleanup_state(1105,24644
+		if 1231,26860
+lo_merge_form_data(1244,27056
+lo_RelayoutSubdoc(1288,28188
+lo_BeginTableCell(1792,40208
+lo_EndTableCell(1878,41896
+lo_BeginTableCaption(2095,46307
+lo_EndTableCaption(2137,47087
+lo_BeginTableRow(2220,48883
+lo_EndTableRow(2334,51333
+lo_BeginTable(2363,51889
+lo_fill_cell_array(2711,58895
+lo_percent_width_cells(2933,63527
+lo_cell_relayout_pass(3250,69930
+lo_cell_rowspan_pass(3462,74607
+lo_free_row_record(3561,76593
+lo_free_table_record(3604,77348
+lo_FreePartialTable(3678,78674
+lo_EndTable(3716,79404
+
+laytags.c,659
+#define SIZE_LIMIT 17,248
+#define	LIST_MARGIN_INC	20,281
+#define MIN_FONT_SIZE	22,332
+#define MAX_FONT_SIZE	23,357
+#define	HYPE_ANCHOR	25,383
+#define	HYPE_TAG_BECOMES	26,417
+LO_ChangeFontSize(42,885
+lo_FilterTag(83,1522
+lo_CloseParagraph(227,4114
+lo_OpenHeader(260,4861
+lo_CloseHeader(281,5238
+lo_process_text_tag(329,6233
+lo_process_title_tag(485,9711
+lo_process_anchor_tag(563,11402
+lo_process_caption_tag(788,16179
+lo_process_table_cell_tag(876,18024
+lo_process_table_row_tag(991,20361
+lo_close_table(1126,23247
+lo_process_table_tag(1232,25493
+lo_CloseOutTable(1250,25773
+lo_process_certificate_tag(1259,25914
+lo_LayoutTag(1352,27822
+
+laytext.c,1028
+	#define XP_TRACE(XP_TRACE13,211
+	#define XP_TRACE(XP_TRACE16,255
+#define XP_WIN1621,332
+#define SIZE_LIMIT 25,390
+#define TEXT_CHUNK_LIMIT	28,451
+#define DEF_TAB_WIDTH	31,482
+#define NON_BREAKING_SPACE	32,507
+lo_SetDefaultFontAttr(42,647
+lo_DefaultFont(75,1712
+lo_PushAlignment(101,2147
+lo_PopAlignment(121,2486
+lo_FreshText(148,3087
+lo_new_text_element(181,3883
+lo_fillin_text_info(279,5894
+lo_NewLinefeed(315,6743
+lo_MarkHardBreak(411,8794
+lo_HardLineBreak(459,10227
+lo_SoftLineBreak(703,15874
+lo_InsertWordBreak(747,16964
+lo_calc_baseline_and_height(832,18886
+lo_baseline_adjust(911,20406
+lo_BreakOldElement(1004,22535
+lo_correct_text_element_width(1475,34186
+lo_textinfo_copy(1516,34992
+lo_characters_in_line(1528,35298
+lo_PreformatedText(1548,35560
+lo_FormatText(2004,45640
+lo_FlushLineBuffer(2685,61634
+lo_RecolorText(2805,64920
+lo_PushFont(2838,65777
+lo_PopFontStack(2867,66496
+lo_PopFont(2896,67062
+lo_PopAllAnchors(2951,68145
+lo_PlaceBullet(3019,69546
+lo_PlaceBulletStr(3111,71685
+
+layutil.c,1167
+#define SIZE_LIMIT 17,266
+#define	FONT_FACE_INC	20,327
+#define	FONT_FACE_MAX	21,352
+LO_InvalidateFontData(25,386
+lo_find_face_in_array(65,1145
+lo_FetchFontFace(91,1474
+lo_IsValidTarget(168,3261
+lo_StripTextNewlines(185,3493
+lo_FEToNetLinebreaks(221,3979
+lo_ConvertToFELinebreaks(305,5352
+lo_EvalVAlignParam(389,6713
+lo_EvalDivisionAlignParam(416,7147
+lo_EvalCellAlignParam(438,7475
+lo_EvalAlignParam(482,8447
+lo_EvalAlignParam(521,9064
+lo_CalcAlignOffsets(573,10011
+lo_ValueOrPercent(755,14250
+lo_CopyTextAttr(785,14561
+lo_FetchTextAttr(818,15378
+lo_AddMarginStack(877,16763
+lo_ShiftMarginsUp(935,17980
+lo_ClearToLeftMargin(981,18559
+lo_ClearToRightMargin(1044,19633
+lo_ClearToBothMargins(1106,20696
+lo_FindLineMargins(1172,21711
+lo_RecycleElements(1428,27422
+lo_NewElement(1457,28035
+lo_SetNamedAnchor(1578,30417
+lo_AddNameList(1644,31419
+lo_AppendToLineList(1720,33140
+lo_SetLineArrayEntry(1753,33796
+LO_WindowWidthInFixedChars(1794,34852
+lo_FirstElementOfLine(1862,36171
+lo_find_mocha_expr(1906,37081
+lo_add_string(1959,37738
+lo_eval_javascript_entities(1991,38161
+lo_ConvertAllValues(2063,39353
+lo_FetchParamValue(2095,39832
+
+ptinpoly.c,29
+lo_is_location_in_poly(5,23

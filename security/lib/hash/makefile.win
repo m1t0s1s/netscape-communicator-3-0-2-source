@@ -1,0 +1,70 @@
+IGNORE_MANIFEST=1
+#//------------------------------------------------------------------------
+#//
+#// Makefile to build the cert library
+#//
+#//------------------------------------------------------------------------
+
+
+#//------------------------------------------------------------------------
+#//
+#// Specify the depth of the current directory relative to the
+#// root of NS
+#//
+#//------------------------------------------------------------------------
+DEPTH= ..\..\..
+
+!ifndef MAKE_OBJ_TYPE
+MAKE_OBJ_TYPE=EXE
+!endif
+
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Make Variables here: (ie. PDFFILE, MAPFILE, ...)
+#//
+#//------------------------------------------------------------------------
+LIBNAME=hash$(MOZ_BITS)
+PDBFILE=$(LIBNAME).pdb
+
+LINCS = -I$(PUBLIC)/security \
+        -I$(DEPTH)\include
+
+#//------------------------------------------------------------------------
+#// 
+#// Define the files necessary to build the target (ie. OBJS)
+#//
+#//------------------------------------------------------------------------
+OBJS=                         \
+    .\$(OBJDIR)\algmd2.obj  \
+    .\$(OBJDIR)\algmd5.obj   \
+    .\$(OBJDIR)\algsha.obj  \
+    $(NULL)
+
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Targets here (ie. PROGRAM, LIBRARY, DLL, ...)
+#// (these must be defined before the common makefiles are included)
+#//
+#//------------------------------------------------------------------------
+LIBRARY=.\$(OBJDIR)\$(LIBNAME).lib
+
+#//------------------------------------------------------------------------
+#//
+#// install headers
+#//
+#//------------------------------------------------------------------------
+INSTALL_DIR=$(PUBLIC)\security
+INSTALL_FILE_LIST=sechash.h hasht.h
+
+#//------------------------------------------------------------------------
+#//
+#// Include the common makefile rules
+#//
+#//------------------------------------------------------------------------
+include <$(DEPTH)/config/rules.mak>
+
+libs:: $(LIBRARY)
+    $(MAKE_INSTALL) $(LIBRARY) $(DIST)\lib
+
+export:: INSTALL_FILES
+

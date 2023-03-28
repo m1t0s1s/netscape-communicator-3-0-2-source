@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+<TITLE>LiveScript Radio-Buttons</TITLE>
+<SCRIPT>
+msg = open("", "MessageBox", "scrollbars=yes");
+msg.document.writeln("<PRE><TITLE>LiveScript Messages</TITLE>");
+
+// XXX should test setting of name and value too
+function doClick(button) {
+    msg.document.writeln("clicked on NAME " + button.name + ", VALUE " +
+		         button.value + ", STATUS " + button.status);
+    for (var i = 0; i < button.form.radio.length; i++) {
+	if (i != button.value - 1 && button.form.radio[i].status)
+	    alert("ERROR: button.form.radio[" + i + "].status is also true!");
+    }
+}
+</SCRIPT>
+</HEAD>
+
+<BODY>
+
+Here is a radio-button array, in a PRE.
+The buttons are named <B>radio</B> and have value <CODE>1</CODE>,
+<CODE>2</CODE>,
+<CODE>3</CODE>, and
+<CODE>4</CODE>.
+Click to verify:
+<PRE>
+<FORM>
+1: <INPUT TYPE="radio" NAME="radio" VALUE="1" ONCLICK="doClick(this)">
+2: <INPUT TYPE="radio" NAME="radio" VALUE="2" ONCLICK="doClick(this)">
+3: <INPUT TYPE="radio" NAME="radio" VALUE="3" ONCLICK="doClick(this)" CHECKED>
+4: <INPUT TYPE="radio" NAME="radio" VALUE="4" ONCLICK="doClick(this)">
+</FORM>
+</PRE>
+<P>
+
+The same buttons, but inside a table:
+<FORM>
+<TABLE BORDER>
+<TR>
+<TD>
+<INPUT TYPE="radio" NAME="radio" VALUE="1" ONCLICK="doClick(this)">
+<TD>
+<INPUT TYPE="radio" NAME="radio" VALUE="2" ONCLICK="doClick(this)">
+<TD>
+<INPUT TYPE="radio" NAME="radio" VALUE="3" ONCLICK="doClick(this)" CHECKED>
+<TD>
+<INPUT TYPE="radio" NAME="radio" VALUE="4" ONCLICK="doClick(this)">
+</TR>
+</TABLE>
+</FORM>
+<P>
+
+Appended below is a property dump of all forms in this document.
+
+<SCRIPT>
+function slotstr(slot) {
+    var str = "" + slot;
+    var chr = str.substring(0, 1);
+    return ("0" <= chr && chr <= "9")
+	    ? "[" + slot + "]"
+	    : "." + slot;
+}
+
+document.writeln("<XMP>");
+for (var i in document.forms) {
+    if (i == "length") continue;
+    var form = document.forms[i];
+    for (var j in form) {
+	if (j == "length") continue;
+	var element = form[j];
+	if (element == null || element == form) continue;
+	document.writeln("forms" + slotstr(i) + slotstr(j) + " is " + element);
+	for (k in element) {
+	    if (element[k] == null) continue;
+	    document.writeln("forms" + slotstr(i) + slotstr(j) + slotstr(k) +
+			     " is " + element[k]);
+	}
+    }
+}
+document.writeln("</XMP>");
+</SCRIPT>
+
+</BODY>
+</HTML>

@@ -1,0 +1,12 @@
+IRIX6.2_DBG.OBJ/libawt.so \
+		:st = .text 0x5ffb0000, 0x00030000:\
+		:st = .data 0x5ffe0000, 0x00010000:\
+
+IRIX6.2_OPT.OBJ/libawt.so \
+		:st = .text 0x5ff70000, 0x00030000:\
+		:st = .data 0x5ffa0000, 0x00010000:\
+
+libawt.so \
+		:st = .text 0x5ff40000, 0x00030000:\
+		:st = .data 0x5fff0000, 0x00010000:\
+

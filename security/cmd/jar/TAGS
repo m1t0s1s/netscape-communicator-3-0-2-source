@@ -1,0 +1,45 @@
+
+zigbert.c,699
+#define zigprint 39,803
+#define MANIFEST 44,876
+#define CREATOR 46,908
+#define BREAKAGE 47,953
+XP_File XP_FileOpen63,1576
+XP_FileClose 69,1713
+int XP_FileWrite74,1770
+main 81,1932
+static int manifesto 133,2914
+static int manifesto_fn 203,4289
+static int foreach 251,5291
+int calculate_MD5_range 339,6984
+static int generate_SF_file 398,8241
+static int is_dir 511,10475
+static int is_dir 516,10536
+int sign_data 551,11073
+static void sign_data_output 579,11693
+static int do_signing 590,11894
+static SECKEYKeyDBHandle *OpenKeyDB 615,12352
+static CERTCertDBHandle *OpenCertDB 654,13148
+static void SignOut 693,13922
+static int SignFile 698,14037
+static int create_pk7 771,15609
+
+zigrat.c,492
+#define zigprint 29,401
+XP_File XP_FileOpen 40,755
+XP_FileClose 46,893
+int XP_FileWrite 51,950
+int XP_FileRead59,1120
+int XP_FileSeek 65,1234
+main 73,1371
+int zig_archive 111,1933
+int zig_list 132,2334
+int zigrat 161,2847
+int ratify 188,3289
+int zigshove 243,4234
+unsigned char *read_file 268,4603
+static SECKEYKeyDBHandle *OpenKeyDB 316,5457
+static CERTCertDBHandle *OpenCertDB 356,6253
+static void PrintBytes395,7027
+int DecodeAndPrintFile 401,7150
+int do_decode 457,8561

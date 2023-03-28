@@ -1,0 +1,15 @@
+*.pc
+IRIX5.2_DBG.OBJ
+about-all.h
+about-java.h
+about.h
+aboutplg.h
+authors2.h
+mail.h
+mozilla.h
+splash-java.h
+splash-java.html
+splash-java.input
+splash.h
+splash.html
+splash.input

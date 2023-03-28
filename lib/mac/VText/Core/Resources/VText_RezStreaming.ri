@@ -1,0 +1,32 @@
+//	===========================================================================
+//	VText_RezStreaming.ri
+//
+//	Copyright 1996 ViviStar Consulting.
+//	===========================================================================
+
+	#include	<PP_DM_RezStreaming.ri>
+
+	case	TextEngineSDataB:
+		EmptyRezKey;
+		PP_TextEngineSDataB;
+		
+	case	TextSelectionSDataB:
+		EmptyRezKey;
+		PP_TextSelectionSDataB;
+		
+	case	TextModelSDataB:
+		EmptyRezKey;
+		PP_TextModelSDataB;
+		
+	case	TextHandlerSDataB:
+		EmptyRezKey;
+		PP_TextHandlerSDataB;
+
+	case	StyleSetSDataB:
+		EmptyRezKey;
+		VText_StyleSetSDataB;
+		
+	case	RulerSetSDataB:
+		EmptyRezKey;
+		VText_RulerSetSDataB;
+		

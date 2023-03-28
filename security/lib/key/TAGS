@@ -1,0 +1,91 @@
+
+keydb.c,1974
+#define SALT_STRING 26,574
+#define VERSION_STRING 27,608
+#define KEYDB_PW_CHECK_STRING	28,641
+#define KEYDB_PW_CHECK_LEN	29,688
+#define DES_BLOCK_SIZE 31,719
+#define DES_IV_LENGTH 32,745
+#define DES_KEY_LENGTH 33,771
+#define RC2_IV_LENGTH 34,797
+#define RC2_BLOCK_SIZE 35,823
+#define SHA1_LENGTH 36,849
+#define SALT_LENGTH 37,876
+SECKEY_GetDefaultKeyDBAlg(78,2127
+SECKEY_SetDefaultKeyDBAlg(84,2198
+sec_destroy_dbkey(92,2296
+free_dbt(100,2433
+encode_dbkey(122,2764
+decode_dbkey(185,4135
+get_dbkey(260,5783
+put_dbkey(281,6202
+SECKEY_TraverseKeys(321,6946
+typedef struct keyNode keyNode366,7905
+} keyNode;keyNode369,7969
+} keyList;keyList374,8041
+sec_add_key_to_list(377,8070
+decodeKeyDBGlobalSalt(410,8805
+GetKeyDBGlobalSalt(433,9300
+makeGlobalVersion(451,9650
+makeGlobalSalt(475,10197
+keyDBFilenameCallback(499,10749
+SECKEY_OpenKeyDBFilename(505,10847
+SECKEY_OpenKeyDB(512,11013
+SECKEY_CloseKeyDB(657,14039
+SECKEY_SetDefaultKeyDB(678,14482
+SECKEY_GetDefaultKeyDB(684,14590
+SECKEY_DeleteKey(693,14728
+SECKEY_StoreKeyByPublicKey(728,15460
+SECKEY_KeyForCertExists(742,15862
+SECKEY_FindKeyByCert(782,16815
+SECKEY_HasKeyDBPassword(822,17714
+SECKEY_SetKeyDBPassword(847,18229
+SECKEY_ChangeKeyDBPassword(859,18559
+HashPassword(867,18788
+SECKEY_HashPassword(890,19309
+seckey_get_private_key_algorithm(920,19933
+seckey_create_rc4_key(958,20879
+seckey_create_rc4_salt(996,21649
+seckey_rc4_cipher(1032,22341
+seckey_encrypt_private_key(1073,23254
+seckey_put_private_key(1229,27122
+SECKEY_StoreKeyByPublicKeyAlg(1301,29074
+seckey_decrypt_private_key(1335,29883
+seckey_decode_encrypted_private_key(1449,32843
+seckey_get_private_key(1501,33989
+SECKEY_DecryptKey(1541,34840
+SECKEY_FindKeyByPublicKey(1554,35298
+encodePWCheckEntry(1585,36021
+SECKEY_SetKeyDBPasswordAlg(1627,37056
+SECKEY_CheckKeyDBPassword(1723,39099
+SECKEY_ChangeKeyDBPasswordAlg(1823,41650
+SECKEY_UpdateKeyDBPass2(1929,44086
+SECKEY_UpdateKeyDBPass1(1944,44392
+
+seckey.c,1043
+SECKEY_CreateRSAPrivateKey(79,2895
+SECKEY_LowDestroyPrivateKey(95,3334
+SECKEY_LowDestroyPublicKey(103,3479
+SECKEY_DestroyPrivateKey(111,3619
+SECKEY_DestroyPublicKey(128,3943
+SECKEY_CopySubjectPublicKeyInfo(142,4222
+CERT_ExtractPublicKey(156,4589
+SECKEY_PublicKeyStrength(225,6292
+SECKEY_LowPublicModulusLen(249,6916
+SECKEY_LowPrivateModulusLen(267,7307
+SECKEY_CopyPrivateKey(283,7605
+SECKEY_CopyPublicKey(328,8753
+SECKEY_ConvertToPublicKey(422,11743
+SECKEY_LowConvertToPublicKey(502,13943
+SECKEY_CreateSubjectPublicKeyInfo(572,15887
+SECKEY_DestroySubjectPublicKeyInfo(685,18728
+SECKEY_DecodeDERPublicKey(698,19036
+SECKEY_ConvertAndDecodePublicKey(732,19816
+SECKEY_DecodeDERSubjectPublicKeyInfo(749,20139
+SECKEY_ConvertAndDecodeSubjectPublicKeyInfo(781,20932
+SECKEY_ConvertAndDecodePublicKeyAndChallenge(802,21420
+SECKEY_DestroyPrivateKeyInfo(900,23630
+SECKEY_DestroyEncryptedPrivateKeyInfo(931,24395
+SECKEY_CopyPrivateKeyInfo(961,25159
+SECKEY_CopyEncryptedPrivateKeyInfo(985,25714
+SECKEY_CopyLowPrivateKey(1005,26202

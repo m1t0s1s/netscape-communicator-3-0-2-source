@@ -1,0 +1,86 @@
+#
+# Copyright (c) 1993 Michael A. Cooper
+# Copyright (c) 1993 Regents of the University of California.
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+# 1. Redistributions of source code must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+# 2. Redistributions in binary form must reproduce the above copyright
+#    notice, this list of conditions and the following disclaimer in the
+#    documentation and/or other materials provided with the distribution.
+# 3. All advertising materials mentioning features or use of this software
+#    must display the following acknowledgement:
+#	This product includes software developed by the University of
+#	California, Berkeley and its contributors.
+# 4. Neither the name of the University nor the names of its contributors
+#    may be used to endorse or promote products derived from this software
+#    without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+# ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+# FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+# OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+# HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+# LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+# OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+# SUCH DAMAGE.
+#
+# $Id: Makefile.real,v 1.1 1996/01/31 23:32:16 dkarlton Exp $
+#
+
+IN_ARGS		= -c -g ${BIN_GROUP}
+
+HFILES		= ../config/config.h ../config/config-data.h \
+			../config/config-def.h ../config/os-$(OS).h \
+			../include/defs.h ../include/filesys.h \
+			../include/pathnames.h ../include/paths.h \
+			../include/version.h
+COMMONOBJS	= $(O)common.o $(O)message.o $(O)setargs.o
+CLIENTOBJS 	= $(O)gram.o $(O)rdist.o $(O)client.o $(O)child.o $(O)docmd.o \
+			$(O)distopt.o $(O)expand.o $(O)lookup.o \
+			$(O)isexec.o $(O)signal.o $(O)rshrcmd.o
+SERVEROBJS	= $(O)rdistd.o $(O)server.o $(O)filesys.o $(O)filesys-os.o
+
+OS_H		= os-$(OS).h
+DEFS		= -DOS_H=\"$(OS_H)\" $(DEFS_SYS) $(DEFS_LOCAL)
+LIBS		= $(LIB_SYS) $(LIBS_LOCAL)
+CFLAGS		= $(OPT) $(DEFS) $(INCLUDE) $(CFLAGS_OS)
+
+INCLUDE		= -I. -I../include -I../config $(OTHERINCS) $(INCLUDE_SYS)
+
+CLIENT_BIN	= $(O)$(CLIENT)
+SERVER_BIN	= $(O)$(SERVER)
+
+all: src
+
+src: $(CLIENT_BIN) $(SERVER_BIN)
+
+$(SERVER_BIN): $(SERVEROBJS) $(COMMONOBJS) $(MISSINGOBJS)
+	$(CC) -o $@ $(SERVEROBJS) $(COMMONOBJS) $(MISSINGOBJS) $(LIBS)
+
+$(CLIENT_BIN): $(CLIENTOBJS) $(COMMONOBJS) $(MISSINGOBJS)
+	$(CC) -o $@ $(CLIENTOBJS) $(COMMONOBJS) $(MISSINGOBJS) $(LIBS)
+
+$(CLIENTOBJS) $(SERVEROBJS): $(HFILES) y.tab.h
+
+y.tab.h: gram.c
+
+clobber clean:
+	rm -f ${CLEANFILES} gram.c *.o \
+		$(CLIENT_BIN) $(SERVER_BIN) \
+		$(CLIENTOBJS) $(SERVEROBJS) \
+		$(COMMONOBJS) $(MISSINGOBJS)
+
+install: $(CLIENT_BIN) $(SERVER_BIN)
+	$(INSTALL) ${IN_ARGS} -o root -m ${RDIST_MODE} \
+		$(CLIENT_BIN) $(BIN_DIR)/$(CLIENT)
+	$(INSTALL) ${IN_ARGS} -o ${BIN_OWNER} -m ${RDISTD_MODE} \
+		$(SERVER_BIN) $(BIN_DIR)/$(SERVER)
+
+install.man:

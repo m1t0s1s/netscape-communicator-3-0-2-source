@@ -1,0 +1,8 @@
+
+javap.c,148
+#define RELEASE 37,1098
+main(40,1125
+static void usage(139,3407
+OpenCode(162,4442
+ClassClass *AllocClass(171,4640
+void *AllocContext(176,4730

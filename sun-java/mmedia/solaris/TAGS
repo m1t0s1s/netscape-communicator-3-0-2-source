@@ -1,0 +1,8 @@
+
+audio.c,125
+sun_audio_AudioDevice_audioOpen(35,1043
+sun_audio_AudioDevice_audioClose(57,1455
+sun_audio_AudioDevice_audioWrite(66,1584
+
+stubs.c,29
+void _java_mmedia_init(3,43

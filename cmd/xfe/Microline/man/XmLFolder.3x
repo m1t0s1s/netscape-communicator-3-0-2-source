@@ -1,0 +1,296 @@
+.\" (c) Copyright 1994, 1995, Microline Software, Inc.  ALL RIGHTS RESERVED
+.\"  
+.\" THIS SOFTWARE IS FURNISHED UNDER A LICENSE AND MAY BE COPIED AND USED 
+.\" ONLY IN ACCORDANCE WITH THE TERMS OF THAT LICENSE AND WITH THE INCLUSION
+.\" OF THE ABOVE COPYRIGHT NOTICE.  THIS SOFTWARE AND DOCUMENTATION, AND ITS 
+.\" COPYRIGHTS ARE OWNED BY MICROLINE SOFTWARE AND ARE PROTECTED BY UNITED
+.\" STATES COPYRIGHT LAWS AND INTERNATIONAL TREATY PROVISIONS.
+.\"  
+.\" THE INFORMATION IN THIS SOFTWARE IS SUBJECT TO CHANGE WITHOUT NOTICE
+.\" AND SHOULD NOT BE CONSTRUED AS A COMMITMENT BY MICROLINE SOFTWARE.
+.\" 
+.\" THIS SOFTWARE AND REFERENCE MATERIALS ARE PROVIDED "AS IS" WITHOUT
+.\" WARRANTY AS TO THEIR PERFORMANCE, MERCHANTABILITY, FITNESS FOR ANY 
+.\" PARTICULAR PURPOSE, OR AGAINST INFRINGEMENT.  MICROLINE SOFTWARE
+.\" ASSUMES NO RESPONSIBILITY FOR THE USE OR INABILITY TO USE THIS 
+.\" SOFTWARE.
+.\" 
+.\" MICROLINE SOFTWARE SHALL NOT BE LIABLE FOR INDIRECT, SPECIAL OR
+.\" CONSEQUENTIAL DAMAGES RESULTING FROM THE USE OF THIS PRODUCT. SOME 
+.\" STATES DO NOT ALLOW THE EXCLUSION OR LIMITATION OF INCIDENTAL OR
+.\" CONSEQUENTIAL DAMAGES, SO THE ABOVE LIMITATIONS MIGHT NOT APPLY TO
+.\" YOU.
+.\" 
+.\" MICROLINE SOFTWARE SHALL HAVE NO LIABILITY OR RESPONSIBILITY FOR SOFTWARE
+.\" ALTERED, MODIFIED, OR CONVERTED BY YOU OR A THIRD PARTY, DAMAGES
+.\" RESULTING FROM ACCIDENT, ABUSE OR MISAPPLICATION, OR FOR PROBLEMS DUE
+.\" TO THE MALFUNCTION OF YOUR EQUIPMENT OR SOFTWARE NOT SUPPLIED BY
+.\" MICROLINE SOFTWARE.
+.\"   
+.\" U.S. GOVERNMENT RESTRICTED RIGHTS
+.\" This Software and documentation are provided with RESTRICTED RIGHTS.
+.\" Use, duplication or disclosure by the Government is subject to
+.\" restrictions as set forth in subparagraph (c)(1) of the Rights in
+.\" Technical Data and Computer Software Clause at DFARS 252.227-7013 or
+.\" subparagraphs (c)(1)(ii) and (2) of Commercial Computer Software -
+.\" Restricted Rights at 48 CFR 52.227-19, as applicable, supplier is
+.\" Microline Software, 41 Sutter St Suite 1374, San Francisco, CA 94104.
+.\"
+.TH XmLFolder 3X "R1" "XML1" "XML"
+.SH NAME
+XmLFolder
+.SH SYNOPSIS
+#include <XmL/Folder.h>
+.LP
+.SH DESCRIPTION
+Provides a folder containing tabs along the top, bottom, left or
+right and an area managed by the tabs in the center.  Each tab
+consists of a Primitive widget surrounded by tab decorations including
+an optional pixmap.  Any non-Primitive widget children of the folder
+are placed in the center area.  The widgets contained in the tabs
+can be assigned a non-Primitive widget to display/manage when the
+tab widget is selected.
+.SS Class Information
+Folder inherits from XmManager, Constraint, Composite and Core. Its
+class pointer is xmlFolderWidgetClass.  Its class name is XmLFolder.
+.SS New Resources
+.nf
+.ft B
+Name                     Class
+ Type                     Default              Access
+.ft P
+XmNactiveTab             XmCActiveTab
+ int                      -1                   G
+XmNblankBackground       XmCBlankBackground
+ Pixel                    dynamic              CSG
+XmNcornerDimension       XmCCornerDimension
+ Dimension                3                    CSG
+XmNcornerStyle           XmCCornerStyle
+ unsigned char            XmCORNER_ARC         CSG
+XmNdebugLevel            XmCDebugLevel
+ char                     0                    CSG
+XmNfontList              XmCFontList
+ XmFontList               dynamic              CSG
+XmNhighlightThickness    XmCHighlightThickness
+ Dimension                2                    CSG
+XmNinactiveBackground    XmCInactiveBackground
+ Pixel                    dynamic              CSG
+XmNinactiveForeground    XmCInactiveForeground
+ Pixel                    dynamic              CSG
+XmNmarginHeight          XmCMarginHeight
+ Dimension                0                    CSG
+XmNmarginWidth           XmCMarginWidth
+ Dimension                2                    CSG
+XmNpixmapMargin          XmCPixmapMargin
+ Dimension                2                    CSG
+XmNrotateWhenLeftRight   XmCRotateWhenLeftRight
+ Boolean                  True                 CSG
+XmNspacing               XmCSpacing
+ Dimension                1                    CSG
+XmNtabCount              XmCTabCount
+ int                      0                    G
+XmNtabPlacement          XmCTabPlacement
+ unsigned char            XmFOLDER_TOP         CSG
+XmNtabTranslations       XmCTranslations
+ XtTranslations           [focus translations] CG
+XmNtabWidgetList         XmCReadOnly
+ WidgetList               0                    G
+.fi
+.IP XmNactiveTab
+The position of the currently active tab. The first tab on the
+left has a position of 0. If no tab is active, this value equals -1.
+.IP XmNblankBackground
+The color of the area between tabs, around tabs, and between the
+last tab and the edge of the folder.
+.IP XmNcornerDimension
+If XmNcornerStyle is XmCORNER_LINE, this value is used to determine
+the length of the lines that clip the corners of the tabs. The
+greater this value is, the longer the corner lines will be. If 
+XmNcornerStyle is XmCORNER_ARC, this value is used to determine
+the sizes of the arcs in the corners of the tabs. If XmNcornerStyle
+is XmCORNER_NONE, this resource has no effect.
+.IP XmNcornerStyle
+Defines the type of corners on the individual tabs. Possible values:
+
+.nf
+     XmCORNER_NONE     /* no corners */
+     XmCORNER_LINE     /* corners are beveled */
+     XmCORNER_ARC      /* corners are round */
+.fi
+.IP XmNdebugLevel
+If set to a value greater than 0, debugging messages will be
+printed to stderr.  When set to 0 (the default) only error
+messages will be generated.
+.IP XmNfontList
+The default font list for tabs created with the XmLFolderAddTab()
+functions.  Changing this value does not affect existing widgets.
+If this value is NULL, a font list is obtained from the nearest
+parent that is a subclass of BulletinBoard, MenuShell, or VendorShell.
+.IP XmNhighlightThickness
+The thickness of the highlight drawn around the Primitive widget
+contained in the active tab. When a Primitive widget is added to
+the folder, its highlightThickness is set to 0. The folder is 
+responsible for drawing the highlight in the active tab.
+This is necessary because if the Primitive widget were allowed
+to draw the highlight, it would erase the highlight with
+an incorrect color. 
+.IP XmNinactiveBackground
+The background color of inactive tabs. This value is initially set
+to the background color of the folder widget.
+.IP XmNinactiveForeground
+The foreground color of inactive tabs. This value is initially
+set to the foreground color of the folder widget.
+.IP XmNmarginHeight
+The margin between tab widgets and the top of tabs,
+and between tab widgets and the bottom of tabs.
+.IP XmNmarginWidth
+The margin between tab widgets and the left of tabs,
+and between tab widgets and the right of tabs.
+.IP XmNpixmapMargin
+The margin between the tab widget and any pixmap to its left.
+.IP XmNrotateWhenLeftRight
+If True, tabs created with the XmLFolderAddTab() functions
+will display their text vertically instead of horizontally
+if they are placed on the left or right of the folder.  This
+occurs when the folder's XmNtabPlacement resource is
+XmFOLDER_LEFT or XmFOLDER_RIGHT.  Tabs on the left would have
+their text drawn up and tabs on the right would have their
+text drawn down.  If False, tabs are left oriented horizontally
+regardless of their placement.
+.IP XmNspacing
+The amount of space between tabs.
+.IP XmNtabCount
+The number of tabs displayed. 
+.IP XmNtabPlacement
+Where to place the tabs. Possible values:
+
+.nf
+     XmFOLDER_TOP     /* top left to right */
+     XmFOLDER_BOTTOM  /* bottom left to right */
+     XmFOLDER_LEFT    /* left top to bottom */
+     XmFOLDER_RIGHT   /* right top to bottom */
+.fi
+.IP XmNtabTranslations
+The translation table used to augment the translations of
+Primitive widgets added to the folder. The folder overrides
+the FocusIn and FocusOut translations of its Primitive widget
+children allowing it to draw and erase tab highlights.
+.IP XmNtabWidgetList
+The list of widgets contained inside the tabs. These widgets
+are subclasses of XmPrimitive. 
+.SS Constraint Resources
+Folder defines the following constraint resources.
+
+.nf
+.ft B
+Name                     Class
+ Type                     Default               Access
+.ft P
+XmNtabFreePixmaps        XmCTabFreePixmap
+ Boolean                  False                 CSG
+XmNtabInactivePixmap     XmCTabInactivePixmap
+ Pixmap                   XmUNSPECIFIED_PIXMAP  CSG
+XmNtabManagedWidget      XmCTabManagedWidget
+ Widget                   NULL                  CSG
+XmNtabPixmap             XmCTabPixmap
+ Pixmap                   XmUNSPECIFIED_PIXMAP  CSG
+.fi
+.IP XmNtabFreePixmaps
+If True, the folder will call XFreePixmap on the XmNtabPixmap and
+XmNtabInactivePixmap pixmaps when this widget is destroyed.
+This value is set to True for tabs created by the
+XmLFolderAddBitmapTab() functions.
+.IP XmNtabInactivePixmap
+The pixmap to appear in the left of the tab when the tab is inactive.
+.IP XmNtabManagedWidget
+Specifies a widget to be managed when this widget is activated.
+When this widget is deactivated, its managed widget will be
+unmanaged. This resource allows Manager widgets contained in the 
+center of the folder to be attached to tabs, so when a user
+selects a tab its attached Manager widget will be displayed on
+the screen.
+.IP XmNtabPixmap
+The pixmap to appear in the left of the tab when the tab is active.
+.SS Callback Resources
+Folder defines the following callback resources.
+
+.nf
+.ft B
+Callback               Reason
+.ft P
+XmNactivateCallback    XmCR_ACTIVATE
+.fi
+.SS Callback Structure
+Each callback function is passed a pointer to the structure shown below.
+
+.nf
+   typedef struct            
+     {
+     int reason;         /* callback reason */
+     XEvent *event;      /* event callback or NULL */
+     int pos;            /* position of tab to act */
+     int allowActivate;  /* allow/disallow act (1/0) */
+     } XmLFolderCallbackStruct;    
+.fi
+
+pos will be set to the position of the tab (with 0 as the first tab
+on the left) to activate for XmNactivateCallback callbacks.
+If allowActivate is set to 0 by the callback function, the tab will not 
+be activated and the attempt to activate the given tab will be rejected. 
+.SS Inherited Resources
+Folder inherits the resources shown below.
+.nf
+.ft B
+Resource              From        Resource                  From
+.ft P
+XmNaccelerators       Core        XmNinitialResourcePersist Core
+XmNancestorSensitive  Core        XmNinsertPosition         Composite
+XmNbackground         Core        XmNmappedWhenManaged      Core
+XmNbackgroundPixmap   Core        XmNnavagationType         Manager
+XmNborderColor        Core        XmNnumChildren            Composite
+XmNborderPixmap       Core        XmNscreen                 Core
+XmNborderWidth        Core        XmNsensitive              Core
+XmNbottomShadowColor  Manager     XmNshadowThicknses        Manager
+XmNbottomShadowPixmap Manager     XmNstringDirection        Manager
+XmNchildren           Composite   XmNtopShadowColor         Manager
+XmNcolormap           Core        XmNtopShadowPixmap        Manager
+XmNdepth              Core        XmNtranslations           Core
+XmNdestroyCallback    Core        XmNtraversalOn            Manager
+XmNforeground         Manager     XmNunitType               Manager
+XmNheight             Core        XmNuserData               Manager
+XmNhelpCallback       Manager     XmNwidth                  Core
+XmNhighlightColor     Manager     XmNx                      Core
+XmNhighlightPixmap    Manager     XmNy                      Core
+.fi
+
+.SS Folder Translations
+Folder defines the translations shown below.
+
+.nf
+.ft B
+Event            Action
+.ft P
+BSelect Press    XmLFolderActivate()
+.fi
+.SS Folder Primitive Translations
+Folder overrides the translations shown below for all of
+its Primitive widget children.
+
+.nf
+.ft B
+Event       Action
+.ft P
+FocusIn     PrimitiveFocusIn() XmLFolderPrimFocusIn()
+FocusOut    PrimtiveFocusOut() XmLFolderPrimFocusOut()
+.fi
+.SS Action Routines
+Folder defines the actions shown below.
+.IP XmLFolderActivate()
+Activates the tab at the location of the event passed to the action routine.
+.IP XmLFolderPrimFocusIn()
+Draws a highlight around the given widget.
+.IP XmLFolderPrimFocusOut()
+Erases the highlight around the given widget.
+.SH "SEE ALSO"
+XmLCreateFolder(3X) XmLFolderAddBitmapTab(3X) XmLFolderAddBitmapTabForm(3X)
+XmLFolderAddTab(3X) XmLFolderAddTabForm(3X) XmLFolderSetActiveTab(3X)

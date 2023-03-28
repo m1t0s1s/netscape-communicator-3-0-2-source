@@ -1,0 +1,420 @@
+$Id: CHANGES,v 1.1 1996/06/18 03:29:07 warren Exp $
+
+patchlevel 14
+	General
+		- Many configuration changes from Jonathan I. Kamens
+		- added code to support better reallocations when nearby space
+		  is available.
+	Configure
+		- changes to support more systems
+	fill.c
+		- fixed bug that caused problem when free-filling was disabled
+	realloc.c
+		- now looks for extra space before the segment to be realloced
+		- if segment is to be increased and it is at the end of memory,
+		  just sbrk extra room onto the array
+	malloc.c 
+		- added code to support joining to previous segment
+		- added initialization of free file pointer
+	
+patchlevel 13
+	******IMPORTANT*******
+		- malloc_size() function name changed to malloc_inuse()
+		- mallopt() function name changed to dbmallopt()
+		- new malloc_size() function with different behavior
+		- dbmallopt() now takes a pointer to the union
+	Configure
+		- added check to use string.h instead of memory.h
+		- changed code to guess at settings when they couldn't 
+		  be determined
+		- added ability to bypass compilers that couldn't make
+		  executables (freq case with g++ if libg++ isn't available)
+		- added ASM checks for older 386 assemblers
+	Makefile
+		- documented new USE_NLS definition
+		- new memalign source/object
+	PROBLEMS
+		- updated descriptions of parameter settings
+	abort.c
+		- new file containing malloc_abort function.
+	cctest.c
+		- added support for overriding inclusion of memory.h
+	datamc.c
+		- asm changes for old ISC assembler
+	free.c 
+		- added warning about freeing marked segments
+	leak.c	
+		- fixed bug in malloc_size
+		- changed name of malloc_size to malloc_inuse since malloc_size
+		  collided with funtion of same name on the NeXT.
+	malign.c
+		- new file
+		- support functions for aligned allocations (compatible with
+		  SVR4 memalign(3))
+	malloc.3
+		- changed references to malloc_size to malloc_inuse.
+		- removed values from discussions on #defines
+		- changed mallopt references to dbmallopt
+		- added descriptions of the default settings for options
+		- added description of freemark option
+	malloc.c
+		- changed to call malloc_abort
+		- added support for new options
+		- added check for zero byte allocations
+	malloc.h.org
+		- changed references to malloc_size to malloc_inuse.
+		- changed mallopt references to dbmallopt
+		- added definitions for malloc_mark and new malloc_size
+	mallopt.c
+		- changed mallopt to dbmallopt
+		- added support for freemark option
+	realloc.c
+		- added code to make sure marked segment stays marked.
+	size.c
+		- new malloc_size function
+	string.c
+		- fixed CompareUpper macro 
+		- added code to preclude inclusion of ctype.h when USE_NLS
+		  is defined to allow for native language support
+	testerr.c
+		- added tests for memalign(), malloc_size() and malloc_inuse()
+		- changed mallopt references to dbmallopt
+	testmalloc.c
+		- changed mallopt calls to dbmallopt
+	
+patchlevel 12
+	general
+		- many changes to handle systems with ints smaller than longs
+	Configure
+		- fixed to handle problem on some systems where it didn't 
+		  correctly determine if setenv was present
+		- changed to better handle configuration on Sun's
+		- added ability to continue even if an error was found
+	Makefile
+		- added docs on using -DANSI_NULLS to allow for ANSI NULL
+		  support in realloc and free
+	cctest.c
+		- added code to assist build on Suns where gcc is present
+	datamc.c
+		- fixed bug that caused overwriting of memory areas
+	free.c
+		- added support for ANSI_NULLS #define
+	malloc.e
+		- some minor format changes.
+	realloc.c
+		- added support for ANSI_NULLS #define
+patchlevel 11
+	general
+		- significant performance enhancements
+		- DG/UX libc internal interface (from Paul Smith)
+		- changed filling so that it now will always fill some bytes
+		  both before and after the allocated segment
+		- misc changes from port to Minix on Atari (from Rainer Orth)
+		- added use of system memset/memcpy routines for performance
+		- added override capability for fill characters and buffer
+		  boundary size
+	Configure
+		- cleaned up reference to DG equipment
+		- added code to pull memset and memcpy out of libc.a
+	Makefile
+		- entries for new source file(s)
+		- added code to automatically use system mem* funcs if
+		  the configure script found them appropriate
+	Runtests
+		- added better checking of the test output 
+	cctest.c
+		- added tests for DataMC and DataMS
+		- added program to use to map memset to DataMS and memcpy
+		  to DataMC
+	datamc.c  
+		- new module for copying data around
+		- added ASM version for 386 systems
+	datams.c  
+		- new module for filling data
+	dgmalloc.c
+		- new module for DG/UX stuff
+	fill.c
+		- new module containing all code related to filling data areas
+		- added support for several levels of filling
+		- optimized fill mechanism
+	free.c
+		- modified fill area checks
+		- fix over/underruns so error is only reported once
+		- changed to only fill data areas that need filling
+	m_init.c
+		- added initialization of new fill character overrides
+	m_perror.c
+		- added info to error message
+	malloc.3
+		- updated manual to reflect changes in code
+	malloc.h.org
+		- defs for new DG/UX stuff
+	malloc.c
+		- modified filling so that before and after segments are always
+		  filled (only fill basic segment if fill area is enabled)
+		- removed filling modules (moved to fill.c)
+		- optimized use of filling so that only fills that were needed
+		  get called
+		- support for overriding boundary size
+	mallocin.h
+		- defs for new fillarea stuff
+		- defs for fill optimizations
+		- stuff for fill character overrides
+	mallopt.c
+		- support for new fillarea flags
+		- support for malloc_fill flag setting
+	mchain.c
+		- added underrun check
+		- fix over/underruns so error is only reported once.
+	mcheck.c
+		- more performance enhancements
+		- added verification that segment was in use for pointers that
+		  are being verified
+		- added tweak to find segment quickly if the pointer that was
+		  passed points to the beginning of the segment.
+	memory.c
+		- changed to use fast DataMC/DataMS funcs for data movements
+		- changed comparison functions to base return upon unsigned
+		  comparisons as is required under ANSI C
+	realloc.c
+		- support for new fill mechanism
+		- support for overriding boundary size
+	string.c
+		- changed comparison functions to base return upon unsigned
+		  comparisons as is required under ANSI C
+		- changed to use fast memset/memcpy for data movements
+
+patchlevel 10
+	general 
+		- more portability changes thanks to Denny Page.
+		- General mechanism for adding new alloc interfaces
+		- XtAlloc routine tracking (idea and sample source from Denny
+		  Page)
+		- yet another session with lint
+	Configure
+		- changes to handle compilers that only give warnings for
+		  some of the test situations
+		- added creation of system dependency header (sysdefs.h) and
+		  moved stuff from malloc.h that is only used for building the
+		  library into the new file
+		- renamed temp files to prevent collisions
+		- added auto-determination of X11R4/5
+		- added SETENV stuff
+	Makefile 
+		- added new source file(s) to list of sources
+		- added rules for building sysdefs.h and dependencies on it
+		- moved install of malloc.h to /usr/local/debug_include because
+		  gcc2.1 automatically includes /usr/local in the default path
+		  when compiling modules
+		- removed docs on setting options that configure now 
+		  automatically determines
+	README
+		- updated to reflect changes made in tests
+	Runtests
+		- added better checking of testmalloc output
+	calloc.c 
+		- hooks for X allocation routines
+		- simplification of setting type/counter flags
+	dump.c  
+		- lint changes
+		- changed to use new function name routines to get name of
+		  routine that allocated the segment
+	free.c
+		- added identification of which free function free'd segment
+		- support for X allocation routines
+	malloc.c
+		- hooks for X allocation routines
+		- simplification of setting type/counter flags
+		- moved function name determination into its own fcn (so it
+		  could be called by dump)
+	malloc.h.org
+		- added protos & defs for new X allocation routines
+	mallocin.h
+		- extended malloc types
+		- added free types
+		- changed magic number to make room for free types
+		- added inclusion of new system dependency header (sysdefs.h)
+		- added some defs for the X stuff so we don't get compile errors
+		  when prototypes.h is included
+	realloc.c
+		- hooks for X allocation routines
+	testmalloc.c
+		- lint changes
+		- added tests for Xt allocation hooks
+	testmem.c
+		- lint changes
+	teststack.c
+		- lint changes
+	xheap.c
+		- X11R5 compatibility stuff for Xt Allocation routines
+	xmalloc.c
+		- new source file
+		- XtAlloc routines for easier debugging of X applications
+	
+patchlevel 9
+	general
+		- just some minor changes from testing of patch 8 on various
+		  system architectures
+	README
+		- spelling corrections
+	Buildpatch
+		- changed to archive old patches
+	Configure
+		- removed used of escape sequences (like \n) from echo cmds
+		- make size_t first choice on strsize setting
+	Runtests 
+		- initialze environment to defaults so that the test runs in
+		  a known environment
+	dump.c
+		- require MALLOC_DETAIL to be non-zero as opposed to just being
+		  specified in the environment
+	malloc.3
+		- updated manual page to reflect changes
+	malloc.c 
+		- require MALLOC_SHOW_LINKS to be non-zero as opposed to just
+		  being specified in the environment
+	mallopt.c
+		- changed ERRFILE handling to allow specification of - to 
+		  indicate stderr output
+	 	- added close of existing errfile if it is changed and it 
+		  wasn't pointing to stderr
+	minipatch
+		- new shell to build intermediate patches
+	m_perror.c
+		- spelling corrections
+
+patchlevel 8 
+
+	general
+		- added automatic configuration (using shell script)
+		- added support for different data types between the 
+		  various components (str*, mem*, and malloc*)
+		- renamed some files so they would fit into MS-DOS namespace
+		  mallocint.h -> mallocin.h, malloc_chk.c -> mcheck.c
+		  malloc_chn.c -> mchain.c
+		- fixed fill_area stuff so that it can be turned off
+		  and on during the execution of a program (thanks
+		  to Denny Page - denny@tss.com)
+		- can now disable reuse of segments which makes it easier to
+		  track multiple frees of the same segment (idea and some of
+		  the code from Denny Page)
+		- added code to assist in identifying duplicate frees of
+		  the same malloc area
+		- added support for keeping track of the stack in which the
+		  malloc calls are made. (suggested by Paul Smith at DG)
+		- added support for automatic testing and some new tests
+	Configure
+		- new automatic configuration script
+	Makefile
+		- added ranlib call after copying library (needed on some
+		  systems because the timestamp changes with the copy)
+	Runtests
+		- new automatic testing script
+	free.c
+		- added check for pointer alignment on the ptr passed to free
+		- added logging of where pointer was freed 
+	leak.c
+		- added support for marking active segments so that they don't
+		  get counted in the leak routines
+	m_perror.c 
+		- fixed typo in error message
+	malloc.h
+		- moved real file to malloc.h.org which gets modified and
+		  copied to malloc.h by the automatic configuration
+	malloc.c
+		- added code to ensure that calls to abort either cause the
+		  process to abort, or, if not, then just exit.
+		- added code to ensure that sbrk() returns data on M_RND
+		  boundary (or adjust the pointer accordingly)
+	mchain.c
+		- added pointer alignment checks 
+	realloc.c
+		- added check for pointer alignment 
+	string.c
+		- new functions: stricmp and strincmp (case insensitive strcmp)
+	stack.c
+		- new file which has the stack support functions
+	testmalloc.c
+		- added doubleword boundary check
+	testmem.c
+		- tests for new string functions
+	tostring.c
+		- fixed bug which resulted in empty output if value was zero
+	
+
+patchlevel 7
+
+	- general
+		- added support for overriding the use of void for systems
+		  that do not support it
+		- added more info to the PROBLEMS and README files
+	- free.c
+		- added call to MALLOC_INIT to initialize the malloc subsystem
+		  when free is the first entry point.
+	- malloc.c
+		- fixed typo which resulted in truncation of error message
+		- increased size of error string buffers and added
+		  overflow checks
+	- malloc.h
+		- added code so that it could be included by c++ programs
+		- added additional info on setting SIZETYPE and DATATYPE
+		- added code to prevent inclusions of string.h and memory.h
+		  after malloc.h has been included (since they conflict)
+		- added prototypes for malloc_dump and malloc_list
+		- added #ifdefs to get the code to compile out of the box for 
+		  known systems (hpux,IBMRS6000, and ISC UNIX)
+	- memory.c
+		- changed memccpy to only check the number of chars it is
+		  going to copy (some stdio implementations use memccpy with
+		  a source string that may not be the full length).
+	- malloc.3
+		- reformatted the SYNOPSIS section and cleaned up some other
+		  parts of the doc.
+		- added more warnings about potential problems
+	- Buildpatch
+		- changed to build the patch based upon the old shar files,
+		  as opposed to the information in the RCS files
+		- added verification of successful patch
+	- Makefile
+		- misc cleanups for making patch releases
+		- removed \c escape sequence from test run script
+
+patchlevel 6
+
+	- README file updated with expanded porting/usage/test program info
+	- PROBLEM file added to mention typical porting problems
+	- CHECKSUMS file added to allow verification of proper transmission
+	- NAME change - default library name changed to libdbmalloc.a so that
+	  it doesn't conflict with system libmalloc.a files.
+	- performance enhancements 
+		- selected use of registers for pointers referenced frequently
+		- addition of free list chain, so allocations just search a
+		  list of available blocks
+		- portable optimization of the malloc_memset function so that
+		  it is much faster when filling malloc'd areas
+		- added ability to turn off pre/post-filling of malloced 
+		  areas via an environment variable and/or mallopt()
+		- added option to override first fit algorithm with best fit
+		  algorithm (should reduce memory fragmentation)
+	- use #if __STDC__ instead of #ifdef, so if the symbol is defined, but
+	  is not set to a 1, it is not interpreted as an ANSI C compiler
+	- cleanup of some warnings from gcc -Wall
+	- makefile changes
+		- addition of manual page installation
+		- added frcinstall target which forces installation
+		- added DESTDIR (equivalent to INSTDIR) which defaults to
+		  /usr/local
+		- added targets to build and run tests and removed test
+		  building from the all target
+		- documented useful targets
+		- changed to using cshar to generate shar files with MANIFEST
+		- added building of CHECKSUMS file
+	- manual page changes
+		- minor changes to make it compatible with groff
+		- fixed bug in eX macro which was causing fixed font output to
+		  be extremely wide
+		- changed references to malloc_opt to mallopt and updated to 
+		  the correct usage (using the union malloptarg)
+		- documented new environment variable to control fragmentation
+
+

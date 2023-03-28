@@ -1,0 +1,1626 @@
+
+pref_helpers.c,2127
+#define _STDC_ 23,532
+#define HACKED_STDC 24,549
+#define DEFAULT_COLUMN_WIDTH 49,1045
+#define MAX_COLUMN_WIDTH 50,1083
+#define FE_MOZILLA_MIME_COMMENT	52,1115
+#define FE_MOZILLA_MAILCAP_COMMENT	53,1187
+#define TYPE	54,1264
+#define DESC	55,1287
+#define ENC	56,1310
+#define ICON	57,1331
+#define LANG	58,1354
+#define EXTS	59,1377
+#define ALT	60,1400
+#define SPACE	61,1421
+fe_GetToken 98,2557
+fe_helpers_appendKey 131,3084
+static char* cleanString(167,3926
+fe_helpers_deleteKey 203,4579
+fe_helpers_updateKey 275,5920
+fe_helpers_addCommand(347,7332
+fe_helpers_deleteCommand(413,8718
+fe_helpers_add_new_mailcap_data(476,9992
+fe_helpers_is_deleted_type 507,10733
+fe_helpers_plugin_selected(526,11194
+fe_helpers_plugin_sel_cb(570,12582
+fe_helpers_build_plugin_list(585,12968
+fe_helpers_build_exts(660,15181
+fe_helpers_construct_new_mailcap_string(675,15486
+fe_helpers_update_mailcap_entry 762,17647
+fe_helpers_build_handle(803,18542
+fe_helpers_get_mime_data_real_pos(941,22013
+fe_helpers_get_exist_data(969,22583
+fe_helpers_can_combine 998,23251
+fe_helpers_start_new_line(1008,23442
+fe_helpers_new_string(1051,24121
+fe_replace_new_mime_string(1145,25906
+fe_helpers_construct_new_mime_string(1283,28491
+fe_helpers_done_cb(1385,30885
+fe_helpers_cancel_cb(1567,35469
+fe_helpers_destroy_cb 1573,35589
+fe_helpers_verify_toggle_cb(1594,36095
+fe_helpers_make_edit_dialog(1660,38204
+fe_helpers_application_browse_cb(1997,49922
+fe_helpers_handle_by_netscape(2005,50178
+fe_helpers_handle_by_saveToDisk(2026,50640
+fe_helpers_handle_by_plugin(2036,50817
+fe_helpers_set_handle_by_flag 2048,51156
+fe_helpers_set_handle_by_cb 2101,52792
+fe_helpers_fill_edit_with_data(2132,53849
+fe_helpers_get_mime_data_at_pos(2179,54904
+fe_helpers_edit_cb(2203,55303
+fe_helpers_new_cb(2231,56035
+fe_helpers_delete_cb(2244,56337
+fe_helpers_add_list_row(2337,58533
+fe_helpers_append_list_row(2349,58899
+fe_helpers_get_mailcap_from_type(2362,59240
+fe_helpers_append_type_to_list(2383,59665
+fe_helpers_build_mime_list(2438,61377
+fe_helpers_make_helpers_page 2468,62233
+fe_helpers_prepareForDestroy(2629,67576
+
+colors.c,1564
+#define C8to16(C8to1637,1523
+#define C16to8(C16to840,1646
+#define STATIC_VISUAL_P(STATIC_VISUAL_P42,1694
+#define GRAYSCALE_WORKS43,1768
+struct fe_colormapfe_colormap55,2463
+#define  CELL_AVAIL 77,3616
+#define  CELL_MARKED 78,3693
+#define  CELL_SHARED 79,3746
+#define  CELL_PRIVATE 80,3812
+#define  CELL_ALLOCATION 82,3878
+#define  CELL_PERMANENT 92,4370
+#define  CELL_TRANSIENT 93,4426
+#define  CELL_IMAGE 94,4497
+#define  CELL_LIFETIME 96,4572
+fe_print_colormap_allocation(104,4766
+fe_delete_colormap(175,6401
+fe_NewColormap(191,6795
+XFE_GetDefaultColormap(294,9859
+XFE_GetMaxColors(301,9963
+fe_cmap(310,10125
+Pixel *fe_ColormapMapping(315,10207
+fe_free_colormap_cells(321,10322
+fe_free_context_image_cells(358,11409
+fe_free_all_image_cells(380,11954
+fe_FreeTransientColors(397,12405
+fe_DisposeColormap(447,13713
+fe_allocate_all_cells 477,14537
+fe_clear_colormap 558,16973
+fe_interrogate_colormap 597,17832
+fe_memorize_colormap 651,19593
+fe_get_server_colormap_cache(692,20955
+fe_FindClosestColor 728,21985
+fe_AllocClosestColor 786,23566
+fe_AllocColor(884,26958
+fe_get_shared_pixel 901,27486
+fe_GetPixel 1006,30721
+fe_GetPermanentPixel 1013,30916
+fe_GetImagePixel 1019,31055
+fe_unavailable_image_colors 1027,31260
+fe_QueryColor 1058,31914
+init_gray_ramp 1086,32646
+struct color_distance color_distance1112,33294
+compare_color_distances(1119,33399
+#define NUM_COLORS_RESERVED_FOR_TRANSIENTS 1132,33898
+XFE_SetColormap 1157,35055
+FindShift 1450,45392
+fe_CopyDefaultColormap 1470,45712
+fe_InitColormap 1481,46086
+
+commands.c,7069
+fe_text_insert 100,2638
+fe_hack_self_inserting_accelerator 145,4047
+fe_spacebar_cb 201,5289
+fe_page_forward_cb 237,6279
+fe_page_backward_cb 261,6985
+fe_line_forward_cb 284,7643
+fe_line_backward_cb 313,8442
+fe_column_forward_cb 339,9163
+fe_column_backward_cb 362,9813
+fe_new_cb 389,10559
+fe_open_mail(428,11625
+fe_open_news(436,11847
+fe_open_url_cb 444,12069
+fe_upload_file_cb 458,12456
+fe_open_file_cb 540,14380
+fe_reload_frame_cb 564,15009
+fe_reload_cb 583,15583
+fe_abort_cb 599,16053
+fe_refresh_cb 609,16345
+make_save_as_data 650,17384
+fe_save_as_complete 825,22343
+fe_save_as_nastiness 838,22562
+fe_SaveURL 909,24139
+fe_SaveAsDialog(937,24727
+fe_save_as_cb 1055,30700
+fe_save_as_stream_write_method 1080,31297
+fe_save_as_stream_write_ready_method 1100,31867
+fe_save_as_stream_complete_method 1106,31964
+fe_save_as_stream_abort_method 1129,32450
+fe_MakeSaveAsStream 1162,33251
+fe_MakeSaveAsStreamNoPrompt 1259,36210
+struct view_source_dataview_source_data1289,36973
+make_view_source_data 1297,37081
+fe_view_source_cb 1315,37593
+fe_frame_source_cb 1381,39305
+fe_view_source_stream_write_method 1401,39798
+fe_view_source_stream_complete_method 1435,40822
+fe_view_source_stream_abort_method 1442,40977
+fe_MakeViewSourceStream 1453,41241
+fe_mailNew_cb 1487,42132
+fe_mailto_cb 1498,42400
+fe_mailto_attach_cb(1527,43067
+fe_print_cb 1534,43240
+fe_delete_cb 1583,44534
+#define fe_quit_cb 1605,44984
+fe_QuitCallback 1607,45024
+fe_selection_converter 1636,45664
+fe_selection_loser 1934,54166
+fe_own_selection_1 1947,54560
+fe_OwnSelection 1970,55222
+fe_DisownSelection 1978,55404
+fe_get_clipboard 2007,56346
+fe_text_paste 2063,57825
+typedef enum { fe_Cut, fe_Copy, fe_Paste, fe_PasteQuoted } fe_CCP;fe_CCP2107,58767
+fe_ccp 2110,58847
+fe_cut_cb 2150,60221
+fe_copy_cb 2161,60575
+fe_paste_cb 2172,60931
+fe_paste_quoted_cb 2183,61289
+fe_find_cb 2194,61660
+fe_netscape_cb(2211,62090
+fe_find_again_cb 2223,62393
+fe_own_selection_p 2250,63164
+fe_general_prefs_cb 2268,63649
+fe_mailnews_prefs_cb 2280,63947
+fe_network_prefs_cb 2292,64249
+fe_security_prefs_cb 2304,64553
+fe_save_options_cb 2316,64859
+#define HTTP_OFF	2401,68168
+#define DOCINFO	2404,68214
+#define DOT_NETSCAPE_DOT_COM_SLASH 2407,68274
+#define HTTP_NETSCAPE	2412,68418
+#define HTTP_CGI	2417,68603
+#define HTTP_HOME 2422,68816
+#define HTTP_ENG 2427,69102
+#define HTTP_INFO 2433,69443
+#define HTTP_FC 2438,69696
+#define HTTP_NEWSRC 2442,69836
+#define HTTP_WHATS_NEW 2445,69932
+#define HTTP_WHATS_COOL 2449,70103
+#define HTTP_INET_DIRECTORY 2453,70286
+#define HTTP_INET_SEARCH 2458,70534
+#define HTTP_INET_WHITE 2462,70773
+#define HTTP_INET_ABOUT 2467,71032
+#define HTTP_SOFTWARE 2472,71277
+#define HTTP_HOWTO 2476,71476
+#define HTTP_GALLERIA 2481,71792
+# define HTTP_REL_VERSION_PREFIX 2486,72030
+# define HTTP_BETA_VERSION_PREFIX 2489,72169
+#define HTTP_REG	2492,72256
+#define HTTP_MANUAL 2497,72375
+#define HTTP_FAQ 2500,72506
+#define HTTP_SECURITY 2506,72822
+#define HTTP_FEEDBACK	2510,73002
+#define HTTP_SUPPORT 2514,73137
+#define HTTP_USENET 2519,73320
+#define HTTP_PLUGINS 2523,73487
+#define HTTP_ESCAPES 2526,73599
+# define HTTP_SGI_MENU 2532,73818
+# define HTTP_SGI_BUTTON 2538,74073
+# define HTTP_SGI_WELCOME 2542,74238
+# define HTTP_ADOBE_MENU 2548,74509
+# define SGI_WHATS_COOL 2552,74677
+# define SGI_VERSION_PREFIX	2558,74948
+go_get_url(2567,75215
+#define GO_GET_URL(GO_GET_URL2603,75787
+GO_GET_URL(2624,76085
+#define H_WHATS_NEW 2646,76962
+#define H_WHATS_COOL 2647,77031
+#define H_INET_DIRECTORY 2648,77102
+#define H_INET_SEARCH 2649,77181
+#define H_INET_WHITE 2650,77254
+#define H_INET_ABOUT 2651,77325
+#define H_SOFTWARE 2652,77396
+#define H_HOWTO 2653,77463
+#define H_NETSCAPE 2654,77524
+#define H_GALLERIA 2655,77591
+#define H_REL_VERSION_PREFIX 2656,77658
+#define H_REG 2657,77745
+#define H_MANUAL 2658,77802
+#define H_FAQ 2659,77865
+#define H_USENET 2660,77922
+#define H_SECURITY 2661,77985
+#define H_FEEDBACK 2662,78052
+#define H_SUPPORT 2663,78119
+#define EXPORT_URL(EXPORT_URL2670,78320
+fe_docinfo_cb 2727,79980
+fe_docinfo_cb 2737,80260
+fe_frame_info_cb 2763,80995
+xfe_get_netscape_home_page_url(2784,81665
+fe_net_showstatus_cb 2794,81860
+fe_fishcam_cb 2807,82170
+fe_NetscapeCallback 2820,82585
+fe_sgi_menu_cb 2845,83253
+fe_adobe_menu_cb 2858,83684
+fe_SGICallback 2872,84116
+fe_sgi_welcome_cb 2886,84546
+fe_toggle_loads_cb 2901,85006
+fe_toggle_fancy_cb 2914,85418
+fe_save_link_mode_cb 2927,85822
+fe_toggle_compose_wrap_cb 2939,86146
+fe_RebuildWindow 2954,86552
+fe_show_toolbar_cb 3000,88122
+fe_show_url_cb 3015,88635
+fe_show_directory_buttons_cb 3031,89121
+fe_show_menubar_cb 3047,89713
+fe_show_bottom_status_bar_cb 3063,90288
+fe_show_security_bar_cb 3081,90905
+fe_show_java_console_cb(3099,91499
+fe_load_images_cb 3115,91851
+fe_back_cb 3128,92156
+fe_forward_cb 3158,92920
+fe_home_cb 3188,93682
+fe_history_cb 3205,94217
+fe_add_bookmark_cb 3215,94506
+fe_view_bookmark_cb 3225,94811
+fe_view_addressbook_cb 3235,95117
+fe_goto_bookmark_cb 3246,95413
+fe_about_cb 3260,95753
+fe_aboutPlugins_cb 3271,96075
+fe_pulldown_cb 3282,96424
+fe_mailcompose_cb(3319,97464
+fe_mailcompose_obeycb(3332,97798
+fe_handle_delivery_cb(3357,98395
+FE_InsertMessageCompositionText(3414,100434
+fe_doc_enc_cb(3446,101493
+#define OFF(OFF3504,102690
+#define EOFF(EOFF3961,122847
+FE_ConnectToRemoteHost 4499,144163
+fe_MakeMenubar 4699,148563
+fe_MakeToolbar 4760,150457
+fe_SensitizeForSelectedFrame(4948,155856
+fe_SensitizeMenus 5002,157303
+fe_save_image_cb 5097,160616
+fe_save_link_cb 5123,161321
+fe_open_image_cb 5148,162019
+fe_load_delayed_image_cb 5166,162546
+fe_follow_link_cb 5186,163081
+fe_follow_link_new_cb 5204,163583
+fe_add_link_bookmark_cb 5226,164252
+fe_clipboard_url_1 5246,164769
+fe_clipboard_link_cb 5273,165725
+fe_clipboard_image_cb 5280,165916
+fe_on_menubar_cb 5287,166112
+fe_popup_menu_popdown_cb 5341,167740
+fe_remember_last_popup_item 5360,168131
+#define DYNAMIC_MENU5370,168484
+fe_popup_menu_action 5373,168518
+fe_eat_window_key_events(5766,180408
+fe_column_forward_action 5776,180603
+fe_column_backward_action 5790,180954
+fe_line_forward_action 5804,181307
+fe_line_backward_action 5818,181654
+#define DEFACTION(DEFACTION5835,182042
+DEFACTION 5845,182316
+fe_exit_action 5921,184074
+fe_open_url_action 5930,184323
+fe_open_file_action 6006,186250
+fe_print_remote_action 6052,187470
+fe_print_action 6095,188636
+fe_edit_action 6129,189620
+fe_save_as_action 6137,189761
+fe_mailto_action 6204,191684
+fe_find_action 6260,192901
+fe_add_bookmark_action 6288,193511
+fe_new_msg_action 6315,194237
+fe_html_help_action 6325,194481
+fe_deleteKey_action 6355,195163
+fe_undefined_key_action 6369,195539
+fe_InitCommandActions 6464,198606
+fe_HackTranslations 6478,199112
+fe_HackTextTranslations 6598,202785
+fe_HackDialogTranslations 6635,203890
+fe_RegisterConverters 6653,204288
+fe_switch_context_cb 6822,209053
+fe_SetString(6845,209753
+fe_addto_windows_menu(6854,209972
+fe_GenerateWindowsMenu 6963,213222
+
+convert.c,283
+struct output_to_string_dataoutput_to_string_data11,296
+fe_get_url_as_something_done 21,406
+fe_get_url_as_text_done 68,1397
+fe_get_url_as_source_done 77,1605
+fe_get_url_as_source_exit 87,1836
+fe_GetURLAsText 96,2034
+fe_GetURLAsPostscript 137,3033
+fe_GetURLAsSource 172,3866
+
+dialogs.c,4953
+#define USE_WINNING_FILE_SELECTION7,227
+#define DOCINFO_VISUAL_TEXT9,296
+#define DOCINFO_CHARSET_TEXT51,1460
+#define Bool 55,1563
+  Answer_Destroy } Answers;Answers62,1670
+struct fe_confirm_data fe_confirm_data64,1699
+FE_Alert 91,2664
+XFE_Alert 120,3421
+fe_stderr 127,3595
+XFE_Confirm 143,4097
+fe_Confirm_2 149,4223
+fe_Alert_2 156,4379
+XFE_Prompt 167,4701
+FE_PromptMessageSubject 174,4912
+fe_perror 189,5242
+fe_perror_2 195,5355
+fe_UnmanageChild_safe 220,5832
+fe_NukeBackingStore 227,5906
+fe_CreateTextField 245,6305
+fe_CreateText 261,6637
+fe_select_text(270,6822
+static void fe_fixFocusAndGrab(287,7371
+fe_dialog 340,8990
+fe_Message 630,17240
+fe_destroy_ok_cb 677,18704
+fe_destroy_cancel_cb 685,18924
+fe_destroy_apply_cb 693,19152
+fe_destroy_finish_cb 701,19378
+fe_destroy_snarf_text_cb 709,19614
+fe_destroy_snarf_pw_cb 721,19924
+fe_destroy_snarf_pw2_cb 730,20179
+fe_clear_text_cb 741,20519
+fe_destroy_cb 754,21048
+fe_StringChopCreate(769,21472
+XFE_Progress 822,22744
+fe_MidTruncatedProgress 912,25434
+# define va_list 975,27330
+# define va_start(va_start976,27351
+# define va_arg(va_arg977,27394
+# define va_end(va_end986,27775
+fe_attach_field_to_labels 992,27833
+fe_force_configure(1059,29213
+fe_file_selection_get_dir_entries(1070,29494
+fe_file_selection_file_search_proc(1099,30214
+fe_file_selection_dir_search_proc(1182,32368
+fe_file_selection_qualify_search_data_proc(1322,36181
+fe_file_selection_dirspec_cb(1446,40041
+fe_file_selection_save_directory_cb(1474,40814
+fe_CreateFileSelectionBox(1487,41202
+fe_ReadFileName_2 1593,44640
+fe_ReadFileName 1841,52142
+fe_file_destroy_cb 1861,52590
+fe_file_cb 1882,53255
+fe_file_type_cb 1929,54194
+fe_file_type_hack_extension_1 1947,54630
+fe_file_type_hack_extension 2109,58859
+fe_open_url_cb 2126,59138
+fe_OpenURLCallback 2151,59842
+XFE_PromptPassword 2251,63226
+XFE_PromptUsernameAndPassword 2270,63765
+fe_ReadVisual 2302,64339
+static void fe_visual_cb 2396,67165
+struct fe_source_datafe_source_data2436,67989
+fe_close_source_cb 2444,68078
+fe_source_save_as_cb 2452,68316
+fe_ViewSourceDialog 2467,68785
+fe_DefaultUserInfo 2619,73937
+fe_synchronous_url_cancel_cb 2691,75835
+fe_dialog_expose_eh 2703,76157
+fe_LowerSynchronousURLDialog 2717,76629
+fe_synchronous_url_exit 2749,77744
+fe_RaiseSynchronousURLDialog 2763,78100
+fe_await_synchronous_url 2854,80845
+fe_GetSynchronousURL 2875,81412
+fe_CheckDeferredMail 2900,81963
+fe_CheckUnsentMail 2950,83274
+fe_del_attachment(2966,83667
+fe_add_attachmentData(2983,84054
+fe_add_attachment(3012,84751
+fe_locationOk_cb 3048,85619
+fe_locationClear_cb 3060,85967
+fe_locationCancel_cb 3070,86346
+fe_attach_make_location(3077,86557
+fe_attachFile_cb 3191,90121
+fe_attach_make_file(3242,91406
+fe_attach_doc_type_cb 3295,92880
+fe_attachDestroy_cb 3333,94087
+fe_attachCancel_cb 3356,94722
+fe_attachOk_cb 3372,95256
+fe_attach_location_cb 3396,96071
+fe_attach_file_cb 3407,96418
+fe_attach_delete_cb 3418,96741
+fe_attach_select_cb 3452,97643
+fe_make_attach_dialog(3479,98448
+fe_mailto_attach_dialog(3704,105962
+fe_attach_dropfunc(3741,106872
+FE_MakeMessageCompositionContext 3870,110973
+FE_InitializeMailCompositionContext 3898,111801
+FE_RaiseMailCompositionWindow 3994,114627
+FE_DestroyMailCompositionContext 4004,114889
+FE_GetMessageBody 4012,115059
+FE_DoneWithMessageBody(4070,116492
+fe_mail_text_modify_cb 4079,116613
+#define cite_abort 4090,116882
+#define cite_protect_me_from_myself 4091,116903
+#define cite_let_me_be_a_loser 4092,116941
+FE_BogusQuotationQuery 4096,116992
+struct fe_print_datafe_print_data4155,118988
+fe_print_to_toggle_cb 4168,119253
+fe_print_order_toggle_cb 4195,120268
+fe_print_orientation_toggle_cb 4210,120755
+fe_print_color_toggle_cb 4226,121269
+fe_print_paper_toggle_cb 4242,121762
+fe_browse_file_of_text 4278,122897
+fe_print_browse_cb 4408,126573
+#define XFE_DEFAULT_PRINT_FILENAME	4415,126782
+ps_pipe_close 4420,126922
+ps_file_close 4427,127050
+XFE_InitializePrintSetup 4434,127171
+fe_Print(4469,128019
+fe_print_destroy_cb(4583,131019
+fe_print_cb 4596,131380
+fe_PrintDialog 4652,133424
+fe_find_refresh_data(5057,148030
+#define FE_FIND_FOUND	5093,149086
+#define FE_FIND_NOTFOUND	5094,149112
+#define FE_FIND_CANCEL	5095,149140
+#define FE_FIND_HEADER_FOUND	5096,149167
+#define FE_FIND_HEADER_NOTFOUND	5097,149199
+#define FE_FIND_NOSTRING	5098,149234
+fe_find 5101,149274
+fe_find_destroy_cb 5221,153086
+fe_find_cb(5234,153491
+fe_find_head_or_body_changed(5262,154324
+fe_FindDialog 5280,154945
+fe_FindReset 5486,161750
+XFE_AskStreamQuestion 5509,162199
+fe_LicenseDialog 5570,164243
+struct fe_docinfo_datafe_docinfo_data5710,168579
+fe_close_docinfo_cb 5721,168821
+fe_make_docinfo_dialog 5729,169062
+fe_UpdateDocInfoDialog 6116,180567
+fe_DocInfoDialog 6260,184155
+fe_UpdateDocInfoDialog 6273,184509
+fe_security_dialog_toggle 6282,184622
+fe_MovemailWarning(6298,185128
+FE_SecurityDialog 6422,189766
+
+dragdrop.c,152
+typedef struct DropSite DropSite14,369
+} DropSite;DropSite19,478
+fe_dnd_dropsite_destroyed(24,543
+fe_dnd_CreateDrop(41,898
+fe_dnd_DoDrag(56,1220
+
+e_kit.c,1779
+#define HTTP_OFF 40,1056
+#define MAX_BUTTONS 41,1076
+#define MAX_RESOURCE_NAME_LEN 42,1099
+struct button button53,1339
+#define lock_pref(lock_pref59,1422
+#define lock_pref_int(lock_pref_int69,1663
+ekit_error(228,7558
+un_funkify(242,7775
+create_resource_list(259,8149
+#define diff(diff266,8437
+free_resource_list(294,9264
+reset_default_resources(311,9769
+#define NSCP 331,10232
+#define ANIM_FILE 333,10315
+#define LOGO_URL 335,10424
+#define HOME_PAGE 337,10527
+#define USER_AGENT 339,10612
+#define AUTOCFG_URL 341,10706
+#define POP_SERVER 343,10813
+#define POP_NAME 345,10901
+#define JAVA_PATH 347,10985
+#define X_PATH 349,11096
+#define PLUGIN_PATH 351,11207
+ekit_AnimationFile(360,11423
+ekit_LogoUrl(372,11650
+ekit_HomePage(383,11824
+ekit_UserAgent(395,12013
+ekit_AutoconfigUrl(406,12179
+ekit_PopServer(417,12342
+ekit_PopName(428,12496
+ekit_MsgSizeLimit(439,12632
+env_var_append(453,12927
+update_preferences(482,13600
+ekit_LockPrefs(563,15940
+get_database_filename(590,16543
+unobscure_string(628,17556
+verify_string(646,17878
+get_file_size(676,18508
+get_database_string(696,18929
+load_resources(737,19919
+callback(767,20696
+count_buttons(795,21337
+ekit_AddDirectoryMenu(821,22026
+ekit_AddHelpMenu(832,22221
+fix_url(847,22568
+ekit_GetDirectoryButtons(864,22788
+ekit_NumDirectoryButtons(894,23674
+fe_add_to_menu(908,23878
+read_frames(957,25212
+read_colors(1002,26336
+load_animation(1032,26916
+resource_name_to_value(1114,29001
+ekit_AboutData(1144,29649
+ekit_Enabled(1168,30187
+resource_locked(1178,30280
+resource_val(1196,30634
+ekit_Initialize(1218,31017
+#define suggest_pref(suggest_pref1274,33176
+#define suggest_pref_int(suggest_pref_int1279,33315
+ekit_DefaultPrefs(1290,33599
+ekit_show_about_usenet(1348,35723
+
+fonts.c,3900
+#define fe_FONT_PITCH_MONO	35,900
+#define fe_FONT_PITCH_PROPORTIONAL	36,932
+#define fe_FONT_PITCH_BOTH	37,971
+#define fe_TryFont(fe_TryFont40,1005
+#define FE_MAYBE_FREE(FE_MAYBE_FREE45,1241
+#define FE_MALLOC_ZAP(FE_MALLOC_ZAP48,1317
+#define FE_FONT_MASK_TO_PITCH(FE_FONT_MASK_TO_PITCH51,1382
+#define FE_FONT_MASK_TOGGLE_PITCH(FE_FONT_MASK_TOGGLE_PITCH53,1462
+#define FE_NORMALIZE_SIZE(FE_NORMALIZE_SIZE55,1536
+#define FE_FONT_MASK_TO_FACE(FE_FONT_MASK_TO_FACE58,1651
+#define FE_FONT_SELECTED_FAMILY(FE_FONT_SELECTED_FAMILY64,1853
+typedef struct fe_StringProcessTablefe_StringProcessTable67,1973
+} fe_StringProcessTable;fe_StringProcessTable72,2079
+typedef struct fe_FontGroupFontfe_FontGroupFont75,2106
+} fe_FontGroupFont;fe_FontGroupFont83,2208
+typedef struct fe_FontSetListEntry fe_FontSetListEntry;fe_FontSetListEntry86,2230
+struct fe_FontSetListEntryfe_FontSetListEntry88,2287
+typedef int (*fe_XDrawStringFunc)fe_XDrawStringFunc96,2384
+#define FE_DEFAULT_FONT_SIZE_INCREMENT	102,2529
+fe_GetLocaleCharSets(317,10944
+fe_FontFindSelectedFamily(463,13570
+fe_FontFindFamily(491,14031
+fe_GetFont(514,14470
+fe_GetFontOrFontSet(544,15212
+fe_PitchAndFaceToFontMask(686,17674
+fe_LoadFontGroup(719,18051
+fe_LoadFont(772,19004
+fe_LoadFontFromFace(955,22326
+fe_GetFontOrFontSetFromFace(1005,23419
+fe_ReallocZap(1058,24629
+#define FE_REALLOC_ZAP(FE_REALLOC_ZAP1080,24897
+fe_CapitalizeFontName(1086,25055
+fe_AddFontSize(1124,25410
+fe_AddFontFamily(1266,27885
+fe_AddFontCharSet(1354,29430
+fe_PropOrFixedFont(1410,30752
+#define FE_INDEX_TO_FACE(FE_INDEX_TO_FACE1416,30819
+fe_PrintFamily(1422,30971
+fe_PrintFonts(1451,31555
+fe_CompareFontCharSets(1483,32109
+fe_CompareFontFamilies(1511,32444
+fe_CompareFontSizes(1518,32578
+typedef int (*fe_CompFunc)fe_CompFunc1524,32679
+fe_SortFonts(1528,32749
+fe_ReadFontCharSet(1581,33786
+fe_ReadFontSpec(1629,34578
+fe_GetScaledFontSize(1790,36916
+fe_ComputeFontSize(1830,37572
+fe_FreeFontGroups(1894,38595
+fe_FreeFontSizeTable(1941,39363
+fe_ComputeFontSizeTable(1977,39907
+fe_CloneFamily(2064,41321
+fe_ClonePitch(2116,42533
+fe_SetDefaultFontSettings(2146,43057
+fe_ReportFontCharSets(2400,47771
+fe_LoadXFont(2429,48195
+fe_InitFonts(2453,48513
+fe_FreeFonts(3017,59429
+fe_AddFontSetting(3082,60539
+fe_GetFontSettings(3113,61044
+fe_SetFontSettings(3168,61849
+fe_GetFontCharSetSetting(3174,61903
+fe_FreeFontSettings(3197,62179
+fe_GetStrikePosition(3212,62341
+fe_GetUnderlinePosition(3228,62620
+fe_LoadNormalFont(3249,63012
+fe_GenericFontExtents(3293,63740
+#define FE_PROCESS_STRING_BUFFER_SIZE	3343,64523
+fe_ProcessString(3347,64580
+#define EUCCN_LATIN1	3523,68023
+#define EUCCN_GB2312	3524,68057
+fe_LoadEUCCNFont(3788,74814
+fe_EUCCNTextExtents(3843,75778
+fe_DrawEUCCNString(3855,76111
+fe_DrawEUCCNImageString(3867,76400
+#define EUCJP_LATIN1	3879,76720
+#define EUCJP_JISX0208	3880,76754
+#define EUCJP_JISX0201	3881,76790
+#define EUCJP_JISX0212	3882,76826
+fe_LoadEUCJPFont(4146,83777
+fe_EUCJPTextExtents(4222,85137
+fe_DrawEUCJPString(4234,85470
+fe_DrawEUCJPImageString(4246,85759
+#define EUCKR_LATIN1	4258,86079
+#define EUCKR_KSC5601	4259,86113
+fe_LoadEUCKRFont(4523,92965
+fe_EUCKRTextExtents(4578,93933
+fe_DrawEUCKRString(4590,94266
+fe_DrawEUCKRImageString(4602,94555
+#define EUCTW_LATIN1	4614,94876
+#define EUCTW_CNS11643_1	4615,94911
+#define EUCTW_CNS11643_2	4616,94949
+fe_LoadEUCTWFont(4880,102090
+fe_EUCTWTextExtents(4957,103449
+fe_DrawEUCTWString(4969,103782
+fe_DrawEUCTWImageString(4981,104071
+#define BIG5_LATIN1	4993,104392
+#define BIG5_BIG5	4994,104426
+fe_LoadBIG5Font(5258,110736
+fe_BIG5TextExtents(5302,111483
+fe_DrawBIG5String(5314,111813
+fe_DrawBIG5ImageString(5326,112100
+intl_GetFontFace(5353,112741
+intl_GetFontSize(5419,113671
+intl_GetFont(5500,115090
+INTL_GetFont(5680,117972
+INTL_GetXCharSetIDs(5689,118185
+INTL_GetXFontName(5741,118854
+
+forms.c,1299
+#define Bool 25,593
+#define fe_FORM_LEFT_MARGIN 32,734
+#define fe_FORM_RIGHT_MARGIN 33,766
+#define fe_FORM_TOP_MARGIN 34,798
+#define fe_FORM_BOTTOM_MARGIN 35,830
+struct fe_form_datafe_form_data53,1651
+fe_font_list_metrics(67,1898
+fe_forms_clean_text 90,2424
+option_press 114,3134
+fe_list_find_eh(128,3511
+#define MILLI_500_SECS	142,3812
+#define _LIST_MAX_CHARS	143,3839
+XFE_GetFormElementInfo 199,5286
+XFE_FreeFormElement 1020,32061
+XFE_FormTextIsSubmit 1075,33376
+XFE_DisplayFormElement 1110,34281
+XFE_GetFormElementValue 1267,39093
+XFE_ResetFormElement 1379,41966
+XFE_SetFormElementToggle 1495,45338
+fe_got_focus_cb 1518,45825
+fe_lost_focus_cb 1532,46182
+fe_form_file_browse_cb 1572,47283
+fe_activate_submit_cb 1606,48206
+fe_submit_form_cb 1619,48554
+fe_button_form_cb 1671,50014
+fe_reset_form_cb 1687,50464
+fe_radio_form_cb 1703,50847
+fe_check_form_cb 1737,51858
+fe_popup_form_cb 1769,52620
+fe_list_form_cb 1798,53406
+fe_ScrollForms 1856,54884
+fe_GravityCorrectForms 1875,55265
+fe_SetFormsGravity 1899,55755
+FE_FocusInputElement(1938,56813
+FE_BlurInputElement(1984,57938
+FE_RaiseWindow(2005,58374
+FE_LowerWindow(2018,58716
+FE_SelectInputElement(2031,58997
+FE_ChangeInputElement(2055,59689
+FE_SubmitInputElement(2120,61802
+FE_ClickInputElement(2155,62649
+
+history.c,403
+FE_EnableBackButton 14,345
+FE_DisableBackButton 28,702
+FE_EnableForwardButton 42,1064
+FE_DisableForwardButton 56,1433
+fe_update_history_time 73,1787
+fe_history_menu_cb 97,2432
+fe_fill_history_selector 113,2929
+fe_HistoryItemAction 290,7801
+fe_history_confirm_cb 366,9946
+fe_make_history_dialog 442,11643
+fe_HistoryDialog 487,13148
+fe_AddHistory 500,13492
+fe_RegenerateHistoryMenu 510,13755
+
+hot.c,2768
+#define Bool 21,505
+typedef struct fe_bookmark_clipboard fe_bookmark_clipboard64,2256
+} fe_bookmark_clipboard;fe_bookmark_clipboard67,2326
+typedef struct fe_bookmark_datafe_bookmark_data69,2352
+} fe_bookmark_data;fe_bookmark_data109,3467
+#define BM_DATA(BM_DATA115,3578
+fe_bm_pulldown_cb(135,4183
+fe_bm_datafunc(161,4944
+fe_bm_dropfunc(251,7430
+fe_bm_clickfunc(288,8420
+fe_bm_iconfunc(328,9573
+#define XFE_CHUNK_SIZE 344,10123
+fe_collect_addresses(346,10163
+fe_mc_dropfunc(374,10978
+fe_bmedit_selectalias_cb(419,12278
+fe_bmedit_destroy(429,12529
+BMFE_BookmarkMenuInvalid 439,12761
+fe_bmedit_get_and_clean_text(448,12997
+fe_bmedit_commit_changes(464,13299
+fe_bmedit_close(506,14227
+fe_bmedit_ok(516,14546
+fe_bm_close(524,14772
+fe_bm_popdown(531,14945
+fe_bm_destroy(543,15313
+fe_bookmark_menu_cb 555,15656
+fe_bookmark_menu_arm(571,16189
+fe_bookmark_menu_disarm(583,16546
+fe_addheader_to_popup(591,16723
+fe_bm_cmd(616,17325
+XtUnmanageChild_safe 628,17626
+fe_bmwhat_start(634,17705
+fe_bmwhat_close(644,18027
+fe_bmwhat_cb(658,18474
+fe_make_what_dialog 669,18788
+BMFE_UpdateWhatsChanged(737,21052
+void BMFE_FinishedWhatsChanged(773,21954
+fe_bm_whatschanged(791,22503
+fe_make_bmpopup(969,28227
+fe_MakeBookmarkWidgets(1044,30239
+fe_make_edititem_dialog(1141,32795
+fe_GotoBookmarkCallback(1367,40041
+fe_ImportBookmarks 1385,40514
+fe_LoadBookmarks 1395,40711
+fe_SaveBookmarks 1410,40999
+fe_AddToBookmark 1421,41218
+fe_AddBookmarkCallback 1437,41732
+fe_ViewBookmarkCallback 1456,42245
+fe_format_item 1462,42404
+#define MOTIF_BUG_BUFFER 1556,45496
+fe_add_bookmark_menu_items 1592,46309
+fe_bm_fillin_menu(1674,48514
+fe_DestroyWidgetTree(1691,49004
+fe_GenerateBookmarkMenu 1713,49459
+fe_BookmarkInit 1773,50877
+fe_BookmarkAccessTimeChanged 1790,51465
+BMFE_RefreshCells(1797,51567
+BMFE_SyncDisplay(1810,51905
+BMFE_MeasureEntry(1820,52060
+BMFE_FreeClipContents(1829,52206
+BMFE_GetClipContents(1838,52421
+BMFE_SetClipContents(1847,52621
+BMFE_OpenBookmarksWindow(1858,52913
+BMFE_EditItem(1870,53199
+BMFE_EntryGoingAway(1963,56631
+BMFE_CloseBookmarksWindow(1980,57127
+BMFE_GotoBookmark(1987,57231
+BMFE_OpenFindWindow(1999,57502
+BMFE_ScrollIntoView(2016,57882
+fe_find_setvalues(2027,58103
+fe_find_getvalues(2042,58728
+fe_bmfind_destroy_cb(2059,59437
+fe_bmfind_cb(2070,59672
+fe_make_find_dialog 2101,60600
+FE_GetAddressBook(2260,66029
+fe_bmpopup_menu_action 2289,66805
+fe_bmfind_action 2319,67695
+fe_bmfindAgain_action 2326,67887
+fe_bmundo_action 2333,68089
+fe_bmredo_action 2340,68281
+fe_bmdeleteItem_action 2347,68473
+fe_bmmailMessage_action 2355,68677
+fe_bmsaveAs_action 2364,68937
+fe_bmclose_action 2371,69133
+fe_bmcut_action 2378,69336
+fe_bmcopy_action 2385,69526
+fe_bmpaste_action 2392,69718
+
+icons.c,1367
+#define DELAYED_ICON_BORDER	49,1107
+#define DELAYED_ICON_PAD	50,1137
+fe_InitIconColors 57,1279
+fe_get_app_dir(92,2191
+fe_get_xpm_string(117,2662
+} xpm_color_entry;xpm_color_entry187,3395
+} fe_color_entry;fe_color_entry194,3503
+fe_process_color(199,3573
+fe_get_external_icon(255,4466
+fe_MakeIcon(410,6952
+fe_make_icon_1 702,15613
+fe_make_icon 716,15998
+fe_init_document_icons 729,16349
+fe_init_gopher_icons 841,20161
+fe_init_toolbar_icons_1 891,21593
+fe_init_toolbar_icons_2 978,24274
+fe_init_editor_icons_notext(1082,27664
+static void fe_init_align_icons(1193,31707
+fe_init_editor_icons_withtext(1237,33004
+fe_init_editor_icons_other(1349,37425
+fe_init_editor_icons(1455,41512
+fe_init_news_icons 1523,44278
+fe_init_compose_icons 1819,54664
+fe_init_sa_icons 1925,58372
+fe_InitIcons 1999,60640
+fe_which_anim 2068,62605
+fe_LogoPixmap 2140,64225
+fe_SecurityPixmap 2169,64966
+fe_ToolbarPixmap 2190,65595
+XFE_ImageIcon 2422,73317
+#define SUCKY_X_MAX_LENGTH 2499,75898
+fe_DrawPixmapAndMask(2562,77856
+fe_DrawIcon 2650,80191
+fe_IconSize 2804,85135
+fe_DrawLogo 2812,85300
+fe_ResetLogo 2859,86775
+#define XFE_ABOUT_FILE	2882,87296
+#define XFE_SPLASH_FILE	2883,87322
+#define XFE_LICENSE_FILE	2884,87349
+#define XFE_MAILINTRO_FILE	2885,87376
+#define XFE_PLUGIN_FILE	2886,87405
+fe_get_localized_file(2898,87618
+FE_AboutData 2946,88228
+
+images.c,628
+#define GRAYSCALE_WORKS49,1720
+#define PARTIAL_IMAGE_BORDER_WIDTH 51,1745
+typedef struct fe_ImageDatafe_ImageData53,1783
+} fe_ImageData;fe_ImageData57,1861
+fe_new_fe_Pixmap(64,2054
+XFE_GetImageInfo 80,2406
+fe_DisplaySubImage 154,4870
+XFE_DisplaySubImage 474,15597
+FE_ShiftImage 519,17098
+XFE_DisplayImage 532,17306
+fe_LoadDelayedImage 567,18183
+fe_LoadDelayedImages 585,18771
+fe_set_backdrop 595,18907
+FE_ClearBackgroundImage(661,21331
+fe_update_image_pixmap 668,21445
+XFE_ImageSize 1007,32255
+XFE_ImageData 1077,34094
+XFE_FreeImageElement 1156,36453
+FE_ImageDelete 1175,36912
+XFE_ImageOnScreen 1203,37504
+
+lay.c,2773
+XFE_CreateNewDocWindow(52,1650
+XFE_TranslateISOText 62,1885
+struct fe_gc_datafe_gc_data81,2482
+fe_FlushGCCache 96,2877
+fe_GetGCfromDW(126,3552
+fe_GetGC(166,4382
+fe_get_text_gc 175,4583
+XFE_GetTextInfo 243,6438
+#define SUCKY_X_MAX_LENGTH 265,7290
+#define FOO(FOO288,7919
+fe_DrawSelectedShadows(314,8653
+#	  define gray50_width 333,9230
+#	  define gray50_height 334,9257
+fe_DrawShadows 379,10619
+fe_display_text 394,11016
+XFE_DisplayText 622,17887
+XFE_DisplaySubtext 629,18060
+typedef struct fe_bitmap_infofe_bitmap_info641,18328
+} fe_bitmap_info;fe_bitmap_info647,18465
+#define line_feed_width 649,18484
+#define line_feed_height 650,18510
+#define page_mark_width 653,18675
+#define page_mark_height 654,18701
+fe_make_line_feed_pixmap(666,19111
+XFE_DisplayLineFeed 705,20032
+XFE_DisplayHR 822,23659
+XFE_DisplayBullet 888,25729
+XFE_DisplaySubDoc 938,27167
+XFE_DisplayCell 956,27809
+XFE_DisplayTable 982,28695
+typedef struct _SashInfo _SashInfo999,29331
+} SashInfo;SashInfo1005,29453
+fe_sash_cb 1008,29478
+fe_sash_destroy_cb 1143,32912
+XFE_DisplayEdge 1150,33055
+XFE_SetBackgroundColor 1226,35197
+FE_GetEdgeMinSize(1281,36936
+FE_GetFullWindowSize(1288,37014
+FE_GetFullWindowSize(1341,38277
+fe_GetMargin(1354,38536
+XFE_LayoutNewDocument 1375,39057
+fe_FormatDocTitle 1523,42815
+XFE_SetDocTitle 1547,43335
+fe_DestroyLayoutData 1667,46808
+XFE_FinishedLayout 1675,46969
+fe_ClearAreaWithColor 1691,47576
+fe_ClearAreaWithExposures(1709,48046
+fe_ClearArea 1758,49463
+XFE_ClearView 1765,49619
+XFE_BeginPreSection 1807,50794
+XFE_EndPreSection 1812,50845
+XFE_FreeEdgeElement 1817,50894
+fe_destroyEmbed(1835,51287
+XFE_FreeEmbedElement 1855,51705
+XFE_DisplayEmbed 1865,51965
+XFE_GetEmbedSize 1929,53969
+#define FIX_NULL(FIX_NULL2085,58150
+XFE_HideJavaAppElement(2088,58193
+XFE_FreeJavaAppElement(2161,60213
+XFE_DisplayJavaApp(2188,60898
+XFE_GetJavaAppSize 2316,64653
+fe_ReLayout 2332,65016
+struct fe_blinkerfe_blinker2373,66183
+fe_blink_timer 2381,66327
+fe_add_blinker 2409,67161
+fe_cancel_blinkers 2429,67781
+fe_url_of_xref 2455,68362
+fe_EventLOCoords 2543,70424
+fe_anchor_of_action 2569,71006
+fe_SetCursor 2582,71296
+fe_NeutralizeFocus 2614,72030
+fe_auto_scroll_timer 2644,73090
+fe_GridToTopContext 2662,73645
+fe_arm_link_action 2679,73939
+fe_disarm_link_action 2751,75651
+fe_disarm_link_if_moved_action 2787,76562
+Boolean fe_HandleHREF 2868,78847
+fe_activate_link_action 3225,89634
+fe_describe_link_action 3285,91262
+fe_extend_selection_action 3368,94074
+fe_InitMouseActions 3423,95561
+fe_BuildDisplayFunctionTable(3430,95692
+#define MAKE_FE_FUNCS_PREFIX(MAKE_FE_FUNCS_PREFIX3437,95833
+#define MAKE_FE_FUNCS_ASSIGN 3438,95881
+FE_LoadGridCellFromHistory(3446,95990
+FE_FreeGridWindow(3462,96375
+
+locale.c,342
+fe_InitCollation(21,317
+FE_StrColl(46,705
+size_t FE_StrfTime(52,792
+fe_GetNormalizedLocaleName(102,1486
+fe_ConvertToLocaleEncoding(157,2065
+fe_ConvertToXmString(193,2589
+fe_ConvertFromLocaleEncoding(217,2911
+fe_GetTextField(253,3435
+fe_SetTextField(281,3802
+fe_SetTextFieldAndCallBack(296,4076
+mbstowcs(326,4813
+wcstombs(393,5470
+
+mailnews.c,2016
+# define USE_MOVEMAIL_AND_POP318,418
+#define _SVID3	30,647
+#define STATFS 34,830
+#define STATFS 37,955
+#define STATFS 40,1042
+#define STATFS 43,1114
+FE_UpdateFolderList(66,1706
+FE_UpdateThreadList(87,2271
+#define FOLDER_INDEX_OFFSET	106,2901
+#define FOLDER_NEW_INDEX	107,2931
+#define FOLDER_FILE_INDEX	108,2958
+fe_MoveCopy_to_folder_cb 111,2999
+fe_decipher_MoveCopy_cb 146,4104
+fe_addto_folder_menu 158,4413
+fe_make_folder_menu(232,6548
+FE_UpdateFolderMenus(277,7754
+FE_GetFolderDirectory(309,8629
+fe_DiskSpaceAvailable 320,8969
+FE_DiskSpaceAvailable 346,9671
+FE_GetTempFileFor(353,9774
+fe_folder_datafunc(372,10238
+fe_folder_clickfunc(434,12275
+fe_folder_dropfunc(472,13355
+fe_folder_iconfunc(558,15946
+fe_message_datafunc(574,16354
+fe_message_clickfunc(641,18353
+fe_message_dropfunc(679,19415
+fe_message_iconfunc(692,19788
+fe_run_movemail 700,19987
+typedef struct fe_mn_incstate fe_mn_incstate790,22373
+} fe_mn_incstate;fe_mn_incstate795,22488
+fe_incdone(799,22520
+fe_mn_getmailbox(821,22929
+fe_mn_getnewmail(875,24080
+fe_mn_getnewmail_1(892,24619
+msg_DeliverMessageExternally(1032,28534
+fe_newshost_close(1143,31306
+fe_newshost_cb(1157,31743
+fe_make_openNewsHost_dialog 1203,32958
+FE_PromptForNewsHost 1313,36472
+FE_PromptForFileName 1335,37008
+fe_widget_name_to_command 1354,37455
+void fe_msg_sensitize_widget(1597,47747
+void fe_MsgSensitizeSubmenu(1635,48833
+fe_MsgSensitizeChildren(1656,49445
+void fe_MsgSensitizeMenubar(1678,50135
+fe_sensitize_all_text_widgets 1691,50474
+FE_UpdateToolbar 1708,50894
+FE_RememberPopPassword 1794,53902
+fe_undo_cb 1810,54339
+fe_redo_cb 1824,54683
+fe_isxyin_widget 1960,59422
+fe_mailNewsPopup_action 1986,60070
+fe_msgDoCommand(2299,69781
+void fe_msg_command(2342,71171
+fe_redo_action 2354,71429
+fe_set_compose_wrap_state(2365,71685
+#define cpp_stringify_noop_helper(cpp_stringify_noop_helper2479,75159
+#define cpp_stringify(cpp_stringify2480,75198
+#define DEFMNACTION(DEFMNACTION2483,75254
+DEFMNACTION(2493,75567
+
+menu.c,84
+fe_CreateIntlSubmenu(13,286
+fe_CreateSubmenu(77,1548
+fe_PopulateMenubar(202,4805
+
+movemail.c,156
+#define TMP_SUFFIX 41,1189
+#define LOCK_SUFFIX 42,1218
+#define NAME_LEN 44,1247
+#define BUFSIZ 47,1285
+fe_movemail_perror(51,1338
+fe_MoveMail 87,2094
+
+mozilla.c,2932
+#define NON_BETA108,2805
+# define RES_ERROR 371,13414
+usage 490,19218
+void fe_sigchild_handler(505,19539
+XFE_SetCallNetlibAllTheTime 520,19880
+XFE_ClearCallNetlibAllTheTime 526,19964
+fe_EventLoop 555,20881
+fe_EventForRNG 711,26145
+fe_splash_timer 736,26866
+plonk 746,27039
+fe_sanity_check_resources 903,31318
+#define VERSION_COMPLAINT_FORMAT 926,32097
+fe_version_checker 1056,36583
+# define BROKEN_I18N1132,38962
+# define NLS_LOSSAGE1133,38983
+# define NLS_LOSSAGE1141,39297
+# define NLS_LOSSAGE1145,39387
+lose_internationally 1149,39439
+FE_GetAcceptLanguage(1245,41960
+fe_fix_fds 1252,42033
+fe_fix_environment 1279,42996
+fe_hack_uid(1299,43544
+static void fe_java_callback 1316,44055
+void FE_TrackJavaConsole(1322,44228
+static void fe_late_java_init(1337,44587
+build_user_agent_string(1362,45084
+main1510,48954
+set_shell_iconic_p 2237,68942
+# define rename 2266,70217
+rename 2268,70283
+fe_rename_init_files 2378,73826
+#define FROB(FROB2392,74136
+fe_ensure_config_dir_exists 2431,75284
+fe_atexit_handler(2494,76675
+#define	INADDR_LOOPBACK	2503,76835
+#define MAXTRIES	2506,76879
+fe_create_pidlock 2509,76912
+fe_copy_file 2617,79686
+fe_copy_init_files 2668,80834
+#define FROB(FROB2685,81224
+fe_clean_old_init_files 2733,82486
+fe_mc_field_changed(2918,87839
+fe_mc_field_lostfocus(2931,88190
+fe_mailto_browse_cb(2952,88803
+#define Off(Off2960,89003
+#define ISLABEL	2961,89055
+#define ADDBROWSE	2962,89079
+#define ISDROPSITE	2963,89104
+#define NUM 2981,89858
+fe_create_composition_widgets(2984,89930
+FE_MsgShowHeaders 3097,93818
+fe_MakeChromeWidgets(3128,94563
+fe_MakeSaveToDiskContextWidgets(3208,96776
+FE_MakeAppletSecurityChrome(3538,107044
+fe_update_biff_icon(3685,111866
+void FE_UpdateBiff(3696,112107
+fe_biff_clicked(3717,112611
+fe_ParseSashGeometry(3742,113256
+fe_MakeSashGeometry(3809,114853
+fe_GetSashGeometry(3819,115072
+fe_tooltip_mappee(3827,115263
+fe_documentString_mappee(3849,115821
+fe_MakeWidgets 3864,116217
+fe_FixLogoMargins 4859,145555
+fe_configure_ledges 4893,146603
+fe_sec_logo_cb 4917,147087
+fe_expose_thermo_cb 4925,147356
+fe_expose_LED_cb 4932,147530
+fe_expose_security_bar_cb 4940,147720
+fe_docinfo_cb 4949,147911
+fe_frob_label 4960,148146
+fe_url_text_modify_cb 4980,148742
+#define MOZILLA_URL_PROP 4988,148940
+fe_store_url_prop 4992,149025
+fe_SetURLString 5006,149486
+fe_url_text_cb 5054,151072
+fe_AbortCallback 5074,151624
+x_fatal_error_handler(5091,152084
+x_error_handler 5102,152284
+static void xt_warning_handler(5130,153416
+static void xt_warningOnly_handler(5144,153829
+fe_read_screen_for_rng 5170,154506
+Boolean fe_contextIsValid(5205,155584
+fe_getVisualOfContext(5213,155784
+fe_add_session_manager(5232,156235
+void fe_wm_save_self_cb(5254,156835
+fe_is_absolute_path(5277,157411
+fe_is_working_dir(5285,157541
+fe_found_in_binpath(5318,158149
+fe_expand_working_dir(5355,158859
+fe_locate_program_path(5382,159630
+
+new_manage.c,50
+GeometryManager(106,3560
+ChangeManaged(139,4130
+
+outline.c,1411
+#define _STDC_ 17,390
+#define HACKED_STDC 18,407
+#define FREEIF(FREEIF35,659
+#define PIXMAP_WIDTH 37,733
+#define PIXMAP_INDENT 38,769
+#define FLIPPY_WIDTH 40,795
+#define MIN_COLUMN_WIDTH 42,832
+#define MAX_COLUMN_WIDTH 43,902
+typedef struct fe_OutlineInfo fe_OutlineInfo51,1081
+} fe_OutlineInfo;fe_OutlineInfo90,2180
+static fe_icon* fe_outline_lookup_icon(129,3406
+fe_make_outline_drag_widget 162,5023
+fe_destroy_outline_drag_widget 232,6636
+fe_get_info(240,6803
+PixmapDraw(250,6987
+fe_outline_celldraw(327,9125
+fe_outline_click(483,14401
+UpdateData 527,15641
+RowIsSelected(539,15900
+fe_outline_visible_timer(563,16349
+SendClick(579,16794
+ButtonEvent(644,18854
+fe_set_default_column_widths(771,22449
+fe_OutlineCreate(793,23135
+fe_outline_remember_columns(989,30164
+fe_outline_resize(1016,30897
+fe_OutlineSetMaxDepth(1042,31884
+fe_outline_get_header(1056,32292
+fe_OutlineSetHeaders(1086,32952
+fe_OutlineChangeHeaderLabel(1196,36300
+fe_OutlineSetHeaderHighlight(1226,37105
+fe_OutlineChange(1253,37800
+fe_OutlineSelect(1280,38491
+fe_OutlineUnselect(1288,38658
+fe_OutlineUnselectAll(1294,38753
+fe_OutlineMakeVisible(1301,38842
+fe_OutlineRootCoordsToRow(1330,39681
+#define SCROLLMARGIN 1360,40411
+#define INITIALWAIT 1361,40435
+#define REPEATINTERVAL 1362,40459
+fe_outline_drag_scroll(1365,40499
+fe_OutlineHandleDragEvent(1377,40839
+fe_OutlineSetDragFeedback(1472,43675
+
+passwd.c,106
+passwd_modify_cb 11,284
+passwd_destroy_cb 54,1508
+fe_SetupPasswdText 67,1872
+fe_GetPasswdText 90,2573
+
+plugin.c,1373
+#define NPX_PLUGIN_PATH 39,745
+#define PLUGIN_NAME_PARAM	42,860
+#define PLUGIN_DESC_PARAM	43,900
+typedef struct NPX_MimeInfo NPX_MimeInfo46,965
+} NPX_MimeInfo;NPX_MimeInfo50,1056
+typedef struct NPX_PlugIn NPX_PlugIn52,1073
+typedef struct NPX_PlugInList NPX_PlugInList69,1510
+} NPX_PlugInList;NPX_PlugInList73,1593
+fe_AddCinfo(85,1856
+fe_GetCinfo(98,2133
+fe_GetMailcapEntry(113,2477
+fe_MakePluginXmodeEntry(119,2587
+fe_AddPluginMailcapEntry(125,2710
+fe_IsMailcapEntryPlugin(136,2990
+fe_GetPluginNameFromMailcapEntry(144,3198
+fe_GetMimetypeInfoFromPlugin(158,3649
+static char *skipSpaces(192,4418
+static char *scanToken(200,4532
+static NPX_PlugIn *findPluginInfo(228,5079
+findPluginInfoFromName(243,5373
+static NPX_PlugIn *getNewPluginInfo(257,5642
+static void clearPluginInfo(284,6256
+static int parsePluginDescription(312,6888
+static void updateMimeInfo(362,8148
+static NPX_PlugIn *readPluginInfo(383,8706
+static int readPluginList(476,11244
+static int writePluginList(546,12837
+static void getPluginsFromDirectory(582,13856
+static void getPluginsFromPath(616,14799
+static NPX_PlugInList *getPluginList(634,15158
+static void dumpPluginInfo(647,15456
+void FE_RegisterPlugins(662,15806
+fe_RegisterPluginConverters(715,17353
+FE_LoadPlugin(819,20332
+void FE_UnloadPlugin(866,21579
+FE_EmbedURLExit(896,22219
+FE_PluginGetValue(901,22293
+
+prefdialogs.c,4913
+#define PREFS_NET7,212
+#define PREFS_SOCKS8,230
+#define PREFS_DISK_CACHE9,250
+#define PREFS_VERIFY10,275
+#define PREFS_CLEAR_CACHE_BUTTONS11,296
+#define PREFS_SIG12,330
+#define PREFS_NEWS_MAX13,348
+#define PREFS_8BIT14,371
+#define _STDC_ 49,1031
+#define HACKED_STDC 50,1048
+struct fe_prefs_datafe_prefs_data148,3523
+FE_SetPasswordAskPrefs(323,8568
+FE_SetPasswordEnabled(340,9104
+fe_MarkHelpersModified(361,9709
+fe_set_proxies_cb 379,10333
+fe_proxy_reload_cb 414,11733
+fe_view_proxies_cb 432,12215
+fe_cert_pulldown_cb 442,12530
+fe_all_edit_cb 482,13687
+fe_redraw_site_cert_cb 505,14211
+fe_all_delete_cb 517,14541
+fe_cert_info_cb 542,15184
+fe_redraw_user_cert_cb 565,15710
+fe_cert_delete_cb 577,16041
+fe_cert_new_cb 604,16750
+fe_ssl_enable_cb 614,17012
+fe_browse_to_text_cb 626,17330
+fe_browse_movemail_cb 636,17631
+fe_browse_maildir_cb 643,17857
+fe_browse_tmp_cb 650,18081
+fe_browse_book_cb 658,18303
+fe_org_toggle_cb 667,18599
+fe_cache_verify_toggle_cb 721,20745
+fe_cache_dither_toggle_cb 749,21569
+fe_cache_display_toggle_cb 776,22371
+fe_disk_cache_browse_cb 794,22934
+fe_clear_mem_cache_cb 803,23220
+fe_clear_disk_cache_cb 816,23627
+fe_browse_sig_cb 833,24184
+fe_browse_newsrc_cb 842,24414
+fe_mail_pop_toggle_cb 849,24636
+fe_change_pass_toggle_cb 889,26130
+fe_set_pass_toggle_cb 899,26371
+fe_msg_limit_toggle_cb 929,27406
+fe_msg_on_server_toggle_cb 953,28116
+fe_msg_check_toggle_cb 973,28661
+fe_mail_eightbit_toggle_cb 995,29333
+fe_styles_toolbar_toggle_cb 1019,30150
+fe_styles_start_toggle_cb 1048,30958
+fe_styles_startup_page_toggle_cb 1070,31612
+fe_relayout_all_contexts(1098,32416
+fe_InvalidateFontData(1125,33035
+fe_allow_font_scaling_cb(1152,33445
+fe_get_scaled_font_size(1224,34712
+fe_font_size_cb(1289,35815
+fe_set_new_font_sizes(1345,36711
+fe_font_family_cb(1459,38821
+fe_set_new_font_families(1494,39490
+fe_font_charset_cb(1544,40535
+fe_msg_font_toggle_cb 1573,41210
+fe_styles_cite_font_toggle_cb 1593,41791
+fe_styles_cite_size_toggle_cb 1630,43071
+fe_mail_pane_layout_toggle_cb 1657,43932
+fe_news_pane_layout_toggle_cb 1684,44778
+fe_styles_expire_toggle_cb 1712,45625
+fe_styles_expire_now_cb 1745,46708
+fe_make_styles1_page 1758,47089
+fe_make_colors_page 2143,60580
+fe_make_bookmarks_page 2151,60702
+fe_make_fonts_page 2233,63647
+fe_make_apps_page 2541,73913
+fe_make_helpers_page 2741,82273
+fe_make_images_page 2748,82474
+fe_make_languages_page 2876,86859
+fe_make_appearance_page 3018,91189
+fe_make_compose_page 3384,106331
+fe_make_servers_page 3799,120707
+fe_make_identity_page 4396,143443
+fe_make_organization_page 4578,149263
+fe_make_cache_page 4879,160348
+fe_make_network_page 5164,169443
+fe_make_protocols_page 5298,173932
+fe_make_lang_page 5382,176520
+fe_make_proxies_page 5467,178951
+#define PREFS_PROXIES_DIALOG 5632,184691
+fe_proxy_cancel_cb 5639,184908
+fe_proxy_destroy_cb 5645,185020
+fe_proxy_done_cb 5651,185133
+#define SNARF(SNARF5664,185480
+#define SNARFP(SNARFP5670,185664
+fe_make_proxies_dialog 5714,187461
+fe_make_sec_passwords_page 6215,204340
+fe_make_sec_general_page 6384,209807
+fe_make_personal_page 6563,216039
+fe_make_site_cert_page 6764,222495
+fe_pref_string_to_dither_mode 6952,228444
+fep_to_dither_mode_pref_string 6964,228773
+fe_general_reset_1 6989,229209
+fe_mailnews_reset_1 7080,232550
+fe_proxy_reset 7312,241555
+#define FROB(FROB7317,241655
+fe_network_reset_1 7342,242520
+fe_security_reset_1 7412,245079
+fe_prefs_get_form 7482,247267
+fe_prefs_set_current_page 7510,247658
+fe_prefs_reset_cb 7554,249028
+static void fe_prefs_cancel_cb 7560,249211
+fe_prefs_destroy_cb 7576,249638
+fe_general_done_cb 7590,250134
+#define SNARF(SNARF7609,250778
+fe_mailnews_done_cb 7878,260698
+#define SNARF(SNARF7895,261175
+fe_network_done_cb 8131,269374
+#define SNARF(SNARF8141,269677
+# define SNARFB(SNARFB8145,269831
+fe_security_done_cb 8264,273573
+#define SNARF(SNARF8272,273790
+# define SNARFB(SNARFB8281,274063
+_myDestroyWidget 8348,276106
+fe_prefs_destroy_dialog 8355,276206
+#define CHECK_FILE(CHECK_FILE8413,277992
+#define CHECK_HOST_1(CHECK_HOST_18428,278439
+#define CHECK_HOST(CHECK_HOST8446,279141
+#define CHECK_PROXY(CHECK_PROXY8455,279386
+fe_general_verify_page 8479,280092
+fe_mailnews_verify_page 8529,281303
+fe_SetMailNewsSortBehavior(8578,282505
+fe_proxy_verify_page 8602,283171
+fe_network_verify_page 8654,284909
+fe_security_verify_page 8684,285609
+fe_InstallPreferences 8725,286419
+fe_GeneralPrefsDialog 9006,294492
+#define ADD_TAB(ADD_TAB9067,296777
+#define FROB(FROB9155,299309
+fe_MailNewsPrefsDialog 9186,299891
+#define ADD_TAB(ADD_TAB9247,302179
+#define FROB(FROB9271,303021
+fe_NetworkPrefsDialog 9294,303548
+#define ADD_TAB(ADD_TAB9355,305833
+#define FROB(FROB9380,306645
+fe_SecurityPrefsDialog 9403,307149
+#define ADD_TAB(ADD_TAB9464,309437
+#define FROB(FROB9487,310196
+fe_VerifyDiskCache 9511,310713
+
+prefs.c,574
+#define USE_TWIDDLE34,796
+prefs_write_tag 37,829
+prefs_write_string 49,1039
+prefs_write_path 72,1389
+prefs_write_int 97,1942
+prefs_write_bool 105,2069
+prefs_write_color(112,2213
+prefs_parse_color(119,2391
+XFE_SavePrefs 134,2751
+XFE_ReadPrefs(454,15328
+# define BOOLP(BOOLP497,16333
+#define FROB(FROB881,31868
+xfe_prefs_from_environment 931,33098
+#define PARSE_PROXY_ENV(PARSE_PROXY_ENV955,33987
+xfe_organization 994,35207
+XFE_GetDefaultCSID(1054,36162
+XFE_DefaultPrefs 1077,36513
+#define REPLACE_STRING(REPLACE_STRING1087,36749
+#define DIR 1177,40140
+
+remote-s.c,283
+#define progname 10,256
+#define mozilla_remote_init_atoms 11,285
+#define mozilla_remote_commands 12,333
+fe_InitRemoteServer 28,752
+fe_InitRemoteServerWindow 45,1151
+fe_server_handle_property_change 65,1761
+fe_property_change_action 136,3786
+fe_server_handle_command 147,4108
+
+scroll.c,583
+fe_InitScrolling 32,893
+fe_DisableScrolling 60,1724
+fe_MakeScrolledWindow 80,2177
+guffaw 182,6216
+unguffaw 196,6616
+fe_SetGuffaw(214,7105
+fe_RefreshArea(226,7294
+fe_scroll_cb 237,7546
+fe_ScrollTo 519,16512
+fe_config_eh 568,17978
+fe_expose_eh 585,18369
+fe_SyncExposures(882,29070
+fe_hack_scrollbar 897,29488
+fe_SetDocPosition 919,29912
+FE_ScrollDocTo 985,31640
+XFE_GetDocPosition 991,31754
+XFE_SetDocPosition 999,31948
+XFE_SetDocDimension 1029,33204
+fe_resize_cb 1061,34051
+fe_TestGravity 1184,38050
+fe_WindowGravityWorks 1280,40864
+FE_ShowScrollBars(1356,43018
+
+scroller.c,37
+static void scroller_resize 95,3179
+
+strids.c,0
+
+strings.c,46
+#define RESOURCE_STR1,0
+XP_GetString(15,159
+
+thermo.c,415
+#define LO_THERMO14,398
+fe_progress_dialog_timer 22,607
+fe_LED_dialog_timer 44,1269
+fe_anim_timer 54,1580
+fe_StartProgressGraph 73,2352
+fe_StopProgressGraph 108,3392
+XFE_GraphProgressInit 191,6136
+XFE_GraphProgressDestroy 214,6754
+XFE_GraphProgress 242,7663
+fe_UpdateGraph 284,8889
+fe_UpdateLED 429,12936
+fe_UpdateSecurityBar 454,13538
+XFE_SetProgressBarPercent 495,14560
+fe_UpdateEditorBar 540,15707
+
+visual.c,434
+#define DEFAULT_VISUAL	18,642
+#define BEST_VISUAL	19,668
+#define SPECIFIC_VISUAL	20,691
+fe_ParseVisual 31,883
+fe_pick_best_visual 76,2521
+#define XXX_IMAGE_LIBRARY_IS_SOMEWHAT_BROKEN123,4410
+fe_pick_best_visual_of_class 126,4472
+fe_id_to_visual 179,6337
+fe_VisualDescription 198,6761
+fe_ScreenNumber 225,7719
+fe_ChangeVisualCallback 241,8020
+fe_VisualDepth 260,8613
+fe_VisualPixmapDepth 275,8992
+fe_VisualCells 297,9584
+
+xfe.c,3811
+XFE_EnableClicking 68,1583
+FE_UpdateStopState(98,2458
+fe_url_exit 117,3069
+XFE_AllConnectionsComplete 145,3839
+FE_GetURL 208,5699
+fe_GetURL 218,5925
+fe_GetSecondaryURL 440,13804
+fe_stream_callback 505,15577
+fe_add_input 521,15948
+fe_remove_input 562,17320
+FE_SetReadSelect 578,17613
+FE_SetConnectSelect 584,17727
+FE_ClearReadSelect 590,17847
+FE_ClearConnectSelect 596,17929
+FE_ClearFileReadSelect 602,18026
+FE_SetFileReadSelect 608,18124
+default_char_width 617,18270
+FE_DestroyWindow(632,18683
+fe_MakeWindow(639,18786
+fe_position_download_context(648,19053
+fe_find_scrollbar_sizes(713,21255
+fe_load_default_font(739,22237
+fe_focus_notify_eh 758,22617
+fe_map_notify_eh 778,23043
+fe_copy_context_settings(794,23360
+fe_respect_chrome(847,25435
+#define UPDATE_CHANGED(UPDATE_CHANGED851,25566
+fe_MakeNewWindow(875,26328
+FE_MakeNewWindow(1430,45809
+FE_MakeBlankWindow(1449,46275
+FE_SetWindowLoading(1466,46636
+fe_IsGridParent 1478,46873
+fe_GetFocusGridOfContext(1485,47008
+fe_SetGridFocus 1510,47438
+FE_MakeGridWindow 1546,48381
+FE_RestructureGridWindow 1763,55342
+#define EVERY_CONTEXT_HAS_PRIVATE_COLORMAP1798,56397
+fe_pick_visual_and_colormap 1801,56453
+xfe_openwound_running_p(1909,59982
+fe_InitializeGlobalResources 1952,61468
+fe_get_context_resources 1981,62340
+fe_save_history_timer 2127,67167
+fe_refresh_url_timer 2145,67645
+FE_SetRefreshURLTimer 2159,68072
+fe_MakeLEDGCs 2181,68812
+fe_get_final_context_resources 2224,70245
+fe_DestroySaveToDiskContext(2244,70678
+fe_DestroyContext 2252,70834
+fe_UserActivity 2427,76380
+fe_RefreshAllAnchors 2449,76854
+fe_delete_cb 2460,77096
+fe_WidgetToMWContext 2510,78480
+fe_MotionWidgetToMWContext 2533,79309
+fe_Exit 2545,79624
+fe_MinimalNoUICleanup(2628,81849
+fe_StringTrim 2639,82073
+fe_StrEndsWith(2665,82574
+fe_Basename 2685,82947
+fe_MidTruncateString 2700,83154
+FE_UsersMailAddress 2732,83752
+FE_UsersRealMailAddress 2757,84223
+FE_UsersFullName 2776,84509
+FE_UsersOrganization 2801,84973
+FE_UsersSignature 2814,85219
+fe_stderr_dialog_timer 2899,87159
+fe_stderr_callback 2924,87852
+fe_initialize_stderr 2993,89535
+fe_DisplayIsLocal 3109,92067
+FE_GetContextID 3158,93546
+XFE_UseFancyFTP 3164,93629
+XFE_UseFancyNewsgroupListing 3170,93725
+XFE_ShowAllNewsArticles 3182,93965
+XFE_FileSortMethod 3188,94062
+INTL_DefaultDocCharSetID(3194,94142
+INTL_ResourceCharSet(3248,95081
+INTL_Relayout(3254,95148
+typedef struct fe_timeout fe_timeout3261,95217
+} fe_timeout;fe_timeout3265,95316
+fe_do_timeout(3269,95344
+FE_SetTimeout(3278,95526
+FE_ClearTimeout(3291,95835
+FE_UpdateChrome(3299,95974
+FE_GetCipherPrefs(3309,96186
+FE_SetCipherPrefs(3317,96316
+fe_isFileChanged(3357,97557
+fe_isFileExist(3375,97871
+fe_isFileReadable(3389,98082
+fe_isDir(3406,98312
+fe_WidgetTreeWalk(3420,98575
+fe_WidgetTreeWalkChildren(3457,99406
+fe_find_widget_mappee(3484,100252
+fe_FindWidget(3497,100521
+fe_IsOptionMenu(3507,100692
+XtClassName(3519,100933
+fe_ResourceString(3526,101044
+fe_cleanup_tooltips(3553,101841
+fe_display_docString(3575,102247
+fe_tooltips_display_stage_one(3603,102788
+fe_tooltip_create_effects(3611,102994
+fe_tooltips_display_stage_two(3658,104076
+fe_tooltips_stage_two_timeout(3736,106019
+fe_manager_tt_demo_check(3755,106561
+fe_tooltips_event_handler(3763,106702
+fe_manager_tt_default_check(3869,109059
+fe_ManagerAddGadgetToolTips(3879,109295
+fe_docString_disarm_cb(3903,109987
+fe_docString_arm_cb(3910,110169
+fe_WidgetAddDocumentString(3925,110632
+fe_WidgetAddToolTips(3934,110920
+fe_CreateToolTipsDemoToggle(3953,111352
+fe_ManagerCheckGadgetToolTips(3969,111786
+fe_ContextHasPopups(3991,112248
+fe_CreateOptionMenu(4006,112641
+fe_ProtectContext(4029,113166
+fe_UnProtectContext(4054,113905
+fe_IsContextProtected(4076,114521
+fe_IsContextDestroyed(4088,114759
+
+xfe-dns.c,439
+# define LOG(LOG21,500
+# define LOG(LOG30,767
+XFE_InitDNS_Early(35,856
+dns_xt_callback 68,1684
+XFE_InitDNS_Late(91,2186
+typedef struct x_pending_dns_lookup x_pending_dns_lookup110,2580
+} x_pending_dns_lookup;x_pending_dns_lookup120,2752
+x_pending_dns_queue_length(127,2855
+new_lookup 139,3053
+free_lookup 167,3634
+xfe_dns_done_cb 197,4242
+make_hostent(246,5603
+FE_StartAsyncDNSLookup(268,6274
+FE_ClearDNSSelect 445,10723

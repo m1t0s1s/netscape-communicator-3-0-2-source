@@ -1,0 +1,40 @@
+# libc
+suppress * getcontext
+suppress BSR _p959static
+
+# java_net_SocketOutputStream
+suppress UMR _s_sosendxx
+
+# crap
+suppress UMR fe_wm_save_self_cb
+
+# javascript
+suppress UMR mocha_NewSourceNote
+
+# sec
+suppress UMR SHA1_Update
+suppress UMR C_Decrypt
+
+# motif/xt
+suppress UMR GetDatabase
+suppress UMR XrmDestroyDatabase
+suppress UMR XrmCombineDatabase
+suppress UMR position_cascade
+suppress UMR XListFonts
+suppress UMR CalcEdgeValues
+suppress UMR PlaceChildren
+suppress UMR HandleComposeSequence
+suppress UMR ...; XrmGetResource
+suppress UMR _XSunCreateIC
+
+# suppress WTF ...
+suppress FMM ...; XFE_GetFormElementValue
+suppress FMM ...; fe_lost_focus_cb
+suppress FMM ...; LO_DiscardDocument
+suppress FMM ...; fe_ReadFileName_2
+suppress FMM ...; FE_PromptForFileName
+
+suppress UMR ...; fe_PopulateMenubar
+suppress UMR ...; fe_CreateSubmenu
+suppress UMR ...; _XtCreate
+suppress UMR _XtProcessKeyboardEvent

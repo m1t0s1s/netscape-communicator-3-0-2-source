@@ -1,0 +1,12 @@
+s/\([\\"]\)/\\\1/g
+1,$s/<\/SCRIPT><SCRIPT>/<\/SCRIPT>";\
+static char *secprefsfooter2 = "<SCRIPT>/
+1,$s/10101010';/";\
+#ifndef XP_WIN\
+static char *secprefsfooter = "/
+/^\/\//d
+1,$s/$/\\n"/
+$s/$/;\
+#endif/
+s/^/"/
+1s/^/static char *secprefsheader = /

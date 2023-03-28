@@ -1,0 +1,1462 @@
+
+cvactive.c,418
+typedef struct _DataObject _DataObject14,213
+} DataObject;DataObject23,499
+#define NORMAL_S	25,514
+#define FOUND_BOUNDARY_S 26,535
+#define MAX_MIME_LINE 28,566
+PRIVATE int net_MultipleDocumentWrite 37,838
+PRIVATE unsigned int net_MultipleDocumentWriteReady 371,9775
+PRIVATE void net_MultipleDocumentComplete 380,9988
+PRIVATE void net_MultipleDocumentAbort 395,10239
+CV_MakeMultipleDocumentStream 411,10530
+
+cvcolor.c,1015
+#define VIEW_SOURCE_TARGET_WINDOW_NAME 14,332
+typedef enum StatesEnum StatesEnum16,392
+} StatesEnum;StatesEnum28,672
+#define MAXTAGLEN 30,687
+typedef struct _DataObject _DataObject32,709
+} DataObject;DataObject39,889
+#define BEGIN_TAG_MARKUP 41,904
+#define END_TAG_MARKUP 42,935
+#define BEGIN_TAG_NAME_MARKUP 43,965
+#define END_TAG_NAME_MARKUP 44,1030
+#define BEGIN_ATTRIBUTE_VALUE_MARKUP 45,1068
+#define END_ATTRIBUTE_VALUE_MARKUP 46,1143
+#define BEGIN_BROKEN_ATTRIBUTE_MARKUP 47,1191
+#define END_BROKEN_ATTRIBUTE_MARKUP 48,1259
+#define BEGIN_COMMENT_MARKUP 49,1313
+#define END_COMMENT_MARKUP 50,1348
+#define BEGIN_AMPERSAND_THINGY_MARKUP 51,1382
+#define END_AMPERSAND_THINGY_MARKUP 52,1455
+PRIVATE char *net_BeginColorHTMLTag 54,1502
+PRIVATE char *net_EndColorHTMLTag 70,1901
+PRIVATE int net_ColorHTMLWrite 93,2360
+PRIVATE unsigned int net_ColorHTMLWriteReady 374,9617
+PRIVATE void net_ColorHTMLComplete 380,9764
+PRIVATE void net_ColorHTMLAbort 385,9886
+net_ColorHTMLStream 391,10047
+
+cvdisk.c,286
+typedef struct _DataObject _DataObject10,174
+} DataObject;DataObject13,239
+PRIVATE int net_SaveToDiskWrite 16,255
+PRIVATE unsigned int net_SaveToDiskWriteReady 24,422
+PRIVATE void net_SaveToDiskComplete 30,554
+PRIVATE void net_SaveToDiskAbort 40,691
+fe_MakeSaveAsStream 55,920
+
+cvextcon.c,458
+typedef struct _CVG_DataObject _CVG_DataObject21,486
+} CVG_DataObject;CVG_DataObject27,797
+PRIVATE int net_ExtConverterRead 30,817
+PRIVATE int net_ExtConverterWrite 78,2258
+PRIVATE int net_ExtConverterWriteReady 123,3347
+net_KillConverterProcess 140,3737
+PRIVATE void net_ExtConverterComplete 165,4561
+PRIVATE void net_ExtConverterAbort 186,5140
+NET_ExtConverterConverter 207,5651
+# define NONBLOCK_FLAG 311,8679
+# define NONBLOCK_FLAG 313,8737
+
+cvmime.c,981
+typedef struct MIME_DataObject MIME_DataObject55,1255
+} MIME_DataObject;MIME_DataObject59,1476
+net_mime_decoder_cb 63,1508
+net_MimeEncodingConverterWrite 75,1803
+PRIVATE unsigned int net_MimeEncodingConverterWriteReady 83,2019
+PRIVATE void net_MimeEncodingConverterComplete 98,2415
+PRIVATE void net_MimeEncodingConverterAbort 117,2848
+NET_MimeEncodingConverter_1 138,3319
+NET_MimeEncodingConverter 229,5764
+NET_MimeMakePartialEncodingConverterStream 239,6034
+EDT_ErrorOut 262,6670
+net_RegisterDefaultDecoders 276,6889
+net_RegisterDefaultEncodingDecoders 605,20875
+NET_RegisterMIMEDecoders 657,23205
+main 711,25238
+#define TEST(TEST715,25279
+typedef struct _NET_PrintRawToDiskStruct _NET_PrintRawToDiskStruct756,26988
+} NET_PrintRawToDiskStruct;NET_PrintRawToDiskStruct761,27132
+net_PrintRawToDiskWrite 769,27309
+net_PrintRawToDiskIsWriteReady 788,27813
+net_PrintRawToDiskComplete 794,27902
+net_PrintRawToDiskAbort 802,28095
+NET_PrintRawToDisk(814,28427
+
+cvproxy.c,263
+typedef struct _ProxyObj _ProxyObj6,82
+} ProxyObj;ProxyObj11,220
+PRIVATE int net_proxy_write 13,233
+PRIVATE unsigned int net_proxy_WriteReady 40,1066
+PRIVATE void net_proxy_complete 46,1187
+PRIVATE void net_proxy_abort 54,1325
+NET_ProxyConverter(65,1500
+
+cvview.c,316
+typedef struct _CV_DataObject _CV_DataObject25,486
+} CV_DataObject;CV_DataObject34,711
+build_viewer_cmd(55,1353
+PRIVATE int net_ExtViewWrite 109,2493
+PRIVATE int net_ExtViewWriteReady 123,2842
+PRIVATE void net_ExtViewComplete 150,3394
+PRIVATE void net_ExtViewAbort 210,4853
+NET_ExtViewerConverter 236,5285
+
+extcache.c,1150
+} SECItem;SECItem33,726
+ #define URL_GET_METHOD 42,813
+ #define URL_POST_METHOD 43,840
+ #define URL_HEAD_METHOD 44,867
+net_CacheDBTDup(50,940
+MODULE_PRIVATE void net_freeCacheObj 74,1220
+#define MAX_VALID_DBT_SIZE 100,1900
+net_IsValidCacheDBT(103,1954
+net_CacheStructToDBData(149,2978
+#define ADD_STRING_SIZE(ADD_STRING_SIZE164,3194
+#define STUFF_STRING(STUFF_STRING245,5452
+#define STUFF_NUMBER(STUFF_NUMBER255,5785
+#define STUFF_TIMET(STUFF_TIMET261,5947
+#define STUFF_BOOL(STUFF_BOOL267,6109
+net_DBDataToCacheStruct(377,8607
+#define MAX_HUGE_STRING_SIZE 394,8934
+#define RETRIEVE_STRING(RETRIEVE_STRING396,8970
+#define RETRIEVE_NUMBER(RETRIEVE_NUMBER423,9699
+#define RETRIEVE_TIMET(RETRIEVE_TIMET431,9927
+#define RETRIEVE_BOOL(RETRIEVE_BOOL439,10158
+cache_test_me(567,12897
+net_GenCacheDBKey(614,14200
+#define MD5_HASH_SIZE 622,14358
+net_GetAddressFromCacheKey(706,16090
+net_GetTimeInCacheDBT(746,16854
+net_SetTimeInCacheDBT(775,17443
+#define MAX_FILE_SIZE 800,17970
+net_GetFilenameInCacheDBT(802,18019
+net_GetInt32InCacheDBT(840,18824
+net_FreeCacheDBTdata(860,19190
+net_Fast_DBDataToCacheStruct(877,19600
+
+mkaccess.c,1989
+#define XP_FREEIF(XP_FREEIF29,927
+#define MAX_NUMBER_OF_COOKIES 32,1011
+#define MAX_COOKIES_PER_SERVER 33,1046
+#define MAX_BYTES_PER_COOKIE 34,1080
+typedef enum _net_AuthType _net_AuthType59,1839
+} net_AuthType;net_AuthType65,2011
+typedef struct _net_AuthStruct _net_AuthStruct73,2149
+} net_AuthStruct;net_AuthStruct88,2752
+net_CheckForAuthorization(95,2877
+NET_AuthorizationRequired(126,3554
+NET_BuildAuthString(149,3947
+net_ScanForHostnameRealmMatch(172,4480
+net_free_auth_struct(195,5107
+NET_RemoveAllAuthorizations(208,5402
+net_remove_exact_auth_match_on_cancel(224,5737
+NET_AskForAuthString(247,6384
+#define COMPUSERVE_HEADER_NAME 279,7148
+#define MAX_REALM_SIZE 326,8102
+typedef struct _net_CookieStruct _net_CookieStruct628,15447
+} net_CookieStruct;net_CookieStruct637,15716
+net_FreeCookie(640,15750
+NET_RemoveAllCookies(660,16069
+net_remove_oldest_cookie(676,16407
+net_CheckForMaxCookiesFromHost(705,17123
+net_CheckForPrevCookie(737,17930
+net_CookiePrefChanged(765,18607
+net_GetCookiePreference(776,18828
+NET_SetCookiePrefs(784,18940
+NET_SetForeignCookiePrefs(794,19169
+NET_ForeignCookiePrefChanged(802,19374
+NET_GetForeignCookiePreference(813,19613
+NET_RegisterCookiePrefCallbacks(822,19829
+NET_GetCookie(839,20303
+NET_SetCookieString(986,23690
+NET_SameDomain(1347,33098
+NET_SetCookieStringFromHttp(1388,34186
+NET_SaveCookies(1447,35966
+#define LINE_BUFFER_SIZE 1533,37949
+NET_ReadCookies(1536,37991
+net_auth_type(1685,41182
+net_IsBetterAuth(1708,41635
+bin2hex(1723,41897
+#define SKIP_WS(SKIP_WS1746,42242
+next_params(1749,42317
+net_parse_authenticate_line(1776,42756
+PRIVATE void do_md5(1830,43847
+char *net_generate_md5_challenge_response(1852,44283
+#define SIMPLEMD5_AUTHORIZATION_FMT 1874,44827
+char *net_generate_auth_string(1884,44995
+net_CheckForProxyAuth(1965,46873
+NET_BuildProxyAuthString(1985,47244
+#define INVALID_AUTH_HEADER 2000,47628
+#define LOOPING_OLD_NONCES 2002,47715
+NET_AskForProxyAuth(2005,47796
+
+mkautocf.c,3267
+#define PRHostEnt 37,602
+#define PACF_MIN_RETRY_AFTER	80,1845
+#define PACF_MIN_RETRY_ASK	81,1878
+#define PACF_AUTO_RETRY_AFTER 82,1909
+#define PACF_DIRECT_INTERVAL 83,1945
+#define PACF_RETRY_OK_AFTER 84,1981
+#define PACF_MIN_RETRY_AFTER	87,2024
+#define PACF_MIN_RETRY_ASK	88,2057
+#define PACF_AUTO_RETRY_AFTER 89,2088
+#define PACF_DIRECT_INTERVAL 90,2124
+#define PACF_RETRY_OK_AFTER 91,2160
+#define EMPTY_CONFIG_USE_PREV	95,2205
+#define BAD_CONFIG_USE_PREV 97,2277
+#define BAD_CONFIG_IGNORED	99,2345
+#define BAD_TYPE_USE_PREV 101,2411
+#define BAD_TYPE_CONFIG_IGNORED	103,2475
+#define CONF_LOAD_FAILED_IGNORED	105,2551
+#define CONF_LOAD_FAILED_NO_FAILOVER	106,2628
+#define CONF_LOAD_FAILED_USE_PREV	108,2714
+#define BAD_KEYWORD_MSG	110,2794
+#define NO_CONFIG_RECEIVED	112,2867
+#define NO_CONFIG_RECEIVED_NO_FAILOVER	113,2932
+#define EVEN_SAVED_IS_BAD	115,3022
+#define CONFIG_LOAD_ABORTED	117,3086
+#define CONFIG_BLAST_WARNING	119,3154
+#define RETRY_AGAIN_PROXY	121,3224
+#define RETRY_AGAIN_SOCKS	123,3288
+#define RETRY_AGAIN_MIX	125,3352
+#define ONE_DOWN_PROXY	128,3424
+#define ALL_DOWN_PROXY	130,3495
+#define ALL_DOWN_SOCKS	132,3565
+#define ALL_DOWN_MIX	134,3623
+#define OVERRIDE_PROXY	137,3678
+#define OVERRIDE_SOCKS	139,3736
+#define OVERRIDE_MIX	141,3794
+#define STILL_OVERRIDE_PROXY	144,3850
+#define STILL_OVERRIDE_SOCKS	146,3920
+#define STILL_OVERRIDE_MIX	148,3990
+typedef enum _PACF_Type _PACF_Type157,4146
+} PACF_Type;PACF_Type162,4262
+typedef struct _PACF_Node _PACF_Node169,4354
+} PACF_Node;PACF_Node178,4576
+typedef struct _PACF_Object _PACF_Object186,4658
+} PACF_Object;PACF_Object189,4726
+typedef struct _PACF_QueuedState _PACF_QueuedState205,5138
+} PACF_QueuedState;PACF_QueuedState210,5299
+} pc_slot;pc_slot216,5378
+PRIVATE char *msg2(283,8774
+PRIVATE Bool confirm2(293,8980
+PRIVATE void alert2(304,9184
+PRIVATE PACF_Node *lookup_create_node(321,9526
+PRIVATE PACF_Node * pacf_proxy_is_down(368,10453
+PRIVATE Bool fill_return_values(400,11178
+NET_SetNoProxyFailover(471,12902
+NET_GetNoProxyFailover(484,13060
+pacf_get_proxy_addr(512,13941
+PRIVATE int pacf_save_config(723,18787
+PRIVATE int pacf_read_config(747,19259
+PRIVATE int pacf_write(790,19995
+PRIVATE unsigned int pacf_write_ready(812,20488
+PRIVATE void pacf_complete(818,20578
+PRIVATE void pacf_abort(910,22732
+NET_ProxyAutoConfig(927,23026
+void pacf_exit_routine(977,24171
+static void pacf_restart_queued(981,24252
+MODULE_PRIVATE int NET_LoadProxyConfig(1058,26336
+PUBLIC char * NET_GetProxyConfigSource(1103,27439
+MODULE_PRIVATE char *pacf_find_proxies_for_url(1119,27737
+proxy_isPlainHostName(1289,31109
+proxy_dnsDomainLevels(1313,31649
+proxy_dnsDomainIs(1342,32153
+proxy_localHostOrDomainIs(1369,32914
+proxy_isResolvable(1404,33690
+proxy_dns_resolve(1451,34940
+proxy_dnsResolve(1510,36099
+proxy_myIpAddress(1534,36654
+PRIVATE unsigned long convert_addr(1570,37497
+proxy_isInNet(1600,38038
+proxy_regExpMatch(1642,39158
+struct tm * get_struct_tm(1660,39708
+int get_no(1679,40223
+PRIVATE int get_em(1687,40349
+PRIVATE int are_different(1714,40909
+PRIVATE long get_rel(1727,41198
+PRIVATE int cmp_properly(1734,41380
+proxy_dateRange(1744,41616
+proxy_weekdayRange(1774,42545
+proxy_timeRange(1800,43307
+
+mkcache.c,2266
+#define INTERNAL_NAME_PREFIX 47,1034
+#define DISK_CACHE_SIZE_KEY_NAME 48,1076
+#define DISK_CACHE_NUMBER_KEY_NAME 49,1131
+#define DISK_CACHE_NAME	50,1188
+#define CACHE_SYNC_RATE 52,1249
+} store_type_enum;store_type_enum57,1331
+typedef struct _CacheDataObject _CacheDataObject79,2017
+} CacheDataObject;CacheDataObject85,2195
+NET_DontDiskCacheSSL(95,2404
+net_calc_real_file_size(105,2560
+#define NET_ROUNDUP(NET_ROUNDUP109,2656
+net_GetDiskCacheSize(120,2906
+net_OpenCacheFatDB(195,4508
+#define BUFF_SIZE 244,5489
+cache_test_me(319,7228
+net_StoreDiskCacheSize(358,8292
+net_CacheStore(432,10144
+typedef struct _DatePlusDBT _DatePlusDBT683,16684
+} DatePlusDBT;DatePlusDBT686,16745
+NET_RemoveDiskCacheObjects(692,16886
+#define CORRUPT_ENTRY_ARRAY_SIZE 694,16934
+net_ReduceDiskCacheTo(918,22953
+NET_SetMemoryCacheSize(987,24395
+NET_GetMaxMemoryCacheSize(996,24538
+NET_RemoveLastMemoryCacheObject(1006,24762
+NET_GetMemoryCacheSize(1018,25017
+NET_MemoryCacheLoad 1027,25149
+NET_ProcessMemoryCache 1033,25232
+NET_InterruptMemoryCache 1039,25318
+NET_SetDiskCacheSize(1051,25526
+NET_RemoveLastDiskCacheObject(1078,26027
+net_RemoveAllDiskCacheObjects(1084,26109
+NET_GetDiskCacheSize(1130,27372
+PRIVATE unsigned int net_CacheWriteReady 1142,27576
+PRIVATE int net_CacheWrite 1152,27820
+PRIVATE void net_CacheComplete 1191,28619
+PRIVATE void net_CacheAbort 1231,29414
+NET_CacheConverter 1295,30793
+NET_ChangeCacheFileLock(1664,40862
+MODULE_PRIVATE void NET_RefreshCacheFileExpiration(1713,41940
+NET_IsURLInDiskCache(1840,44950
+NET_RemoveURLFromCache(1869,45429
+NET_IsPartialCacheFile(1910,46119
+NET_FindURLInCache(1943,46734
+NET_ReadCacheFAT(2254,55124
+NET_WriteCacheFAT(2272,55573
+NET_CleanupCache 2291,55943
+NET_NumberOfFilesInDiskCache(2312,56284
+net_cache_strcmp 2318,56363
+net_cache_recursive_file_finder(2333,56772
+NET_CleanupCacheDirectory(2453,59996
+#define REMOVE_LIST_SIZE 2455,60062
+NET_DestroyCacheDirectory(2631,64787
+NET_DisplayCacheInfoAsHTML(2649,65188
+#define PUT_PART(PUT_PART2691,66161
+#define TABLE_TOP(TABLE_TOP2741,67318
+#define TABLE_BOTTOM	2747,67451
+#define TABLE_TOP(TABLE_TOP2754,67551
+#define TABLE_BOTTOM	2762,67768
+#define SANE_BUFLEN	2923,71217
+NET_CloneWysiwygCacheFile(2927,71293
+
+mkconect.c,896
+#define RANDOM_DNS_HOST_PICK8,100
+#define ASYNC_DNS11,179
+#define PRHostEnt 25,490
+#define PR_NETDB_BUF_SIZE 26,523
+#  define BYTE_ORDER 57,1153
+#  define MAXDNAME 58,1185
+} TCPStatesEnum;TCPStatesEnum100,2227
+struct _TCP_ConData _TCP_ConData102,2245
+# define MAX_DNS_LIST_SIZE 122,2997
+# define MAX_DNS_LIST_SIZE 124,3032
+typedef struct _DNSEntry _DNSEntry142,3456
+} DNSEntry;DNSEntry148,3591
+#define DEFAULT_TCP_CONNECT_TIMEOUT 153,3710
+NET_SetTCPConnectTimeout(162,4001
+int NET_SetSocksHost(176,4365
+net_CacheDNSEntry(269,6593
+net_CheckDNSCache(339,8513
+NET_IpString 366,9115
+NET_FindAddress 402,9915
+MODULE_PRIVATE char *CONST NET_HostName 721,17930
+NET_FreeTCPConData(742,18486
+net_start_first_connect(749,18620
+net_connection_failed(840,21234
+NET_BeginConnect 884,22260
+#define PROXY_INT_TOKEN	957,23994
+NET_FinishConnect 1192,30038
+NET_CleanupTCP(1478,38100
+
+mkextcac.c,377
+typedef struct _ExtCacheDBInfo _ExtCacheDBInfo33,724
+} ExtCacheDBInfo;ExtCacheDBInfo39,845
+net_CloseExtCacheFat(44,909
+net_GetExtCacheNameFromDB(56,1085
+net_OpenExtCacheFat(87,1680
+net_SaveExtCacheInfo(166,3483
+#define BUF_SIZE 204,4258
+net_ReadExtCacheInfo(206,4293
+net_OpenExtCacheFATCallback(260,5287
+NET_OpenExtCacheFAT(299,6273
+NET_FindURLInExtCache(392,8381
+
+mkfile.c,2094
+} net_FileStates;net_FileStates61,1459
+#define URL_BYTERANGE_METHOD66,1587
+#define DIR_STRUCT 68,1617
+typedef struct _FILEConData _FILEConData70,1651
+} FILEConData;FILEConData86,2342
+#define CD_FILE_PTR 88,2358
+#define CD_DIR_PTR 89,2410
+#define CD_NEXT_STATE 90,2461
+#define CD_STREAM 91,2515
+#define CD_FILENAME 92,2565
+#define CD_IS_DIR 93,2617
+#define CD_SORT_BASE 94,2667
+#define CD_PAUSE_FOR_READ 95,2720
+#define CD_IS_CACHE_FILE 96,2778
+#define CE_WINDOW_ID 98,2836
+#define CE_URL_S 99,2883
+#define CE_STATUS 100,2926
+#define CE_SOCK 101,2970
+#define CE_BYTES_RECEIVED 102,3014
+#define CE_FORMAT_OUT 103,3066
+#define CD_DESTROY_GRAPH_PROGRESS 104,3114
+#define CD_ORIGINAL_CONTENT_LENGTH 105,3190
+#define CD_BYTERANGE_STRING 106,3267
+#define CD_RANGE_LENGTH 107,3337
+#define PUTS(PUTS109,3404
+#define IS_WRITE_READY 111,3559
+#define PUTB(PUTB113,3702
+#define COMPLETE_STREAM 115,3845
+#define ABORT_STREAM(ABORT_STREAM117,3982
+net_check_file_type 125,4248
+net_delete_file 245,7086
+net_move_file 286,7989
+net_put_file 322,8683
+net_make_directory 363,9564
+net_file_setup_stream(390,10127
+net_open_file 424,10877
+net_setup_file_stream 486,12586
+net_open_directory 704,17877
+net_read_file_chunk(739,18899
+net_read_directory_chunk 813,21171
+net_BeginPrintDirectory(892,23194
+#define PD_PUTS(PD_PUTS1001,25992
+NET_PrintDirectory(1008,26134
+# define LISTING_OVERHEAD 1029,26638
+net_return_local_file_part_from_url(1390,37698
+NET_IsLocalFileURL(1462,39167
+NET_FileLoad 1486,39646
+#define BYTERANGE_TOKEN 1543,41195
+#define URL_BYTERANGE_TOKEN 1551,41403
+NET_ProcessFile 1586,42479
+NET_InterruptFile(1696,45534
+NET_CleanupFile(1707,45789
+} index_format_conv_data_object;index_format_conv_data_object1717,45948
+PRIVATE int net_IdxConvPut(1719,45982
+PRIVATE int net_IdxConvWriteReady(1724,46124
+PRIVATE void net_IdxConvComplete(1734,46446
+# define LISTING_OVERHEAD 1754,47117
+PRIVATE void net_IdxConvAbort(1920,51733
+NET_HTTPIndexFormatToHTMLConverter(1926,51886
+#define SANE_BUFLEN	1974,53192
+net_CloneWysiwygLocalFile(1978,53268
+
+mkformat.c,846
+NET_InitFileFormatTypes(47,1094
+NET_cinfoCreate(123,2357
+_cinfo_free(139,2598
+NET_cdataCreate(155,2883
+NET_cdataFree(172,3136
+NET_cdataAdd(194,3493
+NET_cdataRemove(202,3669
+NET_cdataExist(210,3802
+net_cdata_exist_ext(246,4484
+net_cdata_new_ext(269,4852
+net_cinfo_merge(292,5357
+net_cinfo_find_type_or_encoding 327,6201
+NET_cinfo_find_type 424,9159
+NET_cinfo_find_enc 430,9269
+print_mime_types(438,9412
+NET_cinfo_find_cdata_by_type(468,10199
+NET_cinfo_find_info_by_type(489,10593
+NET_cinfo_find_ext(510,11018
+net_build_string(526,11287
+_cinfo_parse_mimetypes(551,11767
+cinfo_parse_mcc_line(642,13635
+_cinfo_parse_mcc(806,17303
+cinfo_MasterListPointer(867,18435
+NET_cdataCommit(877,18601
+NET_IsOldMimeTypes 977,21034
+net_Real_CleanupFileFormat(993,21315
+NET_CleanupFileFormat(1106,24009
+NET_CleanupFileFormat(1223,27045
+
+mkfsort.c,247
+NET_PrintFileType(14,249
+NET_SetFileSortMethod(35,626
+MODULE_PRIVATE void NET_FreeEntryInfoStruct(40,697
+MODULE_PRIVATE NET_FileEntryInfo * NET_CreateFileEntryInfoStruct 50,910
+NET_CompareFileEntryInfoStructs 71,1376
+NET_DoFileSort(121,3329
+
+mkftp.c,2954
+#define FTP_PORT 7,99
+#define FTP_MODE_UNKNOWN 9,120
+#define FTP_MODE_ASCII 10,147
+#define FTP_MODE_BINARY 11,174
+#define PUTSTRING(PUTSTRING63,1629
+#define PUTBLOCK(PUTBLOCK65,1763
+#define COMPLETE_STREAM 67,1884
+#define ABORT_STREAM(ABORT_STREAM69,1995
+#define FTP_GENERIC_TYPE 73,2108
+#define FTP_UNIX_TYPE 74,2139
+#define FTP_DCTS_TYPE 75,2170
+#define FTP_NCSA_TYPE 76,2201
+#define FTP_PETER_LEWIS_TYPE 77,2232
+#define FTP_MACHTEN_TYPE 78,2263
+#define FTP_CMS_TYPE 79,2294
+#define FTP_TCPC_TYPE 80,2325
+#define FTP_VMS_TYPE 81,2356
+#define FTP_NT_TYPE 82,2387
+#define OUTPUT_BUFFER_SIZE 84,2419
+typedef struct _FTPConnection _FTPConnection93,2706
+} FTPConnection;FTPConnection102,3233
+typedef enum _FTPStates _FTPStates106,3292
+} FTPStates;FTPStates163,4489
+typedef struct _FTPConData _FTPConData165,4503
+} FTPConData;FTPConData227,7448
+NET_UsePASV(237,7669
+NET_SendEmailAddressAsFTPPassword(247,7873
+net_ftp_make_stream(253,7995
+net_ftp_show_error(292,8879
+net_ftp_response 321,9648
+net_send_username(438,12782
+net_send_username_response(472,13670
+net_send_password(537,15314
+net_send_password_response(557,15800
+net_send_acct(587,16511
+net_send_acct_response(604,16949
+net_send_syst(626,17479
+net_send_syst_response(645,17913
+net_send_mac_bin(719,20228
+net_send_mac_bin_response(737,20663
+net_figure_out_what_to_do(751,21002
+net_send_mkdir(800,21945
+net_send_mkdir_response(821,22487
+net_send_delete_file(843,22866
+net_send_delete_file_response(864,23421
+net_send_delete_dir(884,23737
+net_send_delete_dir_response(905,24289
+net_send_pwd(926,24672
+net_send_pwd_response(942,25096
+net_send_pasv(1047,27781
+net_send_pasv_response(1065,28210
+net_send_port(1129,29840
+net_send_port_response(1260,34054
+net_get_ftp_file_type(1284,34662
+net_send_bin(1445,39054
+net_send_ascii(1464,39523
+net_send_bin_or_ascii_response(1482,39994
+net_get_ftp_file_size(1502,40466
+net_get_ftp_file_size_response(1528,41188
+net_get_ftp_file(1548,41621
+net_send_cwd(1592,42679
+net_send_cwd_response(1637,43891
+net_begin_put(1683,45043
+net_begin_put_response(1737,46172
+net_do_put(1808,47787
+net_send_retr(1938,51192
+net_send_retr_response(1965,51825
+net_send_list_or_nlst(2010,52944
+net_send_list_or_nlst_response(2031,53532
+net_setup_ftp_stream(2063,54365
+net_wait_for_ftp_accept(2114,55769
+net_start_ftp_read_file(2164,56942
+net_ftp_read_file(2182,57391
+net_start_ftp_read_dir(2261,59364
+#define HTML_STRING 2346,61614
+net_ftp_read_dir(2481,65213
+net_is_ls_date 2573,67686
+PRIVATE time_t net_convert_unix_date 2636,68873
+net_parse_dos_date_time 2694,70727
+PRIVATE time_t net_convert_vms_date 2730,71777
+net_parse_ls_line 2790,73446
+net_parse_vms_dir_entry 2852,74737
+net_parse_dir_entry 3005,79288
+net_get_ftp_password(3202,85718
+net_get_ftp_password_response(3245,86694
+NET_FTPLoad 3258,86984
+NET_ProcessFTP(3566,95209
+NET_InterruptFTP(4120,112528
+NET_CleanupFTP(4134,112862
+
+mkgeturl.c,2670
+#define PRHostEnt 57,949
+void net_Trace(161,3940
+void NET_NTrace(170,4076
+void _MK_TraceMsg(185,4300
+#define LIBNET_UNLOCK_AND_RETURN(LIBNET_UNLOCK_AND_RETURN199,4513
+#define TIME_BOMB_TIME	213,4836
+#define TIME_BOMB_WARNING_TIME	214,4894
+typedef struct _WaitingURLStruct _WaitingURLStruct254,6148
+} WaitingURLStruct;WaitingURLStruct260,6341
+#define MAX_NUMBER_OF_PROCESSING_URLS 281,6914
+#define INITIAL_MAX_ALL_HEADERS 283,6956
+#define MULT_ALL_HEADER_COUNT 284,6991
+#define MAX_ALL_HEADER_COUNT 285,7025
+typedef struct NETExitCallbackNode NETExitCallbackNode297,7497
+NET_AddExitCallback(306,7702
+NET_ProcessExitCallbacks(325,8065
+NET_InitNetLib(346,8408
+NET_ChangeMaxNumberOfConnections(405,9619
+NET_ChangeMaxNumberOfConnectionsPerContext(435,10410
+NET_CheckForTimeBomb(468,11232
+NET_SetCacheUseMethod(525,12402
+net_CallExitRoutine(531,12496
+net_does_url_require_socket_limit(622,15480
+net_is_one_url_allowed_to_run(636,15770
+net_push_url_on_wait_queue(687,17153
+NET_PrintNetlibStatus(731,18307
+net_release_urls_for_processing(784,19839
+net_CheckForWaitingURL(825,21028
+net_AbortWaitingURL(872,22275
+net_IsHostResolvable 926,23403
+NET_SanityCheckDNS 948,23823
+NET_ShutdownNetLib(1126,29141
+NET_WarnOnMailtoPost(1258,32337
+NET_GetURL 1274,32678
+#define INT_SEARCH_URL 1631,43510
+#define INT_SEARCH_URL_TYPE 1632,43590
+PUBLIC int NET_ProcessNet 2498,68413
+net_InterruptActiveStream 2933,81945
+NET_InterruptStream 3026,83999
+NET_InterruptSocket 3067,84978
+NET_SetNewContext(3105,85984
+NET_IsSafeForNewContext(3172,87844
+net_InternalInterruptWindow(3187,88096
+NET_InterruptWindow(3286,90895
+NET_SilentInterruptWindow(3296,91127
+NET_AreThereActiveConnectionsForWindow(3315,91755
+NET_HasNetworkActivity(3395,94336
+NET_CreateURLStruct 3465,96261
+net_EnlargeURLAllHeaders 3524,97845
+NET_AddToAllHeaders(3555,98744
+NET_SetURLIPAddressString 3594,99854
+NET_FreeURLStruct 3609,100224
+net_FreeURLAllHeaders 3680,102014
+PRIVATE void add_slash_to_URL 3704,102709
+net_OutputURLDocInfo(3737,103492
+#define CELL_TOP 3749,103787
+#define CELL_TITLE(CELL_TITLE3753,103912
+#define CELL_MIDDLE	3755,103973
+#define CELL_BODY(CELL_BODY3759,104064
+#define CELL_END	3761,104123
+#define ADD_CELL(ADD_CELL3764,104195
+net_PrintContextInfo(3940,108838
+PRIVATE int net_output_about_url(3986,110134
+PRIVATE int net_output_security_url(4245,116583
+PRIVATE Bool net_about_kludge(4303,117941
+PRIVATE Bool override_proxy 4397,122036
+NET_SetProxyServer(4481,124167
+#define MAXHOSTNAMELEN 4486,124282
+NET_SelectProxyStyle(4579,126198
+NET_ReloadProxyConfig(4613,126841
+void TraceURL 4627,127128
+NET_DestroyEvidence(4642,127840
+
+mkgopher.c,2182
+#define GTYPE_TEXT 9,137
+#define GTYPE_MENU 10,192
+#define GTYPE_CSO 11,261
+#define GTYPE_ERROR 12,336
+#define GTYPE_MACBINHEX 13,396
+#define GTYPE_PCBINARY 14,456
+#define GTYPE_UUENCODED 15,522
+#define GTYPE_INDEX 16,585
+#define GTYPE_TELNET 17,653
+#define GTYPE_BINARY 18,713
+#define GTYPE_GIF 19,779
+#define GTYPE_HTML 20,830
+#define GTYPE_HTMLCAPS 21,880
+#define GTYPE_INFO 22,942
+#define GTYPE_IMAGE 23,1001
+#define GTYPE_MIME 24,1052
+#define GTYPE_SOUND 25,1116
+#define GTYPE_TN3270 26,1174
+#define GTYPE_WWW 27,1244
+#define GTYPE_MPEG 28,1296
+#define CD_OUTPUT_BUFFER_SIZE 57,2123
+typedef struct _GopherConData _GopherConData59,2161
+} GopherConData;GopherConData74,3080
+#define PUTSTRING(PUTSTRING76,3098
+#define PUTBLOCK(PUTBLOCK78,3239
+#define COMPLETE_STREAM 80,3369
+#define ABORT_STREAM(ABORT_STREAM82,3492
+#define CD_NEXT_STATE 87,3646
+#define CD_DATA_BUF 88,3706
+#define CD_DATA_BUF_SIZE 89,3764
+#define CD_STREAM 90,3827
+#define CD_GOPHER_TYPE 91,3877
+#define CD_COMMAND 92,3937
+#define CD_OUTPUT_BUF 93,3988
+#define CD_PAUSE_FOR_READ 94,4045
+#define CD_DESTROY_GRAPH_PROGRESS 95,4109
+#define CD_ORIGINAL_CONTENT_LENGTH 96,4185
+#define CD_CSO_LAST_CHAR	97,4262
+#define CD_TCP_CON_DATA	98,4320
+#define CE_WINDOW_ID 101,4378
+#define CE_URL_S 102,4431
+#define CE_STATUS 103,4474
+#define CE_SOCK 104,4518
+#define CE_CON_SOCK 105,4562
+#define CE_BYTES_RECEIVED 106,4608
+#define GOPHER_BEGIN_CONNECT 110,4703
+#define GOPHER_FINISH_CONNECT 111,4737
+#define GOPHER_SEND_REQUEST 112,4771
+#define GOPHER_BEGIN_TRANSFER 113,4805
+#define GOPHER_TRANSFER_MENU 114,4839
+#define GOPHER_TRANSFER_CSO 115,4873
+#define GOPHER_TRANSFER_BINARY 116,4907
+#define GOPHER_DONE 117,4941
+#define GOPHER_ERROR_DONE 118,4969
+#define GOPHER_FREE 119,5000
+net_begin_gopher_menu(128,5157
+net_parse_menu 141,5408
+net_begin_gopher_cso(407,13788
+net_parse_cso 422,14100
+net_display_index_splash_screen 522,16887
+net_display_cso_splash_screen 544,17383
+net_send_gopher_request 566,17893
+net_pull_gopher_data(598,18819
+NET_GopherLoad 669,20569
+NET_ProcessGopher(957,28873
+NET_InterruptGopher(1121,33990
+NET_CleanupGopher(1134,34276
+
+mkhelp.c,1181
+#define DEFAULT_HELP_ID	13,230
+#define DEFAULT_HELP_WINDOW_NAME 14,269
+#define DEFAULT_HELP_WINDOW_HEIGHT 15,318
+#define DEFAULT_HELP_WINDOW_WIDTH 16,357
+typedef struct _HTMLHelpParseObj _HTMLHelpParseObj21,494
+} HTMLHelpParseObj;HTMLHelpParseObj34,814
+} frame_set_struct;frame_set_struct39,883
+simple_exit(42,917
+net_help_free_frame_group_struct(49,1063
+NET_GetHTMLHelpFileFromMapFile(62,1318
+NET_ParseHTMLHelpInit(85,1769
+NET_ParseHTMLHelpFree(111,2287
+net_get_html_help_token(144,2921
+net_ParseHTMLHelpLine(188,3682
+#define ID_MAP_TOKEN 201,3938
+#define END_ID_MAP_TOKEN 208,4091
+#define FRAME_GROUP_TOKEN 215,4263
+#define SRC_TOKEN 232,4650
+#define WINDOW_TOKEN 241,4930
+#define END_FRAME_GROUP_TOKEN 276,5652
+#define WINDOW_SIZE_TOKEN 291,5992
+#define WINDOW_NAME_TOKEN 312,6489
+#define TARGET_TOKEN 344,7184
+NET_ParseHTMLHelpPut(393,8645
+NET_HelpPreExitRoutine(434,9798
+net_help_init_chrome(466,10640
+NET_ParseHTMLHelpLoadHelpDoc(477,10977
+} html_help_map_stream;html_help_map_stream582,13402
+net_HMFConvPut(585,13439
+net_HMFConvWriteReady(599,13747
+net_HMFConvComplete(605,13840
+net_HMFConvAbort(611,13966
+NET_HTMLHelpMapToURL(618,14152
+
+mkhttp.c,2815
+#define VERSION_STRING 59,1299
+#define MAX_CACHED_HTTP_CONNECTIONS 61,1334
+#define MAX_FIRST_LINE_SIZE 65,1438
+} StatesEnum;StatesEnum102,2326
+typedef struct _HTTPConnection _HTTPConnection107,2412
+} HTTPConnection;HTTPConnection113,2760
+typedef struct _HTTPConData _HTTPConData119,2873
+} HTTPConData;HTTPConData173,5558
+#define CD_NEXT_STATE 176,5615
+#define CD_PROXY_SERVER 177,5662
+#define CD_PROXY_CONF 178,5711
+#define CD_LINE_BUFFER 179,5760
+#define CD_SERVER_HEADERS 180,5808
+#define CD_LINE_BUFFER_SIZE 181,5859
+#define CD_STREAM 182,5912
+#define CD_SEND_HTTP1 183,5953
+#define CD_RECEIVING_HTTP1 184,6000
+#define CD_PAUSE_FOR_READ 185,6052
+#define CD_ACTING_AS_PROXY 186,6103
+#define CD_SERVER_BUSY_RETRY 187,6155
+#define CD_POSTING 188,6211
+#define CD_DOING_REDIRECT 189,6253
+#define CD_SENT_AUTHORIZATION 190,6304
+#define CD_SENT_PROXY_AUTH 191,6361
+#define CD_AUTH_REQUIRED 192,6415
+#define CD_PROXY_AUTH_REQUIRED 193,6474
+#define CD_DESTROY_GRAPH_PROGRESS 194,6532
+#define CD_ORIGINAL_CONTENT_LENGTH 195,6595
+#define CD_TCP_CON_DATA	196,6659
+#define CD_USE_SSL_PROXY 197,6704
+#define CD_SSL_PROXY_SETUP_DONE 198,6756
+#define CD_USE_COPY_FROM_CACHE 199,6815
+#define CD_DISPLAYED_SOME_DATA 200,6873
+#define CE_URL_S 202,6932
+#define CE_SOCK 203,6970
+#define CE_CON_SOCK 204,7009
+#define CE_STATUS 205,7050
+#define CE_WINDOW_ID 206,7089
+#define CE_BYTES_RECEIVED 207,7131
+#define CE_FORMAT_OUT 208,7178
+int ReturnErrorStatus 217,7302
+#define STATUS(STATUS223,7437
+#define PUTBLOCK(PUTBLOCK225,7490
+#define PUTSTRING(PUTSTRING227,7609
+#define COMPLETE_STREAM 229,7739
+#define ABORT_STREAM(ABORT_STREAM231,7851
+NET_SetIdentifyMeType(240,8114
+net_check_for_company_hostname(251,8361
+net_start_http_connect(316,9929
+net_finish_http_connect(476,14084
+net_send_ssl_proxy_request 608,17843
+net_begin_upload_file 674,19366
+net_build_http_request 779,21928
+#define MKDIR_WORD 798,22480
+#define DELETE_WORD 804,22628
+#define RMDIR_WORD 805,22658
+#define POST_WORD 819,22956
+#define PUT_WORD 825,23100
+#define HEAD_WORD 831,23241
+#define GET_WORD 841,23443
+#define REQUEST_RANGE_HEADER 991,28381
+#define OLD_RANGE_SUPPORT1005,28863
+#define REQUEST_RANGE_HEADER 1018,29237
+#define HOST_HEADER 1047,30151
+#define SEND_ACCEPT_LANGUAGE 1099,31571
+#define SOCK_CHUNK_SIZE 1199,34857
+net_send_http_request 1201,34898
+net_http_send_post_data 1348,39269
+net_parse_http_mime_headers 1430,41173
+net_parse_first_http_line 1652,46808
+net_setup_http_stream(2066,59327
+#define COMPUSERVE_HEADER_NAME 2151,61710
+net_http_push_partial_cache_file(2480,71409
+net_http_begin_push_partial_cache_file(2566,73640
+net_pull_http_data(2599,74480
+NET_HTTPLoad 2701,76940
+NET_ProcessHTTP 2938,83659
+NET_InterruptHTTP(3227,92099
+NET_CleanupHTTP(3283,93534
+
+mkinit.c,609
+NET_mdataFree(37,760
+net_isDir(52,1029
+NET_CleanupMailCapList(63,1237
+NET_RegisterConverters 133,2792
+struct MailcapEntry MailcapEntry199,4812
+#define LINE_BUF_SIZE 212,5054
+#define TMPFILE_NAME_SIZE 213,5086
+PRIVATE char *GetCommand 215,5118
+PRIVATE char *Cleanse 274,6129
+PRIVATE void BuildCommand 291,6561
+net_register_new_converter(338,7802
+PRIVATE int PassesTest 416,11257
+PRIVATE int ProcessMailcapEntry 441,11820
+NET_ProcessMailcapFile 666,17472
+mailcap_MasterListPointer(689,17893
+NET_mdataCreate(695,17983
+NET_mdataAdd(708,18177
+NET_mdataRemove(715,18273
+NET_mdataExist(724,18411
+
+mkmailbx.c,607
+#define OUTPUT_BUFFER_SIZE 31,725
+typedef enum _MailboxStates _MailboxStates35,815
+} MailboxStates;MailboxStates50,1167
+typedef struct _MailboxConData _MailboxConData56,1279
+} MailboxConData;MailboxConData75,2043
+#define COMPLETE_STREAM 77,2062
+#define ABORT_STREAM(ABORT_STREAM78,2137
+#define PUT_STREAM(PUT_STREAM79,2212
+NET_MailboxLoad 85,2339
+mail_generate_html_header_fn 160,4699
+mail_generate_html_footer_fn 185,5503
+mail_generate_reference_url_fn 204,5939
+net_make_mail_msg_stream 251,7038
+NET_ProcessMailbox 284,8032
+NET_InterruptMailbox(627,17547
+NET_CleanupMailbox(640,17840
+
+mkmemcac.c,2165
+#define NET_MEM_CACHE_OUTPUT_SIZE 26,534
+#define MAX_MEMORY_ALLOC_SIZE 35,777
+#define MAX_MEMORY_ALLOC_SIZE 37,848
+#define MAX_MEMORY_ALLOC_SIZE 39,892
+#define MAX_MEMORY_ALLOC_SIZE 43,1070
+#define MEMORY_CACHE_SEGMENT_SIZE 50,1247
+#define MEMORY_CACHE_SEGMENT_SIZE 52,1295
+struct _net_MemoryCacheObject _net_MemoryCacheObject58,1413
+typedef struct _net_MemorySegment _net_MemorySegment77,2086
+} net_MemorySegment;net_MemorySegment81,2185
+typedef struct _CacheDataObject _CacheDataObject107,2956
+} CacheDataObject;CacheDataObject113,3179
+net_FreeMemoryCopy(122,3400
+net_remove_last_memory_cache_object(184,5032
+net_ReduceMemoryCacheTo(218,5898
+#define HTML_CACHE_MAX_BASE_SIZE 236,6271
+#define HTML_CACHE_VARIABLE_GROWTH 237,6316
+NET_SetMemoryCacheSize(239,6397
+NET_RemoveLastMemoryCacheObject(289,7564
+NET_GetMemoryCacheSize(299,7759
+NET_GetMaxMemoryCacheSize(305,7835
+PRIVATE int net_CacheHashComp(315,8016
+PRIVATE uint32 net_CacheHashFunc(403,10246
+PRIVATE unsigned int net_MemCacheWriteReady 442,11258
+PRIVATE int net_MemCacheWrite 455,11605
+PRIVATE void net_MemCacheComplete 584,14913
+PRIVATE void net_MemCacheAbort 721,18653
+NET_MemCacheConverter 743,19059
+net_FindObjectInMemoryCache(936,25207
+NET_ChangeMemCacheLock(956,25841
+NET_RemoveURLFromMemCache(988,26489
+NET_IsURLInMemCache(1002,26798
+NET_FindURLInMemCache(1019,27248
+typedef struct _MemCacheConData _MemCacheConData1123,30635
+} MemCacheConData;MemCacheConData1127,30771
+#define CD_CUR_LIST_PTR 1129,30791
+#define CD_BYTES_WRITTEN_IN_SEGMENT 1130,30846
+#define CD_STREAM 1131,30924
+#define CE_URL_S 1133,30974
+#define CE_WINDOW_ID 1134,31017
+#define CE_FORMAT_OUT 1135,31064
+#define CE_STATUS 1136,31112
+#define CE_BYTES_RECEIVED 1137,31156
+NET_MemoryCacheLoad 1145,31346
+#define FIRST_BUFF_SIZE 1225,33513
+NET_ProcessMemoryCache 1296,35457
+NET_InterruptMemoryCache 1423,39061
+NET_DisplayMemCacheInfoAsHTML(1461,39988
+#define PUT_PART(PUT_PART1504,41041
+#define TABLE_TOP(TABLE_TOP1554,42216
+#define TABLE_BOTTOM	1560,42349
+#define TABLE_TOP(TABLE_TOP1567,42449
+#define TABLE_BOTTOM	1575,42666
+net_CloneWysiwygMemCacheEntry(1678,44711
+
+mkmessag.c,68
+#define WANT_ENUM_STRING_IDS12,294
+NET_ExplainErrorDetails 29,682
+
+mkmocha.c,244
+#define MOCHA_CACHES_WRITES 18,340
+mocha_process(24,492
+mocha_ready(46,1130
+mocha_complete(52,1240
+mocha_abort(94,2508
+NET_CreateMochaConverter(113,3007
+net_OpenMochaURL(141,3891
+net_AbortMochaURL(315,9569
+net_InterruptMocha(336,10084
+
+mknews.c,4428
+#define LIST_WANTED 89,2273
+#define ARTICLE_WANTED 90,2299
+#define CANCEL_WANTED 91,2325
+#define GROUP_WANTED 92,2351
+#define NEWS_POST 93,2377
+#define READ_NEWS_RC 94,2403
+#define NEW_GROUPS 95,2429
+#define OUTPUT_BUFFER_SIZE 105,2766
+#define NEWGROUPS_TIME_OFFSET 110,2911
+#define PUTSTRING(PUTSTRING119,3174
+#define COMPLETE_STREAM 121,3316
+#define ABORT_STREAM(ABORT_STREAM123,3441
+typedef enum _StatesEnum _StatesEnum128,3595
+} StatesEnum;StatesEnum177,4673
+typedef struct _NNTPConnection _NNTPConnection183,4760
+} NNTPConnection;NNTPConnection195,5344
+#define CD_CC_HOSTNAME 197,5363
+#define CD_CC_DEFAULT_HOST 198,5433
+#define CD_CC_POSTING_ALLOWED 199,5507
+#define CD_CC_NO_XOVER 200,5584
+#define CD_CC_SECURE 201,5651
+#define CD_CC_GROUP 202,5719
+typedef struct _NewsConData _NewsConData207,5868
+} NewsConData;NewsConData287,8434
+#define CD_NEXT_STATE 289,8450
+#define CD_NEXT_STATE_AFTER_RESPONSE	290,8507
+#define CD_TYPE_WANTED 292,8597
+#define CD_RESPONSE_CODE 293,8655
+#define CD_RESPONSE_TXT 294,8715
+#define CD_PAUSE_FOR_READ 295,8774
+#define CD_SSL_PROXY_SERVER 297,8836
+#define CD_PROXY_AUTH_REQUIRED 298,8902
+#define CD_SENT_PROXY_AUTH 299,8971
+#define CD_NEWSRC_PERFORMED 301,9037
+#define CD_STREAM 303,9104
+#define CD_CONTROL_CON 304,9157
+#define CD_DATA_BUF 306,9216
+#define CD_DATA_BUF_SIZE 307,9270
+#define CD_PATH 309,9330
+#define CD_GROUP_NAME 310,9381
+#define CD_FIRST_ART 311,9438
+#define CD_LAST_ART 312,9494
+#define CD_FIRST_POSSIBLE_ART	313,9548
+#define CD_LAST_POSSIBLE_ART	314,9614
+#define CD_NUM_WANTED	316,9679
+#define CD_NUM_LOADED	317,9731
+#define CD_USE_FANCY_NEWSGROUP_LISTING	319,9784
+#define CD_OUTPUT_BUFFER 322,9879
+#define CD_ARTICLE_NUM 324,9943
+#define CD_MESSAGE_ID 326,9999
+#define CD_AUTHOR 327,10053
+#define CD_SUBJECT 328,10103
+#define CD_THREAD_ENTRY 330,10152
+#define CD_DESTROY_GRAPH_PROGRESS 332,10210
+#define CD_ORIGINAL_CONTENT_LENGTH 334,10295
+#define CD_NEWSRC_LIST	337,10382
+#define CD_NEWSRC_LIST_INDEX	338,10436
+#define CD_NEWSRC_LIST_COUNT	339,10500
+#define CD_TCP_CON_DATA	341,10565
+#define CE_XOVER_PARSE_STATE 343,10622
+#define CD_SOME_PROTOCOL_SUCCEEDED	345,10690
+#define CE_WINDOW_ID 349,10806
+#define CE_URL_S 350,10852
+#define CE_SOCK 351,10894
+#define CE_CON_SOCK 352,10934
+#define CE_STATUS 353,10976
+#define CE_BYTES_RECEIVED 354,11016
+#define CE_FORMAT_OUT 355,11070
+PUBLIC void NET_SetNewsHost 360,11229
+CONST char * NET_GetNewsHost 381,11673
+NET_SetNumberOfNewsArticlesInListing(404,12196
+NET_SetCacheXOVER(411,12334
+PUBLIC void NET_CleanTempXOVERCache(417,12374
+net_news_response 428,12558
+net_nntp_send_ssl_proxy_request(519,15067
+nntp_process_first_ssl_proxy_header(590,17001
+nntp_process_ssl_proxy_headers(651,18530
+net_nntp_login_response 755,21496
+net_nntp_send_mode_reader 778,22122
+net_nntp_send_mode_reader_response 797,22618
+net_send_first_nntp_command 813,22973
+net_send_first_nntp_command_response 970,27159
+net_send_group_for_article 1088,30444
+net_send_group_for_article_response 1110,31044
+net_send_article_number 1123,31302
+news_generate_news_url_fn 1147,31857
+news_generate_reference_url_fn 1173,32711
+net_setup_news_stream 1186,32995
+news_generate_html_header_fn 1236,34268
+net_InitializeNewsFeData 1284,35834
+net_begin_article(1316,36519
+net_news_begin_authorize(1362,37623
+net_news_authorize_response(1439,39375
+net_news_password_response(1542,42043
+net_display_newsgroups 1568,42721
+net_newgroups_begin 1591,43272
+net_process_newgroups 1609,43715
+net_read_news_list_begin 1711,46190
+net_read_news_list 1728,46553
+net_read_xover_begin 1804,48436
+net_figure_next_chunk(1848,49580
+net_xover_send 1921,51421
+net_read_xover_response 1953,52262
+net_read_xover 1983,53152
+net_process_xover 2046,54679
+net_read_news_group 2066,55058
+net_read_news_group_response 2095,55775
+net_read_news_group_body 2121,56376
+net_send_news_post_data(2168,57505
+net_send_news_post_data_response(2222,58970
+net_check_for_message(2259,60364
+net_DisplayNewsRC(2277,60957
+net_DisplayNewsRCResponse(2353,62916
+net_NewsRCProcessPost(2412,64195
+net_cancel_done_cb 2420,64272
+net_start_cancel 2432,64659
+net_do_cancel 2447,65030
+net_parse_news_url 2700,72455
+test 2863,75749
+test2 2896,76559
+NET_IsNewsMessageURL 3004,80673
+NET_NewsLoad 3026,81173
+NET_ProcessNews 3306,87715
+NET_InterruptNews(3837,104448
+NET_CleanupNews(3854,104863
+
+mknewsgr.c,1505
+#define DYN_ARRAY_INIT_SIZE 7,120
+#define DYN_ARRAY_GROW_BY 8,150
+#define BUFFER_SIZE 10,181
+typedef struct _SubgroupList SubgroupList;SubgroupList15,342
+typedef struct _NewsGroupStruct _NewsGroupStruct17,386
+} NewsGroupStruct;NewsGroupStruct22,582
+struct _SubgroupList _SubgroupList26,630
+net_find_group_level 45,1275
+msg_count_descendants 90,2126
+msg_optimize_single_kid 109,2537
+typedef int (*msg_NewsgroupNameMapper)msg_NewsgroupNameMapper158,3610
+msg_MapNewsgroupNames 172,4160
+net_recursiveNewsGroupStore(238,6104
+NET_StoreNewsGroup(394,9445
+net_recursiveFreeNewsGroups(424,10095
+NET_FreeNewsgroups(443,10429
+net_NewsGroupsCompar(461,10737
+net_recursiveSortNewsGroups(469,10918
+NET_SortNewsgroups(506,11532
+int net_NumberOfGroupsInLevel(517,11717
+int net_recursiveDisplayNewsgroups(573,12966
+NET_DisplayNewsgroups(776,18278
+net_recursiveSaveNewsGroups(849,19993
+NET_SaveNewsgroupsToDisk(877,20567
+net_RecursiveNewsgroupsDiskRead(921,21577
+NET_ReadNewsgroupsFromDisk(1067,24358
+NET_NewsgroupsLastUpdatedTime(1132,25839
+typedef struct _NewsrcHostMap _NewsrcHostMap1154,26418
+} NewsrcHostMap;NewsrcHostMap1158,26539
+NET_RegisterNewsrcFile(1163,26607
+NET_UnregisterNewsHost(1228,28269
+NET_MapNewsrcHostToFilename(1284,29525
+#define NEWSRC_MAP_FILE_COOKIE 1320,30236
+NET_SaveNewsrcFileMappings(1325,30362
+NET_ReadNewsrcFileMappings(1375,31395
+NET_FreeNewsrcFileMappings(1447,33033
+TestNewsrcFileMappings(1463,33381
+PUBLIC char ** XP_GetNewsRCFiles(1520,35548
+
+mkparse.c,1515
+#define EXTERNAL_TYPE_URL 21,315
+#define DEEPTRACEMSG(DEEPTRACEMSG24,422
+#define HEX_ESCAPE 26,448
+NET_AddExternalURLType(40,758
+NET_DelExternalURLType(64,1225
+net_CheckForExternalURLType(84,1651
+net_ReduceURL 111,2276
+NET_MakeAbsoluteURL(187,3902
+MODULE_PRIVATE int NET_MonthNo 503,12496
+NET_ParseDate(543,13522
+NET_ParseURL 662,16353
+#define MAXHOSTNAMELEN 727,17680
+#define IS_OK(IS_OK892,21759
+NET_Escape 895,21836
+NET_EscapedSize 939,22939
+#define UNHEX(UNHEX957,23358
+NET_UnEscapeCnt 963,23530
+NET_IsHTTP_URL(997,24173
+int NET_MakeRelativeURL(1015,24808
+char * NET_MakeTargetURL(1265,31722
+NET_UnEscape(1357,34012
+#define MAX_200_FIELDS 1367,34201
+#define ARRAY_GROWTH_RATE 1368,34227
+#define UNKNOWN_TOKEN	1370,34257
+#define FILENAME_TOKEN	1371,34283
+#define CONTENT_LENGTH_TOKEN	1372,34310
+#define LAST_MODIFIED_TOKEN	1373,34341
+#define CONTENT_TYPE_TOKEN	1374,34372
+#define FILE_TYPE_TOKEN	1375,34402
+#define PERMISSIONS_TOKEN	1376,34430
+struct _HTTPIndexParserData _HTTPIndexParserData1378,34460
+NET_HTTPIndexParserInit(1390,34807
+strchr_in_buf(1404,35034
+net_get_next_http_index_token(1418,35301
+net_parse_http_index_200_line(1463,35963
+net_parse_http_index_201_line(1509,37005
+NET_HTTPIndexParserPut(1625,39781
+NET_HTTPIndexParserSort(1709,41500
+NET_HTTPIndexParserGetTextMessage(1716,41621
+NET_HTTPIndexParserGetHTMLMessage(1722,41743
+NET_HTTPIndexParserGetFileNum(1728,41878
+NET_HTTPIndexParserGetTotalFiles(1737,42069
+NET_HTTPIndexParserFree(1743,42186
+
+mkpop3.c,2668
+#define POP3_PORT 53,1346
+#define OUTPUT_BUFFER_SIZE 54,1398
+} Pop3StatesEnum;Pop3StatesEnum126,3396
+#define KEEP	134,3511
+#define DELETE_CHAR	135,3577
+typedef struct Pop3AllocedString Pop3AllocedString137,3642
+} Pop3AllocedString;Pop3AllocedString142,3858
+typedef struct Pop3UidlHost Pop3UidlHost144,3880
+} Pop3UidlHost;Pop3UidlHost150,4018
+typedef struct Pop3MsgInfo Pop3MsgInfo153,4036
+} Pop3MsgInfo;Pop3MsgInfo156,4093
+typedef struct _Pop3ConData _Pop3ConData158,4109
+} Pop3ConData;Pop3ConData227,6874
+NET_LeavePopMailOnServer(234,6906
+NET_SetPopUsername(240,6995
+NET_GetPopUsername(262,7784
+#define SECNAV_MungeString 287,9125
+#define SECNAV_UnMungeString 288,9166
+static unsigned char * SECNAV_MungeString(290,9212
+static unsigned char * SECNAV_UnMungeString(301,9379
+net_set_pop3_password(315,9606
+net_get_pop3_password(322,9782
+NET_SetPopPassword(328,9903
+NET_GetPopPassword(334,10013
+NET_SetPopPassword2(340,10089
+NET_SetPopMsgSizeLimit(350,10282
+NET_GetPopMsgSizeLimit(359,10430
+uidl_cmp 366,10506
+put_hash(374,10649
+PRIVATE Pop3UidlHost* net_pop3_load_state(391,11003
+hash_empty_mapper(475,13254
+hash_empty(483,13411
+net_pop3_write_mapper(492,13553
+net_pop3_write_state(504,13879
+net_pop3_free_state(527,14522
+net_pop3_free_msg_info(552,14913
+net_pop3_wait_for_start_of_connection_response(572,15457
+net_pop3_wait_for_response(630,16833
+net_pop3_error(703,18601
+net_pop3_send_command(721,19015
+net_pop3_send_auth(750,19615
+net_pop3_auth_response(766,20005
+net_pop3_auth_login(832,21330
+net_pop3_auth_login_response(849,21734
+net_pop3_auth_skey(872,22246
+net_pop3_auth_skey_response(888,22646
+net_pop3_auth_skey_sequence_n_seed(912,23215
+net_pop3_crunch_skey_password(943,24021
+net_pop3_send_username(978,24754
+net_pop3_send_password(1044,26261
+net_pop3_send_stat(1101,27633
+net_pop3_get_stat(1147,29012
+net_pop3_send_list(1217,30920
+net_pop3_get_list(1232,31397
+net_pop3_check_for_hash_messages_marked_delete(1335,34020
+send_fake_uidl_top(1351,34503
+start_use_top_for_fake_uidl(1366,34874
+get_fake_uidl_top(1384,35375
+net_pop3_send_xtnd_xlst_msgid(1551,40119
+net_pop3_get_xtnd_xlst_msgid(1577,40770
+net_pop3_send_uidl_list(1667,43016
+net_pop3_get_uidl_list(1683,43396
+net_pop3_get_msg(1805,46529
+net_pop3_send_top(1927,50165
+net_pop3_send_xsender(1957,50894
+net_pop3_xsender_response(1971,51231
+net_pop3_send_retr(1990,51654
+net_pop3_retr_response(2047,53157
+net_pop3_top_response(2195,57279
+net_pop3_retr_handle_line(2240,58571
+net_pop3_send_dele(2263,59085
+net_pop3_dele_response(2282,59510
+NET_Pop3Load 2302,59860
+NET_ProcessPop3 2367,61472
+NET_InterruptPop3(2844,75803
+
+mkremote.c,27
+NET_RemoteHostLoad 21,393
+
+mksmtp.c,1969
+#define SMTP_PORT 42,1015
+#define OUTPUT_BUFFER_SIZE 44,1037
+#define SMTP_RESPONSE 48,1126
+#define SMTP_START_CONNECT 49,1164
+#define SMTP_FINISH_CONNECT 50,1202
+#define SMTP_LOGIN_RESPONSE 51,1240
+#define SMTP_SEND_HELO_RESPONSE 52,1278
+#define SMTP_SEND_VRFY_RESPONSE 53,1316
+#define SMTP_SEND_MAIL_RESPONSE 54,1354
+#define SMTP_SEND_RCPT_RESPONSE 55,1392
+#define SMTP_SEND_DATA_RESPONSE	56,1430
+#define SMTP_SEND_POST_DATA	57,1468
+#define SMTP_SEND_MESSAGE_RESPONSE 58,1503
+#define SMTP_DONE 59,1542
+#define SMTP_ERROR_DONE 60,1581
+#define SMTP_FREE 61,1620
+typedef struct _SMTPConData _SMTPConData67,1754
+} SMTPConData;SMTPConData92,2573
+#define CD_NEXT_STATE 95,2630
+#define CD_NEXT_STATE_AFTER_RESPONSE 96,2681
+#define CD_PAUSE_FOR_READ 97,2749
+#define CD_RESPONSE_TXT	98,2804
+#define CD_RESPONSE_CODE 99,2854
+#define CD_DATA_BUFFER	100,2910
+#define CD_DATA_BUFFER_SIZE	101,2954
+#define CD_ADDRESS_COPY	102,3007
+#define CD_MAIL_TO_ADDRESS_PTR 103,3056
+#define CD_MAIL_TO_ADDRESSES_LEFT 104,3118
+#define CD_TCP_CON_DATA	105,3183
+#define CD_CONTINUATION_RESPONSE	106,3229
+#define CD_HOSTNAME	107,3290
+#define CD_VERIFY_ADDRESS	108,3331
+#define CD_TOTAL_AMT_WRITTEN 109,3380
+#define CD_TOTAL_MESSAGE_SIZE 110,3440
+#define CE_URL_S 112,3502
+#define CE_SOCK 113,3547
+#define CE_CON_SOCK 114,3593
+#define CE_STATUS 115,3641
+#define CE_WINDOW_ID 116,3687
+#define CE_BYTES_RECEIVED 117,3736
+#define CE_FORMAT_OUT 118,3790
+NET_MailRelayHost(123,3901
+NET_SetMailRelayHost(132,4108
+net_smtp_response 154,4674
+net_smtp_login_response(221,6492
+net_smtp_send_helo_response(246,7146
+net_smtp_send_vrfy_response(294,8360
+net_smtp_send_mail_response(311,8697
+net_smtp_send_rcpt_response(343,9631
+net_smtp_send_data_response(379,10507
+net_smtp_send_post_data(461,12643
+net_smtp_send_message_response(533,14765
+NET_MailtoLoad 553,15225
+NET_ProcessMailto 868,23385
+NET_InterruptMailto(1046,28850
+NET_CleanupMailto(1059,29151
+
+mksockrw.c,435
+#define TURN_SECURITY_ON19,357
+#  define BYTE_ORDER 33,674
+#  define MAXDNAME 34,706
+typedef unsigned int intptr_t;intptr_t63,1314
+char *GetPageAlignedBuffer(65,1346
+NET_ChangeSocketBufferSize 109,2198
+PUBLIC int NET_HTTPNetWrite 141,2872
+PUBLIC int32 NET_BlockingWrite 159,3295
+NET_DebugNetWrite 193,4100
+NET_DebugNetRead 212,4517
+NET_HTTPNetRead 240,5138
+#define LINE_BUFFER_SIZE 278,6146
+NET_BufferedReadLine 281,6196
+
+mksort.c,220
+#define CHUNK_SIZE 4,42
+NET_SortInit 12,137
+NET_SortAdd 32,485
+NET_SortInsert(58,1085
+NET_DoSort(107,2126
+NET_SortUnloadNext(115,2343
+NET_SortRetrieveNumber(124,2526
+NET_SortCount(133,2708
+NET_SortFree(139,2812
+
+mkstream.c,893
+typedef struct _net_ConverterStruct _net_ConverterStruct28,490
+} net_ConverterStruct;net_ConverterStruct43,1155
+#define NET_MIME_EXACT_MATCH 48,1314
+#define NET_MIME_PARTIAL_MATCH 49,1348
+#define NET_WILDCARD_MATCH 50,1382
+net_compare_mime_types(63,1736
+NET_StreamBuilder 90,2407
+XP_ListNextPresentationType(235,7117
+XP_ListNextEncodingType(263,7882
+net_RegisterGenericConverterOrDecoder(285,8298
+struct net_encoding_converternet_encoding_converter413,12478
+NET_RegisterEncodingConverter(429,12825
+NET_RegisterAllEncodingConverters 478,14404
+NET_RegisterContentTypeConverter 530,15703
+RealNET_RegisterContentTypeConverter 540,16072
+NET_RegisterExternalViewerCommand(575,17391
+NET_ClearExternalViewerConverters(609,18379
+NET_ClearAllConverters(637,19105
+NET_RegisterExternalConverterCommand(681,20398
+NET_RegisterExternalDecoderCommand 709,21228
+NET_NewStream 741,22030
+
+mkutils.c,1292
+NET_Progress(40,734
+NET_AssembleAllFilesInDirectory(46,826
+#define	INITIAL_ARRAY_SIZE 56,1089
+#define EXPAND_ARRAY_BY 57,1119
+NET_PublishFiles(145,3429
+NET_MakeUploadURL(177,4328
+NET_ParseUploadURL(239,6064
+NET_GetUniqueIdString(325,8381
+#define BYTES_OF_RANDOMNESS 327,8411
+NET_UUEncode(360,9366
+NET_RemoveQuotes(415,10700
+#define POST_DATA_BUFFER_SIZE 433,10923
+struct WritePostDataData WritePostDataData435,10959
+net_free_write_post_data_object(446,11161
+NET_WritePostData(465,11509
+NET_ParseMimeHeader(809,20304
+#define DEFAULT_AUTO_SCROLL_BUFFER 948,24064
+# define MSG_PlainFont 1321,35317
+# define MSG_BoldFont 1322,35347
+# define MSG_ItalicFont 1323,35377
+# define MSG_BoldItalicFont 1324,35407
+# define MSG_NormalSize 1325,35437
+# define MSG_Bigger 1326,35467
+# define MSG_Smaller 1327,35497
+#define AKBAR1334,35691
+NET_ScanForURLs(1337,35717
+NET_IsURLSecure(1610,42483
+NET_EscapeHTML(1639,43179
+NET_SpaceToPlus(1685,43875
+NET_ContainsHTML(1705,44126
+NET_AddLOSubmitDataToURLStruct(1760,45601
+#define CONTENT_DISPOSITION 1937,50199
+#define PLUS_FILENAME 1938,50269
+#define CONTENT_TYPE_HEADER 1939,50309
+NET_AddCoordinatesToURLStruct(2296,59714
+NET_ToggleTrace(2330,60513
+NET_f_a_c 2343,60729
+NET_URL_Type 2355,60924
+NET_PlusToSpace(2479,63978
+
+txview.c,31
+NET_PlainTextConverter 12,169
+
+unix-dns.c,2389
+# define getdtablehi(getdtablehi95,3299
+# define getdtablesize(getdtablesize104,3627
+# define MAXHOSTNAMELEN 118,4091
+#define ASSERT(ASSERT121,4126
+# define FLUSH(FLUSH124,4189
+# define FLUSH(FLUSH126,4242
+#define SET_BUFFERING(SET_BUFFERING134,4554
+#  define RANDOM 140,4765
+#  define SRANDOM 141,4788
+#  define RANDOM 143,4850
+#  define SRANDOM 144,4875
+#define LOG_PROCn(LOG_PROCn152,5090
+# define LOG_PROC3(LOG_PROC3159,5305
+# define LOG_PROC3(LOG_PROC3161,5389
+# define LOG_PROC2(LOG_PROC2165,5460
+# define LOG_PROC2(LOG_PROC2168,5570
+# define LOG_PROC1(LOG_PROC1172,5641
+# define LOG_PROC1(LOG_PROC1175,5751
+#define DNS_STATUS_GETHOSTBYNAME_OK	182,5910
+#define DNS_STATUS_LOOKUP_OK	183,5971
+#define DNS_STATUS_KILLED_OK	184,6026
+#define DNS_STATUS_LOOKUP_STARTED	185,6081
+#define DNS_STATUS_GETHOSTBYNAME_FAILED 186,6140
+#define DNS_STATUS_LOOKUP_FAILED	187,6205
+#define DNS_STATUS_LOOKUP_NOT_STARTED	188,6263
+#define DNS_STATUS_KILL_FAILED	189,6326
+#define DNS_STATUS_UNIMPLEMENTED	190,6383
+#define DNS_STATUS_INTERNAL_ERROR	191,6448
+#define DNS_PROC2_NAME 193,6511
+string_trim(197,6565
+blocking_gethostbyname 216,6957
+typedef struct dns_lookup dns_lookup280,8377
+} dns_lookup;dns_lookup286,8489
+proc2_queue_length(293,8579
+new_lookup_object 303,8728
+free_lookup_object 337,9581
+spawn_lookup_process 394,10744
+handle_subproc_response(483,12739
+cancel_lookup(532,13774
+dns_socks_kludge(565,14430
+dns_signal_handler_dfl 592,15204
+dns_signal_handler_ign 603,15435
+dns_catch_signals(615,15695
+# define SIG_ERR 618,15737
+# define CATCH_SIGNAL_DFL(CATCH_SIGNAL_DFL625,15874
+# define CATCH_SIGNAL_IGN(CATCH_SIGNAL_IGN628,16002
+# define CATCH_SIGNAL_DFL(CATCH_SIGNAL_DFL632,16162
+# define CATCH_SIGNAL_IGN(CATCH_SIGNAL_IGN634,16256
+dns_driver(684,17470
+dns_driver_init(695,17747
+dns_driver_main_loop(776,19792
+typedef struct queued_response queued_response930,23408
+proc1_queue_length(941,23654
+DNS_SpawnProcess(957,24101
+new_queued_response 1051,26361
+free_queued_response 1077,26984
+handle_async_response(1117,28014
+DNS_AsyncLookupHost(1197,29878
+DNS_AbortHostLookup(1308,33132
+DNS_ServiceProcess(1415,36364
+print_fdset(1475,37722
+print_fd(1492,37969
+print_fdsets(1533,38996
+typedef struct test_id_cons test_id_cons1565,39700
+} test_id_cons;test_id_cons1569,39785
+test_cb 1573,39849
+main 1600,40412

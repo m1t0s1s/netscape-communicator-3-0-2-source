@@ -1,0 +1,29 @@
+
+java_stub.c,119
+OpenCode(95,3149
+ClassDefHook(204,5436
+extern JAVA_PUBLIC_API(209,5494
+WriteStandardOut(227,5759
+WinMain(234,5885
+
+javai.c,575
+static void MonitorTeardown(91,2224
+static void MonitorSetup(95,2293
+static void add_user_prop(116,2872
+commandLineArguments(158,3828
+atomi(178,4411
+makeTTYsane(211,5107
+#define MINHEAPSIZE 235,5770
+#define MAXHEAPSIZE 236,5817
+#define MINHEAPSIZE 238,5855
+#define MAXHEAPSIZE 239,5902
+#define PROCSTACKSIZE 246,6097
+void _acrtused2(282,7028
+#define INITBUFSIZE 287,7134
+#define INITNARGS 288,7159
+static int start_exec_env(295,7343
+set_argfile_opts(564,15358
+JAVA_PUBLIC_API(670,17858
+Execute(778,20606
+static void usage(827,21637
+void fakeref(863,23635

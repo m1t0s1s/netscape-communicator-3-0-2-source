@@ -1,0 +1,468 @@
+
+bkmks.c,8682
+#define MIN(MIN12,206
+#define INTL_SORT 17,358
+#define SECONDS_PER_DAY	70,2051
+#define BMLIST_COOKIE	71,2083
+#define BM_ADDR_LIST_COOKIE	72,2145
+#define READ_BUFFER_SIZE	73,2215
+#define DEF_NAME	74,2246
+#define FREEIF(FREEIF79,2365
+#define BM_ATTR_FOLDED	81,2439
+#define BM_ATTR_SELECTED	82,2470
+#define BM_ATTR_ISNEW	83,2502
+#define BM_ATTR_FINDAFF	84,2532
+#define BM_ATTR_HASALIASES	87,2672
+#define BM_ATTR_MARKED	91,2872
+#define BM_ATTR_CHECKING	93,2969
+#define BM_ISHEADER(BM_ISHEADER97,3077
+#define BM_ISURL(BM_ISURL100,3164
+#define BM_ISADDRESS(BM_ISADDRESS103,3245
+#define BM_ISSEPARATOR(BM_ISSEPARATOR106,3334
+#define BM_ISALIAS(BM_ISALIAS109,3427
+#define BM_ISFOLDED(BM_ISFOLDED112,3512
+#define BM_ISSELECTED(BM_ISSELECTED115,3599
+#define BM_SETFLAG(BM_SETFLAG118,3690
+#define BM_CLEARFLAG(BM_CLEARFLAG121,3778
+struct BM_Entry_structBM_Entry_struct125,3870
+typedef struct BM_Frame BM_Frame160,4706
+} BM_Frame;BM_Frame217,6568
+#define CHKCONTEXT(CHKCONTEXT220,6582
+#define CHKCONTEXTVOID(CHKCONTEXTVOID228,6941
+GETFRAME(240,7450
+BM_IsHeader(265,8248
+BM_IsUrl(271,8319
+BM_IsAddress(277,8384
+BM_IsSeparator(283,8457
+BM_IsAlias(289,8534
+BM_IsFolded(295,8603
+BM_IsSelected(301,8674
+BM_GetChangedState(308,8748
+BM_SetFEData(329,9164
+BM_GetFEData(337,9302
+bm_NewEntry(347,9477
+BM_NewHeader(358,9727
+BM_NewUrl(369,9954
+bm_NewAddress(391,10500
+bm_NewSeparator(407,10886
+bm_NewAlias(414,11013
+BM_GetRoot(426,11254
+bm_EachEntryDo_1(448,11890
+bm_EachSelectedEntryDo_1(472,12298
+bm_EachProperSelectedEntryDo_1(497,12752
+BM_EachEntryDo(547,13884
+BM_EachSelectedEntryDo(554,14052
+BM_EachProperSelectedEntryDo(561,14236
+bm_ClearMarkEverywhere_1(572,14485
+bm_ClearMarkEverywhere(579,14620
+bm_GetContextForEntry(586,14746
+BM_GetType(600,15027
+BM_GetName(609,15188
+BM_GetAddress(632,15616
+BM_GetDescription(654,16104
+BM_GetNickName(670,16347
+bm_CountAliases_1(679,16576
+BM_CountAliases(693,16888
+BM_PrettyLastVisitedDate(711,17290
+BM_PrettyAddedOnDate(753,18207
+BM_PrettyAliasCount(769,18477
+BM_GetChildren(794,19131
+BM_GetNext(801,19252
+BM_GetParent(809,19353
+BM_HasNext(817,19456
+BM_HasPrev(825,19566
+bm_flush_updates(838,19825
+bm_start_batch(850,20092
+bm_end_batch(859,20267
+bm_refresh(872,20534
+bm_refreshing_all(900,21418
+bm_entry_changed_2(910,21607
+bm_entry_changed_1(926,22117
+bm_entry_changed(938,22451
+bm_save_timer(949,22699
+bm_SetModified(960,22983
+typedef struct bm_setheader_info bm_setheader_info976,23369
+} bm_setheader_info;bm_setheader_info980,23462
+bm_setheader_freeit(983,23496
+bm_SetMenuOrAddHeader(991,23635
+int bm_setheader_undo(1019,24518
+BM_GetMenuHeader(1027,24706
+void BM_SetMenuHeader(1034,24868
+BM_GetAddHeader(1041,24991
+void BM_SetAddHeader(1048,25151
+typedef struct bm_copy_string_info bm_copy_string_info1054,25262
+} bm_copy_string_info;bm_copy_string_info1059,25372
+bm_copy_string_freeit(1063,25409
+bm_CopyStringWithUndo(1073,25612
+bm_copy_string_undo(1100,26323
+BM_SetName(1117,26765
+BM_SetAddress(1143,27376
+BM_SetDescription(1172,28163
+BM_SetNickName(1202,28916
+BM_CancelEdit(1263,30570
+bm_CountChildren(1282,31103
+bm_WidestEntry_1(1309,31579
+BM_WidestEntry(1348,32447
+bm_SyncCount(1360,32669
+bm_SyncSelection_1(1371,32836
+bm_SyncSelection(1404,33567
+bm_GetIndexNum(1417,33895
+bm_GetUnfoldedIndexNum(1450,34574
+bm_FindItemStub(1477,35171
+bm_GetDepth(1501,35671
+bm_simple_freeit(1521,35989
+typedef struct bm_delete_child_info bm_delete_child_info1527,36047
+} bm_delete_child_info;bm_delete_child_info1531,36146
+bm_delete_child_doit(1537,36286
+bm_LogDeleteChild(1546,36486
+bm_AppendChildToHeader(1573,37223
+BM_AppendToHeader(1604,37889
+bm_PrependChildToHeader(1618,38272
+bm_SortAddressBook(1648,38935
+bm_RealEntry(1690,39944
+bm_AddChildToHeaderSorted(1700,40162
+bm_get_previous(1754,41785
+typedef struct bm_add_child_info bm_add_child_info1775,42113
+} bm_add_child_info;bm_add_child_info1780,42231
+bm_add_child_doit(1784,42265
+bm_RemoveChildFromHeader(1799,42690
+#define BM_HEADER_BEGIN	1856,44023
+#define BM_HEADER_END	1857,44055
+#define BM_UNKNOWN	1858,44085
+bm_tokenize_line(1861,44128
+bm_is_folded(1884,44868
+bm_addition_date(1892,45026
+bm_last_date(1920,45525
+typedef struct bm_alias_info bm_alias_info1945,45979
+} bm_alias_info;bm_alias_info1949,46160
+bm_find_alias_info(1953,46202
+bm_find_writealias_info(1972,46691
+bm_free_alias_info(1989,47095
+bm_string_cmp 2001,47324
+bm_clear_alias_info(2008,47468
+bm_check_read_alias(2027,48062
+bm_check_nickname(2091,49753
+bm_read_url(2109,50045
+bm_read_address(2181,51807
+bm_read_header(2235,52900
+bm_read_description(2288,53958
+bm_GetNextSpanningWrapping(2351,55274
+bm_StringMatches(2367,55585
+bm_IsMatch(2388,56195
+bm_DoFindBookmark_1(2407,56770
+bm_ReadFromHTML(2419,57120
+bm_write_ok(2512,59259
+#define WRITE(WRITE2520,59430
+bm_write_alias_info(2524,59529
+bm_write_nickname(2545,60099
+bm_write_html_header(2560,60457
+bm_write_separator(2647,62383
+bm_write_url_or_address(2661,62688
+bm_WriteAsHTML(2747,64613
+bm_ClearSelection(2787,65551
+bm_SelectAll(2819,66399
+BM_SelectAll(2853,67038
+bm_TellGoingAway(2869,67284
+bm_ShallowFreeEntry(2905,68361
+bm_ReallyFreeEntry(2932,68853
+typedef struct bm_free_info bm_free_info2949,69192
+} bm_free_info;bm_free_info2952,69265
+bm_cancel_free(2955,69293
+bm_free_freeit(2964,69430
+BM_FreeEntry(2978,69900
+BM_InitializeBookmarksContext(3004,70417
+BM_CleanupBookmarksContext(3032,71230
+BM_Modified(3069,72088
+BM_UpdateBookmarksTime(3079,72309
+BM_GetCount(3116,73332
+BM_GetVisibleCount(3130,73641
+bm_InsertItemAfter(3146,73894
+BM_InsertItemAfter(3197,75069
+BM_InsertItemInHeaderOrAfterItem(3211,75540
+void remove_to(3227,75971
+bm_get_max_depth_1(3244,76268
+BM_GetMaxDepth(3257,76549
+BM_IsDragEffectBox(3270,76788
+BM_DoDrop(3288,77174
+typedef struct bm_goingaway_info bm_goingaway_info3345,78805
+} bm_goingaway_info;bm_goingaway_info3350,78918
+bm_subtract_alias_for(3354,78953
+bm_delete_alias_for(3364,79192
+bm_check_dangling_aliases(3376,79478
+bm_delete(3416,80622
+bm_copy(3447,81363
+bm_cut(3459,81581
+bm_paste(3467,81668
+BM_GetIndex(3485,82097
+BM_GetUnfoldedIndex(3500,82416
+BM_IsDescendent(3518,82791
+BM_GetDepth(3534,83167
+bm_AtIndex(3546,83434
+BM_AtIndex(3586,84104
+bm_GetUnfoldedIndex(3644,85404
+BM_AtUnfoldedIndex(3675,85943
+bm_fold_header_all(3686,86156
+BM_FoldHeader(3708,86756
+BM_ClearAllSelection(3769,87905
+BM_ClearAllChildSelection(3785,88319
+BM_SelectItem(3814,89120
+bm_validate_selected_item(3846,89910
+bm_select_range(3863,90326
+BM_SelectRangeTo(3881,90702
+BM_ToggleItem(3925,92124
+bm_ConfirmSave(3940,92448
+BM_GetFileName(3956,92689
+bm_insert_bogus_aliases(3965,92800
+bm_resort_headers(3986,93468
+BM_ReadBookmarksFromDisk(4014,94113
+BM_SaveBookmarks(4095,95994
+bm_FirstSelectedItem_1(4273,101177
+BM_FirstSelectedItem(4300,101635
+bm_InsertBySelection(4307,101770
+bm_BeginEditNewHeader(4345,103010
+bm_BeginEditNewUrl(4376,103708
+BM_GotoBookmark(4413,104635
+bm_BeginFindBookmark(4437,105085
+bm_SelectAliases(4456,105570
+BM_SelectAliases(4474,106076
+bm_CloseLastFind_1(4487,106372
+bm_CloseLastFind(4503,106829
+bm_CancelLastFind(4516,107211
+bm_OpenNewFind(4526,107420
+BM_DoFindBookmark(4546,107903
+bm_parse_mailto(4583,108867
+BM_FindAddress(4614,109643
+BM_EditAddress(4642,110272
+#define TEXT_INDENT 4721,112835
+bm_measure_URL(4743,113390
+bm_measure_Alias(4788,114368
+bm_measure_Separator(4813,114801
+bm_measure_Header(4859,115815
+bm_write_Separator(4922,117194
+bm_write_URL(4959,117961
+bm_write_Header(5054,119947
+bm_read_Separator(5149,121889
+bm_read_url_long(5179,122532
+bm_read_header_long(5252,124197
+bm_measure(5353,126700
+bm_write(5392,127577
+BM_ConvertSelectionsToBlock(5436,128589
+BM_InsertBlockAt(5495,129913
+bm_make_alias(5611,132685
+BM_MakeAliases(5632,133085
+BM_GetAliasOriginal(5643,133296
+bm_SelectionIsContiguous_1(5651,133447
+bm_SelectionIsContiguous(5672,133973
+XP_Bool BM_FindCommandStatus(5683,134310
+bm_open_file(5778,136458
+bm_import_file(5788,136630
+bm_save_as_file(5853,138306
+bm_comparenames(5863,138470
+bm_SortSelected_1(5874,138715
+bm_SortSelected(5939,140350
+bm_append_fulladdress_string(5952,140688
+bm_append_address_string(5969,141229
+BM_GetFullAddress(5995,142089
+bm_ComposeMessageToSelected(6003,142254
+BM_ExpandHeaderString(6029,142861
+void BM_ObeyCommand(6117,145127
+bm_validate_entry(6268,148191
+bm_urlcheck_finished(6283,148498
+bm_urlcheck_start(6356,150922
+bm_start_whats_changed_1(6386,151571
+bm_clear_check_attr(6406,152183
+BM_StartWhatsChanged(6413,152306
+BM_CancelWhatsChanged(6458,153695
+void BM_ResetUndo(6464,153786
+
+bkmutils.c,372
+#define TEXT_INDENT 8,153
+#define SEPATATOR_COUNT 9,175
+hot_measure_URL(29,677
+hot_measure_Header(84,1954
+hot_measure_Separator(157,3629
+hot_write_URL(189,4226
+hot_write_Separator(274,6242
+hot_write_Header(318,7125
+hot_read_URL(420,9570
+hot_read_Separator(495,11464
+hot_read_Header(532,12286
+HOT_ConvertSelectionsToBlock(642,15370
+HOT_InsertBlockAt(776,18963
+
+glhist.c,837
+#define SYNC_RATE 28,683
+typedef struct _gh_HistEntry _gh_HistEntry30,741
+} gh_HistEntry;gh_HistEntry33,830
+#define COPY_INT32(COPY_INT3240,941
+#define COPY_INT32(COPY_INT3242,1008
+GH_SetGlobalHistoryTimeout(53,1391
+gh_set_hash_options(59,1516
+gh_open_database(71,1746
+#define BUFF_SIZE 115,2736
+GH_CheckGlobalHistory(176,4250
+GH_InitGlobalHistory(228,5126
+gh_RemoveDatabase(234,5192
+GH_UpdateGlobalHistory(251,5518
+#define MAX_HIST_DBT_SIZE 319,7161
+gh_HistDBTDup(322,7207
+gh_FreeHistDBTdata(344,7517
+GH_CollectGarbage(356,7721
+#define OLD_ENTRY_ARRAY_SIZE 358,7747
+GH_SaveGlobalHistory(406,8871
+GH_FreeGlobalHistory(429,9266
+GH_ClearGlobalHistory(446,9497
+NET_DisplayGlobalHistoryInfoAsHTML(482,10189
+#define PUT_PART(PUT_PART518,10896
+#define TABLE_TOP(TABLE_TOP545,11560
+#define TABLE_BOTTOM	551,11693
+
+hotlist.c,1241
+#define DEF_NAME 11,213
+HOT_GetHotlistList(36,716
+HOT_SetModified(46,942
+hot_FindItemStub(52,1021
+HOT_UpdateHotlistTime(87,1734
+HOT_CreateEntry(105,2152
+HOT_FreeEntry(138,2911
+HOT_ChangeEntryType(169,3634
+HOT_CopyEntry(192,4024
+HOT_FoldHeader(210,4361
+hot_FindItemsParent(223,4645
+HOT_InsertItemBefore(260,5340
+HOT_InsertItemAfter(311,6756
+HOT_InsertItemInHeaderOrAfterItem(358,8165
+HOT_RemoveItem(385,8832
+HOT_RemoveItemFromList(409,9254
+hot_GetIndexNum(428,9569
+HOT_GetIndex(457,10111
+hot_GetUnfoldedIndexNum(468,10268
+HOT_GetUnfoldedIndex(498,10938
+HOT_IsDescendent(514,11248
+hot_SearchHotlistStub(527,11536
+HOT_SearchHotlist(585,13000
+hot_GetObjDepth(603,13337
+HOT_GetDepth(632,13939
+hot_GetIndexOf(643,14102
+HOT_IndexOf(672,14711
+hot_GetUnfoldedIndexOf(683,14912
+HOT_UnfoldedIndexOf(712,15540
+hot_FindLastItem(724,15777
+HOT_MoveObjectUp(739,16049
+HOT_ObjectCanGoUp(810,17742
+HOT_MoveObjectDown(832,18059
+HOT_ObjectCanGoDown(924,20314
+#define HOTLIST_COOKIE 955,20929
+#define READ_BUFFER_SIZE 957,20991
+hot_ReadSaveList(960,21035
+HOT_ReadHotlistFromDisk(1205,26615
+hot_PrintList(1238,27317
+HOT_Modified 1338,29976
+HOT_SaveHotlist(1350,30178
+HOT_GetHotlist 1409,31562
+HOT_FreeHotlist 1429,31928
+
+mime.c,286
+#define mime_enc_7bit 18,357
+#define mime_enc_8bit 19,381
+#define mime_enc_qp 20,405
+#define mime_enc_b64 21,429
+MIME_BuildMailtoURLAddress(28,552
+MIME_BuildNewspostURLAddress(45,818
+MIME_MakeFromField 70,1522
+MISC_ValidateSignature 79,1681
+MISC_ValidateReturnAddress 135,2967
+
+shist.c,901
+SHIST_FreeHistoryEntry 41,968
+SHIST_CreateHistoryEntry 95,2430
+SHIST_CreateURLStructFromHistoryEntry(153,4339
+SHIST_CreateWysiwygURLStruct(196,5809
+BM_Entry* SHIST_CreateHotlistStructFromHistoryEntry(213,6159
+shist_update_FE(235,6703
+SHIST_InitSession(316,8259
+SHIST_EndSession(349,8893
+SHIST_CopySession(369,9444
+SHIST_AddDocument(467,12868
+SHIST_DumpHistory(670,19859
+SHIST_GetPrevious(703,20612
+SHIST_GetCurrent(713,20882
+SHIST_SetTitleOfCurrentDoc(725,21023
+SHIST_SetCurrentDocFormListData(736,21197
+SHIST_SetCurrentDocEmbedListData(747,21399
+SHIST_SetCurrentDocGridData(758,21605
+SHIST_SetCurrentDocWindowData(769,21799
+SHIST_SetPositionOfCurrentDoc(782,22067
+SHIST_GetNext(817,22976
+SHIST_CanGoBack(835,23406
+SHIST_CanGoForward(871,24088
+SHIST_GetEntry(911,24954
+SHIST_GetIndex(923,25220
+SHIST_GetObjectNum(929,25362
+SHIST_SetCurrent(938,25570
+SHIST_GetList(954,25834
+
+undo.c,553
+} undo_event_type;undo_event_type17,331
+typedef struct undo_event undo_event19,351
+struct UndoState UndoState29,539
+undo_check_integrity(46,780
+#define undo_check_integrity(undo_check_integrity72,1315
+UNDO_Create(78,1384
+undo_free_list(90,1608
+UNDO_Destroy(108,2011
+UNDO_DiscardAll(118,2197
+undo_log(128,2404
+UNDO_LogEvent(163,3127
+UNDO_StartBatch(187,3641
+UNDO_EndBatch(199,3810
+undo_doone(265,5399
+undo_doit(298,5975
+UNDO_DoUndo(321,6453
+UNDO_DoRedo(334,6691
+undo_has_event(349,7072
+UNDO_CanUndo(362,7286
+UNDO_CanRedo(368,7370
+
+htmldlgs.c,1237
+# define PORT_Assert	26,473
+# define PORT_Alloc	27,505
+# define PORT_Free	28,535
+# define PORT_Memset	29,563
+# define PORT_Memcpy	30,595
+# define PORT_Strchr	31,627
+# define PORT_Strcmp	32,659
+# define PORT_Strlen	33,691
+# define PORT_Strcasecmp	34,723
+# define PORT_SetError	36,763
+# define SEC_ERROR_NO_MEMORY 38,800
+# define SECSuccess 39,832
+# define SECFailure 40,855
+# define SECStatus 41,878
+PORT_ZAlloc(44,916
+PORT_NewArena(57,1149
+PORT_FreeArena(70,1402
+PORT_ArenaAlloc(77,1522
+PORT_ArenaZAlloc(90,1723
+PORT_ArenaGrow(105,1964
+} deleteWindowCBArg;deleteWindowCBArg169,3835
+deleteWindow(172,3869
+putStringToStream(190,4183
+XP_PutDialogStringsToStream(287,5984
+XP_PutDialogStringsTagToStream(512,11101
+cgi_ConvertStringToArgVec(530,11470
+XP_FindValueInArgs(626,13296
+XP_HandleHTMLDialog(637,13485
+XP_MakeHTMLDialog(732,15934
+XP_MakeHTMLDialogWithChrome(803,18866
+XP_RedrawRawHTMLDialog(998,23660
+XP_MakeRawHTMLDialog(1051,24907
+displayPanelCB(1131,26953
+displayPanel(1284,30845
+XP_MakeHTMLPanel(1290,30948
+XP_HandleHTMLPanel(1347,32337
+XP_GetDialogStrings(1485,35751
+XP_SetDialogString(1572,38065
+XP_CopyDialogString(1589,38436
+XP_FreeDialogStrings(1612,38988
+XP_MakeHTMLAlert(1627,39200

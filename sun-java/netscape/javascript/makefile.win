@@ -1,0 +1,90 @@
+#//------------------------------------------------------------------------
+#//
+#// Makefile to build the Java reflections of JavaScript objects
+#//
+#//------------------------------------------------------------------------
+
+
+#//------------------------------------------------------------------------
+#//
+#// Specify the depth of the current directory relative to the
+#// root of NS
+#//
+#//------------------------------------------------------------------------
+DEPTH= ..\..\..
+
+!ifndef MAKE_OBJ_TYPE
+MAKE_OBJ_TYPE=EXE
+!endif
+
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Make Variables here: (ie. PDFFILE, MAPFILE, ...)
+#//
+#//------------------------------------------------------------------------
+LIBNAME=libnjs$(OS_RELEASE)
+PDBFILE=$(LIBNAME).pdb
+
+#//------------------------------------------------------------------------
+#// 
+#// Define the files necessary to build the target (ie. OBJS)
+#//
+#//------------------------------------------------------------------------
+RTDIR=$(DEPTH)\sun-java\runtime
+RTOBJDIR=$(RTDIR)\$(OBJDIR)
+
+OBJS=                                       \
+    .\$(OBJDIR)\jsStubs.obj                 \
+    .\$(OBJDIR)\stubs.obj                   \
+!if "$(OS_RELEASE)" == "16"
+    .\$(OBJDIR)\njs_nodl.obj                \
+!endif
+    $(NULL)
+
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Targets here (ie. PROGRAM, LIBRARY, DLL, ...)
+#// (these must be defined before the common makefiles are included)
+#//		  
+#//------------------------------------------------------------------------
+
+JRI_HEADER_FILES=                            \
+    netscape.javascript.JSObject            \
+    netscape.javascript.JSException         \
+	$(NULL)
+
+JRI_STUB_FILES=                              \
+    netscape.javascript.JSObject            \
+    netscape.javascript.JSException         \
+	$(NULL)
+
+LIBRARY= .\$(OBJDIR)\$(LIBNAME).lib
+
+#//------------------------------------------------------------------------
+#//
+#// Define any local options for the make tools 
+#//     (ie. LCFLAGS, LLFLAGS, LLIBS, LINCS)
+#//
+#//------------------------------------------------------------------------
+LINCS=$(LINCS) -I_gen -I$(DEPTH)/mocha/include -I$(DEPTH)/lib/libjava -I../applet/_gen
+
+#//------------------------------------------------------------------------
+#//
+#// Include the common makefile rules
+#//
+#//------------------------------------------------------------------------
+include <$(DEPTH)/sun-java/config/rules.mak>
+
+export:: $(JRI_HEADER_FILES) $(JRI_STUB_FILES) $(LIBRARY)
+    $(MAKE_INSTALL) $(LIBRARY) $(DIST)\lib
+    $(MAKE_INSTALL) _gen\netscape_javascript_JSObject.h $(DIST)\include\sun-java\include\_gen
+    $(MAKE_INSTALL) _gen\netscape_javascript_JSException.h $(DIST)\include\sun-java\include\_gen
+
+install:: export
+
+clobber::
+    $(RM_R) _gen _stubs 
+
+
+
+

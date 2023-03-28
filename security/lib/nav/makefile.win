@@ -1,0 +1,97 @@
+IGNORE_MANIFEST=1
+#//------------------------------------------------------------------------
+#//
+#// Makefile to build the cert library
+#//
+#//------------------------------------------------------------------------
+
+
+#//------------------------------------------------------------------------
+#//
+#// Specify the depth of the current directory relative to the
+#// root of NS
+#//
+#//------------------------------------------------------------------------
+DEPTH= ..\..\..
+
+!ifndef MAKE_OBJ_TYPE
+MAKE_OBJ_TYPE=EXE
+!endif
+
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Make Variables here: (ie. PDFFILE, MAPFILE, ...)
+#//
+#//------------------------------------------------------------------------
+LIBNAME=secnav$(MOZ_BITS)
+PDBFILE=$(LIBNAME).pdb
+
+LINCS =  \
+!if "$(MOZ_BITS)" != "16"
+        -I$(PUBLIC)/security \
+        -I$(PUBLIC)\htmldlgs \
+        -I$(PUBLIC)\applet \
+        -I$(PUBLIC)\liblayer \
+        -I$(PUBLIC)\nspr \
+        -I$(PUBLIC)\pref \
+        -I$(PUBLIC)\jar \
+        -I$(PUBLIC)\js \
+        -I$(PUBLIC)\util \
+        -I$(PUBLIC)\img \
+!endif
+        -I$(PUBLIC)\ldap \
+        -I$(PUBLIC)\java \
+        -I$(DEPTH)\include
+
+#//------------------------------------------------------------------------
+#// 
+#// Define the files necessary to build the target (ie. OBJS)
+#//
+#//------------------------------------------------------------------------
+OBJS=                         \
+    .\$(OBJDIR)\advisor.obj  \
+    .\$(OBJDIR)\certdlgs.obj  \
+    .\$(OBJDIR)\certldap.obj  \
+    .\$(OBJDIR)\certmime.obj   \
+    .\$(OBJDIR)\javadlgs.obj  \
+    .\$(OBJDIR)\keypw.obj  \
+    .\$(OBJDIR)\ldapdlgs.obj  \
+    .\$(OBJDIR)\pwdlgs.obj  \
+    .\$(OBJDIR)\secmoz.obj   \
+    .\$(OBJDIR)\securl.obj   \
+    .\$(OBJDIR)\pk11dlgs.obj   \
+    .\$(OBJDIR)\policy.obj   \
+    .\$(OBJDIR)\secconfg.obj   \
+    .\$(OBJDIR)\statdlg.obj   \
+    $(NULL)
+
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Targets here (ie. PROGRAM, LIBRARY, DLL, ...)
+#// (these must be defined before the common makefiles are included)
+#//
+#//------------------------------------------------------------------------
+LIBRARY=.\$(OBJDIR)\$(LIBNAME).lib
+
+#//------------------------------------------------------------------------
+#//
+#// install headers
+#//
+#//------------------------------------------------------------------------
+INSTALL_DIR=$(PUBLIC)\security
+INSTALL_FILE_LIST=secnav.h pk11dlgs.h secprefs.rc certldap.h
+
+#//------------------------------------------------------------------------
+#//
+#// Include the common makefile rules
+#//
+#//------------------------------------------------------------------------
+include <$(DEPTH)/config/rules.mak>
+
+CFLAGS = $(CFLAGS) -DMOZILLA_CLIENT
+
+install:: $(LIBRARY)
+    $(MAKE_INSTALL) $(LIBRARY) $(DIST)\lib
+
+export:: INSTALL_FILES
+

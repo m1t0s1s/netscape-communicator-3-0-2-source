@@ -1,0 +1,16 @@
+set $hide_anonymous_blocks=0
+set $promptonfork=1
+set $page=0
+directory ../../lib/layout
+directory ../../lib/libimg
+directory ../../lib/libmisc
+directory ../../lib/libnav
+directory ../../lib/libnet
+directory ../../lib/libparse
+directory ../../lib/libsrvr
+directory ../../lib/libsec
+directory ../../lib/xlate
+directory ../../lib/xp
+directory ../../lib/libi18n
+directory ../../../jpeg
+directory ../../../socks/lib

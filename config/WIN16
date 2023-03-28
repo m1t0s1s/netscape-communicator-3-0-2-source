@@ -1,0 +1,74 @@
+#//------------------------------------------------------------------------
+#//
+#// Win16 Configuration file
+#//
+#//------------------------------------------------------------------------
+
+#//------------------------------------------------------------------------
+#//
+#// Define the OS dependent commands used by MAKE
+#//
+#//------------------------------------------------------------------------
+CC=cl
+LD=optlinks
+AR=$(DEPTH)\CONFIG\TLIB.EXE /P32 /C
+#AR=lib /NOLOGO /BATCH /NOIGNORECASE
+RC=rc
+#RM=del /F /Q
+#RM_R=del /F /S /Q
+RM=rm -f
+RM_R=rm -fr
+CP=cp
+AWK=awk.exe
+RANLIB=$(DEPTH)\config\true.bat
+JAVAH=$(DEPTH)\dist\win32_d.obj\bin\javah.exe
+
+#//------------------------------------------------------------------------
+#//
+#// Define Debug and optimization flags
+#//
+#//------------------------------------------------------------------------
+!ifdef BUILD_OPT
+OPTIMIZER=-Ox -UDEBUG -DNDEBUG
+OS_LFLAGS=
+!else
+OPTIMIZER=-Od -Z7 -DDEBUG -UNDEBUG
+OS_LFLAGS=/CO
+!endif
+
+#//------------------------------------------------------------------------
+#//
+#// Specify the OS dependent compiler flags, linker flags and libraries
+#//
+#//------------------------------------------------------------------------
+OS_CFLAGS=$(OPTIMIZER) -AL -Gx- -Gf -Gd -Gs -G3 -W3 -nologo \
+!ifdef MOZ_JAVA
+            -DJAVA \
+!endif
+            -D_X86_ -D_WINDOWS -DXP_PC -Dx386 -DSW_THREADS
+
+OS_LFLAGS=$(OS_LFLAGS) /NOE /NOD /NOI /XNOI \
+           /ALIGN:16 /BYORDINAL /FARCALL \
+           /DETAILEDMAP /XREF /ONERROR:NOEXE /NOLOGO /WARNDUPS
+
+OS_LIBS=LIBW.LIB TOOLHELP.LIB 
+
+
+#//------------------------------------------------------------------------
+#//
+#// Specify the special flags for creating EXEs
+#//
+#//------------------------------------------------------------------------
+EXE_CFLAGS=/GA /GEe /Gt3
+EXE_LFLAGS=/STACK:20000
+EXE_LIBS=OLDNAMES.LIB LLIBCEW.LIB
+
+#//------------------------------------------------------------------------
+#//
+#// Specify the special flags for creating DLLs
+#//
+#//------------------------------------------------------------------------
+DLL_CFLAGS=/GD /GEe /D "_WINDLL"
+DLL_LFLAGS=
+DLL_LIBS=OLDNAMES.LIB LDLLCEW.LIB
+

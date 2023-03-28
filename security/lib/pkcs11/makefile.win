@@ -1,0 +1,77 @@
+IGNORE_MANIFEST=1
+#//------------------------------------------------------------------------
+#//
+#// Makefile to build the cert library
+#//
+#//------------------------------------------------------------------------
+
+
+#//------------------------------------------------------------------------
+#//
+#// Specify the depth of the current directory relative to the
+#// root of NS
+#//
+#//------------------------------------------------------------------------
+DEPTH= ..\..\..
+
+!ifndef MAKE_OBJ_TYPE
+MAKE_OBJ_TYPE=EXE
+!endif
+
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Make Variables here: (ie. PDFFILE, MAPFILE, ...)
+#//
+#//------------------------------------------------------------------------
+LIBNAME=secmod$(MOZ_BITS)
+PDBFILE=$(LIBNAME).pdb
+
+LINCS = -I$(PUBLIC)/security \
+        -I$(DEPTH)\include
+
+#//------------------------------------------------------------------------
+#// 
+#// Define the files necessary to build the target (ie. OBJS)
+#//
+#//------------------------------------------------------------------------
+OBJS=                         \
+    .\$(OBJDIR)\pk11util.obj  \
+    .\$(OBJDIR)\pk11load.obj  \
+    .\$(OBJDIR)\pk11list.obj  \
+    .\$(OBJDIR)\pk11db.obj  \
+    .\$(OBJDIR)\pk11cert.obj \
+    .\$(OBJDIR)\pk11err.obj \
+    .\$(OBJDIR)\pk11fips.obj \
+    .\$(OBJDIR)\pk11skey.obj \
+    .\$(OBJDIR)\pk11slot.obj \
+    .\$(OBJDIR)\pkcs11.obj \
+    $(NULL)
+
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Targets here (ie. PROGRAM, LIBRARY, DLL, ...)
+#// (these must be defined before the common makefiles are included)
+#//
+#//------------------------------------------------------------------------
+LIBRARY=.\$(OBJDIR)\$(LIBNAME).lib
+
+#//------------------------------------------------------------------------
+#//
+#// install headers
+#//
+#//------------------------------------------------------------------------
+INSTALL_DIR=$(PUBLIC)\security
+INSTALL_FILE_LIST=pkcs11.h pkcs11t.h pkcs11f.h secmod.h secmodt.h pk11func.h
+
+#//------------------------------------------------------------------------
+#//
+#// Include the common makefile rules
+#//
+#//------------------------------------------------------------------------
+include <$(DEPTH)/config/rules.mak>
+
+install:: $(LIBRARY)
+    $(MAKE_INSTALL) $(LIBRARY) $(DIST)\lib
+
+export:: INSTALL_FILES
+

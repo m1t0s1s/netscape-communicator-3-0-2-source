@@ -1,0 +1,25 @@
+#!/bin/csh -f
+# This recreates a disabled icon from the similarly named normal icon.  This
+# is not part of the normal build process; it is a step to create a disabled
+# icon to check into the tree.  Therefore, it doesn't work in all environments;
+# in fact, to make this work, you have to do all sorts of things:
+#
+# - You must have the ppm executables on your path.
+# - You must have checked out and built the  .../hacks/disabled directory.
+# - The normal version of the icon must have #800000 as the color for the
+#   transparent parts.
+# - You must simulate whatever else is special in my environment that I forgot
+#   about.
+#
+# Isn't this fun?
+#
+# Invoke via "mungeddisabled mumble1.i.gif mumble2.i.gif"  All arguments had
+# better have the ".i." string embedded within.
+#
+# - Terry
+
+foreach i ( $* )
+	echo $i
+	set j=`echo $i | sed -e 's/\.i\././'`
+	giftoppm $j | pnmnoraw | ../../../../hacks/disable/disable | ppmtogif -transparent rgb:64/00/00 > $i
+end

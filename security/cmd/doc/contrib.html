@@ -1,0 +1,107 @@
+<html>
+<title>SSL Contrib Programs</title>
+<!-- Changed by: David Karlton, 24-Jan-1996 -->
+<h1>SSL Contrib Programs</h1>
+
+<h2><b>rsh</b></h2>
+
+The code for <b>rsh</b> is in the directory <b>security/rsh</b>.  This is
+the 4.4BSD version of <b>rsh</b>, with modifications to compile on various
+unix machines, and support for SSL and socks added.  Several arguments have
+been added to support the new features.  The syntax for the command line
+is:<p>
+<b>rsh [-n] [-d] [-l </b><i>login</i><b>] </b><i>host</i><b> [</b><i>command</i><b>]</b><br>
+<b>rsh [-n] [-d] -S </b><i>secargs</i><b> [-K </b><i>certdir</i><b>] [-k </b><i>nickname</i><b>] [-l </b><i>login</i><b>] </b><i>host</i><b> [</b><i>command</i><b>]</b><p>
+
+The <b>-n</b> flag indicates that <b>rsh</b> should not process any input.<p>
+
+The <b>-d</b> flag turns on some debugging.<p>
+
+The <b>-S</b> flag sets the security parameters.  The <i>secargs</i> string
+should be two character long.  If the first character is 'e' then encryption
+is enabled.  Any other value of the first character will turn off encryption.
+If the second character is 'p' then a socks proxy is used.  Any other value
+of the second character will disable socks and attempt to use a direct
+connection.  <b>NOTE: If you are using socks then you should have the
+environment variable SOCKS_HOST set to the name of your socks proxy
+machine.</b><p>
+
+The <b>-K</b> flag specifies the location of the key and certificate databases
+as the <i>certdir</i> directory. Without this flag, the default is
+<i>/usr/etc/ssl</i>, unless the environment variable <b>SSL_DIR</b> has been
+set to override this default.<p>
+
+The <b>-k</b> flag enables client authentication. If the server requests
+client authentication, the <i>nickname</i> string will be used to access
+the client's key and certificate.  The user will then be prompted for a password
+for the key.  The key and certificate databases will be read from the
+default directory, unless otherwise specified (see above).<p>
+
+The <b>-l</b> flag logs you into the remote host as <i>login</i> rather
+than the current local username.<p>
+
+<i>host</i> is the hostname or address of the machine to connect to and
+execute <i>command</i>.<p>
+
+If encryption is enabled then <b>rsh</b> will attempt to connect to the
+port for a service named "shells".  If encryption is not being used then
+it will connect to the standard "shell" port.  If you want to use encryption
+then you should add a line to <b>/etc/services</b> specifying a port for
+the "shells" service.<p>
+
+If you don't enable encryption or socks use via <b>-S</b> then this
+<b>rsh</b> acts like the normal bsd version of <b>rsh</b>.<p>
+
+<b>rsh</b> needs to be suid root, or be run as root.<p>
+
+<h2><b>rshd</b></h2>
+The code for <b>rshd</b> is in <b>security/rshd</b>.  This is the 4.4BSD
+version or <b>rshd</b> with a few modifications so that it can be run
+from <b>ssld</b>.  This version of <b>rshd</b> does not do SSL directly,
+but rather it expects to be run by <b>ssld</b>.  It uses the <b>ssld</b>
+control socket to create the stderr connection back to the client
+application.<p>
+
+<b>WARNING: This version of rshd has its reserved port checking
+disabled.  This enables use of secure rsh through a socks proxy, but it
+bypasses one of the traditional security measures of unix based networking.
+This is probably not much of a loss given how easy it is to get around today,
+but it may introduce a security hole if things are not configured correctly.
+It is strongly recomended that you configure ssld to use an access control list
+to ensure that only trusted people can access your system via rshd.</b><p>
+
+A sample line from the <b>ssld</b> configuration file to enable <b>rshd</b>
+might look like this:<p>
+
+<pre>
+#Port	Mode	      ACL        Key	  Cert	  Action
+445	auth-server   rsh.acl    NAME     NAME	  exec ./rshd rshd
+</pre>
+
+Notice that this configuration requires client authentication and has
+an access control list.  Both are highly recommended.<p>
+
+<h2><b>rdist</b></h2>
+
+The code for <b>rdist</b> is in <b>security/rdist</b>.  This is the 6.1.0
+version of <b>rdist</b> from USC.  The original is available for anonymous
+ftp from <b>usc.edu</b>.  This version has been modified to take some extra
+security arguments and to prompt the user for a password, which is passed
+to the SSL version of <b>rsh</b>.  The new arguments are <b>-k</b>, <b>-K</b>,
+and <b>-S</b>, which are just passed through to <b>rsh</b>.  If you don't
+specify any of these arguments then <b>rdist</b> uses the operating system's
+version of <b>rsh</b> and should behave like the un-modified <b>rdist</b>.<p>
+
+The default pathname for secure <b>rsh</b> is <i>/usr/etc/ssl/srsh</i>.  
+You can override this with the <b>-P</b> option in <b>rdist</b>.<p>
+
+The version of <b>rdistd</b> included here has not been modified.  It is
+included here for completeness.  If you already have the current version of
+<b>rdistd</b> installed on the target system then you do not need to
+install this version.<p>
+
+<b>WARNING: Since this version of rdist uses secure rsh, the same security
+considerations mentioned for rsh and rshd apply to rdist.</b><p>
+
+</html>
+

@@ -1,0 +1,1179 @@
+.TH DEBUG_MALLOC 3 "VTI" "" "1.11"
+.ds ]T 
+'\"/*
+'\" * (c) Copyright 1990, 1991, 1992 Conor P. Cahill (cpcahil@virtech.vti.com).
+'\" *
+'\" * This software may be distributed freely as long as the following
+'\" * conditions are met:
+'\" *
+'\" * 		* the distribution, or any derivative thereof, may not be
+'\" *		  included as part of a commercial product
+'\" *		* full source code is provided including this copyright
+'\" *		* there is no charge for the software itself (there may be
+'\" *		  a minimal charge for the copying or distribution effort)
+'\" *		* this copyright notice is not modified or removed from any
+'\" *		  source file
+'\" */
+'\" 
+'\" $Id: malloc.3,v 1.1 1996/06/18 03:29:18 warren Exp $
+'\" 
+'\" eX macro -  this macro is used to set up code/picture examples.  It changes
+'\"             the point size & type of font, indents the example 1/2 inch,
+'\"		and turns off fill mode.  To use it just place a .eX before and
+'\"		after your example
+.de eX
+.ie \\n(eX>0 \{\
+.nr eX 0
+.if t .ft
+.fi
+.vs
+.ps
+.in
+.sp \}
+.el \{\
+.nr eX 1
+.br
+.ne 5
+.sp
+.ie \\n(.$>0 .in +\\$1
+.el .in +.5i
+.ie \\n(.$=2 .ps -\\$2
+.el .ps -2
+.ie \\n(.$=2 .vs -\\$2
+.el .vs -2
+.if t .ft CW
+.nf \}
+..
+.nr eX 0
+'\" 
+'\" fake set of VL LI and LE macros for man pages.  This set does handle nested
+'\" calls, but does absolutely NO error checking (so you better do it right).
+'\" 
+.de VL
+.br
+.ie t .nr VL 0\\$1
+.el .nr VL 0\\$1*2
+.ds VS \\$1 \\*(VS
+.in +\\n(VL
+.if t .in +.25i
+..
+.de LI
+.br
+.ti -\\n(VL
+.nr Vw \\n(VLm-\w'\\$1'
+.if \w'\\$1' \&\\$1\h'\\n(Vwu'\&\\c
+..
+.de LE
+.br
+.Le \\*(VS 
+..
+.de Le
+.in -\\n(VL
+.if t .in -.25i
+.ie t .nr VL \\$2
+.el .nr VL \\$2*2
+.ds VS \\$2 \\$3 \\$4 \\$5 \\$6 \\$7
+..
+.ds VS
+.nr VL 0
+.de MP
+.ie t .sp \\n(PDu
+.el .sp
+..
+.de P
+.br
+.ne 4
+.sp
+..
+.SH NAME
+dbmalloc \- debugging malloc library
+.SH SYNOPSIS
+.nf
+\fB#include <malloc.h>
+.MP
+int malloc_chain_check(flag);
+int flag;
+.MP
+void malloc_dump(fd);
+int fd;
+.MP
+void malloc_list(fd,histid1,histid2);
+int fd;
+unsigned long histid1, histid2;
+.MP
+unsigned long malloc_inuse(histidptr);
+unsigned long * histidptr;
+.MP
+void malloc_mark(ptr);
+char	* ptr;
+.MP
+int dbmallopt(cmd,val);
+int cmd; 
+union dbmalloptarg val;
+.MP
+void malloc_abort();
+.MP
+void malloc_enter(func);
+char * func;
+.MP
+void malloc_leave(func);
+char * func;\fP
+.fi
+.SH DESCRIPTION
+This malloc library is a replacement for the standard library to be used
+during software development/debugging.  See the standard malloc(3) pages
+for more information on the use of the following functions:
+.MP
+.nf
+.in +.5i
+\fBcalloc\fP(), \fBcfree\fP(), \fBfree\fP(), \fBmalloc\fP(), \fBrealloc\fP()
+.in -.5i
+.fi
+.MP
+This library differs from the standard malloc library in the
+following ways:
+.P
+1. Each malloc segment contains a magic number so that free can 
+verify that the pointer passed points to a valid malloc segment.
+.P
+2. Each malloc segment is filled with a non-zero pattern so that code that
+depends upon malloc segments being null will fail.
+.P
+.ne 5
+3. The size of each segment will be at least 1 byte larger than requested
+and the extra bytes will be filled with a non-zero pattern.  When free is
+called, it will verify that you did not go beyond the number of bytes 
+you asked for.
+.P
+4. When a segment is freed, it will be filled with a different non-zero pattern
+to ensure that the program doesn't depend upon the use of already freed data.
+.P
+.ne 5
+5. Whenever any of the string or memory functions (str*, b*, mem*) are 
+called with a pointer that is within the malloc arena,  the operation is
+checked to verify that it does not overrun the malloced segment.  A failure
+of this check is considered a "warning level error" (described later) and
+is handled accordingly.
+.P
+6. Run time checking can include verification of the malloc chain at each
+and every call to one of the malloc functions or manually by calling the
+malloc_chain_check function.
+.P
+7. Extensive support for tracking memory leaks is provided.
+.P
+.br
+.ne 15
+When a problem is found, the following error message is displayed:
+.eX
+MALLOC Warning from funcname() (called from filename.c line ###):
+Warning message goes here
+.eX
+\fBfuncname\fP is the name of the function that has found the problem
+and will usually be an entry point into the library.  The information
+that identifies where the function is called from will only be 
+available if the source module was compiled with the \fBmalloc.h\fP
+file included.
+.P
+If the error is caused by a problem in the malloc chain and the offending
+chain element can be identified, the following information is also
+displayed (NOTE: this is just a guess by the software, it may not
+be the actual culprit):
+.eX
+This error is *probably* associated with the following allocation:
+
+   A call to malloc for 33 bytes in program.c on line 834.
+   This was the 172nd call to malloc.
+.eX
+.br
+.ne 15
+This example assumes that \fBprogram.c\fP included the debugging 
+library \fBmalloc.h\fP file.  If not, the identification information
+will be as follows:
+.eX
+This error is *probably* associated with the following allocation:
+
+   A call to malloc for 33 bytes in an unknown file.
+   This was the 172nd call to malloc.
+.eX
+The identification of which call to malloc is associated with the 
+problem is helpful in that it gives you the information necessary
+to set the breakpoint on the allocation function for that particular
+invocation (breakpoints usually can have counters associated with
+them).  The counters for the three primary allocation entry points (malloc,
+calloc, and realloc) are managed separately.
+.P
+.br
+.ne 5
+NOTE 1: if you want to set a breakpoint to capture this invocation
+of malloc, the actual function that is being called is \fBdebug_malloc\fP
+(or \fBdebug_realloc\fP for \fBrealloc\fP and \fBdebug_calloc\fP for
+\fBcalloc\fP) and that is where the breakpoint should be set.
+.P
+.br
+.ne 19
+NOTE 2: Since the software is guessing at the offending malloc
+chain segment, it is possible that one of the nearby segments 
+is actually the culprit.  If the environment variable \s-2MALLOC_SHOW_LINKS\s+2
+is set, both the segment preceding and the segment following the accused
+segment will also be identified.  The following is a sample output:
+.eX
+This error is *probably* associated with the following allocation:
+
+    A call to malloc for 33 bytes in an unknown file.
+    This was the 172nd call to malloc.
+
+    The malloc chain element prior to the suspect allocation is from:
+
+    A call to calloc for 512 bytes in main.c line 16.
+    This was the 4th call to calloc. 
+    This block was freed on the 2nd call to free()
+    in main.c on line 51.
+ 
+    The malloc chain element following the suspect allocation is from: 
+
+    A call to realloc for 4096 bytes in func.c line 376.
+    This was the 1st call to realloc.
+.eX
+.br
+.ne 15
+Once the error message has been displayed, the software will then 
+determine how to handle the error.  This handling will be based upon
+the type of error level (warning or fatal) and the error handling in effect
+for that error level (as specified by calls to mallopt or via environment
+variables).  The coding for the error handling is as follows:
+.MP
+.VL 3
+.LI "\0\00"
+continue operations
+.LI "\0\01"
+drop core and exit
+.LI "\0\02"
+just exit
+.LI "\0\03"
+drop core, but continue executing.  Core files will
+be placed into core.[PID].[counter] i.e: core.00123.001
+.LI "128"
+dump malloc chain and continue
+.LI "129"
+dump malloc chain, dump core, and exit
+.LI "130"
+dump malloc chain, exit
+.LI "131"
+dump malloc chain, dump core, continue processing
+.LE
+.P
+\fBdbmallopt\fP() is used to set the malloc debugging options. The
+following options can be set:
+.MP
+.VL 10
+.LI "\s-2MALLOC_WARN\s+2"
+set the error handling for warning level errors.  \fBval.i\fP is
+an integer that can contain any one of the following values:
+.MP
+.VL 10
+.LI "\s-2M_HANDLE_IGNORE\s+2"
+ignore error (just display warning message and continue processing)
+.LI "\s-2M_HANDLE_ABORT\s+2"
+drop core and exit
+.LI "\s-2M_HANDLE_EXIT\s+2"
+just exit (no core drop)
+.LI "\s-2M_HANDLE_CORE\s+2"
+drop core, but keep on going
+.LE
+.MP
+In addition, \s-2M_HANDLE_DUMP\s+2 may be or'd in to cause a dump
+of the current malloc chain.
+.MP
+The default action for \s-2MALLOC_WARN\s+2 is \s-2M_HANDLE_IGNORE\s+2.
+.MP
+.LI "\s-2MALLOC_FATAL\s+2"
+set the error handling for fatal level errors.  \fBval.i\fP is
+equivalent to \fBval.i\fP for \s-2MALLOC_WARN\s+2.
+.MP
+The default action for \s-2MALLOC_FATAL\s+2 is \s-2M_HANDLE_ABORT\s+2.
+.MP
+.LI "\s-2MALLOC_ERRFILE\s+2"
+set the destination for malloc error messages.  \fBval.str\fP
+is a pointer to a character string containing the name of the file to be used
+for error messages.  Note that error messages are \s-1APPENDED\s+1 to this
+file, so existing error messages will not be removed.
+.MP
+If \s-2MALLOC_ERRFILE\s+2 is not set, all error messages will be sent
+to \fBstderr\fP.
+.MP
+.ne 3
+.LI "\s-2MALLOC_CKCHAIN\s+2"
+set the malloc chain checking flag.  If \fBval.i\fP is
+non-zero, chain checking at every call to malloc is turned on. The 
+default behavior is to not check the chain at each call to malloc because
+of performance issues (the library is considerably slower when this 
+function is enabled).
+.MP
+.ne 10
+.LI "\s-2MALLOC_FREEMARK\s+2"
+sets the behavior of freeing of marked areas.  By default, a free of a 
+marked segment generates a warning.  If \fBval.i\fP is zero, warnings will
+not be generated.
+.MP
+.ne 10
+.LI "\s-2MALLOC_FILLAREA\s+2"
+set the malloc fill area flag.  \fBval.i\fP specifies the malloc filling
+mode to be used.   There are four modes: 0, 1, 2 and 3.  Mode 0 disables
+all filling and checking of filled areas (thereby reducing the effectiveness
+of the library).  Mode 1 enables the filling of boundary areas before and
+after the allocation areas which are used to check for writing before
+or after the pointer.  Mode 2 includes mode 1 and adds the filling of
+malloced regions with a specified fill pattern so that a program does not
+depend upon malloced regions to be filled with zeros.  Mode 3 includes
+all of mode 2 and adds the filling of free'd regions so that an attempt
+to used a freed data area will result in an error.
+.MP
+As far as performance is concerned, mode 0 will be the fastest mode, 
+while (somewhat unexpectedly) mode 3 is the next "fastest" mode 
+with mode 1 bring up the tail end. 
+.MP
+The default behavior for \s-2MALLOC_FILLAREA\s+2 is mode 3.
+.MP
+.LI "\s-2MALLOC_LOWFRAG\s+2"
+set the malloc allocation fragmentation handling level.  By default, malloc
+uses a first fit algorithm for new allocations.  Under certain allocation
+scenarios, this can lead to significant memory fragmentation because of
+the fact that little allocations can break big blocks up.
+.MP
+If \fBval.i\fP is non-zero, malloc uses a best fit algorithm which will reduce
+fragmentation.  This mechanism, while using less memory, is slower because
+the entire free list is checked instead of just checking until we find a
+segment that is at least big enough.  Normally you will not need to set
+this variable.
+.MP
+.LI "\s-2MALLOC_CKDATA\s+2"
+enable/disable the checking of pointers passed to the memory (mem*,b*) and 
+string (str*) functions.  This can be used to startup the code with
+checking disabled (when you know the startup code is functioning correctly)
+and then turn it on later when you get into the area of the code that is 
+in question.
+.MP
+if \fBval.i\fP is non-zero, pointer checking is enabled (which is the default
+mode).
+.MP
+.LI "\s-2MALLOC_REUSE\s+2"
+enable/disable the reuse of freed segments.  This option can be used to 
+help identify where a freed pointer is being re-used, or where it is being
+freed a second time, since the location where it was freed is also kept.
+.MP
+It should be noted that the memory requirements for a program will typically
+increase significantly if this option is used.
+.MP
+if \fBval.i\fP is zero, freed segments are not reused for subsequent
+allocations.   If non-zero, freed segments can be reused.  If freed segments
+are not re-used, you might want to disable filling of freed segments (see
+the \s-2MALLOC_FILLAREA\s+2 discussions) so that you can see the data in the
+segment - this would be fill mode 2 or below.
+.LE
+.MP
+.ne 10
+For example, to set up the session to generate a core file for
+every malloc warning, to drop core and exit on a malloc fatal, and 
+to log all messages to the file "malloc_log" do the following:
+.eX
+#include <malloc.h>
+union dbmalloptarg  m;
+
+m.i = M_HANDLE_CORE | M_HANDLE_DUMP;
+dbmallopt(MALLOC_WARN,m);
+
+m.i = M_HANDLE_ABORT;
+dbmallopt(MALLOC_FATAL,m);
+
+m.str = "malloc_log";
+dbmallopt(MALLOC_ERRFILE,m);
+.eX
+\fBdbmallopt\fP() can be used to set/alter the debugging options at any
+time (i.e. you may want to turn on chain-checking after the program startup if
+the program startup does a lot of allocations which are known to be OK).
+.P
+.ne 5
+\fBmalloc_chain_check\fP() will check the status of the malloc arena.
+If \fBflag\fP is non-zero, an error found in the chain will cause a 
+fatal error.  \fBmalloc_chain_check\fP() returns zero when there are no
+problems found in the malloc chain, non-zero otherwise.
+.P
+.ne 5
+\fBmalloc_dump\fP() will dump a list of all in-use malloc segments 
+and the first few bytes of each segment.  If the environment variable
+\s-1MALLOC_DETAIL\s+1 is set to a non-zero integer, all segments (including
+those that have been freed) are listed and additional internal information
+is displayed.  \fBfd\fP is the file descriptor to write the data to.
+.P
+.ne 6
+\fBmalloc_list\fP() will dump a list in the same format as \fBmalloc_dump\fP but
+only the items that are still in use and which have been allocated within
+the malloc history id range specified by \fBhistid1\fP and
+\fBhistid2\fP, inclusive.  The \fBhistid\fPs are obtained from calls
+to \fBmalloc_inuse\fP(). This is especially useful in tracking down memory
+leaks.  \fBfd\fP is the file descriptor to write the data to.
+.P
+.ne 6
+\fBmalloc_inuse\fP() returns the amount of malloc data that is currently
+in use (in bytes).  If \fBhistidptr\fP is not NULL, it is taken to be a pointer
+to a place to store the current malloc history id which can be used later
+when \fBmalloc_list\fP is called to list items that are still in use.
+.P
+.ne 10
+The following example shows the typical use of the \fBmalloc_inuse\fP and
+\fBmalloc_list\fP functions in tracking down memory leaks:
+.eX
+unsigned long	histid1, histid2, orig_size, current_size;
+
+orig_size = malloc_inuse(&histid1);
+
+/* ..... go do lots of stuff ...... */
+
+current_size = malloc_inuse(&histid2);
+
+if( current_size != orig_size )
+{
+	malloc_list(2,histid1,histid2);
+}
+.eX
+\fBmalloc_mark\fP() marks a segment as a non-leak.  Segments that are marked
+are not counted or listed when dealing with memory leaks.  This is designed
+to be used on pointers that remain around forever and shouldn't be considered
+to be a leak (in order to decrease the amount of entries in the leak lists)
+.P
+\fBmalloc_abort\fP() causes the current program to drop core and exit.  This
+function simply calls \fBabort\fP() to do its dirty work and is here solely 
+for the purpose of allowing the programmer to substitute thier own abort
+routine to handle fatal errors.  If a substitute routine is used, it must not
+return to the caller or else the program will use the \fBabort\fP() system
+call to cause the program to stop.
+.P
+\fBmalloc_enter\fP() and \fBmalloc_leave\fP() provide a rudimentary mechanism
+to track the calling stack that was in place when the allocation was made.
+In order to use this feature, the enter function should be called upon
+entry to a function, while the leave function is called when you exit
+from the function.  In order to be accurate, the two functions must be 
+used in conjunction with each other and a missing call will result in
+an error generated by the library (if it is detected).
+.P
+NOTE: the argument to either of these functions \fBmust\fP be a constant
+character string or a static data area.  This is because the stack mechanism
+does not maintain it's own copy of these strings, it just records pointers
+to the strings and if the strings are on the stack, they will go away.
+Typically the functions would be used with "funcname" as the argument and
+this will avoid any problems.
+.P
+The stack is listed on the dump and/or list reports and on an error 
+message for a segment that has already been freed.
+.P
+If these functions have been used, error messages will include
+the stack information when the identity of the error is 
+displayed.  For example:
+.eX
+This error is *probably* associated with the following allocation:
+
+    A call to malloc for 1 bytes in teststack.c on line 75.
+    This was the 13th call to malloc.
+    Stack from where allocated:
+     -> sub3() in teststack.c(73)
+     -> sub2() in teststack.c(59)
+     -> main() in teststack.c(23)
+
+.eX
+.br
+.br
+.ne 20
+.SH "USAGE"
+The library can be used in several modes, each increasingly intrusive (i.e. 
+requiring changes to be made to the build process and/or source code).  However,
+the extra cost of a little intrusiveness is repaid in much better problem
+identification.  Each mode is built upon the previous modes and therefore
+requires the changes and/or commands specified in the lower modes.
+.P
+.ne 10
+\fBMODE 1 - library substitution\fP
+.P
+The simplest use is to just link the object module with the \fBlibdbmalloc.a\fP.
+Be sure to have this library before the C library (\fBlibc.a\fP) on the
+link command (this is automatic if you use \fBcc\fP to link and specify the 
+debug library without specifying the C library).
+.P
+This mode links in all of the debug versions of the library modules and
+will trap as many errors as it can (yes, there are errors that the malloc
+library cannot catch).  Environment variables can be used to control the
+behavior of the library.
+.P
+.ne 15
+\fBMODE 2 - malloc.h inclusion\fP
+.P
+This mode involves including the \fBmalloc.h\fP file included with the 
+debugging library.  The malloc.h file includes macros that will identify
+the source line and file name for each debugging function called.  This
+is how the library is able to tell you that it was the call to malloc
+on line 55 in file junk.c.
+.P
+.ne 8
+Typically you should always include malloc.h in your source files and just
+use the -I INCLUDEDIR directive for the compiler to point the compiler to
+the debugging version of the header file instead of the normal file.  That
+way you don't have to change the source files when you want to turn off
+the debugging library.
+.P
+NOTE: Once you compile code in this mode, you must recompile the code 
+without the debugging malloc.h include file in order to get the software
+to use the non-debugging functions.
+.P
+.ne 10
+\fBMODE 3 - run-time specification of options\fP
+.P
+Environment variables can be used to control the behavior of the debugging
+library to some extent.  However, this control is very coarse in that
+you only have one setting available for the entire running of the program.
+.P
+This can be a problem if you want to turn on malloc chain checking, but
+know that the problem occurs between a relatively narrow portion of the
+code and don't want to take the hit of having chain checking on for the
+entire program execution.  
+.P
+.ne 15
+The solution to this problem is to include calls to dbmallopt() with the
+debugging options which set the appropriate modes when you want them set.
+Since you don't want to have to change the code to remove and add these
+functions every time you decide to include malloc debugging or not, the 
+\fBmalloc.h\fP file defines the preprocessor symbol \s-2_DEBUG_MALLOC_INC\s+2
+which can be used in your code as follows:
+.eX
+#ifdef _DEBUG_MALLOC_INC
+	dbmallopt(.... );
+#endif
+.eX
+In addition to setting behavior options, you might want to make use of
+the memory leak detection routines in this mode.  These calls should
+also be surrounded by #ifdefs for the debug malloc symbol so that you
+can leave them in the code and automatically get
+the increased functionality whenever you compile with the debugging library.
+.P
+.ne 10
+\fBMODE 4 - deeper inclusion of malloc calls\fP
+.P
+This mode involves inserting calls to the special functions supported
+by the malloc library (like the leak detection or stack maintenance 
+routines).  The effects of the inclusions depends upon the modules
+included and the amount to which they are used. 
+.P
+It is strongly recommended that you setup your code with the following
+lines in a header file that is included by all modules, or just add the
+code to the beginning of the modules themselves:
+.eX
+#ifndef _DEBUG_MALLOC_INC
+#define malloc_enter(func)
+#define malloc_leave(func)
+#define malloc_chain_check()
+#define malloc_dump(fd)
+#define malloc_list(a,b,c)
+#define malloc_inuse(hist)	(*(hist) = 0, 0)
+#endif
+.eX
+This will automatically disable the referenced functions when the malloc
+library is not included (as should be the case when you make a production
+build).
+.br
+.ne 15
+.SH "ENVIRONMENT VARIABLES"
+Environment variables can be used to control error handling, error logging
+and malloc chain checking at run time.  Most of these environment variables
+can be set via the \fBdbmallopt\fP() routine and are well described in 
+that portion of the document.  Look for further information there.
+.MP
+The following environment variables are used:
+.P
+.VL 10
+.br
+.ne 4
+.LI "\s-2MALLOC_BOUNDSIZE\s+2"
+This specifies the minimum number of bytes that the allocation routines
+will leave unused at the end of each segment.  This value may be
+any non-zero positive integer (although you must remember that the
+amount of memory used is directly related to this buffer area.
+.MP
+It may be necessary to increase this value if you think you have a module
+that is writing far enough beyond its malloc segment that it changes the
+next segment (and therefore doesn't make a change that this library
+would be able to detect.
+.MP
+The default for this value is 1 (although because of memory alignment
+issues, you will usually have more than one byte of filler at the
+end of most segments).
+.br
+.ne 4
+.LI "\s-2MALLOC_CKCHAIN\s+2"
+if 1, turns on malloc chain checking at every call to any
+of the malloc functions.
+.br
+.ne 4
+.LI "\s-2MALLOC_DETAIL\s+2"
+if set to a non-zero integer, \fBmalloc_dump\fP shows some internal
+detail for each 
+entry in the chain.  This info is probably only of use if you are debugging 
+the malloc library itself.
+.br
+.ne 4
+.LI "\s-2MALLOC_ERRFILE\s+2"
+specifies the error log file for error messages.  Error messages generated
+by the library are \fBAPPENDED\fP to this file, so if you want a clean file,
+you will have to remove or empty it yourself between runs.  If this option
+is used, no indication of an error will be sent to stdout or stderr (this 
+is purposefully done this way so that if you are running a full screen 
+program, it doesn't mess up the screen).
+.br
+.ne 4
+.LI "\s-2MALLOC_FATAL\s+2"
+specifies the error handling for fatal errors
+.br
+.ne 4
+.LI "\s-2MALLOC_FILLAREA\s+2"
+specifies the fill area flag setting.  If zero, malloc/free area filling 
+and checking is disabled (thereby increasing performance, while decreasing
+effectiveness of the library).  See the discussion of the \fBdbmallopt\fP()
+arguments for more info on other settings.
+.br
+.ne 5
+.LI "\s-2MALLOC_FILLBYTE\s+2"
+This specifies the integer value of the character to use when filling
+allocated areas.  This value defaults to 1 and must be within the range
+of 0 - 255. This capability is useful if you believe that you are 
+having a problem with code that is trashing its malloc region with
+a data pattern that matches the default fill pattern.
+.MP
+NOTE: if an attempt is made to use a value outside the specified
+range, the new value is \fBsilently\fP ignored and the default is used.
+.br
+.ne 5
+.LI "\s-2MALLOC_FREEBYTE\s+2"
+This specifies the integer value of the character to use when filling
+freed areas.  This value defaults to 1 and must be within the range
+of 0 - 255. It should also be different from \s-2MALLOC_FILLBYTE\s+2, but
+that is not enforced. 
+.MP
+NOTE: if an attempt is made to use a value outside the specified
+range, the new value is \fBsilently\fP ignored and the default is used.
+.br
+.ne 4
+.LI "\s-2MALLOC_LOWFRAG\s+2"
+if 1, turns on best fit allocation algorithm.  Otherwise, first fit algorithm
+is used for finding allocation segments (which can cause memory fragmentation).
+.br
+.ne 4
+.LI "\s-2MALLOC_CKDATA\s+2"
+if 0, disables checking of pointers passed to string/memory functions for
+malloc region overwrites.
+.br
+.ne 4
+.LI "\s-2MALLOC_REUSE\s+2"
+if 0, disables reuse of freed memory segments and it does not fill free'd
+segments with the fill pattern.  If 1, freed segments are filled and they can
+be reused.  If 2, freed segments can be reused, but they are not filled when
+freed.
+.br
+.ne 4
+.LI "\s-2MALLOC_SHOW_LINKS\s+2"
+when an error is found, the suspected allocation is
+displayed.  However, since it is possible that the next or previous allocation
+in the malloc chain was the actual culprit these links may be of interest.
+If this variable is set to a non-zero integer (i.e. 1) the links will also
+be shown.
+.br
+.ne 2
+.LI "\s-2MALLOC_WARN\s+2"
+specifies the error handling for warning errors
+.LE
+.P
+.ne 5
+As an example, to set up the session to generate a core file for
+every malloc warning, to drop core and exit on a malloc fatal, and 
+to log all messages to the file "malloc_log" do the following:
+.eX
+MALLOC_WARN=131
+MALLOC_FATAL=1
+MALLOC_ERRFILE=malloc_log
+
+export MALLOC_WARN MALLOC_FATAL MALLOC_ERRFILE
+.eX
+.br
+.ne 15
+.SH "ERROR MESSAGES"
+The following error messages are reported by the library:
+.VL 15
+.br
+.MP
+.ne 6
+.LI "\s-2M_CODE_BAD_CONNECT\s+2"
+Pointers between this segment and adjoining segments are invalid.
+.MP
+This error indicates that the malloc chain has been corrupted.
+This is most often caused by an overwrite of the malloc header
+by an access via the previous malloc segment.
+.br
+.MP
+.ne 6
+.LI "\s-2M_CODE_BAD_MAGIC\s+2"
+Malloc region does not have a valid magic number in header.
+.MP
+This error is caused by several mechanisms including \fBfree\fP()ing
+the same pointer twice or a pointer that was not returned by \fBmalloc\fP(),
+or writing beyond the end of a segment.
+.br
+.MP
+.ne 6
+.LI "\s-2M_CODE_BAD_PTR\s+2"
+Pointer is not within malloc region.
+.MP
+The pointer passed to \fBfree\fP or\fPrealloc\fP is not pointer 
+returned by \fBmalloc\fP.  Another cause is corruption of the
+malloc chain by writing beyond the end of a segment.
+.br
+.MP
+.ne 6
+.LI "\s-2M_CODE_CHAIN_BROKE\s+2"
+Malloc chain is corrupted, pointers out of order.
+.MP
+Corruption has been detected in the malloc chain that is
+related to the relative positions of the malloc chain segments
+in memory.  This is an indication that someone has overwritten
+beyond the amount they allocated.
+.br
+.MP
+.ne 6
+.LI "\s-2M_CODE_FREELIST_BAD\s+2"
+Malloc segment in free list is in-use.
+.MP
+A segment that is in the free-list is flagged as in-use.  This is usually
+caused by overwriting from the previous segment in the malloc chain.
+.br
+.MP
+.ne 6
+.LI "\s-2M_CODE_FREEMARK\s+2"
+Free called to free a segment that has been marked.
+.MP
+Marking a segment is done because you believe that the segment will not be
+free'd and therefore don't want it to appear in the list of possible leaks.
+If you then go on to free it, perhaps it shouldn't have been marked.  
+.MP
+This error message can be disabled with the MALLOC_FREEMARK option on 
+the \fBdbmallopt\fP() function.
+.br
+.MP
+.ne 6
+.LI "\s-2M_CODE_NOBOUND\s+2"
+Unable to determine doubleword boundary
+.MP
+The code was unable to figure out the boundary requirements for a doubleword.
+This error should never occur.
+.br
+.MP
+.ne 6
+.LI "\s-2M_CODE_NOMORE_MEM\s+2"
+Unable to get additional memory from the system.
+.MP
+The system call \fBsbrk\fP failed to obtain more memory
+for the program.
+.br
+.MP
+.ne 6
+.LI "\s-2M_CODE_NOT_INUSE\s+2"
+Data is not in use (can't be freed or reallocated).
+.MP
+A pointer to a malloc segment has been passed to \fBfree\fP() or
+\fBrealloc\fP(), but this segment has already been freed.
+.br
+.MP
+.ne 6
+.LI "\s-2M_CODE_NO_END\s+2"
+Malloc chain is corrupted, end before end pointer.
+.MP
+Yet another overwrite problem.   This error means that we got to 
+what we believe is the end of the chain, but it does not match
+the recorded end of the chain.
+.br
+.MP
+.ne 6
+.LI "\s-2M_CODE_OUTOF_BOUNDS\s+2"
+Pointer within malloc region, but outside of malloc data bounds.
+.MP
+This is caused by a call to one of the string/memory functions
+that attempt to read/write bytes that are not included in
+the allocation associated with that memory.  This is the
+most typical error that you will see from the malloc library.
+.br
+.MP
+.ne 6
+.LI "\s-2M_CODE_OVERRUN\s+2"
+Data has overrun beyond requested number of bytes.
+.MP
+This error is detected by \fBfree\fP() and indicates that the
+current segment has written data beyond the number of bytes that
+it requested.  This only catches overwrites when they are within
+the extra space allocated with each segment (this can range from
+one to eight bytes).  If the overwrite occurs further along it
+will usually cause some corruption in the malloc chain.
+.br
+.MP
+.ne 6
+.LI "\s-2M_CODE_REUSE\s+2"
+Data in free'd area has been modified.
+.MP
+Data in a freed segment has been modified.  This usually indicates
+that the program is using a pointer after it called free, but it
+may also be caused by an overwrite from a previous segment in 
+the chain.
+.br
+.MP
+.ne 6
+.LI "\s-2M_CODE_STK_BADFUNC\s+2"
+Current function name doesn't match name on stack.
+.MP
+\fBmalloc_leave\fP() was called with a function name that is not
+the current function.  This is usually caused by a missing call
+to \fBmalloc_enter\fP() in the same function, or a missing call
+to \fBmalloc_leave\fP() in a sub-function.
+.br
+.MP
+.ne 6
+.LI "\s-2M_CODE_STK_NOCUR\s+2"
+No current function on stack, probably missing call to malloc_enter().
+.MP
+\fBmalloc_leave\fP() was called with a function name and there is 
+no current function (the stack is empty). This is usually caused
+by a missing call to \fBmalloc_enter\fP(), or an extra call to 
+\fBmalloc_leave\fP() in the same function.
+.br
+.MP
+.ne 6
+.LI "\s-2M_CODE_UNDERRUN\s+2"
+Data has written before beginning of requested bytes.
+.MP
+This error is detected by \fBfree\fP() and indicates that the current
+segment has written data before the beginning of the requested block.
+This only catches overwrites when they are within the extra space
+allocated before each segment (this is usually four bytes).  If the
+overwrite occurs further back it will usually cause some corruption in
+the malloc chain.
+.br
+.MP
+.ne 6
+.LI "\s-2M_CODE_ZERO_ALLOC\s+2"
+An allocation routine was called to allocate zero bytes.
+.MP
+While ANSI C requires that allocations of zero bytes are permissible and
+should be supported, the behavior of such an operation can be undefined on
+non-ANSI systems.  This warning will alert you to the locations where these
+calls are made.
+.MP
+This error message can be disabled with the MALLOC_ZERO option on 
+the \fBdbmallopt\fP() function.
+.LE
+.P
+.br
+.ne 15
+.SH "DUMP OUTPUT"
+Sample dump/list output:
+.eX
+************************** Dump of Malloc Chain ****************************
+POINTER     FILE  WHERE         LINE      ALLOC        DATA     HEX DUMP   
+TO DATA      ALLOCATED         NUMBER     FUNCT       LENGTH  OF BYTES 1-7 
+-------- -------------------- ------- -------------- ------- --------------
+0x403DB4 teststack.c               75 malloc(1)           40 01010101010101  
+         -> sub3() in teststack.c(73)
+         -> main() in teststack.c(23)
+0x403E0C testerr.c                 16 realloc(1)          20 01010101010101  
+.eX
+The info in each column is as follows:
+.MP
+.VL 10
+.br
+.ne 4
+.LI "\s-2POINTER\s+2"
+the pointer returned by the allocation function (the pointer
+the the allocated data area).
+.MP
+.br
+.ne 8
+.LI "\s-2FILE\s+2"
+the name of the file where the allocation function was called.  This
+information is only available if the source file includes the \fBmalloc.h\fP
+file from this library (as opposed to the system include file).  If
+the source file did not include this file, the file will be listed
+as unknown and the line number will be blank.
+Note that any malloc calls from system libraries will probably not have been
+compiled with the \fBmalloc.h\fP file included and will therefore
+appear as unknown.
+.MP
+.br
+.ne 4
+.LI "\s-2LINE NUM\s+2"
+The line number of the line that called the allocation function.  This 
+field will be left blank if the \fBmalloc.h\fP from this library
+was not included in the source file when it was compiled. 
+.MP
+.br
+.ne 5
+.LI "\s-2ALLOC FUNC\s+2"
+The allocation function called: \fBmalloc\fP, \fBrealloc\fP, or \fBcalloc\fP.
+The number in parenthesis following the function name is the call number
+for that particular function.  For example: malloc(1) means that this
+allocation was the 1st call to malloc.
+.MP
+.br
+.ne 2
+.LI "\s-2DATA LEN\s+2"
+The number of bytes allocated.
+.MP
+.br
+.ne 6
+.LI "\s-2HEX DUMP\s+2"
+A hexadecimal dump of the first seven bytes in the allocated data.  This example
+shows the bytes filled with 0x01s which happen to be the fill pattern used
+by the malloc library (to make sure that one doesn't depend upon the 
+fact that some calls to malloc result in NULL bytes).  So the
+allocations that are shown haven't stored any data in the area yet.
+.LE
+.MP
+The lines that begin with a "->" are stack dump lines which show the
+calling environment that was present when the are was allocated.  The
+environment is managed via the use of the \fBmalloc_enter\fP() and 
+\fBmalloc_leave\fP() routines.
+.MP
+.br
+.ne 15
+If the environment variable \s-2MALLOC_DETAIL\s+2 is non-zero, the 
+following additional information will be included:
+.eX
+************************************************************** Du... 
+                             FREE     FREE                  ACTUAL SIZE    ...
+  PTR      NEXT     PREV     NEXT     PREV      FLAGS       INT    HEX     ...
+-------- -------- -------- -------- -------- ---------- -------- --------- ...
+0x403C94 0x403CEC 0x40326C 0x000000 0x000000 0x03156111       48(0x000030) ...
+0x403CEC 0x403D2C 0x403C94 0x000000 0x000000 0x03156121       24(0x000018) ...
+0x403D2C 0x403D6C 0x403CEC 0x000000 0x403D6C 0x03156120       24(0x000018) ...
+0x403D6C 0x000000 0x403D2C 0x403D2C 0x000000 0x03156120       24(0x000018) ...
+
+Malloc start:      0x40326C
+Malloc end:        0x403D2C
+Malloc data start: 0x403C94
+Malloc data end:   0x405C94
+Malloc free list:  0x403D6C
+                -> 0x403D2C
+.eX
+NOTE that I cut off the example at the point where the normal output
+would begin (hence the ...).
+.MP
+The info in each column is as follows:
+.MP
+.VL 8
+.LI "\s-2PTR\s+2"
+The malloc chain pointer for the segment (the address of the segment).
+.MP
+.LI "\s-2NEXT\s+2"
+The pointer to the next segment in the chain.
+.MP
+.LI "\s-2PREV\s+2"
+The pointer to the previous segment in the chain.
+.MP
+.LI "\s-2FREE NEXT\s+2"
+The pointer to the next segment in the free list.
+.MP
+.LI "\s-2FREE PREV\s+2"
+The pointer to the previous segment in the free list.
+.MP
+.ne 10
+.LI "\s-2FLAGS\s+2"
+The flags associated with this segment.  This is a long
+integer which contains the following fields
+.MP
+.VL 6
+.LI "0xFFFFFF00"
+the magic number.  This should be 0x03156100 (probably 
+someone's birthday).
+.MP
+.LI "0x00000070"
+the type of allocation function. Malloc (x010), realloc (0x20), or
+calloc (0x30) are the only valid values for this field).
+.MP
+.LI "0x00000001"
+the in-use flag.  if this value is non-zero, the indicated segment
+is currently in use (not freed).
+.LE
+.MP
+.LI "\s-2ACTUAL SIZE\s+2"
+The actual size reserved for the allocation in both decimal and
+hex.  This will be at least one byte more than the requested size, and
+as much as 8, so that we can check to see if the allocation has been
+overrun.
+.LE
+.MP
+.ne 4
+Malloc \fBstart\fP and \fBend\fP are pointers to the first and
+last malloc chain segment, respectively.
+.MP
+.ne 4
+Malloc \fBdata start\fP and \fBdata end\fP are the lowest and highest
+data bytes managed my the malloc sub-system.  These are only used as
+a quick check to see if a pointer is in the malloc region before we
+go hunting down the chain trying to identify the segment it belongs to.
+.MP
+.ne 4
+Malloc \fBfree list\fP is a chain of the elements in the free list (so 
+it is easier for the programmer to follow the free list if they choose 
+to).  The address of each element in the list follows below the list head.
+.br
+.ne 15
+.SH "X PROGRAM DEBUGGING"
+The malloc library includes a set of compatibility routines for the 
+Xt toolkit allocation routines: \fBXtMalloc\fP(), \fBXtCalloc\fP(),
+\fBXtRealloc\fP(),and \fBXtFree\fP().   These routines provide the
+same level of malloc area integrity checking that is provided by
+the basic malloc functions while maintaining complete compatibility
+with the X11R5 functions.
+.P
+If you link an X package with the debug library and you make a call
+to any of the Xt allocation routines, the debug modules will automatically
+be included.  If you don't call them directly, but you still want to
+include them in order to better debug their use, you can add a -u
+linker specification for XtRealloc.  For example:
+.eX
+cc -o xapp -u XtRealloc xapp.o -ldbmalloc -lXt -lX....
+.eX
+Note that you may have to add an underscore before the XtRealloc if your
+compiler does this automatically.
+.P
+A second potential problem with X is caused by a difference between
+X11R4 and X11R5.  If you only have one of theses packages, then the
+malloc library will be automatically configured to handle that package.
+If, however, you have both of them installed and you need to be able
+to link with either system, you may have to add a -u _XtHeapInit to
+the link line on the X11R5 links.  This is because X11R5 defines both
+the heap management and malloc management routines in the same 
+module, while X11R4 defines them in different modules.
+.P
+The sign of this problem is a link error due to duplicate references
+to the Xt allocation routines (XtMalloc, etc).
+.SH LINKING
+The order in which you link your programs can have a significant effect
+on the usefulness of the library and even on the ability to link itself.
+The debug library should be placed as the first system library that you are
+linking to (assuming that you are calling at least one of the malloc, string,
+or memory functions).
+.P
+For example, if the following is your normal link command:
+.eX
+cc -o app app.o supp.o else.o applib.a -lmath -lcurses
+.eX
+You should add the malloc debug library in between applib.a and -lmath, 
+which would result in the following:
+.eX
+cc -o app app.o supp.o else.o applib.a -ldbmalloc -lmath -lcurses
+.eX
+This will ensure that the debug malloc library overrides all of the allocation
+routines within the other libraries.  
+.P
+If you have other problems compiling or linking with the library you should
+look at the \s-2PROBLEMS\s+2 file in the source directory.  This file 
+contains descriptions of common problems and the recommended solutions to
+the problems.
+.SH PERFORMANCE
+This malloc library and its associated string and memory functions are
+much less efficient than the standard functions due in part to the extra
+error checking.  You do not want to use this library when generating a
+production (i.e. releasable) version of your software.  It should only
+be used during development and testing.
+.P
+.ne 10
+The following environment variable settings will give you the best
+performance (at the expense of some additional error checking):
+.eX
+MALLOC_CKCHAIN=0
+MALLOC_CKDATA=0
+MALLOC_FILLAREA=0
+MALLOC_LOWFRAG=0
+.eX
+We recommend against setting MALLOC_FILLAREA to zero because, while
+it will increase the performance, it takes away the capability
+to uncover small malloc overruns which don't overrite the pointers surrounding
+the malloc regions.  The same anti-recommendation applies to MALLOC_CKDATA.
+.P
+.ne 5
+Anyway, with these settings, the malloc library runs at about 1/2 the
+speed (things only take twice as long) as the standard library.  If you program
+spends most of its time in malloc, it will still be slow (but perhaps this is
+an indication that you need to consider changing the way you are using 
+malloc).
+.br
+.ne 15
+.SH WARNINGS
+The include file for this library "malloc.h" should be included after
+the includes for any system related information.  This is because "malloc.h"
+redefines several system functions including string and memory routines
+and this will usually cause compilation errors if malloc.h is processed
+first (of course, the compile errors will talk about errors in the other
+system include files like string.h).
+.P
+This goes hand in hand with the fact that if you have local definitions of
+the return types of standard functions like strcmp() or malloc(), 
+these lines will cause compile errors due to the #defines in the
+malloc.h header file.  Therefore, it is suggested that you remove
+all such definitions from your code and rely on the system header
+files to define these functions, or you surround the definitions 
+with #ifdef \s-2DEBUG_MALLOC_INC\s+2.
+.P
+There is a possibility that the use of \fBsbrk\fP() by other modules
+will cause this library to get confused and possibly report 
+some pointers as bad when the really aren't part of the malloc chain
+itself.  Therefore the direct use of \fBsbrk\fP() is strongly discouraged.
+.P
+This library attempts to trap errors and exit/handle them gracefully.  
+However, the nature of the problems may be such that it causes the 
+code in the library itself to crash.  There is no way to avoid this,
+but if it does occur,  turn on chain checking to narrow the place where
+it will occur.
+.P
+The functions in this library will often conflict with duplicate functions
+in shared library versions of libc.a.  This is usually due to the 
+fact that some shared library modules have explicit references to shared
+library versions of the debug functions.  The only way around this is
+to not use the shared library when linking.
+.P
+This malloc library, like most malloc libraries, is not re-entrant 
+and therefore should not be called from interrupt handlers because of the
+potential for receiving an interrupt in the middle of a call to malloc
+which would really mess things up.
+.SH SEE ALSO
+malloc(3), string(3), memory(3)
+.br
+.ne 10
+.SH COPYRIGHT
+.nf
+ (c) Copyright 1990, 1991, 1992 Conor P. Cahill (cpcahil@virtech.vti.com)
+
+ This software may be distributed freely as long as the following conditions
+ are met:
+        * the distribution, or any derivative thereof, may not be
+          included as part of a commercial product
+        * full source code is provided including this copyright
+        * there is no charge for the software itself (there may be
+          a minimal charge for the copying or distribution effort)
+        * this copyright notice is not modified or removed from any
+       	  source file
+
+.fi
+.br
+.ne 10
+.SH AUTHOR
+.nf
+Conor P. Cahill
+Virtual Technologies Incorporated
+46030 Manekin Plaza, Suite 160
+Sterling VA 22170
+703-430-9247
+.MP
+cpcahil@virtech.vti.com
+uunet!virtech!cpcahil

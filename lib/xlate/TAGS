@@ -1,0 +1,207 @@
+
+font_metrics.c,0
+
+print.c,1349
+default_completion(21,449
+} InterestingPRE;InterestingPRE31,595
+scale_factor(39,871
+PSFE_SetCallNetlibAllTheTime(65,1414
+PSFE_ClearCallNetlibAllTheTime(72,1542
+XL_InitializePrintSetup(79,1664
+ps_alldone(108,2367
+PRIVATE void xl_generate_postscript(125,2954
+XL_TranslatePostscript(173,4400
+#define MAKE_FE_FUNCS_PREFIX(MAKE_FE_FUNCS_PREFIX189,4938
+#define MAKE_FE_FUNCS_ASSIGN 190,4979
+#define max(max244,7043
+#define min(min247,7097
+measure_non_latin1_text(251,7152
+ps_measure_text(321,8522
+xl_annotate_page(374,10080
+PSFE_GetTextInfo(561,14319
+PSFE_LayoutNewDocument(568,14498
+PSFE_FinishedLayout(576,14706
+display_non_latin1_text(582,14776
+PSFE_DisplaySubtext(668,16238
+PSFE_DisplayText(697,17171
+PSFE_DisplayLineFeed(707,17467
+PSFE_DisplayHR(733,18280
+PSFE_DisplayBullet(751,18727
+PUBLIC void PSFE_AllConnectionsComplete(786,19615
+PSFE_DisplayFormElement(804,20049
+PSFE_SetDocDimension(809,20152
+PSFE_SetDocTitle(816,20322
+PSFE_TranslateISOText(823,20478
+PSFE_BeginPreSection(829,20590
+PSFE_EndPreSection(839,20763
+void PSFE_DisplayTable(855,21212
+void PSFE_DisplayCell(864,21517
+PSFE_PromptPassword(874,21831
+void PSFE_GetEmbedSize(888,22121
+void PSFE_FreeEmbedElement(889,22228
+void PSFE_DisplayEmbed(890,22308
+PSFE_FreeEmbedElement 893,22410
+PSFE_DisplayEmbed 900,22568
+PSFE_GetEmbedSize 929,23480
+
+ps.c,689
+#define RED_PART 5,62
+#define GREEN_PART 6,134
+#define BLUE_PART 7,159
+#define XL_SET_NUMERIC_LOCALE(XL_SET_NUMERIC_LOCALE9,184
+#define XL_RESTORE_NUMERIC_LOCALE(XL_RESTORE_NUMERIC_LOCALE10,262
+void xl_initialize_translation(17,422
+void xl_finalize_translation(36,980
+void xl_begin_document(42,1081
+void xl_begin_page(174,6487
+void xl_end_page(203,7488
+void xl_end_document(216,7877
+void xl_moveto(221,7968
+void xl_translate(235,8310
+void xl_show(248,8672
+void xl_circle(273,9139
+void xl_box(280,9341
+xl_draw_border(289,9621
+void xl_stroke(301,9953
+void xl_fill(306,10039
+void xl_colorimage(327,10840
+xl_begin_squished_text(445,14000
+xl_end_squished_text(453,14204
+
+stubs.c,2777
+void xl_alldone(13,260
+void PSFE_SetDocPosition(14,282
+void PSFE_GetDocPosition(15,312
+void PSFE_FreeFormElement(16,342
+void PSFE_ClearView(17,374
+void PSFE_CreateNewDocWindow(18,400
+void TXFE_CreateNewEditWindow(20,449
+void PSFE_SetFormElementToggle(22,492
+void PSFE_GetFormElementInfo(23,528
+void PSFE_SetProgressBarPercent(24,563
+void TXFE_SetDocPosition(25,601
+void TXFE_GetDocPosition(26,631
+void TXFE_FreeFormElement(27,661
+void TXFE_ClearView(28,693
+void TXFE_CreateNewDocWindow(29,719
+void TXFE_SetFormElementToggle(30,754
+void TXFE_GetFormElementInfo(31,790
+void TXFE_SetProgressBarPercent(32,825
+void TXFE_FreeImageElement(33,863
+void PSFE_FormTextIsSubmit(34,896
+void PSFE_GetFormElementValue(35,928
+void PSFE_ResetFormElement(36,963
+void TXFE_FormTextIsSubmit(37,995
+void TXFE_GetFormElementValue(38,1027
+void TXFE_ResetFormElement(39,1062
+void TXFE_DisplayFormElement(40,1094
+void TXFE_SetDocDimension(41,1129
+void TXFE_SetDocTitle(42,1161
+void TXFE_BeginPreSection(43,1189
+void TXFE_EndPreSection(44,1221
+void PSFE_DisplaySubDoc(45,1251
+void PSFE_UseFancyFTP 46,1281
+void PSFE_FileSortMethod 47,1309
+void PSFE_EnableClicking 48,1340
+void PSFE_ShowAllNewsArticles 49,1371
+void PSFE_GraphProgressDestroy 50,1407
+void TXFE_ImageData 51,1444
+void TXFE_ImageOnScreen 52,1470
+void TXFE_SetColormap 53,1500
+void PSFE_SetColormap 54,1528
+void TXFE_Confirm 55,1556
+void TXFE_Alert 56,1580
+void TXFE_GraphProgressDestroy 57,1602
+void TXFE_Progress 58,1639
+void TXFE_Prompt 59,1664
+void PSFE_GraphProgressInit 60,1687
+void TXFE_ImageSize 61,1721
+void PSFE_PromptUsernameAndPassword 62,1747
+void TXFE_UseFancyNewsgroupListing 63,1789
+void PSFE_Progress 64,1830
+void TXFE_FileSortMethod 65,1855
+void TXFE_UseFancyFTP 66,1886
+void TXFE_GraphProgress 67,1914
+void PSFE_Confirm 68,1944
+void TXFE_EnableClicking 69,1968
+void TXFE_ShowAllNewsArticles 70,1999
+void PSFE_Prompt 71,2035
+void TXFE_PromptUsernameAndPassword 72,2058
+void PSFE_GraphProgress 73,2100
+void PSFE_Alert 74,2130
+void TXFE_GraphProgressInit 75,2152
+void PSFE_UseFancyNewsgroupListing 76,2186
+void TXFE_ImageIcon(77,2227
+void TXFE_SetBackgroundColor(78,2252
+void PSFE_SetBackgroundColor(79,2286
+void TXFE_GetEmbedSize(80,2320
+void TXFE_FreeEmbedElement(82,2378
+void TXFE_DisplayEmbed(84,2444
+void TXFE_GetJavaAppSize(86,2504
+void PSFE_GetJavaAppSize(87,2533
+void TXFE_FreeJavaAppElement(88,2562
+void PSFE_FreeJavaAppElement(89,2595
+void TXFE_HideJavaAppElement(90,2628
+void PSFE_HideJavaAppElement(91,2661
+void TXFE_DisplayJavaApp(92,2694
+void PSFE_DisplayJavaApp(93,2723
+void TXFE_FreeEdgeElement(94,2752
+void PSFE_FreeEdgeElement(95,2782
+void TXFE_DisplayCell(96,2812
+void TXFE_DisplayEdge(97,2838
+void PSFE_DisplayEdge(98,2864
+
+tblprint.c,162
+too_big(10,202
+XP_CheckElementSpan(40,1015
+XP_InitializePrintInfo(119,3034
+XP_CleanupPrintInfo(133,3275
+XP_LayoutForPrint(148,3479
+XP_DrawForPrint(182,4420
+
+text.c,1097
+#define IMPOSSIBLE_Y 7,104
+struct LineRecord_struct LineRecord_struct33,993
+prepare_to_render(50,1438
+default_completion(107,2670
+tx_alldone(113,2746
+XL_InitializeTextSetup(119,2866
+real_discard_translation_context(129,3103
+discard_translation_context(159,4021
+PUBLIC void TXFE_AllConnectionsComplete(164,4138
+TXFE_SetCallNetlibAllTheTime(172,4323
+TXFE_ClearCallNetlibAllTheTime(178,4423
+XL_AbortTextTranslation(184,4517
+XL_TranslateText(191,4671
+#define MAKE_FE_FUNCS_PREFIX(MAKE_FE_FUNCS_PREFIX211,5262
+#define MAKE_FE_FUNCS_ASSIGN 212,5303
+measure_text(266,7081
+TXFE_GetTextInfo(276,7391
+TXFE_LayoutNewDocument(283,7563
+text_at(291,7742
+TXFE_DisplaySubtext(337,9073
+TXFE_DisplayText(352,9503
+TXFE_DisplaySubDoc(358,9695
+writeln(371,10027
+expire_lines(445,12022
+void TXFE_DisplayTable(475,12908
+TXFE_DisplayLineFeed(492,13411
+TXFE_DisplayHR(512,13910
+TXFE_TranslateISOText(530,14457
+TXFE_DisplaySubImage(536,14569
+TXFE_DisplayImage(550,14971
+TXFE_GetImageInfo(575,15666
+TXFE_DisplayBullet(614,16660
+TXFE_FinishedLayout(635,17118
+TXFE_PromptPassword(641,17214
+
+xlateimg.c,240
+PSFE_DisplaySubImage(7,98
+PSFE_DisplayImage(14,300
+PSFE_FreeImageElement(43,947
+PSFE_GetImageInfo(53,1181
+PSFE_ImageSize 68,1656
+PSFE_ImageData 121,3276
+PSFE_ImageOnScreen 127,3435
+PSFE_ImageDelete 133,3517
+PSFE_ImageIcon(145,3740

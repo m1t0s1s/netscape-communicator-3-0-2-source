@@ -1,0 +1,379 @@
+
+awt_Button.c,111
+Button_callback(27,1013
+sun_awt_motif_MButtonPeer_create(38,1275
+sun_awt_motif_MButtonPeer_setLabel(99,3433
+
+awt_Canvas.c,84
+sun_awt_motif_MCanvasPeer_create(27,1019
+sun_awt_motif_MCanvasPeer_scroll(62,1832
+
+awt_Checkbox.c,217
+Toggle_callback(27,1050
+sun_awt_motif_MCheckboxPeer_create(37,1280
+sun_awt_motif_MCheckboxPeer_setCheckboxGroup(89,2848
+sun_awt_motif_MCheckboxPeer_setState(114,3431
+sun_awt_motif_MCheckboxPeer_setLabel(130,3832
+
+awt_Component.c,914
+sun_awt_motif_MComponentPeer_pInitialize(31,1137
+sun_awt_motif_MComponentPeer_setData(63,1981
+sun_awt_motif_MComponentPeer_disposeEvent(76,2231
+sun_awt_motif_MComponentPeer_handleEvent(96,2599
+sun_awt_motif_MComponentPeer_pEnable(126,3268
+sun_awt_motif_MComponentPeer_pDisable(143,3628
+sun_awt_motif_MComponentPeer_pShow(159,3995
+sun_awt_motif_MComponentPeer_pHide(175,4356
+sun_awt_motif_MComponentPeer_pReshape(192,4718
+sun_awt_motif_MComponentPeer_pTriggerRepaint(215,5201
+sun_awt_motif_MComponentPeer_pAddRepaint(248,6136
+sun_awt_motif_MComponentPeer_pDispose(298,7083
+changeFont(320,7601
+sun_awt_motif_MComponentPeer_setFont(327,7701
+changeForeground(362,8543
+sun_awt_motif_MComponentPeer_setForeground(368,8638
+changeBackground(390,9222
+sun_awt_motif_MComponentPeer_setBackground(400,9414
+sun_awt_motif_MComponentPeer_requestFocus(422,9992
+sun_awt_motif_MComponentPeer_nextFocus(437,10376
+
+awt_Dialog.c,509
+Window_resize(47,1533
+Dialog_event_handler(67,2071
+WaitForUnmap(106,2990
+Dialog_quit(112,3079
+setDeleteCallback(120,3239
+changeInsets(140,3828
+sun_awt_motif_MDialogPeer_create(158,4205
+sun_awt_motif_MDialogPeer_pShow(293,8959
+sun_awt_motif_MDialogPeer_pHide(325,9858
+sun_awt_motif_MDialogPeer_pSetTitle(345,10299
+sun_awt_motif_MDialogPeer_pDispose(374,10933
+sun_awt_motif_MDialogPeer_pReshape(395,11451
+sun_awt_motif_MDialogPeer_setResizable(444,12468
+sun_awt_motif_MDialogPeer_toBack(467,12975
+
+awt_FileDialog.c,391
+FileDialog_OK(32,1156
+FileDialog_CANCEL(49,1691
+FileDialog_quit(64,2081
+setDeleteCallback(72,2245
+changeBackground(93,2843
+sun_awt_motif_MFileDialogPeer_create(99,2923
+WaitForUnmap(189,5782
+sun_awt_motif_MFileDialogPeer_pShow(196,5885
+sun_awt_motif_MFileDialogPeer_pHide(222,6567
+sun_awt_motif_MFileDialogPeer_setFileEntry(242,7032
+sun_awt_motif_MFileDialogPeer_pReshape(284,8141
+
+awt_Font.c,562
+#define UNICODE_FONT_LIST29,1096
+#define USE_FTANG_FONTLIST_HACK34,1157
+FontName(54,1669
+Style(102,2760
+font_dispose(118,3054
+awt_GetFontData(137,3438
+#define max_(max_283,7428
+Boolean	FillFontMetricsFromXmFontList(285,7480
+sun_awt_motif_X11FontMetrics_init(348,9605
+sun_awt_motif_X11FontMetrics_init(406,11229
+java_awt_Font_dispose(464,12878
+sun_awt_motif_X11FontMetrics_stringWidth(483,13273
+sun_awt_motif_X11FontMetrics_stringExtent(530,14576
+sun_awt_motif_X11FontMetrics_charsWidth(570,15764
+sun_awt_motif_X11FontMetrics_bytesWidth(609,16652
+
+awt_Frame.c,621
+Window_resize(55,1785
+Frame_event_handler(75,2323
+Frame_quit(114,3240
+setDeleteCallback(122,3399
+changeInsets(143,3987
+sun_awt_motif_MFramePeer_create(162,4364
+sun_awt_motif_MFramePeer_pSetIconImage(307,9027
+sun_awt_motif_MFramePeer_pSetMenuBar(372,10559
+sun_awt_motif_MFramePeer_pShow(430,12077
+sun_awt_motif_MFramePeer_pHide(510,14225
+sun_awt_motif_MFramePeer_toBack(528,14666
+sun_awt_motif_MFramePeer_pSetTitle(547,15098
+sun_awt_motif_MFramePeer_pDispose(576,15730
+sun_awt_motif_MFramePeer_pReshape(616,16792
+sun_awt_motif_MFramePeer_setResizable(670,18219
+sun_awt_motif_MFramePeer_setCursor(695,18782
+
+awt_Graphics.c,1917
+#define UNICODE_FONT_LIST32,1164
+#define max(max41,1274
+#define min(min42,1328
+#define INIT_GC0(INIT_GC044,1383
+#define INIT_GC(INIT_GC49,1495
+#define INIT_GC2(INIT_GC255,1625
+#define ABS(ABS61,1767
+#define OX(OX62,1809
+#define OY(OY63,1851
+#define TX(TX64,1893
+#define TY(TY65,1931
+awt_init_gc(68,1974
+awt_drawArc(87,2363
+sun_awt_motif_X11Graphics_createFromComponent(133,3111
+sun_awt_motif_X11Graphics_createFromGraphics(166,3876
+sun_awt_motif_X11Graphics_imageCreate(208,4938
+sun_awt_motif_X11Graphics_pSetFont(244,5721
+sun_awt_motif_X11Graphics_pSetForeground(269,6289
+sun_awt_motif_X11Graphics_dispose(294,6810
+awt_XDrawString16(319,7242
+sun_awt_motif_X11Graphics_drawString(342,7805
+sun_awt_motif_X11Graphics_drawStringWidth(415,9769
+sun_awt_motif_X11Graphics_drawChars(494,11541
+sun_awt_motif_X11Graphics_drawCharsWidth(567,13249
+sun_awt_motif_X11Graphics_drawBytes(648,15154
+sun_awt_motif_X11Graphics_drawBytesWidth(685,15969
+sun_awt_motif_X11Graphics_drawLine(734,17056
+sun_awt_motif_X11Graphics_clearRect(753,17498
+sun_awt_motif_X11Graphics_fillRect(813,18765
+sun_awt_motif_X11Graphics_drawRect(835,19231
+sun_awt_motif_X11Graphics_drawRoundRect(860,19697
+sun_awt_motif_X11Graphics_fillRoundRect(921,21263
+sun_awt_motif_X11Graphics_setPaintMode(977,22735
+sun_awt_motif_X11Graphics_setXORMode(991,23101
+sun_awt_motif_X11Graphics_clipRect(1016,23680
+sun_awt_motif_X11Graphics_getClipRect(1066,24777
+sun_awt_motif_X11Graphics_clearClip(1093,25475
+sun_awt_motif_X11Graphics_copyArea(1107,25777
+transformPoints(1131,26351
+sun_awt_motif_X11Graphics_drawPolygon(1171,27303
+sun_awt_motif_X11Graphics_fillPolygon(1203,28019
+sun_awt_motif_X11Graphics_drawOval(1236,28725
+sun_awt_motif_X11Graphics_fillOval(1247,29026
+sun_awt_motif_X11Graphics_drawArc(1257,29326
+sun_awt_motif_X11Graphics_fillArc(1268,29678
+sun_awt_image_ImageRepresentation_imageDraw(1279,30031
+
+awt_Label.c,131
+sun_awt_motif_MLabelPeer_create(29,1059
+sun_awt_motif_MLabelPeer_setText(59,2134
+sun_awt_motif_MLabelPeer_setAlignment(103,3242
+
+awt_List.c,380
+Slist_callback(26,1002
+sun_awt_motif_MListPeer_create(49,1626
+sun_awt_motif_MListPeer_isSelected(107,3594
+sun_awt_motif_MListPeer_addItem(130,4017
+sun_awt_motif_MListPeer_makeVisible(167,4883
+sun_awt_motif_MListPeer_select(195,5437
+sun_awt_motif_MListPeer_deselect(213,5791
+sun_awt_motif_MListPeer_delItems(231,6141
+sun_awt_motif_MListPeer_setMultipleSelections(255,6618
+
+awt_Menu.c,159
+awt_createMenu(29,1076
+sun_awt_motif_MMenuPeer_createMenu(109,3559
+sun_awt_motif_MMenuPeer_createSubMenu(134,4084
+sun_awt_motif_MMenuPeer_dispose(156,4610
+
+awt_MenuBar.c,87
+sun_awt_motif_MMenuBarPeer_create(27,1034
+sun_awt_motif_MMenuBarPeer_dispose(63,1992
+
+awt_MenuItem.c,395
+MenuItem_selected(30,1138
+MenuItem_isSeperator(50,1848
+sun_awt_motif_MMenuItemPeer_create(74,2435
+sun_awt_motif_MMenuItemPeer_enable(153,4951
+sun_awt_motif_MMenuItemPeer_disable(168,5285
+sun_awt_motif_MMenuItemPeer_dispose(183,5621
+sun_awt_motif_MMenuItemPeer_setLabel(198,5956
+sun_awt_motif_MCheckboxMenuItemPeer_setState(226,6526
+sun_awt_motif_MCheckboxMenuItemPeer_getState(242,6919
+
+awt_MToolkit.c,870
+struct WidgetInfo WidgetInfo28,1051
+#define bzero(bzero45,1327
+static Colormap GetDefaultColormap(64,1700
+struct PeerList PeerList83,2122
+xerror_handler(95,2276
+xtError(119,3044
+xtWarning(133,3327
+xioerror_handler(147,3571
+sun_awt_motif_MToolkit_init(158,3769
+awt_addWidget(304,7926
+awt_delWidget(321,8342
+findPeer(347,8797
+#define KEYBOARD_ONLY_EVENTS360,8986
+dispatchToWidget(363,9027
+typedef struct ModalWorkItemStr ModalWorkItemStr425,10347
+#define MODAL_WORK_ITEM_PTR(MODAL_WORK_ITEM_PTR433,10524
+void awt_MToolkit_loop(436,10631
+sun_awt_motif_MToolkit_run(489,11866
+sun_awt_motif_MToolkit_sync(500,12077
+awt_MToolkit_modalWait(509,12219
+sun_awt_motif_MToolkit_getScreenWidth(542,13052
+sun_awt_motif_MToolkit_getScreenHeight(548,13188
+sun_awt_motif_MToolkit_getScreenResolution(554,13326
+sun_awt_motif_MToolkit_makeColorModel(561,13562
+
+awt_Scrollbar.c,393
+Scrollbar_lineUp(25,996
+Scrollbar_lineDown(37,1240
+Scrollbar_pageUp(49,1492
+Scrollbar_pageDown(61,1736
+Scrollbar_dragAbsolute(73,1988
+sun_awt_motif_MScrollbarPeer_create(86,2251
+sun_awt_motif_MScrollbarPeer_setValue(180,5282
+sun_awt_motif_MScrollbarPeer_setValues(199,5767
+sun_awt_motif_MScrollbarPeer_setLineIncrement(226,6429
+sun_awt_motif_MScrollbarPeer_setPageIncrement(243,6822
+
+awt_TextArea.c,696
+TextArea_focusIn(28,1070
+TextArea_focusOut(34,1224
+sun_awt_motif_MTextAreaPeer_create(41,1374
+sun_awt_motif_MTextAreaPeer_pSetEditable(96,3010
+sun_awt_motif_MTextAreaPeer_setTextBackground(115,3505
+sun_awt_motif_MTextAreaPeer_select(136,3988
+sun_awt_motif_MTextAreaPeer_getSelectionStart(152,4405
+sun_awt_motif_MTextAreaPeer_getSelectionEnd(174,4917
+sun_awt_motif_MTextAreaPeer_getCursorPos(196,5425
+sun_awt_motif_MTextAreaPeer_setCursorPos(214,5826
+sun_awt_motif_MTextAreaPeer_endPos(230,6224
+sun_awt_motif_MTextAreaPeer_setText(248,6617
+sun_awt_motif_MTextAreaPeer_getText(271,7167
+sun_awt_motif_MTextAreaPeer_insertText(292,7652
+sun_awt_motif_MTextAreaPeer_replaceText(315,8214
+
+awt_TextField.c,585
+#define ECHO_BUFFER_LEN 29,1128
+TextField_changed(32,1170
+TextField_focusIn(38,1323
+TextField_focusOut(44,1478
+sun_awt_motif_MTextFieldPeer_create(50,1628
+sun_awt_motif_MTextFieldPeer_getText(95,2907
+sun_awt_motif_MTextFieldPeer_setText(119,3652
+sun_awt_motif_MTextFieldPeer_pSetEditable(144,4246
+sun_awt_motif_MTextFieldPeer_dispose(162,4714
+echoChar(192,5447
+sun_awt_motif_MTextFieldPeer_setEchoCharacter(237,6584
+sun_awt_motif_MTextFieldPeer_select(289,7791
+sun_awt_motif_MTextFieldPeer_getSelectionStart(305,8218
+sun_awt_motif_MTextFieldPeer_getSelectionEnd(327,8743
+
+awt_Window.c,333
+WaitForUnmap(35,1215
+Window_event_handler(42,1311
+changeInsets(72,1937
+sun_awt_motif_MWindowPeer_create(90,2314
+sun_awt_motif_MWindowPeer_pShow(181,5335
+sun_awt_motif_MWindowPeer_pHide(211,6054
+sun_awt_motif_MWindowPeer_pDispose(229,6445
+sun_awt_motif_MWindowPeer_pReshape(250,6960
+sun_awt_motif_MWindowPeer_toBack(303,8219
+
+awt_util.c,304
+static Widget MakeAppletSecurityChrome(25,957
+awt_util_createWarningWindow(64,2228
+awt_setWidgetGravity(70,2358
+awt_util_reshape(85,2665
+awt_util_hide(109,3196
+awt_util_show(119,3354
+awt_util_enable(138,3673
+awt_util_disable(144,3739
+awt_util_mapChildren(150,3807
+awt_changeAttributes(175,4274
+
+canvas.c,634
+containsGadgets(36,1238
+eatAllExposures(44,1384
+#define MIN(MIN55,1589
+#define MAX(MAX56,1645
+callJavaExpose(88,2536
+HandleExposeEvent(96,2716
+getModifiers(158,4186
+awt_modify_Event(186,4757
+awt_copyXEvent(312,7541
+handleKeyEvent(326,7768
+awt_canvas_handleEvent(548,12194
+#define PASS_EVENT 618,13937
+#define PASS_EVENT 620,13970
+awt_canvas_event_handler(726,16467
+awt_canvas_pointerMotionEvents(733,16633
+awt_canvas_reconfigure(751,16959
+Wrap_event_handler(769,17435
+awt_canvas_create(778,17616
+messWithGravity(853,19743
+struct MoveRecord MoveRecord868,20108
+moveWidget(874,20164
+awt_canvas_scroll(889,20544
+
+color.c,553
+static unsigned int GetMaxColors(38,1272
+#define CLIP(CLIP43,1400
+#define RGBMAP(RGBMAP46,1527
+#define COMPOSETC(COMPOSETC51,1732
+#define RGBTOGRAY(RGBTOGRAY56,1871
+    FREE_COLOR	59,1947
+    LIKELY_COLOR	60,1968
+    ALLOCATED_COLOR	61,1990
+awt_color_match24(133,3183
+awt_color_matchTC(142,3353
+awt_color_matchGS(151,3550
+awt_color_match(160,3711
+alloc_col(198,4409
+awt_allocate_colors(234,5256
+awt_getColorModel(591,13398
+#define red(red636,14856
+#define green(green637,14893
+#define blue(blue638,14931
+awt_getColor(641,14974
+
+image.c,1971
+typedef unsigned long Pixel;Pixel30,1167
+typedef struct Hjava_awt_image_ColorModel *CMHandle;CMHandle32,1197
+typedef Classjava_awt_image_ColorModel *CMPtr;CMPtr33,1250
+typedef struct Hsun_awt_image_Image *IHandle;IHandle34,1297
+typedef Classsun_awt_image_Image *IPtr;IPtr35,1343
+typedef struct Hsun_awt_image_ImageRepresentation *IRHandle;IRHandle36,1383
+typedef Classsun_awt_image_ImageRepresentation *IRPtr;IRPtr37,1444
+typedef struct Hsun_awt_image_OffScreenImageSource *OSISHandle;OSISHandle38,1499
+typedef Classsun_awt_image_OffScreenImageSource *OSISPtr;OSISPtr39,1563
+typedef struct Hjava_awt_image_ImageConsumer *ICHandle;ICHandle40,1621
+typedef struct Hjava_awt_Graphics *GHandle;GHandle41,1677
+typedef Classjava_awt_Graphics *GPtr;GPtr42,1721
+typedef struct HArrayOfByte *ByteHandle;ByteHandle43,1759
+typedef unsigned char *BytePtr;BytePtr44,1800
+typedef struct HArrayOfInt *IntHandle;IntHandle45,1832
+typedef unsigned int *IntPtr;IntPtr46,1871
+#define IMAGE_SIZEINFO 48,1902
+#define IMAGE_DRAWINFO 51,2006
+#define IMAGE_FULLDRAWINFO 55,2155
+#define IMAGE_OFFSCRNINFO 58,2272
+#define HINTS_DITHERFLAGS 63,2478
+#define HINTS_SCANLINEFLAGS 64,2552
+#define HINTS_OFFSCREENSEND 66,2630
+awt_getImageGC(73,2840
+image_getIRData(85,3126
+image_getIRDrawable(121,3972
+image_FreeBufs(131,4167
+image_FreeRenderData(153,4515
+image_InitMask(179,4986
+image_BufAlloc(225,6300
+image_DitherSetup(266,7327
+image_AlphaInit(283,7699
+image_Done(300,8067
+sun_awt_image_ImageRepresentation_offscreenInit(416,10706
+sun_awt_image_ImageRepresentation_setBytePixels(443,11253
+sun_awt_image_ImageRepresentation_setIntPixels(481,12148
+sun_awt_image_ImageRepresentation_finish(518,13054
+#define INIT_GC(INIT_GC540,13496
+awt_imageDraw(547,13628
+sun_awt_image_ImageRepresentation_disposeImage(701,17177
+#define SET_BYTE_PIXELS_SIG	727,17684
+#define SET_INT_PIXELS_SIG	728,17753
+sun_awt_image_OffScreenImageSource_sendPixels(731,17827
+
+imageconvert.c,32
+int GenericImageConvert(25,995
+
+stubs.c,29
+void _java_awt_init(24,1054
+
+awt_nodl.c,0

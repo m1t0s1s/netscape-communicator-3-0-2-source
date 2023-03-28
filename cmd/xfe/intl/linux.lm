@@ -1,0 +1,24 @@
+
+
+! This table maps the host's locale names to MIME charsets
+!
+*localeCharset*C:		iso-8859-1
+*localeCharset*chinese:		gb2312
+*localeCharset*de_DE:		iso-8859-1
+*localeCharset*fr_FR.iso8859:	iso-8859-1
+*localeCharset*ja_JP.mscode:	shift_jis
+*localeCharset*ja_JP.ujis:	x-euc-jp
+*localeCharset*japanese:	x-euc-jp
+*localeCharset*ko_KR.euc:	euc-kr
+*localeCharset*korean:		euc-kr
+*localeCharset*zh_CN.ugb:	gb2312
+*localeCharset*zh_TW.big5:	big5
+
+
+! OS-dependent font charset mappings
+!
+*documentFonts.charset*cns11643-0:				x-cns11643-1
+*documentFonts.charset*cns11643-1:				x-cns11643-2
+*documentFonts.charset*cns11643-2:				x-ignore
+
+

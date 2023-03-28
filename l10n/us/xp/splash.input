@@ -1,0 +1,67 @@
+<HEAD>
+<TITLE>Version %s</TITLE>
+</HEAD>
+<BODY BGCOLOR="#C0C0C0" TEXT="#000000" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+<TABLE CELLPADDING="3" WIDTH="100%%">
+<TR>
+ <TD ALIGN="CENTER">
+ <A HREF="http://home.netscape.com/eng/mozilla/3.0/about.html">
+ <IMG SRC="about:logo" ALT="" BORDER="0"></A></TD>
+<TD>
+  <CENTER>
+  <B><FONT SIZE="5">Netscape Navigator<SUP><FONT SIZE="-1">TM</FONT></SUP>
+  </FONT><BR>
+  <FONT SIZE="4">Version %s</BR></FONT></B>
+  Copyright &copy; 1994-1997 Netscape Communications Corporation, 
+  All rights reserved.
+  </CENTER>
+  <P>
+  <FONT SIZE="2">
+  This software is subject to the license agreement set forth in the 
+  <A HREF="about:license">license</A>. Please read and agree to all 
+  terms before using this software.
+  <P>
+  Report any problems through the 
+  <A HREF="http://cgi.netscape.com/cgi-bin/auto_bug.cgi"> 
+  feedback page</A>.
+  <P>
+  Netscape Communications, Netscape, Netscape Navigator and the Netscape
+  Communications logo are trademarks of Netscape Communications Corporation.
+  </FONT>
+</TD>
+</TR>
+<TR>
+<TD COLSPAN="2"><HR SIZE="3"></TD>
+</TR>
+<TR>
+<TR>
+  <TD ALIGN="CENTER"><IMG SRC="about:rsalogo" ALT=""></TD>
+  <TD>
+    <FONT SIZE="2">
+    Contains security software from RSA Data Security, Inc.
+    <BR>Copyright &copy; 1994 RSA Data Security, Inc.  All Rights Reserved.
+    <P>
+<B>%s</B>
+    </FONT>
+  </TD>
+</TR>
+<TR>
+<TD COLSPAN="2"><HR SIZE="3"></TD>
+</TR>
+<TR>
+</TABLE>
+<FONT SIZE="2">
+</FONT>
+<FONT SIZE="2">
+</FONT>
+<FONT SIZE="1">
+Any provision of Netscape Software to the U.S.Government is with "Restricted
+rights" as follows:  Use, duplication or disclosure by the Government is
+subject to restrictions set forth in subparagraphs (a) through (d) of the
+Commercial Computer Restricted Rights clause at FAR 52.227-19 when
+applicable, or in subparagraph (c) (1) (ii) of the Rights in Technical Data
+and Computer Software clause at DFARS 252.227-7013, and in similar clauses
+in the NASA FAR Supplement. Contractor/manufacturer is Netscape Communications
+Corporation, 501 East Middlefield Road, Mountain View, California, 94043.
+</FONT>
+</BODY>

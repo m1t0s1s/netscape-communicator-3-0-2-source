@@ -1,0 +1,133 @@
+<html>
+<title>SSLD - The SSL Daemon</title>
+<!-- Changed by: David Karlton, 28-Feb-1996 -->
+<center><h1>SSLD - The SSL Daemon</h1></center>
+
+<b>ssld</b> is a daemon that can serve as an ssl proxy for non-ssl aware
+tcp based applications.  <b>ssld</b> will connect securely to an ssl-aware
+server on behalf of a non-ssl client, and can accept secure connections
+from ssl based clients on behalf of a non-secure server.  Two <b>ssld</b>
+processes can be used to set up a secure communications channel between
+two non-secure processes.
+
+<h2>Running <b>ssld</b></h2>
+
+The command syntax for <b>ssld</b> is:<p>
+
+<b>ssld-* [-i] [-D] [-d</b> <i>keydir</i><b>] [-c </b><i>conffile</i><b>] [-C </b><i>chrootdir</i><b>]</b><p>
+
+where * is one of <b>us</b> or <b>ex</b> to specify using the domestic
+or international versions, respectively.<p>
+
+The <b>-i</b> option causes <b>ssld</b> to run in interactive mode.  If
+this option is not specified <b>ssld</b> will fork.<p>
+
+The <b>-D</b> option enables debugging messages.  It also enables interactive
+mode, just as <b>-i</b> does.<p>
+
+The <b>-d</b> option tells <b>ssld</b> to read key and certificate files
+from the directory <i>keydir</i>.  The default directory is
+<b>/usr/etc/ssl</b>.  The encrypted key database is named <b>key.db</b>,
+and the certificate database is <b>cert.db</b>. The name index for the
+certificate database is <b>cert-nameidx.db</b>. If you set an environment
+variable <b>SSL_DIR</b> to a directory path, <b>ssld</b> will search there.
+The <b>-d</b> option overrides this variable.<p>
+
+The <b>-c</b> option indicates that <i>conffile</i> should be used as the
+<b>ssld</b> configuration file.  The default configuration file is
+<b>ssld.conf</b>. You may also set an environment variable <b>SSLD_CONF</b>
+to avoid specifying this option at the command line. The <b>-c</b> option
+overrides this variable. If the configuration filename
+begins with a '/', it is assumed to be a full pathname. Otherwise, the
+configuration file is searched for in the whatever directory is specified
+with <b>-d</b> or <b>SSL_DIR</b> (the default being <b>/usr/etc/ssl</b>).<p>
+
+The <b>-C</b> option causes <b>ssld</b> to change its root directory
+to <i>chrootdir</i> via the <i>chroot(2)</i> system call.<p>
+
+<h2>The <b>ssld</b> Configuration File</h2>
+
+The <b>ssld</b> configuration file contains one line per port that it
+will listen on.  Each line contains six entries.  They are <i>port</i>,
+<i>mode</i>, <i>acl</i>, <i>keyname</i>, <i>certname</i>, and <i>action</i>.<p>
+
+The <i>port</i> is the port number or service name that can be looked up
+by <i>getservbyname(3)</i>, of a port that ssld will listen on.<p>
+
+The <i>mode</i> field indicates to <b>ssld</b> how to treat a connection
+once it is made.  There are four valid values for <i>mode</i>, which are
+<b>client</b>, <b>server</b>, <b>auth-client</b>, and <b>auth-server</b>.
+The meaning of the modes is as follows:<p>
+<dl>
+<dt><b>client <i>(BROKEN)</i></b>
+<dd>The incoming connection is in the clear, and the forwarding connection
+will use SSL.  <b>ssld</b> will perform the ssl handshake as a client.
+
+<dt><b>auth-client <i>(BROKEN)</i></b>
+<dd>Same as <b>client</b> except that the ssl handshake will include
+client authentication using <b>ssld</b>'s certificate.
+
+<dt><b>server</b>
+<dd>The incoming connection uses SSL.  <b>ssld</b> will talk to the
+forwarding destination or exec'd daemon in the clear.  <b>ssld</b> will
+perform the ssl handshake as a server.
+
+<dt><b>auth-server</b>
+<dd>Same as <b>server</b> except that the ssl handshake will require the
+client to authenticate itself.
+</dl><p>
+The <i>acl</i> field can either be the name of a file containing an
+access control list for this port, or a '-' indicating that there is no
+access control on this port.  <b>NOTE: Access control lists only work
+in auth-server mode.</b>  The access control list file contains a list
+of names, one per line.  One of these names must match the common name
+field of the subject of the client's certificate.  If no match is
+found then <b>ssld</b> will drop the connection.<p>
+
+The <i>keyname</i> field should be the nickname of the key that is accessed
+from the <b>key.db</b> database located in the directory specified with
+the <b>-d</b> option or the <b>SSL_DIR</b> environment variable.<p>
+
+The <i>certname</i> field should be the nickname of the certificate that is
+accessed from the <b>cert.db</b> database, always located in the same directory
+as <b>key.db</b>.
+<p>
+
+The <i>action</i> consists of a keyword, followed by an argument list.
+The two possible keywords are <b>forward</b> and <b>exec</b>.<p>
+
+The argument to <b>forward</b> is a <i>host</i>:<i>port</i> string, where
+<i>host</i> a hostname or ip address, and <i>port</i> is a port number
+or service name.  <b>ssld</b> will connect to the given port on the
+given host, and forward all data from the incoming connection to that
+port, performing the appropriate ssl transformations based on the
+<i>mode</i>.<p>
+
+The arguments to <b>exec</b> are the pathname of the program to execute,
+followed by the name of the program and its arguments.  The program is
+run with the socket of the incoming connection cloned onto its stdin,
+stdout, and stderr file descriptors, just like inetd.  In addition,
+there is another socketpair created, one end of which is connected to 
+file descriptor #3 of the exec'd program.  This socket is used to provide
+a control channel between <b>ssld</b> and the exec'd program.  It allows
+the exec'd program to create its own connections back through ssld.  This
+is used by <b>rshd</b>.  See <b>sslref/contrib/rshd/rshd.c</b> and
+<b>sslref/src/libutil/ssld_util.c</b> for details of how to use this
+facility.<p>
+
+<h2>Notes on Security</h2>
+
+It is important to take some care in configuring <b>ssld</b>.  A careless
+configuration could open some serious security holes.  Some things to
+look out for:
+<ul>
+<li>A port configured in <b>auth-client</b> mode will allow anyone who can
+connect to that port to do ssl, authenticated as you, using the certificate
+that you ran <b>ssld</b> with.  You should take great care to make sure
+that no one who you don't want pretending to be you can access that port,
+either by configuring your firewall, or some other means.
+<li>A port configured in <b>client</b> mode will allow anyone who can connect
+to the port to appear to be coming from your machine.  A host based
+authentication mechanism might give them access that they should not have.
+</ul>
+</html>

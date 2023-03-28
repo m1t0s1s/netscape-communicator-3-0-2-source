@@ -1,0 +1,11 @@
+This directory is only for icons that are actually built into the
+client as icons.  That means:
+
+  o  No random GIF files that will not become icons
+  o  No unused icons unless they will eventually be incorporated into
+     the client.
+
+If you don't follow these rules, the client will end up reserving too
+many colors for icons.
+
+

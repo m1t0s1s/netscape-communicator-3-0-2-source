@@ -1,0 +1,15 @@
+CC = cc
+
+DUMP_OBJS = cachedump.o
+
+GENERAL_OBJS = extcache.o 
+
+LIBS = ../libdbm/libdbm.a ../xp/libxp.a
+
+CFLAGS = -g -DEXT_DB_ROUTINES -DBYTE_ORDER=BIG_ENDIAN -I../../include \
+	 -I../../../ns/dist/include
+
+cache_dump: $(DUMP_OBJS) $(GENERAL_OBJS)
+	$(CC) -g -o cache_dump $(DUMP_OBJS) $(GENERAL_OBJS) $(LIBS)
+	
+

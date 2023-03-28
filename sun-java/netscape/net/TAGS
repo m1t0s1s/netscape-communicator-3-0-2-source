@@ -1,0 +1,153 @@
+
+netStubs.c,1000
+#define IMPLEMENT_netscape_applet_AppletThreadGroup39,857
+#define IMPLEMENT_netscape_applet_MozillaAppletContext40,909
+#define IMPLEMENT_netscape_applet_EmbeddedAppletFrame41,964
+nsn_GetCurrentAppletFrame(54,1446
+nsn_GetCurrentContext(79,2310
+nsn_GetCurrentAppletData(100,3023
+nsn_DataQueue_insert(115,3445
+#define DEFAULT_DATA_LENGTH	128,3743
+nsn_DataQueue_writeBytes(131,3798
+nsn_DataQueue_readBytes(179,4915
+nsn_DataQueue_length(211,5746
+nsn_DataQueue_clear(223,5981
+nsn_JavaStream_abort(240,6345
+#define HTTP_SERVER_STATUS_OK	263,6918
+#define HTTP_SERVER_STATUS_USE_LOCAL_COPY	264,6954
+nsn_JavaStream_complete(267,7014
+nsn_JavaStream_writeReady(296,7983
+nsn_JavaStream_write(307,8324
+nsn_JavaStream_make(349,9446
+NSN_RegisterJavaConverter(407,11272
+netscape_net_URLStreamHandlerFactory_pInit(418,11594
+netscape_net_URLStreamHandlerFactory_pSupportsProtocol(428,11948
+    #define BUF_SIZE 432,12105
+nsn_CloseJavaConnection(452,12531
+nsn_JavaContextToRealContext(462,12788
+
+conn.c,474
+netscape_net_URLConnection_pCreate(21,416
+netscape_net_URLConnection_getContentLength0(96,2648
+netscape_net_URLConnection_getContentType0(120,3306
+nsn_TimeString(143,3900
+    #define TIME_LENGTH 145,3931
+netscape_net_URLConnection_getHeaderField0(166,4495
+netscape_net_URLConnection_getHeaderFieldKey0(239,6830
+nsn_JavaStream_close(270,7664
+nsn_JavaStream_javaClose(290,8168
+netscape_net_URLConnection_close(349,9608
+netscape_net_URLConnection_finalize(367,10097
+
+inStr.c,206
+PUBLIC void nsn_InstallTickleHookProc(23,498
+nsn_GetURL_exit(29,618
+netscape_net_URLInputStream_open(137,3572
+netscape_net_URLInputStream_read(321,10010
+netscape_net_URLInputStream_available(423,13327
+
+outStr.c,222
+netscape_net_URLOutputStream_open(21,438
+nsn_URLOutputStream_writeBytes(64,1713
+netscape_net_URLOutputStream_writeBytes(95,2615
+netscape_net_URLOutputStream_write(115,3162
+netscape_net_URLOutputStream_pClose(123,3365
+
+javactxt.c,3826
+typedef struct MozillaEvent_GraphProgressInit MozillaEvent_GraphProgressInit33,1036
+} MozillaEvent_GraphProgressInit;MozillaEvent_GraphProgressInit37,1159
+PR_STATIC_CALLBACK(39,1194
+nsn_GraphProgressInit(52,1632
+typedef struct MozillaEvent_GraphProgressDestroy MozillaEvent_GraphProgressDestroy84,2651
+} MozillaEvent_GraphProgressDestroy;MozillaEvent_GraphProgressDestroy89,2807
+PR_STATIC_CALLBACK(91,2845
+nsn_GraphProgressDestroy(119,3914
+typedef struct MozillaEvent_GraphProgress MozillaEvent_GraphProgress152,5015
+} MozillaEvent_GraphProgress;MozillaEvent_GraphProgress158,5207
+PR_STATIC_CALLBACK(160,5238
+nsn_GraphProgress(225,7779
+nsn_Progress(261,8955
+typedef struct MozillaEvent_SetProgressBarPercent MozillaEvent_SetProgressBarPercent281,9532
+} MozillaEvent_SetProgressBarPercent;MozillaEvent_SetProgressBarPercent284,9628
+PR_STATIC_CALLBACK(286,9667
+nsn_SetProgressBarPercent(293,9844
+PR_STATIC_CALLBACK(321,10770
+nsn_noop(334,11018
+#define MAKE_FE_TYPES_PREFIX(MAKE_FE_TYPES_PREFIX339,11058
+#define MAKE_FE_FUNCS_TYPES340,11102
+#define nsn_CreateNewDocWindow	345,11198
+#define nsn_LayoutNewDocument	346,11261
+#define nsn_SetDocTitle	347,11322
+#define nsn_FinishedLayout	348,11372
+#define nsn_TranslateISOText	349,11427
+#define nsn_GetTextInfo	350,11486
+#define nsn_GetImageInfo	351,11536
+#define nsn_GetEmbedSize	352,11587
+#define nsn_GetJavaAppSize	353,11638
+#define nsn_GetFormElementInfo	354,11693
+#define nsn_GetFormElementValue	355,11756
+#define nsn_ResetFormElement	356,11821
+#define nsn_SetFormElementToggle	357,11880
+#define nsn_FreeFormElement	358,11946
+#define nsn_FreeImageElement	359,12003
+#define nsn_FreeEmbedElement	360,12062
+#define nsn_FreeJavaAppElement	361,12121
+#define nsn_HideJavaAppElement	362,12184
+#define nsn_FreeEdgeElement	363,12247
+#define nsn_FormTextIsSubmit	364,12304
+#define nsn_DisplaySubtext	365,12363
+#define nsn_DisplayText	366,12418
+#define nsn_DisplayImage	367,12468
+#define nsn_DisplayEmbed	368,12519
+#define nsn_DisplayJavaApp	369,12570
+#define nsn_DisplaySubImage	370,12625
+#define nsn_DisplayEdge	371,12682
+#define nsn_DisplayTable	372,12732
+#define nsn_DisplayCell	373,12783
+#define nsn_DisplaySubDoc	374,12833
+#define nsn_DisplayLineFeed	375,12886
+#define nsn_DisplayHR	376,12943
+#define nsn_DisplayBullet	377,12989
+#define nsn_DisplayFormElement	378,13042
+#define nsn_ClearView	379,13105
+#define nsn_SetDocDimension	380,13151
+#define nsn_SetDocPosition	381,13208
+#define nsn_GetDocPosition	382,13263
+#define nsn_BeginPreSection	383,13318
+#define nsn_EndPreSection	384,13375
+#define nsn_SetProgressBarPercent	386,13434
+#define nsn_SetBackgroundColor	388,13509
+#define nsn_Progress	390,13590
+#define nsn_Alert	392,13641
+#define nsn_SetCallNetlibAllTheTime	393,13679
+#define nsn_ClearCallNetlibAllTheTime	394,13751
+#define nsn_GraphProgressInit	396,13845
+#define nsn_GraphProgressDestroy	397,13906
+#define nsn_GraphProgress	398,13972
+#define nsn_UseFancyFTP	400,14032
+#define nsn_UseFancyNewsgroupListing	401,14082
+#define nsn_FileSortMethod	402,14156
+#define nsn_ShowAllNewsArticles	403,14211
+#define nsn_Confirm	404,14276
+#define nsn_Prompt	405,14318
+#define nsn_PromptUsernameAndPassword	406,14358
+#define nsn_PromptPassword	407,14434
+#define nsn_EnableClicking	408,14489
+#define nsn_ImageSize	409,14544
+#define nsn_ImageData	410,14590
+#define nsn_ImageIcon	411,14636
+#define nsn_ImageOnScreen	412,14682
+#define nsn_SetColormap	413,14735
+#define nsn_AllConnectionsComplete	415,14803
+#define JCX_LOCK(JCX_LOCK421,14969
+#define JCX_UNLOCK(JCX_UNLOCK422,15028
+nsn_JavaContext_make(427,15182
+	#define MAKE_FE_FUNCS_PREFIX(MAKE_FE_FUNCS_PREFIX434,15417
+	#define MAKE_FE_FUNCS_ASSIGN 435,15458
+nsn_JavaContext_destroy(474,16489
+void nsn_JavaContext_breakLinkage(496,17151
+
+stubs.c,28
+void _java_net_init(13,396
+
+nn_nodl.c,0

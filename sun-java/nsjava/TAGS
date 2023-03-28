@@ -1,0 +1,13 @@
+
+nsjava.c,372
+#define O_BINARY 10,277
+BOOL WINAPI DllMain 27,622
+int CALLBACK LibMain(52,1052
+BOOL CALLBACK _export _loadds WEP(58,1188
+PRStaticLinkTable * CALLBACK __export __loadds NODL_TABLE(70,1567
+void ClassDefHook(80,1704
+int OpenCode(82,1743
+ClassClass *GetThreadClassBlock(96,2060
+void PreventAsyncGC(102,2135
+char * privateGetenv(111,2302
+int privatePutenv(116,2365

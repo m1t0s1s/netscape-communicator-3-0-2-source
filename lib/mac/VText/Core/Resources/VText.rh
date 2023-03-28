@@ -1,0 +1,53 @@
+//	===========================================================================
+//	VText.rh
+//	===========================================================================
+
+#ifndef	__VText_rh__
+	#define	__VText_rh__
+
+	//	suite constants
+	#include	<AEVTextSuite.h>
+	
+	#include	<VText_Resources.h>
+	
+	//	PPob normal case include file
+	#ifndef	Include_User_Template
+		#define	Include_User_Template
+	#endif
+	#ifndef	User_Template_File
+		#define	User_Template_File	<VText_PPob.ri>
+	#endif
+
+	//	stream case include file (also applies to strm case of PPob's
+	#ifndef	Include_Stream_Template
+		#define	Include_Stream_Template
+	#endif
+	#ifndef	Stream_Template_File
+		#define	Stream_Template_File	<VText_RezStreaming.ri>
+	#endif
+
+	//	class ids
+	#include	<PP_ClassIDs_DM.h>
+	#include	<V_ClassIDs.h>
+	#include	<VText_ClassIDs.h>
+		
+	//	data definitions
+	#include	<VText_RezStreaming.rh>
+
+	//	rez type declarations
+	#include	<PowerPlant.more.r>
+	type 'strm' {
+		array {
+			switch {
+				#if defined(mw_rez)
+					#include Stream_Template_File
+				#else
+					#include $$Shell("Stream_Template_File")
+				#endif
+			};
+		};
+	};
+	type typeVRulerSets as 'strm';
+	type typeVStyleSets as 'strm';
+	
+#endif

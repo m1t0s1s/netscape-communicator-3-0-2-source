@@ -1,0 +1,130 @@
+
+tiny_Font.c,97
+FontName(12,280
+Style(60,1371
+awt_getFont(76,1666
+sun_awt_tiny_TinyFontMetrics_init(165,3767
+
+tiny_Graphics.c,789
+#define OX(OX7,146
+#define OY(OY8,188
+#define TX(TX9,230
+#define TY(TY10,268
+tiny_gc(23,603
+sun_awt_tiny_TinyGraphics_createFromGraphics(85,2026
+sun_awt_tiny_TinyGraphics_createFromWindow(97,2264
+sun_awt_tiny_TinyGraphics_imageCreate(120,2693
+sun_awt_tiny_TinyGraphics_dispose(145,3224
+sun_awt_tiny_TinyGraphics_drawLine(158,3417
+sun_awt_tiny_TinyGraphics_fillRect(177,3819
+sun_awt_tiny_TinyGraphics_drawString(202,4258
+sun_awt_tiny_TinyGraphics_drawChars(236,5011
+sun_awt_tiny_TinyGraphics_drawBytes(270,5785
+sun_awt_tiny_TinyGraphics_copyArea(303,6541
+transformPoints(326,7006
+sun_awt_tiny_TinyGraphics_fillPolygon(363,7938
+sun_awt_tiny_TinyGraphics_drawArc(384,8405
+sun_awt_tiny_TinyGraphics_fillArc(415,8993
+sun_awt_image_ImageRepresentation_imageDraw(446,9581
+
+tiny_Toolkit.c,656
+#define bzero(bzero11,273
+#define MAXWINDOWS 34,635
+tiny_register(38,697
+tiny_unregister(51,856
+tiny_find(64,1036
+getModifiers(78,1255
+xerror_handler(105,1809
+xioerror_handler(121,2334
+handleKeyEvent(128,2435
+sun_awt_tiny_TinyToolkit_init(340,6583
+tiny_flush(419,8872
+sun_awt_tiny_TinyInputThread_run(427,8942
+static void FlushMotionEvent(448,9311
+sun_awt_tiny_TinyEventThread_run(475,9903
+sun_awt_tiny_TinyToolkit_getScreenWidth(664,14108
+sun_awt_tiny_TinyToolkit_getScreenHeight(670,14227
+sun_awt_tiny_TinyToolkit_getScreenResolution(676,14348
+sun_awt_tiny_TinyToolkit_makeColorModel(683,14565
+sun_awt_tiny_TinyToolkit_sync(689,14666
+
+tiny_Window.c,439
+sun_awt_tiny_TinyWindow_winCreate(30,1091
+sun_awt_tiny_TinyWindow_winReshape(87,2527
+sun_awt_tiny_TinyWindow_winDispose(115,3041
+sun_awt_tiny_TinyWindow_winShow(133,3336
+sun_awt_tiny_TinyWindow_winHide(149,3576
+sun_awt_tiny_TinyWindow_winFront(165,3832
+sun_awt_tiny_TinyWindow_winBack(181,4087
+sun_awt_tiny_TinyWindow_winBackground(197,4354
+sun_awt_tiny_TinyWindow_winFocus(217,4742
+sun_awt_tiny_TinyWindow_winSetCursor(230,4994
+
+stubs.c,28
+void _java_awt_init(10,392
+
+../x/color.c,474
+static unsigned int GetMaxColors(38,1272
+#define CLIP(CLIP43,1400
+#define RGBMAP(RGBMAP46,1527
+#define COMPOSETC(COMPOSETC51,1732
+#define RGBTOGRAY(RGBTOGRAY56,1871
+awt_color_match24(133,3183
+awt_color_matchTC(142,3353
+awt_color_matchGS(151,3550
+awt_color_match(160,3711
+alloc_col(198,4409
+awt_allocate_colors(234,5256
+awt_getColorModel(591,13398
+#define red(red636,14856
+#define green(green637,14893
+#define blue(blue638,14931
+awt_getColor(641,14974
+
+../x/image.c,1971
+typedef unsigned long Pixel;Pixel30,1167
+typedef struct Hjava_awt_image_ColorModel *CMHandle;CMHandle32,1197
+typedef Classjava_awt_image_ColorModel *CMPtr;CMPtr33,1250
+typedef struct Hsun_awt_image_Image *IHandle;IHandle34,1297
+typedef Classsun_awt_image_Image *IPtr;IPtr35,1343
+typedef struct Hsun_awt_image_ImageRepresentation *IRHandle;IRHandle36,1383
+typedef Classsun_awt_image_ImageRepresentation *IRPtr;IRPtr37,1444
+typedef struct Hsun_awt_image_OffScreenImageSource *OSISHandle;OSISHandle38,1499
+typedef Classsun_awt_image_OffScreenImageSource *OSISPtr;OSISPtr39,1563
+typedef struct Hjava_awt_image_ImageConsumer *ICHandle;ICHandle40,1621
+typedef struct Hjava_awt_Graphics *GHandle;GHandle41,1677
+typedef Classjava_awt_Graphics *GPtr;GPtr42,1721
+typedef struct HArrayOfByte *ByteHandle;ByteHandle43,1759
+typedef unsigned char *BytePtr;BytePtr44,1800
+typedef struct HArrayOfInt *IntHandle;IntHandle45,1832
+typedef unsigned int *IntPtr;IntPtr46,1871
+#define IMAGE_SIZEINFO 48,1902
+#define IMAGE_DRAWINFO 51,2006
+#define IMAGE_FULLDRAWINFO 55,2155
+#define IMAGE_OFFSCRNINFO 58,2272
+#define HINTS_DITHERFLAGS 63,2478
+#define HINTS_SCANLINEFLAGS 64,2552
+#define HINTS_OFFSCREENSEND 66,2630
+awt_getImageGC(73,2840
+image_getIRData(85,3126
+image_getIRDrawable(121,3972
+image_FreeBufs(131,4167
+image_FreeRenderData(153,4515
+image_InitMask(179,4986
+image_BufAlloc(225,6300
+image_DitherSetup(266,7327
+image_AlphaInit(283,7699
+image_Done(300,8067
+sun_awt_image_ImageRepresentation_offscreenInit(416,10706
+sun_awt_image_ImageRepresentation_setBytePixels(443,11253
+sun_awt_image_ImageRepresentation_setIntPixels(481,12148
+sun_awt_image_ImageRepresentation_finish(518,13054
+#define INIT_GC(INIT_GC540,13496
+awt_imageDraw(547,13628
+sun_awt_image_ImageRepresentation_disposeImage(701,17177
+#define SET_BYTE_PIXELS_SIG	727,17684
+#define SET_INT_PIXELS_SIG	728,17753
+sun_awt_image_OffScreenImageSource_sendPixels(731,17827
+
+../x/imageconvert.c,32
+int GenericImageConvert(25,995

@@ -1,0 +1,1953 @@
+<HTML>	<!-- -*- Mode: Java; tab-width: 8 -*- -->
+<HEAD>
+<SCRIPT LANGUAGE="JavaScript">
+
+// WARNING: editing this file is complicated.
+// After making any changes, you must run "convhtml.sh" on a Unix
+// machine that has Perl5 installed.  This will create three files:
+//
+//    secprefs.h      a C-includable version of this file (secprefs.html).
+//                    this is included by advisor.c on Unix and Mac.
+//
+//    secprefs.rc     a slight variant of the above, this one in the form
+//                    of a Windows resource file, since Windows doesn't
+//                    like having large string constants in the executable.
+//
+//    allxpstr.ins    a representation of the localizable strings used in
+//                    this file -- the contents of this file must be pasted
+//                    by hand into the appropriate spot in include/allxpstr.h
+//                    any time a change happens.
+
+var sa_action           = "internal-dialog-handler";
+var sa_handle		= '10101010';
+
+// Everything from here to the "L10N-BEGIN" line is used only for interactive
+// debugging of this file -- it is not built into the Netscape executable.
+//
+// These variables represent the persistent state of the security advisor,
+// and the various lists of certs.  (Here, they have random debugging values.
+// When the SA is launched by Netscape, they will have *real* values.)
+//
+// WARNING: advisor.c has knowlege of the names of all of the following
+// variables, and also of the NAME= parameters to some of the forms.
+
+var sa_curpage		= 4;
+var sa_your_certs	= sa_init_sorted_array("Jeff's Verisign Certificate",
+					       "Jeff's Ammodump Cert",
+					       "Jeff's CertHut Cert");
+var sa_your_ssl_certs	= sa_init_sorted_array("Jeff's Verisign Cert",
+					       "Jeff's CertHut Cert");
+var sa_your_mail_certs	= sa_init_sorted_array("Jeff's Ammodump Cert",
+					       "Jeff's CertHut Cert");
+var sa_people_certs	= sa_init_sorted_array("Lisa Repka", "Tom Weinstein",
+					       "Hagan Rivers", "Brendan Eich",
+					       "Tom Paquin", "Jeff Winner");
+var sa_site_certs	= sa_init_sorted_array("ammodump.mcom.com",
+					       "ammodump.mcom.com:444",
+					       "islay.mcom.com:8008",
+					       "wwwus.netscape.com",
+					       "hobbes.verisign.com:8080");
+var sa_signers_certs	= sa_init_sorted_array("BBN Cert Services CA Root 1",
+					       "United States Postal CA",
+					       "Verisign Class 1 Primary CA",
+					       "Verisign Class 2 Primary CA",
+					       "Verisign Class 3 Primary CA",
+					       "Verisign Class 4 Primary CA",
+					       "KEYWITNESS, Canada CA",
+					       "Canada Post Corporation CA",
+					       "Verisign/RSA Secure Server CA",
+					       "GTE CyberTrust Root CA",
+					       "AT&T Directory Services",
+					       "AT&T Certificate Services");
+var sa_principals	= sa_init_array("Apple Computer Company",
+					"JavaSoft Inc.",
+					"Netscape Communications Corp.",
+					"Sun Microsystems",
+					"Verisign Corp");
+var sa_cr_modules	= sa_init_array("Netscape Software CSP",
+					"Litronic CSP");
+var sa_selected_ssl_cert	= "";
+var sa_selected_mail_cert	= "";
+var sa_warn_enter_secure	= false;
+var sa_warn_leave_secure	= true;
+var sa_warn_mixed		= true;
+var sa_warn_send_clear		= false;
+var sa_enable_ssl2		= false;
+var sa_enable_ssl3		= true;
+var sa_password_set		= true;
+var sa_password_ask_type	= 1;
+var sa_password_ask_interval	= 30;
+var sa_url			= "mailbox://fe/people/suck";
+
+
+//  Info_Context is used for the sa_make_secinfo_page() call to draw context
+//  sensitive status info passed from advisor.c, this will have the following
+//  meaning for integral values
+//
+//  sa_info_context = 0  == nothing to say
+//  sa_info_context = 1  == Message Composition (S/MIME)
+//  sa_info_context = 2  == Mail Message (S/MIME)
+//  sa_info_context = 3  == News Message (S/MIME)
+//  sa_info_context = 4  == Snews Message (SSL and S/MIME)
+//  sa_info_context = 5  == Navigator (SSL/https)
+//  sa_info_context = 6  == Mail Threads
+//  sa_info_context = 7  == News Threads
+//
+var sa_info_context = 1;
+
+//  sa_nav_info_encrypted indicates whether SSL was used to encrypt data.
+//  sa_nav_info_mixed indicates if the page contains a mixture of encrypted
+//  and unencrypted data 
+//
+var sa_nav_info_encrypted = true;
+var sa_nav_info_mixed = false;
+var sa_nav_info_chrome_missing = true;
+var sa_nav_info_missing_menubar = true;
+var sa_nav_info_missing_toolbar = true;
+var sa_nav_info_missing_personalbar = true;
+var sa_nav_info_missing_location = true;
+var sa_nav_info_missing_status = true;
+var sa_nav_info_java = true;
+var sa_nav_info_js = true;
+var sa_nav_info_site_name = "www.foobar.com";
+var sa_nav_info_creator_name = "www.barfoo.com";
+
+//  sa_sign_error and sa_encrypt_errors are used to communicate 
+//  context-sensitive S/MIME error status for sa_make_secinfo_message_page()
+//
+//  sa_sign_error = 0         == Signed, and valid.
+//  sa_sign_error = 1         == Not Signed.
+//  sa_sign_error = 2         == Invalid cert (expired, etc).
+//  sa_sign_error = 3         == Sig doesn't match (message tampered).
+//  sa_sign_error = 4         == Email address in message doesn't match Cert.
+//
+//  in the COMPOSITION WINDOW:
+//  sa_encrypt_errors[n] = 1  == There is a NULL recipient list.
+//  sa_encrypt_errors[n] = 2  == No cert for intended recipient.
+//  sa_encrypt_errors[n] = 3  == Have recipient cert, but it is expired.
+//  sa_encrypt_errors[n] = 4  == The recipient cert has been revoked.
+//  sa_encrypt_errors[n] = 5  == There is no cert for the recipient alias.
+//  sa_encrypt_errors[n] = 6  == Can't encrypt when sending to news.
+//  sa_encrypt_errors[n] = 7  == Cert is invalid.
+//  sa_encrypt_errors[n] = 8  == Cert is marked as being untrusted.
+//  sa_encrypt_errors[n] = 9  == Cert issuer is marked as being untrusted.
+//  sa_encrypt_errors[n] = 10 == Cert issuer is unknown.
+//  sa_encrypt_errors[n] = 11 == Something else...
+//
+// in the MESSAGE WINDOW:
+//  sa_encrypt_errors[0] = 0  == Was encrypted, no error.
+//  sa_encrypt_errors[0] = 1  == Not encrypted.
+//  sa_encrypt_errors[0] = 2  == Encrypted for another user, not readable.
+//  sa_encrypt_errors[0] = 3  == Something else (see sa_encrypt_error_str)
+
+
+var sa_sign_error	= 2;
+var sa_encrypt_errors = sa_init_array(2,2,3,4,5);
+
+// This is the time at which the message was signed, if it was.
+var sa_signing_time = "16-Apr-97 (wed); 4:41 PM";
+
+// These are the strings corresponding to XP_GetString() on the error codes we
+// got back from the security library.  We might use 'em, or second-guess 'em.
+//
+var sa_sign_error_str    = "My hovercraft is full of eels.";
+var sa_encrypt_error_str = "Touch my monkey.";
+
+// This is the pretty description of the encryption algorithm used, or ""
+// if it wasn't encrypted or we couldn't figure it out.
+var sa_encryption_algorithm = "PKCS #12 RSA Encryption with Triple DES";
+
+
+var sa_signer_name	= "Dan Hugo";
+var sa_signer_addr	= "dhugo@netscape.com";
+var sa_sender_addr	= "dhugo@mcom.com";
+var sa_newsgroup	= "mcom.bad-attitude";
+var sa_dest_names	= sa_init_array("Lisa Repka", "Dan Hugo",
+					"Jamie Zawinski", "Jeff Weinstein",
+					sa_newsgroup);
+
+// Boolean Pref sample settings for S/MIME behaviors and warnings
+//
+var sa_sign_mail_always	= true;
+var sa_sign_news_always	= true;
+var sa_sign_this	= true;
+var sa_encrypt_always	= true;
+var sa_encrypt_this	= true;
+// var sa_fwd_warning	= true;
+// var sa_re_warning	= true;
+
+// compatibility hack for 3.02 javascript...
+if (navigator.appVersion.substring(0,1) == '3') {
+  Event = null;
+}
+
+// redefine form target more usefully when running interactively...
+sa_action = "http://worksforme/function/warp.tests/forms/post-query.cgi";
+
+
+// L10N-BEGIN %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+//
+//                             The preceeding line is magic.
+//                             Everything from here to the BODY-BEGIN
+//                             line gets localized via allxpstr.h.
+//
+//                             Everything before this is used
+//                             only when debugging.
+//
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+// WARNING: none of these strings must be more than about 200 characters long.
+// This isn't a JavaScript limitation, but is one imposed by the way we 
+// generate localizable strings from these.  If they get too long, split them
+// up into multiple variables.  (convhtml.sh will print out warnings if it sees
+// strings that are too long.)
+
+
+// Button Labels
+//
+var sa_view_button_label	= "View";
+var sa_edit_button_label	= "Edit";
+var sa_verify_button_label	= "Verify";
+var sa_delete_button_label	= "Delete";
+var sa_export_button_label	= "Export";
+var sa_expired_button_label	= "Delete Expired";
+var sa_remove_button_label	= "Remove";
+var sa_get_cert_button_label	= "Get a Certificate...";
+var sa_get_certs_button_label	= "Get Certificates...";
+var sa_import_button_label	= "Import a Certificate...";
+var sa_view_cert_button_label	= "View Certificate";
+var sa_edit_privs_button_label	= "Edit Privileges";
+var sa_view_edit_button_label	= "View/Edit";
+var sa_add_button_label		= "Add";
+var sa_logout_all_button_label	= "Logout All";
+var sa_ok_button_label		= "OK";
+var sa_cancel_button_label	= "Cancel";
+var sa_help_button_label	= "Help";
+var sa_search_dir_button_label	= "Search Directory";
+var sa_send_cert_button_label	= "Send Certificate To Directory";
+var sa_page_info_label          = "Open Page Info";
+
+// Labels in the index column down the left side
+//
+var sa_secinfo_index_label	= "Security Info";
+var sa_passwords_index_label	= "Passwords";
+var sa_navigator_index_label	= "Navigator";
+var sa_messenger_index_label	= "Messenger";
+var sa_applets_index_label	= "Java/JavaScript";
+var sa_certs_intro_index_label	= "Certificates";
+var sa_yours_index_label	= "Yours";
+var sa_people_index_label	= "People";
+var sa_sites_index_label	= "Web Sites";
+var sa_developers_index_label	= "Software Developers";
+var sa_signers_index_label	= "Signers";
+var sa_modules_index_label	= "Cryptographic Modules";
+
+// Labels in the title box at the top (similar to index titles.)
+//
+var sa_secinfo_title_label	= "Security Info";
+var sa_passwords_title_label	= "Passwords";
+var sa_navigator_title_label	= "Navigator";
+var sa_messenger_title_label	= "Messenger";
+var sa_applets_title_label	= "Java/JavaScript";
+var sa_certs_intro_title_label	= "Certificates";
+var sa_yours_title_label	= "Your Certificates";
+var sa_people_title_label	= "Other People's Certificates";
+var sa_sites_title_label	= "Web Sites' Certificates";
+var sa_developers_title_label	= "Software Developers' Certificates";
+var sa_signers_title_label	= "Certificate Signers' Certificates";
+var sa_modules_title_label	= "Cryptographic Modules";
+
+// Other labels
+//
+var sa_enter_secure_label	= "Entering an encrypted site";
+var sa_leave_secure_label	= "Leaving an encrypted site";
+var sa_mixed_secure_label	=
+	"Viewing a page with an encrypted/unencrypted mix";
+var sa_send_clear_label		=
+	"Sending unencrypted information to a Site";
+var sa_ssl_cert_label		=
+	"<B>Certificate to identify you to a web site:</B>";
+var sa_ask_sa_every_time_label	= "Ask Every Time";
+var sa_select_auto_label	= "Select Automatically";
+var sa_ssl_config_label		=
+	"<B>Advanced Security (SSL) Configuration:</B>";
+var sa_ssl2_enable_label	= "Enable SSL (Secure Sockets Layer) v2";
+var sa_ssl2_config_label	= "Configure SSL v2";
+var sa_ssl3_enable_label	= "Enable SSL (Secure Sockets Layer) v3";
+var sa_ssl3_config_label	= "Configure SSL v3";
+var sa_smime_cert_label		=
+	"<B>Certificate for your Signed and Encrypted Messages:</B>";
+var sa_smime_no_certs_blurb	= "<B>(You have no email certificates.)</B>";
+var sa_smime_config_label	= "Select S/MIME Ciphers";
+var sa_change_password_label	= "Change Password";
+var sa_set_password_label	= "Set Password";
+var sa_ask_for_password_label	=
+	"<B>Communicator will ask for this Password:</B>";
+var sa_once_per_session_label	= "The first time your certificate is needed";
+var sa_every_time_label		= "Every time your certificate is needed";
+
+var sa_after_label		= "After";
+var sa_minutes_label		= "minutes of inactivity";
+
+
+// Panel descriptions - make sure they are less than 256 characters per line
+//
+// Secinfo panel
+//
+// S/MIME
+var sa_compose_encrypt_subtitle	= "Encrypting Message";
+var sa_compose_sign_subtitle	= "Signing Message";
+var sa_message_encrypt_subtitle	= "Encrypted Message";
+var sa_message_sign_subtitle	= "Signed Message";
+var sa_can_encrypt		=
+	"This message <B>can be encrypted</B> when it is sent.";
+var sa_send_encrypt_desc	= 
+	"Sending an encrypted message is like sending your " +
+	"correspondence in an envelope rather than a postcard; it " +
+	"makes it difficult for other people to read your message.";
+
+var sa_encrypt_this_checkbox_label = "Encrypt this message.";
+var sa_send_clear_warn_desc =
+	"Sending an unencrypted message is like sending your " +
+	"correspondence in a postcard instead of an envelope. " +
+	"Other people may be able to read your message.";
+
+var sa_no_recipients_desc =
+	"You must have at least one recipient entered for this message.";
+
+var sa_cannot_encrypt_head =
+	"This message <B>cannot be encrypted</B> when it is sent because";
+
+var sa_cert_missing_tail	= " has no Security Certificate.";
+var sa_cert_has_exp_tail	= " has an expired Security Certificate.";
+var sa_cert_has_revoke_tail	= " has a revoked Security Certificate.";
+var sa_cert_no_alias_tail	= " in Alias has no Security Certificate.";
+var sa_cert_newsgroup_tail	= " is a Discussion Group.";
+var sa_cert_invalid_tail	= " has an invalid Security Certificate.";
+var sa_cert_untrusted_tail	= " has a Security Certificate that is " +
+				  "marked as Untrusted.";
+var sa_cert_issuer_untrusted_tail = " has a Security Certificate Issuer " +
+				    "that is marked as Untrusted.";
+var sa_cert_issuer_unknown_tail = " has an unknown Security Certificate " +
+				  " Issuer.";
+var sa_cert_unknown_error_tail  = ": unknown certificate error.";
+
+// for Dogbert...
+var sa_how_to_get_their_cert_1 = 
+	"To obtain valid Security Certificates from a Directory, " +
+	"press <I>Get Certificates.</I>  Otherwise the recipients " +
+	"must first obtain a Certificate for themselves and then ";
+var sa_how_to_get_their_cert_2 = 
+	"send it to you in a signed email message. This new Security " +
+	"Certificate will automatically be remembered once it is " +
+	"received. <P>Discussion groups cannot receive encrypted messages.";
+
+// for Akbar...
+var sa_how_to_get_their_nondirectory_cert_1 = 
+	"To obtain valid Security Certificates for the recipient(s), " +
+	"they must first obtain a Certificate for themselves and then ";
+var sa_how_to_get_their_nondirectory_cert_2 = 
+	"send it to you in a signed email message. This new Security " +
+	"Certificate will automatically be remembered once it is " +
+	"received. <P>Discussion groups cannot receive encrypted messages.";
+
+var sa_can_be_signed = 
+	"This message <B>can be signed</B> when it is sent.";
+
+var sa_cannot_be_signed	=
+	"This message <B>cannot be signed</B> when it is sent.";
+
+var sa_cannot_sign_desc_1 =
+	"This is because you do not have a valid Security Certificate. " +
+	"When you include your Security Certificate in a message, you ";
+var sa_cannot_sign_desc_2 =
+	"also digitally sign that message.  This makes it possible to " +
+	"verify that the message actually came from you.";
+
+var sa_can_sign_desc =
+	"When you digitally sign a message, you also include your " +
+	"Security Certificate in that message.  This makes it possible " +
+	"to verify that the message actually came from you.";
+
+var sa_sign_disclaimer =
+	"In some places this digital signature may be considered as " +
+	"legally binding as your own written signature.";
+
+var sa_sign_this_checkbox_label	=
+	"Include my Security Certificate in this message and use a " +
+	"digital signature to sign this message ";
+
+var sa_was_encrypted =
+	"This message <B>was encrypted</B> when it was sent. " +
+	"<P>This means that it was hard for other people to eavesdrop on " +
+	"your message while it was being sent.";
+
+var sa_was_not_encrypted = 
+	"This message <B>was not encrypted</B> when it was sent. " +
+	"<P>This means that it was possible for other people to view your " +
+	"message while it was being sent.";
+
+var sa_was_encrypted_for_other_1 = 
+	"You cannot read this message because you do not have the Security " +
+	"Certificate necessary to decrypt it. This could be because your ";
+var sa_was_encrypted_for_other_2 = 
+	"Security Certificate is on a different computer or it could be " +
+	"because the message was encrypted with someone else's Security " +
+	"Certificate.";
+
+var sa_encryption_algorithm_was = "The algorithm used was ";
+
+var sa_was_signed_head =
+	"This message <B>was digitally signed</B> by ";
+
+var sa_included_cert_desc_head =
+	 "This message included the Security Certificate for ";
+
+var sa_was_signed_at = " on ";
+var sa_included_cert_desc_signed_at = ", and was signed on ";
+
+var sa_was_signed_desc_tail_1 = 
+	"To check the Certificate, press the ``View'' button. " +
+	"<P>This Certificate has automatically been added to your list of ";
+var sa_was_signed_desc_tail_2 = 
+	"People's Certificates to make it possible for you to send secure " +
+	"mail to this person.";
+
+var sa_was_not_signed =
+	"This message <B>was not digitally signed</B>. " +
+	"<P>It is impossible to verify that this message actually came " +
+	"from the sender.";
+
+var sa_sig_invalid =
+	"<B>The Certificate that was used to digitally sign this message " +
+	"is invalid</B>. " +
+	"<P>It is impossible to prove that this message actually came " +
+	"from the sender.";
+
+var sa_encryption_invalid = "<B>This message cannot be decrypted.</B> ";
+
+var sa_sign_error_intro = "The error was: ";
+
+var sa_sig_tampered_1 =
+	"Warning! In the time since the sender sent you this message and " +
+	"you received it, the message appears to have been altered.  Some ";
+var sa_sig_tampered_2 =
+	"or all of the content of this message has been changed.  You " +
+	"should contact the message sender and/or your system administrator.";
+
+var sa_addr_mismatch_part1 = 
+	"This message appears to have been sent from the email address " +
+	"<TT><B>";
+var sa_addr_mismatch_part2 = 
+	"</B></TT>, but the certificate which was used to sign this message " +
+	"belongs to the email address <TT><B>";
+var sa_addr_mismatch_part3 = 
+	"</B></TT>.  If these two email addresses don't belong to the same " +
+	" person, this could be an attempt at forgery.";
+
+
+var sa_news_encrypt_subtitle =
+	"Usenet News Security";
+
+var sa_news_encrypted_1 =
+	"The connection to this news server <B>is encrypted</B>. " +
+	"This means that the messages you read are encrypted as they ";
+var sa_news_encrypted_2 =
+	"are sent to you.  This makes it difficult for other people to " +
+	"read the messages while you are reading them. ";
+
+var sa_news_not_encrypted =
+	"The connection to this news server <B>is not encrypted</B>. " +
+	"<P>This means that other people may be able to read these " +
+	"messages while you are reading them.";
+
+var sa_nav_encryption_subtitle = "Encryption";
+
+var sa_nav_verification_subtitle = "Verification";
+
+var sa_nav_no_encrypt_desc_1 =
+	"This page <B>was not encrypted</B>. This means it was possible " +
+	"for other people to view this page when it was loaded. It ";
+var sa_nav_no_encrypt_desc_2 =
+	"also means that you cannot check the identity of the web " +
+	"site. For complete details on all the files on this page, "+
+	"click <B>Open Page info</B>.";
+
+var sa_nav_encrypt_desc_1 =
+	"This page <B>was encrypted</B>. This means it was difficult for " +
+	"other people to view this page when it was loaded.<P>";
+var sa_nav_encrypt_desc_2 =
+	"You can examine your copy of the certificate for this page " +
+	"and check the identity of the web site. To see the certificate ";
+var sa_nav_encrypt_desc_3 =
+	"for this web site, click <B>View Certificate</B>. For complete " +
+	"details on all the files on this page and their certificates, " +
+	"click <B>Open Page Info</B>.";
+
+var sa_nav_no_encrypt_mix_desc_1 =
+	"This page <B>was not encrypted</B>, but some of the files it " +
+	"contains were encrypted. This means it was difficult for ";
+var sa_nav_no_encrypt_mix_desc_2 =
+	"other people to view the encrypted files when the page " +
+	"was loaded. It also means that you cannot check the ";
+var sa_nav_no_encrypt_mix_desc_3 =
+	"identity of the web site for the page.<P>" +
+	"For complete details on all the files on this page, click " +
+	"<B>Open Page Info</B>.";
+
+var sa_nav_encrypt_mix_desc_1 =
+	"This page <B>was encrypted</B>. This means it was difficult for " +
+	"other people to view this page when it was loaded. You can ";
+var sa_nav_encrypt_mix_desc_2 =
+	"examine your copy of the certificate for this page and " +
+	"the identity of the web site. To see the certificate for ";
+var sa_nav_encrypt_mix_desc_3 =
+	"this web site, click <B>View Certificate</B>.<P>" +
+	"However, some of the files on this page <B>were not ";
+var sa_nav_encrypt_mix_desc_4 =
+	"encrypted</B>. This means that it was possible for other people " +
+	"to view those files when they were loaded. For complete ";
+var sa_nav_encrypt_mix_desc_5 =
+	"details on all the files on this page and their certificates, " +
+	"click <B>Open Page Info</B>.";
+
+var sa_nav_verify_cert_desc =
+	"Take a look at the page's Certificate.";
+
+var sa_nav_verify_domain_desc =
+	"Make sure that this is the site you think it is. This page comes " +
+	"from the site: ";
+
+var sa_nav_verify_missing_desc_1 =
+	"The following elements are missing from this window: ";
+
+var sa_nav_verify_missing_desc_2 =
+	". This means that you may be missing important information.";
+
+var sa_nav_info_menubar_name = "the menubar";
+var sa_nav_info_toolbar_name = "the toolbar";
+var sa_nav_info_personalbar_name = "the personal toolbar";
+var sa_nav_info_location_name = "the location bar";
+var sa_nav_info_status_name = "the status bar";
+
+var sa_nav_verify_java_desc_1 =
+	"This window was created by a Java Application (from ";
+
+var sa_nav_verify_java_desc_2 =
+	"). This application has some control over this window and may " +
+	"influence what you see.";
+
+var sa_nav_verify_js_desc_1 =
+	"This window was created by a JavaScript Application (from ";
+
+var sa_nav_verify_js_desc_2 =
+	"). This application has some control over this window and may " +
+	"influence what you see.";
+var sa_not_me_subtitle	= "<B><H2>There is no Security Info " +
+	"for this window.</H2></B>";
+
+var sa_not_me_desc_1 =
+	"Security Info is available for Browser, Messenger Message, " +
+	"and Discussion Message windows. ";
+var sa_not_me_desc_2 =
+	"<P>If you wish to change Security settings or preferences, use " +
+	"the tabs on the left to switch between different areas.";
+
+var sa_certs_intro_string_1 =
+	"This is an explanation of Security Certificates.<P> " +
+	"<B>Certificate:</B> A file that identifies a person " +
+	"or organization. Communicator uses certificates to ";
+var sa_certs_intro_string_2 =
+	"encrypt information.  You can use a certificate to " +
+	"check the identity of the certificate's owner.  " +
+	"You should trust a certificate only if you trust the " +
+	"person or organization that issued it. ";
+var sa_certs_intro_string_3 =
+	"<P>Your own certificates allow you to receive encrypted " +
+	"information.  Communicator also keeps track of " +
+	"certificates from other people, web sites, applets, and scripts. ";
+var sa_certs_intro_string_4 =
+	"<P><UL><B>Yours</B> lists your own certificates. " +
+	"<P><B>People</B> lists certificates from other people " +
+	"or organizations. ";
+var sa_certs_intro_string_5 =
+	"<P><B>Web Sites</B> lists certificates from web sites. " +
+	"<P><B>Signers</B> lists certificates from certificate " +
+	"signers (``Certificate Authorities''.)</UL>";
+
+
+// Personal Certificate panel
+//
+var sa_your_certs_desc_1 =
+	"You can use any of these certificates to identify yourself to " +
+	"other people and to web sites.  Communicator uses your certificates ";
+var sa_your_certs_desc_2 =
+	"to decrypt information sent to you.  Your certificates are signed " +
+	"by the organization that issued them. " +
+	"<P><B>These are your certificates:</B>";
+
+var sa_your_certs_desc_tail_1 = 
+	"You should make a copy of your certificates and keep them in a " +
+	"safe place. If you ever lose your certificates, you will be unable ";
+var sa_your_certs_desc_tail_2 = 
+	"to read encrypted mail you have received, and you may have " +
+	"problems identifying yourself to web sites.";
+
+// Other People's Certificates panel
+//
+var sa_people_certs_desc_1 =
+	"Other people have used these certificates to identify " +
+	"themselves to you.  Communicator can send encrypted ";
+var sa_people_certs_desc_2 =
+	"messages to anyone for whom you have a certificate. " +
+	"<P><B>These are certificates from other people:</B>";
+var sa_get_certs_desc =
+	"To get certificates from a network Directory press " +
+	"<I>Search Directory</I>.<p>";
+
+// Site Certs panel
+//
+var sa_site_certs_desc =
+	"<B>These are certificates that you have accepted from web sites:</B>";
+
+// CA Certs panel
+//
+var sa_signers_certs_desc = 
+	"<B>These certificates identify the certificate signers that you " +
+	"accept:</B>";
+
+// SSL Panel
+//
+var sa_ssl_desc =
+	"<B>These settings allow you to control Navigator security " +
+	"settings.</B> <P>Navigator security warnings can let you " +
+	"know before you do something that might be unsafe. " +
+	"<P><B>Show a warning before:";
+
+// S/MIME Panel
+//
+var sa_smime_desc =
+	"<B>These settings allow you to control Messenger security " +
+	"settings.</B> " +
+	"<P>Messenger Security warnings can let you know before you do " +
+	"something that might be unsafe.";
+
+// var sa_smime_warn_desc		= "<B>Show a warning before:</B>";
+// var sa_fwd_warn_checkbox_label	= "Forwarding an encrypted message";
+// var sa_re_warn_checkbox_label	= 
+//	"Sending an unencrypted reply to a message that was encrypted";
+
+var sa_smime_pref_desc	= "<B>Sending Signed/Encrypted Mail:</B>";
+var sa_encrypt_always_checkbox_label = 
+	"Encrypt mail messages, when it is possible";
+
+var sa_sign_mail_always_checkbox_label =
+	 "Sign mail messages, when it is possible";
+
+var sa_sign_news_always_checkbox_label =
+	 "Sign discussion (news) messages, when it is possible";
+
+var sa_smime_cert_desc =
+	"This certificate is included with every email message " +
+	"you <B>sign</B>.  When other people receive it, it makes " +
+	"it possible for them to send you encrypted mail.";
+
+var sa_smime_send_cert_desc =
+	"Other people could also obtain your certificate from a Directory:";
+
+var sa_smime_no_cert_desc_1 =
+	"If you had one, this certificate would be included with every " +
+	"email message you <B>signed</B>.  When other people received it, ";
+var sa_smime_no_cert_desc_2 =
+	"it would make it possible for them to send you encrypted mail. " +
+	"(To get a certificate, see the ``Yours'' tab on the left.)";
+
+var sa_smime_cipher_heading	= "<B>Advanced S/MIME Configuration:</B>";
+var sa_smime_cipher_desc	= "Cipher Preferences: ";
+
+// Java panel
+//
+var sa_applets_desc_1 =
+	"<B>These settings allow you to control access by Java applets and " +
+	"JavaScript scripts.</B> " +
+	"<P>No applet or script is allowed to access your computer or " +
+	"network without ";
+var sa_applets_desc_2 =
+	"your permission.  You have explicitly granted or forbidden " +
+	"access for all applets and scripts from the following vendors, " +
+	"distributors, or web sites.";
+
+// Password panel
+//
+var sa_password_desc_1 = 
+	"<B>Your Communicator password will be used to protect your " +
+	"certificates.</B> " +
+	"<P>If you are in an environment where other ";
+var sa_password_desc_2 = 
+	"people have access to your computer (either " +
+	"physically or over the network) you should have a " +
+	"Communicator password. <P>";
+
+// Crypto Module panel
+//
+var sa_modules_desc	= "<B>Cryptographic Modules:</B>";
+
+
+// BODY-BEGIN %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+//
+//                             The preceeding line is magic.
+//                             Everything from here on in gets
+//                             built into the executable.
+//
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+var dogbert_p = (navigator.appVersion.substring(0,1) != '3');
+var have_ldap = dogbert_p;
+var have_help = dogbert_p;
+
+function sa_init_array()
+{
+  var num_args = sa_init_array.arguments.length;
+  var a = new Array(num_args);
+
+  for ( var i = 0; i < num_args; i++ ) {
+    a[i] = sa_init_array.arguments[i];
+  }
+  return a;
+}
+
+function sa_init_sorted_array()
+{
+  var num_args = sa_init_sorted_array.arguments.length;
+  var a = new Array(num_args);
+
+  for ( var i = 0; i < num_args; i++ ) {
+    a[i] = sa_init_sorted_array.arguments[i];
+  }
+  a.sort();
+  return a;
+}
+
+// Keep these on separate lines!!! --jsw
+</SCRIPT>
+<SCRIPT>
+
+// WARNING: advisor.c:securityAdvisorHandler() knows about the names
+// used in this form.
+//
+function sa_open_form(form_name)
+{
+  return '<FORM ACTION=' + sa_action + ' TARGET=_top METHOD=POST NAME="' +
+           form_name + '">' +
+    '<INPUT TYPE=HIDDEN NAME=handle VALUE="' + sa_handle + '">' +
+    '<INPUT TYPE=HIDDEN NAME=submit_current_page VALUE="' + sa_curpage + '">' +
+    '<INPUT TYPE=HIDDEN NAME=submit_ssl_cert VALUE="' +
+            sa_selected_ssl_cert + '">'+
+    '<INPUT TYPE=HIDDEN NAME=submit_mail_cert VALUE="' +
+            sa_selected_mail_cert + '">' +
+    '<INPUT TYPE=HIDDEN NAME=submit_enter VALUE="' +
+            sa_warn_enter_secure + '">' +
+    '<INPUT TYPE=HIDDEN NAME=submit_leave VALUE="' +
+            sa_warn_leave_secure + '">' +
+    '<INPUT TYPE=HIDDEN NAME=submit_mixed VALUE="' + sa_warn_mixed + '">' +
+    '<INPUT TYPE=HIDDEN NAME=submit_send VALUE="' + sa_warn_send_clear + '">' +
+    '<INPUT TYPE=HIDDEN NAME=submit_ssl2 VALUE="' + sa_enable_ssl2 + '">' +
+    '<INPUT TYPE=HIDDEN NAME=submit_ssl3 VALUE="' + sa_enable_ssl3 + '">' +
+    '<INPUT TYPE=HIDDEN NAME=submit_password_ask_type VALUE="' +
+	    sa_password_ask_type + '">' +
+    '<INPUT TYPE=HIDDEN NAME=submit_password_ask_interval VALUE="' +
+            sa_password_ask_interval + '">' +
+    '<INPUT TYPE=HIDDEN NAME=submit_encrypt_always VALUE="' +
+            sa_encrypt_always +'">' +
+    '<INPUT TYPE=HIDDEN NAME=submit_sign_mail_always VALUE="' +
+            sa_sign_mail_always +'">' +
+    '<INPUT TYPE=HIDDEN NAME=submit_sign_news_always VALUE="' +
+            sa_sign_news_always +'">' +
+    '<INPUT TYPE=HIDDEN NAME=submit_encrypt_this VALUE="' +
+	    sa_encrypt_this +'">' +
+    '<INPUT TYPE=HIDDEN NAME=submit_sign_this VALUE="' + sa_sign_this +'">'
+// +
+//    '<INPUT TYPE=HIDDEN NAME=submit_fwd_warning VALUE="' +
+//            sa_fwd_warning +'">' +
+//   '<INPUT TYPE=HIDDEN NAME=submit_re_warning VALUE="' + sa_re_warning +'">';
+}
+
+function sa_close_form()
+{
+  return "</FORM>";
+}
+
+
+function sa_save_form_secinfo_status(win)
+{
+  with (win.document) {
+    if (forms.secinfo_form) {
+      if (forms.secinfo_form.encrypt_this_checkbox) 
+	sa_encrypt_this = forms.secinfo_form.encrypt_this_checkbox.checked;
+      if (forms.secinfo_form.sign_this_checkbox)
+	sa_sign_this = forms.secinfo_form.sign_this_checkbox.checked;
+    }
+  }
+}
+
+function sa_save_form_navigator_status(win)
+{
+  with ( win.document ) {
+    sa_warn_enter_secure = forms.navigator_form.enter_secure.checked;
+    sa_warn_leave_secure = forms.navigator_form.leave_secure.checked;
+    sa_warn_mixed = forms.navigator_form.enter_mixed.checked;
+    sa_warn_send_clear = forms.navigator_form.send_clear.checked;
+    sa_enable_ssl2 = forms.navigator_form.enable_ssl2.checked;
+    sa_enable_ssl3 = forms.navigator_form.enable_ssl3.checked;
+    if ( forms.navigator_form.site_cert.selectedIndex == 0 ) {
+      sa_selected_ssl_cert = sa_ask_sa_every_time_label;
+    } else if ( forms.navigator_form.site_cert.selectedIndex == 1 ) {
+      sa_selected_ssl_cert = sa_select_auto_label;
+    } else {
+      sa_selected_ssl_cert =
+	sa_your_ssl_certs[forms.navigator_form.site_cert.selectedIndex - 2];
+    }
+  }
+}
+
+function sa_save_form_messenger_status(win)
+{
+  with ( win.document ) {
+//    sa_fwd_warning = forms.messenger_form.enable_fwd_warn.checked;
+//    sa_re_warning = forms.messenger_form.enable_re_warn.checked;
+    sa_encrypt_always = forms.messenger_form.enable_encrypt_always.checked;
+    sa_sign_mail_always = forms.messenger_form.enable_sign_mail_always.checked;
+    sa_sign_news_always = forms.messenger_form.enable_sign_news_always.checked;
+
+    if (forms.messenger_form.mail_cert) {
+      sa_selected_mail_cert =
+	sa_your_mail_certs[forms.messenger_form.mail_cert.selectedIndex];
+    } else {
+      sa_selected_mail_cert = "";
+    }
+  }
+}
+
+function sa_save_form_passwords_status(win)
+{
+  with ( win.document ) {
+    nradio = forms.passwords_form.password_ask.length;
+    for ( var i = 0; i < nradio; i++ ) {
+      if ( forms.passwords_form.password_ask[i].checked ) {
+	sa_password_ask_type = i;
+      }
+    }
+    sa_password_ask_interval = forms.passwords_form.password_interval.value;
+  }
+}
+
+function sa_save_pane(win, pane)
+{
+  // fucking idiot!
+  // WARNING: advisor.c:securityAdvisorHandler() knows about these numbers.
+  if      ( pane == 1 ) { sa_save_form_secinfo_status(win); }
+  else if ( pane == 2 ) { sa_save_form_passwords_status(win); }
+  else if ( pane == 3 ) { sa_save_form_navigator_status(win); }
+  else if ( pane == 4 ) { sa_save_form_messenger_status(win); }
+}
+
+function sa_switch_pane(top_window, old_pane, new_pane)
+{
+  sa_save_pane(top_window.frames.content, old_pane);
+  sa_make_dialog(top_window, new_pane);
+}
+
+function sa_prepare_form(form_arg)
+{
+  with(form_arg) {
+    submit_ssl_cert.value		= sa_selected_ssl_cert;
+    submit_mail_cert.value		= sa_selected_mail_cert;
+    submit_enter.value			= sa_warn_enter_secure;
+    submit_leave.value			= sa_warn_leave_secure;
+    submit_mixed.value			= sa_warn_mixed;
+    submit_send.value			= sa_warn_send_clear;
+    submit_ssl2.value			= sa_enable_ssl2;
+    submit_ssl3.value			= sa_enable_ssl3;
+    submit_password_ask_type.value	= sa_password_ask_type;
+    submit_password_ask_interval.value	= sa_password_ask_interval;
+    submit_encrypt_always.value		= sa_encrypt_always;
+    submit_sign_mail_always.value	= sa_sign_mail_always;
+    submit_sign_news_always.value	= sa_sign_news_always;
+    submit_encrypt_this.value		= sa_encrypt_this;
+    submit_sign_this.value		= sa_sign_this;
+//    submit_fwd_warning.value		= sa_fwd_warning;
+//    submit_re_warning.value		= sa_re_warning;
+  }
+}
+
+function sa_ready_submit(top_window, cur_pane)
+{
+  sa_save_pane(top_window.frames.content, cur_pane);
+  sa_prepare_form(top_window.frames.content.document.forms[0]);
+  sa_prepare_form(top_window.frames.buttons.document.forms[0]);
+  return false;
+}
+
+function sa_make_buttons()
+{
+  var n_buttons = sa_make_buttons.arguments.length;
+  var button_label;
+  var ret_string = "";
+    
+  ret_string += '<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0>';
+
+  for ( var i = 0; i < n_buttons; i++ ) {
+    button_label = sa_make_buttons.arguments[i];
+    ret_string += '<TR><TD WIDTH=10></TD><TD VALIGN=TOP>';
+    ret_string += ('<INPUT TYPE=SUBMIT NAME=button VALUE="'
+		   + button_label + '">');
+    ret_string += '</TD>';
+  }
+  ret_string += '</TABLE>';
+  return(ret_string);
+}
+
+function sa_make_checkboxes()
+{
+  var nboxes = ( sa_make_checkboxes.arguments.length / 3 );
+  var box_name;
+  var box_label;
+  var box_checked;
+  var ret_string = "";
+    
+  ret_string += '<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0>';
+
+  for ( var i = 0; i < nboxes; i++ ) {
+    box_name    = sa_make_checkboxes.arguments[i*3];
+    box_label   = sa_make_checkboxes.arguments[i*3+1];
+    box_checked = sa_make_checkboxes.arguments[i*3+2];
+	    
+    ret_string += '<TR><TD WIDTH=20></TD><TD VALIGN=TOP>';
+
+    ret_string += ('<INPUT TYPE=CHECKBOX NAME="' + box_name + '"' +
+		   ( box_checked ? ' CHECKED' : '' ) + '>');
+
+    ret_string += '</TD><TD WIDTH=10></TD><TD VALIGN=MIDDLE>';
+
+    ret_string += box_label;
+
+    ret_string += '</TD></TR>';
+  }
+
+  ret_string += '</TABLE>';
+
+  return(ret_string);
+}
+
+function sa_make_radio_buttons(radio_name, checked)
+{
+  var n_buttons = ( ( sa_make_radio_buttons.arguments.length - 2 ) / 2 );
+  var submit_value;
+  var radio_label;
+  var ret_string = "";
+    
+  for ( var i = 0; i < n_buttons; i++ ) {
+    submit_value = sa_make_radio_buttons.arguments[i*2+2];
+    radio_label  = sa_make_radio_buttons.arguments[i*2+3];
+	
+    if ( i != 0 ) {
+      ret_string += '<BR>';
+    }
+    ret_string += ('<INPUT TYPE=RADIO NAME="' + radio_name + '"' +
+		   ( i == checked ? ' CHECKED' : '' ) +
+		   ' VALUE="' + submit_value +
+		   '">' + radio_label);
+  }
+
+  return(ret_string);
+}
+
+function sa_make_menu(menu_name, menu_label, selected)
+{
+  var nitems = ( sa_make_menu.arguments.length ) - 3;
+  var item;
+  var count = 0;
+  var ret_string = "";
+    
+  ret_string += '<TABLE><TR>';
+  if (typeof(menu_label) == 'string') {
+    ret_string += '<TD VALIGN=TOP>' + menu_label;
+  } else {
+    ret_string += '<TD WIDTH=35>';
+  }
+  ret_string += '</TD><TD VALIGN=TOP><SELECT NAME="' + menu_name + '">';
+  for ( var i = 0; i < nitems; i++ ) {
+    item = sa_make_menu.arguments[i+3];
+    if ( typeof(item) == 'string' ) {
+      ret_string += ('<OPTION' +
+		     ( ( item == selected ) ? ' SELECTED>' : '>' ) +
+		     item);
+
+      count++;
+    } else { /* its an array */
+      for ( var j = 0; j < item.length; j++ ) {
+	ret_string += ('<OPTION' +
+		       ( ( item[j] == selected ) ? ' SELECTED>' : '>' ) +
+		       item[j]);
+		    
+	count++;
+      }
+    }
+  }
+  ret_string += '</SELECT></TD></TR></TABLE>';
+
+  return(ret_string);
+}
+
+
+function sa_make_page_intro(title, bgcolor)
+{
+  var style = '<STYLE TYPE="text/css">BODY{' +
+    'font-family: Geneva,MS Sans Serif,Arial,Lucida,Helvetica,sans-serif;' +
+    'font-size: 10pt;' +
+    '}' +
+    'TD{' +
+    'font-family: Geneva,MS Sans Serif,Arial,Lucida,Helvetica,sans-serif;' +
+    'font-size: 10pt;}' +
+    '</STYLE>';
+
+  if (bgcolor == null) { bgcolor = "#C0C0C0"; }
+  return '<HTML><HEAD>' +
+    '<TITLE>' + title + '</TITLE>' +
+    '</HEAD>' +
+    '<BODY TEXT="#000000" LINK="#000000" VLINK="#000000" ALINK="#FF0000" ' +
+          'BGCOLOR="' + bgcolor + '">';
+}
+
+
+function sa_make_secinfo_page()
+{
+  if      (sa_info_context == 1) { return sa_make_secinfo_compose_page(); }
+  else if (sa_info_context == 2) { return sa_make_secinfo_message_page(false);}
+  else if (sa_info_context == 3) { return sa_make_secinfo_message_page(true); }
+  else if (sa_info_context == 4) { return sa_make_secinfo_message_page(true); }
+  else if (sa_info_context == 5) { return sa_make_secinfo_nav_page(); }
+  else if (sa_info_context == 7) { return sa_make_secinfo_thread_page(true); }
+  else {
+    var ret_string = '';
+    ret_string += sa_make_page_intro(sa_secinfo_index_label, null);
+    ret_string += sa_open_form('secinfo_form');
+    ret_string += "<TABLE BORDER=0 HEIGHT=99%><TR VALIGN=CENTER>" +
+      "<TD ALIGN=CENTER>";
+    ret_string += sa_not_me_subtitle;
+    ret_string += "</TD></TR><TR><TD VALIGN=TOP ALIGN=LEFT>" +
+      sa_not_me_desc_1 + sa_not_me_desc_2;
+    ret_string += "</TD></TR></TABLE>";
+    ret_string += sa_close_form();
+    return ret_string;
+  }
+}
+
+
+function sa_make_secinfo_compose_page()
+{
+  var ret_string = '';
+  ret_string += sa_make_page_intro(sa_secinfo_index_label, null);
+  ret_string += sa_open_form('secinfo_form');
+
+  var etitle_string = "<B><FONT SIZE=+1>" + sa_compose_encrypt_subtitle
+    + "</FONT></B><P>";
+
+  var stitle_string = "<B><FONT SIZE=+1>" + sa_compose_sign_subtitle
+    + "</FONT></B><P>";
+
+  ret_string += "<TABLE BORDER HEIGHT=100% VALIGN=TOP CELLPADDING=0>" +
+    "<TR VALIGN=TOP><TD HEIGHT=200>";
+
+  if (sa_encrypt_errors.length == 1 && sa_encrypt_errors[0] == 0) {
+    ret_string += "<IMG SRC=internal-sa-encrypted ALIGN=RIGHT>" +
+      etitle_string;
+
+    ret_string += sa_can_encrypt + "<P>";
+    ret_string += sa_make_checkboxes('encrypt_this_checkbox',
+				     sa_encrypt_this_checkbox_label,
+				     sa_encrypt_this)
+      + "<P>";
+    ret_string += sa_send_encrypt_desc;
+  } else {
+    ret_string += "<IMG SRC=internal-sa-nonencrypted ALIGN=RIGHT>" +
+      etitle_string;
+    ret_string += sa_cannot_encrypt_head + "<BR>";
+
+    if (sa_encrypt_errors[0] == 1) {
+      ret_string += "<BR>" + sa_no_recipients_desc + "<BR>";
+    } else {
+
+      ret_string += "<TABLE WIDTH='100%'><TR><TD VALIGN=TOP>"
+	+ "<SELECT SIZE=4 NAME=errors>";
+      for ( var i = 0; i < sa_dest_names.length; i++ ) {
+	ret_string += ("<OPTION>" + sa_dest_names[i]);
+	if (sa_encrypt_errors[i] == 2) {
+	  ret_string += sa_cert_missing_tail;
+	} else if (sa_encrypt_errors[i] == 3) {
+	  ret_string += sa_cert_has_exp_tail;
+	} else if (sa_encrypt_errors[i] == 4) {
+	  ret_string += sa_cert_has_revoke_tail;
+	} else if (sa_encrypt_errors[i] == 5) {
+	  ret_string += sa_cert_no_alias_tail;
+	} else if (sa_encrypt_errors[i] == 6) {
+	  ret_string += sa_cert_newsgroup_tail;
+	} else if (sa_encrypt_errors[i] == 7) {
+	  ret_string += sa_cert_invalid_tail;
+	} else if (sa_encrypt_errors[i] == 8) {
+	  ret_string += sa_cert_untrusted_tail;
+	} else if (sa_encrypt_errors[i] == 9) {
+	  ret_string += sa_cert_issuer_untrusted_tail;
+	} else if (sa_encrypt_errors[i] == 10) {
+	  ret_string += sa_cert_issuer_unknown_tail;
+	} else {
+	  ret_string += sa_cert_unknown_error_tail;
+	}
+      }
+      ret_string += "</SELECT></TD>";
+
+      if (have_ldap) {
+	ret_string += "<TD>" +
+	  "<INPUT TYPE=SUBMIT NAME=button VALUE=\"" +
+	  sa_get_certs_button_label + '">' +
+	  "</TD>";
+      }
+      ret_string += "</TR></TABLE>";
+
+      if (have_ldap) {
+	ret_string +=
+	  sa_how_to_get_their_cert_1 +
+	  sa_how_to_get_their_cert_2;
+      } else {
+	ret_string +=
+	  sa_how_to_get_their_nondirectory_cert_1 +
+	  sa_how_to_get_their_nondirectory_cert_2;
+      }
+    }
+  }
+  ret_string += "</TD></TR><TR VALIGN=TOP><TD>";
+  if (sa_sign_error == 0) {
+    ret_string += "<IMG SRC=internal-sa-signed ALIGN=RIGHT>" + stitle_string;
+
+    ret_string += sa_can_be_signed + "<P>";
+    ret_string += sa_make_checkboxes('sign_this_checkbox',
+				     sa_sign_this_checkbox_label,
+				     sa_sign_this)
+      + "<BR>";
+
+    ret_string += sa_can_sign_desc + "<P>" + sa_sign_disclaimer;
+  } else if (sa_sign_error == 1) {
+    ret_string += "<IMG SRC=internal-sa-signed-bad ALIGN=RIGHT>" +
+      stitle_string;
+    ret_string += sa_cannot_be_signed + "<P>";
+    ret_string += sa_cannot_sign_desc_1 + sa_cannot_sign_desc_2;
+    ret_string += "<P>" + sa_sign_disclaimer + "<BR>";
+    ret_string += "<BR><INPUT TYPE=SUBMIT NAME=button VALUE=\"" +
+      sa_get_cert_button_label + '">';
+  }
+  ret_string += "</TD></TR></TABLE>";
+  ret_string += sa_close_form();
+  return ret_string;
+}
+
+// These end-script/script tags must stay here!! The stupid html parser
+//  can't deal with script containers that contain more than 32k
+</SCRIPT><SCRIPT>
+
+function sa_make_secinfo_message_page(news_p)
+{
+  var etitle_string;
+  var stitle_string;
+
+  var ret_string = '';
+  ret_string += sa_make_page_intro(sa_secinfo_index_label, null);
+  ret_string += sa_open_form('secinfo_form');
+
+  etitle_string = "<B><FONT SIZE=+1>" +
+    (news_p ? sa_news_encrypt_subtitle : sa_message_encrypt_subtitle) +
+    "</FONT></B><P>";
+
+  stitle_string = "<B><FONT SIZE=+1>" +
+    sa_message_sign_subtitle +
+    "</FONT></B><P>";
+
+  if (sa_encrypt_errors[0] == 0) {
+    ret_string += "<IMG SRC=internal-sa-encrypted ALIGN=RIGHT>" +
+      etitle_string +
+      (news_p ? (sa_news_encrypted_1 + sa_news_encrypted_2)
+       : sa_was_encrypted);
+
+  } else if (sa_encrypt_errors[0] == 1) {
+    sa_encryption_algorithm = "";
+    ret_string += "<IMG SRC=internal-sa-nonencrypted ALIGN=RIGHT>" +
+      etitle_string +
+      (news_p ? sa_news_not_encrypted : sa_was_not_encrypted);
+
+  } else if (sa_encrypt_errors[0] == 2) {
+    ret_string += "<IMG SRC=internal-sa-encrypted-bad ALIGN=RIGHT>" +
+      etitle_string +
+      sa_was_encrypted_for_other_1 + sa_was_encrypted_for_other_2;
+
+  } else {
+    ret_string += "<IMG SRC=internal-sa-encrypted-bad ALIGN=RIGHT>" +
+      etitle_string + "<P>" + sa_encryption_invalid + sa_encrypt_error_str;
+  }
+
+  if (sa_encryption_algorithm != "") {
+    ret_string += "<P>" +
+      sa_encryption_algorithm_was + sa_encryption_algorithm + ".";
+  }
+
+  ret_string += "<P><HR><P>";
+
+  ret_string += "<IMG SRC=" +
+    ((sa_sign_error == 0) ? "internal-sa-signed" : "internal-sa-signed-bad") +
+    " ALIGN=RIGHT>" + stitle_string;
+
+  if (sa_sign_error == 0) {
+    ret_string += sa_was_signed_head + "<B>" + sa_signer_name + "</B>";
+    if (sa_signing_time) {
+      ret_string += sa_was_signed_at + sa_signing_time;
+    }
+    ret_string += ".<P> ";
+  } else if (sa_sign_error == 1) {
+    ret_string += sa_was_not_signed;
+    // Handle `2' in the `else' clause, since it's way general.
+  } else if (sa_sign_error == 3) {
+    ret_string += sa_sig_tampered_1 + sa_sig_tampered_2;
+  } else if (sa_sign_error == 4) {
+    ret_string += sa_addr_mismatch_part1 + sa_sender_addr;
+    ret_string += sa_addr_mismatch_part2 + sa_signer_addr;
+    ret_string += sa_addr_mismatch_part3;
+  } else {
+    ret_string += sa_sig_invalid;
+    ret_string += "<P>" + sa_sign_error_intro;
+    ret_string += sa_sign_error_str;
+  }
+
+  if (sa_sign_error != 0 && sa_sign_error != 1) {
+    ret_string += "<P>" + sa_included_cert_desc_head + "<B>" +
+    sa_signer_name + "</B>";
+
+    if (sa_signing_time) {
+      ret_string += sa_included_cert_desc_signed_at + sa_signing_time;
+    }
+    ret_string += ". ";
+  }
+
+  if (sa_sign_error != 1) {
+    ret_string += sa_was_signed_desc_tail_1 + sa_was_signed_desc_tail_2;
+    ret_string += "<P>" + sa_make_buttons(sa_view_button_label);
+  }
+
+  ret_string += sa_close_form();
+  return ret_string;
+}
+
+// news_p == false should really do the right thing for mail threads, but
+// it doesn't yet.
+function sa_make_secinfo_thread_page(news_p)
+{
+  var etitle_string;
+
+  var ret_string = '';
+  ret_string += sa_make_page_intro(sa_secinfo_index_label, null);
+  ret_string += sa_open_form('secinfo_form');
+
+  etitle_string = "<B><FONT SIZE=+1>" +
+    (news_p ? sa_news_encrypt_subtitle : sa_message_encrypt_subtitle) +
+    "</FONT></B><P>";
+
+  if (sa_nav_info_encrypted == true) {
+    ret_string += "<IMG SRC=internal-sa-encrypted ALIGN=RIGHT>";
+  } else {
+    ret_string += "<IMG SRC=internal-sa-nonencrypted ALIGN=RIGHT>";
+  }
+  ret_string += etitle_string;
+
+  if (sa_nav_info_encrypted == true) {
+    ret_string += (news_p ? (sa_news_encrypted_1 + sa_news_encrypted_2) : '');
+  } else {
+    sa_encryption_algorithm = "";
+    ret_string += (news_p ? sa_news_not_encrypted : '');
+  }
+  ret_string += sa_close_form();
+  return ret_string;
+}
+
+function sa_make_nav_no_encrypt_info()
+{
+  var ret_string = '';
+  ret_string += sa_nav_no_encrypt_desc_1;
+  ret_string += sa_nav_no_encrypt_desc_2;
+  ret_string += "<P>";
+  return ret_string;
+}
+
+function sa_make_nav_encrypt_info()
+{
+  var ret_string = '';
+  ret_string += sa_nav_encrypt_desc_1;
+  ret_string += sa_nav_encrypt_desc_2;
+  ret_string += sa_nav_encrypt_desc_3;
+  ret_string += "<P><INPUT TYPE=SUBMIT NAME=button VALUE=\"" +
+      sa_view_cert_button_label + '">';
+  return ret_string;
+}
+
+function sa_make_nav_no_encrypt_mix_info()
+{
+  var ret_string = '';
+  ret_string += sa_nav_no_encrypt_mix_desc_1;
+  ret_string += sa_nav_no_encrypt_mix_desc_2;
+  ret_string += sa_nav_no_encrypt_mix_desc_3;
+  ret_string += "<P>";
+  return ret_string;
+}
+
+function sa_make_nav_encrypt_mix_info()
+{
+  var ret_string = '';
+  ret_string += sa_nav_encrypt_mix_desc_1;
+  ret_string += sa_nav_encrypt_mix_desc_2;
+  ret_string += sa_nav_encrypt_mix_desc_3;
+  ret_string += sa_nav_encrypt_mix_desc_4;
+  ret_string += sa_nav_encrypt_mix_desc_5;
+  ret_string += "<P><INPUT TYPE=SUBMIT NAME=button VALUE=\"" +
+      sa_view_cert_button_label + '">';
+  return ret_string;
+}
+
+function sa_make_nav_verify_info()
+{
+  var ret_string = '';
+  var last;
+
+  if (sa_nav_info_site_name == "")
+    return '';
+
+  ret_string+= "<P><HR><P>";
+  ret_string += "<B><FONT SIZE=+1>" + sa_nav_verification_subtitle +
+      "</FONT></B><P>";
+  ret_string += "<UL>";
+  if (sa_nav_info_encrypted) {
+    ret_string += "<LI>" + sa_nav_verify_cert_desc;
+  }
+  ret_string += "<LI>" + sa_nav_verify_domain_desc + sa_nav_info_site_name;
+  if (sa_nav_info_chrome_missing) {
+    if (sa_nav_info_missing_status) {
+      last = 4;
+    } else if (sa_nav_info_missing_location) {
+      last = 3;
+    } else if (sa_nav_info_missing_personalbar) {
+      last = 2;
+    } else if (sa_nav_info_missing_toolbar) {
+      last = 1;
+    } else {
+      last = 0;
+    }
+    ret_string += "<LI>" + sa_nav_verify_missing_desc_1;
+    if (sa_nav_info_missing_menubar) {
+      ret_string += sa_nav_info_menubar_name;
+      if (last != 0) {
+	ret_string += ", ";
+      }
+    }
+    if (sa_nav_info_missing_toolbar) {
+      ret_string += sa_nav_info_toolbar_name;
+      if (last != 1) {
+	ret_string += ", ";
+      }
+    }
+    if (sa_nav_info_missing_personalbar) {
+      ret_string += sa_nav_info_personalbar_name;
+      if (last != 2) {
+	ret_string += ", ";
+      }
+    }
+    if (sa_nav_info_missing_location) {
+      ret_string += sa_nav_info_location_name;
+      if (last != 3) {
+	ret_string += ", ";
+      }
+    }
+    if (sa_nav_info_missing_status) {
+      ret_string += sa_nav_info_status_name;
+    }
+    ret_string += sa_nav_verify_missing_desc_2;
+  }
+  if (sa_nav_info_java) {
+    ret_string += "<LI>" + sa_nav_verify_java_desc_1;
+    ret_string += sa_nav_info_creator_name;
+    ret_string += sa_nav_verify_java_desc_2;
+  } else if (sa_nav_info_js) {
+    ret_string += "<LI>" + sa_nav_verify_js_desc_1;
+    ret_string += sa_nav_info_creator_name;
+    ret_string += sa_nav_verify_js_desc_2;
+  }
+  ret_string += "</UL>";
+  return ret_string;
+}
+
+function sa_make_secinfo_nav_page()
+{
+  var ret_string = '';
+  ret_string += sa_make_page_intro(sa_secinfo_index_label, null);
+  ret_string += sa_open_form('secinfo_form');
+
+  if (sa_nav_info_encrypted) {
+    ret_string += "<IMG SRC=internal-sa-encrypted ALIGN=RIGHT>";
+  } else {
+    ret_string += "<IMG SRC=internal-sa-nonencrypted ALIGN=RIGHT>";
+  }
+  ret_string += "<B><FONT SIZE=+1>" + sa_nav_encryption_subtitle +
+      "</FONT></B><P>";
+
+  if (sa_nav_info_encrypted) {
+    if (sa_nav_info_mixed) {
+      ret_string += sa_make_nav_encrypt_mix_info();
+    } else {
+      ret_string += sa_make_nav_encrypt_info();
+    }
+  } else {
+    if (sa_nav_info_mixed) {
+      ret_string += sa_make_nav_no_encrypt_mix_info();
+    } else {
+      ret_string += sa_make_nav_no_encrypt_info();
+    }
+  }
+  ret_string += "<INPUT TYPE=SUBMIT NAME=button VALUE=\"" +
+    sa_page_info_label + "\">";
+  ret_string += sa_make_nav_verify_info();
+  ret_string += sa_close_form();
+  return ret_string;
+}
+
+function sa_make_passwords_page()
+{
+  var ret_string = '';
+  ret_string += sa_make_page_intro(sa_passwords_index_label, null);
+  ret_string += sa_open_form('passwords_form');
+  ret_string += sa_password_desc_1 + sa_password_desc_2;
+  if ( sa_password_set ) {
+    ret_string += sa_make_buttons(sa_change_password_label);
+  } else {
+    ret_string += sa_make_buttons(sa_set_password_label);
+  }
+  ret_string += '<P>';
+  ret_string += sa_ask_for_password_label;
+  ret_string += '<UL>';
+  ret_string += sa_make_radio_buttons('password_ask', sa_password_ask_type,
+				      'once', sa_once_per_session_label,
+				      'every', sa_every_time_label,
+				      'timeout', sa_after_label);
+  ret_string += ("<INPUT TYPE=INT SIZE=4 NAME=password_interval VALUE=\"" +
+		 sa_password_ask_interval + "\">");
+  ret_string += sa_minutes_label;
+  ret_string += '</UL>';
+  ret_string += sa_close_form();
+
+  return(ret_string);
+}
+
+function sa_make_navigator_page()
+{
+  var ret_string = '';
+  ret_string += sa_make_page_intro(sa_navigator_index_label, null);
+  ret_string += sa_open_form('navigator_form') + sa_ssl_desc;
+  ret_string += sa_make_checkboxes('enter_secure',
+				   sa_enter_secure_label,
+				   sa_warn_enter_secure,
+				   'leave_secure',
+				   sa_leave_secure_label,
+				   sa_warn_leave_secure,
+				   'enter_mixed',
+				   sa_mixed_secure_label,
+				   sa_warn_mixed,
+				   'send_clear',
+				   sa_send_clear_label,
+				   sa_warn_send_clear);
+	
+  ret_string += '<P>' + sa_ssl_cert_label + "<BR>";
+  ret_string += sa_make_menu('site_cert', null, sa_selected_ssl_cert,
+			     sa_ask_sa_every_time_label, sa_select_auto_label,
+			     sa_your_ssl_certs);
+	
+  ret_string += "<P>";
+  ret_string += sa_ssl_config_label;
+  ret_string += "<P>";
+
+  ret_string += "<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0>";
+  ret_string += "<TR><TD ALIGN=LEFT VALIGN=MIDDLE>";
+
+  ret_string += sa_make_checkboxes('enable_ssl2',
+				   sa_ssl2_enable_label,
+				   sa_enable_ssl2);
+  ret_string += "</TD><TD ALIGN=LEFT VALIGN=MIDDLE>"
+  ret_string += sa_make_buttons(sa_ssl2_config_label);
+
+  ret_string += "</TD></TR><TD ALIGN=LEFT VALIGN=MIDDLE>"
+
+  ret_string += sa_make_checkboxes('enable_ssl3',
+				   sa_ssl3_enable_label,
+				   sa_enable_ssl3);
+  ret_string += "</TD><TD ALIGN=LEFT VALIGN=MIDDLE>"
+  ret_string += sa_make_buttons(sa_ssl3_config_label);
+	
+  ret_string += "</TD></TR></TABLE>"
+
+  ret_string += sa_close_form();
+
+  return(ret_string);
+}
+
+function sa_make_messenger_page()
+{
+  var ret_string = '';
+  ret_string += sa_make_page_intro(sa_messenger_index_label, null);
+  ret_string += sa_open_form('messenger_form');
+  ret_string += sa_smime_desc + "<BR>";
+
+//  ret_string += "<BR>" + sa_smime_warn_desc + "<BR>";
+
+//  ret_string += sa_make_checkboxes('enable_fwd_warn',
+//				   sa_fwd_warn_checkbox_label,
+//				   sa_fwd_warning,
+//
+//				   'enable_re_warn',
+//				   sa_re_warn_checkbox_label,
+//				   sa_re_warning);
+
+  ret_string += "<BR>" + sa_smime_pref_desc + "<BR>";
+  ret_string += sa_make_checkboxes('enable_encrypt_always',
+				   sa_encrypt_always_checkbox_label,
+				   sa_encrypt_always,
+
+				   'enable_sign_mail_always',
+				   sa_sign_mail_always_checkbox_label,
+				   sa_sign_mail_always,
+
+				   'enable_sign_news_always',
+				   sa_sign_news_always_checkbox_label,
+				   sa_sign_news_always);
+
+  ret_string += '<P>' + sa_smime_cert_label + "<BR>";
+
+  if (sa_your_mail_certs.length == 0)
+    {
+      ret_string += "<UL>" + sa_smime_no_certs_blurb + "</UL>";
+      ret_string += sa_smime_no_cert_desc_1 + sa_smime_no_cert_desc_2;
+    }
+  else
+    {
+      ret_string += sa_make_menu('mail_cert', null,
+				 sa_selected_mail_cert, sa_your_mail_certs);
+      ret_string += sa_smime_cert_desc;
+      if (have_ldap) {
+	ret_string += sa_smime_send_cert_desc;
+	ret_string += "<P>" + sa_make_buttons(sa_send_cert_button_label);
+      }
+    }
+
+  ret_string += "<P>";
+  ret_string += sa_smime_cipher_heading;
+  ret_string += "<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0><TR>";
+  ret_string += "<TD WIDTH=35></TD><TD VALIGN=MIDDLE>";
+  ret_string += sa_smime_cipher_desc;
+  ret_string += "</TD><TD VALIGN=MIDDLE>";
+  ret_string += sa_make_buttons(sa_smime_config_label);
+  ret_string += "</TD></TR></TABLE>";
+
+  ret_string += sa_close_form();
+
+  return(ret_string);
+}
+
+function sa_make_applets_page()
+{
+  var ret_string = '';
+  ret_string += sa_make_page_intro(sa_applets_index_label, null);
+  ret_string += sa_open_form('applets_form') +
+    sa_applets_desc_1 + sa_applets_desc_2 +
+    "<P><TABLE><TR><TD WIDTH=10></TD><TD VALIGN=TOP>" +
+    "<SELECT SIZE=14 NAME=certs>";
+  for ( var i = 0; i < sa_principals.length; i++ ) {
+    ret_string += ("<OPTION>" + sa_principals[i]);
+  }
+  ret_string += "</SELECT></TD><TD VALIGN=TOP>";
+  ret_string += sa_make_buttons(sa_view_cert_button_label,
+				sa_remove_button_label,
+				sa_edit_privs_button_label);
+  ret_string += "</TD></TR></TABLE>";
+  ret_string += sa_close_form();
+
+  return(ret_string);
+}
+
+function sa_make_certs_intro_page()
+{
+  var ret_string = '';
+  ret_string += sa_make_page_intro(sa_certs_intro_index_label, null);
+  ret_string += sa_open_form('applets_form');
+  ret_string += sa_certs_intro_string_1;
+  ret_string += sa_certs_intro_string_2;
+  ret_string += sa_certs_intro_string_3;
+  ret_string += sa_certs_intro_string_4;
+  ret_string += sa_certs_intro_string_5;
+  ret_string += sa_close_form();
+  return(ret_string);
+}
+
+
+function sa_make_your_certs_page()
+{
+  var ret_string = '';
+  ret_string += sa_make_page_intro(sa_yours_index_label, null);
+  ret_string += sa_open_form('your_certs_form')
+    + sa_your_certs_desc_1
+    + sa_your_certs_desc_2
+    + "<TABLE><TR><TD WIDTH=10></TD><TD VALIGN=TOP>"
+    + "<SELECT SIZE=10 NAME=certs>";
+  for ( var i = 0; i < sa_your_certs.length; i++ ) {
+    ret_string += ("<OPTION>" + sa_your_certs[i]);
+  }
+  ret_string += "</SELECT></TD><TD VALIGN=TOP>";
+  ret_string += sa_make_buttons(sa_view_button_label, sa_verify_button_label,
+				sa_delete_button_label,
+				sa_export_button_label);
+	
+  ret_string += "</TD></TR></TABLE>";
+  ret_string += sa_your_certs_desc_tail_1 + sa_your_certs_desc_tail_2 + '<P>';
+  ret_string += (' <INPUT TYPE=SUBMIT NAME=button VALUE="' +
+		 sa_get_cert_button_label + '">');
+  ret_string += (' <INPUT TYPE=SUBMIT NAME=button VALUE="' +
+		 sa_import_button_label + '">');
+  ret_string += sa_close_form();
+
+  return(ret_string);
+}
+
+function sa_make_people_certs_page()
+{
+  var ret_string = '';
+  ret_string += sa_make_page_intro(sa_people_index_label, null);
+  ret_string += sa_open_form('people_certs_form');
+  ret_string += sa_people_certs_desc_1 + sa_people_certs_desc_2;
+  ret_string += "<TABLE><TR><TD WIDTH=10></TD><TD VALIGN=TOP>" +
+    "<SELECT SIZE=12 NAME=certs>";
+  for ( var i = 0; i < sa_people_certs.length; i++ ) {
+    ret_string += ("<OPTION>" + sa_people_certs[i]);
+  }
+  ret_string += "</SELECT></TD><TD VALIGN=TOP>";
+  ret_string += sa_make_buttons(sa_view_button_label,
+				sa_verify_button_label,
+				sa_delete_button_label);
+  ret_string += "</TD></TR></TABLE>";
+
+  if (have_ldap) {
+    ret_string += sa_get_certs_desc;
+    ret_string += sa_make_buttons(sa_search_dir_button_label);
+  }
+  ret_string += sa_close_form();
+
+  return(ret_string);
+}
+
+function sa_make_site_certs_page()
+{
+  var ret_string = '';
+  ret_string += sa_make_page_intro(sa_sites_index_label, null);
+  ret_string += sa_open_form('site_certs_form') + sa_site_certs_desc +
+    "<P><TABLE><TR><TD WIDTH=10></TD><TD VALIGN=TOP>" +
+    "<SELECT SIZE=14 NAME=certs>";
+  for ( var i = 0; i < sa_site_certs.length; i++ ) {
+    ret_string += ("<OPTION>" + sa_site_certs[i]);
+  }
+  ret_string += "</SELECT></TD><TD VALIGN=TOP>";
+  ret_string += sa_make_buttons(sa_edit_button_label, sa_verify_button_label,
+				sa_delete_button_label);
+	
+  ret_string += "</TD></TR></TABLE>";
+  ret_string += sa_close_form();
+
+  return(ret_string);
+}
+
+function sa_make_signers_certs_page()
+{
+  var ret_string = '';
+  ret_string += sa_make_page_intro(sa_signers_index_label, null);
+  ret_string += sa_open_form('signers_certs_form') + sa_signers_certs_desc +
+    "<P><TABLE><TR><TD WIDTH=10></TD><TD VALIGN=TOP>" +
+    "<SELECT SIZE=14 NAME=certs>";
+  for ( var i = 0; i < sa_signers_certs.length; i++ ) {
+    ret_string += ("<OPTION>" + sa_signers_certs[i]);
+  }
+  ret_string += "</SELECT></TD><TD VALIGN=TOP>";
+  ret_string += sa_make_buttons(sa_edit_button_label, sa_verify_button_label,
+				sa_delete_button_label);
+	
+  ret_string += "</TD></TR></TABLE>";
+  sa_close_form();
+
+  return(ret_string);
+}
+
+function sa_make_modules_page()
+{
+  var ret_string = '';
+  ret_string += sa_make_page_intro(sa_modules_index_label, null);
+  ret_string += sa_open_form('cr_modules_form');
+  ret_string += sa_modules_desc;
+  ret_string += "<P><TABLE><TR><TD WIDTH=10></TD><TD VALIGN=TOP>" +
+    "<SELECT SIZE=14 NAME=sa_cr_modules>";
+    
+  for ( var i = 0; i < sa_cr_modules.length; i++ ) {
+    ret_string += ("<OPTION>" + sa_cr_modules[i]);
+  }
+  ret_string += "</SELECT></TD><TD VALIGN=TOP>";
+  ret_string += sa_make_buttons(sa_view_edit_button_label, sa_add_button_label,
+				sa_delete_button_label,
+				sa_logout_all_button_label);
+	
+  ret_string += "</TD></TR></TABLE>";
+  ret_string += sa_close_form();
+
+  return(ret_string);
+}
+
+
+function sa_make_index_page(selected)
+{
+  var n_strings = ( sa_make_index_page.arguments.length - 1 ) / 2;
+  var table_background;
+  var command;
+  var indent;
+  var label;
+  var ret_string = "";
+    
+  ret_string += '<TABLE CELLSPACING=4>';
+  for ( var i = 1; i <= n_strings; i++ ) {
+    if ( i == selected ) {
+      table_background = 'BGCOLOR=#BBCCBB';
+    } else {
+      table_background = '';
+    }
+	
+    indent = sa_make_index_page.arguments[(i*2) - 1];
+    label =  sa_make_index_page.arguments[(i*2)];
+
+    if ( indent == 0 ) {
+      ret_string += ('<TR><TD COLSPAN=2 ' + table_background + '>');
+    } else {
+      ret_string += ('<TR><TD>&nbsp;&nbsp;</TD><TD ' + table_background + '>');
+    }
+
+    command = "'parent.sa_switch_pane(parent," + selected + "," + i + ")'";
+    ret_string += ('<A HREF="javascript:void setTimeout(' + command + ',0)">');
+    if ( indent == 0 ) { ret_string += "<B>"; }
+    ret_string += label;
+    if ( indent == 0 ) { ret_string += "</B>"; }
+    ret_string += '</A></TD></TR>';
+  }
+  ret_string += '</TABLE>';
+
+  return(ret_string);
+}
+
+
+function sa_make_selected_page(selected)
+{
+  // WARNING: advisor.c:securityAdvisorHandler() knows about these numbers.
+  if      ( selected == 1 )  { return sa_make_secinfo_page(); }
+  else if ( selected == 2 )  { return sa_make_passwords_page(); }
+  else if ( selected == 3 )  { return sa_make_navigator_page(); }
+  else if ( selected == 4 )  { return sa_make_messenger_page(); }
+  else if ( selected == 5 )  { return sa_make_applets_page(); }
+  else if ( selected == 6 )  { return sa_make_certs_intro_page(); }
+  else if ( selected == 7 )  { return sa_make_your_certs_page(); }
+  else if ( selected == 8 )  { return sa_make_people_certs_page(); }
+  else if ( selected == 9 )  { return sa_make_site_certs_page(); }
+  else if ( selected == 10 ) { return sa_make_signers_certs_page(); }
+  else if ( selected == 11 ) { return sa_make_modules_page(); }
+  else {
+    return sa_open_form('unimplemented_form') +
+      '<HTML><BODY><B>Unimplemented: page ' + selected + sa_close_form(); }
+}
+
+function sa_title_string(selected)
+{
+  // WARNING: advisor.c:securityAdvisorHandler() knows about these numbers.
+
+  if      ( selected == 1 )  { return sa_secinfo_title_label; }
+  else if ( selected == 2 )  { return sa_passwords_title_label; }
+  else if ( selected == 3 )  { return sa_navigator_title_label; }
+  else if ( selected == 4 )  { return sa_messenger_title_label; }
+  else if ( selected == 5 )  { return sa_applets_title_label; }
+  else if ( selected == 6 )  { return sa_certs_intro_title_label; }
+  else if ( selected == 7 )  { return sa_yours_title_label; }
+  else if ( selected == 8 )  { return sa_people_title_label; }
+  else if ( selected == 9 )  { return sa_sites_title_label; }
+  else if ( selected == 10 ) { return sa_signers_title_label; }
+  else if ( selected == 11 ) { return sa_modules_title_label; }
+  else {
+    return 'Page ' + selected;
+  }
+}
+
+// I guess this is a workaround for some kind of goofy JS bug?
+var fool0;
+var fool1;
+var fool2;
+var fool3;
+var fool4;
+
+var help_topics = sa_init_array(
+	"",
+	"nethelp:netscape/collabra:sec_info_intro",
+	"nethelp:netscape/collabra:password_introduction",
+	"nethelp:netscape/collabra:HELP_SEC_PREFS_NAVIGATOR",
+	"nethelp:netscape/collabra:HELP_SEC_PREFS_MESSENGER",
+	"nethelp:netscape/collabra:HELP_SEC_PREFS_APPLET",
+	"nethelp:netscape/collabra:HELP_SEC_CERTS",
+	"nethelp:netscape/collabra:HELP_SEC_CERTS_YOURS",
+	"nethelp:netscape/collabra:HELP_SEC_CERTS_PEOPLE",
+	"nethelp:netscape/collabra:HELP_SEC_CERTS_SITES",
+	"nethelp:netscape/collabra:HELP_SEC_CERTS_ISSUERS",
+	"nethelp:netscape/collabra:HELP_SEC_CERTS_CRYPTOMODS");
+
+function sa_make_dialog(win, selected)
+{
+  var index_string;
+
+  if (Event) {
+    captureEvents(Event.MOUSEDOWN);
+  }
+    
+  sa_curpage = selected;
+  with (win.frames.buttons) {
+    fool4 = sa_make_page_intro("", "#BBCCBB") +
+      sa_open_form('buttons_form') +
+      '<CENTER>' +
+      '<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0><TR>' +
+      '<TD ALIGN=CENTER VALIGN=MIDDLE>' +
+      ' <INPUT TYPE=SUBMIT NAME=button VALUE="' + sa_ok_button_label +
+      '" onClick="parent.sa_ready_submit(parent, ' + selected + ')">' +
+      '</TD><TD WIDTH=10></TD><TD ALIGN=CENTER VALIGN=MIDDLE>' +
+      ' <INPUT TYPE=SUBMIT NAME=button VALUE="' + sa_cancel_button_label +
+      '">' +
+      '</TD><TD WIDTH=10></TD>';
+
+    // don't emit a Help button in Akbar.
+    if (have_help) {
+      fool4 += '<TD ALIGN=CENTER VALIGN=MIDDLE>' +
+        ' <INPUT TYPE=BUTTON NAME=button VALUE="' + sa_help_button_label +
+	'" onClick="document.location.replace(\'' + help_topics[selected] +
+	'\')"></TD>';
+    }
+    fool4 += '</TR></TABLE>' +
+      '</CENTER>' +
+      sa_close_form() +
+      '</BODY></HTML>';
+
+    if (dogbert_p) {
+      document.write(fool4);
+      document.close();
+    } else {
+      location = 'javascript:parent.fool4';
+    }
+  }
+
+  with (win.frames.extra) {
+    fool3 = sa_make_page_intro("", "#C0C0C0") + '</BODY></HTML>';
+    if (dogbert_p) {
+      document.write(fool3);
+      document.close();
+    } else {
+      location = 'javascript:parent.fool3';
+    }
+  }
+
+  with (win.frames.title) {
+    fool0 = sa_make_page_intro("", "#BBCCBB") +
+      '<TABLE WIDTH="100%"><TR><TD>' +
+      '<B><FONT SIZE="+2">' + sa_title_string(selected) +
+      '<B></FONT>' +
+      '</TD></TR></TABLE>' +
+      '</BODY></HTML>';
+    if (dogbert_p) {
+      document.write(fool0);
+      document.close();
+    } else {
+      location = 'javascript:parent.fool0';
+    }
+  }
+
+  with (win.frames.index) {
+    index_string = sa_make_index_page(selected,
+				      0, sa_secinfo_index_label,
+				      0, sa_passwords_index_label,
+				      0, sa_navigator_index_label,
+				      0, sa_messenger_index_label,
+				      0, sa_applets_index_label,
+				      0, sa_certs_intro_index_label,
+				      1, sa_yours_index_label,
+				      1, sa_people_index_label,
+				      1, sa_sites_index_label,
+				      1, sa_signers_index_label,
+				      0, sa_modules_index_label
+				      );
+    fool1 = sa_make_page_intro(sa_secinfo_index_label, "#FFFFFF") +
+      index_string + '</BODY></HTML>';
+    if (dogbert_p) {
+      document.write(fool1);
+      document.close();
+    } else {
+      location = 'javascript:parent.fool1';
+    }
+  }
+
+  with(win.frames.content) {
+    fool2 = sa_make_selected_page(selected) + '</BODY></HTML>';
+    if (dogbert_p) {
+      document.write(fool2);
+      document.close();
+    } else {
+      location = 'javascript:parent.fool2';
+    }
+  }
+
+  return false;
+}
+
+function onMouseDown(e)
+{
+    if ( e.which == 3 ) {
+	return false;
+    }
+    
+    return true;
+}
+
+</SCRIPT>
+</HEAD>
+<FRAMESET ROWS="40,*,60" BORDER=0>
+  <FRAME SRC="about:blank" NAME="title" 
+         MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO NORESIZE BORDER=NO>
+  <FRAMESET COLS="20%,69%,1%" BORDER=0
+            ONLOAD="sa_make_dialog(window, sa_curpage)">
+    <FRAME SRC="about:blank" NAME="index" 
+           MARGINWIDTH=0 MARGINHEIGHT=0 NORESIZE BORDER=NO>
+    <FRAME SRC="about:blank" NAME="content"
+           MARGINWIDTH=15 MARGINHEIGHT=10 NORESIZE BORDER=NO>
+    <FRAME SRC="about:blank" NAME="extra"
+           MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO NORESIZE BORDER=NO>
+  </FRAMESET>
+  <FRAME SRC="about:blank" NAME="buttons"
+         MARGINWIDTH=0 MARGINHEIGHT=10 SCROLLING=NO NORESIZE BORDER=NO>
+  <NOFRAMES>
+     <B>Security Advisor:</B> if you can read this, you're too close.
+  </NOFRAMES>
+</FRAMESET>
+</HTML>

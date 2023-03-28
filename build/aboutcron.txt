@@ -1,0 +1,35 @@
+#! /bin/sh
+
+#
+# This is run from cron on the source machine, it checks out a partner
+# script and runs it.  This is checked into the source tree for documentation
+# purposes only.  The actual cron job runs a checked out version of this
+# file located in /usr/local/build/aboutcron on the source machine.
+#
+
+PATH=/usr/local/bin:/usr/bin/X11:/usr/sbin:/usr/bsd:/usr/bin:/bin:
+export PATH
+CVSROOT=/m/src
+export CVSROOT
+TMP=/var/tmp/aboutcron.$$
+FILES="ns/build/aboutime"
+
+if [ -x /usr/local/bin/cvs-safer ]; then
+  CVS=/usr/local/bin/cvs-safer
+else
+  CVS=cvs
+fi
+
+echo -------- Checkout fresh copy of files into $TMP -------- > log
+mkdir $TMP
+cd $TMP
+$CVS checkout $FILES >> log
+
+sh $TMP/ns/build/aboutime >> log 2>&1
+status=$?
+
+(echo "EXIT STATUS: $status" ; echo "---------------------------------------"; \
+ cat log ) | Mail -s "Nightly About Job Results" briano
+
+cd /
+rm -rf $TMP

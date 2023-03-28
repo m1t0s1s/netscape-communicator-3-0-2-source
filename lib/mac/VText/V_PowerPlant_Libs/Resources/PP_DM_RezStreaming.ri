@@ -1,0 +1,27 @@
+//	===========================================================================
+//	PP_DM_RezStreaming.ri
+//
+//	Copyright 1996 ViviStar Consulting.
+//	===========================================================================
+
+	#include	<V_RezStreaming.ri>
+
+	case	SelectionModelAEOMSDataB:
+		EmptyRezKey;
+		PP_SelectionModelAEOMSDataB;
+
+	case	SelectionSDataB:
+		EmptyRezKey;
+		PP_SelectionSDataB;
+
+	case	EventMachineSDataB:
+		EmptyRezKey;
+		PP_EventMachineSDataB;
+		
+	case	EventHandlerSDataB:
+		EmptyRezKey;
+		PP_EventHandlerSDataB;
+		
+	case	DataDragEventHandlerSDataB:
+		EmptyRezKey;
+		PP_DataDragEventHandlerSDataB;

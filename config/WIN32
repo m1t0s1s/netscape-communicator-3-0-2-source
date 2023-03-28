@@ -1,0 +1,99 @@
+#//------------------------------------------------------------------------
+#//
+#// Win32 Configuration file
+#//
+#//------------------------------------------------------------------------
+
+#//------------------------------------------------------------------------
+#//
+#// Define the OS dependent commands used by MAKE
+#//
+#//------------------------------------------------------------------------
+CC=cl
+LD=link
+AR=lib
+RC=rc
+#RM=del /F /Q
+#RM_R=del /F /S /Q
+RM=rm -f
+RM_R=rm -fr
+CP=cp
+AWK=awk.exe
+RANLIB=$(DEPTH)\config\true.bat
+JAVAH=$(DIST)\bin\javah.exe
+JAVA=$(DIST)\bin\java.exe
+
+#//------------------------------------------------------------------------
+#//
+#// Define Debug and optimization flags
+#//
+#//------------------------------------------------------------------------
+!ifdef BUILD_OPT
+OPTIMIZER=-O -UDEBUG -DNDEBUG
+OS_LFLAGS=
+!else
+#
+# Uncomment for MSVC debug malloc logging...
+#
+#OPTIMIZER=-Z7 -DDEBUG -UNDEBUG -D_DEBUG -D_CRTDBG_MAP_ALLOC
+OPTIMIZER=-Z7 -DDEBUG -UNDEBUG -D_DEBUG
+OS_LFLAGS=/DEBUG /DEBUGTYPE:CV /PDB:NONE
+!endif
+
+#//------------------------------------------------------------------------
+#//
+#// Select the correct RTL to link...
+#//
+#// Currently, unless USE_STATIC_LIBS is defined, the multithreaded
+#// DLL version of the RTL is used...
+#//
+#//------------------------------------------------------------------------
+!ifdef USE_STATIC_LIBS
+RTL_FLAGS=-MT          # Statically linked multithreaded RTL
+!ifndef BUILD_OPT
+RTL_FLAGS=-MTd         # Statically linked multithreaded MSVC4.0 debug RTL
+!endif
+
+!else
+RTL_FLAGS=-MD          # Dynamically linked, multithreaded RTL
+
+!ifndef BUILD_OPT
+RTL_FLAGS=-MDd         # Dynamically linked, multithreaded MSVC4.0 debug RTL
+!endif
+!endif
+
+#//------------------------------------------------------------------------
+#//
+#// Specify the OS dependent compiler flags, linker flags and libraries
+#//
+#//------------------------------------------------------------------------
+OS_CFLAGS=$(OPTIMIZER) $(RTL_FLAGS) -W3 -nologo -D_X86_ -D_WINDOWS  -DWIN32 \
+            -DXP_PC -Dx386 -DHW_THREADS -DHAVE_STRERROR
+
+OS_CFLAGS=$(OS_CFLAGS) -DMSVC4 
+
+OS_LFLAGS=$(OS_LFLAGS)
+OS_LIBS=kernel32.lib user32.lib gdi32.lib winmm.lib wsock32.lib advapi32.lib
+
+#//------------------------------------------------------------------------
+#//
+#// Specify the special flags for creating EXEs
+#//
+#//------------------------------------------------------------------------
+!ifdef SWAPTUNER
+EXE_CFLAGS=/Gh
+!else
+EXE_CFLAGS=/Gy
+!endif
+EXE_LFLAGS=
+EXE_LIBS=
+
+#//------------------------------------------------------------------------
+#//
+#// Specify the special flags for creating DLLs
+#//
+#//------------------------------------------------------------------------
+DLL_CFLAGS=
+DLL_LFLAGS=/SUBSYSTEM:WINDOWS
+DLL_LIBS=
+

@@ -1,0 +1,47 @@
+LIBRARY PR16301.DLL
+EXETYPE WINDOWS
+PROTMODE
+
+DESCRIPTION 'Netscape 16-bit Portable Runtime library'
+
+STUB    'WINSTUB.EXE'
+
+CODE    LOADONCALL MOVEABLE DISCARDABLE
+DATA	PRELOAD MOVEABLE SINGLE
+
+HEAPSIZE    8192
+
+EXPORTS
+    WEP                                                         @1 RESIDENTNAME
+    _malloc                     = _malloc                       @2
+    _realloc                    = _realloc                      @3
+    _calloc                     = _calloc                       @4
+    _free                       = _free                         @5
+    GETHOSTNAME                 = GETHOSTNAME                   @6
+    GETHOSTBYNAME               = GETHOSTBYNAME                 @7
+    GETHOSTBYADDR               = GETHOSTBYADDR                 @8
+    _getenv                     = _getenv                       @9
+    _putenv                     = _putenv                       @10
+    _printf                     = _printf                       @11
+    _fprintf                    = _fprintf                      @12
+
+
+    NTOHL                       = NTOHL                         @13
+    NTOHS                       = NTOHS                         @14
+    CLOSESOCKET                 = CLOSESOCKET                   @15
+    SETSOCKOPT                  = SETSOCKOPT                    @16
+    SOCKET                      = SOCKET                        @17
+    GETSOCKNAME                 = GETSOCKNAME                   @18
+    HTONL                       = HTONL                         @19
+    HTONS                       = HTONS                         @20
+    INET_ADDR                   = INET_ADDR                     @21
+    WSAGETLASTERROR             = WSAGETLASTERROR               @22
+    CONNECT                     = CONNECT                       @23
+    RECV                        = RECV                          @24
+    IOCTLSOCKET                 = IOCTLSOCKET                   @25
+    RECVFROM                    = RECVFROM                      @26
+    SEND                        = SEND                          @27
+    SENDTO                      = SENDTO                        @28
+    ACCEPT                      = ACCEPT                        @29
+    LISTEN                      = LISTEN                        @30
+    BIND                        = BIND                          @31

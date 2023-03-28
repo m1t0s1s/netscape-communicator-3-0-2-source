@@ -1,0 +1,81 @@
+#//------------------------------------------------------------------------
+#//
+#// Makefile to build the machine independent java runtime library
+#//
+#//------------------------------------------------------------------------
+
+
+#//------------------------------------------------------------------------
+#//
+#// Specify the depth of the current directory relative to the
+#// root of NS
+#//
+#//------------------------------------------------------------------------
+DEPTH= ..\..\..
+
+MAKE_OBJ_TYPE=DLL
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Make Variables here: (ie. PDFFILE, MAPFILE, ...)
+#//
+#//------------------------------------------------------------------------
+DLLNAME=mm$(OS_RELEASE)30
+PDBFILE=$(DLLNAME).pdb
+RESFILE=mmedia.res
+
+#//------------------------------------------------------------------------
+#// 
+#// Define the files necessary to build the target (ie. OBJS)
+#//
+#//------------------------------------------------------------------------
+OBJS=                                   \
+    .\$(OBJDIR)\audio.obj               \
+    .\$(OBJDIR)\libstubs.obj            \
+    $(NULL)
+
+GENERATED_HEADERS_CLASSFILES=           \
+    sun.audio.AudioDevice               \
+    $(NULL)
+
+GENERATED_STUBS_CLASSFILES =            \
+    sun.audio.AudioDevice               \
+    $(NULL)
+
+
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Targets here (ie. PROGRAM, LIBRARY, DLL, ...)
+#// (these must be defined before the common makefiles are included)
+#//
+#//------------------------------------------------------------------------
+JAVA_HEADER_FILES=$(GENERATED_HEADERS_CLASSFILES)
+JAVA_LIBSTUB_FILES=$(GENERATED_STUBS_CLASSFILES)
+
+DLL=.\$(OBJDIR)\$(DLLNAME).dll
+
+#//------------------------------------------------------------------------
+#//
+#// Define any local options for the make tools 
+#//     (ie. LCFLAGS, LLFLAGS, LLIBS, LINCS)
+#//
+#//------------------------------------------------------------------------
+LLIBS=$(LLIBS) $(LIBNSPR) $(LIBJRT)
+LINCS=$(LINCS) -I. -I_gen
+
+#//------------------------------------------------------------------------
+#//
+#// Include the common makefile rules
+#//
+#//------------------------------------------------------------------------
+include <$(DEPTH)/sun-java/config/rules.mak>
+
+export:: $(JAVA_HEADER_FILES) libstubs.c $(DLL)
+    $(MAKE_INSTALL) .\$(OBJDIR)\$(DLLNAME).dll $(DIST)\bin
+    $(MAKE_INSTALL) .\$(OBJDIR)\$(DLLNAME).lib $(DIST)\lib
+
+
+install:: export
+
+clobber::
+    $(RM_R) libstubs.c _gen
+

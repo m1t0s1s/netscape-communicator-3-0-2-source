@@ -1,0 +1,140 @@
+#//------------------------------------------------------------------------
+#//
+#// Makefile to build the machine independent java runtime library
+#//
+#//------------------------------------------------------------------------
+
+
+#//------------------------------------------------------------------------
+#//
+#// Specify the depth of the current directory relative to the
+#// root of NS
+#//
+#//------------------------------------------------------------------------
+DEPTH= ..\..\..
+
+!ifndef MAKE_OBJ_TYPE
+MAKE_OBJ_TYPE=EXE
+!endif
+
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Make Variables here: (ie. PDFFILE, MAPFILE, ...)
+#//
+#//------------------------------------------------------------------------
+LIBNAME=libnsa$(OS_RELEASE)
+PDBFILE=$(LIBNAME).pdb
+
+#//------------------------------------------------------------------------
+#// 
+#// Define the files necessary to build the target (ie. OBJS)
+#//
+#//------------------------------------------------------------------------
+RTDIR=$(DEPTH)\sun-java\runtime
+RTOBJDIR=$(RTDIR)\$(OBJDIR)
+
+!if "$(OS_RELEASE)" == "16"
+RUNTIME_OBJS=                               \
+    ..\..\runtime\$(OBJDIR)\jpegde~1.obj    \
+    $(NULL)
+
+OBJS=                                       \
+    .\$(OBJDIR)\applet~1.obj		    \
+    .\$(OBJDIR)\na_nodl.obj		    \
+    .\$(OBJDIR)\stubs.obj                   \
+    $(RUNTIME_OBJS)                         \
+    $(NULL)
+!else
+RUNTIME_OBJS=                               \
+    $(RTOBJDIR)\jpegdecoder.obj             \
+    $(NULL)
+
+OBJS=                                       \
+    .\$(OBJDIR)\appletStubs.obj             \
+    .\$(OBJDIR)\stubs.obj                   \
+    $(RUNTIME_OBJS)                         \
+    $(NULL)
+!endif
+
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Targets here (ie. PROGRAM, LIBRARY, DLL, ...)
+#// (these must be defined before the common makefiles are included)
+#//               
+#//------------------------------------------------------------------------
+JAVA_HEADER_FILES=                          \
+    sun.awt.image.JPEGImageDecoder          \
+    $(NULL)
+
+JAVA_STUB_FILES=                            \
+    sun.awt.image.JPEGImageDecoder          \
+    $(NULL)
+
+JRI_HEADER_FILES=                            \
+	java.applet.Applet                   \
+	netscape.applet.AppletClassLoader    \
+	netscape.applet.Console              \
+	netscape.applet.EmbeddedAppletFrame  \
+	netscape.applet.MozillaAppletContext \
+	netscape.plugin.Plugin               \
+	java.lang.String                     \
+	$(NULL)
+
+JRI_STUB_FILES=                              \
+	java.applet.Applet                   \
+	netscape.applet.AppletClassLoader    \
+	netscape.applet.Console              \
+	netscape.applet.EmbeddedAppletFrame  \
+	netscape.applet.MozillaAppletContext \
+	netscape.plugin.Plugin               \
+	$(NULL)
+
+LIBRARY= .\$(OBJDIR)\$(LIBNAME).lib
+
+#//------------------------------------------------------------------------
+#//
+#// Define any local options for the make tools 
+#//     (ie. LCFLAGS, LLFLAGS, LLIBS, LINCS)
+#//
+#//------------------------------------------------------------------------
+LINCS=$(LINCS) -I_gen
+
+#//------------------------------------------------------------------------
+#//
+#// Include the common makefile rules
+#//
+#//------------------------------------------------------------------------
+include <$(DEPTH)/sun-java/config/rules.mak>
+
+export:: $(JRI_HEADER_FILES) $(JAVA_HEADER_FILES) $(JRI_STUB_FILES) \
+         $(JAVA_STUB_FILES) $(LIBRARY) 
+    $(MAKE_INSTALL) $(LIBRARY) $(DIST)\lib
+    $(MAKE_INSTALL) _gen\netscape_applet_MozillaAppletContext.h $(DIST)\include\sun-java\include\_gen
+    $(MAKE_INSTALL) _gen\netscape_plugin_Plugin.h $(DIST)\include\sun-java\include\_gen
+    $(MAKE_INSTALL) _gen\netscape_applet_EmbeddedAppletFrame.h $(DIST)\include\sun-java\include\_gen
+    $(MAKE_INSTALL) _gen\java_applet_Applet.h $(DIST)\include\sun-java\include\_gen
+
+install:: export
+
+clobber::
+    $(RM) $(RUNTIME_OBJS)
+	$(RM_R) _gen _stubs 
+
+stubs.c:					      \
+	_stubs/java_applet_Applet.c		      \
+	_stubs/netscape_applet_AppletClassLoader.c    \
+	_stubs/netscape_applet_MozillaAppletContext.c \
+	_stubs/netscape_applet_EmbeddedAppletFrame.c  \
+	_stubs/netscape_plugin_Plugin.c		      \
+	_stubs/netscape_applet_Console.c
+
+#//------------------------------------------------------------------------
+#//
+#// Local rules to build object files from other directories
+#//
+#//------------------------------------------------------------------------
+$(RUNTIME_OBJS):
+    echo +++ MAKE entering directory: $(RTDIR)
+    cd $(RTDIR)
+    nmake /S /nologo -f makefile.win MAKE_OBJ_TYPE=EXE nsapplet_objs
+    cd ..\netscape\applet

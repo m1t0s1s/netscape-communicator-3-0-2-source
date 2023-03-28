@@ -1,0 +1,191 @@
+#! /bin/sh
+
+OBJDIR=$1; shift
+PROGNAME=$1; shift
+CLASS=$1; shift
+vsuffix=$1; shift
+SUFFIX=$1; shift
+CONFIG=$1; shift
+NEED_YP_VERSION=$1; shift
+MCS=$1; shift
+NEED_NLS=$1; shift
+EXTRA_REL_FILES=$1; shift
+README_FILE=$1; shift
+
+VN=`sed -n 's/^#define VERSION_NUMBER *\(.*\)$/\1/p' versionn.h`
+VERS=`echo ${VN}${vsuffix}`
+STRIP=strip
+ARCH=`uname -s`
+
+case ${ARCH} in
+	HP-UX)
+		ARCH="hpux"
+		;;
+	IRIX)
+		ARCH="irix"
+		;;
+	OSF1)
+		ARCH="osf1"
+		;;
+	SunOS)
+		case `uname -r` in
+			4*)
+				ARCH="sun4"
+				;;
+			5.3)
+				ARCH="sol23"
+				;;
+			5.4)
+				case `uname -m` in
+					i86pc)
+						ARCH="solx86"
+						;;
+					*)
+						ARCH="sol24"
+						;;
+				esac
+				;;
+			5.5)
+				ARCH="sol25"
+				;;
+		esac
+		;;
+esac
+
+if [ "$ARCH" = "sun4" -o "$ARCH" = "BSD/386" -o "$ARCH" = "Linux" ]; then
+	NFLAG="-n"
+	ENDSTR=""
+else
+	NFLAG=""
+	ENDSTR="\c"
+fi
+
+if [ "$ARCH" = "SCO_SV" ]; then
+	TARFLAGS="cf"
+else
+	TARFLAGS="chf"
+fi
+
+# Release puts all release packages under a subdirectory 'release'
+RELEASEDIR=$OBJDIR/release
+
+echo "Generating release for $PROGNAME-$SUFFIX ($VERS)..."
+
+mkdir $RELEASEDIR > /dev/null 2>&1
+set -e
+DIR=$RELEASEDIR/$PROGNAME-$SUFFIX
+if [ "$ARCH" = "Linux" ]; then
+	case `uname -r` in
+		1.2.*)
+			CONFIG=${CONFIG}-elf
+			;;
+	esac
+fi
+ID1=$PROGNAME-v`echo $VERS | sed 's/\.//g'`
+ID2=`echo $SUFFIX | sed 's/net//g;s/sgi//g'`
+ID=`echo ${ID1}-${ID2} | sed 's/---*/-/g'`
+TARFILE=${ID}.${CONFIG}.tar.Z
+GZTARFILE=${ID}.${CONFIG}.tar.gz
+YPP=$NEED_YP_VERSION
+
+echo ""
+echo ""
+echo "===================================================="
+echo "making dist in:  ${TARFILE}..."
+
+echo ${NFLAG} "`$OBJDIR/$PROGNAME-$SUFFIX -version`${ENDSTR}"
+
+if [ "$YPP" = "1" ]; then
+	echo ${NFLAG} "`$OBJDIR/$PROGNAME-nis-$SUFFIX -version`${ENDSTR}"
+fi
+
+echo "===================================================="
+
+rm -rf $DIR
+mkdir $DIR
+echo ${NFLAG} "Copying... ${ENDSTR}"
+
+if [ "${README_FILE}" = "README.tmpl" ]; then
+	cp -p $OBJDIR/README-$SUFFIX $DIR/README
+else
+	cp -p ${README_FILE} $DIR/README
+fi
+
+cp -p $OBJDIR/LICENSE-$SUFFIX $DIR/LICENSE
+cp -p $OBJDIR/$CLASS-$SUFFIX.ad $DIR/$CLASS.ad
+cp -p XKeysymDB $DIR
+
+mkdir ${DIR}/movemail-src
+cp -p GNU_movemail/movemail.c ${DIR}/movemail-src/.
+cp -p GNU_movemail/COPYING ${DIR}/movemail-src/.
+cp -p GNU_movemail/README ${DIR}/movemail-src/.
+
+cp -p GNU_movemail/${OBJDIR}/movemail ${DIR}/.
+
+NEW_EXTRA_REL_FILES=
+for i in ${EXTRA_REL_FILES}
+do
+	if [ "`basename $i`" = "java_301" ]; then
+		cp ${i}.x $DIR/`basename $i`
+	else
+		cp $i $DIR/`basename $i`
+	fi
+	NEW_EXTRA_REL_FILES="$NEW_EXTRA_REL_FILES `basename $i`"
+done
+
+if [ "$NEED_NLS" = "1" ]; then
+	mkdir $DIR/nls
+	# This assumes $OBJDIR is a subdir of the source directory
+	cp C $DIR/nls/.
+	chmod 644 $DIR/nls/C
+	( echo 1 ; echo C ) > $DIR/nls/nls.dir
+	chmod 644 $DIR/nls/nls.dir
+	NEW_EXTRA_REL_FILES="$NEW_EXTRA_REL_FILES nls"
+fi
+
+if [ "$YPP" = "1" ]; then
+	cp -p $OBJDIR/$PROGNAME-$SUFFIX $DIR/${PROGNAME}_dns.unstripped
+	cp -p $OBJDIR/$PROGNAME-nis-$SUFFIX $DIR/$PROGNAME.unstripped
+	cp -p $OBJDIR/$PROGNAME-$SUFFIX $DIR/${PROGNAME}_dns
+	cp -p $OBJDIR/$PROGNAME-nis-$SUFFIX $DIR/$PROGNAME
+	$STRIP $DIR/${PROGNAME}_dns
+	$STRIP $DIR/$PROGNAME
+	$MCS $DIR/${PROGNAME}_dns
+	$MCS $DIR/$PROGNAME
+else
+	cp -p $OBJDIR/$PROGNAME-$SUFFIX $DIR/$PROGNAME.unstripped
+	cp -p $OBJDIR/$PROGNAME-$SUFFIX $DIR/$PROGNAME
+	$STRIP $DIR/$PROGNAME
+	$MCS $DIR/$PROGNAME
+fi
+
+chmod a+r,a-w `find $DIR \! -type d -print`
+chmod a+rx,u+w,og-w `find $DIR -type d -print`
+
+cd $DIR
+TARPROGS="$PROGNAME"
+if [ "$YPP" = "1" ]; then
+	TARPROGS="$TARPROGS ${PROGNAME}_dns"
+fi
+
+echo ${NFLAG} "Packing... ${ENDSTR}"
+
+STANDARD_FILES="README LICENSE $TARPROGS $CLASS.ad XKeysymDB movemail movemail-src"
+
+tar -${TARFLAGS} - ${STANDARD_FILES} ${NEW_EXTRA_REL_FILES} | gzip > $GZTARFILE
+tar -${TARFLAGS} - ${STANDARD_FILES} ${NEW_EXTRA_REL_FILES} | compress -v > $TARFILE
+
+echo ""
+( ls -l  $TARFILE ; echo "" ; zcat $TARFILE | tar -vtf - ) 2>&1 | sed 's/^/  /'
+echo ""
+echo "===================================================="
+echo ${NFLAG} " file says: ${ENDSTR}"
+file $PROGNAME
+if [ "$YPP" = "1" ]; then
+	echo ${NFLAG} " file says: ${ENDSTR}"
+	file ${PROGNAME}_dns
+fi
+echo "===================================================="
+echo ""
+
+exit 0

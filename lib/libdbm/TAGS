@@ -1,0 +1,141 @@
+
+db.c,210
+#define __DBINTERFACE_PRIVATE39,1999
+dbSetOrClearDBLock(63,2410
+dbopen(72,2565
+#define	DB_FLAGS	83,2807
+#define	USE_OPEN_FLAGS	87,2910
+#define	USE_OPEN_FLAGS	91,3037
+__dberr(119,3689
+__dbpanic(131,3814
+
+h_bigkey.c,215
+__big_insert(94,2963
+__big_delete(190,5368
+__find_bigpair(267,7177
+__find_last_page(314,8271
+__big_return(358,9167
+collect_data(449,11284
+__big_keydata(512,12612
+collect_key(530,13005
+__big_split(575,13925
+
+h_func.c,245
+#define PRIME1	68,2713
+#define PRIME2	69,2732
+hash1(73,2777
+#define dcharhash(dcharhash88,3066
+hash2(91,3147
+hash3(118,3836
+#define HASHC 124,3957
+hash4(165,4549
+#define HASH4a 171,4670
+#define HASH4b 172,4714
+#define HASH4 173,4758
+
+h_log2.c,23
+uint32 __log2(47,2157
+
+h_page.c,531
+#define MY_LSEEK 38,1943
+#define MY_LSEEK 40,1972
+#define	PAGE_INIT(PAGE_INIT99,3178
+long new_lseek(109,3434
+putpair(178,4969
+__delpair(208,5450
+__split_page(281,7280
+ugly_split(398,10205
+__addel(518,13324
+__add_ovflpage(611,15290
+__get_page(662,16498
+__put_page(802,19214
+#define BYTE_MASK	880,20866
+__ibitmap(886,21021
+first_free(907,21573
+overflow_page(921,21765
+#define	OVMSG	968,23056
+__free_ovflpage(1075,25981
+open_temp(1126,27138
+squeeze_key(1157,28016
+fetch_bitmap(1182,28531
+print_chain(1199,28942
+
+hash.c,635
+#define MOD(MOD98,3557
+#define RETURN_ERROR(RETURN_ERROR100,3595
+#define	SUCCESS	103,3679
+#define	ERROR	104,3700
+#define	ABNORMAL 105,3719
+__remove_database(120,4055
+__hash_open(139,4404
+#define	OLDHASHVERSION	233,6838
+	if 346,9975
+static int hash_fd(373,10298
+init_hash(393,10616
+init_htab(466,12450
+hdestroy(510,13592
+hash_sync(572,14949
+flush_meta(602,15383
+hash_get(649,16474
+hash_put(681,16974
+hash_delete(718,17653
+hash_access(755,18345
+hash_seq(884,21049
+__expand_table(977,23002
+hash_realloc(1031,24535
+__call_hash(1047,24804
+alloc_segs(1064,25134
+swap_header_copy(1098,25806
+swap_header(1127,26751
+
+hash_buf.c,314
+#define BUF_REMOVE(BUF_REMOVE82,2733
+#define BUF_INSERT(BUF_INSERT88,2849
+#define	MRU	95,2973
+#define	LRU	96,3005
+#define MRU_INSERT(MRU_INSERT98,3038
+#define LRU_INSERT(LRU_INSERT99,3093
+__get_buf(111,3567
+newbuf(196,5593
+extern void __buf_init(341,9246
+__buf_free(364,9670
+__reclaim_buf(403,10441
+
+hsearch.c,93
+static ENTRY retval;52,2214
+hsearch(70,2503
+hsearch(ENTRY item,70,2503
+hdestroy(100,3068
+
+memmove.c,153
+typedef	int word;word53,2270
+#define	wsize	55,2331
+#define	wmask	56,2358
+memcpy(65,2565
+#define	TLOOP(TLOOP89,2965
+#define	TLOOP1(TLOOP190,2999
+
+mktemp.c,51
+mkstemp(58,2291
+mktemp(67,2381
+_gettemp(74,2483
+
+ndbm.c,206
+dbm_open(65,2444
+dbm_close(82,2784
+dbm_fetch(93,2903
+dbm_firstkey(112,3173
+dbm_nextkey(129,3429
+dbm_delete(145,3672
+dbm_store(163,3909
+dbm_error(171,4085
+dbm_clearerr(180,4184
+dbm_dirfno(190,4294
+
+snprintf.c,35
+snprintf(20,345
+vsnprintf(51,795
+
+strerror.c,43
+strerror(42,2017
+#define	UPREFIX	47,2094

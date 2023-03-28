@@ -1,0 +1,108 @@
+
+lj_cons.c,487
+#define IMPLEMENT_netscape_applet_MozillaAppletContext5,73
+void LJ_ShowConsole(18,403
+void LJ_HideConsole(41,825
+void _LJ_SetConsoleState(52,1069
+int LJ_IsConsoleShowing(59,1180
+void LJ_SetConsoleShowCallback(68,1365
+typedef struct MozillaEvent_SetConsoleState MozillaEvent_SetConsoleState76,1592
+} MozillaEvent_SetConsoleState;MozillaEvent_SetConsoleState79,1680
+lj_HandleEvent_SetConsoleState(82,1730
+lj_DestroyEvent_SetConsoleState(91,1949
+LJ_PostSetConsoleState(97,2048
+
+lj_embed.c,1136
+#define IMPLEMENT_netscape_applet_MozillaAppletContext21,359
+DumpArgs(35,643
+LJ_ReportJavaStartupError(74,1576
+LJ_CreateApplet(119,2692
+LJ_Applet_getSize(198,4580
+LJ_Applet_display(203,4626
+LJ_DeleteSessionData(208,4682
+LJ_Applet_destroy(219,4917
+LJ_SetJavaEnabled(237,5426
+LJ_GetJavaEnabled(251,5782
+typedef struct MozillaEvent_MochaOnLoad MozillaEvent_MochaOnLoad265,6089
+} MozillaEvent_MochaOnLoad;MozillaEvent_MochaOnLoad268,6182
+lj_HandleEvent_MochaOnLoad(271,6223
+lj_DestroyEvent_MochaOnLoad(291,6775
+LJ_PostMochaOnLoad(297,6866
+typedef struct MozillaEvent_ShowStatus MozillaEvent_ShowStatus322,7573
+} MozillaEvent_ShowStatus;MozillaEvent_ShowStatus325,7700
+lj_HandleEvent_ShowStatus(328,7745
+lj_DestroyEvent_ShowStatus(334,7871
+LJ_PostShowStatus(341,8002
+typedef struct MozillaEvent_ShowDocument MozillaEvent_ShowDocument355,8520
+} MozillaEvent_ShowDocument;MozillaEvent_ShowDocument360,8734
+lj_HandleEvent_ShowDocument(364,8782
+lj_DestroyEvent_ShowDocument(394,9523
+LJ_PostShowDocument(403,9716
+LJ_ProcessEvent(420,10333
+lj_DiscardEventForContext(439,10719
+LJ_DiscardEventsForContext(457,11191
+
+lj_init.c,1090
+#define IMPLEMENT_netscape_applet_MozillaAppletContext60,1500
+#define IMPLEMENT_netscape_applet_EmbeddedAppletFrame66,1676
+#define WANT_BUILD_NUMBER_CHECK86,2041
+#define strcasecmp(strcasecmp104,2502
+#define getenv(getenv109,2625
+#define putenv(putenv110,2660
+#define MAX_PATH 113,2711
+#define MaxHeapSize 132,3242
+#define MinHeapSize 133,3264
+# define ZIP_NAME 148,3573
+int OpenCode(165,3900
+void LJ_SetProgramName(200,4896
+static PRBool IsValidCAR(213,5183
+static PRBool IsValidZIP(267,6324
+static PRBool MozillaExists(322,7446
+AddDirToClassPath(339,7753
+AddToClassPath(365,8397
+LJ_AddToClassPath(389,8885
+int LJ_GrovelForClasses(421,9809
+int LJ_GrovelForClasses(585,14136
+int LJ_GrovelForClasses(640,15813
+LJ_SetAppletTrimParams(799,19718
+LJ_GetTotalApplets(817,20289
+LJ_TrimApplets(831,20692
+lj_CleanUpOldDownloadedZips(853,21340
+int LJ_StartupJava(889,22533
+void LJ_ShutdownJava(1092,28488
+LJ_MakeArrayOfString(1110,28896
+intl_makeJavaString(1119,29104
+int LJ_SetStringArraySlot(1151,30122
+jref LJ_InvokeMethod(1191,31174
+void LJ_FakeInit(1254,32662
+
+lj_run.c,471
+#define IMPLEMENT_netscape_applet_MozillaAppletContext18,258
+#define IMPLEMENT_java_applet_Applet19,313
+#define IMPLEMENT_netscape_applet_EmbeddedAppletFrame20,350
+LJ_GetMochaWindow(34,718
+LJ_GetAppletMochaWindow(65,1437
+LJ_MayScript(106,2349
+LJ_Applet_init(123,2617
+LJ_Applet_start(274,6492
+LJ_Applet_stop(283,6720
+lj_MapContextTree(292,6933
+LJ_IconifyApplets(307,7324
+LJ_UniconifyApplets(317,7524
+LJ_DestroyAppletContext(327,7728
+LJ_CurrentDocID(341,8087
+
+lj_thred.c,434
+} LJState;LJState25,640
+} LJThread;LJThread67,2112
+lj_InitThread(78,2394
+LJ_CallMozilla(96,2938
+LJ_CallJava(124,3598
+typedef struct MozillaEvent_SlaveToJava MozillaEvent_SlaveToJava150,4109
+} MozillaEvent_SlaveToJava;MozillaEvent_SlaveToJava153,4194
+lj_HandleEvent_SlaveToJava(161,4493
+lj_DestroyEvent_SlaveToJava(190,5100
+LJ_PostSlaveToJava(196,5198
+lj_Run(224,6175
+lj_CallOther(314,8857
+LJ_MozillaRunning(398,11774

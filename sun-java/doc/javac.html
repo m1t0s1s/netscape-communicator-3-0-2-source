@@ -1,0 +1,151 @@
+<html>
+<head>
+<title>javac - The Java Compiler</title>
+</head>
+<body>
+
+<h1>javac - The Java Compiler</h1>
+<blockquote>
+<b>javac</b> compiles Java programs.
+</blockquote>
+
+<h2>SYNOPSIS</h2>
+<blockquote>
+<pre>
+javac [ <a href="javac.html#Options">options</a> ] filename.java ...
+javac_g [ <a href="javac.html#Options">options</a> ] filename.java ...
+</pre>
+</blockquote>
+
+<h2>DESCRIPTION</h2>
+<blockquote>
+The <b>javac</b> command compiles Java source code into Java bytecodes.
+You then use the Java interpreter - the <a href="java.html"><b>java</b></a>
+command - to interprete the Java bytecodes.
+
+<p>
+Java source code must be contained in files whose filenames end in the
+<i>.java</i> extension. For every class defined in the source files passed
+to <b>javac</b>, the compiler stores the resulting bytecodes in a file named
+<i>classname.class</i>. The compiler places the resulting <i>.class</i>
+files in the same directory as the corresponding <i>.java</i> file (unless
+you specify the <i>-d</i> option).
+
+<p>
+When you define your own classes you need to specify their location.
+Use CLASSPATH to do this. CLASSPATH consists of a colon separated list of
+directories that specifies the path. If the source files passed to <b>javac</b>
+references a class not defined in any of the files passed to <b>javac</b>
+then <b>javac</b> searches for the referenced class using the class path.
+For example:
+<blockquote>
+<pre>
+:/home/avh/classes
+</pre>
+</blockquote>
+Note that the system always appends the location of the system classes
+onto the end of the class path unless you use the <i>-classpath</i> option to
+specify a path.
+<p>
+<b>javac_g</b> is a non-optimized version of <b>javac</b> suitable for
+use with debuggers like <a href=jdb.html><b>jdb</b></a>.
+</blockquote>
+
+<a name=Options>
+<h2>OPTIONS</h2>
+</a>
+<blockquote>
+
+<dl>
+
+<dt><b>-classpath path</b>
+<dd>
+Specifies the path <b>javac</b> uses to look up classes. Overrides the default
+or the CLASSPATH environment variable if it is set. Directories are separated by
+colons. Thus the general format for <i>path</i> is:
+<blockquote>
+<pre>
+:&lt;your_path&gt;
+</pre>
+</blockquote>
+For example:
+<blockquote>
+<pre>
+:/home/avh/classes:/usr/local/java/classes
+</pre>
+</blockquote>
+<p>
+
+<dt><b>-d directory</b>
+<dd>
+Specifies the root directory of the class hierarchy. Thus doing:
+<blockquote>
+<pre>
+javac -d &lt;my_dir&gt;/editor/gui/TextWindow.java
+</pre>
+</blockquote>
+causes the class file for the class called editor.gui.Textwindow to be
+saved as:
+<blockquote>
+<pre>
+&lt;my_dir&gt;/editor/gui/TextWindow.class
+</pre>
+</blockquote>
+<p>
+
+<dt><b>-g</b>
+<dd>
+Enables generation of debugging tables. Debugging tables contain
+information about line numbers and local variables - information used
+by debugging tools. By default, only line numbers are generated, unless
+optimization (<i>-O</i>) is turned on.
+<p>
+
+<dt><b>-nowarn</b>
+<dd>
+Turns off warnings. If used the compiler does not print out any warnings.
+<p>
+
+<dt><b>-O</b>
+<dd>
+Optimizes compiled code by inlining static, final and private methods.
+Note that your classes may get larger in size.
+<p>
+
+<dt><b>-verbose</b>
+<dd>
+Causes the compiler and linker to print out messages about what source
+files are being compiled and what class files are being loaded.
+
+</dl>
+</blockquote>
+
+<h2>ENVIRONMENT VARIABLES</h2>
+<blockquote>
+
+<dl>
+
+<dt><b>CLASSPATH</b>
+<dd>
+Used to provide the system a path to user-defined classes. Directories are
+separated by colons, for example,
+<blockquote>
+<pre>
+:/home/avh/classes:/usr/local/java/classes
+</pre>
+</blockquote>
+
+</dl>
+</blockquote>
+
+<h2>SEE ALSO</h2>
+<blockquote>
+<a href="java.html">java</a>,
+<a href="jdb.html">jdb</a>,
+<a href="javah.html">javah</a>,
+<a href="javap.html">javap</a>,
+<a href="javadoc.html">javadoc</a>,
+<a href="../javaspec/javaspec_1.html">The Java Language Specification</a>
+</blockquote>
+</body>
+</html>

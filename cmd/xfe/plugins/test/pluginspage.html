@@ -1,0 +1,46 @@
+<HTML>
+<TITLE>Nullplugins tests : PLUGINSPAGE attribute</TITLE>
+<!-- Changed by: Suresh Duddi, 15-May-1996 -->
+<H1>Nullplugins tests : PLUGINSPAGE attribute</H1>
+Test:  <B>PLUGINSPAGE</B> attribute for the EMBED tag in the nullplugin.
+<HR>
+Embed is here : 
+<EMBED type=nowhere/found width=200 height=100>
+<br>
+<pre>
+&lt;EMBED type=nowhere/found width=200 height=100&gt;
+</pre>
+<! Result !>
+<dl>
+<dt><FONT color=red>Do this</FONT>
+<dd>Click on the embed above. Click <B>ok</B> on the resulting dialog.
+<dt><FONT Color=red>Result</FONT>
+<dd>You should see a new browser window that loads the url
+<B>http://cgi.netscape.com/eng/mozilla/2.0/extensions/info.cgi</B>
+</dl>
+<hr>
+
+<p>
+Embed is here :
+<EMBED type=nowhere/found width=200 height=100 pluginspage="http://www.netscape.com/people/dp">
+<br>
+<pre>
+&lt;EMBED type=nowhere/found width=200 height=100 pluginspage="http://www.netscape.com/people/dp"&gt;
+</pre>
+<! Result !>
+<dl>
+<dt><FONT color=red>Do this</FONT>
+<dd>Click on the embed above. Click <B>ok</B> on the resulting dialog.
+<dt><FONT Color=red>Result</FONT>
+<dd>You should see a browser window that loads the url
+<B>http://www.netscape.com/people/dp</B>
+</dl>
+<hr>
+
+<address>
+  dpSuresh <a href="mailto:dp@netscape.com">&lt;dp@netscape.com&gt;</a>
+</address>
+Last modified
+Wed May 15 16:57:15 PDT 1996
+
+</HTML>

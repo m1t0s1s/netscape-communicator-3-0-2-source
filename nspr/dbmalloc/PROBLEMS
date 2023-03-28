@@ -1,0 +1,303 @@
+
+This file documents the problems that have been found when the library
+is ported to different machines.  Where possible, a generic solution
+has been added to the library so that the problem does not re-occur.
+
+NOTES specific to a particular implementation are included at the end
+of this file.  Search for ^SYSTEM if you want to jump to them:
+
+0. Configure script has a problem
+	
+	One note about problems with configure is that they are frequently
+	caused by someone who has installed an ansi compiler like gcc and
+	hasn't changed the system include files accordingly.
+
+	Configure will attempt to guess at the correct settings even if it
+	is not able to determine if they are correct.  Theses guessed at 
+	settings will be flaged by a '/* *GUESS* */' to the right of the
+	definition and should be reviewed to make sure they are right.
+
+	If this happens, you should determine if the problem is a problem
+	with the script itself, or with the script being able to determine
+	the correct settings for your compiler/os combination.  
+
+	If you find that it is a bug in the script, please report it to 
+	the author so that the fix can be incorporated into future releases.
+	This is most likely the cause of a problem.  You should pay 
+	particular attention to the fact that Configure *guesses* that it
+	found the correct settings by compiling a test module and verifying
+	that there were no warning messages generated.  It is possible that
+	you have a strict ANSI compiler that is warning about something in
+	the test file cctest.c which really has nothing to do with the 
+	Configuration.
+	
+	If, however, the script appears to be processing the data correctly,
+	but is still unable to determine the correct settings for your system
+	you will have to configure the file by hand.  This involves the
+	following steps:
+
+	A) create .configure file that contains the following lines
+
+		#define VOIDTYPE 	<voidtype>
+		#define CONST		<const>
+		#define DATATYPE	<malloc_datatype>
+		#define SIZETYPE	<malloc_sizetype>
+		#define MEMDATA		<mem_datatype>
+		#define MEMSIZE		<mem_sizetype>
+		#define MEMCMPTYPE	<mem_comptype>
+		#define STRSIZE		<str_sizetype>
+		#define STRCMPTYPE	<str_comptype>
+
+	where
+
+	    voidtype		is void if your compiler understands
+				void data types, int otherwise
+	    const		is const if your compiler understands
+				constant variables
+	    malloc_datatype	is the base type of the pointer returned by
+				malloc (usually char or void)
+	    malloc_sizetype	is the type of the size argument used by
+				malloc and its associates (usually size_t,
+				int, or unsigned int)
+	    mem_datatype	is the base type of the pointer returned by
+				the mem* functions (like memcpy()). This is
+				usually char or void.
+	    mem_sizetype	is the type of the len argument used by
+				the mem* functions (usually size_t,
+				int, or unsigned int).
+	    mem_comptype	type to be used for comparisons of the differing
+				characters in the memory comparison functions.
+				This will usually be char or unsigned char. ANSI
+				C says it will be unsigned char.
+	    str_sizetype	is the type of the len argument used by
+				the str* functions (like strncpy()).  This is
+				usually size_t, int, or unsigned int.
+	    str_comptype	type to be used for comparisons of the differing
+				characters in the string comparison functions.
+				This will usually be char or unsigned char. ANSI
+				C says it will be unsigned char.
+
+	B) create .configure.s file that contains the following lines:
+
+		#define ABORT_SIGNAL	<abortsignum>
+		#define WRTSIZE		<write_sizetype>
+
+	where
+	
+	    abortsignum		is the signal number used to abort a program.
+				This is usually SIGABRT or SIGIOT.
+	    write_sizetype	is the type of the size (or length) parameter
+				to the write system call.  This will usually
+				be size_t, unsigned int, or int
+
+	In addition
+
+		if your compiler/libraries do not support the putenv() 
+		call, but instead support setenv(), add the following line:
+
+			#define USE_SETENV 1
+
+		If your system has an Intrinsic.h file in /usr/include/X11,
+		add the following line:
+
+			#define FOUND_X_INTRINSIC 1
+
+		If wait.h is available for wait() system call parameter 
+		definitions, add the following line:
+	
+			#define NEED_WAIT 1
+	
+		If you are running X11R4 or before and you intend to use the
+		library to link with X programs, add the following line:
+
+			#define DONT_FORCE_HEAPSTUFF 1
+
+	C) If you want to preclude the use of the system memset and memcpy
+	modules (which if they can be used will usually result in a 
+	significant performance gain), create a .configure.O (capital letter o)
+	file with something in it (i.e. date > .configure.O).
+
+	D) run Configure to generate the appropriate .h files (and if you
+	didn't create the .configure.O file in step C, the converted system
+	memset and memcpy routines, if they are compatible and useful)
+
+	NOTE: Configure attempts to grab the memset.o and memmove(or memcpy)
+	routines from libc.a, if it can find them, and convert them for
+	use by the library since these modules are usually modified by the
+	vendor so that they take advantage of assembly language features
+	to improve performance. 
+
+	If libc.a cannot be found, or if the system modules are not compatible
+	with the malloclib versions (this frequently happens with memcpy since
+	the malloclib version correctly handles moving data around in
+	overlapped regions), then Configure will not include them and the
+	library will include its own version (which has been optimized in a
+	portable fashion).
+
+	If the files datamc.O and datams.O do not get created, then this was
+	the case.  You can improve the performance of the library significantly
+	by coding compatible libraries in assembly language if your cpu
+	has specialized data movement instructions.  See the datamc.c routine
+	for a sample of such a mechanism used to optimize memcpy() operations
+	on a 386.
+
+	If you do this, and it passes all of the tests (including the 1,000,000
+	allocation test for testmalloc), please send it in and I will include
+	it in the next release.
+
+
+1. Compilation problems with the library itself.
+
+	This is a fairly common problem and is most often associated with
+	the settings for the .configure #defines.  If you get any compilation
+	errors for modules within this library, the first thing you should
+	do is verify that you are using the correct settings for these
+	typedefs.  Review the description on what they should be set to and 
+	review the original settings.
+
+	Another common problem is attempting to compile the library and/or
+	test with a strict ANSI-C compiler.  Since ANSI reserves symbols
+	like malloc, memcpy, strcpy, etc you can expect to have a lot of
+	problems.  This is especially so if the ANSI is very strict 
+	because the library does make use of UNIX functionality like fork,
+	wait, open, write, etc.
+
+	If you have access to an standard K&R compiler (or a more relaxed 
+	ANSI compiler, especially one that uses the system K&R style header
+	files (i.e. gcc without -pedantic on a system with a non-ANSI cc)
+	you should use it to compile the library.  Once the library is
+	compiled, you should be able to use it with code compiled under
+	other compilers (assuming, of course, that they are compatible).
+	
+
+2. Conflicts with system provided string.h/memory.h includes
+
+	The library provides its own versions of these functions, but includes
+	the system header files so that if it compiles with no errors, you
+	will know that the two agree exactly.   The Configure script should
+	have ensured that they agreed, but is it possible that it got them
+	wrong.  Check the .configure file to determine if the #defines are
+	set correctly (as described in step 0)
+
+3. Duplicate symbols from libc.a (or its equivalent shared library)
+
+	This is most often caused by one of the system library functions
+	including an additional function/variable definition in one of the
+	memory/string library modules. (i.e. some systems have a cfree()
+	call that is in the calloc.o library module).
+
+	There are several ways to get around this problem.  The best way
+	would be to duplicate the functionality of the extra reference 
+	where ever it is appropriate in the malloc library (similarly to
+	the addition of cfree in the calloc.c module).   If you do this,
+	please send me the new function and a description of the system and/or
+	compiler so that I can determine if it should go into the standard
+	distribution.
+
+	Another mechanism that has been reportedly used in some architectures
+	is to ignore the duplicate symbol errors and just chmod the executable
+	so that it is executable (i.e. chmod +x).  I don't know if this is 
+	all that safe, or if it will work on your system, but it has been 
+	reported to successfully work in this fashion.
+	
+	Another, less desirable way would be to disable the offending function
+	in this library.  This option is less desirable because the disabled
+	function would no longer provide any error checking (which is 
+	supposed to be the purpose of this library).
+
+	With shared libraries, there are some formats (perhaps all) that
+	have explicit references to functions in the shared library that
+	are duplicated in the debug library.  On these systems, the
+	only way around the problem is to not use the shared library 
+	when linking the test version of the software.
+
+4. Compilation errors in string.c and/or memory.c
+
+	There are several compilers that provide in-line expansion of
+	routines like strcpy.  This can cause real problems when we 
+	try to compile our own version.  If you can disable the in-line
+	expansion, that is the best way to go.  This should only be
+	needed for the malloc library itself.  The source you are debugging
+	should include the malloc.h file and therefore won't be calling
+	strcpy, but instead will be calling DBstrcpy (because of a macro
+	in malloc.h).
+
+	Disabling the in-lining of functions is usually accomplished by
+	setting a compiler flag, or sometimes by predefining some #def
+	that is used by system include files.
+
+	If you can't disable the in-line expansion, you will have to 
+	disable the debug versions of the offending functions in the
+	malloc library by adding a #ifdef around the code.  Be sure to
+	just disable the functions that are giving you problems (i.e. don't
+	disable all of string.c and don't disable the DB functions, because
+	any code that includes malloc.h will attempt to use them).
+
+5. Conflicts/problems with prototypes.h
+
+	Prototypes.h is a generated file that has zillions of function
+	prototypes for the malloc library.  You should not need to remake
+	this module.  If, however, you have made changes to the calling
+	arguments for some of the functions due to conflicts with system
+	headers, you may have to modify or rebuild this file.
+
+	To rebuild the file using the makefile targets you must have the
+	cproto prototype generator (available in comp.sources.misc, vols 17
+	and 18).
+
+6. Argument mis-matches and syntax errors when including malloc.h
+
+	This is usually the result of including malloc.h before string.h
+	and/or memory.h which causes lots of problems.  malloc.h attempts
+	to avoid this problem by #defining a bunch of typical symbols used
+	to preclude multiple inclusions of these files, but some systems do
+	not have this multiple inclusion protection, or use a slightly 
+	different symbol for the protection.
+
+	To get around this problem you could do one of the following:
+
+		1. change the code so that it includes malloc.h last.
+		2. add multiple inclusion protection to the system include
+		   files.
+		3. remove the #defines from malloc.h (which decreases the
+		   ability for the debug library to identify the source of
+		   the problems).
+
+	Another problem with including malloc.h will occur if you have local
+	definitions of things like:
+
+			char * strcpy();
+	
+	which will result in a preprocessor or compiler error because of the
+	#defines in malloc.h.  The recommended solution to this problem is
+	to remove the local definitions and include the system header files
+	that have the definitions (string.h in this case).  If you can't or
+	don't want to do this, you can add #ifndef _DEBUG_MALLOC_INC and 
+	#endif around the local definitions so that they are not included if
+	the debugging version of malloc.h is included.
+
+	Yet another similar problem is the use of standard symbols for variable
+	and/or structure element names.  This happens most often with the
+	variable index. 
+
+	To fix this, you can change the name of the variable, #undef index
+	after including the malloc library, or remove the #define index
+	line from malloc.h
+
+**************************************************************************
+SYSTEM SPECIFIC PROBLEMS
+
+
+Sun Sparc w/ SunOS 4.x and GCC 2.1
+
+	The header files provided by sun do not contain ansi standard 
+	definitions for many of the modules used by the library and cause
+	problems when included by code compiled by GCC.  This includes
+	things like <memory.h> which has a prototype for memcpy which
+	is something like void * memcpy(); and doesn't agree with the
+	builtin definition in gcc (void * memcpy(void *, const void*, int)).
+
+	The solution to this problem would be to define the correct
+	prototypes for memory.h in the system include file or in the
+	gcc version of the include file. 
+

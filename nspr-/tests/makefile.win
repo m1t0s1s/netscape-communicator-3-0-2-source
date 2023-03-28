@@ -1,0 +1,30 @@
+
+
+DEPTH = ..\..
+
+
+OBJS =                                          \
+    ./$(OBJDIR)\sysinfo.obj                     \
+    ./$(OBJDIR)\suspending.obj                  \
+    ./$(OBJDIR)\hello.obj                       \
+    ./$(OBJDIR)\create.obj                      \
+    ./$(OBJDIR)\preempt.obj                     \
+    ./$(OBJDIR)\mutex.obj                       \
+    ./$(OBJDIR)\sprintf.obj                     \
+    $(NULL)
+
+TARGETS = sysinfo.exe suspending.exe hello.exe create.exe preempt.exe mutex.exe sprintf.exe
+
+include <$(DEPTH)/sun-java/config/rules.mak>
+CFLAGS = $(CFLAGS) $(OS_LIBS) $(LIBNSPR)
+
+
+export:: $(TARGETS)
+
+install:: export
+
+
+#ifdef HAVE_PURIFY
+javah.pure: $(OBJS) $(LIBRARIES)
+	$(PURECCF) -o $@ $(OBJS) $(LIBRARIES)
+#endif

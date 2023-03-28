@@ -1,0 +1,154 @@
+
+This started out as the 3.02 + S/MIME branch.
+
+Everything I've changed since then is wrapped in #ifdef DEBUG_jwz.
+Make sure to define that even in non-debug builds.
+
+Summary of changes to XFE:
+
+  * The FACE attribute to the FONT tag is ignored.
+
+  * There is an option menu item that toggles whether the SIZE attribute
+    to the FONT tag is ignored.
+
+  * Foreground and background colors of form elements are made sane:
+    you won't see black-on-black options menus any more.
+
+  * Certain Windows characters will be mapped to close Latin1 analogs
+    (quotes, bullets, etc.)  Other unknown characters will show up as "?".
+
+  * Added "JavaScript Enabled" to the options menu, instead of it being
+    buried in preferences
+
+  * Added "GIF Animations Enabled" and  "GIF Animation Loops Enabled" to
+    the options menu
+
+  * Added "Open Link in Other Browser" command (set the `other browser'
+    command by hand-editing ~/.netscape/preferences)
+
+  * Later, got more hardcore about it, and made middle-clicks and clicks
+    on URLs in mail messages also go through "Other Browser".
+
+  * Added "New Browser Window" to the "Windows" menu, where it should have
+    been all along...
+
+  * Put back the "Compress All Folders" and "Mark Thread Read" mail menu items
+
+  * Added "Autoload Images" menu item to mail and news windows too
+
+  * Don't insert high-bit characters into text fields, since on my Linux
+    box, Motif freaks out
+
+  * the string that "Find" uses is global rather than per-window
+
+  * "Find Again" always works
+
+  * Entries in the Windows menu have the strings "(iconic)" or "(busy)"
+    appended to them, as appropriate.
+
+  * Made "netscape -remote openURL(..., new-window)" not create a superfluous
+    intermediate new window when the selected window was the mail window.
+
+  * "Save Link As" in a mail/news window will pop up the dialog over that
+    window instead of over some random browser window.
+
+  * Added more options to the Print dialog: font size, header and footer
+    strings, and horizontal and vertical margin sizes.
+
+  * Save As Postscript uses prevailing Print settings
+
+  * "Get Mail" consults both the POP3 server and runs movemail.
+
+  * The "Sender" header follows the "From" header, instead of trying to
+    second-guess the user in the name of security.
+
+  * Splash screen is disabled.
+
+  * Added a pulldown menu for the From field on composition windows, so that
+    I can have multiple identities.  The various addresses are stored in
+    .netscape/preferences under the new multi-line EMAIL_ADDRESSES field:
+    each line in that field is "name-and-addr \t fcc-file \t organization-str".
+
+  * "#define _XmConst const" in dialogs.c
+
+  * Don't ever ask the question about "another copy of Mozilla is running,
+    are you sure?"  Just silently run this copy and disable access to the
+    various database files, as we would have done if the user said yes.
+    (Since I only use this program for reading mail, and since security
+    doesn't work anyway, that's fine.)
+
+  * Made mouse-wheel-scrolling work.
+
+Summary of changes to lib/libparse:
+
+  * Close dangling table tags when laying out documents (pa_parse.c)
+
+  * Ignore body of <STYLE> tag (by kludgily aliasing it to <TITLE>
+    in pa_hash.h -- since all but the first TITLE are ignored.)
+
+Summary of changes to lib/layout:
+
+  * Never ever do a re-layout as a result of a META CHARSET attribute.
+
+Summary of changes to lib/libimg:
+
+  * Backend of "GIF Animations Enabled" and "GIF Animation Loops Enabled".
+
+Summary of changes to lib/libjava:
+
+  * I have no idea why I made changes there.
+
+Summary of changes to lib/libmime:
+
+  * Always display X-Mailer header.
+
+  * Ignore "Content-Disposition: inline"
+
+Summary of changes to lib/libmisc:
+
+  * Never display the "Bookmarks have changed on disk" dialog.
+
+Summary of changes to lib/libmsg:
+
+  * Set the default FCC location to be the selected folder.
+    Defined MSG_SelectedFolderName().
+
+  * defined MSG_CompositionWindowNewsgroups() for some reason I can't recall.
+
+  * When forwarding a message, display the BCC field by default.
+
+  * Backend of multi-account kludge.
+
+  * Folders whose names end in "Inbox" are not "sentmail" folders even if
+    they are FCC targets.
+
+  * message.c has some "multiple identities" stuff in it (don't reply to
+    myself.)
+
+  * Change "offer to compress folders" threshold from 50K to 10M.
+
+  * Deleting unread messages marks them as read.
+
+Summary of changes to lib/libnet:
+
+  * Display directory listings in a table instead of in a PRE.
+
+  * Never print "Ignoring unsupported format code in mailcap file".
+
+  * Never pop up "no messages on POP server" dialog.
+
+  * Disable res_init() crap in mkconect.c and unix-dns.c
+
+  * Use mkstemp() instead of tmpnam() in mkinit.c
+
+Summary of changes to lib/xlate:
+
+  * Printing of headers and footers was broken.  Fixed it.
+
+  * When printing URLs, suppress mailbox: URLs, and directories in file: URLs.
+
+  * When printing date, print it my way.
+
+  * When printing headers/footers, generate %%BoundingBox properly.
+
+

@@ -1,0 +1,46 @@
+//	===========================================================================
+//	VText_PPob.ri
+//
+//	Copyright 1996 ViviStar Consulting.
+//	===========================================================================
+
+/*-	
+	case TextView:
+		key literal longint = 'txtv';
+		PP_TextViewData;
+
+	case NTextEdit:
+		key literal longint = 'ntxt';
+		PP_NTextEditData;
+
+	case NTableView:
+		key literal longint = 'tblv';
+		PP_NTableViewData;
+
+	case NTable:
+		key literal longint = 'ntbl';
+		PP_NTableData;
+
+	case ActionButtonArray:
+		key literal longint = 'abta';
+		PP_ActionButtonArrayData;
+*/
+	case VText_TextView:
+		key literal longint = kVTCID_VTextView;
+		VText_TextViewData;
+		
+	case VText_SimpleTextView:
+		key literal longint = kVTCID_VSimpleTextView;
+		VText_SimpleTextViewData;
+		
+	case VText_FontMenuAttachment:
+		key literal longint = kVTCID_VFontMenuAttachment;
+		VText_FontMenuAttachmentData;
+
+	case VText_SizeMenuAttachment:
+		key literal longint = kVTCID_VSizeMenuAttachment;
+		VText_SizeMenuAttachmentData;
+
+	case VText_StyleMenuAttachment:
+		key literal longint = kVTCID_VStyleMenuAttachment;
+		VText_StyleMenuAttachmentData;

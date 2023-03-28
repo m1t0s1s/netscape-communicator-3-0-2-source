@@ -1,0 +1,31 @@
+# 
+#           CONFIDENTIAL AND PROPRIETARY SOURCE CODE OF
+#              NETSCAPE COMMUNICATIONS CORPORATION
+# Copyright (C) 1996 Netscape Communications Corporation.  All Rights
+# Reserved.  Use of this Source Code is subject to the terms of the
+# applicable license agreement from Netscape Communications Corporation.
+# The copyright notice(s) in this Source Code does not indicate actual or
+# intended publication of this Source Code.
+#
+DEPTH = ../../..
+
+EXPORTS = \
+	secmime.h \
+	secpkcs7.h \
+	pkcs7t.h \
+	$(NULL)
+
+MODULE = security
+
+CSRCS = \
+	p7common.c \
+	p7create.c \
+	p7decode.c \
+	p7encode.c \
+	p7local.c  \
+	secmime.c  \
+	$(NULL)
+
+REQUIRES = security nspr libdbm
+
+LIBRARY_NAME = pkcs7

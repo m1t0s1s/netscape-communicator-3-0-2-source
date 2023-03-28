@@ -1,0 +1,57 @@
+
+javah.c,1556
+#  define RELEASE 44,1360
+#define DIR_DELIM 77,2293
+#define C_DELIM 78,2317
+#define F_DELIM 79,2341
+struct structdecl structdecl81,2366
+strsub(88,2489
+strnsub(103,2699
+#define MAC_FILE_LENGTH	117,2904
+GetFileName(120,3000
+static FILE *open_output(169,4028
+static int close_output(197,4748
+SprintClassType(230,5369
+SprintReverseType(255,5791
+PrintType(431,11195
+ConsumeArg(452,11628
+PrintCallArgs(465,11844
+PrintDefArgs(477,12033
+renameIfDiff(494,12360
+generateForwardDeclaration(543,13266
+forwardDeclare(563,13791
+GetResultType(585,14305
+CPPFieldName(653,15635
+CFieldName(660,15783
+CPPMethodName(671,16107
+CMethodName1(687,16437
+CMethodName(714,17135
+PrintPreamble(728,17548
+PrintKnownValue(744,18073
+PrintBlockComment(777,18933
+GenerateFieldAccessor(796,19291
+GenerateDEBUGFieldAccessor(833,20601
+GenerateFieldAccessorExtras(865,21700
+GenerateMethodAccessor(890,22589
+GenerateMethodAccessorSig(934,23891
+GenerateExternMethodAccessor(969,24911
+GenerateMethodAccessorExtras(980,25237
+GenerateCPPFieldAccessor(1008,26244
+GenerateCPPMethod(1034,26981
+JRIDumpClassHeader(1076,28214
+DumpClassHeader(1428,39707
+SprintReverseArgs(1597,44564
+PrintStub(1681,46716
+DumpClassStub(1838,51363
+DumpComponentHeader(2112,62534
+DumpComponentStub(2207,65545
+int DumpNatives(2306,68973
+InitializeClassPath(2322,69331
+main(2347,69858
+OpenCode(2464,72747
+AllocHandle(2474,72950
+ClassClass *AllocClass(2483,73133
+DumpThreads(2500,73480
+vramalloc(2505,73506
+CallInterpreted(2512,73556
+ResolveClassStringConstant(2524,73836

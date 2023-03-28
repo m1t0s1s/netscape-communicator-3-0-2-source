@@ -1,0 +1,351 @@
+
+ssl3con.c,2960
+#define MAX_SEND_BUF_LENGTH 74,2225
+#define MIN_SEND_BUF_LENGTH 75,2299
+#define MAX_CIPHER_SUITES 77,2334
+#define EXPORT_RSA_KEY_LENGTH 119,3777
+#define SSL3_BUFFER_FUDGE 124,3930
+ssl_LookupCipherSuiteDef(270,9428
+ssl_LookupCipherSuiteCfg(286,9891
+config_match(300,10235
+count_cipher_suites(312,10624
+Null_Cipher(328,10912
+ssl3_GetNewRandom(344,11228
+ssl3_SignHashes(364,11775
+ssl3_CheckSignedHashes(391,12453
+ssl_TmpEnableGroup(429,13363
+ssl3_ComputeExportRSAKeyHash(464,14222
+ssl3_BumpSequenceNumber(529,16398
+ssl3_DestroyCipherSpec(538,16518
+ssl3_SetupPendingCipherSpec(553,16923
+InitPendingCipherSpec(612,18583
+SSL3_ComputeFragmentHash(708,21970
+ssl3_SendPlainText(758,24020
+ssl3_SendApplicationData(864,27175
+ssl3_FlushHandshake(874,27410
+SSL3_SendAlert(893,27708
+ssl3_HandshakeFailure(916,28235
+SSL3_HandleAlert(925,28458
+ssl3_SendChangeCipherSpecs(998,30840
+SSL3_HandleChangeCipherSpecs(1030,31782
+#define NUM_MIXERS 1072,32960
+ssl3_GenerateSessionKeys(1075,32999
+SSL3_UpdateHandshakeHashes(1236,38384
+ssl3_AppendHandshake(1245,38620
+ssl3_AppendHandshakeNumber(1287,39807
+ssl3_AppendHandshakeVariable(1306,40206
+ssl3_AppendHandshakeHeader(1324,40709
+ssl3_ConsumeHandshake(1338,41119
+ssl3_ConsumeHandshakeNumber(1351,41435
+ssl3_ConsumeHandshakeVariable(1368,41810
+SSL3_ComputeHandshakeHashes(1395,42470
+ssl3_StartHandshakeHash(1470,45033
+SSL3_SendClientHello(1492,45614
+SSL3_HandleHelloRequest(1636,49863
+SSL3_SendClientKeyExchange(1656,50362
+SSL3_SendCertificateVerify(1827,55796
+SSL3_HandleServerHello(1863,56789
+SSL3_HandleServerKeyExchange(2012,61571
+typedef struct dnameNode dnameNode2118,65133
+} dnameNode;dnameNode2121,65206
+SSL3_HandleCertificateRequest(2124,65230
+SSL3_HandleServerHelloDone(2234,68341
+SSL3_SendHelloRequest(2274,69327
+ssl3_NewSessionID(2289,69692
+ssl3_SendServerHelloSequence(2327,70709
+SSL3_HandleClientHello(2365,71809
+SSL3_HandleV2ClientHello(2588,78408
+SSL3_SendServerHello(2696,81942
+ssl3_SignExportRSAKeyHash(2740,83250
+ssl3_SendServerKeyExchange(2759,83753
+ssl3_SendCertificateRequest(2834,85899
+ssl3_SendServerHelloDone(2878,87014
+ssl3_HandleCertificateVerify(2892,87351
+SSL3_HandleClientKeyExchange(2924,88276
+ssl3_SendCertificate(3144,95543
+typedef struct certNode certNode3181,96498
+} SSL3CertNode;SSL3CertNode3184,96578
+SSL3_HandleCertificate(3188,96612
+SSL3_CleanupPeerCerts(3389,101953
+ssl3_SendFinished(3404,102327
+SSL3_HandleFinished(3424,102900
+ssl3_HandleHandshakeMessage(3479,104462
+SSL3_HandleHandshake(3585,107689
+SSL3_HandleRecord(3684,110760
+ssl3_InitCipherSpec(3790,113568
+ssl3_InitState(3807,114100
+SSL3_Init(3865,115779
+SSL3_CreateExportRSAKeys(3870,115805
+SSL3_SetFortezzaKeys(3885,116212
+SSL3_SetPolicy(3894,116428
+SSL3_EnableCipher(3912,116795
+SSL3_ConstructV2CipherSpecsHack(3925,117038
+SSL3_RedoHandshake(3977,118289
+ssl3_DestroySSL3Info(3999,118665
+SSL_IsEnabledGroup(4038,119542
+SSL_EnableGroup(4064,120186
+
+ssl3gthr.c,83
+ssl3_GatherData(13,211
+ssl3_GatherRecord(102,2240
+ssl3_GatherHandshake(129,2763
+
+sslauth.c,211
+CERTCertificate *SSL_PeerCertificate(11,175
+SSL_SecurityStatus(30,549
+SSL_AuthCertificateHook(124,2525
+int SSL_GetClientAuthDataHook(146,2961
+int SSL_EncryptChallenge(176,3699
+SSL_AuthCertificate(189,4067
+
+sslcon.c,1710
+#define SSL_CB_RC4_128_WITH_MD5 97,2302
+#define SSL_CB_RC4_128_EXPORT40_WITH_MD5 98,2378
+#define SSL_CB_RC2_128_CBC_WITH_MD5 99,2463
+#define SSL_CB_RC2_128_CBC_EXPORT40_WITH_MD5 100,2543
+#define SSL_CB_IDEA_128_CBC_WITH_MD5 101,2632
+#define SSL_CB_DES_64_CBC_WITH_MD5 102,2713
+#define SSL_CB_DES_192_EDE3_CBC_WITH_MD5 103,2792
+SSL_IsDomestic(107,2932
+SSL_SecurityCapabilities(121,3305
+ConstructCipherSpecs(154,4007
+SSL_SetPolicy(235,5930
+SSL_EnableCipher(266,6599
+ssl_GetPeerInfo(302,7359
+CreateMAC(341,8333
+GetSendBuffer(370,9158
+SSL_SendErrorMessage(393,9596
+SendClientFinishedMessage(415,10072
+SendServerVerifyMessage(446,10759
+SendServerFinishedMessage(477,11373
+SendSessionKeyMessage(526,12449
+SendCertificateRequestMessage(571,13684
+SendCertificateResponseMessage(607,14641
+GatherRecord(647,15778
+FillInSID(687,16774
+ProduceKeys(725,17891
+CreateSessionCypher(820,20053
+ServerSetupSessionCypher(964,24530
+QualifyCypherSpecs(1094,28268
+ChooseSessionCypher(1132,29101
+ClientHandleServerCert(1225,31724
+ClientSetupSessionCypher(1273,32989
+ClientRegSessionID(1438,37293
+TriggerNextMessage(1458,37760
+TryToFinish(1478,38186
+SignResponse(1512,38942
+HandleRequestCertificate(1558,40148
+HandleClientCertificate(1639,41907
+HandleMessage(1729,44308
+KeepOnGoing(1904,49150
+HandleVerifyMessage(1920,49420
+ssl_HandleServerHelloMessage(1953,50243
+ssl_BeginClientHandshake(2160,56214
+HandleClientSessionKeyMessage(2328,60715
+SSL_RestartHandshakeAfterCertReq(2408,62964
+SSL_RestartHandshakeAfterFortezza(2499,65026
+SSL_RestartHandshakeAfterServerCert(2520,65529
+ssl_HandleClientHelloMessage(2569,66663
+ssl_BeginServerHandshake(2796,73307
+ssl_DestroyConnectInfo(2842,74623
+
+ssldef.c,482
+int ssl_DefDup2(7,120
+int ssl_UnderlyingAccept(35,673
+int ssl_DefConnect(40,778
+int ssl_DefAccept(49,986
+int ssl_DefImportFd(69,1372
+int ssl_DefBind(82,1567
+int ssl_DefListen(91,1773
+int ssl_DefShutdown(100,1940
+int ssl_DefIoctl(109,2103
+int ssl_DefRecv(123,2360
+int ssl_DefSend(132,2549
+int ssl_DefRead(177,3559
+int ssl_DefWrite(186,3730
+int ssl_DefGetpeername(226,4560
+int ssl_DefGetsockname(235,4778
+int ssl_DefGetsockopt(244,4996
+int ssl_DefSetsockopt(254,5240
+
+sslgathr.c,189
+int ssl_GatherData(28,802
+int ssl_GatherRecord(280,7346
+int ssl_StartGatherBytes(285,7448
+SSLGather *ssl_NewGather(302,7770
+void ssl_DestroyGather(313,7937
+ssl_HandleV3Hello(325,8122
+
+sslnonce.c,191
+ssl_DestroySID(22,359
+ssl_FreeSID(51,1107
+ssl_LookupSID(67,1431
+static void CacheSID(110,2702
+UncacheSID(146,3819
+void ssl_ChooseSessionIDProcs(184,4862
+SSL_ClearSessionCache(197,5083
+
+sslsecur.c,1187
+#define MAX_BLOCK_CYPHER_SIZE	16,279
+#define MAX_STREAM_CYPHER_LEN	24,595
+#define MAX_BLOCK_CYPHER_LEN	25,632
+int ssl_ReadHandshake(41,1079
+int ssl_WriteHandshake(81,2107
+int SSL_ResetHandshake(100,2475
+SSL_RedoHandshake(141,3432
+SSL_HandshakeCallback(165,3920
+SSL_ForceHandshake(189,4442
+int ssl_GrowBuf(213,4890
+int ssl_SaveWriteData(236,5463
+int ssl_SendSavedWriteData(258,6049
+static void CalcMAC(285,6629
+static int DoRecv(325,8002
+static int SendClear(397,9953
+static int SendStream(474,11654
+static int SendBlock(569,13920
+void ssl_ChooseProcs(683,16558
+int SSL_ConfigSecureServer(703,16998
+int ssl_CreateSecurityInfo(739,17898
+int ssl_CopySecurityInfo(806,19379
+void ssl_DestroySecurityInfo(876,21418
+int ssl_SecureConnect(919,22355
+ssl_SecureAccept(963,23383
+ssl_SecureSocksConnect(1006,24294
+int ssl_SecureSocksAccept(1035,24856
+ssl_SecureImportFd(1070,25500
+ssl_SecureClose(1100,25988
+ssl_SecureRecv(1111,26246
+int ssl_SecureRead(1150,27173
+int ssl_SecureSend(1155,27276
+int ssl_SecureWrite(1200,28288
+SSL_BadCertHook(1207,28429
+SSL_SetURL(1234,28969
+SSL_DataPending(1254,29246
+SSL_InvalidateSession(1267,29440
+SSL_GetSessionID(1280,29680
+
+sslsnce.c,1002
+#define DEFAULT_CACHE_DIRECTORY 64,1778
+#define DEFAULT_CACHE_DIRECTORY 66,1838
+typedef struct SIDCacheEntryStr SIDCacheEntry;SIDCacheEntry72,1936
+struct SIDCacheEntryStr SIDCacheEntryStr73,1983
+typedef struct CertCacheEntryStr CertCacheEntry;CertCacheEntry112,2968
+struct CertCacheEntryStr CertCacheEntryStr113,3017
+static CERTCertificate *GetCertFromCache(131,3485
+CacheCert(173,4682
+static void ConvertFromSID(207,5673
+static SSLSessionID *ConvertToSID(263,7912
+static void Invalidate(346,10410
+static void IOError(377,11208
+static void lock_cache(390,11544
+static void unlock_cache(397,11667
+static unsigned long Offset(408,11896
+static PRBool FindSID(421,12308
+static SSLSessionID *ServerSessionIDLookup(489,14376
+static void ServerSessionIDCache(512,15069
+static void ServerSessionIDUncache(582,17034
+static SECStatus ZeroFile(634,18670
+static SECStatus InitSessionIDCache(658,19098
+static SECStatus InitCertCache(761,21430
+int SSL_ConfigServerSessionIDCache(836,23224
+
+sslsock.c,1031
+#define FDHASH(FDHASH138,2865
+#define SMALL_FD 157,3532
+#define SMALL_FD 159,3607
+SSLSocket *ssl_FindSocket(166,3733
+ssl_FindSocketAndDelink(190,4229
+ssl_RememberSocket(216,4793
+SSLSocket *ssl_NewSocket(238,5268
+int SSL_ReplaceSocket(312,7265
+SSLSocket *ssl_DupSocket(334,7635
+ssl_FreeSocket(395,9071
+int ssl_DefClose(420,9595
+int SSL_Import(445,10137
+int SSL_Socket(466,10513
+static int PrepareSocket(498,11236
+int SSL_Enable(540,11837
+int SSL_EnableDefault(612,13190
+void SSL_AcceptHook(671,14395
+int SSL_Dup2(679,14559
+int SSL_Ioctl(692,14799
+int SSL_Accept(704,15041
+int SSL_ImportFd(716,15299
+int SSL_Connect(731,15656
+int SSL_Bind(743,15922
+int SSL_Listen(755,16171
+int SSL_Shutdown(767,16402
+int SSL_Close(779,16631
+int SSL_Recv(791,16837
+int SSL_Send(803,17088
+int SSL_Read(815,17345
+int SSL_Write(827,17578
+int SSL_GetPeerName(839,17820
+int SSL_GetSockName(851,18087
+int SSL_GetSockOpt(863,18354
+int SSL_SetSockOpt(876,18662
+void SSL_InitHashLock(889,18975
+SSL_SetSockPeerID(900,19161
+
+sslsocks.c,1712
+#define SOCKS_FILE	16,287
+#define SOCKS_FILE 19,345
+#define SOCKS_FILE 22,390
+#define SOCKS_VERSION	25,423
+#define DEF_SOCKD_PORT	27,448
+#define SOCKS_CONNECT	29,477
+#define SOCKS_BIND	30,501
+#define SOCKS_RESULT	32,523
+#define SOCKS_FAIL	33,547
+#define SOCKS_NO_IDENTD	34,569
+#define SOCKS_BAD_ID	35,648
+#define MAKE_IN_ADDR(MAKE_IN_ADDR37,724
+typedef struct SocksConfItemStr SocksConfItem;SocksConfItem41,848
+struct SocksConfItemStr SocksConfItemStr43,896
+#define OP_LESS	53,1075
+#define OP_EQUAL	54,1094
+#define OP_LEQUAL	55,1113
+#define OP_GREATER	56,1133
+#define OP_NOTEQUAL	57,1154
+#define OP_GEQUAL	58,1176
+#define OP_ALWAYS	59,1196
+int ssl_CreateSocksInfo(64,1287
+int ssl_CopySocksInfo(87,1643
+void ssl_DestroySocksInfo(98,1801
+#define PRHostEnt 108,1953
+#define PR_NETDB_BUF_SIZE 109,1986
+static int GetOurHost(111,2021
+static void BuildDefaultConfList(136,2594
+static int FragmentLine(176,3551
+static char *ConvertOne(218,4360
+static unsigned long ConvertAddr(228,4541
+static int ReadConfFile(245,4918
+static int ChooseAddress(361,7622
+static int FindDaemon(415,9207
+static int SayHello(474,10626
+static int GetDst(511,11545
+static int Gather(553,12596
+static int StartGather(566,12820
+char *bsdi_cuserid(591,13301
+int ssl_SocksConnect(606,13523
+static int WaitForResponse(684,15352
+int ssl_SocksBind(722,16135
+SSL_BindForSockd(802,18148
+static int SocksSend(891,20373
+int ssl_SocksAccept(901,20581
+int ssl_SocksListen(956,21836
+int ssl_SocksGetsockname(972,22089
+int ssl_SocksRecv(994,22633
+int ssl_SocksRead(1019,23137
+int ssl_SocksSend(1024,23238
+int ssl_SocksWrite(1052,23816
+int SSL_CheckDirectSock(1057,23924
+int SSL_ConfigSockd(1074,24195
+
+ssltrace.c,165
+void ssl_PrintBuf(10,172
+#define LEN(LEN38,708
+static void PrintType(40,755
+static void PrintInt(49,967
+static void PrintBuf(59,1206
+void ssl_DumpMsg(97,2056

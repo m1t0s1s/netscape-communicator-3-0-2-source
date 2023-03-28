@@ -1,0 +1,1056 @@
+Mon May  2 10:53:11 1994  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Version 6.1 released.
+
+Tue Apr 26 09:55:27 1994  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* config/os-type (OS): Add dgux fix.  <graigmch@dis2qvarsa.er.usgs.gov>
+
+	* src/docmd.c (checkcmd): Avoid dereferencing if cmd->c_name is
+	zero length.  <costales@ICSI.Berkeley.EDU>
+
+	* config/os-type (OS): Add fix for HP-UX 8.x  <rflaniga@arl.army.mil>
+
+	* src/docmd.c (doarrow): Initialize 'isadir'.  <leres@ee.lbl.gov>
+
+	* src/lookup.c (define): Initialize 'value'.  <leres@ee.lbl.gov>
+
+	* src/distopt.c (getondistoptlist): Declare opts param.
+	<leres@ee.lbl.gov>
+
+	* src/server.c (recvfile): Initialize 'olderrno'.  <leres@ee.lbl.gov>
+
+	* src/rdist.c (docmdargs): Initialize 'files'.  <leres@ee.lbl.gov>
+
+	* src/rshrcmd.c (rshrcmd): Fix typos in comments.  <leres@ee.lbl.gov>
+
+	* doc/rdist.man (are): Fix typos with -o.  <leres@ee.lbl.gov>
+
+Fri Apr 22 10:12:53 1994  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Version 6.1beta.6
+
+	* src/rshrcmd.c (rshrcmd): Use our local getsocketpair() call to
+	call socketpair().
+
+Wed Apr 20 10:53:45 1994  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* src/common.c: Cast GID_T and UID_T assignments.
+
+	* config/os-hpux.h (SETBUF_TYPE): set SETBUF_TYPE.
+
+	* config/os-linux.h (SETBUF_TYPE): set SETBUF_TYPE.
+
+	* src/message.c (getnotifyfile): Fix problem with spewing error
+	messages about "cannot open" files named "..../rdistXXXXX".
+	<stssram@st.unocal.com>
+
+Fri Apr 15 10:28:36 1994  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Version 6.1beta.5
+
+Mon Apr 11 16:19:32 1994  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* src/client.c (senddir): Prevent changing targets of '/' into
+	'//'.  <jay@Princeton.EDU>
+
+	* src/common.c: Make option variables opt_t (long).
+	(getusername): Fix caching bug in getusername() and getgroupname() 
+	that caused options to be incorrectly set.
+
+	* include/defs.h: Move type info to new "types.h".
+
+Fri Apr  1 15:41:30 1994  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* src/docmd.c (checkcmd): Avoid NULL deref.
+	<costales@ICSI.Berkeley.EDU>
+
+	* src/client.c (sendfile): Fix problem of getting out of sync on
+	"File changed size" error.  paulr@umbc.edu
+
+Wed Mar 30 16:44:23 1994  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* config/os-svr4.h: Changes for generic SVR4 system.
+	<fino@xdnc1.ICO.OLIVETTI.CO>
+
+	* More linux port updates. <neal@ctd.comsat.com>
+
+Fri Mar 18 17:07:36 1994  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Version 6.1beta.4 release.
+
+Thu Mar 17 16:31:20 1994  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* config/mf.sunos5 (INSTALL): Set correct values for admin section
+	of man pages for Solaris 2.x.
+
+	* src/client.c: Fix bug with $FILES when used with cmdspecial
+	having files listed that were not updated.
+
+Wed Mar 16 14:50:11 1994  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* src/child.c: Only include <sys/select.h> if NEED_SYS_SELECT_H is
+	defined instead of _POSIX_SOURCE.  This file is only known to be
+	needed by AIX 3.x.
+
+	* mf/Makefile.var (ConfigFiles): Add MtXinu 4.3BSD+NFS port.
+	<michael@cs.mun.ca>
+
+	* config/os-sunos4.h: Make test for whether to typedef pid_t
+	generic to 4.0.3.<michael@cs.mun.ca>.
+
+	* mf/Makefile.var (ConfigFiles): Add MIPSOS 5.x
+	port. <michael@cs.mun.ca>.
+
+	* config/os-type: Fix riscos uname output. <michael@cs.mun.ca> 
+
+	* include/defs.h: Remove most OS specific #ifdef's for include files.
+
+	* config/os-osf1.h: Add better DEC OSF1
+		support. <mosedale@genome.Stanford.EDU>
+
+Mon Mar 14 10:40:22 1994  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* src/rshrcmd.c (rshrcmd): If we are rdist'ing to "localhost" as
+		 the same user as we are, then avoid running remote
+		 shell for efficiency.  <jay@Princeton.EDU>
+
+	* src/expand.c (expstr): Fix bug introduced in 6.1beta.3 that
+	caused '$' to be removed from reg-ex's.
+
+	* mf/Makefile.var (ConfigFiles): Add Linux port.
+	<kent@mnementh.cs.mcgill.ca>
+
+	* Fix another hardlink bug.  <dbeusee@us.oracle.com>
+
+Thu Mar  3 16:23:41 1994  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Version 6.1beta.2 release.
+
+	* config/os-irix5.h: Define _PATH_REMSH.
+
+	* config/os-bsdi.h (_PATH_REMSH): Define _PATH_REMSH.
+
+	* src/docmd.c (checkcmd): Add "-P <rsh-path>" option.
+
+Fri Feb 25 14:53:09 1994  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Print version info with debugging.
+
+	* Fix -D to do both "all" and "debug".
+
+	* Fix bug causing core dump/SIGPIPE when connection fails during
+	startup with new rshrcmd().
+
+	* Add BSDI port.  <jor@advtech.uswest.com>
+
+Thu Feb 24 14:47:08 1994  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Add check for valid 'cmd' parameter to avoid NULL de-ref in
+	docmd.c.
+
+Wed Feb 23 16:28:51 1994  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Fix problem with cmdspecial() always being run when doing a
+	binary compare (-b).
+
+	* Don't loop on ^C when running in non-forking mode.
+
+Tue Feb 22 15:50:20 1994  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Add FTX port.  <dbeusee@us.oracle.com>
+
+	* Fix os-type to work with dcosx uname.  <dbeusee@us.oracle.com>
+
+	* HPUX doesn't have setreuid().  <dbeusee@us.oracle.com>
+
+	* Add $BASEFILE to "special".  <dbeusee@us.oracle.com>
+
+	* Add pid_t typedef for sun386i.  <rouilj@claude.cs.umb.edu>
+
+Thu Feb 17 12:44:35 1994  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Break mf.next and os-next.h into nextstep2 and nextstep3 in
+	order to be able to handle differences in system include files.
+
+	* Rdist no longer needs to be setuid root _AT ALL_!  Thanks go to
+	Chris Siebenmann <cks@utcc.utoronto.ca> and John DiMarco
+	<jdd@cdf.toronto.edu> for coming up with a replacement for rcmd()
+	that uses the rsh (remote command) program to make the connection
+	to the remote host.
+
+	* Change config/mf.sunos5 to use /usr/ucb/install to avoid using
+	/usr/bin/install by mistake.  <jdd@cdf.toronto.edu>
+
+Mon Feb 14 10:24:33 1994  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Add LIBS_LOCAL support to Makefile.local.  Remove -lPW from
+	LIB_SYS for hpux and document need in Makefile.local.
+
+	* Change fatal() to fatalerr() to avoid duplicate symbol problem
+        with HPUX.
+
+	* Make "clean" a seperate target to avoid problems with buggy make's.
+
+	* Automatically enable debug messages to stdout (for rdist) if -D
+	is specified.
+
+	* Fix problem with "-o chksym" wedging and causing rdist to timeout.
+
+	* Change rdist?filter.pl to rdist?f.pl so filenames are < 14 bytes.
+
+	* Make "os-type" not print "OS appears to be" message.
+
+	* Log "updating host" messages to MT_VERBOSE which is disabled by
+	default.
+
+	* Create MT_VERBOSE message level.
+
+	* Make "Unexpected input" error say "Unexpected input from server:
+	..." for better clarity.
+
+	* Fix problem with multiple cmdspecial's in same target.
+
+Fri Feb 11 14:33:02 1994  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Fix config/runmake to specify Makefile.local in proper
+	order to allow overriding Makefile.real
+
+Thu Feb 10 16:42:29 1994  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Make -m list dynamically allocated.
+
+	* Fix -m to work if distfile host name contains user@host.
+
+	* Allow '-' in name lists.  <leres@ee.lbl.gov>
+
+Wed Feb  9 10:53:58 1994  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Add stdarg version of _setproctitle().
+
+	* Make $FILES available to cmdspecial commands.
+
+	* Set nochkgroup and nochkowner if userid is not root since normal
+	users cannot chown() files.
+
+Tue Feb  8 10:44:59 1994  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Fix return value bug in dostat().
+
+	* Add check for write() failure when writing to client in sendmail().
+
+	* Move alarm() timeout in sendfile() to be reset on each
+	read/write to client to avoid time outs when transfering large
+	files over slow links.
+
+	* Insure blank line between header and body in mail messages.
+	<Pierrck.Gachet@irisa.fr> 
+
+	* Refuse to handle filenames that contain newline.  <jay@Princeton.EDU>
+
+	* Fix fchog() to avoid comparing and using "mode" if mode==-1.
+	This fixes problem with directories being mode 777 when rdist
+	is run by normal users.  <jay@Princeton.EDU> 
+
+	* User should be able to fully override default message logging.
+	<jay@Princeton.EDU> 
+
+	* Add IRIX 5.x support.  <lrr@Princeton.EDU>
+
+	* Allow negative gid and uid with numchkowner and numchkgroup.
+	<john@WPI.EDU> 
+
+	* Recognize mach "fat" and little-endian binaries.
+	<Matt_Watson@NeXT.COM> 
+
+	* Change BIN_MODE to {RDIST,RDISTD}_MODE in Makefile's.
+
+Mon Feb  7 12:53:18 1994  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Add -p opt to specify path to rdistd at runtime.
+	<pfps@research.att.com> 
+
+	* Fix setuid() problem with SVR4 hosts.  <pfps@research.att.com>
+
+	* Make things 8-bit clean.  <obh@ifi.uio.no> 
+
+	* Add HPUX isexec() support for HP9000/[34]00 machines.
+	<appelman@cs.unc.edu>
+
+	* Add missing arg to msgparseopts() to rdistd.c.  <stevea@lachman.com>
+
+	* Add DEFS_LOCAL support to Makefile.local and src/Makefile.real.
+	<todd@meaddata.com>
+
+	* Update os-tracebsd.h for current rdist release.  <wls@astro.UMD.EDU>
+
+	* Fix execl() of _PATH_OLDRDIST.  <dbeusee@us.oracle.com>
+
+	* pid_t is not defined by dynix.  <dbeusee@us.oracle.com>
+
+	* Add support for NCR SVR4.  <dbeusee@us.oracle.com>
+
+	* Fix casting problem in otoi() call.  <dbeusee@us.oracle.com>
+
+	* Add FORK_MISSES code to avoid problem with broken fork() in
+	certain OS's.  (dbeusee@us.oracle.com)
+
+	* Error "Unexpected input at startup" should not be fatal.
+
+Wed Dec  8 11:19:43 1993  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Fix arg type passed to hasmntopt().
+
+Mon Aug  2 14:20:14 1993  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Version 6.1beta.2
+
+Thu Jul 29 10:51:54 1993  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Fix problem that allowed any user with the proper knowledge to
+	gain root access using the backwards compat support for the old rdist.
+
+Tue Jul 27 16:27:56 1993  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Use "pid_t" for PID types in child.c.
+
+Fri Jul 16 13:32:07 1993  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Don't blow up if removal of a file fails due to ETXTBSY.  
+	(Neal Becker)
+
+	* Don't run cmdspecial's in VERIFY mode.
+
+	* Increase size of message buffers to 32K.
+
+Thu Jul 15 12:53:48 1993  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Fix rdist man page typo's.  (Karl Berry)
+
+	* Take local Makefile's after Makefile.real.  (Eric Markwardt)
+
+	* Add support for new platforms: UNICOS, STELLIX, FPX4. (David O. Rich)
+
+	* Fix mf.irix4 and os-irix4.h.  (David O. Rich)
+
+	* Set POINTER to char for ultrix4.  (David O. Rich)
+
+	* Add Umax4.3 kludge to isexec.c.  (Howie Kaye)
+
+	* Cause compile time errors if SETFTIME_TYPE is not set.
+
+	* Declare hasmntopt().
+
+	* Add missing pieces to os-mipsos.h and os-irix4.h.  (Guessed values)
+
+Wed Jul 14 11:12:14 1993  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Add support for CX/UX.  (Done Beusee)
+
+	* Set SETFTIME_TYPE to SETFTIME_UTIMES for dynix.  (Don Beusee)
+
+	* Fix port to dynixptx.  (Don Beusee)
+
+	* Include <utime.h> if NEED_UTIME_H is defined instead of HPUX.
+
+	* Enable SETARGS on all platforms.
+
+	* Fix SETARGS so it should work on most platforms.
+
+	* Fix a number of pathing problems that occured in 6.1beta.1.
+	(Don Beusee)
+
+	* Use kill(PID, 0) instead of specific signal to test for a process.
+
+	* Fix value of MT_ALL to remove MT_DEBUG.  (Bruce Jerrick)
+
+	* Fix NULL deref in waitproc().  (F.W. ten Wolde)
+
+	* Define $(MAKE) for those platforms who don't.  (Don Beusee)
+
+	* Add include "filesys.h" to hasmntopt.c to fix compile time error.
+
+	* Fix NULL deref when no target specified.  (Don Beusee)
+
+Sat Mar 27 12:05:56 1993  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Version 6.1beta.1
+
+	* Add support for SGI IRIX 4.x and MIPSos 4.x.  (Eric Murray)
+
+	* Set $IFS when running popen() to avoid possible security whole.
+
+	* Don't print error when doing a savetarget for a new file.
+
+	* Add "nochkmode" option.
+
+	* Fix hardlink bug with relative path names.
+
+	* Upper case REMOTE ERROR and LOCAL ERROR.
+
+	* Handle ~ in hardlink paths.  (Hans Ranke)
+
+	* Disable SETARGS for Ultrix.  It breaks "notify".
+
+	* Fix problem with server hanging if mkdir fails.  (Hans Ranke)
+
+	* Add support for DEC OSF/1.  (Hans Ranke)
+
+Sat Mar 20 12:56:17 1993  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Destination is a directory if:
+	a) more than one name specified on left side of -> directive
+	b) basename of destination in "install" directive is "."
+	(Don Beusee)
+
+	* Dont print 'updating host...' for MT_DEBUG.  (Don Beusee)
+
+	* Add support for setting $REMFILE (remote file name) for
+	"special".  (Don Beusee)
+
+	* Fix problem with getting out of sync when "File changed size".
+
+	* Add test to see if a child proc is still running to avoid looping.
+
+	* Avoid bug in SunC which would cause dosetreuid() to never
+	display error on failure.
+
+Tue Mar 16 15:59:24 1993  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Fix security hole that allowed any user to write any file.
+
+Tue Mar  9 18:14:22 1993  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Fix problem with cmdspecial always being run.
+
+Tue Feb 23 16:00:33 1993  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Fix getmountent() code for SVR4 to use correct mntent member.
+
+Sat Feb 20 10:48:10 1993  Michael A. Cooper  (mcooper@crucis.usc.edu)
+
+	* Remove extraneous LIB_* from config/mf.*.
+
+	* Fix filesystem freespace checking for 512block filesys. 
+	(John P. Rouillard)
+
+	* Add initial POSIX support.
+
+	* Add support for '&' set operator.  (William L. Sebok)
+
+	* Add support for Multiflow tracebsd.  (William L. Sebok)
+
+	* Add support for DC/OSx, Dynix, Dynix/Ptx.  (Don Beusee)
+
+	* Remove unneeded gettimeofday() call in client.
+
+	* Only use fchown() if HAVE_FCHOWN is defined.
+
+	* Only use fchmod() if HAVE_FCHMOD is defined.
+
+	* Use new POINTER type for *alloc() declares.
+
+	* Typecast return of strlen().  (Don Beusee)
+
+	* Define set file time types (SETFTIME_*).
+
+	* In os-type, use uname if available.
+
+	* Consoladate the Elf and Coff isexec() code.
+
+	* Move all missing/*.c files to src/*.c in order to make it
+	possible to specify no missing files.
+
+Fri Feb 19 19:51:07 1993  Michael A. Cooper  (mcooper@crucis.usc.edu)
+
+	* Redo makefiles again to use external "runmake" script to build
+	and run make.
+
+	* Set BIN_DIR to /usr/bin for sunos5.
+
+Mon Feb 15 11:16:27 1993  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Version 6.1beta.0.
+
+	* Add /*NOTREACHED*/ in coredump().  (Harald.Eikrem)
+
+	* Avoid referencing freed  CHILD structure when freeing children.
+	(Paul D. Smith)
+
+	* Avoid overflowing target buffer.  (Barbara Fraser)
+
+	* Fix spelling err in docmd.c. (Peter Kabal)
+
+	* Add support for checking file ownership based on numeric uid
+	and/or gid instead of the username or groupname.  (John P. Rouillard)
+
+	* Use proper types for uid's (UID_T), gid's (GID_T) in general and
+	for arguments to chown().
+
+	* Fix logic in setownership() to work with finicky compilers.
+
+	* Fix hardlink bug when dealing with hardlinks in subdirectories.
+	(Don Beusee)
+
+Wed Jan  6 19:04:34 1993  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Major overhaul of distribution configuration.  Will now
+	automatically configure OS dependencies whenever "make" is run.
+
+	* Major re-org of entire distribution into individual, seperate
+	directories.
+
+Tue Jan  5 13:28:50 1993  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Add #if !defined() around values in pathnames.h.
+
+	* Remove _PATH_OLDRDIST from pathnames.h.
+
+Mon Jan  4 16:01:18 1993  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Add Solaris 2.x (SVR4) support.  (Rainer Orth)
+
+	* Change support for HAVE_VARARGS to use ARG_TYPE.
+
+Thu Dec 31 13:31:05 1992  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Add support for POSIX_SIGNALS.  (Rainer Orth)
+
+	* Use environment variable TMPDIR in place of _PATH_TMP (/tmp) if
+	found.
+
+	* Add strtol.c and vsprintf.c.  (Mike Rendell)
+
+	* Update comments in Makefile regarding various platforms.  (Mike
+	Rendell)
+
+	* Remove obsolete itoa().  (Mike Rendell)
+
+	*  Make sure MOUNTED_FILE is not defined before defining.
+
+	* If chown fails, clear setuid and/or setgid bits before
+	chmod'ing.  (Mike Rendell)
+
+	* Don't print "updating of foo" messages with "-o quiet".  (Mike
+	Rendell)
+
+	* Add support for SGI's.  (Harlan Stenn)
+
+	* Make warning about missing links more informative. (Harlan Stenn)
+
+	* Change HAVE_STATFS to be STATFS_TYPE and define STATFS_BSD and
+	STATFS_SYSV.
+
+	* Make work with old style syslog()'s such as Ultrix.  (Harlan Stenn)
+
+	* Fix spelling errors in rdist.1.  (Harlan Stenn)
+
+	* Add DG/UX 5.4.x support.  (Paul D. Smith)
+
+	* Add ELF executable format support.  (Paul D. Smith)
+
+	* Fix portability problem with directory file name length
+	checking.  (Paul D. Smith)
+
+	* If EXE_TYPE is not defined, use fake _isexec() which always
+	returns FALSE.  (Paul D. Smith)
+
+	* Print cmdspecial "cmd" when running a cmdspecial.
+
+	* Only run "cmdspecial" when something is really updated.
+
+	* When removing files in a directory, don't abort when a single
+	file cannot be removed.
+
+    	* Try to avoid getting out of sync with master host when cleaning
+	directories.
+
+	* Avoid doing both fchown() and chown(), fchmod() and chmod().
+	Split chown and chmod code into seperate functions.
+
+	* Fix hardlink bug where hardlinking would fail when using
+	a target destination specified with "install".
+
+Wed Dec  2 14:46:18 1992  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Update rdistcfilter: More cleanup and minor speedups from Tom
+	Christiansen.
+
+	* Update rdistcfilter to remove truncation of hosts list when lots
+	of hosts are present. (tchrist)
+
+Sun Nov 29 13:35:42 1992  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Version 6.0.0
+
+	* Add more HPUX comments to README and Makefile.  (Allan Weber)
+
+	* Define NBIO_TYPE to be NBIO_FCNTL for HPUX.  (Allan Weber)
+
+Tue Nov 17 10:04:45 1992  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Version 6.0beta.10
+
+	* Update list of PLATFORMS in README.
+
+Thu Nov 12 10:52:54 1992  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Use E_SFILE in place of hardcoded "FILE".
+
+	* Fix ": is not an identifier" problem with special commands under
+	AIX and NeXT by disabling SETARGS.
+
+Wed Nov 11 10:42:27 1992  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* When NOCHKOWNER and NOCHKGROUP are enabled, don't check
+	directory ownership.
+
+	* Make getmountent() work again for AIX.
+
+Tue Nov 10 15:09:59 1992  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Version 6.0beta.9
+
+Mon Nov  9 13:19:51 1992  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Use new *_TYPE defines for defining the types of interfaces
+	available for getting filesystem info, non-blocking I/O, wait()
+	function(), and directory routines.
+
+	* Modify rdistcfilter to wrap list of hosts instead of truncating.
+
+	* Clarify rdistd being in $PATH in rdist.1. (Mike Urban)
+
+	* Remove SIGPIPE as SIGCHLD equivilent.
+
+	* Add -ochksym option.  When enabled, this option will cause rdist
+	to act like the original version when dealing with rdisting 
+	directories to symlinks.  The original rdist simple ignored the 
+	condition where the target on a remote host was a symlink when the
+	target on the master was a directory.  The new rdist will 
+	automatically make the target on the remote host be the same as
+	the master.  This option disables this behavior.
+
+	* Fix bug with notify failing with certain message level flags.
+
+	* Only send notify mail when things actually change.
+
+	* Add support for Sequent Dynix 3.1.2.  (Ken Dahl)
+
+	* Add BSDI support.  (Ken Dahl & Jonathan Cohn)
+
+	* Fix argument order to error() in client.c.
+
+Thu Oct 29 09:59:14 1992  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Version 6.0beta.8.
+
+Tue Oct 27 10:19:11 1992  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Add support for Multiflow Trace 4.3BSD. (wls)
+
+	* Make wait() configurable and add support for wait3().
+
+	* Include strcasecmp.c in distribution.
+
+	* Cleanup child handling based on code/suggestions from Neal
+	Becker, Rich Salz, and Chris Torek.
+
+	* Don't print hostname in "Response time out" message since
+	error() handles that.
+
+	* Add -onochkowner,nochkgroup options.  When enabled, no check of
+	a file's user (nochkowner) or group (nochkgroup) ownership is
+	performed.
+
+	* Prepend DO_ to dist option macros.
+
+	* Implement new -o<distopt> to replace all the -X options.
+
+	* Actually make error messages work by default.
+
+	* Change fchog() to always print unknown users.
+
+	* Change fchog() to always print name of target file for messages.
+
+Fri Oct 16 13:01:41 1992  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Version 6.0beta.7.
+
+	* Update rdist.1 to more fully describe new message handling system.
+
+	* Lower syslog logging levels to be mostly LOG_INFO.
+
+	* Don't explicitly call reap().  Let SIGCHLD call reap().  (Neal
+	Becker) 
+
+	* Only call removechild() from reap(). (Neal Becker)
+
+	* Fix trivial child list-handling mistake.  (Neal Becker)
+
+	* Call cleanup() to remove /tmp/rdist* files.  (Neal Becker)
+
+	* Remove extraneous debugging info in getnlstr().
+
+	* Don't close distfile file descriptor if it's stdin.  (James
+	Tanis)
+
+	* Always strip '+' from hostnames to be consistant. (James Tanis)
+
+Thu Oct 15 10:59:14 1992  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Fix problem with buffer being overwritten in "chown from ..."
+	message. 
+
+	* Modified rdistcfilter to lexically sort messages.
+
+	* Fix argument type mismatch in getmountent() which cause core
+	dump when filesystem free space checking was enabled.
+
+Wed Oct 14 11:17:45 1992  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Fix argument mismatch error in call to messae() which could
+	result in a core dump.
+
+	* Fix bug with directories almost always being reported with -y as
+	"remote copy is newer".
+
+	* Change message output format (again) to make both normal
+	messages and error messages consistant.
+
+	* Only check file mtime and size if file type is "regular".
+
+	* Fix mismatched parameters in call to debugmsg().  (Neal Becker)
+
+Tue Oct 13 15:07:56 1992  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Version 6.0beta.6.
+
+	* Fix possible stack overflow problem in expand code.
+
+Mon Oct 12 19:41:24 1992  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Fix long term problem with hardlink installations. (<luik@isa.de>
+	Andreas Luik)
+
+	* Slight performance improvement in reading directories.
+
+	* Add better checking/setting of directory ownership.
+
+	* Add another check to see if remote owner.group match local
+	owner.group.
+
+Fri Oct  9 13:01:23 1992  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* All OS dependent filesystem routines moved from filesys.c to new
+	getmount.c.
+
+	* Add support for BSD386. (Ken Dahl)
+
+	* Move OS name definetions from config.h to new config-os.h.
+
+	* Change configdata.h to config-data.h and create config-os.h.
+
+	* Fix chkparent() to actually make directories when needed.
+
+Wed Oct  7 11:20:23 1992  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Use standard system and predefined values for open() and pipe().
+
+	* Children now exit with status "nerrs".
+
+	* Only log debugmsg() about exit status of child for legit children.
+
+	* Massive overhual of internal message handling system.  All
+	messages now pass through the message() function.  There are
+	different message facilities are configured to handle the
+	different message types.  The format of messages has also been
+	made more consistent.
+
+Thu Sep 24 11:11:19 1992  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Use new x*alloc() functions that do error checking.
+
+	* Major changes to use select() to read input from children.
+
+	* Major code cleanup of children related functions.
+
+	* Add Steve Romig's "compact-rdist-output" perl filter to the
+	distribution as "rdistcfilter.pl".  Also renamed rdistfilter.pl to
+	be rdistvfilter.pl.
+
+Thu Sep 17 13:13:35 1992  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Remove extraneous fclose(lfp) in doarrow().  (Bill Sebok)
+
+	* Fix botch with setfiletime() which set bogus file times.  (Bill
+	Sebok)
+
+	* Make :: work for special and cmdspecial.  (Bill Sebok)
+
+Wed Sep 16 16:49:13 1992  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Fix problem with tempfile (/tmp/rdistXXXXXX) being removed when
+	it shouldn't.
+
+Tue Sep 15 10:04:32 1992  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Version 6.0beta.5
+
+	* Fix core dump problem with list subtraction/addition. (Neal Becker)
+
+	* Fix problem with HPUX being defined after first #if check in defs.h.
+
+Mon Sep 14 12:52:32 1992  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Version 6.0beta.4
+
+	* Add note to README about AIX bsdcc stanza.
+
+	* Clarify -w description in rdist.1.
+
+	* Include target name in error msg "no files to be updated".
+
+Fri Sep 11 14:04:45 1992  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Fixed a bug in rdistd which caused set[ug]id bits to not be
+	cleared when they were suppose to be, even when it said it was
+	being cleared. The mode of a file/directory would also not be set
+	in certain cases. This bug looks to date back to the original version.
+
+	* Add support for macro list addition and subtraction (Rich Salz).
+
+	* Make having statfs() configurable with HAVE_STATFS (Rich Salz).
+
+	* Define HPUX if __hpux is defined and change things to use HPUX.
+
+	* Make the type of directory struct used configurable (Rich Salz).
+
+Tue Sep  1 14:46:00 1992  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Fix another case of setgid being stripped when the owner's
+	primary (passwd) gid == file group owner.  (Ken Dahl)
+
+	* Change "Don't know how to rdist to ..." to be "Label ... is not
+	defined in the distfile." for clarity.
+
+Mon Aug 31 15:08:26 1992  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Change "register char i" to "register int i" in docmd().
+
+	* Fixed another bug with "Don't know how to rdist to ...".  This
+	time, a much simplier approach was taken to remove the "unused"
+	stuff from the last fix.
+
+	* Save argc and argv from main() into realargc and realargv
+	before setargs() overwrites.
+
+Fri Aug 28 16:36:34 1992  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* The primary group of the owner of a file was not being checked
+	in fchog(), which resulted in the setgid bit being cleared.
+
+Thu Aug 27 13:33:35 1992  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Fixed typo in config.h that disabled SETARGS.
+
+	* Make _PATH_OLDRDIST compatibility actually work.  Also do
+	logging via logmsg() and fatal() for compat stuff.
+
+	* Fatal() error msgs are now logged to logmsg(LOG_ERR, ...) for rdistd
+
+	* Strip leading path of progname.
+
+Mon Aug 10 15:33:22 1992  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Update wording on old rcmd() bug in README. (Rich)
+
+Thu Aug  6 09:59:58 1992  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Fix ISEXEC define in isexec.c. (Neal Becker)
+
+Changes up to Release 6.0beta.3:
+Wed Aug  5 14:10:22 1992  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Fix problem with ETXTBSY code not working.  (Neal Becker)
+
+	* Add support for HP 9000/[78]00 executable format.  (Neal Becker)
+
+	* Defining SETARGS breaks "special" command under HP/UX. (Neal Becker)
+
+	* Change #ifdef's of "hpux" to be "__hpux" for compability
+	with both HP/UX 7.* and 8.* OS versions.  (Neal Becker & Allan Weber)
+
+	* Get rid of #define's in defs.h by compiling yacc with -d.
+	Also change tokens like SM (';') to be real chars in the grammer
+	instead of tokens for clarity. (Rich)
+
+	* Change ISDIR -> S_ISDIR, ISREG -> S_ISREG, ISLNK -> S_ISLNK
+	to be POSIX compliant. (Rich)
+
+	* Document in rdist.1 how rdist runs rdistd.
+
+	* Replace ".in +5" with ".RS/.RE" in rdist.1. (Rich)
+
+	* Remove preprocessor support.  Use "m4 distfile | rdist -f -" 
+	for same effect without the ugly code. (Rich)
+
+	* Clarify -N and -O options in rdist.1 (Rich).
+
+	* Document that we can't use strchr() in place of any() because
+	most systems strchr() can't handle some of the input we pass.
+
+Changes up to Release 6.0beta.2:
+Tue Aug  4 15:20:46 1992  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Rename patchlevel.h to version.h and move VERSION define
+	from config.h to version.h.
+
+Tue Aug  4 15:03:53 1992  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Cleanup comments about configuration and such in Makefile,
+	config.h, pathnames.h, and README.
+
+Fri Jul 31 14:59:45 1992  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Fix to fix "Don't know how to make ..." fix.
+
+Thu Jul 30 14:34:46 1992  Michael A. Cooper  (mcooper at acamar.usc.edu)
+
+	* Add -V options to rdist and rdistd to print version information.
+
+	* Portability changes and support for HP/UX from Allan Weber
+	(weber@sipi.usc.edu).
+
+Changes up to 6.0alpha3:
+Fri Jul 24 11:27:08 1992  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Fix bug with ^C of "rdist" resulting in a core dump.  An invalid
+	jmpbuf was being used in a call to longjmp().
+
+	* Fix problem with modify time not being set on NeXT 2.1 machines.
+	Also now set the access time of newly installed/updated file to
+	be the current time instead of the atime from the source machine.
+
+Mon Jul 20 12:46:20 1992  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Fix misspelling of ${MISSINGOBJS} in Makefile.
+
+	* Fix problem with "Don't know how to rdist to ..." error being
+	printed when it shouldn't be.
+	
+
+Thu Jul 16 10:58:09 1992  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Fix problem with hosts marked as + in the distfile having
+	multiple child update the host simaltaneously, which causes race 
+	conditions when updating certain targets.
+
+
+Changes up to 6.0alpha2:
+Tue Jul 14 12:40:24 1992  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Cleanup and fix rdistfilter.
+
+Thu Jul  9 16:15:00 1992  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Back out reverse polling code to be clean and remove one source
+	of possible bugs.
+
+Tue Jul  7 12:37:40 1992  Michael A. Cooper  (mcooper@acamar.usc.edu)
+
+	* Port back to AIX/RS6000 (3.2), Alliant Concentrix 5.5,
+	  Sun-386i (SunOS 4.0.1), DEC MIPS (Ultrix 4.2), NeXT (Mach 2.1).
+	  Mainly this was changes to config.h and creation of isexec.c
+	  to make porting to new platforms more straigtforward.
+
+
+Changes up through 6.0alpha
+
+      - The client and the server are now split into two seperate programs
+	(rdist and rdistd).  The client (rdist) looks like older versions of
+	rdist.  Instead of running "/usr/ucb/rdist" on a remote machine, it
+	now runs "rdistd".  Notice that it doesn't run "/usr/ucb/rdistd"
+	or use any explicit pathname.  This is to improve portability to
+	various different platforms where "/usr/ucb" may not exist.  What
+	this means is that the server must be somewhere in the user's default
+	$PATH if the client is to successfully run rdistd.
+
+	This also means that the server no longer needs to be setuid root.
+	Only the client still needs setuid root (because it uses priv'ed
+	ports).  This should cut down a bit on potential security holes.
+
+	Because the server (rdistd) resides in normal user "bin" directories,
+	it requires the -S option in order to run.  This is to avoid users
+	accidentially typing "rdistd" instead of "rdist".
+
+      -	If the client (rdist) is started with the "-Server" option (which
+	is the old rdist method of starting rdist in server mode), it
+	will attempt to run the old version of rdist, if it was compiled
+	with the name of that program.  This is for backwards compatibility
+	and should allow this version of rdist to co-exist with older versions.
+
+      - Add support for running a pre-processor (m4 by default) over the
+	distfile before processing.
+
+      - If a connection to a host fails, avoid trying to recontact host
+	again.
+
+      - Use getopt() for command line option parsing.  I hate getopt(), but
+	everybody wants to use it.  Sigh.
+
+      - A slew of new options.  See the man page for details.
+
+      - Add buffered remote read code from Chris Torek along with some other
+	code cleanups.
+
+      -	Check free space and files on a filesystem before installing.
+	This code will (optionally) check the amount of free space
+	and files (inodes) on a filesystem before installing.  If the
+	free space and/or files is less then specified by the initiator,
+	then the target will not be installed and an error returned.
+	This is useful for preventing rdist from filling up a remote
+	filesystem.
+
+      -	Concurrent rdist processes.
+	Update multiple hosts concurrently by fork'ing children
+	with each child updating one host.  The number of
+	children is limited to a given number (usually 4), but is
+	controllable with a command line option (-M).
+
+      - Add "setargs" code to set process arguments to indicate what host
+	we are talking to.  A protocol change was required for this.
+
+      -	If a remote target resides on a NFS or read-only filesystem,
+	then don't try to update target on that host.  This elimates
+	having to have millions of seperate lists and exceptions
+	for hosts with certain parts NFS mounted or read-only mounted
+	and hosts with everything mounted read-write.
+
+      - Set timeout alarms to avoid hanging when something happens
+	to a server during a session.  Remove servers can sometimes
+	get into a state either during startup or during a session
+	where they will never send a response back to the local rdist
+	master process.
+
+      - Add ability to rdist a symlink to a directory and vice-versa.
+	Previously, this would fail.
+
+      - Add checking and setting of file modes.  If a file's mode is not
+	what it should be, the entire file is updated in case there was
+	any tampering.  If the target is a directory, then just the mode
+	of the directory is updated.
+
+      - Major code cleanup and restructuring.  Major portions of the code
+	has been re-written and/or restructured.
+
+      - Add config.h file for configuration related items.
+
+      - Fixed a security hole with setreuid().
+
+      - Add better error messages.  We now distinguish between LOCAL and
+	REMOTE errors.
+
+RCS INFO
+
+$Id: ChangeLog,v 1.1 1996/01/31 23:25:41 dkarlton Exp $

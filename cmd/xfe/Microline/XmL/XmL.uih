@@ -1,0 +1,135 @@
+/*
+(c) Copyright 1994, 1995, Microline Software, Inc.  ALL RIGHTS RESERVED
+  
+THIS SOFTWARE IS FURNISHED UNDER A LICENSE AND MAY BE COPIED AND USED 
+ONLY IN ACCORDANCE WITH THE TERMS OF THAT LICENSE AND WITH THE INCLUSION
+OF THE ABOVE COPYRIGHT NOTICE.  THIS SOFTWARE AND DOCUMENTATION, AND ITS 
+COPYRIGHTS ARE OWNED BY MICROLINE SOFTWARE AND ARE PROTECTED BY UNITED
+STATES COPYRIGHT LAWS AND INTERNATIONAL TREATY PROVISIONS.
+ 
+THE INFORMATION IN THIS SOFTWARE IS SUBJECT TO CHANGE WITHOUT NOTICE
+AND SHOULD NOT BE CONSTRUED AS A COMMITMENT BY MICROLINE SOFTWARE.
+
+THIS SOFTWARE AND REFERENCE MATERIALS ARE PROVIDED "AS IS" WITHOUT
+WARRANTY AS TO THEIR PERFORMANCE, MERCHANTABILITY, FITNESS FOR ANY 
+PARTICULAR PURPOSE, OR AGAINST INFRINGEMENT.  MICROLINE SOFTWARE
+ASSUMES NO RESPONSIBILITY FOR THE USE OR INABILITY TO USE THIS 
+SOFTWARE.
+
+MICROLINE SOFTWARE SHALL NOT BE LIABLE FOR INDIRECT, SPECIAL OR
+CONSEQUENTIAL DAMAGES RESULTING FROM THE USE OF THIS PRODUCT. SOME 
+STATES DO NOT ALLOW THE EXCLUSION OR LIMITATION OF INCIDENTAL OR
+CONSEQUENTIAL DAMAGES, SO THE ABOVE LIMITATIONS MIGHT NOT APPLY TO
+YOU.
+
+MICROLINE SOFTWARE SHALL HAVE NO LIABILITY OR RESPONSIBILITY FOR SOFTWARE
+ALTERED, MODIFIED, OR CONVERTED BY YOU OR A THIRD PARTY, DAMAGES
+RESULTING FROM ACCIDENT, ABUSE OR MISAPPLICATION, OR FOR PROBLEMS DUE
+TO THE MALFUNCTION OF YOUR EQUIPMENT OR SOFTWARE NOT SUPPLIED BY
+MICROLINE SOFTWARE.
+  
+U.S. GOVERNMENT RESTRICTED RIGHTS
+This Software and documentation are provided with RESTRICTED RIGHTS.
+Use, duplication or disclosure by the Government is subject to
+restrictions as set forth in subparagraph (c)(1) of the Rights in
+Technical Data and Computer Software Clause at DFARS 252.227-7013 or
+subparagraphs (c)(1)(ii) and (2) of Commercial Computer Software -
+Restricted Rights at 48 CFR 52.227-19, as applicable, supplier is
+Microline Software, 41 Sutter St Suite 1374, San Francisco, CA 94104.
+*/
+
+! Grid Widget
+
+procedure
+  XmLCreateGrid();
+
+! Resources
+
+value
+  XmNallowColumnResize    : argument ('allowColumnResize', boolean);
+  XmNallowDragSelected    : argument ('allowDragSelected', boolean);
+  XmNallowDrop            : argument ('allowDrop', boolean);
+  XmNallowRowResize       : argument ('allowRowResize', boolean);
+  XmNblankBackground      : argument ('blankBackground', string);
+  XmNbottomFixedCount     : argument ('bottomFixedCount', integer);
+  XmNbottomFixedMargin    : argument ('bottomFixedMargin', integer);
+  XmNhsbDisplayPolicy     : argument ('hsbDisplayPolicy', integer);
+  XmNhorizontalSizePolicy : argument ('horizontalSizePolicy', integer);
+  XmNleftFixedCount       : argument ('leftFixedCount', integer);
+  XmNleftFixedMargin      : argument ('leftFixedMargin', integer);
+  XmNrightFixedCount      : argument ('rightFixedCount', integer);
+  XmNrightFixedMargin     : argument ('rightFixedMargin', integer);
+  XmNscrollBarMargin      : argument ('scrollBarMargin', integer);
+     SelectNone        : 1;
+     SelectSingleRow   : 2;
+     SelectBrowseRow   : 3;
+     SelectMultipleRow : 4;
+     SelectCell        : 5;
+  XmNselectBackground     : argument ('selectBackground', string);
+  XmNselectForeground     : argument ('selectForeground', string);
+  XmNshadowRegions        : argument ('shadowRegions', integer);
+  XmNtopFixedCount        : argument ('topFixedCount', integer);
+  XmNtopFixedMargin       : argument ('topFixedMargin', integer);
+  XmNuseAverageFontWidth  : argument ('useAverageFontWidth', boolean);
+  XmNverticalSizePolicy   : argument ('verticalSizePolicy', integer);
+  XmNvsbDisplayPolicy     : argument ('vsbDisplayPolicy', integer);
+
+! Callbacks
+
+value
+  XmNaddCallback       : reason ('addCallback');
+  XmNcellDrawCallback  : reason ('cellDrawCallback');
+  XmNcellDropCallback  : reason ('cellDropCallback');
+  XmNcellFocusCallback : reason ('cellFocusCallback');
+  XmNcellPasteCallback  : reason ('cellPasteCallback');
+  XmNdeleteCallback    : reason ('deleteCallback');
+  XmNdeselectCallback  : reason ('deselectCallback');
+  XmNeditCallback      : reason ('editCallback');
+  XmNscrollCallback    : reason ('scrollCallback');
+  XmNselectCallback    : reason ('selectCallback');
+
+! Folder Widget
+
+procedure
+  XmLCreateFolder();
+
+! Resources
+
+value
+  XmNcornerDimension      : argument ('cornerDimension', integer);
+  XmNcornerStyle          : argument ('cornerStyle', integer);
+     CornerNone        : 0;
+     CornerLine        : 1;
+     CornerArc         : 2;
+  XmNinactiveBackground   : argument ('inactiveBackground', string);
+  XmNinactiveForeground   : argument ('inactiveForeground', string);
+  XmNpixmapMargin         : argument ('pixmapMargin', integer);
+  XmNtabPlacement         : argument ('tabPlacement', integer);
+     FolderTop         : 0;
+     FolderLeft        : 1;
+     FolderBottom      : 2;
+     FolderRight       : 3;
+
+! Constraint resources
+
+  XmNtabFreePixmaps       : argument ('tabFreePixmaps', boolean);
+  XmNtabInactivePixmap    : argument ('tabInactivePixmap', string);
+  XmNtabManagedWidget     : argument ('tabManagedWidget', any);
+  XmNtabPixmap            : argument ('tabPixmap', string);
+
+! Progress Widget
+
+procedure
+  XmLCreateProgress();
+
+! Resources
+
+value
+  XmNcompleteValue        : argument ('completeValue', integer);
+  XmNmeterStyle           : argument ('meterStyle', integer);
+     MeterBar         : 0;
+     MeterBoxes       : 1;
+  XmNnumBoxes             : argument ('numBoxes', integer);
+  XmNshowTime             : argument ('showTime', boolean);
+  XmNshowPercentage       : argument ('showPercentage', boolean);
+

@@ -1,0 +1,96 @@
+IGNORE_MANIFEST=1
+#//------------------------------------------------------------------------
+#//
+#// Makefile to build the cert library
+#//
+#//------------------------------------------------------------------------
+
+
+#//------------------------------------------------------------------------
+#//
+#// Specify the depth of the current directory relative to the
+#// root of NS
+#//
+#//------------------------------------------------------------------------
+DEPTH= ..\..\..
+
+!ifndef MAKE_OBJ_TYPE
+MAKE_OBJ_TYPE=EXE
+!endif
+
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Make Variables here: (ie. PDFFILE, MAPFILE, ...)
+#//
+#//------------------------------------------------------------------------
+LIBNAME=crypto$(MOZ_BITS)
+PDBFILE=$(LIBNAME).pdb
+
+LINCS = -I$(PUBLIC)/security \
+        -I$(DEPTH)\include
+
+#//------------------------------------------------------------------------
+#// 
+#// Define the files necessary to build the target (ie. OBJS)
+#//
+#//------------------------------------------------------------------------
+OBJS=                         \
+    .\$(OBJDIR)\algdes.obj   \
+    .\$(OBJDIR)\algrc2.obj  \
+    .\$(OBJDIR)\algrc4.obj   \
+    .\$(OBJDIR)\algrc5.obj   \
+    .\$(OBJDIR)\algrsa.obj  \
+    .\$(OBJDIR)\algrsaky.obj   \
+    .\$(OBJDIR)\secdig.obj    \
+    .\$(OBJDIR)\secsign.obj   \
+    .\$(OBJDIR)\secvfy.obj   \
+    .\$(OBJDIR)\cmpmontg.obj \
+    .\$(OBJDIR)\cmpmuldv.obj \
+    .\$(OBJDIR)\rsa.obj \
+    .\$(OBJDIR)\cmpcnv.obj \
+    .\$(OBJDIR)\crt.obj \
+    .\$(OBJDIR)\cmparith.obj \
+    .\$(OBJDIR)\cmpmdexp.obj \
+    .\$(OBJDIR)\cmpvectr.obj \
+    .\$(OBJDIR)\cmpmem.obj \
+    .\$(OBJDIR)\cmpmod.obj \
+    .\$(OBJDIR)\cmpspprt.obj \
+    .\$(OBJDIR)\rsakeygn.obj \
+    .\$(OBJDIR)\cmpbits.obj \
+    .\$(OBJDIR)\prime.obj \
+    .\$(OBJDIR)\dsakg.obj \
+    .\$(OBJDIR)\dsas.obj \
+    .\$(OBJDIR)\dsav.obj \
+    .\$(OBJDIR)\dsautil.obj \
+    .\$(OBJDIR)\pqggen.obj \
+    .\$(OBJDIR)\fipstest.obj \
+    $(NULL)
+
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Targets here (ie. PROGRAM, LIBRARY, DLL, ...)
+#// (these must be defined before the common makefiles are included)
+#//
+#//------------------------------------------------------------------------
+LIBRARY=.\$(OBJDIR)\$(LIBNAME).lib
+
+#//------------------------------------------------------------------------
+#//
+#// install headers
+#//
+#//------------------------------------------------------------------------
+INSTALL_DIR=$(PUBLIC)\security
+INSTALL_FILE_LIST=crypto.h cryptot.h rsa.h dsa.h
+
+#//------------------------------------------------------------------------
+#//
+#// Include the common makefile rules
+#//
+#//------------------------------------------------------------------------
+include <$(DEPTH)/config/rules.mak>
+
+install:: $(LIBRARY)
+    $(MAKE_INSTALL) $(LIBRARY) $(DIST)\lib
+
+export:: INSTALL_FILES
+

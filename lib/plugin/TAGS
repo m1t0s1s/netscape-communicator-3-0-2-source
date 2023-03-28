@@ -1,0 +1,134 @@
+
+npassoc.c,224
+#define NP_MAX_EXTS 16,297
+np_parse_exts(22,475
+NPL_NewFileAssociation(74,1609
+NPL_DeleteFileAssociation(96,2253
+NPL_RegisterFileAssociation(142,2954
+NPL_RemoveFileAssociation(174,3632
+NPL_GetFileAssociation(205,4208
+
+npglue.c,2640
+#define LOCK 39,994
+#define UNLOCK 40,1012
+#define NPTRACE(NPTRACE42,1031
+#define RANGE_EQUALS 44,1070
+#define NP_MAXBUF 64,1686
+np_getmimetype(71,1800
+np_statusToReason(93,2246
+np_addURLtoList(110,2581
+np_processURLNode(141,3246
+np_removeURLfromList(181,4220
+np_removeAllURLsFromList(218,5088
+np_get_stream(255,6224
+np_makestreamobjects(303,8245
+np_deletestreamobjects(371,10062
+np_dofetch(409,10995
+NPL_WriteReady(419,11240
+NPL_Write(450,11951
+np_make_byterange_string(499,13346
+np_copy_rangelist(547,14517
+np_lock(569,14905
+np_unlock(579,15078
+npn_requestread(593,15283
+np_destroystream(669,17521
+np_streamAsFile(687,18025
+NPL_Complete(730,19247
+NPL_Abort(770,20264
+NPL_HandleURL(798,21060
+NPL_EmbedURLExit(815,21638
+NPL_URLExit(840,22456
+np_makeurlstruct(888,23794
+np_makecontext(934,25047
+np_geturlinternal(954,25531
+np_parsepostbuffer(1089,29257
+np_posturlinternal(1152,31051
+npn_geturlnotify(1351,35820
+npn_getvalue(1361,36040
+npn_geturl(1389,36608
+npn_posturlnotify(1399,36785
+npn_posturl(1409,37051
+npn_newstream(1420,37289
+npn_write(1475,38589
+npn_destroystream(1501,39202
+npn_status(1575,41311
+npn_useragent(1599,41774
+npn_memalloc 1621,42124
+npn_memfree 1635,42286
+npn_memflush(1649,42469
+npn_reloadplugins(1665,42702
+NPL_RefreshPluginList(1702,43871
+#define IMPLEMENT_netscape_plugin_Plugin1713,44103
+npn_getJavaEnv(1729,44359
+#define NPN_NO_JAVA_INSTANCE	1755,44747
+npn_getJavaPeer(1768,44923
+np_setwindow(1845,47068
+np_newinstance(1884,47909
+np_newstream(2042,52198
+NPL_NewPresentStream(2142,54927
+NPL_NewEmbedStream(2271,59072
+np_newbyterangestream(2318,60367
+np_newpluginstream(2341,61068
+NPL_RegisterPluginFile(2358,61511
+NPL_EnablePlugin(2395,62475
+np_findPluginType(2497,65562
+np_enablePluginType(2531,66302
+NPL_EnablePluginType(2596,68253
+NPL_RegisterPluginType(2616,68662
+np_bindContext(2674,70372
+np_unbindContext(2702,71151
+np_delete_instance(2735,71810
+np_noembedfound 2835,74935
+NPL_RegisterDefaultConverters(2852,75229
+NPL_Init(2870,76034
+NPL_Shutdown(2920,77905
+NPL_SameElement(2947,78407
+NPL_SamePage(2973,79082
+NPL_HandleEvent(3001,79639
+NPL_Print(3017,80063
+np_deleteapp(3033,80455
+NPL_EmbedDelete(3046,80601
+NPL_PreparePrint(3106,82398
+NPL_ReconnectPlugin(3132,82914
+np_findTypeAttribute(3149,83294
+NPL_EmbedCreate(3169,83654
+NPL_EmbedStart(3264,86441
+NPL_EmbedSize(3418,90776
+NPL_DeleteSessionData(3430,91001
+NPL_IteratePluginFiles(3490,92592
+NPL_IteratePluginTypes(3515,93020
+NPL_FindPluginsForType(3553,93995
+NPL_FindPluginEnabledForType(3611,95364
+#define PUT(PUT3637,95894
+NPL_DisplayPluginsAsHTML(3647,96095
+
+upi.c,75
+FE_RegisterPlugins(11,160
+NPG_LoadPlugin(19,287
+NPG_UnloadPlugin(31,458
+
+testupi.c,292
+nptrace 18,228
+#define NPTRACE(NPTRACE33,541
+#define NPTRACE(NPTRACE35,598
+testp_new(46,742
+testp_destroy(57,964
+testp_setwindow(66,1101
+testp_newstream(73,1280
+testp_writeready(128,2151
+testp_write(136,2247
+testp_closestream(152,2552
+testp_asfile(160,2694
+testp_ddata(166,2813
+
+npjava.c,511
+netscape_plugin_PluginOutputStream_open(38,1150
+netscape_plugin_PluginOutputStream_close(48,1406
+typedef struct MozillaEvent_PluginWriteBytes MozillaEvent_PluginWriteBytes61,1787
+} MozillaEvent_PluginWriteBytes;MozillaEvent_PluginWriteBytes66,1941
+npj_HandleEvent_PluginWriteBytes(69,1987
+npj_writeBytes(75,2073
+netscape_plugin_PluginOutputStream_write(96,2801
+netscape_plugin_PluginOutputStream_writeBytes(105,2989
+netscape_plugin_Plugin_print(119,3377
+netscape_plugin_Plugin_getUserAgent(132,3804

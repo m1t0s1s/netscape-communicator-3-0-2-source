@@ -1,0 +1,17 @@
+STRINGTABLE DISCARDABLE
+BEGIN
+IDS_SPLASH-JAVA_0	"!<HEAD>\r\n<TITLE>Version %s</TITLE>\r\n</HEAD>\r\n<BODY BGCOLOR=""#C0C0C0"" TEXT=""#000000"" LINK=""#0000EE"" VLINK=""#551A8B"" ALINK=""#FF0000"">\r\n<TABLE CELLPADDING=""3"" WIDTH=""100%%"">\r\n<TR>\r\n <TD A"
+IDS_SPLASH-JAVA_1	"!LIGN=""CENTER"">\r\n \r\n <IMG SRC=""about:logo"" ALT="""" BORDER=""0""></TD>\r\n<TD>\r\n  <CENTER>\r\n  <B><FONT SIZE=""5"">Netscape Navigator<SUP><FONT SIZE=""-1"">TM</FONT></SUP>\r\n  </FONT><BR>\r\n  <FONT SI"
+IDS_SPLASH-JAVA_2	"!ZE=""4"">Version %s</BR></FONT></B>\r\n  Copyright &copy; 1994-1997 Netscape Communications Corporation, \r\n  All rights reserved.\r\n  </CENTER>\r\n  <P>\r\n  <FONT SIZE=""2"">\r\n  This software is subject "
+IDS_SPLASH-JAVA_3	"!to the license agreement set forth in the \r\n  license. Please read and agree to all \r\n  terms before using this software.\r\n  <P>\r\n  Report any problems through the \r\n   \r\n  feedback page.\r\n  <P>\r\n  N"
+IDS_SPLASH-JAVA_4	"!etscape Communications, Netscape, Netscape Navigator and the Netscape\r\n  Communications logo are trademarks of Netscape Communications Corporation.\r\n  </FONT>\r\n</TD>\r\n</TR>\r\n<TR>\r\n<TD COLSPAN=""2"""
+IDS_SPLASH-JAVA_5	"!><HR SIZE=""3""></TD>\r\n</TR>\r\n<TR>\r\n  <TD ALIGN=""CENTER""><IMG SRC=""about:javalogo"" ALT=""""></TD>\r\n  <TD>\r\n    <FONT SIZE=""2"">\r\n    Contains Java<SUP><FONT SIZE=""1"">TM</FONT></SUP>\r\n    soft"
+IDS_SPLASH-JAVA_6	"!ware developed by Sun Microsystems, Inc.\r\n    <BR>Copyright &copy; 1992-1996 Sun Microsystems, Inc. All Rights Reserved.\r\n    <BR>Java and Java-based marks are trademarks or registered trademar"
+IDS_SPLASH-JAVA_7	"!ks\r\n    of Sun Microsystems, Inc in the United States and other countries.\r\n    </FONT>\r\n  </TD>\r\n</TR>\r\n<TR>\r\n<TD COLSPAN=""2""><HR SIZE=""3""></TD>\r\n</TR>\r\n<TR>\r\n  <TD ALIGN=""CENTER""><IMG SRC=""ab"
+IDS_SPLASH-JAVA_8	"!out:rsalogo"" ALT=""""></TD>\r\n  <TD>\r\n    <FONT SIZE=""2"">\r\n    Contains security software from RSA Data Security, Inc.\r\n    <BR>Copyright &copy; 1994 RSA Data Security, Inc.  All Rights Reserve"
+IDS_SPLASH-JAVA_9	"!d.\r\n    <P>\r\n<B>%s</B>\r\n    </FONT>\r\n  </TD>\r\n</TR>\r\n<TR>\r\n<TD COLSPAN=""2""><HR SIZE=""3""></TD>\r\n</TR>\r\n<TR>\r\n</TABLE>\r\n<FONT SIZE=""2"">\r\n</FONT>\r\n<FONT SIZE=""2"">\r\n</FONT>\r\n<FONT SIZE=""1"">\r\nAny provis"
+IDS_SPLASH-JAVA_A	"!ion of Netscape Software to the U.S.Government is with ""Restricted\r\nrights"" as follows:  Use, duplication or disclosure by the Government is\r\nsubject to restrictions set forth in subparagraph"
+IDS_SPLASH-JAVA_B	"!s (a) through (d) of the\r\nCommercial Computer Restricted Rights clause at FAR 52.227-19 when\r\napplicable, or in subparagraph (c) (1) (ii) of the Rights in Technical Data\r\nand Computer Software c"
+IDS_SPLASH-JAVA_C	"!lause at DFARS 252.227-7013, and in similar clauses\r\nin the NASA FAR Supplement. Contractor/manufacturer is Netscape Communications\r\nCorporation, 501 East Middlefield Road, Mountain View, Calif"
+IDS_SPLASH-JAVA_D	"ornia, 94043.\r\n</FONT>\r\n</BODY>\r\n"
+END

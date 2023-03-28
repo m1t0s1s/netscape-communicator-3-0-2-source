@@ -1,0 +1,108 @@
+
+p12local.c,1255
+#define SALT_LENGTH	15,269
+sec_pkcs12_choose_bag_type_old(24,544
+sec_pkcs12_choose_bag_type(60,1419
+sec_pkcs12_choose_cert_crl_type_old(97,2316
+sec_pkcs12_choose_cert_crl_type(129,3076
+sec_pkcs12_choose_shroud_type(162,3895
+PRBool sec_pkcs12_export_alg_read_espvk(194,4609
+PRBool sec_pkcs12_export_alg_read_safe(215,5355
+sec_pkcs12_generate_salt(247,6371
+sec_pkcs12_generate_key_from_password(274,6964
+sec_pkcs12_generate_old_mac(362,9229
+sec_pkcs12_generate_mac(440,11459
+sec_pkcs12_compute_thumbprint(492,12612
+sec_pkcs12_compare_thumbprint(531,13513
+sec_pkcs12_convert_item_to_unicode(540,13746
+sec_pkcs12_convert_item_from_unicode(602,15150
+sec_pkcs12_create_virtual_password(647,16239
+sec_pkcs12_append_shrouded_key(692,17340
+sec_pkcs12_find_cert_in_certbag(730,18303
+sec_pkcs12_find_key_in_keybag(810,20186
+sec_pkcs12_try_find(882,21850
+sec_pkcs12_find_object(942,23421
+sec_pkcs12_copy_nickname(997,24800
+sec_pkcs12_der_code_cert_crl(1022,25330
+sec_pkcs12_der_code_cert_bag(1066,26444
+sec_pkcs12_der_code_safe_bag(1101,27183
+sec_pkcs12_prepare_for_der_code_safe(1152,28593
+sec_pkcs12_prepare_for_der_code_baggage(1191,29514
+sec_pkcs12_swap_unicode_bytes(1235,30495
+sec_pkcs12_copy_and_convert_unicode_string(1257,30929
+
+p12creat.c,419
+sec_pkcs12_new_pfx(15,331
+sec_pkcs12_new_asafe(42,955
+sec_pkcs12_new_x509_cert_crl(64,1489
+sec_pkcs12_new_sdsi_cert(88,1960
+sec_pkcs12_new_cert_crl(113,2437
+sec_pkcs12_create_safe_bag(169,3704
+sec_pkcs12_create_safe_contents(238,5538
+sec_pkcs12_create_external_bag(275,6439
+sec_pkcs12_create_baggage(340,8263
+sec_pkcs12_create_espvk(380,9150
+sec_pkcs12_init_pvk_data(410,9816
+SEC_PKCS12DestroyPFX(433,10472
+
+p12exp.c,830
+sec_pkcs12_destroy_nickname_list(25,607
+sec_pkcs12_destroy_certificate_list(43,920
+sec_pkcs12_destroy_cinfos_for_cert_bags(58,1148
+sec_pkcs12_destroy_cert_content_infos(77,1667
+sec_pkcs12_convert_nickname_list(120,2911
+sec_pkcs12_get_cert(176,4271
+sec_pkcs12_get_private_key(246,6125
+sec_pkcs12_get_shrouded_key(308,7663
+sec_pkcs12_add_thumbprint(389,9946
+sec_pkcs12_get_espvk_by_name(439,11302
+sec_pkcs12_propagate_thumbprints(490,12438
+sec_pkcs12_append_safe_bag(549,14051
+sec_pkcs12_append_cert_to_bag(591,15060
+sec_pkcs12_append_key_to_bag(646,16440
+sec_pkcs12_append_unshrouded_bag(695,17570
+sec_pkcs12_package_certs_and_keys(740,18836
+sec_pkcs12_encode_safe_contents(916,23163
+sec_pkcs12_get_auth_safe(972,24769
+sec_pkcs12_get_pfx(1157,29485
+sec_pkcs12_encode_pfx(1246,31591
+SEC_PKCS12GetPFX(1272,32075
+
+p12dec.c,1027
+sec_pkcs12_decode_pfx(48,1532
+sec_pkcs12_check_pfx_mac(103,2997
+sec_pkcs12_validate_pfx(188,5082
+sec_pkcs12_get_pfx(212,5626
+sec_pkcs12_convert_old_auth_safe(243,6275
+sec_pkcs12_decode_authenticated_safe(293,7692
+sec_pkcs12_validate_encrypted_safe(350,8992
+sec_pkcs12_validate_auth_safe(409,10621
+sec_pkcs12_get_auth_safe(453,11827
+sec_pkcs12_decrypt_auth_safe(489,12760
+sec_pkcs12_get_safe_contents(526,13770
+sec_pkcs12_validate_key_by_cert(579,15261
+sec_pkcs12_validate_cert_nickname(629,16621
+sec_pkcs12_validate_cert(726,19480
+sec_pkcs12_validate_cert_and_key(805,21802
+sec_pkcs12_validate_safe_keys(897,24428
+sec_pkcs12_validate_baggage_keys(1015,27658
+sec_pkcs12_validate(1142,31076
+sec_pkcs12_add_certificate_for_key(1182,32091
+sec_pkcs12_install_key_and_certs(1257,34062
+sec_pkcs12_install_safe_keys_and_certs(1340,36353
+sec_pkcs12_install_baggage_keys_and_certs(1400,37883
+sec_pkcs12_install(1461,39331
+sec_pkcs12_process(1507,40526
+SEC_PKCS12PutPFX(1538,41348
+SEC_PKCS12ValidData(1619,43154
+
+p12plcy.c,370
+#define PKCS12_NULL 6,85
+typedef struct pkcs12SuiteMapStr pkcs12SuiteMapStr8,114
+} pkcs12SuiteMap;pkcs12SuiteMap14,288
+SEC_PKCS12DecryptionAllowed(29,954
+SEC_PKCS12IsEncryptionAllowed(57,1552
+SEC_PKCS12GetPreferredEncryptionAlgorithm(75,1824
+SEC_PKCS12GetStrongestAllowedAlgorithm(95,2313
+SEC_PKCS12EnableCipher(119,2935
+SEC_PKCS12SetPreferredCipher(140,3296

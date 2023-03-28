@@ -1,0 +1,130 @@
+
+dongle.c,145
+#define PRHostEnt 23,343
+#define PR_NETDB_BUF_SIZE 24,376
+sec_MakeDongleKey(28,432
+SEC_ReadDongleFile(128,2868
+SEC_WriteDongleFile(175,3617
+
+secpwd.c,167
+static void echoOff(15,457
+static void echoOn(25,617
+unsigned char *SEC_GetPassword(35,775
+PRBool SEC_CheckPassword(71,1623
+PRBool SEC_BlindCheckPassword(92,2045
+
+derprint.c,335
+#define RIGHT_MARGIN	10,198
+getInteger256(16,289
+prettyNewline(42,731
+prettyIndent(58,949
+prettyPrintByte(78,1247
+prettyPrintLeaf(101,1621
+prettyPrintString(116,1894
+#define BUF_SIZE 119,1987
+prettyPrintObjectID(149,2441
+prettyPrintTag(202,3620
+prettyPrintLength(266,4888
+prettyPrintItem(336,6217
+DER_PrettyPrint(411,7810
+
+err.c,199
+#define __STDC__ 47,2168
+__err_set_progname(59,2305
+#define __dead69,2463
+err(74,2514
+verr(93,2754
+errx(112,3079
+verrx(131,3322
+warn(145,3548
+vwarn(163,3748
+warnx(180,4037
+vwarnx(198,4243
+
+secarb.c,676
+#define RIGHT_MARGIN 8,143
+typedef unsigned char Byte;Byte11,193
+static SECStatus prettyNewline(25,675
+static SECStatus prettyIndent(40,916
+static SECStatus prettyPrintByte(58,1250
+static SECStatus prettyPrintCString(78,1655
+static SECStatus prettyPrintLeafString(98,2024
+static SECStatus prettyPrintLeaf(130,2759
+static SECStatus prettyPrintEndContents(148,3175
+static SECStatus prettyPrintTag(153,3310
+static SECStatus prettyPrintLength(193,4209
+static SECStatus prettyPrint(204,4454
+SECStatus BER_PrettyPrintArb(230,5146
+static int PackHeader(242,5490
+SECStatus BER_Unparse(274,6291
+static int ResolveLength(303,7071
+SECStatus BER_ResolveLengths(334,7799
+
+secutil.c,2205
+XP_GetString(21,328
+SECU_PrintError(29,477
+SECU_PrintSystemError(44,820
+SECU_ErrorString(58,1099
+secu_ClearPassword(136,4143
+secu_GetZeroLengthPassword(145,4263
+SECU_GetPasswordString(166,4694
+SECU_GetPassword(196,5274
+SECU_GetModulePassword(245,6388
+secu_PutPassword(258,6672
+SECU_CheckKeyNameExists(333,8697
+SECU_GetPrivateKey(349,9037
+SECU_PutPrivateKey(363,9348
+SECU_ChangeKeyDBPassword(377,9686
+secu_GetDonglePassword(482,12146
+SECU_GetPrivateDongleKey(530,13259
+SECU_DefaultSSLDir(559,13942
+SECU_AppendFilenameToDir(577,14208
+SECU_ConfigDirectory(589,14441
+SECU_DatabaseFileName(619,15024
+SECU_GetClientAuthData(648,15644
+SECU_DER_Read(690,16920
+#define INDENT_MULT	722,17486
+static void secu_Indent(723,17508
+static void secu_Newline(731,17633
+SECU_PrintAsHex(737,17703
+SECU_PrintInteger(769,18353
+secu_PrintBoolean(782,18616
+secu_PrintUTCTime(799,18974
+secu_PrintAny(827,19549
+secu_PrintValidity(845,19911
+secu_PrintObjectID(857,20237
+secu_PrintAlgorithmID(876,20612
+secu_PrintAttribute(888,20943
+secu_PrintRSAPublicKey(925,21932
+secu_PrintSubjectPublicKeyInfo(942,22529
+PrintInvalidDateExten 967,23191
+secu_PrintExtensions(992,23892
+secu_PrintName(1031,24814
+secu_PrintKeyNickname(1067,25919
+SECU_PrintKeyNames(1091,26359
+secu_PrintCertNickname(1107,26693
+SECU_PrintCertificateNames(1144,27728
+SECU_CheckCertNameExists(1166,28403
+SECU_PrintCertificateRequest(1179,28609
+SECU_PrintCertificate(1217,29672
+SECU_PrintPublicKey(1262,31053
+SECU_PrintPrivateKey(1287,31596
+secu_PrintPKCS7EncContent(1327,32578
+secu_PrintRecipientInfo(1350,33263
+secu_PrintSignerInfo(1372,33950
+SECU_PrintCRLInfo(1417,35300
+secu_PrintPKCS7Signed(1452,36454
+secu_PrintPKCS7Enveloped(1530,38931
+secu_PrintPKCS7SignedAndEnveloped(1560,39859
+SECU_PrintCrl 1645,42719
+secu_PrintPKCS7Encrypted(1681,43426
+secu_PrintPKCS7Digested(1696,43864
+secu_PrintPKCS7ContentInfo(1715,44471
+SECU_PrintPKCS7ContentInfo(1780,46146
+int SECU_PrintSignedData(1801,46583
+static char *secu_AppendStr(1840,47542
+char *SECU_FileToString(1856,47880
+SECU_PKCS11Init(1874,48167
+SECKEYLowPublicKey *SECU_ConvHighToLow(1930,49710
+int _OS_SELECT 1979,50789
+SECU_GetPBEPassword(1986,50986

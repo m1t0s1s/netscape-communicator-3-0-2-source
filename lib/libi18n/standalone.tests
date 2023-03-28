@@ -1,0 +1,22 @@
+#!/bin/sh -x
+
+PATH=/bin:.
+JOYO=/u/bobj/src/codeconv.d/kanji.d/joyo.d
+
+cat $JOYO/joyo.sjis | s2e > joyo.sjis.s2e
+diff $JOYO/joyo.euc joyo.sjis.s2e
+
+cat $JOYO/joyo.sjis | s2j | j2s > joyo.sjis.s2j.j2s
+diff $JOYO/joyo.sjis joyo.sjis.s2j.j2s
+
+cat $JOYO/joyo.sjis | s2j | j2e > joyo.sjis.s2j.j2e
+diff $JOYO/joyo.euc joyo.sjis.s2j.j2e
+
+cat $JOYO/joyo.euc | e2s > joyo.euc.e2s
+diff $JOYO/joyo.sjis joyo.euc.e2s
+
+cat $JOYO/joyo.euc | e2j | j2s > joyo.euc.e2j.j2s
+diff $JOYO/joyo.sjis joyo.euc.e2j.j2s
+
+cat $JOYO/joyo.euc | e2j | j2e > joyo.euc.e2j.j2e
+diff $JOYO/joyo.euc joyo.euc.e2j.j2e

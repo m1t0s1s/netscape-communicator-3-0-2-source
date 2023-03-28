@@ -1,0 +1,19 @@
+# This install's the .class files
+#
+#FILES = ( ../../dist/IRIX5.3_DBG.OBJ/classes )
+#
+#NO_CAR_FILES = ( \.car\$ )
+#
+#${FILES} -> islay
+#	install -R -y -ofollow -oignlnks /e/local/netscape/java/dev-classes ;
+#	except_pat ${NO_CAR_FILES} ;
+
+# This install's the .car files
+
+CARFILES = ( *.car )
+
+NO_CLASS_FILES = ( \.class\$ )
+
+${CARFILES} -> islay
+	install -R -y -ofollow -oignlnks /e/local/netscape/java/netscape-classes ;
+

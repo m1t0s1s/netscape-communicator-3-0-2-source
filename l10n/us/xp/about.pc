@@ -1,0 +1,17 @@
+STRINGTABLE DISCARDABLE
+BEGIN
+IDS_ABOUT_0	"!<HEAD>\r\n<TITLE>Version %s</TITLE>\r\n</HEAD>\r\n<BODY BGCOLOR=""#C0C0C0"" TEXT=""#000000"" LINK=""#0000EE"" VLINK=""#551A8B"" ALINK=""#FF0000"">\r\n<TABLE CELLPADDING=""3"" WIDTH=""100%%"">\r\n<TR>\r\n <TD A"
+IDS_ABOUT_1	"!LIGN=""CENTER"">\r\n <A HREF=""http://home.netscape.com/eng/mozilla/3.0/about.html"">\r\n <IMG SRC=""about:logo"" ALT="""" BORDER=""0""></A></TD>\r\n<TD>\r\n  <CENTER>\r\n  <B><FONT SIZE=""5"">Netscape Navi"
+IDS_ABOUT_2	"!gator<SUP><FONT SIZE=""-1"">TM</FONT></SUP>\r\n  </FONT><BR>\r\n  <FONT SIZE=""4"">Version %s</BR></FONT></B>\r\n  Copyright &copy; 1994-1997 Netscape Communications Corporation, \r\n  All rights reserve"
+IDS_ABOUT_3	"!d.\r\n  </CENTER>\r\n  <P>\r\n  <FONT SIZE=""2"">\r\n  This software is subject to the license agreement set forth in the \r\n  <A HREF=""about:license"">license</A>. Please read and agree to all \r\n  terms b"
+IDS_ABOUT_4	"!efore using this software.\r\n  <P>\r\n  Report any problems through the \r\n  <A HREF=""http://cgi.netscape.com/cgi-bin/auto_bug.cgi""> \r\n  feedback page</A>.\r\n  <P>\r\n  Netscape Communications, Netscape"
+IDS_ABOUT_5	"!, Netscape Navigator and the Netscape\r\n  Communications logo are trademarks of Netscape Communications Corporation.\r\n  </FONT>\r\n</TD>\r\n</TR>\r\n<TR>\r\n<TD COLSPAN=""2""><HR SIZE=""3""></TD>\r\n</TR>\r\n<TR>"
+IDS_ABOUT_6	"!\r\n<TR>\r\n  <TD ALIGN=""CENTER""><IMG SRC=""about:rsalogo"" ALT=""""></TD>\r\n  <TD>\r\n    <FONT SIZE=""2"">\r\n    Contains security software from RSA Data Security, Inc.\r\n    <BR>Copyright &copy; 1994 R"
+IDS_ABOUT_7	"!SA Data Security, Inc.  All Rights Reserved.\r\n    <P>\r\n<B>%s</B>\r\n    </FONT>\r\n  </TD>\r\n</TR>\r\n<TR>\r\n<TD COLSPAN=""2""><HR SIZE=""3""></TD>\r\n</TR>\r\n<TR>\r\n  <TD ALIGN=""CENTER""><IMG SRC=""about:qtlogo"""
+IDS_ABOUT_8	"! ALT=""""></TD>\r\n  <TD>\r\n    <FONT SIZE=""2"">\r\n    Contains QuickTime<SUP><FONT SIZE=""1"">TM</FONT></SUP> plug-in software developed by Apple Computer, Inc.<BR>\r\n    Copyright &copy; 1996 Apple"
+IDS_ABOUT_9	"! Computer, Inc. All Rights Reserved.\r\n    QuickTime is a trademark of Apple Computer, Inc. registered in the U.S. and other countries.\r\n    </FONT>\r\n  </TD>\r\n</TR>\r\n<TR>\r\n<TD COLSPAN=""2""><HR SIZE"
+IDS_ABOUT_A	"!=""3""></TD>\r\n</TR>\r\n</TABLE>\r\n<FONT SIZE=""2"">\r\n</FONT>\r\n<FONT SIZE=""2"">\r\n</FONT>\r\n<FONT SIZE=""1"">\r\nAny provision of Netscape Software to the U.S.Government is with ""Restricted\r\nrights"" as fol"
+IDS_ABOUT_B	"!lows:  Use, duplication or disclosure by the Government is\r\nsubject to restrictions set forth in subparagraphs (a) through (d) of the\r\nCommercial Computer Restricted Rights clause at FAR 52.227"
+IDS_ABOUT_C	"!-19 when\r\napplicable, or in subparagraph (c) (1) (ii) of the Rights in Technical Data\r\nand Computer Software clause at DFARS 252.227-7013, and in similar clauses\r\nin the NASA FAR Supplement. Con"
+IDS_ABOUT_D	"tractor/manufacturer is Netscape Communications\r\nCorporation, 501 East Middlefield Road, Mountain View, California, 94043.\r\n</FONT>\r\n</BODY>\r\n"
+END

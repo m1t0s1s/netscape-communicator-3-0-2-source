@@ -1,0 +1,47 @@
+# 
+#           CONFIDENTIAL AND PROPRIETARY SOURCE CODE OF
+#              NETSCAPE COMMUNICATIONS CORPORATION
+# Copyright (C) 1996 Netscape Communications Corporation.  All Rights
+# Reserved.  Use of this Source Code is subject to the terms of the
+# applicable license agreement from Netscape Communications Corporation.
+# The copyright notice(s) in this Source Code does not indicate actual or
+# intended publication of this Source Code.
+#
+DEPTH = ../../..
+
+EXPORTS = \
+	certldap.h \
+	secnav.h \
+	pk11dlgs.h \
+	$(NULL)
+
+MODULE = security
+
+CSRCS = \
+	advisor.c \
+	certdlgs.c \
+	certmime.c \
+	javadlgs.c \
+	keypw.c \
+	pwdlgs.c \
+	secconfg.c \
+	secmoz.c \
+	securl.c \
+	pk11dlgs.c \
+	policy.c \
+	$(NULL)
+
+# not in akbar:
+#	certldap.c
+#	ldapdlgs.c
+#	statdlg.c
+
+#	fortdlgs.c
+#	premime.c
+#	premoz.c
+
+REQUIRES = security nspr layer applet htmldlgs img util pref js java jar ldap
+
+
+LIBRARY_NAME = secnav
+

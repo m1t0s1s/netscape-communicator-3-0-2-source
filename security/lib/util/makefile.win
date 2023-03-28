@@ -1,0 +1,86 @@
+IGNORE_MANIFEST=1
+#//------------------------------------------------------------------------
+#//
+#// Makefile to build the security util library
+#//
+#//------------------------------------------------------------------------
+
+
+#//------------------------------------------------------------------------
+#//
+#// Specify the depth of the current directory relative to the
+#// root of NS
+#//
+#//------------------------------------------------------------------------
+DEPTH= ..\..\..
+
+!ifndef MAKE_OBJ_TYPE
+MAKE_OBJ_TYPE=EXE
+!endif
+
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Make Variables here: (ie. PDFFILE, MAPFILE, ...)
+#//
+#//------------------------------------------------------------------------
+LIBNAME=secutl$(MOZ_BITS)
+PDBFILE=$(LIBNAME).pdb
+
+LINCS = -I$(PUBLIC)/security \
+        -I$(DEPTH)\include \
+        -I$(PUBLIC)\img
+
+#//------------------------------------------------------------------------
+#// 
+#// Define the files necessary to build the target (ie. OBJS)
+#//
+#//------------------------------------------------------------------------
+OBJS=                         \
+    .\$(OBJDIR)\alg1113.obj  \
+    .\$(OBJDIR)\alghmac.obj   \
+    .\$(OBJDIR)\algrand.obj   \
+    .\$(OBJDIR)\derdec.obj  \
+    .\$(OBJDIR)\derenc.obj   \
+    .\$(OBJDIR)\dersubr.obj  \
+    .\$(OBJDIR)\dertime.obj   \
+    .\$(OBJDIR)\secalgid.obj   \
+    .\$(OBJDIR)\secasn1d.obj   \
+    .\$(OBJDIR)\secasn1e.obj   \
+    .\$(OBJDIR)\secasn1u.obj   \
+    .\$(OBJDIR)\secitem.obj    \
+    .\$(OBJDIR)\secoid.obj   \
+    .\$(OBJDIR)\sectime.obj   \
+    .\$(OBJDIR)\win_rand.obj   \
+    .\$(OBJDIR)\secport.obj   \
+    .\$(OBJDIR)\secinit.obj   \
+    .\$(OBJDIR)\secpkcs5.obj   \
+    $(NULL)
+
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Targets here (ie. PROGRAM, LIBRARY, DLL, ...)
+#// (these must be defined before the common makefiles are included)
+#//
+#//------------------------------------------------------------------------
+LIBRARY=.\$(OBJDIR)\$(LIBNAME).lib
+
+#//------------------------------------------------------------------------
+#//
+#// install headers
+#//
+#//------------------------------------------------------------------------
+INSTALL_DIR=$(PUBLIC)\security
+INSTALL_FILE_LIST=alghmac.h base64.h secasn1.h secasn1t.h seccomon.h secder.h secdert.h secitem.h secoid.h secoidt.h secport.h secrng.h secrngt.h secerr.h secpkcs5.h
+
+#//------------------------------------------------------------------------
+#//
+#// Include the common makefile rules
+#//
+#//------------------------------------------------------------------------
+include <$(DEPTH)/config/rules.mak>
+
+install:: $(LIBRARY)
+    $(MAKE_INSTALL) $(LIBRARY) $(DIST)\lib
+
+export:: INSTALL_FILES
+

@@ -1,0 +1,106 @@
+#//------------------------------------------------------------------------
+#//
+#// Makefile to build JAVA - the native method stub compiler
+#//
+#//------------------------------------------------------------------------
+
+
+#//------------------------------------------------------------------------
+#//
+#// Specify the depth of the current directory relative to the
+#// root of NS
+#//
+#//------------------------------------------------------------------------
+DEPTH= ..\..
+
+!ifndef MAKE_OBJ_TYPE
+MAKE_OBJ_TYPE=EXE
+!endif
+
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Make Variables here: (ie. PDFFILE, MAPFILE, ...)
+#//
+#//------------------------------------------------------------------------
+EXENAME=java
+PDBFILE=$(EXENAME).pdb
+MAPFILE=$(EXENAME).map
+
+
+NSDIR=..\nsjava
+MDDIR=..\md
+
+#//------------------------------------------------------------------------
+#// 
+#// Define the files necessary to build the target (ie. OBJS)
+#//
+#//------------------------------------------------------------------------
+!if "$(OS_RELEASE)" == "16"
+LONG_NAME_OBJS =		\
+     .\$(OBJDIR)\java_s~1.obj	\
+     .\$(OBJDIR)\jrtpcos.obj	\
+    $(NULL)
+!else
+LONG_NAME_OBJS =                \
+    .\$(OBJDIR)\java_stub.obj   \
+    $(NULL)
+!endif
+
+NSJAVA_OBJS =			\
+    .\$(OBJDIR)\javai.obj	\
+    $(NULL)
+
+MD_OBJS=			\
+    \
+    $(NULL)
+
+OBJS=				\
+    $(LONG_NAME_OBJS)		\
+    $(MD_OBJS)			\
+    $(NULL)
+
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Targets here (ie. PROGRAM, LIBRARY, DLL, ...)
+#// (these must be defined before the common makefiles are included)
+#//
+#//------------------------------------------------------------------------
+PROGRAM=.\$(OBJDIR)\$(EXENAME).exe
+MAPFILE=$(EXENAME).map
+#//------------------------------------------------------------------------
+#//
+#// Define any local options for the make tools 
+#//     (ie. LCFLAGS, LLFLAGS, LLIBS, LINCS)
+#//
+#//------------------------------------------------------------------------
+
+!if "$(OS_RELEASE)" == "16"
+LLIBS=$(LLIBS) .\winsock2.lib
+!else
+LLIBS=$(LIBJRT) $(LIBNSPR)
+!endif
+
+
+#//------------------------------------------------------------------------
+#//
+#// Include the common makefile rules
+#//
+#//------------------------------------------------------------------------
+include <$(DEPTH)/sun-java/config/rules.mak>
+
+export:: $(PROGRAM)
+    $(MAKE_INSTALL) $(PROGRAM) $(DIST)\bin
+
+install:: export
+
+
+#//------------------------------------------------------------------------
+#//
+#// Local rules to build selected object files for other makes
+#//
+#// Be sure that the object directory exists by calling 
+#// MAKE_OBJECT_DIRECTORY first !
+#//
+#//------------------------------------------------------------------------
+nsjava_objs: $(OBJDIR) $(NSJAVA_OBJS)
+md_objs: $(OBJDIR) $(MD_OBJS)

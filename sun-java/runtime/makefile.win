@@ -1,0 +1,211 @@
+#//------------------------------------------------------------------------
+#//
+#// Makefile to build the machine independent java runtime library
+#//
+#//------------------------------------------------------------------------
+
+
+#//------------------------------------------------------------------------
+#//
+#// Specify the depth of the current directory relative to the
+#// root of NS
+#//
+#//------------------------------------------------------------------------
+DEPTH= ..\..
+
+!ifndef MAKE_OBJ_TYPE
+MAKE_OBJ_TYPE=DLL
+!endif
+
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Make Variables here: (ie. PDFFILE, MAPFILE, ...)
+#//
+#//------------------------------------------------------------------------
+LIBNAME = javart$(OS_RELEASE)
+PDBFILE = $(LIBNAME).pdb
+
+
+#//------------------------------------------------------------------------
+#// 
+#// Define the files necessary to build the target (ie. OBJS)
+#//
+#//------------------------------------------------------------------------
+!if "$(OS_RELEASE)" == "16"
+LONG_NAME_OBJS=                         \
+    .\$(OBJDIR)\rt_nodl.obj             \
+    .\$(OBJDIR)\classi~1.obj            \
+    .\$(OBJDIR)\classr~1.obj            \
+    .\$(OBJDIR)\common~1.obj            \
+    .\$(OBJDIR)\thread~1.obj            \
+    .\$(OBJDIR)\compiler.obj            \
+    .\$(OBJDIR)\check_~1.obj            \
+    .\$(OBJDIR)\check_~2.obj            \
+    .\$(OBJDIR)\classl~1.obj            \
+    .\$(OBJDIR)\classr~3.obj            \
+    .\$(OBJDIR)\gifdec~1.obj            \
+    .\$(OBJDIR)\except~1.obj            \
+    .\$(OBJDIR)\except~2.obj            \
+    .\$(OBJDIR)\filesy~1.obj            \
+    .\$(OBJDIR)\interp~1.obj            \
+    $(NULL)
+!else
+LONG_NAME_OBJS =                        \
+    .\$(OBJDIR)\classinitialize.obj     \
+    .\$(OBJDIR)\classresolver.obj       \
+    .\$(OBJDIR)\common_exceptions.obj   \
+    .\$(OBJDIR)\threadruntime.obj       \
+    .\$(OBJDIR)\compiler.obj         \
+    .\$(OBJDIR)\check_class.obj         \
+    .\$(OBJDIR)\check_code.obj          \
+    .\$(OBJDIR)\classloader.obj         \
+    .\$(OBJDIR)\classruntime.obj        \
+    .\$(OBJDIR)\gifdecoder.obj          \
+    .\$(OBJDIR)\exception.obj           \
+    .\$(OBJDIR)\exceptions.obj          \
+    .\$(OBJDIR)\filesystem.obj          \
+    .\$(OBJDIR)\interpreter.obj         \
+    $(NULL)
+!endif
+
+OBJS=                                   \
+    .\$(OBJDIR)\agent.obj               \
+    .\$(OBJDIR)\jrijdk.obj              \
+    .\$(OBJDIR)\class.obj               \
+    .\$(OBJDIR)\date.obj                \
+    .\$(OBJDIR)\debug.obj               \
+    .\$(OBJDIR)\globals.obj             \
+    .\$(OBJDIR)\io.obj                  \
+    .\$(OBJDIR)\math.obj                \
+    .\$(OBJDIR)\object.obj              \
+    .\$(OBJDIR)\opnames.obj             \
+    .\$(OBJDIR)\profiler.obj            \
+    .\$(OBJDIR)\runtime.obj             \
+    .\$(OBJDIR)\security.obj            \
+    .\$(OBJDIR)\string.obj              \
+    .\$(OBJDIR)\stubs.obj               \
+    .\$(OBJDIR)\system.obj              \
+    .\$(OBJDIR)\thread.obj              \
+    .\$(OBJDIR)\threads.obj             \
+    .\$(OBJDIR)\utf.obj                 \
+    .\$(OBJDIR)\util.obj                \
+    .\$(OBJDIR)\zip.obj                 \
+    $(LONG_NAME_OBJS)                   \
+    $(NULL)
+
+
+!if "$(OS_RELEASE)" == "16"
+LONG_NAME_JAVAH_OBJS =                  \
+    .\$(OBJDIR)\classl~1.obj            \
+    .\$(OBJDIR)\classr~1.obj            \
+    .\$(OBJDIR)\classr~2.obj            \
+    .\$(OBJDIR)\runtim~1.obj            \
+    $(NULL)
+!else
+LONG_NAME_JAVAH_OBJS =                  \
+    .\$(OBJDIR)\classloader.obj         \
+    .\$(OBJDIR)\classresolver.obj       \
+    .\$(OBJDIR)\classresolver_stubs.obj \
+    .\$(OBJDIR)\runtime_stubs.obj       \
+    $(NULL)
+!endif
+
+JAVAH_OBJS=                             \
+    .\$(OBJDIR)\globals.obj             \
+    .\$(OBJDIR)\util.obj                \
+    .\$(OBJDIR)\utf.obj                 \
+    .\$(OBJDIR)\zip.obj                 \
+    $(LONG_NAME_JAVAH_OBJS)             \
+    $(NULL)
+
+NSJAVA_OBJS=                            \
+    .\$(OBJDIR)\stubs.obj               \
+    $(NULL)
+
+
+!if "$(OS_RELEASE)" == "16"
+LONG_NAME_NSAPPLET_OBJS =               \
+    .\$(OBJDIR)\jpegde~1.obj            \
+       $(NULL)
+!else
+LONG_NAME_NSAPPLET_OBJS =               \
+    .\$(OBJDIR)\jpegdecoder.obj         \
+       $(NULL)
+!endif
+
+NSAPPLET_OBJS=                          \
+    $(LONG_NAME_NSAPPLET_OBJS)          \
+    $(NULL)
+
+
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Targets here (ie. PROGRAM, LIBRARY, DLL, ...)
+#// (these must be defined before the common makefiles are included)
+#//
+#//------------------------------------------------------------------------
+!if "$(OS_RELEASE)" == "16"
+include <CLASSF~1.MK>
+!else
+include <classfiles.mk>
+!endif
+
+JAVA_HEADER_FILES=$(GENERATED_STUBS_CLASSFILES)
+JAVA_STUB_FILES=$(GENERATED_STUBS_CLASSFILES)
+
+LIBRARY=.\$(OBJDIR)\$(LIBNAME).lib
+
+#//------------------------------------------------------------------------
+#//
+#// Define any local options for the make tools 
+#//     (ie. LCFLAGS, LLFLAGS, LLIBS, LINCS)
+#//
+#//------------------------------------------------------------------------
+LINCS=$(LINCS) -I$(DEPTH)/jpeg
+
+#//------------------------------------------------------------------------
+#//
+#// Include the common makefile rules
+#//
+#//------------------------------------------------------------------------
+include <$(DEPTH)/sun-java/config/rules.mak>
+
+#//
+#// Win16 Sucks SO BAD!!!   We must turn off all optimization for
+#// release builds so jrijdk.c can build.  Otherwize MSVC gets an
+#// Internal Compiler Error.
+#//
+!if "$(OS_RELEASE)" == "16"
+OPTIMIZER=$(OPTIMIZER) -Od
+!endif
+
+export:: $(JAVA_HEADER_FILES) $(JAVA_STUB_FILES) $(LIBRARY)
+    $(MAKE_INSTALL) $(LIBRARY) $(DIST)\lib
+
+install:: export
+
+clobber::
+    $(RM_R) _stubs
+    $(RM_R) _gen
+
+
+#//------------------------------------------------------------------------
+#//
+#// Local rules to build selected object files for other makes
+#//
+#// Be sure that the object directory exists by calling 
+#// MAKE_OBJECT_DIRECTORY first !
+#//
+#//------------------------------------------------------------------------
+javah_objs: $(OBJDIR) $(JAVAH_OBJS)
+
+nsjava_objs: $(OBJDIR) $(NSJAVA_OBJS)
+
+nsapplet_objs: $(OBJDIR) $(NSAPPLET_OBJS)
+
+
+!if exist($(DEPFILE))
+!message +++ MAKE: Found local dependancies file!!
+!message 
+include <$(DEPFILE)>
+!endif

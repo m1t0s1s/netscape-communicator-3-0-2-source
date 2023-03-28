@@ -1,0 +1,89 @@
+#//------------------------------------------------------------------------
+#//
+#// Makefile to build the unicode converter library
+#//
+#//------------------------------------------------------------------------
+
+
+#//------------------------------------------------------------------------
+#//
+#// Specify the depth of the current directory relative to the
+#// root of NS
+#//
+#//------------------------------------------------------------------------
+DEPTH= ..\..\..
+
+MAKE_OBJ_TYPE=DLL
+
+!ifndef OS_RELEASE
+OS_RELEASE=32
+!endif
+
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Make Variables here: (ie. PDFFILE, MAPFILE, ...)
+#//
+#//------------------------------------------------------------------------
+DLLNAME=uni$(OS_RELEASE)00
+PDBFILE=$(DLLNAME).pdb
+MAPFILE=$(DLLNAME).map
+RESFILE=unitable.res
+
+!if "$(OS_RELEASE)" == "16"
+DEFFILE=$(DLLNAME).def
+!endif
+#//------------------------------------------------------------------------
+#// 
+#// Define the files necessary to build the target (ie. OBJS)
+#//
+#//------------------------------------------------------------------------
+OBJS=                                   \
+    .\$(OBJDIR)\unifont.obj            \
+    .\$(OBJDIR)\unitbl.obj            \
+    $(NULL)
+
+DLL=.\$(OBJDIR)\$(DLLNAME).dll
+LIBRARY=.\$(OBJDIR)\$(DLLNAME).lib
+
+#//------------------------------------------------------------------------
+#//
+#// Define any local options for the make tools 
+#//     (ie. LCFLAGS, LLFLAGS, LLIBS, LINCS)
+#//
+#//------------------------------------------------------------------------
+LLIBS=$(LLIBS) 
+LINCS=$(LINCS) -I_gen 
+LCFLAGS=$(LCFLAGS) /Fr
+!ifdef ALL_UNICODE_TABLE
+!if "$(OS_RELEASE)" == "32"
+RCFLAGS=$(RCFLAGS) /DALL_UNICODE_TABLE /DXP_WIN32
+!else
+RCFLAGS=$(RCFLAGS) /DALL_UNICODE_TABLE
+!endif
+!else
+!if "$(OS_RELEASE)" == "32"
+RCFLAGS=$(RCFLAGS) /DXP_WIN32
+!endif
+!endif
+
+#//------------------------------------------------------------------------
+#//
+#// Include the common makefile rules
+#//
+#//------------------------------------------------------------------------
+include <$(DEPTH)/sun-java/config/rules.mak>
+
+export:: $(DLL) $(LIBRARY)
+    $(MAKE_INSTALL) .\$(OBJDIR)\$(DLLNAME).dll $(DIST)\bin
+    $(MAKE_INSTALL) .\$(OBJDIR)\$(DLLNAME).lib $(DIST)\lib
+
+install:: export
+
+clobber::
+    $(RM_R)
+
+!if exist($(DEPFILE))
+!message +++ MAKE: Found local dependancies file!!
+!message 
+include <$(DEPFILE)>
+!endif

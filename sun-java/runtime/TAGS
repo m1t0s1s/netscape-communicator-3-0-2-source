@@ -1,0 +1,879 @@
+
+jrijdk.c,6868
+#define INITGUID11,431
+#define GLOBAL_TABLE_INITIAL_SIZE	45,1368
+#define GLOBAL_TABLE_INCREMENT_SIZE	46,1406
+typedef JHandle** RefCell;RefCell48,1447
+RefTable_init(51,1501
+#define RefTable_deref(RefTable_deref71,1963
+#define RefTable_refIsValid(RefTable_refIsValid73,2037
+#define RefTable_push(RefTable_push84,2346
+#define RefTable_push1(RefTable_push196,2709
+RefTable_grow(102,2931
+#define RefTable_push(RefTable_push126,3474
+#define RefTable_ensure(RefTable_ensure136,3774
+#define MAX(MAX141,3930
+RefTable_grow(145,4008
+#define RefTable_pop(RefTable_pop167,4511
+#define RefTable_top(RefTable_top172,4625
+#define RefTable_beginFrame(RefTable_beginFrame177,4749
+#define RefTable_endFrame(RefTable_endFrame182,4863
+#define EMPTY	184,4929
+RefTable_insert(187,5011
+#define RefTable_set(RefTable_set222,5971
+#define RefTable_drop(RefTable_drop228,6145
+RefTable_isInTable(232,6230
+#define RefTable_isLocation(RefTable_isLocation243,6478
+#define RefTable_get(RefTable_get248,6589
+RefTable_describe(255,6794
+#define NaEnv2EE(NaEnv2EE283,7579
+#define RtEnv2EE(RtEnv2EE285,7669
+#define RfEnv2EE(RfEnv2EE287,7760
+#define DbEnv2EE(DbEnv2EE289,7854
+#define CpEnv2EE(CpEnv2EE291,7946
+#define ExEnv2EE(ExEnv2EE293,8038
+#define EE2NaEnv(EE2NaEnv296,8127
+#define EE2RtEnv(EE2RtEnv297,8174
+#define EE2RfEnv(EE2RfEnv298,8222
+#define EE2DbEnv(EE2DbEnv299,8273
+#define EE2CpEnv(EE2CpEnv300,8322
+#define EE2ExEnv(EE2ExEnv301,8371
+#define JRIEnv_ref(JRIEnv_ref309,8661
+#define JRIEnv_deref(JRIEnv_deref312,8762
+#define JRIEnv_ref(JRIEnv_ref319,8941
+#define JRIEnv_deref(JRIEnv_deref320,8995
+#define jriRuntime	331,9400
+jri_Ref2Class(342,9709
+jri_FindFieldBlock(358,10167
+jri_GetMethodBlock(393,10902
+#define WITH_LOCKED_GUI_THREAD	459,12644
+#define END_WITH_LOCKED_GUI_THREAD	464,12797
+#define WITH_LOCKED_GUI_THREAD 470,12897
+#define END_WITH_LOCKED_GUI_THREAD471,12929
+typedef union JRI_PushArgsType JRI_PushArgsType475,12973
+} JRI_PushArgsType;JRI_PushArgsType478,13033
+(*JRI_PushArguments_t)JRI_PushArguments_t481,13068
+jri_PushArgumentsVararg(485,13232
+jri_PushArgumentsArray(541,14862
+jri_Invoke(599,16519
+jri_GetInterface(801,23203
+jri_AddRef(821,24047
+jri_Release(827,24158
+typedef void	JavaObject;JavaObject836,24424
+jri_NativeGetInterface(839,24483
+JRI_PUBLIC_API(845,24628
+jri_DefineClass(856,24826
+jri_FindClass(908,26253
+jri_Throw(923,26562
+jri_ThrowNew(939,27004
+jri_ExceptionOccurred(955,27476
+jri_ExceptionDescribe(967,27705
+jri_ExceptionDescribe(986,28213
+jri_ExceptionClear(996,28406
+jri_NewGlobalRef(1012,28810
+jri_DisposeGlobalRef(1035,29315
+jri_GetGlobalRef(1046,29572
+jri_SetGlobalRef(1056,29817
+jri_IsSameObject(1068,30133
+jri_GetMethodID(1078,30478
+jri_Construct(1100,31220
+jri_NewObjectA(1130,32115
+jri_NewObjectV(1139,32385
+jri_NewObject(1148,32654
+jri_GetObjectClass(1162,33031
+jri_IsInstanceOf(1170,33261
+jri_PrintObject(1183,33542
+jri_GetFieldID(1200,33988
+#define obj_Getoffsetaddr(obj_Getoffsetaddr1227,34777
+#define obj_Getoffset(obj_Getoffset1228,34848
+#define obj_Setoffset(obj_Setoffset1229,34909
+jri_GetField_ref(1232,35011
+jri_GetField_boolean(1243,35332
+jri_GetField_byte(1252,35578
+jri_GetField_char(1261,35821
+jri_GetField_short(1270,36065
+jri_GetField_int(1279,36309
+jri_GetField_long(1288,36550
+jri_GetField_float(1300,36866
+jri_GetField_double(1311,37151
+jri_SetField_ref(1325,37550
+jri_SetField_boolean(1334,37821
+jri_SetField_byte(1344,38079
+jri_SetField_char(1354,38334
+jri_SetField_short(1364,38589
+jri_SetField_int(1374,38844
+jri_SetField_long(1384,39096
+jri_SetField_float(1397,39430
+jri_SetField_double(1407,39693
+#define DEFINE_CALLMETHOD(DEFINE_CALLMETHOD1423,40099
+DEFINE_CALLMETHOD(1471,41912
+#define DEFINE_CALLSTATICMETHOD(DEFINE_CALLSTATICMETHOD1481,42275
+jri_GetStaticFieldID(1559,45137
+jri_GetStaticField_ref(1589,46096
+jri_GetStaticField_boolean(1600,46392
+jri_GetStaticField_byte(1609,46627
+jri_GetStaticField_char(1618,46859
+jri_GetStaticField_short(1627,47092
+jri_GetStaticField_int(1636,47325
+jri_GetStaticField_long(1645,47549
+jri_GetStaticField_float(1655,47817
+jri_GetStaticField_double(1664,48053
+jri_SetStaticField_ref(1676,48404
+jri_SetStaticField_boolean(1688,48705
+jri_SetStaticField_byte(1698,48961
+jri_SetStaticField_char(1708,49214
+jri_SetStaticField_short(1718,49467
+jri_SetStaticField_int(1728,49723
+jri_SetStaticField_long(1738,49973
+jri_SetStaticField_float(1749,50259
+jri_SetStaticField_double(1759,50505
+jri_NewString(1776,51027
+jri_GetString(1795,51669
+jri_GetStringLength(1810,52099
+jri_GetStringChars(1818,52332
+jri_NewStringUTF(1839,52917
+jri_GetStringUTFLength(1847,53152
+jri_GetStringUTFChars(1866,53719
+jri_NewScalarArray(1878,54153
+jri_GetScalarArray(1915,55332
+jri_GetScalarArrayLength(1931,55798
+jri_GetScalarArrayElements(1947,56227
+jri_NewObjectArray(1961,56682
+jri_GetObjectArray(1997,57653
+jri_GetObjectArrayLength(2013,58110
+jri_GetObjectArrayElement(2029,58546
+jri_SetObjectArrayElement(2042,58967
+jri_RegisterNatives(2073,59844
+jri_UnregisterNatives(2121,61416
+jri_RuntimeGetInterface(2145,62220
+JRI_PUBLIC_API(2153,62379
+jri_DisposeRuntime(2210,64125
+jri_SetIOMode(2218,64341
+jri_SetFSMode(2225,64528
+jri_SetRTMode(2232,64718
+jri_NewEnv(2246,65055
+jri_DisposeEnv(2308,66846
+jri_GetRuntime(2316,67001
+jri_GetThread(2322,67098
+jri_SetClassLoader(2330,67263
+jri_ReflectionGetInterface(2339,67536
+jri_GetClassCount(2345,67661
+jri_GetClass(2351,67762
+jri_GetClassName(2373,68272
+jri_VerifyClass(2388,68635
+jri_GetClassSuperclass(2399,68907
+jri_GetClassInterfaceCount(2410,69189
+jri_GetClassInterface(2421,69449
+jri_GetClassFieldCount(2443,70146
+jri_GetClassFieldInfo(2456,70446
+jri_GetClassMethodCount(2495,71593
+jri_GetClassMethodInfo(2506,71847
+jri_DebuggerGetInterface(2552,73320
+jri_GetFrameCount(2560,73470
+jri_FindFrame(2576,73775
+jri_GetFrameInfo(2601,74373
+jri_GetSourceInfo(2644,75446
+jri_FindLocalVar(2652,75686
+jri_GetVarInfo(2674,76309
+jri_GetVarAddr(2719,77847
+jri_GetVar(2739,78414
+jri_GetVar_boolean(2746,78612
+jri_GetVar_byte(2754,78834
+jri_GetVar_char(2762,79039
+jri_GetVar_short(2770,79245
+jri_GetVar_int(2778,79450
+jri_GetVar_long(2786,79654
+jri_GetVar_float(2794,79869
+jri_GetVar_double(2802,80080
+jri_SetVar(2812,80370
+jri_SetVar_boolean(2820,80573
+jri_SetVar_byte(2828,80789
+jri_SetVar_char(2836,81002
+jri_SetVar_short(2844,81215
+jri_SetVar_int(2852,81428
+jri_SetVar_long(2860,81638
+jri_SetVar_float(2868,81851
+jri_SetVar_double(2876,82064
+jri_StepOver(2888,82391
+jri_StepIn(2895,82547
+jri_StepOut(2902,82701
+jri_Continue(2909,82856
+jri_Return(2916,83012
+jri_CompilerGetInterface(2927,83392
+jri_CompileClass(2934,83533
+jri_ExprGetInterface(2946,83992
+jri_CompileExpr(2952,84110
+jri_EvalExpr(2960,84321
+JRI_PUBLIC_API(2981,84968
+
+agent.c,2059
+#define get_classblock(get_classblock52,1586
+#define obj_getoffset(obj_getoffset54,1708
+int dprintf(59,1812
+void dprintf(73,2031
+void handleExit(79,2151
+void sun_tools_debug_Agent_initAgent(86,2314
+long sun_tools_debug_Agent_objectId(93,2460
+void sun_tools_debug_Agent_runMain(99,2577
+RPI_decode_stack_frame(107,2799
+RPI_get_stack_frame(195,5456
+sun_tools_debug_Agent_getStackFrame(216,5955
+sun_tools_debug_Agent_getSlotObject(257,6970
+getFieldBlock 287,7794
+static int signature2Type(311,8298
+sun_tools_debug_Agent_getSlotSignature(345,9216
+sun_tools_debug_Agent_getSlotBoolean(374,9857
+sun_tools_debug_Agent_getSlotInt(398,10351
+sun_tools_debug_Agent_getSlotFloat(434,11117
+sun_tools_debug_Agent_getSlotLong(466,11868
+sun_tools_debug_Agent_getSlotArray(492,12469
+sun_tools_debug_Agent_getSlotArraySize(522,13269
+sun_tools_debug_Agent_getMethods(534,13548
+sun_tools_debug_Agent_getFields(582,14915
+sun_tools_debug_Agent_getClasses(635,16432
+sun_tools_debug_BreakpointHandler_setBreakpoint(661,17040
+sun_tools_debug_BreakpointHandler_clrBreakpoint(682,17529
+sun_tools_debug_Agent_lineno2pc(697,17896
+sun_tools_debug_Agent_method2pc(762,19843
+sun_tools_debug_Agent_pc2lineno(777,20251
+RPI_getStackValue 813,21120
+sun_tools_debug_Agent_getStackObject(836,21597
+sun_tools_debug_Agent_getStackBoolean(844,21860
+sun_tools_debug_Agent_getStackInt(852,22118
+sun_tools_debug_Agent_getStackLong(860,22372
+sun_tools_debug_Agent_getStackFloat(870,22656
+sun_tools_debug_Agent_exceptionStackTrace(880,22943
+void sun_tools_debug_Agent_setSingleStep(919,24210
+sun_tools_debug_Agent_getClassSourceName(928,24439
+sun_tools_debug_Agent_setSlotBoolean(937,24666
+sun_tools_debug_Agent_setSlotInt(956,25168
+sun_tools_debug_Agent_setSlotLong(981,25848
+sun_tools_debug_Agent_setSlotDouble(1002,26369
+sun_tools_debug_Agent_setStackBoolean(1034,27152
+sun_tools_debug_Agent_setStackInt(1045,27472
+sun_tools_debug_Agent_setStackLong(1055,27746
+sun_tools_debug_Agent_setStackDouble(1067,28078
+sun_tools_debug_Agent_setSystemIO(1087,28864
+
+check_class.c,388
+enum { LegalClass,49,1662
+enum { LegalClass, LegalField,49,1662
+enum { LegalClass, LegalField, LegalMethod 49,1662
+VerifyClass(55,1719
+verify_constant_pool(133,4278
+is_legal_fieldname(280,8764
+is_legal_field_signature(310,9569
+is_legal_method_signature(324,9897
+skip_over_fieldname(360,11033
+skip_over_field_signature(386,11696
+CCerror 425,12592
+    #define BUF_LEN	428,12656
+
+check_code.c,3771
+#define MAX_ARRAY_DIMENSIONS 46,1377
+    ITEM_Bogus,65,1735
+    ITEM_Void,66,1751
+    ITEM_Integer,67,1806
+    ITEM_Float,68,1824
+    ITEM_Double,69,1840
+    ITEM_Double_2,70,1857
+    ITEM_Long,71,1914
+    ITEM_Long_2,72,1929
+    ITEM_Array,73,1982
+    ITEM_Object,74,1998
+    ITEM_NewObject,75,2051
+    ITEM_InitObject,76,2110
+    ITEM_ReturnAddress,78,2193
+    ITEM_Byte,81,2373
+    ITEM_Short,82,2388
+    ITEM_Char83,2404
+#define UNKNOWN_STACK_SIZE 87,2423
+#define UNKNOWN_REGISTER_COUNT 88,2453
+#define UNKNOWN_RET_INSTRUCTION 89,2487
+#define MAX(MAX93,2546
+#define MIN(MIN94,2588
+#define BITS_PER_INT 96,2631
+#define SET_BIT(SET_BIT97,2692
+#define	IS_BIT_SET(IS_BIT_SET99,2806
+typedef unsigned long fullinfo_type;fullinfo_type102,2922
+typedef unsigned int *bitvector;bitvector103,2959
+#define GET_ITEM_TYPE(GET_ITEM_TYPE105,2993
+#define GET_INDIRECTION(GET_INDIRECTION106,3039
+#define GET_EXTRA_INFO(GET_EXTRA_INFO107,3096
+#define WITH_ZERO_INDIRECTION(WITH_ZERO_INDIRECTION108,3159
+#define WITH_ZERO_EXTRA_INFO(WITH_ZERO_EXTRA_INFO109,3219
+#define MAKE_FULLINFO(MAKE_FULLINFO111,3275
+#define MAKE_CLASSNAME_INFO(MAKE_CLASSNAME_INFO113,3404
+#define MAKE_CLASSNAME_INFO_WITH_COPY(MAKE_CLASSNAME_INFO_WITH_COPY116,3569
+#define MAKE_Object_ARRAY(MAKE_Object_ARRAY119,3732
+#define UCP(UCP125,3909
+#define CH(CH126,3947
+#define USCH(USCH127,3977
+#define SH(SH128,4021
+#define ULSH(ULSH129,4074
+#define LG(LG130,4119
+#define NULL_FULLINFO 132,4173
+#define opc_invokeinit 135,4299
+struct context_type context_type138,4331
+struct stack_info_type stack_info_type173,5725
+struct register_info_type register_info_type178,5813
+struct mask_type mask_type185,6028
+struct instruction_data_type instruction_data_type191,6096
+struct handler_info_type handler_info_type206,6541
+struct stack_item_type stack_item_type211,6640
+typedef struct context_type context_type;context_type217,6728
+typedef struct instruction_data_type instruction_data_type;instruction_data_type218,6770
+typedef struct stack_item_type stack_item_type;stack_item_type219,6830
+typedef struct register_info_type register_info_type;register_info_type220,6878
+typedef struct stack_info_type stack_info_type;stack_info_type221,6932
+typedef struct mask_type mask_type;mask_type222,6980
+#define NEW(NEW271,9252
+#define ZNEW(ZNEW273,9345
+void ScanVerifyContext(300,10424
+bool_t verify_class_codes(331,11216
+verify_field(394,12991
+    #define BUF_LEN	396,13052
+verify_method(416,13535
+verify_opcode_operands(515,17082
+set_protected(853,28940
+isSuperClass(896,30094
+initialize_exception_table(935,31190
+static int32_t instruction_length(980,32838
+isLegalTarget(1030,34248
+verify_constant_pool_type(1043,34603
+initialize_dataflow(1055,35039
+run_dataflow(1114,37049
+check_register_values(1183,39118
+pop_stack(1265,41971
+update_registers(1657,55191
+push_stack(1787,59584
+merge_into_successors(1966,65259
+merge_into_one_successor(2092,69370
+merge_stack(2211,73984
+merge_registers(2255,75418
+copy_stack(2390,80049
+copy_masks(2416,80660
+add_to_masks(2432,81181
+#define CCSegSize 2456,82125
+struct CCpool CCpool2458,82149
+static void CCinit(2468,82427
+static void CCreinit(2483,82867
+static void CCdestroy(2492,83108
+CCalloc(2507,83512
+cp_index_to_signature(2562,84911
+cp_index_to_fieldname(2573,85311
+cp_index_to_class_fullinfo(2588,85868
+CCerror 2605,86432
+    #define BUF_LEN	2609,86545
+signature_to_fieldtype(2627,87032
+decrement_indirection(2730,89635
+static bool_t isAssignableTo(2750,90186
+merge_fullinfo_types(2764,90712
+object_fullinfo_to_classclass(2929,96906
+print_stack(2953,97504
+print_registers(2967,97862
+print_fullinfo_type(2998,98732
+print_formatted_fieldname(3064,100338
+
+class.c,507
+java_lang_Class_forName(42,1222
+java_lang_Class_getName(64,1682
+java_lang_Class_getSuperclass(79,2018
+java_lang_Class_getInterfaces(90,2261
+java_lang_Class_getClassLoader(123,3166
+java_lang_Class_newInstance(134,3423
+java_lang_Class_isInterface(147,3706
+class_loader(164,4081
+java_lang_ClassLoader_defineClass(187,4742
+java_lang_ClassLoader_resolveClass(281,7611
+java_lang_ClassLoader_findSystemClass(303,8141
+java_lang_ClassLoader_init(329,8725
+java_lang_ClassLoader_checkInitialized(336,8878
+
+classloader.c,1192
+AddBinClass(64,1801
+DelBinClass(136,4271
+LoadFile(179,6019
+LoadFileZip(266,8489
+DoImport(304,9258
+stat_source(339,10038
+#define NAMEBUFLEN 341,10111
+struct CICcontext CICcontext399,11364
+typedef struct CICcontext CICcontext;CICcontext407,11504
+#define get1byteI8(get1byteI8412,11680
+#define get1byteU8(get1byteU8414,11726
+#define get2bytesI16(get2bytesI16416,11781
+#define get2bytesU16(get2bytesU16418,11833
+#define get4bytesI32(get4bytesI32420,11886
+#define ERROR(ERROR435,12577
+#define ERROR(ERROR439,12763
+createInternalClass(444,12890
+static bool_t InitializeStaticVar(636,19179
+static bool_t LoadConstantPool(768,23392
+static bool_t ReadInCode(905,27248
+static bool_t ReadLineTable(963,29226
+static bool_t ReadLocalVars(984,29967
+unsigned Signature2ArgsSize(1008,30819
+createFakeArrayClass(1051,31775
+static unsigned long get1byte(1151,35296
+#define U32(U321164,35584
+static unsigned long get2bytes(1167,35616
+static unsigned long get4bytes(1180,35891
+static void getNbytes(1199,36269
+static char *getAsciz(1210,36551
+static char *getAscizFromClass(1224,37076
+static void ValidateClassName(1240,37745
+char *GetClassConstantClassName(1253,38120
+
+classruntime.c,597
+VerifyClasses(58,1456
+invokeJavaMethod(89,2475
+invokeSynchronizedJavaMethod(139,4154
+invokeNativeMethod(190,5890
+invokeSynchronizedNativeMethod(213,6619
+invokeLazyNativeMethod(238,7431
+invokeAbstractMethod(257,8016
+dynoLink(266,8219
+newobject(285,8701
+RunStaticInitializers(308,9238
+InitializeInvoker(352,10630
+JRI_PUBLIC_API(377,11342
+SignalError1(417,12343
+addhex(475,13911
+adddec(484,14097
+pc2lineno(500,14334
+static struct methodblock *pc2method(514,14685
+pc2string(544,15488
+MakeUniString(592,16731
+MakeString(616,17259
+MakeByteString(634,17591
+JRI_PUBLIC_API(650,17899
+
+compiler.c,836
+#define COMPILER_VERSION 35,1214
+#define COMPILER_VERSION 39,1369
+void InitializeForCompiler(80,3196
+void CompilerFreeClass(85,3315
+void CompilerFreeMethod(90,3422
+void CompilerCompileClass(96,3543
+invokeCompiledMethod(102,3666
+void CompiledCodeSignalHandler(114,3979
+void ReadInCompiledCode(119,4136
+bool_t PCinCompiledCode(134,4563
+unsigned char *CompiledCodePC(138,4706
+JRI_PUBLIC_API(142,4856
+JRI_PUBLIC_API(146,5027
+PrintToConsole(155,5219
+void* mymalloc(174,5588
+void* mycalloc(175,5635
+void* myrealloc(176,5692
+void myfree(177,5753
+void java_lang_Compiler_initialize 276,8055
+java_lang_Compiler_isSilent(288,8343
+java_lang_Compiler_compileClass(294,8430
+java_lang_Compiler_compileClasses(307,8755
+java_lang_Compiler_command(320,9091
+java_lang_Compiler_enable(333,9377
+java_lang_Compiler_disable(340,9496
+
+gifdecoder.c,81
+#define OUTCODELENGTH 39,1235
+sun_awt_image_GifImageDecoder_parseImage(42,1268
+
+date.c,214
+java_utilDate_toPlatformTM(34,1240
+java_util_Date_expand(49,1698
+java_util_Date_computeValue(76,2580
+java_util_Date_toString(96,3108
+java_util_Date_toLocaleString(115,3587
+java_util_Date_toGMTString(141,4303
+
+debug.c,202
+threadName(43,1200
+#define THREADNAMEMAX 46,1299
+threadDumpInfo(61,1709
+DumpThreadsHelper(95,2728
+DumpThreads(122,3458
+DumpAllStacks(130,3588
+registeredDumpHelper(140,3715
+DumpMonitors(147,3855
+
+exception.c,275
+#define min(min43,1232
+getStackDepth(48,1365
+printStackTrace(66,1792
+		#define LEN 85,2484
+printToPrintStream(106,2948
+java_lang_Throwable_printStackTrace0(120,3345
+#define MULTIPLIER 130,3703
+fillInStackTrace(133,3759
+java_lang_Throwable_fillInStackTrace(201,6178
+
+exceptions.c,85
+exceptionInit(87,2164
+exceptionInternalObject(115,2987
+exceptionDescribe(129,3284
+
+filesystem.c,416
+void set_java_fs_mode(37,1254
+java_io_File_exists0(43,1336
+java_io_File_canRead0(62,1767
+java_io_File_canWrite0(81,2199
+java_io_File_isFile0(100,2632
+java_io_File_isDirectory0(120,3116
+java_io_File_isAbsolute(140,3605
+java_io_File_lastModified0(156,3931
+java_io_File_length0(182,4546
+java_io_File_mkdir0(203,5060
+java_io_File_renameTo0(223,5488
+java_io_File_delete0(247,6106
+java_io_File_list0(267,6546
+
+globals.c,150
+ClassClass** get_binclasses(56,1791
+ClassClass*  get_classClass(57,1849
+ClassClass*  get_classObject(58,1915
+long         get_nbinclasses(59,1982
+
+interpreter.c,3908
+#  define TRACE(TRACE79,1774
+#  define TRACEIF(TRACEIF81,1895
+#  define TRACE(TRACE84,1955
+#  define TRACEIF(TRACEIF85,1974
+#define UCAT(UCAT92,2060
+#define ULCAST(ULCAST93,2120
+#define USCAST(USCAST94,2159
+#define SCAT(SCAT95,2199
+#define SLCAST(SLCAST96,2257
+#define SSCAST(SSCAST97,2287
+#define OSTACK_LOCK_INIT(OSTACK_LOCK_INIT114,2645
+#define OSTACK_LOCK(OSTACK_LOCK115,2722
+#define OSTACK_UNLOCK(OSTACK_UNLOCK116,2778
+static void HACK_NOP(121,2882
+#define HACK_NOP(HACK_NOP125,2982
+JavaStack *CreateNewJavaStack(128,3009
+void InitializeExecEnv(166,4351
+typedef struct free_javastack_t free_javastack_t207,5498
+} free_javastack_t;free_javastack_t209,5567
+void DeleteExecEnv(213,5658
+void FreeJavaStackMemory(254,6685
+JRI_PUBLIC_API(279,7294
+execute_java_static_method(297,7784
+HObject *execute_java_constructor_vararg(329,9002
+JRI_PUBLIC_API(412,11374
+JRI_PUBLIC_API(426,11707
+do_execute_java_method_vararg(443,12135
+Object2CString(621,18191
+#define BODYOF(BODYOF663,19315
+void set_single_stepping(689,20038
+notify_debugger(698,20201
+get_breakpoint_opcode(726,21292
+notify_debugger_of_exception(786,23039
+set_breakpoint_opcode(815,23877
+JRI_PUBLIC_API(836,24499
+is_subclass_of(855,25140
+ImplementsInterface(877,25608
+bool_t array_is_instance_of_array_type(923,27240
+#define CODE_LOCK_INIT(CODE_LOCK_INIT985,29434
+#define CODE_UNLOCK(CODE_UNLOCK986,29511
+#define CODE_LOCK(CODE_LOCK987,29564
+#define WITH_OPCODE_CHANGE 999,30297
+#define END_WITH_OPCODE_CHANGE 1001,30374
+#define REMOVE_BREAKPOINT_CONFUSION(REMOVE_BREAKPOINT_CONFUSION1007,30598
+#define WITH_OPCODE_CHANGE1014,30892
+#define END_WITH_OPCODE_CHANGE1015,30919
+#define REMOVE_BREAKPOINT_CONFUSION(REMOVE_BREAKPOINT_CONFUSION1016,30950
+ProcedureFindThrowTag(1028,31343
+MultiArrayAlloc(1101,33714
+MultiArrayAlloc2(1142,35213
+long now(1182,36240
+isSpecialSuperCall(1203,36973
+bool_t ExecuteJava(1225,37741
+#define OPTOP_OFFSET 1236,38199
+#define S_INFO(S_INFO1238,38223
+#define S_INT(S_INT1239,38280
+#define S_FLOAT(S_FLOAT1240,38325
+#define S_HANDLE(S_HANDLE1241,38370
+#define S_OBJECT(S_OBJECT1242,38415
+#define S_POINTER(S_POINTER1243,38460
+#define S_OSTRING(S_OSTRING1244,38505
+#define S_LONGSTRING(S_LONGSTRING1245,38566
+#define S_DOUBLE(S_DOUBLE1249,38688
+#define S_DOUBLE2(S_DOUBLE21250,38733
+#define S_LONG(S_LONG1251,38778
+#define S_LONG2(S_LONG21252,38823
+#define SET_S_DOUBLE(SET_S_DOUBLE1253,38868
+#define SET_S_LONG(SET_S_LONG1254,38931
+#define S_DOUBLE(S_DOUBLE1256,39000
+#define S_DOUBLE2(S_DOUBLE21257,39061
+#define S_LONG(S_LONG1258,39124
+#define S_LONG2(S_LONG21259,39184
+#define SET_S_DOUBLE(SET_S_DOUBLE1260,39246
+#define SET_S_LONG(SET_S_LONG1261,39326
+#define REAL_OPTOP(REAL_OPTOP1264,39413
+#define DECACHE_OPTOP(DECACHE_OPTOP1267,39466
+#define CACHE_OPTOP(CACHE_OPTOP1268,39563
+#define DECACHE_OPTOP(DECACHE_OPTOP1270,39673
+#define CACHE_OPTOP(CACHE_OPTOP1271,39729
+#define SIZE_AND_STACK(SIZE_AND_STACK1274,39801
+#define SIZE_AND_STACK_BUT(SIZE_AND_STACK_BUT1275,39874
+#define JUMP_AND_STACK(JUMP_AND_STACK1276,39942
+#define pc2signedshort(pc2signedshort1285,40316
+#define pc2signedlong(pc2signedlong1286,40396
+#define ERROR(ERROR1299,40782
+#define ERROR(ERROR1306,41051
+#define OPC_DO_LOAD_n(OPC_DO_LOAD_n1459,45524
+#define OPC_DO_STORE_n(OPC_DO_STORE_n1507,47588
+#define CONSTANT_OP(CONSTANT_OP1736,54853
+#define BINARY_INT_OP(BINARY_INT_OP1780,56135
+#define BINARY_SHIFT_OP(BINARY_SHIFT_OP1804,57242
+#define BINARY_FLOAT_OP(BINARY_FLOAT_OP1845,58762
+#define COMPARISON_OP(COMPARISON_OP1913,60709
+#define COMPARISON_OP2(COMPARISON_OP21932,61840
+#define ARRAY_INTRO(ARRAY_INTRO2945,94819
+#define ARRAY_LOAD_INTRO(ARRAY_LOAD_INTRO2960,95646
+InitializeInterpreter(3301,105152
+void PrintObject(3321,105673
+DumpStatistics 3367,106949
+trace_method(3391,107349
+
+io.c,920
+#define IO_EXCEPTION 35,1166
+java_io_FileDescriptor_initSystemFD(43,1332
+long java_io_FileDescriptor_valid(58,1789
+java_io_FileInputStream_open(72,2148
+java_io_FileInputStream_read(99,2777
+java_io_FileInputStream_readBytes(123,3328
+java_io_FileInputStream_skip(167,4418
+java_io_FileInputStream_available(187,5007
+java_io_FileInputStream_close(206,5446
+java_io_FileOutputStream_open(224,5859
+java_io_FileOutputStream_write(251,6510
+java_io_FileOutputStream_writeBytes(269,6959
+java_io_FileOutputStream_close(303,7837
+java_io_RandomAccessFile_open(321,8256
+java_io_RandomAccessFile_read(357,9054
+java_io_RandomAccessFile_readBytes(379,9582
+java_io_RandomAccessFile_write(422,10655
+java_io_RandomAccessFile_writeBytes(440,11104
+java_io_RandomAccessFile_getFilePointer(477,11988
+java_io_RandomAccessFile_seek(491,12338
+java_io_RandomAccessFile_length(502,12652
+java_io_RandomAccessFile_close(520,13201
+
+jpegdecoder.c,563
+#define boolean 26,1067
+struct sun_jpeg_error_mgr sun_jpeg_error_mgr64,2433
+typedef struct sun_jpeg_error_mgr * sun_jpeg_error_ptr;sun_jpeg_error_ptr70,2569
+sun_jpeg_error_exit 77,2721
+struct sun_jpeg_source_mgr sun_jpeg_source_mgr110,4019
+typedef struct sun_jpeg_source_mgr * sun_jpeg_source_ptr;sun_jpeg_source_ptr121,4317
+sun_jpeg_init_source(131,4632
+sun_jpeg_fill_input_buffer(161,5947
+sun_jpeg_fill_suspended_buffer(202,7078
+sun_jpeg_skip_input_data(261,9086
+sun_jpeg_term_source(317,10750
+sun_awt_image_JPEGImageDecoder_readImage(328,10955
+
+math.c,813
+static void FixW16GFmt(45,1374
+matherr(82,2092
+java_lang_Float_toString(92,2302
+java_lang_Double_toString(103,2542
+java_lang_Float_valueOf(117,2831
+java_lang_Double_valueOf(140,3341
+java_lang_Float_intBitsToFloat(165,3893
+java_lang_Float_floatToIntBits(178,4097
+java_lang_Double_longBitsToDouble(190,4310
+java_lang_Double_doubleToLongBits(203,4532
+java_lang_Math_cos(215,4688
+java_lang_Math_sin(221,4771
+java_lang_Math_tan(227,4854
+java_lang_Math_asin(233,4937
+java_lang_Math_acos(239,5022
+java_lang_Math_atan(245,5107
+java_lang_Math_exp(251,5192
+java_lang_Math_log(257,5275
+java_lang_Math_sqrt(263,5358
+java_lang_Math_ceil(269,5443
+java_lang_Math_floor(275,5528
+java_lang_Math_rint(281,5615
+java_lang_Math_atan2(298,5845
+java_lang_Math_pow(304,5947
+java_lang_Math_IEEEremainder(310,6044
+
+object.c,235
+java_lang_Object_hashCode(57,1356
+java_lang_Object_wait(63,1430
+java_lang_Object_notify(78,1731
+java_lang_Object_notifyAll(86,1837
+HObject *java_lang_Object_clone(93,1943
+class2string(130,3024
+java_lang_Object_getClass(146,3429
+
+opnames.c,0
+
+profiler.c,170
+} javamon_entry;javamon_entry38,1171
+#define JAVAMON_TABLE_SIZE 41,1190
+void javamon(46,1317
+java_mon(57,1593
+java_mon_dump_to_file(80,2219
+java_mon_dump(110,3108
+
+runtime.c,453
+void set_java_rt_mode(47,1504
+java_lang_Runtime_exitInternal(53,1586
+java_lang_Runtime_initializeLinkerInternal(68,1877
+java_lang_Runtime_loadFileInternal(85,2211
+java_lang_Runtime_buildLibName(102,2624
+java_lang_Runtime_freeMemory(124,3199
+java_lang_Runtime_totalMemory(130,3326
+java_lang_Runtime_gc(136,3453
+java_lang_Runtime_runFinalization(142,3563
+java_lang_Runtime_traceInstructions(148,3695
+java_lang_Runtime_traceMethodCalls(158,3977
+
+security.c,568
+java_lang_SecurityManager_getClassContext(25,960
+java_lang_SecurityManager_currentClassLoader(72,2284
+java_lang_SecurityManager_classDepth(99,2973
+java_lang_SecurityManager_checkClassLoader(136,3850
+java_lang_SecurityManager_checkScopePermission(164,4649
+setScopePermission(203,5883
+java_lang_SecurityManager_setScopePermission(230,6673
+java_lang_SecurityManager_setAppletScopePermission(236,6812
+java_lang_SecurityManager_resetScopePermission(242,6958
+java_lang_SecurityManager_classLoaderDepth(248,7100
+java_lang_SecurityManager_checkInitialized(277,7806
+
+string.c,194
+JRI_PUBLIC_API(27,966
+void javaStringPrint(44,1416
+JRI_PUBLIC_API(53,1651
+unicode *javaString2unicode(63,1826
+JRI_PUBLIC_API(74,2148
+char *makeCString(92,2589
+char *allocCString(107,2977
+
+stubs.c,30
+void _java_lang_init(46,1510
+
+system.c,119
+java_lang_System_currentTimeMillis(49,1466
+java_lang_System_arraycopy(55,1564
+java_lang_System_setSystemIO(151,4881
+
+thread.c,421
+ThreadRT0(45,1311
+java_lang_Thread_start(101,3100
+java_lang_Thread_stop0(142,4711
+java_lang_Thread_isAlive(169,5478
+java_lang_Thread_suspend0(177,5665
+java_lang_Thread_resume0(187,5877
+java_lang_Thread_setPriority0(208,6612
+java_lang_Thread_getPriority(218,6852
+java_lang_Thread_yield(233,7219
+java_lang_Thread_sleep(239,7293
+java_lang_Thread_currentThread(254,7550
+java_lang_Thread_countStackFrames(260,7638
+
+threads.c,238
+threadBootstrap(74,2072
+threadCreate(102,2734
+threadSelf(126,3264
+} tid_array_t;tid_array_t146,3692
+threadEnumeratorHelper(149,3719
+threadEnumerate(170,4127
+threadCount(192,4581
+threadSleep(205,4825
+threadPostException(222,5215
+
+utf.c,171
+char *unicode2utf(56,2104
+int unicode2utfstrlen(103,3635
+int utfstrlen(120,4099
+utf2unicode(137,4568
+bool_t is_simple_utf(154,4972
+unicode next_utf2unicode(164,5159
+
+util.c,811
+str2unicode(38,1151
+unicode2str(60,1541
+prints(71,1723
+printus(87,1914
+#define UNISTRLEN 89,1948
+#define STR2ID_HTOVERFLOWPOINT 115,2528
+Str2ID(126,3002
+Str2IDFree(207,5187
+Str2IDApply(223,5460
+ID2Str(241,5809
+addstr(259,6239
+unicode2rd(271,6426
+#define CSTRLEN 273,6509
+int642CString(319,7358
+out_of_memory(326,7476
+JAVA_PUBLIC_API(333,7572
+classname2string(349,7872
+mangleMethodName(368,8228
+mangleUTFString(392,8926
+typedef struct InstanceData InstanceData429,9951
+} InstanceData;InstanceData432,10014
+#define ERROR 435,10045
+#define SUCCESS 437,10078
+#define CheckRet(CheckRet439,10113
+static int put_char(441,10170
+format_string(458,10535
+#define MAX_DIGITS 495,11328
+format_number(498,11362
+jio_vsnprintf(589,13559
+int jio_snprintf(670,16249
+IsSameClassPackage(683,16531
+
+zip.c,1139
+#define max(max38,1185
+#define min(min42,1247
+#define SIGSIZ 48,1325
+#define LOCSIG 49,1342
+#define CENSIG 50,1370
+#define ENDSIG 51,1398
+#define LOCHDRSIZ 56,1471
+#define CENHDRSIZ 57,1492
+#define ENDHDRSIZ 58,1513
+#define CH(CH63,1572
+#define SH(SH64,1635
+#define LG(LG65,1700
+#define LOCFLG(LOCFLG70,1810
+#define LOCHOW(LOCHOW71,1861
+#define LOCCRC(LOCCRC72,1917
+#define LOCSIZ(LOCSIZ73,1986
+#define LOCLEN(LOCLEN74,2040
+#define LOCNAM(LOCNAM75,2096
+#define LOCEXT(LOCEXT76,2148
+#define CENTIM(CENTIM81,2271
+#define CENSIZ(CENSIZ82,2345
+#define CENLEN(CENLEN83,2399
+#define CENNAM(CENNAM84,2455
+#define CENEXT(CENEXT85,2512
+#define CENCOM(CENCOM86,2572
+#define CENOFF(CENOFF87,2630
+#define ENDSUB(ENDSUB92,2766
+#define ENDTOT(ENDTOT93,2834
+#define ENDSIZ(ENDSIZ94,2896
+#define ENDOFF(ENDOFF95,2957
+#define ENDCOM(ENDCOM96,3020
+errmsg(99,3096
+ziperr(107,3192
+readFully(123,3490
+#define INBUFSIZ 146,3818
+findEnd(154,4043
+unixtime(217,5771
+direlcmp(231,6107
+initReader(242,6358
+zip_open(352,9619
+zip_close(382,10096
+lookup(396,10309
+zip_stat(407,10531
+zip_get(428,11055
+
+rt_nodl.c,0

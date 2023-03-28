@@ -1,0 +1,32 @@
+
+appletStubs.c,502
+#define IMPLEMENT_netscape_applet_MozillaAppletContext16,320
+JRI_PUBLIC_API(34,762
+JRI_PUBLIC_API(94,2602
+JRI_PUBLIC_API(137,3702
+JRI_PUBLIC_API(172,4633
+JRI_PUBLIC_API(186,5118
+JRI_PUBLIC_API(212,6317
+JRI_PUBLIC_API(220,6483
+JRI_PUBLIC_API(228,6639
+JRI_PUBLIC_API(234,6761
+#define NUM_MEMSTATES	244,6997
+JRI_PUBLIC_API(249,7090
+#define OPEN_ZIP_EVERY_TIME316,9256
+openZip(324,9487
+JRI_PUBLIC_API(365,10590
+	#define BUF_LEN	371,10763
+JRI_PUBLIC_API(413,11962
+JRI_PUBLIC_API(457,13062
+
+stubs.c,378
+#define IMPLEMENT_java_applet_Applet2,15
+#define IMPLEMENT_netscape_applet_AppletClassLoader4,91
+#define IMPLEMENT_netscape_applet_MozillaAppletContext6,197
+#define IMPLEMENT_netscape_applet_EmbeddedAppletFrame8,309
+#define IMPLEMENT_netscape_plugin_Plugin10,419
+#define IMPLEMENT_netscape_applet_Console12,503
+void _java_applet_init(16,597
+void _java_image_init(29,886
+
+na_nodl.c,0

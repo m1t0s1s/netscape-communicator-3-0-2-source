@@ -1,0 +1,56 @@
+# 
+#           CONFIDENTIAL AND PROPRIETARY SOURCE CODE OF
+#              NETSCAPE COMMUNICATIONS CORPORATION
+# Copyright (C) 1996 Netscape Communications Corporation.  All Rights
+# Reserved.  Use of this Source Code is subject to the terms of the
+# applicable license agreement from Netscape Communications Corporation.
+# The copyright notice(s) in this Source Code does not indicate actual or
+# intended publication of this Source Code.
+#
+DEPTH = ../../..
+
+EXPORTS = \
+	crypto.h \
+	cryptot.h \
+	rsa.h \
+	$(NULL)
+
+MODULE = security
+
+CSRCS = \
+	algdes.c \
+	algrc2.c \
+	algrc4.c \
+	algrc5.c \
+	algrsa.c \
+	algrsaky.c \
+	secdig.c \
+	secsign.c \
+	secvfy.c \
+	cmpmontg.c \
+	cmpmuldv.c \
+	rsa.c \
+	cmpcnv.c \
+	crt.c \
+	cmparith.c \
+	cmpmdexp.c \
+	cmpvectr.c \
+	cmpmem.c \
+	cmpmod.c \
+	cmpspprt.c \
+	rsakeygn.c \
+	cmpbits.c \
+	prime.c \
+	dsakg.c \
+	dsas.c \
+	dsav.c \
+	dsautil.c \
+	pqggen.c \
+	fipstest.c \
+	$(NULL)
+
+#	algfort.c
+
+REQUIRES = security nspr libdbm
+
+LIBRARY_NAME = crypto

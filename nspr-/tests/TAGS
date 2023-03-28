@@ -1,0 +1,81 @@
+
+sysinfo.c,15
+int main(5,39
+
+suspending.c,50
+#define STACK_SIZE 3,24
+doit(6,54
+main(51,1014
+
+hello.c,61
+#define STACK_SIZE 5,74
+void printit(7,99
+int main(21,308
+
+block.c,64
+#define STACK_SIZE 19,266
+void reader(23,307
+int main(41,672
+
+create.c,42
+void printstats(13,157
+void main(22,343
+
+preempt.c,62
+#define STACK_SIZE 13,162
+void wimp(17,198
+int main(28,363
+
+mutex.c,156
+#define STACK_SIZE 18,401
+void contention_thread(23,441
+void try_contention_lock(37,727
+void nested(65,1351
+void try_nested(79,1637
+int main(113,2407
+
+stdio.c,64
+#define STACK_SIZE 16,225
+void reader(18,251
+int main(36,623
+
+dns.c,67
+#define STACK_SIZE 17,291
+void do_lookup(21,332
+int main(37,672
+
+pipe.c,59
+void Reader(18,282
+void Writer(51,863
+void main(69,1159
+
+socket.c,59
+void Reader(19,306
+void Writer(52,887
+void main(70,1183
+
+sprintf.c,275
+#define countof(countof8,133
+static void test_i(14,298
+static void TestI(38,883
+static void test_l(83,1928
+static void TestL(107,2515
+static void test_ll(151,3576
+static void TestLL(175,4167
+static void test_s(227,5408
+static void TestS(261,6217
+int main(306,7264
+
+locker.c,17
+int main(10,121
+
+log.c,32
+int fact(6,62
+int main(17,306
+
+usdate.c,49
+#define  timeBufferSize 15,391
+int main(18,425
+
+dtoa.c,17
+int main(18,430

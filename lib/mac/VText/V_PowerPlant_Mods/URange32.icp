@@ -1,0 +1,64 @@
+//	===========================================================================
+//	URange32.cp						©1994 Metrowerks Inc. All rights reserved.
+//	===========================================================================
+
+/*
+	some inline definitions
+*/
+
+Range32T::Range32T()
+{
+	start = 0;
+	length = rangeCode_Undefined;
+}
+
+Range32T::Range32T(Int32 inStart)
+{
+	start = inStart;
+	SetInsertion(rangeCode_Before);
+}
+
+Range32T::Range32T(Int32 inStart, Int32 inEnd)
+{
+	start = inStart;
+	SetLength(inEnd - start);
+}
+
+Int32	Range32T::Start(void) const
+{
+	return start;
+}
+
+Int32	Range32T::End(void) const
+{
+	return Start() + Length();
+}
+
+Int32	Range32T::Length(void) const
+{
+	return (length > 0)
+		? length
+		: 0;
+}
+
+Boolean	Range32T::Undefined(void) const
+{
+	return length == rangeCode_Undefined;
+}
+
+ERangeCode	Range32T::Insertion(void) const
+{
+	return (length > 0)
+		? rangeCode_Undefined
+		: length;
+}
+
+void	Range32T::SetStart(Int32 inStart)
+{
+	start = inStart;
+}
+
+void	Range32T::SetEnd(Int32 inEnd)
+{
+	SetLength(inEnd - Start());
+}

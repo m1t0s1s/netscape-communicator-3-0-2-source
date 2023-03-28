@@ -1,0 +1,387 @@
+
+nscstr.c,375
+INTL_CompoundStr* 	INTL_CompoundStrFromStr(26,932
+#define TMPLEN	31,1086
+INTL_CompoundStrFromUnicode(33,1123
+INTL_CompoundStrFirstStr(57,1765
+INTL_CompoundStrNextStr(69,2046
+INTL_CompoundStrDestroy(78,2306
+INTL_CompoundStrClone(93,2543
+INTL_CompoundStrCat_p(108,2789
+INTL_CompoundStrCat(116,2971
+INTL_CompoundStrNewSeg_p(124,3136
+INTL_CompoundStrAddSeg_p(143,3491
+
+autocvt.c,502
+#define IsJISEscSeq(IsJISEscSeq25,606
+#define IsRoman(IsRoman33,967
+#define IsSJIS2ndByte(IsSJIS2ndByte34,1001
+#define IsLoSJIS2ndByte(IsLoSJIS2ndByte35,1057
+#define IsHiSJIS2ndByte(IsHiSJIS2ndByte36,1115
+#define IsEUCJPKana(IsEUCJPKana37,1173
+#define IsEUCJPKanji(IsEUCJPKanji38,1231
+#define	YES	40,1299
+#define NO	41,1314
+#define	MAYBE	42,1328
+isSJIS(45,1358
+isEUCJP(82,2404
+#define INTL_DefaultDocCharSetID(INTL_DefaultDocCharSetID135,4006
+detect_JCSID 139,4088
+main(242,6825
+
+b52cns.c,236
+net_b52cns(30,710
+#define userword(userword48,1146
+mz_b52cns(51,1226
+#define uncvtp	77,2166
+static int	b5num_cnsnum(242,6325
+static int	cnsnum_cnscode(262,6688
+#define		HEAD	302,7373
+static int	userword(304,7391
+main(336,7941
+
+cns2b5.c,229
+#define		HEAD	20,417
+net_cns2b5(63,1589
+mz_cns2b5(80,1979
+#define uncvtp	119,3205
+static int	cnsnum_b5num(315,7779
+static int	b5num_b5code(332,8045
+static int	userword(370,8714
+static int	userword(397,9191
+main(405,9314
+
+cvchcode.c,511
+PRIVATE int PeekMetaCharsetTag(20,384
+net_CharCodeConv(134,2741
+net_NoCharCodeConv 156,3288
+net_AutoCharCodeConv 162,3445
+autoJCCC 248,5862
+net_1to1CCC 284,7257
+One2OneCCC 292,7483
+PRIVATE unsigned int net_CvtCharCodeWriteReady 314,7974
+PRIVATE void net_CvtCharCodeComplete 319,8108
+PRIVATE void net_CvtCharCodeAbort 333,8502
+INTL_ConvCharCode 344,8728
+unsigned char *INTL_ConvWinToMailCharCode(497,13071
+unsigned char *INTL_ConvMailToWinCharCode(541,14353
+INTL_CreateDocToMailConverter(571,15044
+
+euc2jis.c,80
+net_euc2jis(53,1744
+mz_euc2jis(70,2137
+#define uncvtp	98,3210
+main(219,7020
+
+euc2sjis.c,82
+net_euc2sjis(44,1351
+mz_euc2sjis(61,1745
+#define uncvtp	86,2690
+main(194,6352
+
+euckr2is.c,84
+net_euckr2iso(44,1363
+mz_euckr2iso(61,1759
+#define uncvtp	85,2523
+main(162,4863
+
+fe_ccc.c,2751
+#define UNICODE_INIT_TEST	25,367
+INTL_GetSingleByteTable(504,17509
+char *INTL_LockTable(514,17720
+void INTL_FreeSingleByteTable(529,18085
+char* INTL_GetAcceptLanguage(546,18445
+XP_Bool onlyAsciiStr(558,18648
+mz_euc2euc(571,18887
+mz_sjis2sjis(685,20375
+mz_ksc2ksc(780,21657
+mz_gb2gb(865,22824
+mz_b52b5(1009,25763
+mz_cns2cns(1020,26084
+INTL_CreateCharCodeConverter(1112,27272
+INTL_DestroyCharCodeConverter(1119,27349
+INTL_CallCharCodeConverter(1126,27436
+INTL_GetCharCodeConverter(1146,28028
+int16 INTL_DefaultMailCharSetID(1195,29222
+int16 INTL_DefaultWinCharSetID(1248,30194
+int16 INTL_DocToWinCharSetID(1288,31071
+INTL_CharSetNameToID(1325,31747
+unsigned char *INTL_CsidToCharsetNamePt(1348,32411
+INTL_CharSetIDToName(1367,32829
+char * INTL_NextChar(1380,33298
+INTL_IsLeadByte(1430,34684
+INTL_CharLen(1454,35244
+INTL_ColumnWidth(1465,35457
+INTL_NthByteOfChar(1513,36541
+INTL_IsHalfWidth(1551,37021
+GetMimeCSID(1579,37319
+INTL_CharSetDocInfo(1595,37658
+FE_ChangeURLCharset(1643,38980
+INTL_ChangeDefaultCharSetID(1670,39407
+INTL_CanAutoSelect(1678,39513
+PRIVATE int DecodeBase64 1697,39769
+PRIVATE char *DecodeQP(1727,40495
+PRIVATE char *DecodeBase64Buffer(1831,42994
+char *IntlDecodeMimePartIIStr(1875,43869
+PRIVATE int EncodeBase64 2060,48508
+PRIVATE char *EncodeBase64Buffer(2077,48835
+PRIVATE char *EncodeQPBuffer(2121,49507
+#define MAXLINELEN 2171,50387
+#define IS_MAIL_SEPARATOR(IS_MAIL_SEPARATOR2172,50409
+char *encode_next8bitword(2175,50579
+char * encode_mail_address(2202,50949
+char *IntlEncodeMimePartIIStr(2451,56092
+INTL_DefaultTextAttributeCharSetID(2518,58077
+INTL_NumericCharacterReference(2530,58258
+#define xlat_LATIN1_TO_MAC_ROMAN	2594,59144
+INTL_EntityReference(2624,59551
+INTL_FreeFontEncodingList(2648,59855
+INTL_InternalToFontEncoding(2658,59974
+INTL_FreeFontEncodingList(2680,60253
+INTL_InternalToFontEncoding(2698,60492
+INTL_ReportFontCharSets(2776,61602
+int INTL_NextCharIdxInText(2824,62343
+int INTL_PrevCharIdxInText(2836,62689
+int INTL_NextCharIdx(2872,63485
+int INTL_PrevCharIdx(2895,64030
+#define INTL_SingleByteToLower(INTL_SingleByteToLower2916,64463
+unsigned char *INTL_GetSingleByteToLowerMap(3355,83693
+} DoubleByteToLowerMap;DoubleByteToLowerMap3430,85356
+DoubleByteToLowerMap *INTL_GetDoubleByteToLowerMap(3720,93915
+void INTL_DoubleByteToLower(3744,94501
+XP_Bool INTL_MatchOneChar(3772,95214
+XP_Bool INTL_MatchOneCaseChar(3822,96605
+char *INTL_Strstr(3842,96999
+char *INTL_Strcasestr(3864,97508
+XP_Bool INTL_FindMimePartIIStr(3887,98019
+int32  INTL_TextByteCountToCharLen(3922,98960
+int32  INTL_TextCharLenToByteCount(3965,100027
+const char *INTL_NonBreakingSpace(4005,101071
+INTL_CharClass(4036,101832
+int INTL_KinsokuClass(4244,109373
+
+is2euckr.c,187
+net_iso2euckr(40,1240
+mz_iso2euckr(57,1634
+#define euckrbufsz	67,1989
+#define euckrbuf	68,2016
+#define euckrp	69,2040
+#define euckrep	70,2063
+#define uncvtp	92,2682
+main(198,5867
+
+jis2oth.c,276
+net_jis2other(55,1817
+jis2other(72,2211
+#define sjisbuf	82,2554
+#define sjisbufsz	83,2577
+#define sjisp	84,2603
+#define sjisep	85,2625
+#define eucbufsz	87,2650
+#define eucbuf	88,2675
+#define eucp	89,2697
+#define eucep	90,2718
+#define uncvtp	119,3552
+main(294,8764
+
+npc.c,880
+#define UTF8_1_CSID 10,108
+#define UTF8_1_CSID 12,148
+#define NPCIndex(NPCIndex51,1962
+#define NPCContext(NPCContext52,2006
+#define NCELL(NCELL53,2057
+#define MBCheck(MBCheck152,7974
+#define MBRange(MBRange153,8088
+#define MBLen(MBLen154,8168
+#define CSIDTONPCFB(CSIDTONPCFB187,8993
+#define YEN_SIGN 188,9045
+XP_Bool ToNPC(190,9068
+#define MXS(MXS634,20615
+#define M80S(M80S635,20658
+#define UTF8_1_to_UCS2(UTF8_1_to_UCS2636,20693
+#define UTF8_2_to_UCS2(UTF8_2_to_UCS2637,20739
+#define UTF8_3_to_UCS2(UTF8_3_to_UCS2638,20819
+INTL_ConvertNPC(647,21410
+intl_ISO88591ToNPC(833,27497
+intl_2022KRToNPC(867,28045
+intl_ASCIIToNPC(873,28141
+intl_BIG5ToNPC(879,28236
+intl_EUCCNToNPC(885,28330
+intl_EUCJPToNPC(891,28425
+intl_EUCKRToNPC(897,28520
+intl_EUCTWToNPC(903,28615
+intl_ISO88592ToNPC(909,28710
+intl_JISToNPC(915,28808
+intl_SJISToNPC(921,28901
+
+sjis2euc.c,130
+#define TwoByteSJIS2EUC(TwoByteSJIS2EUC11,148
+net_sjis2euc(50,1598
+mz_sjis2euc(67,1994
+#define uncvtp	90,2863
+main(175,5463
+
+sjis2jis.c,131
+#define TwoByteSJIS2JIS(TwoByteSJIS2JIS11,148
+net_sjis2jis(56,1843
+mz_sjis2jis(73,2239
+#define uncvtp	100,3250
+main(210,6400
+
+testnpc.c,975
+#define XP_TraceHeader(XP_TraceHeader19,324
+#define XP_TraceHeader	21,372
+#define	CheckRet(CheckRet64,1672
+#define CheckInread(CheckInread65,1715
+#define CheckOutlen(CheckOutlen66,1773
+#define CheckCSID(CheckCSID67,1831
+void 	StopInHere(69,1888
+void BasicCheck(75,2052
+void CheckU(82,2180
+void BasicCheck1(88,2290
+void BasicCheck2(93,2365
+void Test1(99,2471
+void Test2(106,2624
+void TestU1(114,2808
+void TestU2(121,2973
+void TestU3(129,3186
+void	testutf81(143,3526
+void	testutf82(150,3659
+void	testutf83(158,3823
+void	testutf84(170,4086
+void	testutf85(176,4223
+void	testutf86(182,4360
+void	Test1Byte(189,4498
+void	Test2Byte(196,4658
+void	Test8Bit(204,4849
+void	Testsjis(214,5071
+void	Testbig5(237,5488
+void	DebuggerDummy(251,5757
+void	VerifyUnicodeTestSeg(255,5783
+void unicodeTestSBSeg(279,6372
+void unicodeTest3BSeg(326,7328
+void unicodeTestTBSeg(383,8513
+void unicodeTest(438,9589
+void iteratorTest(595,15507
+void npctest(635,16506
+
+uscan.c,600
+typedef  XP_Bool (*uSubScannerFunc)uSubScannerFunc6,203
+typedef XP_Bool (*uScannerFunc)uScannerFunc11,443
+#define uSubScanner(uSubScanner29,762
+XP_Bool uScan(124,3022
+XP_Bool uScanAlways1Byte(138,3423
+XP_Bool uScanAlways2Byte(150,3705
+XP_Bool uScanAlways2ByteShiftGR(161,4006
+XP_Bool uScanAlways1BytePrefix8E(172,4326
+XP_Bool uCheckAndScanAlways1Byte(187,4649
+XP_Bool uCheckAndScanAlways2Byte(206,5116
+XP_Bool uCheckAndScanAlways2ByteShiftGR(227,5571
+XP_Bool uCheckAndScanByTable(248,6044
+XP_Bool uCheckAndScan2ByteGRPrefix8F(279,6760
+XP_Bool uCheckAndScan2ByteGRPrefix8EA2(300,7250
+
+ugen.c,608
+typedef  XP_Bool (*uSubGeneratorFunc)uSubGeneratorFunc6,203
+typedef XP_Bool (*uGeneratorFunc)uGeneratorFunc11,444
+#define uSubGennerator(uSubGennerator29,763
+XP_Bool uGenerate(124,2998
+XP_Bool uGenAlways1Byte(138,3400
+XP_Bool uGenAlways2Byte(150,3683
+XP_Bool uGenAlways2ByteShiftGR(162,4019
+XP_Bool uGenAlways1BytePrefix8E(174,4380
+XP_Bool uCheckAndGenAlways1Byte(188,4698
+XP_Bool uCheckAndGenAlways2Byte(206,5154
+XP_Bool uCheckAndGenAlways2ByteShiftGR(228,5621
+XP_Bool uCheckAndGenByTable(250,6112
+XP_Bool uCheckAndGen2ByteGRPrefix8F(286,6979
+XP_Bool uCheckAndGen2ByteGRPrefix8EA2(309,7484
+
+ugendata.c,231
+#define PACK(PACK16,388
+#define ShiftCell(ShiftCell19,465
+#define ShiftCell(ShiftCell22,593
+UnicodeTableSet* GetUnicodeTableSet(326,9724
+uShiftTable* GetShiftTableFromCsid(341,10147
+uShiftTable* InfoToShiftTable(345,10251
+
+umap.c,724
+typedef uint16 (* MapFormatFunc)MapFormatFunc3,23
+typedef XP_Bool (* HitFormateFunc)HitFormateFunc4,98
+typedef void (* IterateFormatFunc)IterateFormatFunc5,160
+static XP_Bool uHit(54,2065
+static void uCellIterate(61,2347
+static uint16 uMap(73,2812
+static uMapCell *uGetMapCell(89,3275
+static char uGetFormat(99,3634
+XP_Bool uMapCode(107,3967
+void		uMapIterate(129,4541
+static XP_Bool uHitFormate0(148,5046
+static XP_Bool uHitFormate1(156,5366
+static XP_Bool uHitFormate2(163,5625
+static uint16 uMapFormate0(170,5896
+static uint16 uMapFormate1(177,6212
+static uint16 uMapFormate2(185,6587
+static void uIterateFormate0(193,6868
+static void uIterateFormate1(204,7333
+static void uIterateFormate2(215,7864
+
+ucs2.c,2448
+} uRowTable;uRowTable27,599
+static uTable* LoadToUCS2Table(140,3606
+static uTable* LoadFromUCS2Table(199,4701
+static void UnloadToUCS2Table(262,5986
+static void UnloadFromUCS2Table(269,6298
+static uTable* LoadUCS2Table(280,6649
+static void UnloadUCS2Table(297,7225
+static uTable* LoadToUCS2Table(311,7734
+static void UnloadToUCS2Table(317,7976
+static uTable* LoadFromUCS2Table(323,8238
+static void UnloadFromUCS2Table(329,8481
+#define UNICODEDLL 338,8638
+#define LIBRARYLOADOK(LIBRARYLOADOK339,8671
+#define UNICODE_LOADUCS2TABLE_SYM	340,8708
+#define UNICODE_UNLOADUCS2TABLE_SYM	341,8766
+#define UNICODEDLL 343,8834
+#define LIBRARYLOADOK(LIBRARYLOADOK344,8867
+#define UNICODE_LOADUCS2TABLE_SYM	345,8902
+#define UNICODE_UNLOADUCS2TABLE_SYM	346,8961
+static uTable* LoadUCS2Table(351,9075
+static void UnloadUCS2Table(367,9411
+static uTable* LoadToUCS2Table(381,9743
+static void UnloadToUCS2Table(385,9823
+static uTable* LoadFromUCS2Table(389,9923
+static void UnloadFromUCS2Table(393,10005
+static uRowTable* AddAndInitOneRow(401,10286
+static void AddAndInitAllRows(423,10788
+static XP_Bool RowUsed(431,11048
+static void FreeRow(445,11397
+static void FreeUnusedRows(452,11655
+static void CheckAndAddEntry(463,11921
+UCS2ToValueAndInfo(477,12338
+static void InitUCS2Table(490,12794
+UCS2_To_Other(499,13058
+int16*  INTL_GetUnicodeCSIDList(529,13687
+unsigned char **INTL_GetUnicodeCharsetList(534,13794
+void	INTL_SetUnicodeCSIDList(542,14078
+typedef struct UnicodeConverterPriv UnicodeConverterPriv;UnicodeConverterPriv577,15182
+typedef UnicodeConverterPriv* INTL_UnicodeToStrIteratorPriv;INTL_UnicodeToStrIteratorPriv579,15241
+struct UnicodeConverterPrivUnicodeConverterPriv580,15302
+UnicodeToStrWithFallback_p(626,16262
+UnicodeToStrFirst_p(661,16893
+UnicodeToStrNext_p(674,17257
+INTL_UnicodeToStrIteratorCreate(690,17711
+int INTL_UnicodeToStrIterate(717,18416
+INTL_UnicodeToStrIteratorDestroy(759,19614
+uint32 INTL_UnicodeLen(769,19938
+uint32    INTL_UnicodeToStrLen(779,20193
+LoadUCS2TableSet(792,20595
+UnloadUCS2TableSet(829,21682
+void    INTL_UnicodeToStr(850,22336
+static uint32 intl_check_unicode_question(927,23765
+static uint32 intl_check_unknown_unicode(943,24060
+INTL_Encoding_ID    INTL_UnicodeToEncodingStr(958,24487
+uint32    INTL_StrToUnicodeLen(1026,26918
+uint32    INTL_StrToUnicode(1036,27300
+uint32    INTL_TextToUnicodeLen(1046,27545
+uint32    INTL_TextToUnicode(1055,27742

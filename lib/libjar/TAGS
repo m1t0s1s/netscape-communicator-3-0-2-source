@@ -1,0 +1,104 @@
+
+zigver.c,2224
+#define BIG_MEMORY14,235
+#define xp_HUGE_STRCPY 31,484
+#define xp_HUGE_STRLEN 32,517
+#define xp_HUGE_STRNCASECMP 33,550
+#define CERTDB_USER 47,916
+typedef SECStatus (* PermCertCallback)PermCertCallback58,1194
+#define zigprint 68,1448
+#define SZ 69,1466
+#define XP_CALLOC(XP_CALLOC117,2813
+int SOB_parse_manifest 131,3112
+static int sob_parse_digital_signature 632,15027
+static int sob_add_cert651,15496
+static char XP_HUGE *sob_eat_line 720,16996
+static DIGESTS *sob_digest_section 783,18159
+int PR_CALLBACK SOB_verify_digest812,18828
+int PR_CALLBACK SOB_cert_attribute881,20222
+#define SEP 932,21326
+#define SEPLEN 933,21347
+static char *sob_cert_element 1084,25801
+static char *sob_choose_nickname 1135,26810
+char *SOB_cert_html1185,28051
+extern int PR_CALLBACK SOB_stash_cert1219,28621
+void *SOB_fetch_cert 1306,30504
+#define SIZE 1361,32062
+int SOB_pass_archive1373,32297
+int SOB_verified_extract1420,33255
+int SOB_extract1433,33485
+#define CHUNK 1496,34735
+static int sob_physical_extraction 1498,34756
+#define ICHUNK 1561,35919
+#define OCHUNK 1562,35939
+static int sob_physical_inflate1564,35961
+static int sob_inflate_memory 1668,38024
+static int verify_extract 1731,39115
+static PHYZIG *get_physical 1753,39598
+static DIGESTS *sob_get_mf_digest 1790,40256
+static int sob_extract_manifests 1827,40949
+static int sob_extract_mf 1858,41672
+static int sob_gen_index 1984,44317
+static int sob_listzip 2013,44774
+static int sob_listtar 2153,47974
+static int dosdate 2232,49335
+static int dostime 2250,49644
+static unsigned int xtoint 2268,49936
+static unsigned long xtolong 2281,50149
+static long atoo 2303,50543
+static int sob_guess_jar 2327,50882
+static char *sob_basename 2347,51229
+static void sob_catch_bytes2398,52159
+static int sob_validate_pkcs7 2413,52497
+static int sob_gather_signers2497,54148
+CERTCertDBHandle *SOB_open_database 2560,55235
+int SOB_close_database 2590,55807
+static CERTCertificate *sob_get_certificate2615,56371
+static SECStatus sob_list_cert_callback 2682,57643
+char *SOB_JAR_list_certs 2725,58482
+static int sob_signal 2757,58996
+int xp_HUGE_STRNCASECMP 2781,59440
+size_t xp_HUGE_STRLEN 2799,59762
+char *xp_HUGE_STRCPY 2806,59866
+
+zigsign.c,731
+#define USE_MOZ_ENCODE10,109
+typedef void (*ETVoidPtrFunc)ETVoidPtrFunc30,401
+#define CHUNQ 67,1357
+#define FILECHUNQ 68,1377
+DIGESTS * PR_CALLBACK SOB_calculate_digest 81,1647
+int SOB_digest_file 155,3309
+void *SOB_JAR_new_hash 230,5186
+void *SOB_JAR_hash 263,5802
+void *SOB_JAR_end_hash 292,6431
+static SECKEYKeyDBHandle *sob_open_key_database 354,7714
+static int sob_close_key_database 366,7953
+int SOB_JAR_sign_archive 379,8182
+static SECItem *sob_check_null_password 438,9472
+static SECItem *sob_password_hardcode 458,9890
+static void sob_pk7_out 502,10718
+static int sob_create_pk7 507,10841
+struct SOB_MOZ_encodeSOB_MOZ_encode636,13810
+void sob_moz_encode_fn 651,14086
+SECStatus sob_moz_encode668,14449
+
+zig.c,417
+#define zigprint19,257
+ZIG *SOB_new 36,505
+int PR_CALLBACK SOB_destroy 83,1139
+int SOB_set_nailed 180,3028
+int SOB_get_metainfo209,3583
+int SOB_find 268,4707
+int SOB_find_next 308,5400
+char *SOB_get_filename 352,6141
+char *SOB_get_url 365,6334
+int SOB_set_callback 377,6502
+char *SOB_get_error 402,7093
+int SOB_JAR_validate_archive 469,8356
+char *SOB_JAR_get_error 489,8642
+int SOB_set_context 502,8881
+
+zig-ds.c,82
+ZSLink *ZS_NewLink(6,112
+ZSLink *ZS_FindLink(15,273
+void ZS_DestroyLink(29,524

@@ -1,0 +1,7 @@
+= treat IMG SRC as HREF?
+= add filter to convert text/plain to stream of words (do this on the
+  de-htmlified text too)
+= what to do about message/external-body?
+= what to do about text/x-vcard? message/external-body? message/partial?
+= xp_file.c sucks!
+= in-reply-to header

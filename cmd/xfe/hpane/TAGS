@@ -1,0 +1,72 @@
+
+HPaned.c,2249
+#define ORIENTED_PANEDW24,611
+typedef enum {FirstPane='U', LastPane='L'} Direction;Direction30,706
+#define MESSAGE4	39,1020
+#define MESSAGE5	40,1055
+#define MESSAGE6	41,1090
+#define MESSAGE7	42,1125
+#define MESSAGE8	43,1160
+#define MESSAGE9	44,1195
+#define IsX(IsX46,1231
+#define IsY(IsY47,1273
+#define IsWidth(IsWidth48,1315
+#define IsHeight(IsHeight49,1364
+#define PaneInfo(PaneInfo51,1416
+#define IsPane(IsPane52,1489
+#define PaneIndex(PaneIndex53,1536
+#define PanePosIndex(PanePosIndex54,1588
+#define Horizontal(Horizontal62,1927
+#define Horizontal(Horizontal64,2005
+#define PaneDMajor(PaneDMajor71,2170
+#define PaneDPos(PaneDPos72,2222
+#define PaneOldDPos(PaneOldDPos73,2267
+#define PaneStartPos(PaneStartPos75,2319
+#define PaneFirst(PaneFirst76,2368
+#define PaneLast(PaneLast77,2416
+#define PaneFirstDMajor(PaneFirstDMajor78,2466
+#define PaneLastDMajor(PaneLastDMajor79,2536
+#define Major(Major84,2674
+#define Minor(Minor85,2721
+#define MajorMargin(MajorMargin87,2762
+#define MinorMargin(MinorMargin89,2873
+#define MajorSize(MajorSize92,2985
+#define MinorSize(MinorSize93,3056
+#define MajorChildSize(MajorChildSize95,3128
+#define MinorChildSize(MinorChildSize97,3242
+#define MajorChildPos(MajorChildPos100,3357
+#define MajorReq(MajorReq102,3437
+#define MinorReq(MinorReq103,3516
+#define MajorAssign(MajorAssign105,3596
+#define MinorAssign(MinorAssign106,3679
+#define XmBLOCK	113,3837
+#define offset(offset253,8590
+#define offset(offset366,11998
+externaldef(416,13685
+externaldef(486,16695
+Initialize(518,17534
+Realize(576,19211
+Destroy(632,21102
+Resize(658,21675
+ConstraintDestroy(684,22262
+AdjustGC(722,23230
+GetFlipGC(783,25157
+ReManageChildren(823,26434
+NeedsAdjusting(864,27560
+AdjustHPanedWindowMajor(903,28704
+ResetDMajors(960,30178
+RefigureLocations(989,31002
+CommitNewLocations(1132,35831
+RefigureLocationsAndCommit(1248,39854
+DrawTrackLines(1287,40979
+EraseTrackLines(1339,42720
+ProcessKeyEvent(1380,44000
+HandleSash(1471,47457
+GeometryManager(1643,53128
+ConstraintInit(1919,61581
+InsertOrder(1994,63772
+InsertChild(2031,64782
+ChangeManaged(2137,68554
+SetValues(2323,74380
+PaneSetValues(2492,80242
+XmCreateHPanedWindow(2688,87279

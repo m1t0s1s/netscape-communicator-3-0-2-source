@@ -1,0 +1,2653 @@
+
+abdefn.h,439
+#define	_ABDefn_H_2,19
+typedef uint32 ABID;ABID14,444
+typedef struct PersonEntryTag PersonEntryTag16,466
+typedef struct MailingListEntryTag MailingListEntryTag35,775
+#define AB_FLAG_ADD	60,1490
+#define AB_FLAG_REMOVE	61,1541
+#define AB_FLAG_MODIFY	62,1596
+#define AB_FLAG_RESORT	63,1652
+#define AB_FLAG_OPEN	64,1708
+#define AB_FLAG_CLOSE	65,1769
+#define AB_FLAG_REMOVEFROMML	66,1831
+} AB_CommandType;AB_CommandType126,3478
+
+addrbook.h,317
+#define	_AddrBook_H_2,21
+typedef struct ABNeoEntry ABEntry;ABEntry10,129
+typedef struct ABNeoPersonEntry ABPersonEntry;ABPersonEntry11,164
+typedef struct ABNeoListEntry ABListEntry;ABListEntry12,211
+typedef struct AddBookContext ABookContext;ABookContext13,254
+typedef struct AddressBook ABook;ABook14,298
+
+allxpstr.h,80
+#define _ALLXPSTR_H_21,921
+BEGIN_STR(33,1107
+#define XP_MSG_BASE	3099,132667
+
+bkmks.h,606
+#define BKMKS_H3,52
+#define BM_LAST_CELL	10,128
+typedef time_t BM_Date;BM_Date12,187
+} BM_CommandType;BM_CommandType64,1882
+typedef uint16 BM_Type;BM_Type69,1976
+#define BM_TYPE_HEADER	71,2001
+#define BM_TYPE_URL	72,2032
+#define BM_TYPE_ADDRESS	73,2061
+#define BM_TYPE_SEPARATOR	74,2093
+#define BM_TYPE_ALIAS	75,2126
+typedef struct BM_FindInfo BM_FindInfo87,2499
+} BM_FindInfo;BM_FindInfo97,2757
+struct BM_Entry_Focus BM_Entry_Focus99,2773
+#define BM_CHANGED_YES	116,3313
+#define BM_CHANGED_NO	117,3340
+#define BM_CHANGED_UNKNOWN	118,3366
+typedef void (*EntryFunc)EntryFunc134,3863
+
+cdefs.h,783
+#define	_CDEFS_H_40,1993
+#define	__BEGIN_DECLS	43,2037
+#define	__END_DECLS	44,2072
+#define	__BEGIN_DECLS46,2101
+#define	__END_DECLS47,2123
+#define	__P(__P62,2634
+#define	__CONCAT(__CONCAT63,2686
+#define	__STRING(__STRING64,2715
+#define	__const	66,2739
+#define	__signed	67,2803
+#define	__volatile	68,2827
+#define	__inline	70,2880
+#define	__inline	73,2957
+#define	__P(__P78,3090
+#define	__CONCAT(__CONCAT79,3147
+#define	__STRING(__STRING80,3176
+#define	__const	83,3218
+#define	__inline84,3273
+#define	__signed85,3290
+#define	__volatile86,3307
+#define	inline	96,3809
+#define	signed97,3856
+#define	volatile98,3871
+#define	__attribute__(__attribute__112,4407
+#define	__dead	114,4529
+#define	__pure	115,4556
+#define	__dead121,4682
+#define	__pure122,4697
+
+cgi.h,63
+#define __cgi_h_2,17
+#define CGI_IsEmpty(CGI_IsEmpty40,1184
+
+client.h,62
+#define _CLIENT_H_10,188
+#define NEW_FE_CONTEXT_FUNCS12,208
+
+csid.h,1782
+#define _CSID_H_5,67
+#define SINGLEBYTE 8,104
+#define MULTIBYTE 9,156
+#define STATEFUL 10,208
+#define WIDECHAR 11,260
+#define CS_SPACE 14,340
+#define CS_AUTO 17,416
+#define CS_DEFAULT 25,644
+#define CS_ASCII 26,693
+#define CS_LATIN1 27,742
+#define CS_JIS 28,791
+#define CS_SJIS 29,840
+#define CS_EUCJP 30,889
+#define CS_JIS_AUTO 32,939
+#define CS_SJIS_AUTO 33,988
+#define CS_EUCJP_AUTO 34,1037
+#define CS_MAC_ROMAN 36,1087
+#define CS_BIG5 37,1136
+#define CS_GB_8BIT 38,1185
+#define CS_CNS_8BIT 39,1234
+#define CS_LATIN2 40,1283
+#define CS_MAC_CE 41,1332
+#define CS_KSC_8BIT 42,1381
+#define CS_2022_KR 43,1430
+#define CS_8859_3 44,1479
+#define CS_8859_4 45,1528
+#define CS_8859_5 46,1577
+#define CS_8859_6 47,1645
+#define CS_8859_7 48,1711
+#define CS_8859_8 49,1776
+#define CS_8859_9 50,1842
+#define CS_SYMBOL 51,1891
+#define CS_DINGBATS 52,1940
+#define CS_DECTECH 53,1989
+#define CS_CNS11643_1 54,2038
+#define CS_CNS11643_2 55,2087
+#define CS_JISX0208 56,2136
+#define CS_JISX0201 57,2185
+#define CS_KSC5601 58,2234
+#define CS_TIS620 59,2283
+#define CS_JISX0212 60,2332
+#define CS_GB2312 61,2381
+#define CS_UCS2 62,2430
+#define CS_UCS4 63,2479
+#define CS_UTF8 64,2528
+#define CS_UTF7 65,2577
+#define CS_NPC 66,2626
+#define CS_X_BIG5 67,2675
+#define CS_USRDEF2 68,2724
+#define CS_KOI8_R 70,2774
+#define CS_MAC_CYRILLIC 71,2823
+#define CS_CP_1251 72,2872
+#define CS_MAC_GREEK 73,2957
+#define CS_CP_1253 75,3072
+#define CS_CP_1250 76,3154
+#define CS_CP_1254 78,3310
+#define CS_MAC_TURKISH 79,3394
+#define CS_GB2312_11 80,3444
+#define CS_JISX0208_11 81,3493
+#define CS_KSC5601_11 82,3542
+#define CS_CNS11643_1110 83,3591
+#define INTL_CHAR_SET_MAX 85,3641
+#define CS_USER_DEFINED_ENCODING 88,3720
+#define CS_UNKNOWN 89,3785
+
+ctxtfunc.h,110
+#define _ContextFunctions_6,115
+struct _ContextFuncs _ContextFuncs8,143
+#define MAKE_FE_FUNCS_STRUCT9,166
+
+cvactive.h,75
+#define CV_ACTIVE3,19
+#define CVACTIVE_SIGNAL_AT_END_OF_MULTIPART 13,318
+
+dirprefs.h,101
+#define _DIRPREFS_H_4,89
+typedef struct DIR_ServerDIR_Server7,112
+} DIR_Server;DIR_Server17,611
+
+ds.h,1192
+#define __DS_h_2,16
+typedef struct DSArrayStr DSArray;DSArray12,146
+typedef struct DSLinkStr DSLink;DSLink13,181
+typedef struct DSListStr DSList;DSList14,214
+typedef struct DSArenaStr DSArena;DSArena15,247
+#define DS_MIN(DS_MIN17,283
+#define DS_MAX(DS_MAX18,321
+typedef enum DSBoolEnum DSBoolEnum26,637
+} DSBool;DSBool29,695
+typedef enum DSStatusEnum DSStatusEnum42,1033
+} DSStatus;DSStatus46,1122
+typedef enum DSComparisonEnum DSComparisonEnum53,1316
+} DSComparison;DSComparison57,1408
+typedef void (*DSElementFreeFunc)DSElementFreeFunc59,1425
+typedef int (*DSElementCompareFunc)DSElementCompareFunc60,1485
+struct DSArrayStr DSArrayStr68,1729
+struct DSLinkStr DSLinkStr88,2433
+struct DSListStr DSListStr94,2509
+#define DS_InitList(DS_InitList98,2549
+#define DS_ListEmpty(DS_ListEmpty105,2708
+#define DS_ListHead(DS_ListHead108,2776
+#define DS_ListTail(DS_ListTail111,2827
+#define DS_ListIterDone(DS_ListIterDone114,2878
+#define DS_AppendLink(DS_AppendLink117,2942
+#define DS_InsertLink(DS_InsertLink125,3143
+#define DS_RemoveLink(DS_RemoveLink133,3344
+typedef unsigned char *DSBlock;DSBlock157,3954
+struct DSArenaStr DSArenaStr206,5087
+
+dserr.h,160
+#define __DS_ERR_h_2,20
+#define DS_ERROR_BASE	4,41
+#define DS_ERROR_LIMIT	5,76
+#define IS_DS_ERROR(IS_DS_ERROR7,126
+#define DS_ERROR_OUT_OF_MEMORY	13,248
+
+edt.h,396
+#define _edt_h_4,52
+#define CEDITCOMMAND_ID_NULL 207,5940
+#define CEDITCOMMAND_ID_GENERICCOMMAND 208,5971
+#define EDT_COP_OK 345,10668
+#define EDT_COP_DOCUMENT_BUSY 346,10689
+#define EDT_COP_SELECTION_EMPTY 347,10721
+#define EDT_COP_SELECTION_CROSSES_TABLE_DATA_CELL 348,10755
+#define EDT_IS_NEW_DOCUMENT(EDT_IS_NEW_DOCUMENT606,20994
+#define EDT_NEW_DOCUMENT(EDT_NEW_DOCUMENT607,21099
+
+edttypes.h,3500
+#define _edt_types_h_8,126
+#define ED_Element 11,170
+#define ED_Buffer 12,194
+#define ED_TagCursor 13,217
+#define ED_BitArray 14,243
+typedef struct ED_Link* ED_LinkId;ED_LinkId20,342
+#define ED_LINK_ID_NONE 21,377
+#define ED_IMAGE_LOAD_HACK_ID 26,519
+} ED_ElementType;ED_ElementType35,762
+} ED_CaretObjectPosition;ED_CaretObjectPosition40,845
+} ED_ETextFormat;ED_ETextFormat58,1361
+typedef int16 ED_TextFormat;ED_TextFormat60,1380
+} ED_Alignment;ED_Alignment85,2461
+} ED_Alignment;ED_Alignment99,3106
+struct _EDT_HREFData _EDT_HREFData103,3200
+typedef struct _EDT_HREFData EDT_HREFData;EDT_HREFData108,3261
+struct _EDT_ImageData _EDT_ImageData112,3377
+typedef struct _EDT_ImageData EDT_ImageData;EDT_ImageData134,3987
+struct _EDT_CharacterData _EDT_CharacterData137,4109
+typedef struct _EDT_CharacterData EDT_CharacterData;EDT_CharacterData146,4534
+struct _EDT_HorizRuleData _EDT_HorizRuleData150,4669
+typedef struct _EDT_HorizRuleData EDT_HorizRuleData;EDT_HorizRuleData159,5062
+struct _EDT_ContainerData _EDT_ContainerData163,5196
+typedef struct _EDT_ContainerData EDT_ContainerData;EDT_ContainerData167,5303
+struct _EDT_TableData _EDT_TableData171,5433
+typedef struct _EDT_TableData EDT_TableData;EDT_TableData189,5979
+struct _EDT_TableCaptionData _EDT_TableCaptionData193,6108
+typedef struct _EDT_TableCaptionData EDT_TableCaptionData;EDT_TableCaptionData198,6185
+struct _EDT_TableRowData _EDT_TableRowData202,6324
+typedef struct _EDT_TableRowData EDT_TableRowData;EDT_TableRowData209,6489
+struct _EDT_TableCellData _EDT_TableCellData213,6621
+typedef struct _EDT_TableCellData EDT_TableCellData;EDT_TableCellData230,7046
+struct _EDT_MultiColumnData _EDT_MultiColumnData234,7182
+typedef struct _EDT_MultiColumnData EDT_MultiColumnData;EDT_MultiColumnData239,7254
+struct _EDT_MetaData _EDT_MetaData242,7393
+typedef struct _EDT_MetaData EDT_MetaData;EDT_MetaData248,7587
+struct _EDT_PageData _EDT_PageData250,7631
+typedef struct _EDT_PageData EDT_PageData;EDT_PageData261,7921
+} ED_EColor;ED_EColor268,8070
+ struct _EDT_ParamData _EDT_ParamData273,8130
+typedef struct _EDT_ParamData EDT_ParamData;EDT_ParamData277,8193
+typedef int32 EDT_ParamID;EDT_ParamID279,8239
+struct _EDT_PlugInData _EDT_PlugInData281,8267
+typedef struct _EDT_PlugInData EDT_PlugInData;EDT_PlugInData295,8847
+struct _EDT_JavaData _EDT_JavaData297,8895
+typedef struct _EDT_JavaData EDT_JavaData;EDT_JavaData312,9358
+} ED_FileError;ED_FileError331,10021
+} ED_TagValidateResult;ED_TagValidateResult340,10198
+} ED_ListType;ED_ListType352,10489
+struct _EDT_ListData _EDT_ListData355,10506
+typedef struct _EDT_ListData EDT_ListData;EDT_ListData365,10908
+} ED_BreakType;ED_BreakType372,11245
+} ED_SaveOption;ED_SaveOption380,11416
+typedef int32 EDT_ClipboardResult;EDT_ClipboardResult382,11434
+#define EDT_COP_OK 383,11469
+#define EDT_COP_DOCUMENT_BUSY 384,11490
+#define EDT_COP_SELECTION_EMPTY 385,11522
+#define EDT_COP_SELECTION_CROSSES_TABLE_DATA_CELL 386,11556
+#define ED_FIND_FIND_ALL_WORDS 391,11631
+#define ED_FIND_MATCH_CASE 393,11764
+#define ED_FIND_REPLACE 394,11836
+#define ED_FIND_WHOLE_BUFFER 395,11912
+#define ED_FIND_REVERSE 396,11984
+typedef intn ED_FindFlags;ED_FindFlags398,12062
+typedef void (*EDT_PFReplaceFunc)EDT_PFReplaceFunc400,12090
+struct _EDT_FindAndReplaceData _EDT_FindAndReplaceData404,12255
+typedef struct _EDT_FindAndReplaceData EDT_FindAndReplaceData;EDT_FindAndReplaceData410,12375
+
+fe_proto.h,5006
+#define _FrontEnd_4,56
+#define CR 14,189
+#define LF 15,207
+#define VTAB 16,225
+#define FF 17,245
+#define TAB 18,263
+#define CRLF 19,282
+#  define LINEBREAK	22,357
+#  define LINEBREAK_LEN	23,385
+#    define LINEBREAK	26,433
+#    define LINEBREAK_LEN	27,467
+#      define LINEBREAK	30,522
+#      define LINEBREAK_LEN	31,554
+(*TimeoutCallbackFunction)TimeoutCallbackFunction69,1816
+#define FE_TELNET_URL_TYPE 122,3517
+#define FE_TN3270_URL_TYPE 123,3546
+#define FE_RLOGIN_URL_TYPE 124,3575
+#define SD_INSECURE_POST_FROM_SECURE_DOC 156,4706
+#define SD_INSECURE_POST_FROM_INSECURE_DOC 157,4762
+#define SD_ENTERING_SECURE_SPACE 158,4818
+#define SD_LEAVING_SECURE_SPACE 159,4874
+#define SD_INSECURE_DOCS_WITHIN_SECURE_DOCS_NOT_SHOWN 160,4930
+#define SD_REDIRECTION_TO_INSECURE_DOC 161,4986
+#define SD_REDIRECTION_TO_SECURE_SITE 162,5042
+typedef enum _Net_RequestStatus _Net_RequestStatus252,8569
+}	Net_RequestStatus;Net_RequestStatus254,8674
+typedef void (*ReadFileNameCallbackFunction)ReadFileNameCallbackFunction294,10171
+#define SORT_BY_NAME 366,12628
+#define SORT_BY_TYPE 367,12651
+#define SORT_BY_SIZE 368,12674
+#define SORT_BY_DATE 369,12697
+typedef enum PREF_Enum PREF_Enum400,13517
+} PREF_Enum PREF_Enum406,13622
+#define FE_CreateNewDocWindow(FE_CreateNewDocWindow458,15143
+#define FE_LayoutNewDocument(FE_LayoutNewDocument465,15361
+#define FE_FinishedLayout(FE_FinishedLayout467,15543
+#define FE_SetDocTitle(FE_SetDocTitle469,15626
+#define FE_TranslateISOText(FE_TranslateISOText476,15833
+#define FE_GetTextInfo(FE_GetTextInfo478,15958
+#define FE_GetImageInfo(FE_GetImageInfo480,16069
+#define FE_GetEmbedSize(FE_GetEmbedSize482,16204
+#define FE_GetJavaAppSize(FE_GetJavaAppSize484,16339
+#define FE_GetFormElementInfo(FE_GetFormElementInfo486,16476
+#define FE_GetFormElementValue(FE_GetFormElementValue488,16595
+#define FE_ResetFormElement(FE_ResetFormElement490,16726
+#define FE_SetFormElementToggle(FE_SetFormElementToggle492,16841
+#define FE_FreeFormElement(FE_FreeFormElement494,16978
+#define FE_FreeImageElement(FE_FreeImageElement496,17075
+#define FE_FreeEmbedElement(FE_FreeEmbedElement498,17174
+#define FE_FreeJavaAppElement(FE_FreeJavaAppElement500,17273
+#define FE_HideJavaAppElement(FE_HideJavaAppElement502,17376
+#define FE_FreeEdgeElement(FE_FreeEdgeElement504,17479
+#define FE_FormTextIsSubmit(FE_FormTextIsSubmit506,17576
+#define FE_TLEDGE 515,17863
+#define FE_VIEW 516,17903
+#define FE_BLEDGE 517,17950
+#define FE_DisplaySubtext(FE_DisplaySubtext519,17994
+#define FE_DisplayText(FE_DisplayText521,18169
+#define FE_DisplayImage(FE_DisplayImage523,18298
+#define FE_DisplayEmbed(FE_DisplayEmbed525,18428
+#define FE_DisplayJavaApp(FE_DisplayJavaApp527,18558
+#define FE_DisplaySubImage(FE_DisplaySubImage529,18690
+#define FE_DisplayEdge(FE_DisplayEdge531,18850
+#define FE_DisplayTable(FE_DisplayTable533,18975
+#define FE_DisplayCell(FE_DisplayCell535,19104
+#define FE_DisplaySubDoc(FE_DisplaySubDoc537,19229
+#define FE_DisplayLineFeed(FE_DisplayLineFeed539,19362
+#define FE_DisplayHR(FE_DisplayHR541,19511
+#define FE_DisplayBullet(FE_DisplayBullet543,19630
+#define FE_DisplayFormElement(FE_DisplayFormElement545,19749
+#define FE_ClearView(FE_ClearView547,19890
+#define FE_SetDocDimension(FE_SetDocDimension550,19978
+#define FE_SetDocPosition(FE_SetDocPosition552,20119
+#define FE_GetDocPosition(FE_GetDocPosition554,20240
+#define FE_BeginPreSection(FE_BeginPreSection556,20361
+#define FE_EndPreSection(FE_EndPreSection558,20446
+#define FE_SetProgressBarPercent(FE_SetProgressBarPercent560,20527
+#define FE_SetBackgroundColor(FE_SetBackgroundColor562,20642
+#define FE_Progress(FE_Progress564,20769
+#define FE_SetCallNetlibAllTheTime(FE_SetCallNetlibAllTheTime566,20833
+#define FE_ClearCallNetlibAllTheTime(FE_ClearCallNetlibAllTheTime568,20919
+#define FE_GraphProgressInit(FE_GraphProgressInit570,21009
+#define FE_GraphProgressDestroy(FE_GraphProgressDestroy572,21129
+#define FE_GraphProgress(FE_GraphProgress574,21279
+#define FE_UseFancyFTP(FE_UseFancyFTP576,21389
+#define FE_UseFancyNewsgroupListing(FE_UseFancyNewsgroupListing578,21472
+#define FE_FileSortMethod(FE_FileSortMethod580,21581
+#define FE_ShowAllNewsArticles(FE_ShowAllNewsArticles582,21670
+#define FE_Confirm(FE_Confirm584,21769
+#define FE_Prompt(FE_Prompt586,21846
+#define FE_PromptPassword(FE_PromptPassword588,21931
+#define FE_PromptUsernameAndPassword(FE_PromptUsernameAndPassword590,22024
+#define FE_EnableClicking(FE_EnableClicking592,22161
+#define FE_ImageSize(FE_ImageSize596,22268
+#define FE_ImageData(FE_ImageData598,22413
+#define FE_ImageIcon(FE_ImageIcon601,22672
+#define FE_ImageOnScreen(FE_ImageOnScreen603,22793
+#define FE_SetColormap(FE_SetColormap605,22894
+#define FE_AllConnectionsComplete(FE_AllConnectionsComplete614,23310
+#define FE_TLEDGE 663,26025
+#define FE_VIEW 664,26065
+#define FE_BLEDGE 665,26112
+#define NEW_FRAME_HIST 748,30283
+
+fe_rgn.h,134
+#define _FE_RGN_H_5,104
+typedef void *FE_Region;FE_Region11,291
+typedef struct _XP_Rect _XP_Rect14,350
+} XP_Rect;XP_Rect19,434
+
+garray.h,469
+#define _GARRAY_H_9,191
+#define TEMPLATE_SUPPORT 19,513
+#define Declare_GrowableArray(Declare_GrowableArray116,2957
+#define Declare_GrowableArray(Declare_GrowableArray121,3076
+    TXP_PtrStack(140,3868
+    Bool IsEmpty(141,3901
+    void Push(142,3944
+    PTRTYPE Top(150,4104
+    PTRTYPE Pop(151,4149
+    void Reset(152,4195
+    int StackSize(153,4228
+#define Declare_PtrStack(Declare_PtrStack156,4274
+#define Declare_PtrStack(Declare_PtrStack161,4401
+
+glhist.h,22
+#define GLHIST_H3,18
+
+gui.h,63
+#define _GUI_H_2,16
+#define XP_CANONICAL_CLIENT_NAME 32,1029
+
+hotlist.h,229
+#define HOTLIST_H4,20
+typedef enum HOT_Type HOT_Type11,98
+  HOT_URLType, HOT_HeaderType, HOT_SeparatorType } HOT_Type;HOT_Type12,122
+typedef struct HotlistStruct_ HotlistStruct_14,184
+} HotlistStruct;HotlistStruct26,770
+
+htmldlgs.h,1468
+#define _HTMLDLGS_H_2,21
+#define XP_DIALOG_CANCEL_BUTTON	19,266
+#define XP_DIALOG_CONTINUE_BUTTON	20,306
+#define XP_DIALOG_OK_BUTTON	21,347
+#define XP_DIALOG_NEXT_BUTTON	22,383
+#define XP_DIALOG_BACK_BUTTON	23,421
+#define XP_DIALOG_FINISHED_BUTTON	24,459
+#define XP_STRINGS_CHUNKSIZE 27,536
+typedef struct _XPDialogState XPDialogState;XPDialogState32,597
+typedef struct _XPDialogInfo XPDialogInfo;XPDialogInfo33,642
+typedef struct _XPPanelDesc XPPanelDesc;XPPanelDesc34,685
+typedef struct _XPPanelInfo XPPanelInfo;XPPanelInfo35,726
+typedef struct _XPPanelState XPPanelState;XPPanelState36,767
+typedef struct _XPDialogStrings XPDialogStrings;XPDialogStrings37,810
+typedef struct _XPDialogStringEntry XPDialogStringEntry;XPDialogStringEntry38,859
+typedef PRBool (* XP_HTMLDialogHandler)XP_HTMLDialogHandler40,917
+typedef int (* XP_HTMLPanelHandler)XP_HTMLPanelHandler43,1030
+typedef XPDialogStrings * (* XP_HTMLPanelContent)XP_HTMLPanelContent46,1141
+typedef void (* XP_PanelFinish)XP_PanelFinish48,1214
+struct _XPDialogState _XPDialogState50,1284
+struct _XPDialogInfo _XPDialogInfo58,1420
+#define XP_PANEL_FLAG_FINAL	65,1542
+#define XP_PANEL_FLAG_FIRST	66,1577
+#define XP_PANEL_FLAG_ONLY	67,1612
+struct _XPPanelDesc _XPPanelDesc69,1647
+struct _XPPanelInfo _XPPanelInfo75,1763
+struct _XPPanelState _XPPanelState83,1894
+struct _XPDialogStrings_XPDialogStrings96,2142
+struct _XPDialogStringEntry _XPDialogStringEntry105,2271
+
+il.h,2840
+#define _IL_H13,286
+#define IL_UNKNOWN 17,322
+#define IL_GIF	18,343
+#define IL_XBM 19,363
+#define IL_JPEG 20,384
+#define IL_PPM 21,405
+#define IL_NOTFOUND 23,427
+struct IL_IRGB_struct IL_IRGB_struct25,452
+#define IL_ATTR_RDONLY	31,549
+#define IL_ATTR_RW	32,580
+#define IL_ATTR_TRANSPARENT	33,611
+#define IL_ATTR_HONOR_INDEX 34,643
+struct IL_RGB_struct IL_RGB_struct36,676
+#define ABS(ABS42,822
+#define IL_COLOR_DISTANCE(IL_COLOR_DISTANCE45,939
+#define IL_CLOSE_COLOR_THRESHOLD 50,1227
+struct IL_Image_struct IL_Image_struct52,1264
+#define IL_IMAGE_FIRST	70,1760
+#define IL_IMAGE_DELAYED	71,1800
+#define IL_IMAGE_NOT_FOUND	72,1838
+#define IL_IMAGE_BAD_DATA	73,1878
+#define IL_IMAGE_INSECURE	74,1917
+#define IL_IMAGE_EMBED	75,1956
+#define IL_IMAGE_LAST	76,1993
+#define IL_NEWS_FIRST	78,2030
+#define IL_NEWS_CATCHUP 79,2060
+#define IL_NEWS_CATCHUP_THREAD 80,2092
+#define IL_NEWS_FOLLOWUP 81,2130
+#define IL_NEWS_GOTO_NEWSRC 82,2163
+#define IL_NEWS_NEXT_ART 83,2198
+#define IL_NEWS_NEXT_ART_GREY 84,2231
+#define IL_NEWS_NEXT_THREAD 85,2268
+#define IL_NEWS_NEXT_THREAD_GREY 86,2303
+#define IL_NEWS_POST 87,2342
+#define IL_NEWS_PREV_ART 88,2372
+#define IL_NEWS_PREV_ART_GREY	89,2405
+#define IL_NEWS_PREV_THREAD 90,2441
+#define IL_NEWS_PREV_THREAD_GREY 91,2476
+#define IL_NEWS_REPLY 92,2515
+#define IL_NEWS_RTN_TO_GROUP 93,2546
+#define IL_NEWS_SHOW_ALL_ARTICLES 94,2582
+#define IL_NEWS_SHOW_UNREAD_ARTICLES 95,2622
+#define IL_NEWS_SUBSCRIBE 96,2664
+#define IL_NEWS_UNSUBSCRIBE 97,2698
+#define IL_NEWS_FILE	98,2733
+#define IL_NEWS_FOLDER	99,2762
+#define IL_NEWS_FOLLOWUP_AND_REPLY	100,2793
+#define IL_NEWS_LAST	101,2833
+#define IL_GOPHER_FIRST	103,2863
+#define IL_GOPHER_TEXT	104,2901
+#define IL_GOPHER_IMAGE	105,2939
+#define IL_GOPHER_BINARY 106,2978
+#define IL_GOPHER_SOUND	107,3016
+#define IL_GOPHER_MOVIE	108,3054
+#define IL_GOPHER_FOLDER 109,3092
+#define IL_GOPHER_SEARCHABLE	110,3130
+#define IL_GOPHER_TELNET	111,3168
+#define IL_GOPHER_UNKNOWN 112,3206
+#define IL_GOPHER_LAST	113,3244
+#define IL_EDIT_FIRST 115,3282
+#define IL_EDIT_NAMED_ANCHOR 116,3323
+#define IL_EDIT_FORM_ELEMENT 117,3364
+#define IL_EDIT_UNSUPPORTED_TAG 118,3405
+#define IL_EDIT_UNSUPPORTED_END_TAG 119,3446
+#define IL_EDIT_JAVA 120,3487
+#define IL_EDIT_PLUGIN 121,3528
+#define IL_EDIT_LAST 122,3569
+#define IL_SA_FIRST	125,3651
+#define IL_SA_SIGNED	126,3680
+#define IL_SA_ENCRYPTED	127,3709
+#define IL_SA_NONENCRYPTED	128,3741
+#define IL_SA_SIGNED_BAD	129,3775
+#define IL_SA_ENCRYPTED_BAD	130,3807
+#define IL_SMIME_ATTACHED	131,3842
+#define IL_SMIME_SIGNED	132,3875
+#define IL_SMIME_ENCRYPTED	133,3907
+#define IL_SMIME_ENC_SIGNED	134,3941
+#define IL_SMIME_SIGNED_BAD	135,3976
+#define IL_SMIME_ENCRYPTED_BAD	136,4011
+#define IL_SMIME_ENC_SIGNED_BAD	137,4048
+#define IL_SA_LAST	138,4086
+
+imap.h,125
+#define __imap__2,17
+struct mailbox_spec mailbox_spec14,280
+typedef struct mailbox_spec mailbox_spec;mailbox_spec19,363
+
+java.h,596
+#define fe_java_h___4,59
+typedef struct LJAppletDataStr LJAppletData;LJAppletData19,293
+typedef enum LJAppletState LJAppletState21,339
+} LJAppletState;LJAppletState25,451
+struct LJAppletDataStr LJAppletDataStr33,598
+typedef void (*LJCallback)LJCallback53,1225
+#define DOWNLOADABLE_ZIPFILE_PREFIX	55,1261
+#define LJ_INIT_OK	64,1504
+#define LJ_INIT_NO_CLASSES	65,1530
+#define LJ_INIT_VERSION_WRONG	66,1562
+#define LJ_INIT_FAILED_LAST_TIME	67,1596
+#define NEW_FE_CONTEXT_FUNCS206,5140
+typedef struct MWContextEvent MWContextEvent229,5583
+} MWContextEvent;MWContextEvent232,5661
+
+javasec.h,0
+
+jmc.h,384
+#define JMC_H8,343
+typedef struct JMCModule JMCModule20,615
+} JMCModule;JMCModule23,679
+typedef void	JMCException;JMCException38,1073
+typedef struct JMCJavaObject JMCJavaObject40,1101
+} JMCJavaObject;JMCJavaObject45,1225
+#define JMCJavaObject_GetInterface	47,1243
+#define JMCJavaObject_AddRef	49,1303
+#define JMCJavaObject_Release	51,1352
+extern JRI_PUBLIC_API(53,1403
+
+jri.h,7933
+#define JRI_H8,320
+typedef struct JRIEnvInterface	JRIEnvInterface;JRIEnvInterface21,629
+typedef const JRIEnvInterface*	JRIEnv;JRIEnv24,715
+#define JRI_DefineClass(JRI_DefineClass30,939
+#define JRI_FindClass(JRI_FindClass33,1075
+#define JRI_Throw(JRI_Throw36,1165
+#define JRI_ThrowNew(JRI_ThrowNew39,1241
+#define JRI_ExceptionOccurred(JRI_ExceptionOccurred42,1348
+#define JRI_ExceptionDescribe(JRI_ExceptionDescribe45,1450
+#define JRI_ExceptionClear(JRI_ExceptionClear48,1552
+#define JRI_NewGlobalRef(JRI_NewGlobalRef51,1645
+#define JRI_DisposeGlobalRef(JRI_DisposeGlobalRef54,1742
+#define JRI_GetGlobalRef(JRI_GetGlobalRef57,1853
+#define JRI_SetGlobalRef(JRI_SetGlobalRef60,1952
+#define JRI_IsSameObject(JRI_IsSameObject63,2061
+#define JRI_NewObject(JRI_NewObject66,2160
+#define JRI_NewObjectV(JRI_NewObjectV67,2209
+#define JRI_NewObjectA(JRI_NewObjectA69,2342
+#define JRI_GetObjectClass(JRI_GetObjectClass72,2472
+#define JRI_IsInstanceOf(JRI_IsInstanceOf75,2575
+#define JRI_GetMethodID(JRI_GetMethodID78,2686
+#define JRI_CallMethod(JRI_CallMethod81,2806
+#define JRI_CallMethodV(JRI_CallMethodV82,2857
+#define JRI_CallMethodA(JRI_CallMethodA84,2989
+#define JRI_CallMethodBoolean(JRI_CallMethodBoolean87,3120
+#define JRI_CallMethodBooleanV(JRI_CallMethodBooleanV88,3185
+#define JRI_CallMethodBooleanA(JRI_CallMethodBooleanA90,3338
+#define JRI_CallMethodByte(JRI_CallMethodByte93,3490
+#define JRI_CallMethodByteV(JRI_CallMethodByteV94,3549
+#define JRI_CallMethodByteA(JRI_CallMethodByteA96,3693
+#define JRI_CallMethodChar(JRI_CallMethodChar99,3836
+#define JRI_CallMethodCharV(JRI_CallMethodCharV100,3895
+#define JRI_CallMethodCharA(JRI_CallMethodCharA102,4039
+#define JRI_CallMethodShort(JRI_CallMethodShort105,4182
+#define JRI_CallMethodShortV(JRI_CallMethodShortV106,4243
+#define JRI_CallMethodShortA(JRI_CallMethodShortA108,4390
+#define JRI_CallMethodInt(JRI_CallMethodInt111,4536
+#define JRI_CallMethodIntV(JRI_CallMethodIntV112,4593
+#define JRI_CallMethodIntA(JRI_CallMethodIntA114,4734
+#define JRI_CallMethodLong(JRI_CallMethodLong117,4874
+#define JRI_CallMethodLongV(JRI_CallMethodLongV118,4933
+#define JRI_CallMethodLongA(JRI_CallMethodLongA120,5077
+#define JRI_CallMethodFloat(JRI_CallMethodFloat123,5220
+#define JRI_CallMethodFloatV(JRI_CallMethodFloatV124,5281
+#define JRI_CallMethodFloatA(JRI_CallMethodFloatA126,5428
+#define JRI_CallMethodDouble(JRI_CallMethodDouble129,5574
+#define JRI_CallMethodDoubleV(JRI_CallMethodDoubleV130,5637
+#define JRI_CallMethodDoubleA(JRI_CallMethodDoubleA132,5787
+#define JRI_GetFieldID(JRI_GetFieldID135,5936
+#define JRI_GetField(JRI_GetField138,6053
+#define JRI_GetFieldBoolean(JRI_GetFieldBoolean141,6156
+#define JRI_GetFieldByte(JRI_GetFieldByte144,6280
+#define JRI_GetFieldChar(JRI_GetFieldChar147,6395
+#define JRI_GetFieldShort(JRI_GetFieldShort150,6510
+#define JRI_GetFieldInt(JRI_GetFieldInt153,6628
+#define JRI_GetFieldLong(JRI_GetFieldLong156,6740
+#define JRI_GetFieldFloat(JRI_GetFieldFloat159,6855
+#define JRI_GetFieldDouble(JRI_GetFieldDouble162,6973
+#define JRI_SetField(JRI_SetField165,7094
+#define JRI_SetFieldBoolean(JRI_SetFieldBoolean168,7211
+#define JRI_SetFieldByte(JRI_SetFieldByte171,7349
+#define JRI_SetFieldChar(JRI_SetFieldChar174,7478
+#define JRI_SetFieldShort(JRI_SetFieldShort177,7607
+#define JRI_SetFieldInt(JRI_SetFieldInt180,7739
+#define JRI_SetFieldLong(JRI_SetFieldLong183,7865
+#define JRI_SetFieldFloat(JRI_SetFieldFloat186,7994
+#define JRI_SetFieldDouble(JRI_SetFieldDouble189,8126
+#define JRI_IsSubclassOf(JRI_IsSubclassOf192,8261
+#define JRI_GetStaticMethodID(JRI_GetStaticMethodID195,8360
+#define JRI_CallStaticMethod(JRI_CallStaticMethod198,8498
+#define JRI_CallStaticMethodV(JRI_CallStaticMethodV199,8561
+#define JRI_CallStaticMethodA(JRI_CallStaticMethodA201,8715
+#define JRI_CallStaticMethodBoolean(JRI_CallStaticMethodBoolean204,8868
+#define JRI_CallStaticMethodBooleanV(JRI_CallStaticMethodBooleanV205,8945
+#define JRI_CallStaticMethodBooleanA(JRI_CallStaticMethodBooleanA207,9120
+#define JRI_CallStaticMethodByte(JRI_CallStaticMethodByte210,9294
+#define JRI_CallStaticMethodByteV(JRI_CallStaticMethodByteV211,9365
+#define JRI_CallStaticMethodByteA(JRI_CallStaticMethodByteA213,9531
+#define JRI_CallStaticMethodChar(JRI_CallStaticMethodChar216,9696
+#define JRI_CallStaticMethodCharV(JRI_CallStaticMethodCharV217,9767
+#define JRI_CallStaticMethodCharA(JRI_CallStaticMethodCharA219,9933
+#define JRI_CallStaticMethodShort(JRI_CallStaticMethodShort222,10098
+#define JRI_CallStaticMethodShortV(JRI_CallStaticMethodShortV223,10171
+#define JRI_CallStaticMethodShortA(JRI_CallStaticMethodShortA225,10340
+#define JRI_CallStaticMethodInt(JRI_CallStaticMethodInt228,10508
+#define JRI_CallStaticMethodIntV(JRI_CallStaticMethodIntV229,10577
+#define JRI_CallStaticMethodIntA(JRI_CallStaticMethodIntA231,10740
+#define JRI_CallStaticMethodLong(JRI_CallStaticMethodLong234,10902
+#define JRI_CallStaticMethodLongV(JRI_CallStaticMethodLongV235,10973
+#define JRI_CallStaticMethodLongA(JRI_CallStaticMethodLongA237,11139
+#define JRI_CallStaticMethodFloat(JRI_CallStaticMethodFloat240,11304
+#define JRI_CallStaticMethodFloatV(JRI_CallStaticMethodFloatV241,11377
+#define JRI_CallStaticMethodFloatA(JRI_CallStaticMethodFloatA243,11546
+#define JRI_CallStaticMethodDouble(JRI_CallStaticMethodDouble246,11714
+#define JRI_CallStaticMethodDoubleV(JRI_CallStaticMethodDoubleV247,11789
+#define JRI_CallStaticMethodDoubleA(JRI_CallStaticMethodDoubleA249,11961
+#define JRI_GetStaticFieldID(JRI_GetStaticFieldID252,12132
+#define JRI_GetStaticField(JRI_GetStaticField255,12267
+#define JRI_GetStaticFieldBoolean(JRI_GetStaticFieldBoolean258,12392
+#define JRI_GetStaticFieldByte(JRI_GetStaticFieldByte261,12538
+#define JRI_GetStaticFieldChar(JRI_GetStaticFieldChar264,12675
+#define JRI_GetStaticFieldShort(JRI_GetStaticFieldShort267,12812
+#define JRI_GetStaticFieldInt(JRI_GetStaticFieldInt270,12952
+#define JRI_GetStaticFieldLong(JRI_GetStaticFieldLong273,13086
+#define JRI_GetStaticFieldFloat(JRI_GetStaticFieldFloat276,13223
+#define JRI_GetStaticFieldDouble(JRI_GetStaticFieldDouble279,13363
+#define JRI_SetStaticField(JRI_SetStaticField282,13506
+#define JRI_SetStaticFieldBoolean(JRI_SetStaticFieldBoolean285,13645
+#define JRI_SetStaticFieldByte(JRI_SetStaticFieldByte288,13805
+#define JRI_SetStaticFieldChar(JRI_SetStaticFieldChar291,13956
+#define JRI_SetStaticFieldShort(JRI_SetStaticFieldShort294,14107
+#define JRI_SetStaticFieldInt(JRI_SetStaticFieldInt297,14261
+#define JRI_SetStaticFieldLong(JRI_SetStaticFieldLong300,14409
+#define JRI_SetStaticFieldFloat(JRI_SetStaticFieldFloat303,14560
+#define JRI_SetStaticFieldDouble(JRI_SetStaticFieldDouble306,14714
+#define JRI_NewString(JRI_NewString309,14871
+#define JRI_GetStringLength(JRI_GetStringLength312,14977
+#define JRI_GetStringChars(JRI_GetStringChars315,15089
+#define JRI_NewStringUTF(JRI_NewStringUTF318,15198
+#define JRI_GetStringUTFLength(JRI_GetStringUTFLength321,15305
+#define JRI_GetStringUTFChars(JRI_GetStringUTFChars324,15426
+#define JRI_NewScalarArray(JRI_NewScalarArray327,15544
+#define JRI_GetScalarArrayLength(JRI_GetScalarArrayLength330,15711
+#define JRI_GetScalarArrayElements(JRI_GetScalarArrayElements333,15836
+#define JRI_NewObjectArray(JRI_NewObjectArray336,15967
+#define JRI_GetObjectArrayLength(JRI_GetObjectArrayLength339,16136
+#define JRI_GetObjectArrayElement(JRI_GetObjectArrayElement342,16261
+#define JRI_SetObjectArrayElement(JRI_SetObjectArrayElement345,16403
+#define JRI_RegisterNatives(JRI_RegisterNatives348,16559
+#define JRI_UnregisterNatives(JRI_UnregisterNatives351,16737
+struct JRIEnvInterface JRIEnvInterface364,17169
+typedef enum JRIEnvOperations JRIEnvOperations502,28014
+} JRIEnvOperations;JRIEnvOperations634,31648
+
+jri_md.h,4653
+#define JRI_MD_H8,350
+#			define JRI_PUBLIC_API(JRI_PUBLIC_API40,1581
+#			define JRI_CALLBACK41,1651
+#			define JRI_PUBLIC_API(JRI_PUBLIC_API44,1724
+#			define JRI_CALLBACK	45,1800
+#			define JRI_PUBLIC_API(JRI_PUBLIC_API47,1861
+#			define JRI_CALLBACK	48,1927
+#			define JRI_PUBLIC_API(JRI_PUBLIC_API53,2094
+#			define JRI_CALLBACK54,2152
+#			define JRI_PUBLIC_API(JRI_PUBLIC_API56,2198
+#			define JRI_CALLBACK	57,2271
+#		define IS_LITTLE_ENDIAN63,2407
+#	define JRI_PUBLIC_API(JRI_PUBLIC_API84,3101
+#	define JRI_CALLBACK85,3149
+#	define JRI_PUBLIC_API(JRI_PUBLIC_API89,3197
+#	define JRI_CALLBACK90,3245
+#define FAR94,3308
+typedef unsigned char	jbool;jbool101,3435
+typedef char			jbyte;jbyte102,3464
+typedef short			jchar;jchar103,3486
+typedef short			jshort;jshort104,3509
+typedef unsigned int	juint;juint106,3612
+typedef int				jint;jint107,3640
+typedef unsigned long	juint;juint109,3667
+typedef long			jint;jint110,3696
+typedef float			jfloat;jfloat112,3724
+typedef double			jdouble;jdouble113,3748
+typedef juint			jsize;jsize115,3775
+#define JRI_BIT(JRI_BIT124,4084
+#define JRI_BITMASK(JRI_BITMASK125,4123
+typedef long long			jlong;jlong130,4229
+typedef unsigned long long	julong;julong131,4256
+#define jlong_MAXINT	133,4292
+#define jlong_MININT	134,4335
+#define jlong_ZERO	135,4378
+typedef LONGLONG			jlong;jlong138,4412
+typedef DWORDLONG			julong;julong139,4438
+#define jlong_MAXINT	141,4467
+#define jlong_MININT	142,4511
+#define jlong_ZERO	143,4555
+#define jlong_IS_ZERO(jlong_IS_ZERO147,4592
+#define jlong_EQ(jlong_EQ148,4628
+#define jlong_NE(jlong_NE149,4665
+#define jlong_GE_ZERO(jlong_GE_ZERO150,4702
+#define jlong_CMP(jlong_CMP151,4738
+#define jlong_AND(jlong_AND153,4780
+#define jlong_OR(jlong_OR154,4825
+#define jlong_XOR(jlong_XOR155,4869
+#define jlong_OR2(jlong_OR2156,4914
+#define jlong_NOT(jlong_NOT157,4957
+#define jlong_NEG(jlong_NEG159,4996
+#define jlong_ADD(jlong_ADD160,5034
+#define jlong_SUB(jlong_SUB161,5079
+#define jlong_MUL(jlong_MUL163,5125
+#define jlong_DIV(jlong_DIV164,5170
+#define jlong_MOD(jlong_MOD165,5215
+#define jlong_SHL(jlong_SHL167,5261
+#define jlong_SHR(jlong_SHR168,5307
+#define jlong_USHR(jlong_USHR169,5353
+#define jlong_ISHL(jlong_ISHL170,5408
+#define jlong_L2I(jlong_L2I172,5465
+#define jlong_L2UI(jlong_L2UI173,5507
+#define jlong_L2F(jlong_L2F174,5559
+#define jlong_L2D(jlong_L2D175,5596
+#define jlong_I2L(jlong_I2L177,5634
+#define jlong_UI2L(jlong_UI2L178,5671
+#define jlong_F2L(jlong_F2L179,5710
+#define jlong_D2L(jlong_D2L180,5747
+#define jlong_UDIVMOD(jlong_UDIVMOD182,5785
+} jlong;jlong194,6015
+typedef jlong				julong;julong195,6024
+#define jlong_IS_ZERO(jlong_IS_ZERO199,6104
+#define jlong_EQ(jlong_EQ200,6162
+#define jlong_NE(jlong_NE201,6229
+#define jlong_GE_ZERO(jlong_GE_ZERO202,6296
+#define jlong_CMP(jlong_CMP207,6424
+#define jlong_UCMP(jlong_UCMP209,6549
+#define jlong_AND(jlong_AND212,6672
+#define jlong_OR(jlong_OR214,6778
+#define jlong_XOR(jlong_XOR216,6883
+#define jlong_OR2(jlong_OR2218,6989
+#define jlong_NOT(jlong_NOT220,7093
+#define jlong_NEG(jlong_NEG223,7189
+#define jlong_ADD(jlong_ADD225,7308
+#define jlong_SUB(jlong_SUB232,7691
+#define jlong_MUL(jlong_MUL244,8339
+#define _jlong_lo16(_jlong_lo16252,8805
+#define _jlong_hi16(_jlong_hi16253,8853
+#define jlong_MUL32(jlong_MUL32259,9029
+#define jlong_UDIVMOD(jlong_UDIVMOD279,10231
+extern JRI_PUBLIC_API(281,10296
+#define jlong_DIV(jlong_DIV284,10384
+#define jlong_MOD(jlong_MOD303,11661
+#define jlong_SHL(jlong_SHL324,12933
+#define jlong_ISHL(jlong_ISHL341,14020
+#define jlong_SHR(jlong_SHR359,15206
+#define jlong_USHR(jlong_USHR375,16246
+#define jlong_L2I(jlong_L2I391,17286
+#define jlong_L2UI(jlong_L2UI392,17326
+#define jlong_L2F(jlong_L2F393,17368
+#define jlong_L2D(jlong_L2D395,17445
+#define jlong_I2L(jlong_I2L410,18427
+#define jlong_UI2L(jlong_UI2L411,18487
+#define jlong_F2L(jlong_F2L412,18541
+#define jlong_D2L(jlong_D2L414,18613
+typedef union JRI_JDK_stack_item JRI_JDK_stack_item447,20588
+} JRI_JDK_stack_item;JRI_JDK_stack_item460,20892
+typedef union JRI_JDK_Java8Str JRI_JDK_Java8Str462,20915
+} JRI_JDK_Java8;JRI_JDK_Java8468,21017
+#define JRI_GET_INT64(JRI_GET_INT64471,21065
+#define JRI_SET_INT64(JRI_SET_INT64474,21247
+#define JRI_GET_INT64(JRI_GET_INT64478,21463
+#define JRI_SET_INT64(JRI_SET_INT64479,21514
+#define JRI_GET_DOUBLE(JRI_GET_DOUBLE484,21689
+#define JRI_SET_DOUBLE(JRI_SET_DOUBLE487,21874
+#define JRI_GET_DOUBLE(JRI_GET_DOUBLE491,22093
+#define JRI_SET_DOUBLE(JRI_SET_DOUBLE492,22147
+
+jriauto.h,50
+#define JRIAUTO_H24,1145
+JRI_PUBLIC_API(34,1304
+
+jriext.h,6846
+#define JRIEXT_H8,348
+typedef struct JRIRuntimeInterface		JRIRuntimeInterface;JRIRuntimeInterface26,715
+typedef const JRIRuntimeInterface*		JRIRuntimeInstance;JRIRuntimeInstance27,772
+typedef enum JRIVerifyMode JRIVerifyMode36,1029
+} JRIVerifyMode;JRIVerifyMode40,1115
+typedef struct JRIRuntimeInitargsStruct JRIRuntimeInitargsStruct42,1133
+} JRIRuntimeInitargs;JRIRuntimeInitargs51,1442
+typedef enum JRIIOModeFlags JRIIOModeFlags54,1522
+} JRIIOModeFlags;JRIIOModeFlags62,1791
+typedef enum JRIFSModeFlags JRIFSModeFlags64,1810
+} JRIFSModeFlags;JRIFSModeFlags67,1958
+typedef enum JRIRTModeFlags JRIRTModeFlags69,1977
+} JRIRTModeFlags;JRIRTModeFlags72,2119
+extern JRI_PUBLIC_API(74,2138
+(*JRI_DisposeRuntime_t)JRI_DisposeRuntime_t78,2241
+(*JRI_SetIOMode_t)JRI_SetIOMode_t85,2452
+(*JRI_SetFSMode_t)JRI_SetFSMode_t92,2686
+(*JRI_SetRTMode_t)JRI_SetRTMode_t100,2930
+(*JRI_NewEnv_t)JRI_NewEnv_t105,3037
+(*JRI_DisposeEnv_t)JRI_DisposeEnv_t108,3111
+(*JRI_GetRuntime_t)JRI_GetRuntime_t111,3174
+(*JRI_GetThread_t)JRI_GetThread_t114,3223
+(*JRI_SetClassLoader_t)JRI_SetClassLoader_t117,3270
+struct JRIRuntimeInterface JRIRuntimeInterface119,3327
+#define JRI_DisposeRuntime(JRI_DisposeRuntime135,3777
+#define JRI_SetIOMode(JRI_SetIOMode142,4001
+#define JRI_SetFSMode(JRI_SetFSMode149,4234
+#define JRI_SetRTMode(JRI_SetRTMode157,4477
+#define JRI_NewEnv(JRI_NewEnv162,4580
+#define JRI_DisposeEnv(JRI_DisposeEnv165,4660
+#define JRI_GetRuntime(JRI_GetRuntime168,4720
+#define JRI_GetThread(JRI_GetThread171,4780
+#define JRI_SetClassLoader(JRI_SetClassLoader174,4839
+typedef struct JRIReflectionInterface	JRIReflectionInterface;JRIReflectionInterface183,5159
+typedef const JRIReflectionInterface*	JRIReflectionEnv;JRIReflectionEnv184,5221
+typedef enum JRIAccessFlags JRIAccessFlags186,5278
+} JRIAccessFlags;JRIAccessFlags198,5660
+(*JRI_GetClassCount_t)JRI_GetClassCount_t201,5693
+(*JRI_GetClass_t)JRI_GetClass_t204,5754
+(*JRI_GetClassName_t)JRI_GetClassName_t207,5830
+(*JRI_VerifyClass_t)JRI_VerifyClass_t210,5922
+(*JRI_GetClassSuperclass_t)JRI_GetClassSuperclass_t213,6012
+(*JRI_GetClassInterfaceCount_t)JRI_GetClassInterfaceCount_t219,6206
+(*JRI_GetClassInterface_t)JRI_GetClassInterface_t222,6307
+(*JRI_GetClassFieldCount_t)JRI_GetClassFieldCount_t228,6534
+(*JRI_GetClassFieldInfo_t)JRI_GetClassFieldInfo_t231,6631
+(*JRI_GetClassMethodCount_t)JRI_GetClassMethodCount_t239,6965
+(*JRI_GetClassMethodInfo_t)JRI_GetClassMethodInfo_t242,7063
+struct JRIReflectionInterface JRIReflectionInterface249,7381
+#define JRI_GetClassCount(JRI_GetClassCount267,8039
+#define JRI_GetClass(JRI_GetClass270,8105
+#define JRI_GetClassName(JRI_GetClassName273,8175
+#define JRI_VerifyClass(JRI_VerifyClass276,8254
+#define JRI_GetClassSuperclass(JRI_GetClassSuperclass279,8331
+#define JRI_GetClassInterfaceCount(JRI_GetClassInterfaceCount285,8518
+#define JRI_GetClassInterface(JRI_GetClassInterface288,8616
+#define JRI_GetClassFieldCount(JRI_GetClassFieldCount294,8835
+#define JRI_GetClassFieldInfo(JRI_GetClassFieldInfo297,8926
+#define JRI_GetClassMethodCount(JRI_GetClassMethodCount303,9248
+#define JRI_GetClassMethodInfo(JRI_GetClassMethodInfo306,9341
+typedef struct JRIDebuggerInterface	JRIDebuggerInterface;JRIDebuggerInterface315,9815
+typedef const JRIDebuggerInterface*	JRIDebuggerEnv;JRIDebuggerEnv316,9873
+(*JRI_GetFrameCount_t)JRI_GetFrameCount_t321,9967
+(*JRI_GetFrameInfo_t)JRI_GetFrameInfo_t324,10027
+(*JRI_GetVarInfo_t)JRI_GetVarInfo_t329,10183
+#define JRIVarNotInScope	333,10356
+(*JRI_GetSourceInfo_t)JRI_GetSourceInfo_t336,10412
+(*JRI_GetVar_t)JRI_GetVar_t342,10620
+(*JRI_GetVar_boolean_t)JRI_GetVar_boolean_t345,10707
+(*JRI_GetVar_byte_t)JRI_GetVar_byte_t348,10802
+(*JRI_GetVar_char_t)JRI_GetVar_char_t351,10894
+(*JRI_GetVar_short_t)JRI_GetVar_short_t354,10987
+(*JRI_GetVar_int_t)JRI_GetVar_int_t357,11079
+(*JRI_GetVar_long_t)JRI_GetVar_long_t360,11170
+(*JRI_GetVar_float_t)JRI_GetVar_float_t363,11263
+(*JRI_GetVar_double_t)JRI_GetVar_double_t366,11358
+(*JRI_SetVar_t)JRI_SetVar_t371,11533
+(*JRI_SetVar_boolean_t)JRI_SetVar_boolean_t374,11631
+(*JRI_SetVar_byte_t)JRI_SetVar_byte_t377,11738
+(*JRI_SetVar_char_t)JRI_SetVar_char_t380,11842
+(*JRI_SetVar_short_t)JRI_SetVar_short_t383,11946
+(*JRI_SetVar_int_t)JRI_SetVar_int_t386,12052
+(*JRI_SetVar_long_t)JRI_SetVar_long_t389,12154
+(*JRI_SetVar_float_t)JRI_SetVar_float_t392,12258
+(*JRI_SetVar_double_t)JRI_SetVar_double_t395,12364
+(*JRI_StepOver_t)JRI_StepOver_t402,12583
+(*JRI_StepIn_t)JRI_StepIn_t405,12637
+(*JRI_StepOut_t)JRI_StepOut_t408,12689
+(*JRI_Continue_t)JRI_Continue_t411,12742
+(*JRI_Return_t)JRI_Return_t414,12796
+struct JRIDebuggerInterface JRIDebuggerInterface418,12951
+#define JRI_GetFrameCount(JRI_GetFrameCount453,14007
+#define JRI_GetFrameInfo(JRI_GetFrameInfo456,14073
+#define JRI_GetVarInfo(JRI_GetVarInfo459,14243
+#define JRI_GetSourceInfo(JRI_GetSourceInfo462,14460
+#define JRI_GetVar(JRI_GetVar467,14676
+#define JRI_GetVar_boolean(JRI_GetVar_boolean470,14773
+#define JRI_GetVar_byte(JRI_GetVar_byte473,14886
+#define JRI_GetVar_char(JRI_GetVar_char476,14992
+#define JRI_GetVar_short(JRI_GetVar_short479,15098
+#define JRI_GetVar_int(JRI_GetVar_int482,15207
+#define JRI_GetVar_long(JRI_GetVar_long485,15311
+#define JRI_GetVar_float(JRI_GetVar_float488,15417
+#define JRI_GetVar_double(JRI_GetVar_double491,15526
+#define JRI_SetVar(JRI_SetVar496,15719
+#define JRI_SetVar_boolean(JRI_SetVar_boolean499,15829
+#define JRI_SetVar_byte(JRI_SetVar_byte502,15955
+#define JRI_SetVar_char(JRI_SetVar_char505,16075
+#define JRI_SetVar_short(JRI_SetVar_short508,16195
+#define JRI_SetVar_int(JRI_SetVar_int511,16317
+#define JRI_SetVar_long(JRI_SetVar_long514,16436
+#define JRI_SetVar_float(JRI_SetVar_float517,16556
+#define JRI_SetVar_double(JRI_SetVar_double520,16678
+#define JRI_StepOver(JRI_StepOver527,16914
+#define JRI_StepIn(JRI_StepIn530,16971
+#define JRI_StepOut(JRI_StepOut533,17024
+#define JRI_Continue(JRI_Continue536,17079
+#define JRI_Return(JRI_Return539,17136
+typedef struct JRICompilerInterface	JRICompilerInterface;JRICompilerInterface548,17449
+typedef const JRICompilerInterface*	JRICompilerEnv;JRICompilerEnv549,17507
+(*JRI_CompileClass_t)JRI_CompileClass_t552,17573
+struct JRICompilerInterface JRICompilerInterface556,17722
+#define JRI_CompileClass(JRI_CompileClass564,17913
+typedef struct JRIExprInterface	JRIExprInterface;JRIExprInterface573,18322
+typedef const JRIExprInterface*	JRIExprEnv;JRIExprEnv574,18372
+(*JRI_CompileExpr_t)JRI_CompileExpr_t577,18430
+(*JRI_EvalExpr_t)JRI_EvalExpr_t581,18528
+struct JRIExprInterface JRIExprInterface583,18576
+#define JRI_CompileExpr(JRI_CompileExpr592,18789
+#define JRI_EvalExpr(JRI_EvalExpr595,18894
+
+jritypes.h,3094
+#define JRITYPES_H8,325
+typedef void*		JRIRef;JRIRef25,663
+typedef void*		JRIGlobalRef;JRIGlobalRef26,686
+typedef jint		JRIFieldID;JRIFieldID28,716
+typedef jint		JRIMethodID;JRIMethodID29,742
+typedef JRIGlobalRef	jglobal;jglobal32,786
+typedef JRIRef			jref;jref33,816
+typedef union JRIValue JRIValue35,840
+} JRIValue;JRIValue45,975
+typedef JRIValue		jvalue;jvalue47,988
+typedef enum JRIBoolean JRIBoolean49,1015
+} JRIBoolean;JRIBoolean52,1078
+typedef enum JRIConstant JRIConstant54,1093
+} JRIConstant;JRIConstant56,1143
+typedef struct jbooleanArrayStruct*		jbooleanArray;jbooleanArray59,1242
+typedef struct jbyteArrayStruct*		jbyteArray;jbyteArray60,1294
+typedef struct jcharArrayStruct*		jcharArray;jcharArray61,1340
+typedef struct jshortArrayStruct*		jshortArray;jshortArray62,1386
+typedef struct jintArrayStruct*			jintArray;jintArray63,1434
+typedef struct jlongArrayStruct*		jlongArray;jlongArray64,1479
+typedef struct jfloatArrayStruct*		jfloatArray;jfloatArray65,1525
+typedef struct jdoubleArrayStruct*		jdoubleArray;jdoubleArray66,1573
+typedef struct jobjectArrayStruct*		jobjectArray;jobjectArray67,1623
+typedef struct jstringArrayStruct*		jstringArray;jstringArray68,1673
+typedef struct jarrayArrayStruct*		jarrayArray;jarrayArray69,1723
+#define JRIConstructorMethodName	71,1772
+#define JRISigArray(JRISigArray92,2501
+#define JRISigByte	93,2531
+#define JRISigChar	94,2556
+#define JRISigClass(JRISigClass95,2581
+#define JRISigFloat	96,2620
+#define JRISigDouble	97,2646
+#define JRISigMethod(JRISigMethod98,2672
+#define JRISigNoArgs	99,2712
+#define JRISigInt	100,2737
+#define JRISigLong	101,2761
+#define JRISigShort	102,2786
+#define JRISigVoid	103,2812
+#define JRISigBoolean	104,2837
+extern JRI_PUBLIC_API(110,3044
+#define JRI_NewByteArray(JRI_NewByteArray125,3648
+#define JRI_GetByteArrayLength(JRI_GetByteArrayLength127,3773
+#define JRI_GetByteArrayElements(JRI_GetByteArrayElements129,3856
+#define JRI_NewCharArray(JRI_NewCharArray132,3944
+#define JRI_GetCharArrayLength(JRI_GetCharArrayLength134,4089
+#define JRI_GetCharArrayElements(JRI_GetCharArrayElements136,4172
+#define JRI_NewShortArray(JRI_NewShortArray139,4274
+#define JRI_GetShortArrayLength(JRI_GetShortArrayLength141,4422
+#define JRI_GetShortArrayElements(JRI_GetShortArrayElements143,4506
+#define JRI_NewIntArray(JRI_NewIntArray146,4610
+#define JRI_GetIntArrayLength(JRI_GetIntArrayLength148,4752
+#define JRI_GetIntArrayElements(JRI_GetIntArrayElements150,4834
+#define JRI_NewLongArray(JRI_NewLongArray153,4934
+#define JRI_GetLongArrayLength(JRI_GetLongArrayLength155,5079
+#define JRI_GetLongArrayElements(JRI_GetLongArrayElements157,5162
+#define JRI_NewFloatArray(JRI_NewFloatArray160,5264
+#define JRI_GetFloatArrayLength(JRI_GetFloatArrayLength162,5412
+#define JRI_GetFloatArrayElements(JRI_GetFloatArrayElements164,5496
+#define JRI_NewDoubleArray(JRI_NewDoubleArray167,5600
+#define JRI_GetDoubleArrayLength(JRI_GetDoubleArrayLength169,5751
+#define JRI_GetDoubleArrayElements(JRI_GetDoubleArrayElements171,5836
+
+libc_r.h,1107
+#define _LIBC_R_H15,883
+#define R_STRTOK_INIT_R(R_STRTOK_INIT_R20,947
+#define R_STRTOK_R(R_STRTOK_R23,1002
+#define R_STRTOK_NORET_R(R_STRTOK_NORET_R26,1096
+#define R_MAX_STRERROR_LEN_R 32,1228
+#define R_STRERROR_INIT_R(R_STRERROR_INIT_R34,1296
+#define R_STRERROR_R(R_STRERROR_R37,1371
+#define R_ASCTIME_INIT_R(R_ASCTIME_INIT_R43,1514
+#define R_ASCTIME_R(R_ASCTIME_R46,1569
+#define R_CTIME_INIT_R(R_CTIME_INIT_R49,1628
+#define R_CTIME_R(R_CTIME_R52,1679
+#define R_GMTIME_INIT_R(R_GMTIME_INIT_R55,1732
+#define R_GMTIME_R(R_GMTIME_R58,1786
+#define R_LOCALTIME_INIT_R(R_LOCALTIME_INIT_R61,1845
+#define R_LOCALTIME_R(R_LOCALTIME_R64,1904
+#define R_CRYPT_INIT_R(R_CRYPT_INIT_R71,2034
+#define R_CRYPT_R(R_CRYPT_R75,2126
+#define R_MAX_PW_LEN_R 81,2244
+#define R_GETPWNAM_INIT_R(R_GETPWNAM_INIT_R84,2392
+#define R_GETPWNAM_R(R_GETPWNAM_R89,2542
+#define R_GETHOSTBYADDR_INIT_R(R_GETHOSTBYADDR_INIT_R95,2709
+#define R_GETHOSTBYADDR_R(R_GETHOSTBYADDR_R99,2832
+#define R_GETHOSTBYNAME_INIT_R(R_GETHOSTBYNAME_INIT_R108,3183
+#define R_GETHOSTBYNAME_R(R_GETHOSTBYNAME_R112,3306
+
+libi18n.h,1215
+#define INTL_LIBI18N_H7,78
+#define MAX_UNCVT 14,139
+#define INTL_CharSetType(INTL_CharSetType17,213
+typedef struct INTL_FontEncodingList INTL_FontEncodingList;INTL_FontEncodingList20,271
+struct INTL_FontEncodingListINTL_FontEncodingList22,332
+typedef struct CCCDataObject CCCDataObject;CCCDataObject30,439
+(*CCCFunc)CCCFunc33,508
+	METACHARSET_NONE 175,3449
+	METACHARSET_HASCHARSET,176,3472
+	METACHARSET_REQUESTRELAYOUT,177,3497
+	METACHARSET_FORCERELAYOUT,178,3527
+	METACHARSET_RELAYOUTDONE179,3555
+typedef uint16 INTL_Unicode INTL_Unicode199,4246
+typedef uint16 INTL_Encoding_ID;INTL_Encoding_ID201,4277
+typedef struct INTL_CompoundStr INTL_CompoundStr;INTL_CompoundStr204,4338
+struct INTL_CompoundStr INTL_CompoundStr207,4445
+typedef  INTL_CompoundStr* INTL_CompoundStrIterator;INTL_CompoundStrIterator213,4558
+typedef void* INTL_UnicodeToStrIterator INTL_UnicodeToStrIterator229,5363
+    SEVEN_BIT_CHAR,316,7827
+    HALFWIDTH_PRONOUNCE_CHAR,317,7847
+    FULLWIDTH_ASCII_CHAR,318,7877
+    FULLWIDTH_PRONOUNCE_CHAR,319,7903
+    KANJI_CHAR,320,7933
+    UNCLASSIFIED_CHAR321,7949
+    PROHIBIT_NOWHERE,327,8036
+    PROHIBIT_BEGIN_OF_LINE,328,8058
+    PROHIBIT_END_OF_LINE329,8086
+
+libmime.h,2302
+#define _LIBMIME_H_8,243
+typedef struct MimeHeaders MimeHeaders;MimeHeaders15,399
+typedef struct MimeDisplayOptions MimeDisplayOptions;MimeDisplayOptions16,439
+typedef struct MimeParseStateObject MimeParseStateObject;MimeParseStateObject17,493
+#define HEADER_BCC	53,1925
+#define HEADER_CC	54,1956
+#define HEADER_CONTENT_BASE	55,1985
+#define HEADER_CONTENT_DESCRIPTION	56,2032
+#define HEADER_CONTENT_DISPOSITION	57,2091
+#define HEADER_CONTENT_ENCODING	58,2150
+#define HEADER_CONTENT_LENGTH	59,2204
+#define HEADER_CONTENT_NAME	60,2254
+#define HEADER_CONTENT_TRANSFER_ENCODING	61,2301
+#define HEADER_CONTENT_TYPE	62,2370
+#define HEADER_DATE	63,2417
+#define HEADER_DISTRIBUTION	64,2450
+#define HEADER_FCC	65,2497
+#define HEADER_FOLLOWUP_TO	66,2528
+#define HEADER_FROM	67,2573
+#define HEADER_LINES	68,2606
+#define HEADER_MESSAGE_ID	69,2640
+#define HEADER_MIME_VERSION	70,2683
+#define HEADER_NEWSGROUPS	71,2730
+#define HEADER_ORGANIZATION	72,2773
+#define HEADER_REFERENCES	73,2820
+#define HEADER_REPLY_TO	74,2863
+#define HEADER_RESENT_COMMENTS	75,2903
+#define HEADER_RESENT_DATE	76,2955
+#define HEADER_RESENT_FROM	77,3000
+#define HEADER_RESENT_MESSAGE_ID	78,3045
+#define HEADER_RESENT_SENDER	79,3100
+#define HEADER_RESENT_TO	80,3148
+#define HEADER_RESENT_CC	81,3189
+#define HEADER_SENDER	82,3230
+#define HEADER_SUBJECT	83,3266
+#define HEADER_TO	84,3304
+#define HEADER_X_MAILER	85,3333
+#define HEADER_X_NEWSREADER	86,3373
+#define HEADER_X_POSTING_SOFTWARE	87,3420
+#define HEADER_X_MOZILLA_STATUS	88,3477
+#define HEADER_X_MOZILLA_NEWSHOST	89,3532
+#define HEADER_X_UIDL	90,3590
+#define HEADER_XREF	91,3626
+#define HEADER_X_SUN_CHARSET	92,3659
+#define HEADER_X_SUN_CONTENT_LENGTH	93,3707
+#define HEADER_X_SUN_CONTENT_LINES	94,3768
+#define HEADER_X_SUN_DATA_DESCRIPTION	95,3827
+#define HEADER_X_SUN_DATA_NAME	96,3891
+#define HEADER_X_SUN_DATA_TYPE	97,3943
+#define HEADER_X_SUN_ENCODING_INFO	98,3995
+#define HEADER_X_PRIORITY 99,4054
+#define HEADER_PARM_BOUNDARY	101,4112
+#define HEADER_PARM_FILENAME	102,4155
+#define HEADER_PARM_NAME	103,4198
+#define HEADER_PARM_TYPE	104,4234
+} MimeHeadersState;MimeHeadersState117,4800
+typedef char *(*MimeHTMLGeneratorFunction)MimeHTMLGeneratorFunction122,4902
+struct MimeDisplayOptionsMimeDisplayOptions125,5014
+
+libmocha.h,464
+#define libmocha_h___2,22
+typedef struct MochaTimeout MochaTimeout;MochaTimeout20,301
+typedef struct MochaNextURL MochaNextURL;MochaNextURL21,343
+typedef struct MochaDecoder MochaDecoder27,527
+} MochaDecoder;MochaDecoder76,2149
+#define LM_SwitchMocha(LM_SwitchMocha93,2515
+typedef enum LM_LoadEvent LM_LoadEvent333,9087
+} LM_LoadEvent;LM_LoadEvent338,9385
+typedef enum LM_ImageEvent LM_ImageEvent450,13103
+} LM_ImageEvent;LM_ImageEvent456,13256
+
+libnet.h,23
+#define _libnet_5,224
+
+lo_ele.h,6213
+#define _LayoutElements_13,447
+#define LO_DEFAULT_FG_RED 25,640
+#define LO_DEFAULT_FG_GREEN 26,676
+#define LO_DEFAULT_FG_BLUE 27,712
+#define LO_DEFAULT_BG_RED 29,749
+#define LO_DEFAULT_BG_GREEN 30,787
+#define LO_DEFAULT_BG_BLUE 31,825
+#define LO_UNVISITED_ANCHOR_RED 33,864
+#define LO_UNVISITED_ANCHOR_GREEN 34,900
+#define LO_UNVISITED_ANCHOR_BLUE 35,936
+#define LO_VISITED_ANCHOR_RED 37,975
+#define LO_VISITED_ANCHOR_GREEN 38,1012
+#define LO_VISITED_ANCHOR_BLUE 39,1049
+#define LO_SELECTED_ANCHOR_RED 41,1088
+#define LO_SELECTED_ANCHOR_GREEN 42,1126
+#define LO_SELECTED_ANCHOR_BLUE 43,1162
+#define LO_COLOR_BG	48,1256
+#define LO_COLOR_FG	49,1278
+#define LO_COLOR_LINK	50,1300
+#define LO_COLOR_VLINK	51,1324
+#define LO_COLOR_ALINK	52,1349
+#define LO_NCOLORS	54,1375
+#define LO_SCROLL_NO	61,1501
+#define LO_SCROLL_YES	62,1524
+#define LO_SCROLL_AUTO	63,1548
+#define XP_SMALL 68,1640
+#define XP_MEDIUM 69,1660
+#define XP_LARGE 70,1680
+#define LO_UNKNOWN 75,1829
+#define LO_NONE 76,1856
+#define LO_TEXT 77,1882
+#define LO_LINEFEED 78,1908
+#define LO_HRULE 79,1934
+#define LO_IMAGE 80,1960
+#define LO_BULLET 81,1986
+#define LO_FORM_ELE 82,2012
+#define LO_SUBDOC 83,2038
+#define LO_TABLE 84,2064
+#define LO_CELL 85,2090
+#define LO_EMBED 86,2116
+#define LO_EDGE 87,2143
+#define LO_JAVA 88,2170
+#define LO_SCRIPT 89,2197
+#define LO_FONT_NORMAL 91,2225
+#define LO_FONT_BOLD 92,2260
+#define LO_FONT_ITALIC 93,2295
+#define LO_FONT_FIXED 94,2330
+#define LO_ATTR_ANCHOR 96,2366
+#define LO_ATTR_UNDERLINE 97,2401
+#define LO_ATTR_STRIKEOUT 98,2436
+#define LO_ATTR_BLINK	99,2471
+#define LO_ATTR_ISMAP	100,2504
+#define LO_ATTR_ISFORM	101,2537
+#define LO_ATTR_DISPLAYED 102,2571
+#define LO_ATTR_BACKDROP 103,2606
+#define LO_ATTR_STICKY 104,2641
+#define LO_ATTR_INTERNAL_IMAGE 105,2676
+#define LO_ATTR_MOCHA_IMAGE 106,2715
+#define LO_ATTR_ON_IMAGE_LIST 107,2793
+#define BULLET_NONE 113,2992
+#define BULLET_BASIC 114,3026
+#define BULLET_NUM 115,3060
+#define BULLET_NUM_L_ROMAN 116,3094
+#define BULLET_NUM_S_ROMAN 117,3128
+#define BULLET_ALPHA_L 118,3162
+#define BULLET_ALPHA_S 119,3196
+#define BULLET_ROUND 120,3230
+#define BULLET_SQUARE 121,3264
+struct LO_AnchorData_struct LO_AnchorData_struct135,3572
+struct LO_Color_struct LO_Color_struct147,3857
+struct LO_TextAttr_struct LO_TextAttr_struct154,3975
+struct LO_TextInfo_struct LO_TextInfo_struct171,4524
+#define	LO_ELE_BREAKABLE	181,4671
+#define	LO_ELE_SECURE	182,4701
+#define	LO_ELE_SELECTED	183,4729
+#define	LO_ELE_BREAKING	184,4759
+#define	LO_ELE_FLOATING	185,4789
+#define	LO_ELE_SHADED	186,4819
+#define	LO_ELE_DELAY_CENTER	187,4847
+#define	LO_ELE_DELAY_RIGHT	188,4880
+#define	LO_ELE_DELAY_JUSTIFY	189,4912
+#define	LO_ELE_DELAY_ALIGNED	190,4946
+#define LO_ELE_HIDDEN	195,5025
+struct LO_TextStruct_struct LO_TextStruct_struct205,5340
+struct LO_ImageData_struct LO_ImageData_struct246,6238
+struct LO_ImageAttr_struct LO_ImageAttr_struct263,6614
+struct LO_ImageStruct_struct LO_ImageStruct_struct282,7306
+struct LO_SubDocStruct_struct LO_SubDocStruct_struct318,8146
+#define FORM_TYPE_NONE 355,9129
+#define FORM_TYPE_TEXT 356,9163
+#define FORM_TYPE_RADIO 357,9197
+#define FORM_TYPE_CHECKBOX 358,9231
+#define FORM_TYPE_HIDDEN 359,9265
+#define FORM_TYPE_SUBMIT 360,9299
+#define FORM_TYPE_RESET 361,9333
+#define FORM_TYPE_PASSWORD 362,9367
+#define FORM_TYPE_BUTTON 363,9401
+#define FORM_TYPE_JOT 364,9435
+#define FORM_TYPE_SELECT_ONE 365,9469
+#define FORM_TYPE_SELECT_MULT 366,9504
+#define FORM_TYPE_TEXTAREA 367,9539
+#define FORM_TYPE_ISINDEX 368,9574
+#define FORM_TYPE_IMAGE 369,9609
+#define FORM_TYPE_FILE 370,9644
+#define FORM_TYPE_KEYGEN 371,9679
+#define FORM_TYPE_READONLY 372,9714
+#define FORM_METHOD_GET	374,9750
+#define FORM_METHOD_POST	375,9777
+#define TEXTAREA_WRAP_OFF	377,9805
+#define TEXTAREA_WRAP_SOFT	378,9833
+#define TEXTAREA_WRAP_HARD	379,9862
+struct lo_FormElementOptionData_struct lo_FormElementOptionData_struct397,10233
+struct lo_FormElementSelectData_struct lo_FormElementSelectData_struct405,10375
+struct lo_FormElementTextData_struct lo_FormElementTextData_struct420,10745
+struct lo_FormElementTextareaData_struct lo_FormElementTextareaData_struct435,11014
+struct lo_FormElementMinimalData_struct lo_FormElementMinimalData_struct452,11379
+struct lo_FormElementToggleData_struct lo_FormElementToggleData_struct464,11607
+struct lo_FormElementKeygenData_struct lo_FormElementKeygenData_struct478,11852
+union LO_FormElementData_struct LO_FormElementData_struct489,12037
+struct LO_FormSubmitData_struct LO_FormSubmitData_struct500,12319
+struct LO_FormElementStruct_struct LO_FormElementStruct_struct512,12522
+#define LO_LINEFEED_BREAK_SOFT 548,13328
+#define LO_LINEFEED_BREAK_HARD 549,13361
+#define LO_LINEFEED_BREAK_PARAGRAPH 550,13394
+struct LO_LinefeedStruct_struct LO_LinefeedStruct_struct552,13433
+struct LO_HorizRuleStruct_struct LO_HorizRuleStruct_struct576,13943
+struct LO_BulletStruct_struct LO_BulletStruct_struct598,14383
+struct LO_TableStruct_struct LO_TableStruct_struct621,14800
+struct LO_CellStruct_struct LO_CellStruct_struct647,15310
+struct LO_EmbedStruct_struct LO_EmbedStruct_struct674,15847
+struct LO_JavaAppStruct_struct LO_JavaAppStruct_struct707,16580
+struct LO_EdgeStruct_struct LO_EdgeStruct_struct747,17525
+struct LO_Any_struct LO_Any_struct770,17905
+union LO_Element_struct LO_Element_struct785,18146
+struct LO_Position_struct LO_Position_struct803,18532
+struct LO_Selection_struct LO_Selection_struct814,18862
+#define LO_HIT_UNKNOWN 821,18963
+#define LO_HIT_LINE 822,18989
+#define LO_HIT_ELEMENT 823,19012
+#define LO_HIT_LINE_REGION_BEFORE 825,19039
+#define LO_HIT_LINE_REGION_AFTER 826,19076
+#define LO_HIT_ELEMENT_REGION_BEFORE 828,19114
+#define LO_HIT_ELEMENT_REGION_MIDDLE 829,19154
+#define LO_HIT_ELEMENT_REGION_AFTER 830,19194
+struct LO_HitLineResult_struct LO_HitLineResult_struct832,19234
+struct LO_HitElementResult_struct LO_HitElementResult_struct838,19409
+union LO_HitResult_struct LO_HitResult_struct845,19612
+#define LO_NA_CHARACTER 853,19765
+#define LO_NA_WORD 854,19791
+#define LO_NA_LINEEDGE 855,19812
+#define LO_NA_DOCUMENT 856,19837
+
+m_cvstrm.h,26
+#define M_CVStrm_h13,231
+
+mcom_db.h,2712
+#define	_DB_H_37,1893
+#define BYTE_ORDER 42,1944
+#define BIG_ENDIAN 43,1974
+#define LITTLE_ENDIAN 44,2003
+#define	__BIT_TYPES_DEFINED__45,2083
+#define BIG_ENDIAN 49,2134
+#define LITTLE_ENDIAN 50,2163
+#define BYTE_ORDER 66,2550
+#define BYTE_ORDER 68,2610
+#define BYTE_ORDER 71,2741
+#define BYTE_ORDER 75,2975
+#define BYTE_ORDER 77,3011
+#  define BYTE_ORDER 86,3153
+#  define BIG_ENDIAN 87,3190
+#  define LITTLE_ENDIAN 88,3227
+#define MAXPATHLEN 96,3383
+#define MAXPATHLEN 116,3663
+#define	EFTYPE	118,3703
+#define	STDIN_FILENO	121,3783
+#define	STDOUT_FILENO	122,3829
+#define	STDERR_FILENO	123,3853
+#define	O_ACCMODE	127,3942
+#define BYTE_ORDER 134,4039
+#define LITTLE_ENDIAN 135,4072
+#define BIG_ENDIAN 136,4152
+#define	MAX_PAGE_NUMBER	141,4260
+#define BIG_ENDIAN 149,4412
+#define LITTLE_ENDIAN 150,4436
+#define BYTE_ORDER 151,4463
+#define O_ACCMODE 152,4493
+#define MAXPATHLEN 153,4558
+#define EFTYPE 154,4583
+#define MIN(MIN176,4977
+#define MAX(MAX180,5041
+#define	RET_ERROR	183,5093
+#define	RET_SUCCESS	184,5136
+#define	RET_SPECIAL	185,5159
+#define	__BIT_TYPES_DEFINED__188,5223
+#define	MAX_PAGE_NUMBER	191,5261
+typedef uint32	pgno_t;pgno_t194,5341
+#define	MAX_PAGE_OFFSET	197,5372
+typedef uint16	indx_t;indx_t198,5433
+#define	MAX_REC_NUMBER	199,5456
+typedef uint32	recno_t;recno_t200,5522
+#define EFTYPE 204,5599
+} DBT;DBT211,5797
+#define	R_CURSOR	214,5826
+#define	__R_UNUSED	215,5866
+#define	R_FIRST	216,5901
+#define	R_IAFTER	217,5931
+#define	R_IBEFORE	218,5969
+#define	R_LAST	219,6008
+#define	R_NEXT	220,6052
+#define	R_NOOVERWRITE	221,6081
+#define	R_PREV	222,6116
+#define	R_SETCURSOR	223,6160
+#define	R_RECNOSYNC	224,6202
+typedef enum { DB_BTREE, DB_HASH, DB_RECNO } DBTYPE;DBTYPE226,6246
+typedef enum { LockOutDatabase, UnlockDatabase } DBLockFlagEnum;DBLockFlagEnum228,6300
+#define	DB_LOCK	244,6951
+#define	DB_SHMEM	245,6997
+#define	DB_TXN	246,7050
+#define	DB_LOCK	248,7106
+#define	DB_SHMEM	249,7152
+#define	DB_TXN	250,7205
+typedef struct __db __db254,7306
+#define	BTREEMAGIC	266,7763
+#define	BTREEVERSION	267,7791
+#define	R_DUP	271,7895
+} BTREEINFO;BTREEINFO282,8288
+#define	HASHMAGIC	284,8302
+#define	HASHVERSION	285,8329
+} HASHINFO;HASHINFO296,8670
+#define	R_FIXEDLEN	300,8764
+#define	R_NOKEY	301,8815
+#define	R_SNAPSHOT	302,8860
+} RECNOINFO;RECNOINFO310,9182
+#define	M_32_SWAP(M_32_SWAP319,9421
+#define	P_32_SWAP(P_32_SWAP326,9655
+#define	P_32_COPY(P_32_COPY333,9894
+#define	M_16_SWAP(M_16_SWAP346,10300
+#define	P_16_SWAP(P_16_SWAP351,10446
+#define	P_16_COPY(P_16_COPY356,10599
+#define BYTE_ORDER 381,11268
+#define BYTE_ORDER 386,11355
+#define BIG_ENDIAN 387,11385
+#define LITTLE_ENDIAN 388,11414
+
+mcom_ndbm.h,228
+#define	_NDBM_H_40,1975
+#define DBM_RDONLY	45,2051
+#define DBM_INSERT 48,2108
+#define DBM_REPLACE 49,2134
+#define	DBM_SUFFIX	55,2299
+} datum;datum60,2367
+typedef DB DBM;DBM62,2377
+#define	dbm_pagfno(dbm_pagfno63,2393
+
+merrors.h,955
+#define _MERRORS_H_8,178
+#define MK_INTERRUPTED	14,223
+#define MK_UNABLE_TO_CONVERT	16,254
+#define MK_UNABLE_TO_LOGIN	18,290
+#define MK_NO_NEWS_SERVER	20,324
+#define MK_USE_FTP_INSTEAD	21,356
+#define MK_USE_COPY_FROM_CACHE	22,389
+#define MK_EMPTY_NEWS_LIST 23,426
+#define MK_MAILTO_NOT_READY	25,472
+#define MK_OBJECT_NOT_IN_CACHE	27,507
+#define MK_UNABLE_TO_LISTEN_ON_SOCKET 29,545
+#define MK_WAITING_FOR_LOOKUP	31,591
+#define MK_DO_REDIRECT	32,656
+#define MK_MIME_NEED_B64	34,720
+#define MK_MIME_NEED_QP	35,773
+#define MK_MIME_NEED_TEXT_CONVERTER	36,826
+#define MK_MIME_NEED_PS_CONVERTER	37,889
+#define MK_IMAGE_LOSSAGE	39,951
+#define MK_TOO_MANY_OPEN_FILES	41,983
+#define MK_FILE_WRITE_ERROR	43,1021
+#define MK_GET_REST_OF_PARTIAL_FILE_FROM_NETWORK	45,1056
+#define MK_MULTIPART_MESSAGE_COMPLETED	47,1111
+#define MK_DATA_LOADED	51,1177
+#define MK_NO_DATA	52,1203
+#define MK_NO_ACTION	53,1225
+#define MK_CHANGING_CONTEXT	54,1249
+
+mime.h,214
+#define MIME_H4,52
+(*message_delivery_done_callback_func)message_delivery_done_callback_func70,2216
+typedef struct MSG_AttachmentDataMSG_AttachmentData79,2555
+} MSG_AttachmentData;MSG_AttachmentData118,4114
+
+mimeenc.h,168
+#define _MIMEENC_H_8,263
+typedef struct MimeDecoderData MimeDecoderData;MimeDecoderData19,529
+typedef struct MimeEncoderData MimeEncoderData;MimeEncoderData20,577
+
+minicom.h,907
+#define MINICOM_H8,330
+typedef struct _GUID _GUID25,607
+} GUID;GUID30,691
+typedef GUID	IID;IID32,700
+typedef GUID	CLSID;CLSID33,718
+typedef IID*	REFIID;REFIID35,739
+typedef GUID*	REFGUID;REFGUID36,760
+typedef CLSID*	REFCLSID;REFCLSID37,783
+#define EXTERN_C	40,828
+#define EXTERN_C42,863
+#define DEFINE_GUID(DEFINE_GUID46,921
+#define DEFINE_GUID(DEFINE_GUID49,1024
+#define JRI_DEFINE_GUID(JRI_DEFINE_GUID56,1241
+(*MCOM_QueryInterface_t)MCOM_QueryInterface_t61,1384
+(*MCOM_AddRef_t)MCOM_AddRef_t64,1462
+(*MCOM_Release_t)MCOM_Release_t67,1506
+typedef struct IUnknown IUnknown71,1553
+} IUnknown;IUnknown75,1679
+#define IUnknown_QueryInterface(IUnknown_QueryInterface77,1692
+#define IUnknown_AddRef(IUnknown_AddRef80,1850
+#define IUnknown_Release(IUnknown_Release83,1931
+(*MCOM_CreateInstance_t)MCOM_CreateInstance_t89,2048
+(*MCOM_LockServer_t)MCOM_LockServer_t93,2164
+
+mk_cx_fn.h,167
+#define FE_DEFINE(FE_DEFINE30,1061
+#define FE_DEFINE(FE_DEFINE32,1188
+#define FE_DEFINE(FE_DEFINE34,1285
+#define FE_DEFINE(FE_DEFINE36,1408
+FE_DEFINE(41,1614
+
+msg_filt.h,333
+#define MSG_RULE_H3,65
+} MSG_FilterError;MSG_FilterError20,696
+ } MSG_RuleActionType;MSG_RuleActionType31,867
+} MSG_FilterType;MSG_FilterType39,1013
+typedef struct MSG_Filter MSG_Filter;MSG_Filter42,1088
+typedef struct MSG_Rule MSG_Rule;MSG_Rule43,1126
+typedef struct MSG_RuleAction MSG_RuleAction;MSG_RuleAction44,1160
+
+msg_srch.h,595
+#define _MSG_SRCH_H4,73
+} MSG_SearchError;MSG_SearchError33,1436
+} MSG_SearchAttribute;MSG_SearchAttribute54,1873
+} MSG_SearchOperator;MSG_SearchOperator80,2252
+} MSG_ScopeAttribute;MSG_ScopeAttribute87,2345
+typedef struct MSG_SearchValueMSG_SearchValue89,2368
+} MSG_SearchValue;MSG_SearchValue100,2703
+typedef struct MSG_SearchTerm MSG_SearchTerm;MSG_SearchTerm103,2792
+typedef struct MSG_ScopeTerm MSG_ScopeTerm;MSG_ScopeTerm104,2838
+typedef struct MSG_ResultElement MSG_ResultElement;MSG_ResultElement105,2882
+typedef void (*MSG_SearchCallback)MSG_SearchCallback112,3072
+
+msgcom.h,2592
+#define _MSGCOM_H_8,253
+#define NEWS_PORT 49,1467
+#define SECURE_NEWS_PORT 50,1489
+} MSG_PANE_CONFIG;MSG_PANE_CONFIG59,1665
+} MSG_FLIPPY_TYPE;MSG_FLIPPY_TYPE74,2034
+} MSG_FONT;MSG_FONT84,2215
+} MSG_CITATION_SIZE;MSG_CITATION_SIZE93,2363
+} MSG_COMMAND_CHECK_STATE;MSG_COMMAND_CHECK_STATE100,2446
+#define MSG_FLAG_READ 108,2689
+#define MSG_FLAG_REPLIED 109,2745
+#define MSG_FLAG_MARKED 110,2822
+#define MSG_FLAG_EXPUNGED 111,2887
+#define MSG_FLAG_HAS_RE 121,3553
+#define MSG_FLAG_ELIDED 132,4296
+#define MSG_FLAG_EXPIRED 135,4484
+#define MSG_FLAG_SELECTED 139,4769
+#define MSG_FLAG_UPDATING 143,5059
+#define MSG_FLAG_DIRTY 146,5279
+#define MSG_FLAG_PARTIAL 148,5422
+#define MSG_FLAG_QUEUED 153,5790
+#define MSG_MOREFLAG_LAST_SELECTED	168,6613
+#define MSG_FOLDER_FLAG_NEWSGROUP 184,7210
+#define MSG_FOLDER_FLAG_NEWS_HOST 185,7285
+#define MSG_FOLDER_FLAG_MAIL 186,7362
+#define MSG_FOLDER_FLAG_DIRECTORY 188,7432
+#define MSG_FOLDER_FLAG_ELIDED 198,8116
+#define MSG_FOLDER_FLAG_MODERATED 210,8686
+#define MSG_FOLDER_FLAG_SUBSCRIBED 212,8837
+#define MSG_FOLDER_FLAG_NEW_GROUP 214,8989
+#define MSG_FOLDER_FLAG_TRASH 233,9781
+#define MSG_FOLDER_FLAG_SENTMAIL	235,9912
+#define MSG_FOLDER_FLAG_DRAFTS 241,10189
+#define MSG_FOLDER_FLAG_QUEUE 244,10424
+#define MSG_FOLDER_FLAG_INBOX 247,10644
+#define MSG_FOLDER_FLAG_SELECTED	252,10786
+typedef uint32 MSG_HEADER_SET;MSG_HEADER_SET261,10998
+#define MSG_FROM_HEADER_MASK	262,11029
+#define MSG_REPLY_TO_HEADER_MASK	263,11067
+#define MSG_TO_HEADER_MASK	264,11108
+#define MSG_CC_HEADER_MASK	265,11145
+#define MSG_BCC_HEADER_MASK	266,11182
+#define MSG_FCC_HEADER_MASK	267,11220
+#define MSG_NEWSGROUPS_HEADER_MASK	268,11258
+#define MSG_FOLLOWUP_TO_HEADER_MASK	269,11301
+#define MSG_SUBJECT_HEADER_MASK	270,11345
+#define MSG_ATTACHMENTS_HEADER_MASK	271,11386
+} MSG_CommandType;MSG_CommandType431,14919
+typedef struct MSG_FolderLineMSG_FolderLine436,15014
+} MSG_FolderLine;MSG_FolderLine450,15593
+typedef struct MSG_MessageLineMSG_MessageLine456,15722
+} MSG_MessageLine;MSG_MessageLine466,16182
+typedef struct MSG_AncestorInfoMSG_AncestorInfo475,16658
+} MSG_AncestorInfo;MSG_AncestorInfo484,17051
+typedef struct MSG_FontCodeMSG_FontCode490,17258
+} MSG_FontCode;MSG_FontCode497,17380
+} MSG_BIFF_STATE;MSG_BIFF_STATE828,29816
+struct MIME_HTMLGeneratorHeadersMIME_HTMLGeneratorHeaders1495,56453
+  (*MIME_HTMLGeneratorFunction)MIME_HTMLGeneratorFunction1511,56762
+  (*MIME_DecompositionResultsFunction)MIME_DecompositionResultsFunction1517,56960
+struct mime_optionsmime_options1523,57173
+
+ncompat.h,1955
+#define	_COMPAT_H_37,1895
+typedef unsigned char	u_char;u_char46,2038
+typedef unsigned int	u_int;u_int47,2092
+typedef unsigned long	u_long;u_long48,2120
+typedef unsigned short	u_short;u_short49,2150
+typedef unsigned int	size_t;size_t54,2262
+typedef	int		ssize_t;ssize_t59,2403
+typedef unsigned int	sigset_t;sigset_t67,2595
+#define	VSPRINTF_CHARSTAR75,2774
+#define	sigemptyset(sigemptyset84,3128
+#define	sigfillset(sigfillset85,3166
+#define	sigaddset(sigaddset86,3218
+#define	sigdelset(sigdelset87,3277
+#define	sigismember(sigismember88,3337
+#define	SIG_BLOCK	90,3402
+#define	SIG_UNBLOCK	91,3422
+#define	SIG_SETMASK	92,3444
+#define	sigprocmask(sigprocmask97,3578
+#define	LITTLE_ENDIAN	114,4088
+#define	BIG_ENDIAN	115,4143
+#define	BYTE_ORDER	116,4201
+#define	index(index120,4322
+#define	rindex(rindex121,4356
+#define	bzero(bzero122,4392
+#define	bcmp(bcmp123,4429
+#define	bcopy(bcopy124,4468
+#define	strchr(strchr128,4553
+#define	strrchr(strrchr129,4587
+#define	memcmp(memcmp130,4623
+#define	memmove(memmove131,4662
+#define	USHRT_MAX	141,5010
+#define	ULONG_MAX	142,5036
+#define	O_ACCMODE	146,5131
+#define	_POSIX2_RE_DUP_MAX	150,5241
+#define	O_EXLOCK	158,5426
+#define	O_SHLOCK	162,5496
+#define	EFTYPE	166,5538
+#define	WCOREDUMP(WCOREDUMP170,5646
+#define	STDIN_FILENO	174,5699
+#define	STDOUT_FILENO	175,5745
+#define	STDERR_FILENO	176,5769
+#define	SEEK_SET	180,5818
+#define	SEEK_CUR	181,5869
+#define	SEEK_END	182,5888
+#define	_POSIX_VDISABLE	186,5976
+#define	TCSASOFT	190,6081
+#define	_POSIX2_RE_DUP_MAX	194,6163
+#define	NULL	198,6257
+#define	MAX(MAX202,6334
+#define	MIN(MIN205,6435
+#define	DEFFILEMODE	210,6562
+#define	S_ISDIR(S_ISDIR215,6709
+#define	S_ISCHR(S_ISCHR216,6771
+#define	S_ISBLK(S_ISBLK217,6836
+#define	S_ISREG(S_ISREG218,6902
+#define	S_ISFIFO(S_ISFIFO219,6967
+#define	S_ISLNK(S_ISLNK222,7085
+#define	S_ISSOCK(S_ISSOCK223,7151
+#define	_BSD_VA_LIST_	229,7313
+
+net.h,10894
+#define _NET_PROTO_H_13,441
+typedef struct _net_MemoryCacheObject net_MemoryCacheObject;net_MemoryCacheObject24,618
+#define VIEW_SOURCE_URL_PREFIX 29,840
+#define SET_PRESENT_BIT(SET_PRESENT_BIT40,1165
+#define CLEAR_PRESENT_BIT(CLEAR_PRESENT_BIT41,1233
+#define CLEAR_CACHE_BIT(CLEAR_CACHE_BIT42,1304
+#define FO_PRESENT	48,1527
+#define FO_INTERNAL_IMAGE	49,1551
+#define FO_OUT_TO_PROXY_CLIENT	50,1580
+#define FO_VIEW_SOURCE	51,1613
+#define FO_SAVE_AS	52,1640
+#define FO_SAVE_AS_TEXT	53,1664
+#define FO_SAVE_AS_POSTSCRIPT	54,1692
+#define FO_QUOTE_MESSAGE	55,1724
+#define FO_MAIL_TO	56,1789
+#define FO_OLE_NETWORK	57,1813
+#define FO_MULTIPART_IMAGE	58,1841
+#define FO_EMBED	59,1872
+#define FO_PRINT	60,1895
+#define FO_PLUGIN	61,1918
+#define FO_APPEND_TO_FOLDER	62,1942
+#define FO_DO_JAVA	63,2007
+#define FO_BYTERANGE	64,2032
+#define FO_EDT_SAVE_IMAGE	65,2058
+#define FO_EDIT	66,2088
+#define FO_LOAD_HTML_HELP_MAP_FILE 67,2111
+#define FO_MAIL_MESSAGE_TO	68,2149
+#define FO_CACHE_ONLY	72,2236
+#define FO_CACHE_AND_PRESENT	73,2265
+#define FO_CACHE_AND_INTERNAL_IMAGE	74,2325
+#define FO_CACHE_AND_OUT_TO_PROXY_CLIENT 75,2398
+#define FO_CACHE_AND_VIEW_SOURCE	77,2494
+#define FO_CACHE_AND_SAVE_AS	78,2561
+#define FO_CACHE_AND_SAVE_AS_TEXT	79,2621
+#define FO_CACHE_AND_SAVE_AS_POSTSCRIPT	80,2690
+#define FO_CACHE_AND_QUOTE_MESSAGE	81,2770
+#define FO_CACHE_AND_MAIL_TO	82,2841
+#define FO_CACHE_AND_MAIL_MESSAGE_TO	83,2901
+#define FO_CACHE_AND_OLE_NETWORK	84,2975
+#define FO_CACHE_AND_MULTIPART_IMAGE	85,3042
+#define FO_CACHE_AND_EMBED	86,3116
+#define FO_CACHE_AND_PRINT	87,3173
+#define FO_CACHE_AND_PLUGIN	88,3230
+#define FO_CACHE_AND_APPEND_TO_FOLDER	89,3289
+#define FO_CACHE_AND_DO_JAVA	90,3365
+#define FO_CACHE_AND_BYTERANGE	91,3425
+#define FO_CACHE_AND_EDIT	92,3489
+#define FO_CACHE_AND_LOAD_HTML_HELP_MAP_FILE	93,3544
+#define FO_ONLY_FROM_CACHE	97,3683
+#define FO_ONLY_FROM_CACHE_AND_PRESENT	98,3718
+#define FO_ONLY_FROM_CACHE_AND_INTERNAL_IMAGE	100,3808
+#define FO_ONLY_FROM_CACHE_AND_OUT_TO_PROXY_CLIENT	102,3910
+#define FO_ONLY_FROM_CACHE_AND_VIEW_SOURCE	104,4023
+#define FO_ONLY_FROM_CACHE_AND_SAVE_AS	106,4120
+#define FO_ONLY_FROM_CACHE_AND_SAVE_AS_TEXT	108,4210
+#define FO_ONLY_FROM_CACHE_AND_SAVE_AS_POSTSCRIPT 110,4309
+#define FO_ONLY_FROM_CACHE_AND_QUOTE_MESSAGE	112,4421
+#define FO_ONLY_FROM_CACHE_AND_MAIL_TO	114,4523
+#define FO_ONLY_FROM_CACHE_AND_MAIL_MESSAGE_TO	116,4613
+#define FO_ONLY_FROM_CACHE_AND_OLE_NETWORK	118,4717
+#define FO_ONLY_FROM_CACHE_AND_MULTIPART_IMAGE	120,4814
+#define FO_ONLY_FROM_CACHE_AND_EMBED	122,4918
+#define FO_ONLY_FROM_CACHE_AND_PRINT	124,4990
+#define FO_ONLY_FROM_CACHE_AND_PLUGIN	126,5062
+#define FO_ONLY_FROM_CACHE_AND_APPEND_TO_FOLDER	128,5136
+#define FO_ONLY_FROM_CACHE_AND_DO_JAVA	130,5242
+#define FO_ONLY_FROM_CACHE_AND_BYTERANGE	132,5318
+#define FO_ONLY_FROM_CACHE_AND_EDIT	134,5397
+#define FO_ONLY_FROM_CACHE_AND_LOAD_HTML_HELP_MAP_FILE	135,5467
+Net_GetUrlExitFunc Net_GetUrlExitFunc138,5587
+Net_GetUrlProgressFunc Net_GetUrlProgressFunc141,5675
+typedef struct _NET_AllHeaders _NET_AllHeaders147,5882
+} NET_AllHeaders;NET_AllHeaders152,6207
+struct URL_Struct_ URL_Struct_171,6866
+#define NET_URLStruct_Address(NET_URLStruct_Address361,15016
+#define NET_URLStruct_AddressModified(NET_URLStruct_AddressModified362,15069
+#define NET_URLStruct_PostData(NET_URLStruct_PostData363,15131
+#define NET_URLStruct_Method(NET_URLStruct_Method364,15186
+#define NET_URLStruct_ContentLength(NET_URLStruct_ContentLength365,15238
+#define NET_URLStruct_ContentType(NET_URLStruct_ContentType366,15298
+(*MKStreamWriteReadyFunc)MKStreamWriteReadyFunc371,15402
+#define MAX_WRITE_READY 373,15450
+(*MKStreamWriteFunc)MKStreamWriteFunc376,15554
+(*MKStreamCompleteFunc)MKStreamCompleteFunc379,15639
+(*MKStreamAbortFunc)MKStreamAbortFunc382,15699
+struct _NET_StreamClass _NET_StreamClass386,15782
+typedef NET_StreamClass * NET_Converter NET_Converter419,17074
+} NET_cinfo;NET_cinfo448,18213
+typedef struct _cdata _cdata456,18399
+} NET_cdataStruct;NET_cdataStruct466,18833
+typedef struct _mdata _mdata472,18902
+} NET_mdataStruct;NET_mdataStruct484,19192
+#define AUDIO_WILDCARD	494,19436
+#define IMAGE_WILDCARD	495,19474
+#define APPLICATION_APPLEFILE	497,19513
+#define APPLICATION_BINHEX	498,19570
+#define APPLICATION_COMPRESS	499,19628
+#define APPLICATION_COMPRESS2	500,19685
+#define APPLICATION_FORTEZZA_KRL	501,19741
+#define APPLICATION_GZIP	502,19805
+#define APPLICATION_GZIP2	503,19855
+#define APPLICATION_HTTP_INDEX	504,19904
+#define APPLICATION_JAVASCRIPT	505,19963
+#define APPLICATION_NETSCAPE_REVOCATION	506,20024
+#define APPLICATION_NS_PROXY_AUTOCONFIG	507,20101
+#define APPLICATION_NS_JAVASCRIPT_AUTOCONFIG	508,20178
+#define APPLICATION_OCTET_STREAM	509,20265
+#define APPLICATION_PGP	510,20327
+#define APPLICATION_PGP2	511,20374
+#define APPLICATION_POSTSCRIPT	512,20431
+#define APPLICATION_PRE_ENCRYPTED	513,20490
+#define APPLICATION_UUENCODE	514,20554
+#define APPLICATION_UUENCODE2	515,20611
+#define APPLICATION_UUENCODE3	516,20664
+#define APPLICATION_UUENCODE4	517,20720
+#define APPLICATION_X509_CA_CERT	518,20771
+#define APPLICATION_X509_SERVER_CERT	519,20835
+#define APPLICATION_X509_USER_CERT	520,20906
+#define APPLICATION_X509_CRL	521,20974
+#define APPLICATION_XPKCS7_MIME 522,21032
+#define APPLICATION_XPKCS7_SIGNATURE	523,21094
+#define APPLICATION_WWW_FORM_URLENCODED	524,21164
+#define APPLICATION_OLEOBJECT	525,21241
+#define APPLICATION_OLEOBJECT2	526,21298
+#define APPLICATION_JAVAVM	527,21358
+#define APPLICATION_JAVAARCHIVE	528,21411
+#define AUDIO_BASIC	530,21474
+#define IMAGE_GIF	532,21515
+#define IMAGE_JPG	533,21551
+#define IMAGE_PJPG	534,21588
+#define IMAGE_PPM	535,21627
+#define IMAGE_XBM	536,21677
+#define IMAGE_XBM2	537,21719
+#define IMAGE_XBM3	538,21758
+#define MESSAGE_EXTERNAL_BODY	540,21796
+#define MESSAGE_NEWS	541,21853
+#define MESSAGE_RFC822	542,21894
+#define MULTIPART_ALTERNATIVE	544,21940
+#define MULTIPART_APPLEDOUBLE	545,21997
+#define MULTIPART_DIGEST	546,22054
+#define MULTIPART_HEADER_SET	547,22102
+#define MULTIPART_MIXED	548,22157
+#define MULTIPART_PARALLEL	549,22204
+#define MULTIPART_SIGNED	550,22256
+#define MULTIPART_RELATED	551,22304
+#define SUN_ATTACHMENT	552,22354
+#define TEXT_ENRICHED	554,22402
+#define TEXT_HTML	555,22445
+#define TEXT_MDL	556,22481
+#define TEXT_PLAIN	557,22515
+#define TEXT_RICHTEXT	558,22553
+#define TEXT_VCARD	559,22596
+#define TEXT_CSS	560,22636
+#define TEXT_JSSS	561,22670
+#define VIDEO_MPEG	563,22707
+#define ENCODING_7BIT	568,22805
+#define ENCODING_8BIT	569,22839
+#define ENCODING_BINARY	570,22873
+#define ENCODING_BASE64	571,22911
+#define ENCODING_QUOTED_PRINTABLE	572,22949
+#define ENCODING_COMPRESS	578,23179
+#define ENCODING_COMPRESS2	579,23222
+#define ENCODING_GZIP	580,23264
+#define ENCODING_GZIP2	581,23300
+#define ENCODING_UUENCODE	582,23335
+#define ENCODING_UUENCODE2	583,23378
+#define ENCODING_UUENCODE3	584,23417
+#define ENCODING_UUENCODE4	585,23459
+#define PARAM_PROTOCOL	589,23564
+#define PARAM_MICALG	590,23603
+#define PARAM_MICALG_MD2	591,23638
+#define PARAM_MICALG_MD5	592,23677
+#define PARAM_MICALG_SHA1	593,23716
+#define PARAM_MICALG_SHA1_2	594,23753
+#define PARAM_MICALG_SHA1_3	595,23793
+#define PARAM_MICALG_SHA1_4	596,23836
+#define PARAM_MICALG_SHA1_5	597,23880
+#define PARAM_X_MAC_CREATOR	598,23922
+#define PARAM_X_MAC_TYPE	599,23970
+#define INTERNAL_PARSER	605,24156
+#define UNKNOWN_CONTENT_TYPE	617,24715
+#define MAGNUS_INTERNAL_UNKNOWN	620,24826
+#define INTERNAL_PRE_ENCRYPTED 621,24887
+#define APPLICATION_NETSCAPE_REVOCATION	622,24956
+#define NET_AUTH_FAILED_DONT_DISPLAY 624,25034
+#define NET_AUTH_FAILED_DISPLAY_DOCUMENT 625,25080
+#define NET_AUTH_SUCCEEDED 626,25126
+#define NET_RETRY_WITH_AUTH 627,25172
+#define NET_COMMAND_NETSCAPE	630,25235
+#define NET_COMMAND_PLUGIN	631,25276
+#define NET_COMMAND_SAVE_TO_DISK	632,25314
+#define NET_COMMAND_SAVE_BY_NETSCAPE	633,25354
+#define NET_COMMAND_UNKNOWN	634,25406
+#define NET_COMMAND_DELETED	635,25444
+#define NET_MOZILLA_FLAGS	636,25483
+typedef struct _NET_FileEntryInfo _NET_FileEntryInfo642,25654
+} NET_FileEntryInfo;NET_FileEntryInfo651,25920
+#define NET_FILE_TYPE	653,25942
+#define NET_DIRECTORY 654,25968
+#define NET_SYM_LINK 655,25996
+#define NET_SYM_LINK_TO_DIR 656,26023
+#define NET_SYM_LINK_TO_FILE 657,26054
+#define NET_READ_PERMISSION	660,26121
+#define NET_WRITE_PERMISSION	661,26152
+#define NET_EXECUTE_PERMISSION 662,26183
+typedef struct _HTTPIndexParserData HTTPIndexParserData;HTTPIndexParserData664,26218
+#define HTML_HELP_ID_FOUND 667,26319
+#define GET_ALL_PARTS 754,29128
+#define GET_PROTOCOL_PART 755,29166
+#define GET_HOST_PART 756,29204
+#define GET_PATH_PART 757,29242
+#define GET_HASH_PART 758,29280
+#define GET_SEARCH_PART 759,29318
+#define MK_WAITING_FOR_CONNECTION	764,29432
+#define MK_CONNECTED 765,29470
+} IdentifyMeEnum;IdentifyMeEnum828,31337
+} NET_CookiePrefsEnum;NET_CookiePrefsEnum842,31690
+} NET_ForeignCookiesEnum;NET_ForeignCookiesEnum848,31822
+#define URL_XALPHAS 1072,38372
+#define URL_XPALPHAS 1073,38414
+#define URL_PATH 1074,38456
+#define URL_GET_METHOD 1121,39875
+#define URL_POST_METHOD 1122,39903
+#define URL_HEAD_METHOD 1123,39931
+#define URL_PUT_METHOD 1124,39959
+#define URL_DELETE_METHOD 1125,39987
+#define URL_MKDIR_METHOD 1126,40015
+#define URL_MOVE_METHOD 1127,40043
+#define URL_INDEX_METHOD 1128,40071
+#define NET_UNKNOWN_FD 1139,40445
+#define NET_LOCAL_FILE_FD 1140,40474
+#define NET_SOCKET_FD 1141,40503
+#define NET_EVERYTIME_TYPE 1142,40532
+} NET_ProxyType;NET_ProxyType1369,48175
+} NET_ProxyStyle;NET_ProxyStyle1376,48385
+} CacheUseEnum;CacheUseEnum1452,50280
+#define FILE_TYPE_URL 1700,57716
+#define FTP_TYPE_URL 1701,57750
+#define GOPHER_TYPE_URL 1702,57784
+#define HTTP_TYPE_URL 1703,57818
+#define MAILTO_TYPE_URL 1704,57852
+#define NEWS_TYPE_URL 1705,57886
+#define RLOGIN_TYPE_URL 1706,57920
+#define TELNET_TYPE_URL 1707,57954
+#define TN3270_TYPE_URL 1708,57988
+#define WAIS_TYPE_URL 1709,58022
+#define ABOUT_TYPE_URL 1710,58057
+#define FILE_CACHE_TYPE_URL 1711,58092
+#define MEMORY_CACHE_TYPE_URL 1712,58127
+#define SECURE_HTTP_TYPE_URL 1713,58162
+#define INTERNAL_IMAGE_TYPE_URL 1714,58197
+#define URN_TYPE_URL 1715,58232
+#define POP3_TYPE_URL 1716,58267
+#define MAILBOX_TYPE_URL 1717,58302
+#define INTERNAL_NEWS_TYPE_URL 1718,58337
+#define SECURITY_TYPE_URL	1719,58372
+#define MOCHA_TYPE_URL	1720,58402
+#define VIEW_SOURCE_TYPE_URL	1721,58430
+#define HTML_DIALOG_HANDLER_TYPE_URL 1722,58462
+#define HTML_PANEL_HANDLER_TYPE_URL 1723,58502
+#define INTERNAL_SECLIB_TYPE_URL 1724,58541
+#define WYSIWYG_TYPE_URL	1725,58577
+    NET_URL_SAME_DIRECTORY,1739,59032
+    NET_URL_SAME_DEVICE,1740,59117
+    NET_URL_NOT_ON_SAME_DEVICE,1741,59210
+    NET_URL_FAIL 1742,59310
+
+np.h,297
+#define _NP_H9,265
+typedef enum { NP_Untyped = 0, NP_OLE, NP_Plugin } NPAppType;NPAppType23,517
+typedef enum { NP_FullPage = 1, NP_Embedded } NPPageType;NPPageType24,579
+typedef void* NPReference;NPReference26,638
+#define NPRefFromStart 27,665
+struct _NPEmbeddedApp _NPEmbeddedApp33,828
+
+npapi.h,3149
+#define _NPAPI_H_8,134
+#		define XP_PC 12,184
+#	define _declspec 17,263
+#			define XP_MAC 20,328
+#			define XP_PC 26,442
+#define NP_VERSION_MAJOR 38,806
+#define NP_VERSION_MINOR 39,833
+typedef unsigned short uint16;uint1648,1106
+typedef unsigned int uint32;uint3252,1181
+typedef unsigned long uint32;uint3254,1230
+typedef short int16;int1658,1303
+typedef int int32;int3262,1367
+typedef long int32;int3264,1406
+#define FALSE 69,1469
+#define TRUE 72,1507
+#define NULL 75,1544
+typedef unsigned char	NPBool;NPBool78,1570
+typedef void*			NPEvent;NPEvent79,1600
+typedef int16			NPError;NPError80,1625
+typedef int16			NPReason;NPReason81,1650
+typedef char*			NPMIMEType;NPMIMEType82,1676
+typedef struct _NPP_NPP93,1986
+} NPP_t;NPP_t97,2101
+typedef NPP_t*  NPP;NPP99,2111
+typedef struct _NPStream_NPStream102,2134
+} NPStream;NPStream110,2342
+typedef struct _NPByteRange_NPByteRange113,2356
+} NPByteRange;NPByteRange118,2497
+typedef struct _NPSavedData_NPSavedData121,2514
+} NPSavedData;NPSavedData125,2574
+typedef struct _NPRect_NPRect128,2591
+} NPRect;NPRect134,2686
+	NP_SETWINDOW 149,2896
+	NP_PRINT150,2915
+} NPAnyCallbackStruct;NPAnyCallbackStruct156,2963
+} NPSetWindowCallbackStruct;NPSetWindowCallbackStruct165,3115
+} NPPrintCallbackStruct;NPPrintCallbackStruct171,3196
+} NPPVariable;NPPVariable179,3370
+} NPNVariable;NPNVariable187,3520
+typedef struct _NPWindow _NPWindow192,3559
+} NPWindow;NPWindow204,4027
+typedef struct _NPFullPrint_NPFullPrint207,4041
+} NPFullPrint;NPFullPrint214,4336
+typedef struct _NPEmbedPrint_NPEmbedPrint216,4352
+} NPEmbedPrint;NPEmbedPrint220,4467
+typedef struct _NPPrint_NPPrint222,4484
+} NPPrint;NPPrint230,4693
+typedef struct NP_PortNP_Port241,4818
+} NP_Port;NP_Port246,4956
+#define getFocusEvent 251,5038
+#define loseFocusEvent 252,5079
+#define adjustCursorEvent 253,5120
+#define NP_EMBED	261,5229
+#define NP_FULL	262,5249
+#define NP_NORMAL	267,5328
+#define NP_SEEK	268,5349
+#define NP_ASFILE	269,5369
+#define NP_ASFILEONLY	270,5390
+#define NP_MAXREADY	272,5416
+#define NPERR_BASE	283,5724
+#define NPERR_NO_ERROR	284,5751
+#define NPERR_GENERIC_ERROR	285,5796
+#define NPERR_INVALID_INSTANCE_ERROR	286,5845
+#define NPERR_INVALID_FUNCTABLE_ERROR	287,5900
+#define NPERR_MODULE_LOAD_FAILED_ERROR	288,5956
+#define NPERR_OUT_OF_MEMORY_ERROR	289,6013
+#define NPERR_INVALID_PLUGIN_ERROR	290,6066
+#define NPERR_INVALID_PLUGIN_DIR_ERROR	291,6120
+#define NPERR_INCOMPATIBLE_VERSION_ERROR	292,6177
+#define NPERR_INVALID_PARAM 293,6235
+#define NPERR_INVALID_URL 294,6284
+#define NPERR_FILE_NOT_FOUND 295,6333
+#define NPERR_NO_DATA	296,6384
+#define NPERR_STREAM_NOT_SEEKABLE	297,6430
+#define NPRES_BASE 302,6520
+#define NPRES_DONE	303,6563
+#define NPRES_NETWORK_ERR 304,6617
+#define NPRES_USER_BREAK 305,6675
+#define NP_NOERR 310,6791
+#define NP_EINVAL 311,6849
+#define NP_EABORT 312,6913
+#define NPVERS_HAS_STREAMOUTPUT	317,7013
+#define NPVERS_HAS_NOTIFICATION	318,7050
+#define NPVERS_HAS_LIVECONNECT	319,7087
+#define NPVERS_WIN16_HAS_LIVECONNECT	320,7123
+#define NP_LOADDS 328,7433
+#define NP_LOADDS330,7466
+
+npassoc.h,124
+#define _NPASSOC_H8,124
+typedef struct _NPFileTypeAssoc _NPFileTypeAssoc12,166
+} NPFileTypeAssoc;NPFileTypeAssoc19,542
+
+nsldap.h,0
+
+nslocks.h,296
+#define nspr_locks_h___2,24
+#define LIBNET_LOCK(LIBNET_LOCK9,122
+#define LIBNET_UNLOCK(LIBNET_UNLOCK10,177
+#define LIBNET_IS_LOCKED(LIBNET_IS_LOCKED11,233
+#define LIBNET_LOCK(LIBNET_LOCK15,309
+#define LIBNET_UNLOCK(LIBNET_UNLOCK16,331
+#define LIBNET_IS_LOCKED(LIBNET_IS_LOCKED17,355
+
+ntos.h,288
+#define _ntos_h7,220
+} OS_TYPE;OS_TYPE20,445
+} PROCESSOR_TYPE;PROCESSOR_TYPE28,574
+#define SERVRET_ERROR 84,1869
+#define SERVRET_INSTALLED 85,1897
+#define SERVRET_STARTING 86,1925
+#define SERVRET_STARTED 87,1953
+#define SERVRET_STOPPING 88,1981
+#define SERVRET_REMOVED 89,2009
+
+ntypes.h,4532
+#define _NetscapeTypes_3,60
+typedef int FO_Present_Types;FO_Present_Types10,121
+typedef struct URL_Struct_ URL_Struct;URL_Struct11,151
+typedef struct _NET_StreamClass NET_StreamClass;NET_StreamClass12,190
+typedef struct il_container_struct il_container;il_container18,255
+typedef struct il_container_list il_container_list;il_container_list19,304
+typedef struct il_process_struct il_process;il_process20,356
+typedef struct IL_IRGB_struct IL_IRGB;IL_IRGB21,401
+typedef struct IL_RGB_struct IL_RGB;IL_RGB22,440
+typedef enum IL_DitherMode IL_DitherMode25,517
+} IL_DitherMode;IL_DitherMode29,620
+typedef enum IL_ColorRenderMode IL_ColorRenderMode32,677
+} IL_ColorRenderMode;IL_ColorRenderMode36,779
+typedef struct IL_Image_struct IL_Image;IL_Image38,802
+typedef struct il_colorspace_struct il_colorspace;il_colorspace39,843
+typedef void* IL_ClientReq;IL_ClientReq40,894
+typedef enum IL_ImageStatus_ IL_ImageStatus_41,959
+} IL_ImageStatus;IL_ImageStatus47,1268
+typedef enum NET_ReloadMethodNET_ReloadMethod50,1333
+} NET_ReloadMethod;NET_ReloadMethod58,1755
+typedef struct _NPEmbeddedApp NPEmbeddedApp;NPEmbeddedApp63,1793
+typedef struct _History_entry History_entry;History_entry68,1854
+typedef struct History_ History;History69,1899
+typedef struct BM_Entry_struct BM_Entry;BM_Entry75,2005
+typedef struct _PA_Functions PA_Functions;PA_Functions80,2061
+typedef struct PA_Tag_struct PA_Tag;PA_Tag81,2104
+typedef union LO_Element_struct LO_Element;LO_Element86,2156
+typedef struct LO_AnchorData_struct LO_AnchorData;LO_AnchorData88,2201
+typedef struct LO_Color_struct LO_Color;LO_Color89,2252
+typedef struct LO_TextAttr_struct LO_TextAttr;LO_TextAttr90,2293
+typedef struct LO_TextInfo_struct LO_TextInfo;LO_TextInfo91,2340
+typedef struct LO_TextStruct_struct LO_TextStruct;LO_TextStruct92,2387
+typedef struct LO_ImageData_struct LO_ImageData;LO_ImageData93,2438
+typedef struct LO_ImageAttr_struct LO_ImageAttr;LO_ImageAttr94,2487
+typedef struct LO_ImageStruct_struct LO_ImageStruct;LO_ImageStruct95,2536
+typedef struct LO_SubDocStruct_struct LO_SubDocStruct;LO_SubDocStruct96,2589
+typedef struct LO_EmbedStruct_struct LO_EmbedStruct;LO_EmbedStruct97,2644
+typedef struct LO_JavaAppStruct_struct LO_JavaAppStruct;LO_JavaAppStruct98,2697
+typedef struct LO_EdgeStruct_struct LO_EdgeStruct;LO_EdgeStruct99,2754
+typedef union LO_FormElementData_struct LO_FormElementData;LO_FormElementData101,2806
+typedef struct lo_FormElementOptionData_struct lo_FormElementOptionData;lo_FormElementOptionData103,2867
+typedef struct lo_FormElementSelectData_struct lo_FormElementSelectData;lo_FormElementSelectData104,2940
+typedef struct lo_FormElementTextData_struct lo_FormElementTextData;lo_FormElementTextData105,3013
+typedef struct lo_FormElementTextareaData_struct lo_FormElementTextareaData;lo_FormElementTextareaData106,3082
+typedef struct lo_FormElementMinimalData_struct lo_FormElementMinimalData;lo_FormElementMinimalData107,3159
+typedef struct lo_FormElementToggleData_struct lo_FormElementToggleData;lo_FormElementToggleData108,3234
+typedef struct lo_FormElementKeygenData_struct lo_FormElementKeygenData;lo_FormElementKeygenData109,3307
+typedef struct LO_Any_struct LO_Any;LO_Any111,3381
+typedef struct LO_FormSubmitData_struct LO_FormSubmitData;LO_FormSubmitData112,3418
+typedef struct LO_FormElementStruct_struct LO_FormElementStruct;LO_FormElementStruct113,3477
+typedef struct LO_LinefeedStruct_struct LO_LinefeedStruct;LO_LinefeedStruct114,3542
+typedef struct LO_HorizRuleStruct_struct LO_HorizRuleStruct;LO_HorizRuleStruct115,3601
+typedef struct LO_BulletStruct_struct LO_BulletStruct;LO_BulletStruct116,3662
+#define LO_BullettStruct 118,3758
+typedef struct LO_TableStruct_struct LO_TableStruct;LO_TableStruct119,3799
+typedef struct LO_CellStruct_struct LO_CellStruct;LO_CellStruct120,3852
+typedef struct LO_Position_struct LO_Position;LO_Position121,3903
+typedef struct LO_Selection_struct LO_Selection;LO_Selection122,3950
+typedef struct LO_HitLineResult_struct LO_HitLineResult;LO_HitLineResult123,3999
+typedef struct LO_HitElementResult_struct LO_HitElementResult;LO_HitElementResult124,4056
+typedef union LO_HitResult_struct LO_HitResult;LO_HitResult125,4119
+typedef struct PrintInfo_ PrintInfo;PrintInfo130,4183
+typedef struct PrintSetup_ PrintSetup;PrintSetup131,4220
+typedef struct MWContext_ MWContext;MWContext136,4293
+typedef struct _Chrome Chrome;Chrome141,4355
+} MWContextType;MWContextType169,5657
+
+prefapi.h,26
+#define _PREFAPI_H_7,265
+
+proto.h,58
+#define _PROTO_H_12,360
+#define NEW_FRAME_HIST 123,5399
+
+resdef.h,859
+#define _RESDEF_H_2,19
+#define RES_OFFSET 8,63
+#define RES_START15,140
+#define BEGIN_STR(BEGIN_STR16,158
+#define ResDef(ResDef17,190
+#define END_STR(END_STR19,241
+#define END_STR(END_STR21,271
+#define RES_START26,347
+#define BEGIN_STR(BEGIN_STR27,365
+#define ResDef(ResDef28,388
+#define END_STR(END_STR29,433
+#define RES_START37,603
+#define BEGIN_STR(BEGIN_STR38,621
+#define ResDef(ResDef39,689
+#define END_STR(END_STR40,753
+#define RES_START 42,818
+#define BEGIN_STR(BEGIN_STR43,860
+#define ResDef(ResDef44,890
+#define END_STR(END_STR45,936
+#define ResDef(ResDef50,1078
+#define RES_START54,1172
+#define BEGIN_STR(BEGIN_STR55,1190
+#define ResDef(ResDef56,1240
+#define END_STR(END_STR57,1300
+#define RES_START59,1329
+#define BEGIN_STR(BEGIN_STR60,1347
+#define ResDef(ResDef61,1413
+#define END_STR(END_STR62,1477
+
+shist.h,150
+#define SHIST_H3,17
+#define HIST_NEW_OBJECT 20,313
+#define HIST_MOVE_FORWARD 21,341
+#define HIST_MOVE_BACK 22,369
+#define NEW_FRAME_HIST 56,1827
+
+shistele.h,332
+#define SHISTELE_H4,56
+typedef struct SHIST_SavedData SHIST_SavedData15,324
+} SHIST_SavedData;SHIST_SavedData28,948
+struct _History_entry _History_entry41,1388
+#define SHIST_CAME_FROM_NETWORK 87,3415
+#define SHIST_CAME_FROM_DISK_CACHE 88,3455
+#define SHIST_CAME_FROM_MEMORY_CACHE 89,3495
+struct History_ History_91,3536
+
+structs.h,1105
+#define _STRUCTS_H_11,242
+typedef struct _ContextFuncs ContextFuncs;ContextFuncs29,655
+typedef struct FEstruct_ FEstruct_45,971
+} FEstruct;FEstruct86,1798
+#define FEUNITS_X(FEUNITS_X88,1811
+#define FEUNITS_Y(FEUNITS_Y89,1894
+struct MWContext_ MWContext_99,2254
+#define HAVE_MIME_DATA_SLOT206,7356
+#define EDT_IS_EDITOR(EDT_IS_EDITOR210,7435
+#define EDT_DISPLAY_PARAGRAPH_MARKS(EDT_DISPLAY_PARAGRAPH_MARKS211,7512
+#define MWCONTEXT_PTR(MWCONTEXT_PTR219,7732
+#define XP_DOCID(XP_DOCID227,8018
+#define XP_SET_DOCID(XP_SET_DOCID228,8060
+typedef int8 TagType;TagType239,8401
+struct PA_Tag_struct PA_Tag_struct241,8424
+#define PA_HAS_PDATA(PA_HAS_PDATA260,8823
+typedef    char *PAAllocate PAAllocate263,8886
+typedef    void  PAFree PAFree264,8931
+typedef    void *PAAllocate PAAllocate266,8974
+typedef    void  PAFree PAFree267,9027
+typedef    intn  PA_OutputFunction PA_OutputFunction269,9071
+struct _PA_Functions _PA_Functions271,9155
+typedef struct PA_InitData_struct PA_InitData_struct277,9279
+} PA_InitData;PA_InitData279,9353
+struct _Chrome _Chrome287,9620
+
+undo.h,76
+#define _UNDO_H_8,246
+typedef struct UndoState UndoState;UndoState12,266
+
+unix-dns.h,29
+#define __UNIX_DNS_H__8,243
+
+winfile.h,1033
+#define WINFILE_H7,227
+typedef struct DIR_Struct DIR_Struct19,476
+} DIR;DIR22,568
+#define _ST_FSTYPSZ 24,576
+typedef unsigned long mode_t;mode_t25,599
+typedef          long uid_t;uid_t26,629
+typedef          long gid_t;gid_t27,658
+typedef          long off_t;off_t28,687
+typedef unsigned long nlink_t;nlink_t29,716
+typedef struct timestruc timestruc31,748
+} timestruc_t;timestruc_t34,867
+struct dirent dirent37,884
+#define S_ISDIR(S_ISDIR44,1266
+typedef struct	dirStruct_tag	dirStruct_tag56,1469
+} dirStruct;dirStruct59,1549
+typedef struct DIR_Struct DIR_Struct61,1563
+} DIR;DIR64,1655
+#define _ST_FSTYPSZ 66,1663
+typedef unsigned long mode_t;mode_t67,1686
+typedef          long uid_t;uid_t68,1716
+typedef          long gid_t;gid_t69,1745
+typedef          long off_t;off_t70,1774
+typedef unsigned long nlink_t;nlink_t71,1803
+typedef struct timestruc timestruc73,1835
+} timestruc_t;timestruc_t76,1954
+struct dirent dirent78,1970
+#define S_ISDIR(S_ISDIR89,2416
+#define CONST 93,2483
+
+xlate.h,722
+#define XLATE_H6,112
+typedef void (*XL_CompletionRoutine)XL_CompletionRoutine8,129
+typedef void* XL_TextTranslation;XL_TextTranslation9,180
+typedef void* XL_PostscriptTranslation;XL_PostscriptTranslation10,214
+typedef struct LineRecord_struct LineRecord;LineRecord25,819
+#define INCH_TO_PAGE(INCH_TO_PAGE31,992
+#define PAGE_TO_POINT_I(PAGE_TO_POINT_I32,1039
+#define PAGE_TO_POINT_F(PAGE_TO_POINT_F33,1087
+#define POINT_TO_PAGE(POINT_TO_PAGE34,1127
+struct PrintSetup_ PrintSetup_39,1229
+#define XL_LOADING_PHASE 81,3045
+#define XL_LAYOUT_PHASE 82,3072
+#define XL_DRAW_PHASE 83,3098
+typedef struct page_breaks page_breaks85,3123
+} PageBreaks;PageBreaks88,3188
+struct PrintInfo_ PrintInfo_93,3272
+
+xp.h,81
+#define _XP_H_11,346
+#define MEM_DEBUG 18,422
+#define DEFINE_NEW_MACRO 19,450
+
+xp_core.h,1752
+#define _XP_Core_21,881
+#define macintosh 27,1041
+#define unix 33,1163
+# define XP_MAC 44,1375
+# define XP_IS_MAC 45,1393
+# define XP_MAC_ARG(XP_MAC_ARG46,1414
+# define XP_IS_MAC 48,1445
+# define XP_MAC_ARG(XP_MAC_ARG49,1466
+# define XP_WIN53,1513
+# define XP_IS_WIN 54,1529
+# define XP_WIN_ARG(XP_WIN_ARG55,1550
+# define XP_WIN3257,1613
+# define XP_WIN1659,1637
+# define XP_IS_WIN 62,1668
+# define XP_WIN_ARG(XP_WIN_ARG63,1689
+# define XP_UNIX68,1749
+# define XP_IS_UNIX 70,1774
+# define XP_UNIX_ARG(XP_UNIX_ARG71,1796
+# define XP_IS_UNIX 73,1828
+# define XP_UNIX_ARG(XP_UNIX_ARG74,1850
+# define XP_CPLUSPLUS80,1940
+# define XP_IS_CPLUSPLUS 81,1962
+# define XP_IS_CPLUSPLUS 83,1995
+#define XP_REQUIRES_FUNCTIONS87,2075
+# define XP_BEGIN_PROTOS 100,2469
+# define XP_END_PROTOS 101,2507
+# define XP_BEGIN_PROTOS103,2538
+# define XP_END_PROTOS104,2563
+	typedef char BOOL;BOOL123,2882
+    typedef char Bool;Bool124,2902
+    typedef char XP_Bool;XP_Bool125,2925
+    typedef int Bool;Bool127,2973
+    typedef int XP_Bool;XP_Bool128,2995
+    typedef char Bool;Bool130,3026
+    typedef char XP_Bool;XP_Bool131,3049
+#define BOOL 136,3110
+#define MIN(MIN138,3135
+#define MIN(MIN142,3217
+#define FALSE 146,3276
+#define TRUE 158,3614
+#define YES 161,3642
+#define NO 162,3656
+#define ON 164,3670
+#define OFF 165,3683
+#define nil 168,3710
+#define NULL 172,3745
+#define TRACEMSG(TRACEMSG177,3798
+#define TRACEMSG(TRACEMSG179,3880
+#define _INT16183,3946
+#define _UINT16184,3961
+#define _INT32185,3977
+#define _UINT32186,3992
+typedef int         	intn;intn188,4009
+#define PUBLIC192,4069
+#define MODULE_PRIVATE193,4084
+#define PRIVATE 194,4107
+typedef struct _XP_List XP_List;XP_List197,4153
+
+xp_debug.h,47
+#define _XPDebug_11,459
+#define Debug 24,757
+
+xp_error.h,147
+#define __XP_ERROR_h_2,22
+#define XP_GetError(XP_GetError17,189
+#define XP_GetError(XP_GetError19,226
+#define XP_SetError(XP_SetError28,348
+
+xp_file.h,1703
+#define _XP_File_4,55
+typedef enum XP_FileType XP_FileType63,2400
+} XP_FileType;XP_FileType103,3372
+#define XP_FILE_READ 106,3389
+#define XP_FILE_READ_BIN 107,3426
+#define XP_FILE_WRITE 108,3464
+#define XP_FILE_WRITE_BIN 109,3501
+#define XP_FILE_APPEND 110,3539
+#define XP_FILE_APPEND_BIN 111,3576
+#define XP_FILE_UPDATE 112,3614
+#define XP_FILE_TRUNCATE 113,3652
+#define XP_FILE_UPDATE_BIN 116,3770
+#define XP_FILE_TRUNCATE_BIN 117,3808
+#define XP_FILE_UPDATE_BIN 119,3852
+#define XP_FILE_TRUNCATE_BIN 120,3891
+#define XP_STAT_READONLY(XP_STAT_READONLY124,3952
+#define XP_STAT_READONLY(XP_STAT_READONLY126,3999
+typedef FILE          * XP_File;XP_File130,4082
+typedef char          * XP_FilePerm;XP_FilePerm131,4115
+ typedef struct _stat   XP_StatStruct;XP_StatStruct134,4167
+ typedef struct stat    XP_StatStruct;XP_StatStruct138,4229
+ typedef struct stat	XP_StatStruct;XP_StatStruct142,4297
+ typedef DIR          * XP_Dir;XP_Dir146,4381
+ typedef struct dirent  XP_DirEntryStruct;XP_DirEntryStruct147,4413
+typedef struct macdstat macdstat153,4548
+} XP_DirEntryStruct;XP_DirEntryStruct155,4593
+typedef struct dirstruct dirstruct157,4615
+}	*XP_Dir;XP_Dir162,4758
+#define XP_Fileno 230,7322
+#define XP_FileSeek(XP_FileSeek231,7347
+#define XP_FileRead(XP_FileRead232,7422
+#define XP_FileTell(XP_FileTell233,7494
+#define XP_FileFlush(XP_FileFlush234,7532
+#define XP_FilePrintf 236,7625
+# define XP_FileReadLine(XP_FileReadLine306,9688
+# define XP_OpenDir(XP_OpenDir311,9829
+# define XP_ReadDir(XP_ReadDir312,9877
+# define XP_CloseDir(XP_CloseDir313,9923
+# define XP_FileWrite(XP_FileWrite318,10109
+# define XP_FileClose(XP_FileClose323,10265
+
+xp_hash.h,401
+#define _XP_HASH_3,19
+typedef uint32 (*XP_HashingFunction)XP_HashingFunction9,77
+typedef int (*XP_HashCompFunction)XP_HashCompFunction14,287
+typedef struct xp_HashTable *XP_HashTable;XP_HashTable24,554
+typedef XP_Bool (*XP_HashTableMapper)XP_HashTableMapper26,613
+#define XP_HASH_DUPLICATE_OBJECT 94,3171
+typedef struct _XP_HashList _XP_HashList96,3209
+} XP_HashList;XP_HashList101,3372
+
+xp_list.h,219
+#define XPLIST_H3,18
+struct _XP_List _XP_List9,88
+#define         XP_ListIsEmpty(XP_ListIsEmpty36,992
+#define         XP_ListTopObject(XP_ListTopObject38,1110
+#define XP_ListNextObject(XP_ListNextObject61,1925
+
+xp_mcom.h,1699
+#define _MCOM_H_10,192
+#	define NOT_NULL(NOT_NULL44,858
+#define XP_STRLEN(XP_STRLEN48,909
+#define XP_STRCMP(XP_STRCMP49,963
+#define XP_STRNCMP(XP_STRNCMP50,1030
+#define XP_STRCPY(XP_STRCPY51,1103
+#define XP_STRCHR 52,1170
+#define XP_STRRCHR 53,1211
+#define XP_STRTOK 54,1253
+#define XP_STRCAT 55,1294
+#define XP_STRNCAT 56,1335
+#define XP_STRSTR 57,1377
+#define XP_STRTOUL 58,1418
+#define XP_FILENAMECMP	65,1579
+#define XP_FILENAMECMP	67,1620
+#define XP_STRDUP(XP_STRDUP80,1813
+#define XP_MEMCPY(XP_MEMCPY81,1859
+#define XP_MEMMOVE(XP_MEMMOVE85,2030
+#define XP_MEMMOVE(XP_MEMMOVE87,2096
+#define XP_MEMSET 90,2178
+#define XP_SPRINTF 91,2219
+#define XP_SAFE_SPRINTF	100,2398
+#define XP_MEMCMP 101,2438
+#define XP_VSPRINTF 103,2480
+#define XP_IS_SPACE(XP_IS_SPACE105,2524
+#define XP_IS_DIGIT(XP_IS_DIGIT108,2655
+#define XP_TO_UPPER(XP_TO_UPPER110,2734
+#define XP_TO_LOWER(XP_TO_LOWER111,2814
+#define XP_IS_ALPHA(XP_IS_ALPHA114,2910
+#define XP_IS_ALPHA(XP_IS_ALPHA116,3003
+#define XP_ATOI(XP_ATOI119,3100
+#define XP_BCOPY(XP_BCOPY128,3329
+#define XP_BCOPY(XP_BCOPY131,3447
+#define XP_BZERO(XP_BZERO134,3518
+#define XP_RANDOM 137,3581
+#define XP_SRANDOM(XP_SRANDOM138,3606
+#define XP_RANDOM 141,3666
+#define XP_SRANDOM(XP_SRANDOM142,3691
+#  define XP_RANDOM	146,3849
+#  define XP_SRANDOM(XP_SRANDOM147,3875
+#  define XP_RANDOM	149,3923
+#  define XP_SRANDOM(XP_SRANDOM150,3951
+#define XP_TIME(XP_TIME166,4307
+#define time(time167,4338
+#define gmtime(gmtime168,4366
+#define mktime(mktime169,4397
+#define ctime(ctime170,4428
+#define localtime(localtime171,4457
+#define UNIXMINUSMACTIME 172,4494
+#define XP_TIME(XP_TIME174,4538
+
+xp_md5.h,24
+#define XP_MD5_H12,229
+
+xp_mem.h,2540
+#define _XP_MEM_6,219
+#define XP_NEW(XP_NEW24,544
+#define XP_DELETE(XP_DELETE25,597
+#define XP_NEW(XP_NEW29,653
+#define XP_DELETE(XP_DELETE30,718
+#define XP_ALLOC(XP_ALLOC42,1090
+#define XP_FREE(XP_FREE43,1141
+#define XP_REALLOC(XP_REALLOC44,1180
+#define XP_CALLOC(XP_CALLOC45,1234
+#define XP_NEW_ZAP(XP_NEW_ZAP46,1293
+#define XP_REALLOC(XP_REALLOC58,1565
+#define XP_ALLOC(XP_ALLOC59,1622
+#define XP_CHECK_ALLOC_SIZE(XP_CHECK_ALLOC_SIZE71,2116
+#define XP_CHECK_ALLOC_SIZE(XP_CHECK_ALLOC_SIZE73,2209
+#define XP_REALLOC(XP_REALLOC76,2256
+#define XP_ALLOC(XP_ALLOC77,2328
+#define XP_CALLOC(XP_CALLOC82,2416
+#define XP_CALLOC(XP_CALLOC84,2532
+#define XP_FREE(XP_FREE87,2592
+#define XP_NEW_ZAP(XP_NEW_ZAP88,2634
+#define XP_HUGE 103,3165
+#define XP_HUGE_ALLOC(XP_HUGE_ALLOC104,3188
+#define XP_HUGE_FREE(XP_HUGE_FREE105,3231
+#define XP_HUGE_MEMCPY(XP_HUGE_MEMCPY106,3270
+#define XP_HUGE108,3345
+#define XP_HUGE_ALLOC(XP_HUGE_ALLOC109,3361
+#define XP_HUGE_FREE(XP_HUGE_FREE110,3402
+#define XP_HUGE_MEMCPY(XP_HUGE_MEMCPY111,3440
+#define XP_HUGE_CHAR_PTR 114,3516
+typedef unsigned long *	XP_Block;XP_Block124,3924
+#define XP_ALLOC_BLOCK(XP_ALLOC_BLOCK126,3959
+#define XP_FREE_BLOCK(XP_FREE_BLOCK127,4015
+# define XP_REALLOC_BLOCK(XP_REALLOC_BLOCK130,4123
+# define XP_REALLOC_BLOCK(XP_REALLOC_BLOCK134,4259
+#define XP_LOCK_BLOCK(XP_LOCK_BLOCK136,4348
+#define XP_UNLOCK_BLOCK(XP_UNLOCK_BLOCK138,4424
+#define XP_UNLOCK_BLOCK(XP_UNLOCK_BLOCK140,4482
+typedef unsigned char * XP_Block;XP_Block145,4570
+#define XP_ALLOC_BLOCK(XP_ALLOC_BLOCK146,4604
+#define XP_FREE_BLOCK(XP_FREE_BLOCK147,4665
+#define XP_REALLOC_BLOCK(XP_REALLOC_BLOCK148,4720
+#define XP_LOCK_BLOCK(XP_LOCK_BLOCK151,4846
+#define XP_UNLOCK_BLOCK(XP_UNLOCK_BLOCK153,4922
+#define XP_UNLOCK_BLOCK(XP_UNLOCK_BLOCK155,4980
+typedef float*						XP_Block;XP_Block163,5058
+#define XP_ALLOC_BLOCK(XP_ALLOC_BLOCK164,5088
+#define XP_FREE_BLOCK(XP_FREE_BLOCK165,5158
+#define	XP_REALLOC_BLOCK(XP_REALLOC_BLOCK166,5203
+#define XP_LOCK_BLOCK(XP_LOCK_BLOCK167,5274
+#define	XP_UNLOCK_BLOCK(XP_UNLOCK_BLOCK168,5324
+#define	PA_Block	172,5375
+#define	PA_ALLOC(PA_ALLOC173,5405
+#define PA_FREE(PA_FREE174,5447
+#define PA_REALLOC(PA_REALLOC175,5487
+#define PA_LOCK(PA_LOCK176,5536
+#define PA_UNLOCK(PA_UNLOCK177,5583
+typedef struct XP_AllocStructInfo XP_AllocStructInfo223,6995
+} XP_AllocStructInfo;XP_AllocStructInfo230,7137
+#define XP_INITIALIZE_ALLOCSTRUCTINFO(XP_INITIALIZE_ALLOCSTRUCTINFO233,7161
+
+xp_mesg.h,28
+#define _XP_Message_22,771
+
+xp_reg.h,104
+#define SHEXP_H28,957
+#define NON_SXP 60,1668
+#define INVALID_SXP 61,1687
+#define VALID_SXP 62,1710
+
+xp_rgb.h,0
+
+xp_sec.h,25
+#define __XP_SEC_h_2,20
+
+xp_sock.h,3888
+#define __XP_SOCK_h_2,21
+#define SOCKET_BUFFER_SIZE 40,861
+#define SOCKET_BUFFER_SIZE 45,949
+#define EPIPE 48,996
+#define BOOLEAN 52,1044
+#define NETSELECT 57,1159
+#define NETCLOSE 58,1190
+#define NETBIND 59,1226
+#define NETLISTEN 60,1255
+#define NETSOCKET 61,1286
+#define NETCONNECT 62,1317
+#define NETACCEPT 63,1349
+#define NETSOCK 65,1394
+#define NETSOCK 67,1452
+#define NETREAD 69,1500
+#define NETWRITE 70,1529
+#define NETGETSOCKNAME 71,1559
+#define SOCKET_IOCTL 72,1595
+#define XP_SOCK_READ(XP_SOCK_READ75,1640
+#define XP_SOCK_WRITE(XP_SOCK_WRITE76,1682
+#define SOCKET_READ 79,1745
+#define SOCKET_WRITE 80,1779
+#define SOCKET_WRITE 82,1821
+#define SOCKET_READ 83,1851
+#define SOCKET_ERRNO 88,1922
+#define SOCKET_ERRNO 90,1970
+#define NETGETFD(NETGETFD93,2021
+#define SOCKET_INACTIVE 95,2061
+#define SOCKET_INVALID 96,2100
+#define SOCKET_INACTIVE 98,2145
+#define SOCKET_INVALID 99,2183
+#define NETSELECT 105,2296
+#define NETCLOSE 106,2327
+#define NETBIND 107,2361
+#define NETLISTEN 108,2394
+#define NETSOCKET 109,2429
+#define NETCONNECT 110,2464
+#define NETACCEPT 111,2500
+#define NETSOCK 113,2549
+#define NETSOCK 115,2607
+#define NETREAD 117,2655
+#define NETWRITE 118,2688
+#define NETGETSOCKNAME 119,2722
+#define SOCKET_IOCTL 120,2762
+#define SOCKET_WRITE 121,2796
+#define SOCKET_READ 122,2830
+#define SOCKET_ERRNO 123,2863
+#define NETGETFD(NETGETFD124,2901
+#define SOCKET_INACTIVE 126,2941
+#define SOCKET_INVALID 127,2980
+#define SOCKET_INACTIVE 129,3025
+#define SOCKET_INVALID 130,3063
+#define XP_SOCKET 140,3268
+#define XP_SOCK_ERRNO 141,3290
+#define XP_SOCK_SOCKET 142,3318
+#define XP_SOCK_CONNECT 143,3348
+#define XP_SOCK_ACCEPT 144,3380
+#define XP_SOCK_BIND 145,3410
+#define XP_SOCK_LISTEN 146,3436
+#define XP_SOCK_SHUTDOWN 147,3466
+#define XP_SOCK_IOCTL 148,3500
+#define XP_SOCK_RECV 149,3528
+#define XP_SOCK_RECVFROM 150,3554
+#define XP_SOCK_RECVMSG 151,3588
+#define XP_SOCK_SEND 152,3620
+#define XP_SOCK_SENDTO 153,3646
+#define XP_SOCK_SENDMSG 154,3676
+#define XP_SOCK_READ 155,3708
+#define XP_SOCK_WRITE 156,3734
+#define XP_SOCK_READV 157,3762
+#define XP_SOCK_WRITEV 158,3790
+#define XP_SOCK_GETPEERNAME 159,3820
+#define XP_SOCK_GETSOCKNAME 160,3860
+#define XP_SOCK_GETSOCKOPT 161,3900
+#define XP_SOCK_SETSOCKOPT 162,3938
+#define XP_SOCK_CLOSE 163,3976
+#define XP_SOCK_DUP 164,4004
+#define XP_SOCKET 194,5295
+#define XP_SOCK_ERRNO 195,5320
+#define XP_SOCK_SOCKET 197,5361
+#define XP_SOCK_CONNECT 198,5391
+#define XP_SOCK_ACCEPT 199,5423
+#define XP_SOCK_BIND 200,5453
+#define XP_SOCK_LISTEN 201,5479
+#define XP_SOCK_SHUTDOWN 202,5509
+#define XP_SOCK_IOCTL 203,5543
+#define XP_SOCK_RECV 204,5577
+#define XP_SOCK_RECVFROM 205,5603
+#define XP_SOCK_RECVMSG 206,5637
+#define XP_SOCK_SEND 207,5669
+#define XP_SOCK_SENDTO 208,5695
+#define XP_SOCK_SENDMSG 209,5725
+#define XP_SOCK_READ(XP_SOCK_READ210,5757
+#define XP_SOCK_WRITE(XP_SOCK_WRITE211,5799
+#define XP_SOCK_READV 212,5842
+#define XP_SOCK_WRITEV 213,5870
+#define XP_SOCK_GETPEERNAME 214,5900
+#define XP_SOCK_GETSOCKNAME 215,5940
+#define XP_SOCK_GETSOCKOPT 216,5980
+#define XP_SOCK_SETSOCKOPT 217,6018
+#define XP_SOCK_CLOSE 218,6056
+#define XP_SOCK_DUP 219,6090
+#define XP_SOCKET 228,6193
+#define XP_SOCK_ERRNO 229,6215
+#define XP_SOCK_SOCKET 230,6243
+#define XP_SOCK_CONNECT 231,6281
+#define XP_SOCK_ACCEPT 232,6321
+#define XP_SOCK_BIND 233,6359
+#define XP_SOCK_LISTEN 234,6393
+#define XP_SOCK_SHUTDOWN 235,6431
+#define XP_SOCK_IOCTL 236,6473
+#define XP_SOCK_RECV(XP_SOCK_RECV237,6509
+#define XP_SOCK_SEND(XP_SOCK_SEND238,6559
+#define XP_SOCK_READ 239,6610
+#define XP_SOCK_WRITE 240,6644
+#define XP_SOCK_GETPEERNAME 241,6680
+#define XP_SOCK_GETSOCKNAME 242,6728
+#define XP_SOCK_GETSOCKOPT 243,6776
+#define XP_SOCK_SETSOCKOPT 244,6822
+#define XP_SOCK_CLOSE 245,6868
+#define XP_SOCK_DUP 246,6904
+
+xp_str.h,257
+#define XPSTRING_H2,19
+#define XP_STRCASECMP 6,60
+#define XP_STRNCASECMP 7,95
+#define StrAllocCopy(StrAllocCopy49,1158
+#define StrAllocCat(StrAllocCat50,1216
+#define BlockAllocCopy(BlockAllocCopy61,1518
+#define BlockAllocCat(BlockAllocCat62,1609
+
+xp_thrmo.h,25
+#define _XP_THRMO_7,194
+
+xp_time.h,0
+
+xp_trace.h,193
+#define _XP_Trace_2,19
+#define XP_TRACE(XP_TRACE12,181
+#define XP_LTRACE(XP_LTRACE14,230
+inline void XP_Trace 20,357
+#define	XP_TRACE(XP_TRACE25,451
+#define XP_LTRACE(XP_LTRACE27,502
+
+xpassert.h,567
+#define _XP_Assert_3,55
+#define XP_ABORT(XP_ABORT19,551
+#define XP_ASSERT(XP_ASSERT30,1090
+#define XP_ASSERT(XP_ASSERT43,1492
+#define XP_ASSERT(XP_ASSERT46,1592
+#define XP_ASSERT(XP_ASSERT53,1737
+#define XP_ASSERT(XP_ASSERT65,1916
+#define XP_ASSERT(XP_ASSERT67,1973
+#	define XP_WARN_ASSERT(XP_WARN_ASSERT106,3296
+#	define XP_OK_ASSERT(XP_OK_ASSERT107,3363
+#	define XP_FAIL_ASSERT(XP_FAIL_ASSERT108,3423
+#	define XP_WARN_ASSERT(XP_WARN_ASSERT110,3490
+#	define XP_OK_ASSERT(XP_OK_ASSERT111,3532
+#	define XP_FAIL_ASSERT(XP_FAIL_ASSERT112,3575
+
+xpgetstr.h,0
+
+xplocale.h,147
+#define __XPLOCALE__19,402
+	XP_TIME_FORMAT 29,658
+	XP_WEEKDAY_TIME_FORMAT 30,679
+	XP_DATE_TIME_FORMAT 31,708
+	XP_LONG_DATE_TIME_FORMAT 32,734

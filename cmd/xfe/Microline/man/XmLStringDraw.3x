@@ -1,0 +1,90 @@
+.\" (c) Copyright 1994, 1995, Microline Software, Inc.  ALL RIGHTS RESERVED
+.\"  
+.\" THIS SOFTWARE IS FURNISHED UNDER A LICENSE AND MAY BE COPIED AND USED 
+.\" ONLY IN ACCORDANCE WITH THE TERMS OF THAT LICENSE AND WITH THE INCLUSION
+.\" OF THE ABOVE COPYRIGHT NOTICE.  THIS SOFTWARE AND DOCUMENTATION, AND ITS 
+.\" COPYRIGHTS ARE OWNED BY MICROLINE SOFTWARE AND ARE PROTECTED BY UNITED
+.\" STATES COPYRIGHT LAWS AND INTERNATIONAL TREATY PROVISIONS.
+.\"  
+.\" THE INFORMATION IN THIS SOFTWARE IS SUBJECT TO CHANGE WITHOUT NOTICE
+.\" AND SHOULD NOT BE CONSTRUED AS A COMMITMENT BY MICROLINE SOFTWARE.
+.\" 
+.\" THIS SOFTWARE AND REFERENCE MATERIALS ARE PROVIDED "AS IS" WITHOUT
+.\" WARRANTY AS TO THEIR PERFORMANCE, MERCHANTABILITY, FITNESS FOR ANY 
+.\" PARTICULAR PURPOSE, OR AGAINST INFRINGEMENT.  MICROLINE SOFTWARE
+.\" ASSUMES NO RESPONSIBILITY FOR THE USE OR INABILITY TO USE THIS 
+.\" SOFTWARE.
+.\" 
+.\" MICROLINE SOFTWARE SHALL NOT BE LIABLE FOR INDIRECT, SPECIAL OR
+.\" CONSEQUENTIAL DAMAGES RESULTING FROM THE USE OF THIS PRODUCT. SOME 
+.\" STATES DO NOT ALLOW THE EXCLUSION OR LIMITATION OF INCIDENTAL OR
+.\" CONSEQUENTIAL DAMAGES, SO THE ABOVE LIMITATIONS MIGHT NOT APPLY TO
+.\" YOU.
+.\" 
+.\" MICROLINE SOFTWARE SHALL HAVE NO LIABILITY OR RESPONSIBILITY FOR SOFTWARE
+.\" ALTERED, MODIFIED, OR CONVERTED BY YOU OR A THIRD PARTY, DAMAGES
+.\" RESULTING FROM ACCIDENT, ABUSE OR MISAPPLICATION, OR FOR PROBLEMS DUE
+.\" TO THE MALFUNCTION OF YOUR EQUIPMENT OR SOFTWARE NOT SUPPLIED BY
+.\" MICROLINE SOFTWARE.
+.\"   
+.\" U.S. GOVERNMENT RESTRICTED RIGHTS
+.\" This Software and documentation are provided with RESTRICTED RIGHTS.
+.\" Use, duplication or disclosure by the Government is subject to
+.\" restrictions as set forth in subparagraph (c)(1) of the Rights in
+.\" Technical Data and Computer Software Clause at DFARS 252.227-7013 or
+.\" subparagraphs (c)(1)(ii) and (2) of Commercial Computer Software -
+.\" Restricted Rights at 48 CFR 52.227-19, as applicable, supplier is
+.\" Microline Software, 41 Sutter St Suite 1374, San Francisco, CA 94104.
+.\"
+.TH XmLStringDraw 3X "R1" "XML1" "XML"
+.SH NAME
+XmLStringDraw \- draws a string clipped and aligned in a widget
+.SH SYNTAX
+void XmLStringDraw(\fIwidget\fP, \fIstring\fP, \fIstringDir\fP, \
+\fIfontList\fP, \fIalignment\fP, \fIgc\fP, \fIrect\fP, \fIclipRect\fP)
+.br
+Widget \fIwidget\fP;
+.br
+String \fIstring\fP;
+.br
+XmStringDirection \fIstringDir\fP;
+.br
+XmFontList \fIfontList\fP;
+.br
+unsigned char \fIalignment\fP;
+.br
+GC \fIgc\fP;
+.br
+XRectangle *\fIrect\fP;
+.br
+XRectangle *\fIclipRect\fP;
+.LP
+.SH ARGUMENTS
+.IP \fIwidget\fP 1i
+drawing destination widget
+.IP \fIstring\fP 1i
+string to draw
+.IP \fIstringDir\fP 1i
+direction to draw string in
+.IP \fIfontList\fP 1i
+font list used to draw string
+.IP \fIalignment\fP 1i
+alignment
+.IP \fIgc\fP 1i
+graphics context for drawing
+.IP \fIrect\fP 1i
+source rectangle
+.IP \fIclipRect\fP 1i
+destination/clipping rectangle
+.SH DESCRIPTION
+Draws a \fIstring\fP in the direction \fIstringDir\fP using the
+font list \fIfontList\fP and the GC \fIgc\fP in the window of
+the \fIwidget\fP given. The \fIrect\fP parameter indicates the
+rectangle used to determine alignment. The \fIclipRect\fP
+rectangle parameter given indicates the rectangle used
+to clip the drawing. \fIAlignment\fP must be one of the following:
+XmALIGNMENT_TOP_LEFT, XmALIGNMENT_TOP, XmALIGNMENT_TOP_RIGHT, 
+XmALIGNMENT_LEFT, XmALIGNMENT_CENTER, XmALIGNMENT_RIGHT,
+XmALIGNMENT_BOTTOM_LEFT, XmALIGNMENT_BOTTOM or XmALIGNMENT_BOTTOM_RIGHT
+.SH "SEE ALSO"
+XmLPixmapDraw(3X)

@@ -1,0 +1,31 @@
+/////////////////////////////////////////////////////////////////////////////
+// Version stamp for this .DLL
+#include <winver.h>
+
+VS_VERSION_INFO     VERSIONINFO
+  FILEVERSION       2,1,0,01 // major, minor, release (alpha 1), build #
+  PRODUCTVERSION    2,1,0,01
+  FILEFLAGSMASK     VS_FFI_FILEFLAGSMASK
+  FILEFLAGS         0 // final version
+  FILEOS            VOS_DOS_WINDOWS32
+  FILETYPE          VFT_DLL
+  FILESUBTYPE       0   // not used
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904E4" // Lang=US English, CharSet=Windows Multilingual
+        BEGIN
+            VALUE "CompanyName",     "Netscape Communications Corporation\0"
+            VALUE "FileDescription", "Netscape Java Windowing Toolkit\0"
+            VALUE "FileVersion",     "2.1beta0.001\0"
+            VALUE "InternalName",    "AWT3221\0"
+            VALUE "LegalCopyright",  "Copyright Netscape Communications. 1994, 1995\0"
+            VALUE "LegalTrademarks", "Netscape, Mozilla\0"
+            VALUE "OriginalFilename","AWT3221.DLL\0"
+            VALUE "ProductName",     "NETSCAPE\0"
+            VALUE "ProductVersion",  "2.1.001\0"
+        END
+    END
+END
+
+AWT_ICON ICON DISCARDABLE "awt.ico"

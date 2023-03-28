@@ -1,0 +1,37 @@
+#//------------------------------------------------------------------------
+#//
+#// Makefile fo NS/CONFIG - various commands used by other makefiles
+#//
+#//------------------------------------------------------------------------
+
+!if "$(OS_RELEASE)" == "16"
+!error This makefile must be build using 32-bit tools
+!endif
+
+#//------------------------------------------------------------------------
+#//
+#// Specify the depth of the current directory relative to the
+#// root of NS
+#//
+#//------------------------------------------------------------------------
+DEPTH = ..
+
+#//------------------------------------------------------------------------
+#//
+#// Include the common makefile rules
+#//
+#//------------------------------------------------------------------------
+include <$(DEPTH)/nspr/config/rules.mak>
+
+#//
+#// Rule to build makedir.exe
+#//
+makecopy.exe:: makecopy.c
+    $(CC) -O2 -MD makecopy.c
+
+mangle.exe:: mangle.c
+    $(CC) -O2 -MD mangle.c
+
+export:: makecopy.exe mangle.exe
+
+install:: export

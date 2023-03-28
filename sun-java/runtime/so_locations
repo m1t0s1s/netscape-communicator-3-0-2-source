@@ -1,0 +1,12 @@
+IRIX6.2_DBG.OBJ/javart.so \
+		:st = .text 0x5ff90000, 0x00050000:\
+		:st = .data 0x5ffe0000, 0x00010000:\
+
+IRIX6.2_OPT.OBJ/javart.so \
+		:st = .text 0x5ff30000, 0x00040000:\
+		:st = .data 0x5ff70000, 0x00020000:\
+
+javart.so \
+		:st = .text 0x5fee0000, 0x00040000:\
+		:st = .data 0x5fec0000, 0x00020000:\
+

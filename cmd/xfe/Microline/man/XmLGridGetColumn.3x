@@ -1,0 +1,66 @@
+.\" (c) Copyright 1994, 1995, Microline Software, Inc.  ALL RIGHTS RESERVED
+.\"  
+.\" THIS SOFTWARE IS FURNISHED UNDER A LICENSE AND MAY BE COPIED AND USED 
+.\" ONLY IN ACCORDANCE WITH THE TERMS OF THAT LICENSE AND WITH THE INCLUSION
+.\" OF THE ABOVE COPYRIGHT NOTICE.  THIS SOFTWARE AND DOCUMENTATION, AND ITS 
+.\" COPYRIGHTS ARE OWNED BY MICROLINE SOFTWARE AND ARE PROTECTED BY UNITED
+.\" STATES COPYRIGHT LAWS AND INTERNATIONAL TREATY PROVISIONS.
+.\"  
+.\" THE INFORMATION IN THIS SOFTWARE IS SUBJECT TO CHANGE WITHOUT NOTICE
+.\" AND SHOULD NOT BE CONSTRUED AS A COMMITMENT BY MICROLINE SOFTWARE.
+.\" 
+.\" THIS SOFTWARE AND REFERENCE MATERIALS ARE PROVIDED "AS IS" WITHOUT
+.\" WARRANTY AS TO THEIR PERFORMANCE, MERCHANTABILITY, FITNESS FOR ANY 
+.\" PARTICULAR PURPOSE, OR AGAINST INFRINGEMENT.  MICROLINE SOFTWARE
+.\" ASSUMES NO RESPONSIBILITY FOR THE USE OR INABILITY TO USE THIS 
+.\" SOFTWARE.
+.\" 
+.\" MICROLINE SOFTWARE SHALL NOT BE LIABLE FOR INDIRECT, SPECIAL OR
+.\" CONSEQUENTIAL DAMAGES RESULTING FROM THE USE OF THIS PRODUCT. SOME 
+.\" STATES DO NOT ALLOW THE EXCLUSION OR LIMITATION OF INCIDENTAL OR
+.\" CONSEQUENTIAL DAMAGES, SO THE ABOVE LIMITATIONS MIGHT NOT APPLY TO
+.\" YOU.
+.\" 
+.\" MICROLINE SOFTWARE SHALL HAVE NO LIABILITY OR RESPONSIBILITY FOR SOFTWARE
+.\" ALTERED, MODIFIED, OR CONVERTED BY YOU OR A THIRD PARTY, DAMAGES
+.\" RESULTING FROM ACCIDENT, ABUSE OR MISAPPLICATION, OR FOR PROBLEMS DUE
+.\" TO THE MALFUNCTION OF YOUR EQUIPMENT OR SOFTWARE NOT SUPPLIED BY
+.\" MICROLINE SOFTWARE.
+.\"   
+.\" U.S. GOVERNMENT RESTRICTED RIGHTS
+.\" This Software and documentation are provided with RESTRICTED RIGHTS.
+.\" Use, duplication or disclosure by the Government is subject to
+.\" restrictions as set forth in subparagraph (c)(1) of the Rights in
+.\" Technical Data and Computer Software Clause at DFARS 252.227-7013 or
+.\" subparagraphs (c)(1)(ii) and (2) of Commercial Computer Software -
+.\" Restricted Rights at 48 CFR 52.227-19, as applicable, supplier is
+.\" Microline Software, 41 Sutter St Suite 1374, San Francisco, CA 94104.
+.\"
+.TH XmLGridGetColumn 3X "R1" "XML1" "XML"
+.SH NAME
+XmLGridGetColumn \- return a pointer to a column
+.SH SYNTAX
+XmLCGridColumn *XmLGridGetColumn(\fIwidget\fP, \fItype\fP, \fIcolumn\fP)
+.br
+Widget \fIwidget\fP;
+.br
+unsigned char \fItype\fP;
+.br
+int \fIcolumn\fP;
+.LP
+.SH ARGUMENTS
+.IP \fIwidget\fP 1i
+Grid widget ID
+.IP \fItype\fP 1i
+type of column
+.IP \fIcolumn\fP 1i
+position of column
+.SH DESCRIPTION
+Returns a pointer to the column at position \fIcolumn\fP of type \fItype\fP.
+This pointer can be used in a GetValues call to retrieve
+values for the column.
+.SH RETURN VALUE
+A pointer to the column at the given location or NULL if the column position
+is invalid.
+.SH "SEE ALSO"
+XmLGrid(3X)

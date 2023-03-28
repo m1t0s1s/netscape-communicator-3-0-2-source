@@ -1,0 +1,5 @@
+
+
+#define IDB_INSECURE			2000
+#define IDI_JAVACUP			    3000
+

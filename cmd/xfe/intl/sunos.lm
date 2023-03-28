@@ -1,0 +1,64 @@
+
+
+! This table maps the host's locale names to MIME charsets.
+! Only some of these locales are supported.
+!
+*localeCharset*C:		iso-8859-1
+*localeCharset*POSIX:		iso-8859-1
+*localeCharset*chinese:		gb2312
+*localeCharset*da:		iso-8859-1
+*localeCharset*de:		iso-8859-1
+*localeCharset*de_CH:		iso-8859-1
+*localeCharset*en_AU:		iso-8859-1
+*localeCharset*en_CA:		iso-8859-1
+*localeCharset*en_IE:		iso-8859-1
+*localeCharset*en_NZ:		iso-8859-1
+*localeCharset*en_UK:		iso-8859-1
+*localeCharset*en_US:		iso-8859-1
+*localeCharset*es:		iso-8859-1
+*localeCharset*es_AR:		iso-8859-1
+*localeCharset*es_BO:		iso-8859-1
+*localeCharset*es_CL:		iso-8859-1
+*localeCharset*es_CO:		iso-8859-1
+*localeCharset*es_CR:		iso-8859-1
+*localeCharset*es_EC:		iso-8859-1
+*localeCharset*es_GT:		iso-8859-1
+*localeCharset*es_MX:		iso-8859-1
+*localeCharset*es_NI:		iso-8859-1
+*localeCharset*es_PA:		iso-8859-1
+*localeCharset*es_PE:		iso-8859-1
+*localeCharset*es_PY:		iso-8859-1
+*localeCharset*es_SV:		iso-8859-1
+*localeCharset*es_UY:		iso-8859-1
+*localeCharset*es_VE:		iso-8859-1
+*localeCharset*fr:		iso-8859-1
+*localeCharset*fr_BE:		iso-8859-1
+*localeCharset*fr_CA:		iso-8859-1
+*localeCharset*fr_CH:		iso-8859-1
+*localeCharset*iso_8859_1:	iso-8859-1
+*localeCharset*it:		iso-8859-1
+*localeCharset*ja:		x-euc-jp
+*localeCharset*ja_JP.EUC:	x-euc-jp
+*localeCharset*japanese:	x-euc-jp
+*localeCharset*ko:		euc-kr
+*localeCharset*ko_KR.EUC:	euc-kr
+*localeCharset*korean:		euc-kr
+*localeCharset*nl:		iso-8859-1
+*localeCharset*nl_BE:		iso-8859-1
+*localeCharset*no:		iso-8859-1
+*localeCharset*pt:		iso-8859-1
+*localeCharset*pt_BR:		iso-8859-1
+*localeCharset*su:		iso-8859-1
+*localeCharset*sv:		iso-8859-1
+*localeCharset*zh:		gb2312
+*localeCharset*zh_CN.EUC:	gb2312
+*localeCharset*zh_TW:		x-euc-tw
+
+
+! OS-dependent font charset mappings
+!
+*documentFonts.charset*cns11643-0:				x-ignore
+*documentFonts.charset*cns11643-1:				x-cns11643-1
+*documentFonts.charset*cns11643-2:				x-cns11643-2
+
+

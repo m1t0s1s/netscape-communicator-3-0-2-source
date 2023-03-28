@@ -1,0 +1,87 @@
+LIBRARY JRT1630.DLL
+EXETYPE WINDOWS
+PROTMODE
+
+DESCRIPTION 'Java 16-bit Runtime library'
+
+STUB    'WINSTUB.EXE'
+
+CODE    LOADONCALL MOVEABLE DISCARDABLE
+DATA	PRELOAD MOVEABLE SINGLE
+
+HEAPSIZE    8192
+
+IMPORTS
+    _malloc		= PR1630.2
+    _realloc		= PR1630.3
+    _calloc		= PR1630.4
+    _free		= PR1630.5
+    GETHOSTNAME		= PR1630.6
+    GETHOSTBYNAME	= PR1630.7
+    GETHOSTBYADDR	= PR1630.8
+    _getenv		= PR1630.9
+    _putenv		= PR1630.10
+    _printf		= PR1630.11
+    _fprintf		= PR1630.12
+
+    NTOHL               = PR1630.13
+    NTOHS               = PR1630.14
+    CLOSESOCKET         = PR1630.15
+    SETSOCKOPT          = PR1630.16
+    SOCKET              = PR1630.17
+    GETSOCKNAME         = PR1630.18
+    HTONL               = PR1630.19
+    HTONS               = PR1630.20
+    INET_ADDR           = PR1630.21
+    WSAGETLASTERROR     = PR1630.22
+    CONNECT             = PR1630.23
+    RECV                = PR1630.24
+    IOCTLSOCKET         = PR1630.25
+    RECVFROM            = PR1630.26
+    SEND                = PR1630.27
+    SENDTO              = PR1630.28
+    ACCEPT              = PR1630.29
+    LISTEN              = PR1630.30
+    BIND                = PR1630.31
+
+EXPORTS
+    ; old stuff (this should go eventually)
+    _ArrayAlloc
+    _EE
+    _FindClass
+    _NameAndTypeToHash
+    _SignalError
+    _allocCString
+    _do_execute_java_method
+    _exceptionDescribe
+    _execute_java_constructor
+    _execute_java_constructor_vararg
+    _execute_java_dynamic_method
+    _is_instance_of
+    _javaString2CString
+    _javaStringLength
+    _makeCString
+    _makeJavaString
+    _monitorEnter
+    _monitorExit
+    _monitorNotify
+    _monitorNotifyAll
+    _monitorWait
+    _privateGetenv
+    _privatePutenv
+    _start_java
+    _threadSelf
+    _sysGmtime
+    _int2ll
+
+    ; used by mo_java.c - should use jri extension
+    _CreateNewJavaStack
+    _ExecuteJava
+    _VerifyClassAccess
+    _VerifyFieldAccess
+    _classJavaLangObject
+    _do_execute_java_method_vararg
+    _is_subclass_of
+    _newobject
+    _sizearray
+

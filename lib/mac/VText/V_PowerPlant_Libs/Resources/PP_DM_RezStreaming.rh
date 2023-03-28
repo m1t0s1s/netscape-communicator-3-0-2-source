@@ -1,0 +1,127 @@
+//	===========================================================================
+//	PP_Streaming_DM.rh
+//	===========================================================================
+
+#ifdef	__PP_Streaming_DM_rh__
+#else
+
+	#define	__PP_Streaming_DM_rh__
+	
+	/*
+		NOTE:
+		
+		...SDataO's are never explicitly referenced!
+		
+		...
+	*/
+
+	//	===========================================================================
+	//	Direct Manipulation:
+
+	#define	PP_SelectionModelAEOMSDataB											\
+			OSType								/*	mModelKind				*/	\
+
+	#define	PP_SelectionModelAEOMSDataO											\
+			StreamRefData						/*	mSuperModel				*/	\
+		;	StreamRefData						/*	mSelection				*/	\
+
+	#define	PP_SelectionSDataB													\
+			Byte		noRecordAllSelection, hasRecordAllSelections			\
+
+	#define	PP_SelectionSDataO													\
+			StreamRefData						/*	mSuperModel				*/	\
+
+		
+	//	===========================================================================
+	//	EventHandlers:
+
+	//	LEventMachine
+	#define	PP_EventMachineSDataB												\
+			Rect		defaultMouseBounds = {0, 0, 0, 0}						\
+		;	Byte		noSingleGestureMove, hasSingleGestureMove				\
+		;	integer		defaultMultiClickDistance = -1							\
+		;	longint		defaultBoundaryDragDelay = 2							\
+		;	longint		defaultBoundaryDragInitialDelay = 10					\
+		;	Rect		defaultBDArea = {0, 0, 0, 0}							\
+		;	Rect		defaultBDAreaOutside = {4, 4, -4, -4}					\
+
+	#define	PP_EventMachineSDataO												\
+		;	ObjectRefData						/*	mCommander				*/	\
+
+	//	LEventHandler
+	#define	PP_EventHandlerSDataB	PP_EventMachineSDataB
+
+	#define	PP_EventHandlerSDataO												\
+			PP_EventMachineSData0												\
+		;	StreamRefData						/*	mSelection				*/	\
+
+	//	LDataDragEventHandler
+	#define	PP_DataDragEventHandlerSDataB										\
+			Byte		noStartsDataDrags, hasStartsDataDrags					\
+		;	Byte		noReceivesDataDrags, hasReceivesDataDrags				\
+		;	PP_EventHandlerSDataB												\
+
+	#define	PP_DataDragEventHandlerSDataO	PP_EventHandlerSDataO
+		
+	//	===========================================================================
+	//	Tables:
+
+	#define	PP_2dDynamicArrayData												\
+		longint		defaultElementSize = 4		/*	Element size			*/	\
+		
+	/*
+	#define	PP_TableModelData													\
+		PP_SelectionModelAEOMData												\
+	*/
+		
+	//	===========================================================================
+	//	Text:
+
+	//	LTextEngine
+	#define	PP_TextEngineSDataB													\
+			Boolean		noMultiStyle, hasMultiStyle								\
+		;	Boolean		noEdit, hasEdit			/*	Read/write				*/	\
+		;	bitstring[1] = 0					/*	unused bit				*/	\
+		;	Boolean		noWordWrap,	hasWordWrap	/*	Wrap text to frame?		*/	\
+		;	bitstring[12] = 0					/*	Reserved bits			*/	\
+		;	Rect		defaultMargins = {4, 4, 4, 4}							\
+		;	longint		defaultWidth = 1000										\
+		;	longint		defaultHeight = 0										\
+
+	#define	PP_TextEngineSDataO													\
+			StreamRefData						/*	Default styleset		*/	\
+
+	//	LStyleSet
+	#define	PP_StyleSetSDataB													\
+			integer								/*	TextTraits ID			*/	\
+
+	#define	PP_StyleSetSDataO													\
+			StreamRefData						/*	mTextModel				*/	\
+
+	//	LRulerSet
+	#define	PP_RulerSetSDataB													\
+			integer								/*	??????????????			*/	\
+
+	#define	PP_RulerSetSDataO													\
+			StreamRefData						/*	mTextModel				*/	\
+
+	//	LTextSelection
+	#define	PP_TextSelectionSDataB	PP_SelectionSDataB
+	#define	PP_TextSelectionSDataO												\
+			StreamRefData						/*	mTextEngine				*/	\
+		;	StreamRefData						/*	mTextModel				*/	\
+
+	//	LTextModel
+	#define	PP_TextModelSDataB	PP_SelectionModelAEOMSDataB
+	#define	PP_TextModelSDataO												\
+			PP_SelectionModelAEOMSDataO											\
+		;	StreamRefData						/*	mTextEngine				*/	\
+
+	//	LTextHandler
+	#define	PP_TextHandlerSDataB	PP_DataDragEventHandlerSDataB
+	#define	PP_TextHandlerSDataO												\
+			PP_DataDragEventHandlerSDataO										\
+		;	StreamRefData						/*	mTextEngine				*/	\
+		;	StreamRefData						/*	mTextModel				*/	\
+
+#endif

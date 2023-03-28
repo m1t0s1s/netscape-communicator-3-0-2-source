@@ -1,0 +1,187 @@
+#//------------------------------------------------------------------------
+#//
+#// Makefile to build the machine independent java runtime library
+#//
+#//------------------------------------------------------------------------
+
+
+#//------------------------------------------------------------------------
+#//
+#// Specify the depth of the current directory relative to the
+#// root of NS
+#//
+#//------------------------------------------------------------------------
+DEPTH= ..\..\..
+
+MAKE_OBJ_TYPE=DLL
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Make Variables here: (ie. PDFFILE, MAPFILE, ...)
+#//
+#//------------------------------------------------------------------------
+DLLNAME=awt$(OS_RELEASE)21
+PDBFILE=$(DLLNAME).pdb
+MAPFILE=$(DLLNAME).map
+RESFILE=awt.res
+
+#//------------------------------------------------------------------------
+#// 
+#// Define the files necessary to build the target (ie. OBJS)
+#//
+#//------------------------------------------------------------------------
+OBJS=                                   \
+    .\$(OBJDIR)\awt.obj                 \
+    .\$(OBJDIR)\awtapp.obj              \
+    .\$(OBJDIR)\awt_event.obj           \
+    .\$(OBJDIR)\awt_button.obj          \
+    .\$(OBJDIR)\awt_graphics.obj        \
+    .\$(OBJDIR)\awt_sbar.obj            \
+    .\$(OBJDIR)\stdafx.obj              \
+    .\$(OBJDIR)\awt_font.obj            \
+    .\$(OBJDIR)\awt_imageconvert.obj    \
+    .\$(OBJDIR)\awt_image.obj           \
+    .\$(OBJDIR)\awt_menu.obj            \
+    .\$(OBJDIR)\awt_filedlg.obj         \
+    .\$(OBJDIR)\awt_list.obj            \
+    .\$(OBJDIR)\awt_mainfrm.obj         \
+    .\$(OBJDIR)\awt_fontmetrics.obj     \
+    .\$(OBJDIR)\awt_label.obj           \
+    .\$(OBJDIR)\libstubs.obj            \
+    .\$(OBJDIR)\awt_window.obj          \
+    .\$(OBJDIR)\awt_comp.obj            \
+    .\$(OBJDIR)\awt_optmenu.obj         \
+    .\$(OBJDIR)\awt_edit.obj            \
+    $(NULL)
+
+GENERATED_JAVA_HEADERS_CLASSFILES =     \
+    java.awt.Button                     \
+    java.awt.Canvas                     \
+    java.awt.CheckboxGroup              \
+    java.awt.CheckboxMenuItem           \
+    java.awt.Checkbox                   \
+    java.awt.Choice                     \
+    java.awt.Color                      \
+    java.awt.Component                  \
+    java.awt.Dialog                     \
+    java.awt.Event                      \
+    java.awt.FileDialog                 \
+    java.awt.Font                       \
+    java.awt.FontMetrics                \
+    java.awt.Frame                      \
+    java.awt.Graphics                   \
+    java.awt.Image                      \
+    java.awt.Insets                     \
+    java.awt.Label                      \
+    java.awt.List                       \
+    java.awt.Menu                       \
+    java.awt.MenuBar                    \
+    java.awt.MenuItem                   \
+    java.awt.Rectangle                  \
+    java.awt.Scrollbar                  \
+    java.awt.TextArea                   \
+    java.awt.TextField                  \
+    java.awt.Window                     \
+    java.awt.image.ColorModel           \
+    java.awt.image.IndexColorModel      \
+    java.awt.image.DirectColorModel     \
+    java.awt.image.ImageObserver        \
+    java.awt.image.ImageConsumer        \
+    $(NULL)
+
+GENERATED_SUN_HEADERS_CLASSFILES =      \
+    sun.awt.image.Image                 \
+    sun.awt.image.ImageRepresentation   \
+    sun.awt.image.OffScreenImageSource  \
+    sun.awt.win32.MButtonPeer           \
+    sun.awt.win32.MCanvasPeer           \
+    sun.awt.win32.MComponentPeer        \
+    sun.awt.win32.MCheckboxPeer         \
+    sun.awt.win32.MCheckboxMenuItemPeer \
+    sun.awt.win32.MChoicePeer           \
+    sun.awt.win32.MDialogPeer           \
+    sun.awt.win32.MFileDialogPeer       \
+    sun.awt.win32.MFramePeer            \
+    sun.awt.win32.MLabelPeer            \
+    sun.awt.win32.MListPeer             \
+    sun.awt.win32.MMenuBarPeer          \
+    sun.awt.win32.MMenuItemPeer         \
+    sun.awt.win32.MMenuPeer             \
+    sun.awt.win32.MScrollbarPeer        \
+    sun.awt.win32.MTextAreaPeer         \
+    sun.awt.win32.MTextFieldPeer        \
+    sun.awt.win32.MToolkit              \
+    sun.awt.win32.MWindowPeer           \
+    sun.awt.win32.Win32FontMetrics      \
+    sun.awt.win32.Win32Graphics         \
+    sun.awt.win32.Win32Image            \
+    java.applet.AppletContext           \
+    netscape.applet.MozillaAppletContext \
+    netscape.applet.EmbeddedAppletFrame \
+    $(NULL)
+
+GENERATED_STUBS_CLASSFILES =            \
+    sun.awt.image.ImageRepresentation   \
+    sun.awt.image.OffScreenImageSource  \
+    sun.awt.win32.MButtonPeer           \
+    sun.awt.win32.MCanvasPeer           \
+    sun.awt.win32.MCheckboxPeer         \
+    sun.awt.win32.MCheckboxMenuItemPeer \
+    sun.awt.win32.MChoicePeer           \
+    sun.awt.win32.MComponentPeer        \
+    sun.awt.win32.MDialogPeer           \
+    sun.awt.win32.MFileDialogPeer       \
+    sun.awt.win32.MFramePeer            \
+    sun.awt.win32.MLabelPeer            \
+    sun.awt.win32.MListPeer             \
+    sun.awt.win32.MMenuBarPeer          \
+    sun.awt.win32.MMenuItemPeer         \
+    sun.awt.win32.MMenuPeer             \
+    sun.awt.win32.MScrollbarPeer        \
+    sun.awt.win32.MTextAreaPeer         \
+    sun.awt.win32.MTextFieldPeer        \
+    sun.awt.win32.MWindowPeer           \
+    sun.awt.win32.MToolkit              \
+    sun.awt.win32.Win32FontMetrics      \
+    sun.awt.win32.Win32Graphics         \
+    sun.awt.win32.Win32Image            \
+    $(NULL)
+
+#//------------------------------------------------------------------------
+#//
+#// Define any Public Targets here (ie. PROGRAM, LIBRARY, DLL, ...)
+#// (these must be defined before the common makefiles are included)
+#//
+#//------------------------------------------------------------------------
+JAVA_HEADER_FILES=$(GENERATED_JAVA_HEADERS_CLASSFILES) $(GENERATED_SUN_HEADERS_CLASSFILES)
+JAVA_LIBSTUB_FILES=$(GENERATED_STUBS_CLASSFILES)
+
+DLL=.\$(OBJDIR)\$(DLLNAME).dll
+
+#//------------------------------------------------------------------------
+#//
+#// Define any local options for the make tools 
+#//     (ie. LCFLAGS, LLFLAGS, LLIBS, LINCS)
+#//
+#//------------------------------------------------------------------------
+LLIBS=$(LLIBS) $(LIBNSPR) $(LIBJRT)
+LINCS=$(LINCS) -I. -I_gen
+
+#// Build this DLL using the static RTL and MFC libraries
+USE_STATIC_LIBS=1
+
+#//------------------------------------------------------------------------
+#//
+#// Include the common makefile rules
+#//
+#//------------------------------------------------------------------------
+include <$(DEPTH)/sun-java/config/rules.mak>
+
+export:: $(JAVA_HEADER_FILES) libstubs.c $(DLL)
+    $(MAKE_INSTALL) .\$(OBJDIR)\$(DLLNAME).dll $(DIST)\bin
+    $(MAKE_INSTALL) .\$(OBJDIR)\$(DLLNAME).lib $(DIST)\lib
+
+
+install:: export
+
+clobber::
+    $(RM_R) libstubs.c _gen

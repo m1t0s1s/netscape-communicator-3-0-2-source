@@ -1,0 +1,218 @@
+==============================================================================
+                          @NAME@ @VERSION@ (X11)
+==============================================================================
+
+As of 3.0b5, the Netscape Navigator comes only in gzip format.  Though gzip
+is available on many Unix systems, some (for whatever reason) may not have
+it.  If this is the case on your system, you can download a pre-built gzip
+binary (and/or source) from the URL
+
+    ftp://ftp.netscape.com/pub/unsupported/gnu
+
+ * To unpack a gzip-compressed tar file into the current directory, use some 
+   variation of the following command:
+
+       gzip -dc the-file.tar.gz | tar -xvf -
+
+
+The CoolTalk helper application is no longer included in the Navigator
+distribution.  CoolTalk is now individually available for download in
+
+    ftp://ftp.netscape.com/pub/cooltalk/unix
+
+
+Release notes for this version of @NAME@ are available on-line.  After
+starting the program, select "Release Notes" from the "Help" menu.  This
+will take you to the URL
+
+    http://home.netscape.com/eng/mozilla/3.0/relnotes/unix-@URLVERSION@.html
+
+which lists new features and known problems of this release.
+
+
+To submit bugs or other feedback, use the "How To Give Feedback" option, also
+on the "Help" menu, which will take you to the URL
+
+    http://cgi.netscape.com/cgi-bin/auto_bug.cgi
+
+If for some reason you cannot submit feedback using that form, you may send
+email to x_cbug@netscape.com.  Please be as specific as possible about the 
+version of @NAME@ you are using, and the hardware and version of the OS.
+If possible, include a test case for the problem, including a URL.
+
+
+==============================================================================
+                          Configuration Notes
+==============================================================================
+
+Configuration Files from Version 1.12 or earlier:
+
+          If you are migrating from Netscape Navigator Version 1.12 or
+          earlier, a new directory is created in which configuration files
+          are placed.  This directory is called `$HOME/.netscape'.  Existing
+          1.12 or earlier configuration information is copied into this
+          directory upon first execution of Netscape.  A dialog is presented
+          asking whether or not you would like to automatically delete your
+          1.12 files.
+
+          If you do not choose to delete the old files, then they will
+          continue to be used by older versions of @NAME@, but versions
+          newer than 1.12 will never touch them.
+
+          If you have a file or directory in $HOME called .netscape, you
+          should rename it prior to running this version.  If you don't,
+          it will be renamed for you, to `.netscape.BAK'.
+
+Mail:
+
+          Please see the Release Notes for important information on 
+          configuring and using Netscape Mail.  Knowing how to configure
+          and use Netscape Mail will prevent you from losing mail messages.
+
+Java Applet Support:
+
+          Java Applet support is available for all Unix platforms.
+
+          To run Java applets with the Java-enabled version, the Navigator
+          needs to be able to load Java class files from a file called
+          java_301.  This file is included in the distribution, but must
+          be moved to any of these directories:
+
+                The current directory
+                /usr/local/netscape/java/classes
+                /usr/local/lib/netscape
+                $HOME/.netscape
+
+          If you were running Java with an earlier version of the Netscape
+          Navigator, you need to replace your old moz2_0.car file, or old
+          moz*.zip file with the new java_301 file supplied in this
+          distribution.  
+
+          YOU SHOULD NOT UNZIP THE java_301 FILE.
+
+Netscape Plug-in Support:
+
+          Netscape Plug-in support is available on SunOS 4.1.3, Solaris 2.3,
+          Solaris 2.4, HP-UX, IRIX, OSF/1, and Linux.
+
+          A default plug-in (libnullplugin.so) is included in the
+          distribution (except for Linux due to restrictions about using
+          Motif).  You should install this plug-in in either:
+
+                $HOME/.netscape/plugins
+          or
+                /usr/local/lib/netscape/plugins
+
+          More information about Unix plug-ins is available at:
+
+              http://cgi.netscape.com/eng/mozilla/2.0/extensions/info.cgi
+
+InSoft CoolTalk Helper Application:
+
+          CoolTalk is available for Solaris 2.3, Solaris 2.4, SunOS 4.1,
+          HP-UX, OSF/1, and IRIX.  To install CoolTalk, extract the contents
+          of the CoolTalk tar file and run install.sh from the cooltalk
+          directory.  For more information, see cooltalk/README.  This file
+          also contains important troubleshooting information.
+
+
+==============================================================================
+                          Installation Instructions
+==============================================================================
+
+Installation of @NAME@ is very simple: unpack the tar file, and run the
+resultant executable.  But there are, of course, a few exceptions....
+
+AIX:
+          @NAME@ requires AIX 3.2.5 with the X11R5 and Motif 1.2 libraries.
+          If you are running an older version of the operating system, you 
+          will get undefined symbols at run-time; unfortunately, the only 
+          solution is to upgrade to a more recent version of the OS.
+
+SunOS 4.1:
+          The SunOS 4.1 package comes with two executables: @PROGNAME@ and
+          @PROGNAME@_dns.  This is because SunOS uses two different,
+          incompatible methods of resolving host names (Domain Name Service,
+          and Network Information Service, formerly known as Yellow Pages.)
+          Only one of these executables needs to be installed on an
+          individual site.
+
+          It is usually possible to configure your YP/NIS server to consult
+          a DNS server for resolution of hosts not in the YP maps.  Consult
+          your system administrator for details.
+
+          If the Navigator is crashing under OpenWindows 3.0, make sure you
+          have all of the relevant patches, including patch 100444.
+
+Solaris 2.4:
+          The Solaris 2.4 Navigator is dynamically linked with the X and
+          Motif libraries. If the Motif dynamic libraries are not properly
+          installed, the Navigator will exit with this error:
+
+          ld.so.1: netscape: fatal: libXm.so.3: can't open file: errno=2
+
+          Installing Motif dynamic libraries will get the navigator working.
+          If you cannot install the Motif libraries, you can run the
+          Navigator for Solaris 2.3 on your Solaris 2.4 machine.
+
+SunOS 4.1 and BSD/386:
+          These distributions also includes a directory called "nls".  This
+          directory is a standard part of the MIT X11R5 distribution, but
+          is not included with X11R4- or X11R6-based systems (such as
+          OpenWindows 3.0 or earlier, and XFree86 3.1 or later.)
+
+          On these systems, @NAME@ has been linked against X11R5 (because
+          Motif 1.2.4 has some bad bugs in conjunction with X11R6.)
+          Unfortunately, X11R5 has one rather serious bug, which is that if
+          this "nls" directory does not exist, the program will dump core
+          any time you try to copy, or paste to or from a text field!
+
+          So, if you don't have the "nls" directory on your system, you will
+          need to install it first.  Here is where @NAME@ looks for it 
+          (these default pathnames are hardcoded into the executable):
+
+                SunOS 4.1:  /usr/lib/X11/nls/
+                BSD/386:    /usr/X11/lib/X11/nls/
+
+          If you choose not to create the directory there, then you must
+          set the XNLSPATH environment variable to the directory where you
+          did install it.
+
+NetBSD, FreeBSD:
+          We have been told (but have not verified) that the BSD/386 binaries
+          will work on x86 systems running NetBSD 1.0 or FreeBSD 2.0 (but
+          not FreeBSD 1.1.5.1.)
+
+
+ * Included with all distributions is a file called XKeysymDB.  Without this
+   file, many warnings about "unknown keysyms" will be generated when the
+   program starts up, and most keyboard equivalents won't work.  This is a
+   general problem with running Motif programs on systems not configured for
+   Motif, and so will be necessary on most Sun systems.
+
+   This file is included with all packages because some systems have an older
+   version of this file, so you may still get some warnings.  The XKeysymDB
+   file normally goes in /usr/lib/X11/XKeysymDB or /usr/openwin/lib/XKeysymDB,
+   but you can override that with XKEYSYMDB environment variable.
+
+ * Also included with all distributions is a file called @CLASS@.ad, which
+   lists the default resources which are built in to the program.  It is
+   not necessary to install this; it is provided for informational purposes.
+   See the comment at the top of @CLASS@.ad for more information.
+
+ * If you get a "Cannot locate host" dialog at startup, this is a sign of
+   problems related to name resolution.  If you're on a Sun, see the comments
+   above about the two executables.
+
+ * If you get a "Cannot connect to host" dialog at startup, it could mean that
+   you are behind a firewall, and need to tell Netscape about your SOCKS or
+   proxy server.  See Options Menu -> Network... -> Proxies, or consult your
+   system administrator.
+
+ * Please read the release notes under "Help -> Release Notes".  This
+   document is updated as problems are found, so please check it before 
+   reporting a bug.
+
+ * And remember, it's spelled N-e-t-s-c-a-p-e, but it's pronounced "Mozilla."
+
+==============================================================================

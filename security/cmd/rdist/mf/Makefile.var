@@ -1,0 +1,251 @@
+#
+# Copyright (c) 1993 Michael A. Cooper
+# Copyright (c) 1993 Regents of the University of California.
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+# 1. Redistributions of source code must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+# 2. Redistributions in binary form must reproduce the above copyright
+#    notice, this list of conditions and the following disclaimer in the
+#    documentation and/or other materials provided with the distribution.
+# 3. All advertising materials mentioning features or use of this software
+#    must display the following acknowledgement:
+#	This product includes software developed by the University of
+#	California, Berkeley and its contributors.
+# 4. Neither the name of the University nor the names of its contributors
+#    may be used to endorse or promote products derived from this software
+#    without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+# ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+# FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+# OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+# HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+# LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+# OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+# SUCH DAMAGE.
+#
+# $Id: Makefile.var,v 1.1 1996/01/31 23:29:55 dkarlton Exp $
+#
+
+#
+# Makefile default variables.
+#
+
+# 			**** DO NOT MODIFY THIS FILE ****
+#
+# Put local overrides for things found in this file in "Makefile.local".
+#
+
+#
+# BIN_DIR	- Name of directory to install client and server programs
+# BIN_OWNER	- Name of user who owns normal bin files
+# BIN_GROUP	- Name of group who owns normal bin files
+# RDIST_MODE	- File mode of rdist (client) program
+# RDISTD_MODE	- File mode of rdistd (server) program
+#
+BIN_DIR		= /usr/ucb
+BIN_OWNER	= root
+BIN_GROUP	= bin
+RDIST_MODE	= 555
+RDISTD_MODE	= 555
+
+#
+# MANDIR	- Name of top level manual directory
+# MAN_1_SECT	- Name of section 1 manual files
+# MAN_8_SECT	- Name of section 8 manual files
+# MAN_OWNER	- Name of user who owns man pages
+# MAN_GROUP	- Name of group who owns man pages
+# MAN_MODE	- File mode for man pages
+#
+MAN_1_DIR	= /usr/man/man1
+MAN_8_DIR	= /usr/man/man8
+MAN_1_SECT	= 1
+MAN_8_SECT	= 8
+MAN_OWNER	= root
+MAN_GROUP	= bin
+MAN_MODE	= 444
+
+
+#
+# CLIENT	- Name of client program (rdist) in ${BIN}
+# SERVER	- Name of server program (rdistd) in ${BIN}
+#
+CLIENT		= rdist
+SERVER		= rdistd
+
+#
+# Name of your BSD style install program
+#
+INSTALL		= install
+
+#
+# Name of C compiler.
+#
+#CC 		= gcc
+
+#
+# Name of YACC.
+#
+#YACC 		= bison -y
+
+OPT		= -g
+RM		= rm
+AR		= ar
+RANLIB		= ranlib
+
+O		=
+
+CFLAGS		= ${OPT}
+YFLAGS		= -d
+
+MAKE		= make
+MAKE_OPT	=
+
+CLEANFILES	= *~ a.out core rcsdiff.out log errs y.tab.h y.tab.c o
+
+#
+# Files that are part of the official distribution
+#
+
+Sources	= \
+	src/Makefile \
+	src/Makefile.real \
+	src/child.c \
+	src/client.c \
+	src/common.c \
+	src/distopt.c \
+	src/docmd.c \
+	src/expand.c \
+	src/filesys-os.c \
+	src/filesys.c \
+	src/gram.y \
+	src/isexec.c \
+	src/lookup.c \
+	src/message.c \
+	src/rdist.c \
+	src/rdistd.c \
+	src/rshrcmd.c \
+	src/server.c \
+	src/setargs.c \
+	src/signal.c
+
+MissingSources = \
+	src/hasmntopt.c \
+	src/regex.c \
+	src/strcasecmp.c \
+	src/strdup.c \
+	src/strerror.c \
+	src/strtol.c \
+	src/vsprintf.c
+
+ConfigFiles = \
+	config/Makefile \
+	config/Makefile.real \
+	config/config-data.h \
+	config/config-def.h \
+	config/config.h \
+	config/mf.TEMPLATE \
+	config/mf.aix3 \
+	config/mf.bsdi \
+	config/mf.concen \
+	config/mf.cxux \
+	config/mf.dcosx \
+	config/mf.dgux \
+	config/mf.dynix \
+	config/mf.dynixptx \
+	config/mf.fpx4 \
+	config/mf.ftx \
+	config/mf.hpux \
+	config/mf.irix4 \
+	config/mf.irix5 \
+	config/mf.isc \
+	config/mf.linux \
+	config/mf.mipsos4 \
+	config/mf.mipsos5 \
+	config/mf.ncr \
+	config/mf.nextstep2 \
+	config/mf.nextstep3 \
+	config/mf.osf1 \
+	config/mf.pyrosx \
+	config/mf.stellix \
+	config/mf.sunos4 \
+	config/mf.sunos5 \
+	config/mf.svr4 \
+	config/mf.tracebsd \
+	config/mf.ultrix4 \
+	config/mf.unicos \
+	config/mf.xinu43 \
+	config/os-TEMPLATE.h \
+	config/os-aix3.h \
+	config/os-bsdi.h \
+	config/os-concen.h \
+	config/os-cxux.h \
+	config/os-dcosx.h \
+	config/os-dgux.h \
+	config/os-dynix.h \
+	config/os-dynixptx.h \
+	config/os-fpx4.h \
+	config/os-ftx.h \
+	config/os-hpux.h \
+	config/os-irix4.h \
+	config/os-irix5.h \
+	config/os-isc.h \
+	config/os-linux.h \
+	config/os-mipsos4.h \
+	config/os-mipsos5.h \
+	config/os-ncr.h \
+	config/os-nextstep2.h \
+	config/os-nextstep3.h \
+	config/os-osf1.h \
+	config/os-pyrosx.h \
+	config/os-stellix.h \
+	config/os-sunos4.h \
+	config/os-sunos5.h \
+	config/os-svr4.h \
+	config/os-tracebsd.h \
+	config/os-type \
+	config/os-ultrix4.h \
+	config/os-unicos.h \
+	config/os-xinu43.h \
+	config/runmake
+
+IncludeFiles = \
+	include/Makefile \
+	include/Makefile.real \
+	include/defs.h \
+	include/filesys.h \
+	include/pathnames.h \
+	include/paths.h \
+	include/types.h \
+	include/version.h
+
+DocFiles = \
+	doc/Makefile \
+	doc/Makefile.real \
+	doc/rdist.man \
+	doc/rdistd.man
+
+SupportFiles = \
+	support/Makefile \
+	support/Makefile.real \
+	support/bsdinst.sh \
+	support/rdistcf.pl \
+	support/rdistvf.pl
+
+MfFiles = \
+	mf/Makefile \
+	mf/Makefile.var
+
+MainFiles = \
+	README ChangeLog Makefile Makefile.local
+
+DistFiles = \
+	${MainFiles} ${Sources} ${ConfigFiles} ${IncludeFiles} ${DocFiles} \
+	${MissingSources} ${SupportFiles} ${MfFiles}
